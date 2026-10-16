@@ -1,4 +1,4 @@
-const CACHE='danchu-adventure-v5';
+const CACHE='danchu-adventure-v5-1';
 const ASSETS=['./','./index.html','./style.css','./play.js','./play-engine.js','./adventure.js','./manifest.webmanifest','./icon.svg','./case-art/bedroom.webp','./case-art/observatory.webp','./case-art/workshop.webp','./case-art/archive.webp','./case-art/music.webp','./case-art/greenhouse.webp','./case-art/poses.webp','./case-art/items.webp','./case-art/props.webp','./case-art/devices.webp'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>(k.startsWith('strange-cafe-')||k.startsWith('button-')||k.startsWith('danchu-case-')||k.startsWith('danchu-adventure-'))&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
