@@ -1,24 +1,32 @@
-# V3 아트 제작 기록
+# V4 시각 방향 — 따뜻한 수선집의 조용한 수수께끼
 
-제작 도구: 기본 제공 ImageGen. 아래 두 개의 새 이미지 자산을 생성하고 웹용 WebP로 인코딩했습니다. 주인공의 투명 배경을 유지하고, 인코딩 외에 이미지의 구도·색감·내용을 수정하지 않았습니다.
+## 최종 기준
 
-| 자산 | 프로젝트 경로 |
-| --- | --- |
-| 상세한 침실 배경 | `dist/art/bedroom.webp` |
-| 단추 주인공 컷아웃 | `dist/art/button.webp` |
+캐릭터·아이템·배경은 따뜻한 꿀빛 나무, 크림색, 세이지 그린, 절제된 청록색을 공유한다. 밤의 시각 설정은 창밖의 부드러운 파란 달빛으로 남긴다. 실내는 가구와 단서가 충분히 보일 정도로 밝게 조명한다. 공포·위협·점프 스케어는 사용하지 않는다.
 
-## 공통 프롬프트
+배경 6개와 아이템 시트는 첫 어두운 시안에서, 단추의 포즈 시트를 스타일 참고로 삼아 다시 생성했다. 최종 결과만 게임에 사용한다. 장면마다 가구의 배치와 조사 지점이 다르다.
 
-Use case: illustration-story. High-end lovingly detailed 2D painted game art with the warmth, craftsmanship and expressive toy-world storytelling of a family animated feature. Not a 3D viewport or low-poly render. Soft painterly modeling, rich material detail, beautiful color design, rounded forms, warm amber lamp light with soft cool moonlight. Original designs only, no existing movie characters, no text, no logo, no UI.
+## 파일
 
-## 배경 프롬프트
+- `dist/case-art/bedroom.webp` — 침실
+- `dist/case-art/observatory.webp` — 천문실
+- `dist/case-art/workshop.webp` — 시계 작업실
+- `dist/case-art/archive.webp` — 기록실
+- `dist/case-art/music.webp` — 음악실
+- `dist/case-art/greenhouse.webp` — 옥상 온실
+- `dist/case-art/poses.webp` — 단추 4×2 포즈 시트
+- `dist/case-art/items.webp` — 아이템 4×4 시트
 
-Asset type: portrait 2D puzzle game background, tall 2:3 composition. A cozy child's bedroom at night seen from the low eye level of a small toy. No characters. Deep teal walls with subtle wallpaper stars, large window at upper left with midnight blue curtains and moon, a neatly made low wooden bed at upper right with patchwork cream and dusty-blue quilt, a detailed small wooden bedside cabinet with a circular brass lamp base, stacks of illustrated books, a wicker basket of toys at far left, little wooden railway around edges, worn wooden floorboards, buttons and threads and a little hand-stitched fabric rug. Full, carefully drawn environment with convincing fabrics, wood grain, seams, tiny scratches, cozy storybook personality. IMPORTANT: leave the entire lower center 65% as relatively clear wooden floor/rug playground for interactive props and protagonist to be overlaid. Furnishings frame the edges and upper part. Main perspective should allow 2D sprites on the floor at front; no overhead view. Visually rich along the sides, quiet open center. No visible cats or dolls.
+모두 기본 제공 ImageGen으로 제작했다. 최종 PNG는 WebP로 인코딩해 프로젝트에 넣었다. 포즈와 아이템의 칸은 CSS로 표시하며 별도의 내용 수정이나 임의 합성은 하지 않았다.
 
-## 주인공 프롬프트
+## 배경 최종 편집 프롬프트
 
-Asset type: one full-body 2D game character cutout on genuinely transparent background, no scenery. A charismatic small orange tabby plush cat toy named Button. Warm apricot plush with finely visible soft fiber texture and little stitches. Very large curious amber-brown eyes with light reflections, cream muzzle, cream tummy, small chocolate triangular nose, gentle cheek fur, round paws, three stitched whiskers each side, a rounded fluffy curled tail. A distinct muted blue fabric patch on its RIGHT ear (viewer left), hand stitched edges. A sage-green knitted scarf tied simply with a little brass bell. Tiny worn tan canvas satchel across body. Body facing front with slight 3/4 turn toward viewer right, standing on two short legs, looking curious and a little mischievous, one paw raised in a friendly questioning gesture. Appealing feature-film-quality proportions and expressive face. Entire figure including both ears, paws and tail inside canvas, no crop. Clear silhouette, no ground or cast shadow on background, no text. Painterly 2D style rather than literal 3D.
+Image 1 is the room edit target. Image 2 is the visual style reference for its resident plush cat. Keep the exact camera, room layout, all furniture and object locations, and the investigation clues in image 1. Transform only the art treatment, palette and lighting to harmonize naturally with image 2 as one cohesive 2D animated storybook game. Warm, welcoming, curious atmosphere for a general adult audience, never horror or threatening. Lift the room's exposure considerably so every furnishing and floor is comfortably visible. Soft amber lamplight plus gentle blue-lavender moonlight; warm cream, honey wood, sage green and muted teal accents. Softly rounded illustrated edges and subtle painted texture, slightly stylized proportions, tactile cloth and wood, detailed but no photographic microtexture or hard glossy 3D rendering. Keep nighttime visible outdoors, but inside should feel as friendly and well-lit as a cozy bookshop or animation family home. Reduce nearly black shadows to softly colored brown/teal shadows. No cats or characters added, no text, no UI, no logos. Preserve landscape aspect ratio and all prop positions.
 
-## 소품과 UI
+## 아이템 최종 편집 프롬프트
 
-소품은 기존 SVG 기반 아트 시스템을 확장해 그라디언트, 이음선, 바느질, 반사광, 그림자를 추가했습니다. 주인공과 배경은 이미지 자산으로, 조작 소품은 코드로 그린 SVG로 구성합니다. 서로 다른 표현 방식이 섞인 프로토타입이며, 후속 단계에서 소품별 원화로 통일할 수 있습니다.
+Edit target is image 1, a strict 4x4 item atlas; image 2 is supporting character style reference. Keep all sixteen objects, exact cell order, object identities, grid layout and recognizable fine details unchanged. Change the illustration style and lighting so these props belong naturally beside the plush cat in image 2: warm approachable hand-painted 2D animated storybook art, softened illustrated contours, matte materials, gentle warm shadows, painterly wood and brass, refined detail without photographic or 3D-render gloss. Replace the dark charcoal background uniformly with a flat warm parchment cream #f2e6cf. Keep one centered object in each of the 16 equal cells; no text, no borders, no new objects. Clear mature inventory illustration, cozy investigative adventure, not childish sticker icons, no ominous feel.
+
+## 포즈 시트 프롬프트
+
+Use case: illustration-story. Asset type: exact 4-column by 2-row game sprite atlas on TRUE transparent background. Reference image is the character design reference only: keep this same orange plush cat Button, sage knitted scarf, blue ear patch, brass bell, canvas satchel and expressive amber eyes. Sophisticated hand-painted 2D animation character sheet. Eight equal square cells in strict 4x2 grid, no borders, no labels, no text. Each entire character must fit within its cell with at least 10% empty margin, absolutely no overlap across cells, consistent size except sleeping pose. No background tint, no glow halo, no ground shadows. Row 1 left to right: 1 neutral standing alert front three-quarter; 2 thoughtful worried expression with paw at chin; 3 walking toward LEFT in clear left profile stepping pose; 4 walking toward RIGHT in clear right profile stepping pose. Row 2 left to right: 5 sleeping curled on side under a small cream blanket, eyes peacefully shut; 6 standing gazing upward, BOTH paws cupped around the eyes like a little visor to look at the sky, visibly different arm pose; 7 crouching to inspect floor through a small magnifying glass, focused face; 8 surprised expression, wide eyes, ears up and both paws slightly lifted. All poses distinct, accurate limbs, beautiful fiber/stitch details, refined animation proportions, original character. Transparent cutouts, no atmospheric backdrop.
