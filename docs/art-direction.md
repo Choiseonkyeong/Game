@@ -43,3 +43,36 @@ Use case: illustration-story. Discovery close-up atlas for modern cozy adult tra
 Use case: identity-preserve. New 4-column 2-row transparent character sprite atlas for a modern travel puzzle game, using the reference ONLY for Danchu's identity: orange tabby plush cat, cream muzzle belly paws, blue stitched patch on left ear, muted sage small scarf, small tan crossbody satchel. Preserve identity but restyle as refined soft hand-painted gouache editorial illustration, natural muted colors, less glossy than reference, smaller eyes and slightly longer body, gentle adult travel-book charm, no exaggerated baby expression. Exact 4x2 equal cells, each pose wholly within cell with 15% gutters, all same character scale; transparent background, no shadows outside cell. Row1: standing calmly front, thoughtful paw near chin, walking left profile, walking right profile. Row2: sleeping curled under sage duvet; standing shading eyes with both paws to look at sky; crouching reaching one paw forward to open a drawer with NO magnifying glass; standing holding small silver black film camera. No room, no text, no decorative particles.
 
 배경은 1536×1024, 도구는 4×4 직사각 셀(1536×1024), 발견 그림은 4×4 셀(1402×1122), 단추는 4×2 셀(1774×887)이다. CSS는 각 시트의 실제 비율에 맞춰 표시한다. PNG 원화를 WebP로 인코딩했으며 투명 알파를 유지했다.
+
+
+## V6.1 — 장소별 조사 후 배경
+
+Built-in imagegen edit mode로 기존 배경을 참고해 열린 상태를 제작했다. 사용 프롬프트 공통:
+
+Edit target: the supplied original game background. Produce an alternate SEARCHED STATE of EXACTLY THE SAME ROOM, same 3:2 image size, camera angle, furniture placement, lighting, palette and hand-painted materials. Preserve the room as closely as possible; do not redesign, zoom, crop, add furniture or add characters. Only change the movable small parts specified. These states will be clipped into the original room as local interactive game layers, so stationary edges and furniture must stay aligned. 
+
+### dist/travel-art/seoul-searched.webp
+
+Gently fold the sage duvet toward the foot of the bed to expose the cream mattress in its upper middle where a small camera might have been hidden, but place NO camera. Tilt the floral pillow forward, revealing a narrow cream folded note edge under it. Pull the right oak desk drawer outward visibly to show its wooden interior, keeping the drawer at its existing location. Pull the hanging jacket's lower pocket outward slightly. Lower the existing linen roller blind halfway down the window; keep lower city view visible. Open the linen tote mouth slightly and lift the small round tin lid on the high shelf. No extra objects or characters.
+
+### dist/travel-art/tokyo-searched.webp
+
+Pull the existing front counter drawer a little farther out so its interior is visibly accessible. Open the hanging canvas tote's mouth. Tilt the hanging jacket and pull its pocket edge outward. Open the lid of one small film tin on the middle shelf. Lift one corner of the folded map on the counter. Keep all architecture, shopfront, photos and furniture in the exact same positions.
+
+### dist/travel-art/taipei-searched.webp
+
+Open the small pastry box on the cafe table to reveal its paper lining, lift a corner of the notebook page on the table, open the tote on the chair a little, pull the existing cafe counter's oak drawer outward to show the interior, lift the lid of one ordinary coffee tin on the upper shelf. Gently part the left window's upper soft shade only if present. Keep all furniture and rain view unchanged.
+
+### dist/travel-art/bangkok-searched.webp
+
+Tilt the sofa's loose beige pillow forward, open the canvas tote mouth on the sofa, lift the lid off the round tin on the coffee table, lift one map page corner, pull the desk drawer outward visibly, open the small canvas backpack by the right door a little. Keep all furniture and sunlight exactly where they are.
+
+### dist/travel-art/paris-searched.webp
+
+Pull one of the existing flat print drawers outward by a modest amount so a dark wood interior is visible. Open the linen tote on the chair, pull the jacket pocket outward, lift the lid of the round tin on the worktable, lift a corner of a paper on the lightbox. Keep the exact composition, furniture and lighting.
+
+### dist/travel-art/lisbon-searched.webp
+
+Pull the right desk drawer outward so its interior is visible. Open the tote on the chair, pull the hanging jacket pocket outward, tilt the chair cushion slightly, lift the lid of the little tin on the desk, lift one page of the travel notebook. Keep all composition and the balcony unchanged.
+
+원래 배경의 일부 영역만 조사 후 그림으로 전환하며, 나머지 공간은 원래 그림을 유지한다. 침대, 베개, 커튼, 서랍과 주머니는 별도 합성 영역과 모션을 사용한다.

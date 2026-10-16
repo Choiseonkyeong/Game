@@ -53,3 +53,41 @@
 .found-item>span{font-size:13px;font-weight:500}.found-item small{display:block;font-size:10px;font-weight:400;color:#8d977f;margin-top:4px}
 #detail h2{font-size:21px;margin-bottom:6px}.primary,.success button{background:#6e856b}.eyebrow{color:#9b9276;letter-spacing:.11em}
 @media(max-height:620px){.hud{padding-top:5px}.topline button{min-height:29px;padding:5px 9px}.mission{padding:7px 10px}.mission h1{font-size:13px}.speech{min-height:40px}.bag-bar{min-height:54px}.bag-item{height:43px}.bag-item .item-art{width:36px;height:24px}.controls-note{min-height:13px}}
+/* Direct scene actions: local painted states and short, place-specific movement. */
+#room-motion-layers,#motion-action{position:absolute;inset:0;pointer-events:none}
+#room-motion-layers{z-index:2}#motion-action{z-index:6}
+.room-state-layer,.moving-state{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;user-select:none}
+.room-shaded #room-image{filter:brightness(.98) saturate(.97)}
+.motion-cloth{transform-origin:25% 62%;animation:cloth-fold .82s ease both}
+.motion-pillow{transform-origin:17% 45%;animation:pillow-lift .82s ease both}
+.motion-pocket{transform-origin:60% 42%;animation:pocket-rummage .82s ease both}
+.motion-drawer{animation:drawer-pull .82s cubic-bezier(.2,.65,.3,1) both}
+.motion-curtain{animation:blind-lower 1s cubic-bezier(.3,.05,.3,1) both}
+.motion-bag{animation:bag-open .8s ease both}.motion-lid{animation:lid-open .8s ease both}.motion-paper{animation:page-lift .8s ease both}.motion-light{animation:light-adjust .8s ease both}
+@keyframes cloth-fold{0%{opacity:0;transform:perspective(900px) rotateX(-7deg) translateY(-1%)}45%{opacity:.8}100%{opacity:1;transform:none}}
+@keyframes pillow-lift{0%{opacity:0;transform:translateY(-2%) rotate(-1deg)}45%{opacity:1;transform:translateY(-1.2%) rotate(1deg)}100%{opacity:1;transform:none}}
+@keyframes pocket-rummage{0%{opacity:0}20%{opacity:1;transform:rotate(-.6deg)}40%{transform:rotate(.6deg)}60%{transform:rotate(-.5deg)}80%{transform:rotate(.3deg)}100%{opacity:1;transform:none}}
+@keyframes drawer-pull{0%{opacity:0;transform:translateY(-1.5%) translateX(-.4%)}100%{opacity:1;transform:none}}
+@keyframes blind-lower{0%{clip-path:inset(var(--clip-top) 43% 95% 24%);opacity:.6}100%{clip-path:inset(var(--clip-top) 43% var(--clip-bottom) 24%);opacity:1}}
+@keyframes bag-open{0%{opacity:0;transform:scaleY(.985)}50%{opacity:.9}100%{opacity:1;transform:none}}
+@keyframes lid-open{0%{opacity:0;transform:translateY(-1.2%)}100%{opacity:1;transform:none}}
+@keyframes page-lift{0%{opacity:0;transform:rotate(-.4deg)}100%{opacity:1;transform:none}}
+@keyframes light-adjust{0%{opacity:0;filter:brightness(1.12)}100%{opacity:1;filter:none}}
+#actor.action-cloth #actor-sprite,#actor.action-pocket #actor-sprite,#actor.action-bag #actor-sprite{animation:paw-search .16s ease 5 alternate}
+#actor.action-drawer #actor-sprite{animation:paw-pull .8s ease}
+#actor.action-step #actor-sprite{animation:step-reach .8s ease}
+@keyframes paw-search{to{transform:translateX(2px) rotate(1deg)}}
+@keyframes paw-pull{40%{transform:translateX(-4px) rotate(-2deg)}100%{transform:none}}
+@keyframes step-reach{40%{transform:translateY(-5px)}75%{transform:translateY(-2px)}100%{transform:none}}
+#drop-cue{position:absolute;transform:translate(-50%,-100%);z-index:25;background:#fffaf0ed;border:1px solid #c5c9b1;border-radius:20px;padding:6px 11px;font-size:11px;color:#5c6b52;pointer-events:none;white-space:nowrap;box-shadow:0 3px 12px #4b53321c}
+.room-closeup{width:100%;max-height:320px;overflow:hidden;border-radius:14px;position:relative;background:#eae4d8;margin:14px 0;touch-action:pan-y}
+.crop-content{position:absolute;inset:0;transform-origin:center;transition:transform .35s ease}
+.crop-content img{position:absolute;max-width:none;object-fit:fill;user-select:none;pointer-events:none}
+.zoomed-inside .crop-content{transform:scale(1.65)}
+.zoom-inside{border:1px solid #cbd0b9;background:#eef0e4;border-radius:9px;padding:9px 12px;font-size:11px;color:#6d7e60;display:block;width:100%;margin-bottom:12px}
+.observed-clue{border-left:2px solid #a6b590;padding:8px 12px;margin:12px 0;background:#edf0e355;border-radius:0 9px 9px 0}.observed-clue small{font-size:9px;letter-spacing:.06em;color:#98a285}.observed-clue p{margin:5px 0 0;font-size:12px}
+.observation-entry{border-bottom:1px solid #dedfce;padding:14px 0}.observation-entry b{font-size:12px;font-weight:500;color:#748666}.observation-entry p{font-size:12px;margin:7px 0 0;line-height:1.8}
+.topline>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}.topline{gap:6px}.topline button{padding-left:8px;padding-right:8px}
+.world-discovery{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;padding:0;border:0;background:transparent;display:grid;place-items:center;z-index:5;touch-action:manipulation;cursor:pointer}
+.world-discovery .item-art{width:var(--found-size);aspect-ratio:1.5;filter:saturate(.88) brightness(.96);pointer-events:none}
+.world-discovery:focus-visible{outline:1px dashed #9ca78b;outline-offset:1px;border-radius:8px}
