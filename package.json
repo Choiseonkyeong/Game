@@ -1,7 +1,1 @@
-{
-  "name": "a-strange-little-cafe",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": { "test": "node --test", "start": "python3 -m http.server 8080" }
-}
+{"name":"button-and-the-lost-starlight","version":"0.2.0","private":true,"type":"module","scripts":{"test":"node --test","start":"python3 -m http.server 8080 --directory dist"}}

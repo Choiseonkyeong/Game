@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {levels,chapters} from '../dist/story.js';
+import {fresh,dispatch,complete,solution,restore,award,unlocked} from '../dist/engine.js';
+for(let level=0;level<levels.length;level++)test(`${String(level+1).padStart(2,'0')} ${levels[level].title} — solvable and saveable`,()=>{
+ let s=fresh(level);const actions=solution(level);
+ for(const a of actions){const previous=structuredClone(s);const r=dispatch(s,a);assert.equal(r.changed,true,JSON.stringify(a));assert.deepEqual(previous,s,'dispatch must not mutate input');s=r.state;const restored=restore(level,JSON.parse(JSON.stringify(s)));assert.equal(restored.step,s.step);assert.equal(restored.seq,s.seq);assert.deepEqual(restored.dials,s.dials);assert.deepEqual(restored.circuit,s.circuit);}
+ assert.equal(complete(s),true);assert.equal(s.step,levels[level].steps.length);assert.equal(award(s),2);s=dispatch(s,{kind:'secret',item:'__secret'}).state;assert.equal(award(s),3);s.hints=1;assert.equal(award(s),2);
+});
+test('every puzzle reference exists, including revealed objects',()=>{for(const l of levels){const ids=new Set(l.objects.map(o=>o.id));assert.equal(ids.size,l.objects.length,`duplicate in ${l.id}`);for(let i=0;i<l.steps.length;i++){const s=l.steps[i];for(const id of [s.item,s.target,...s.items||[]].filter(Boolean)){assert(ids.has(id),`${l.id} missing ${id}`);assert((l.objects.find(o=>o.id===id).after||0)<=i,`${l.id} ${id} locked too long`);}}}});
+test('exactly six hand-authored episodes per chapter with a complete narrative',()=>{assert.equal(levels.length,30);assert.equal(chapters.length,5);for(let c=0;c<5;c++)assert.equal(levels.filter(l=>l.chapter===c).length,6);for(const l of levels){assert(l.intro.length>20);assert(l.outro.length>20);assert(l.secret.length>10);assert(l.steps.length>=2);}});
+test('later scenes are gated and replaying does not revoke earned access',()=>{let s=levels.map((_,i)=>fresh(i));assert.equal(unlocked(s),0);for(const a of solution(0))s[0]=dispatch(s[0],a).state;assert.equal(unlocked(s),1);s[0]=fresh(0);assert.equal(unlocked(s,[2]),1);});
+test('a short hold cannot pass; wrong order resets only the current melody',()=>{let s=fresh(5);assert.equal(dispatch(s,{kind:'hold',item:'star',elapsed:100}).state.step,0);assert.equal(dispatch(s,{kind:'hold',item:'star',elapsed:NaN}).state.step,0);s=fresh(4);s=dispatch(s,{kind:'tap',item:'low'}).state;s=dispatch(s,{kind:'tap',item:'mid'}).state;assert.equal(s.seq,0);assert.equal(s.step,0);});
+test('bad save content, wrong targets and future actions cannot complete a stage',()=>{assert.equal(restore(0,null).step,0);let s=fresh(0);const r=dispatch(s,{kind:'move',item:'scarf',target:'hero'});assert.equal(r.changed,false);assert.equal(dispatch(s,{kind:'tap',item:'missing'}).state.step,0);assert.equal(restore(0,{history:[null,{kind:'invalid'},{kind:'tap',item:'missing'}]}).step,0);});
+test('all six distinct interaction types are represented',()=>{assert.deepEqual(new Set(levels.flatMap(l=>l.steps.map(s=>s.kind))),new Set(['move','tap','dial','hold','sequence','circuit']));});
