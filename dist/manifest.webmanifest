@@ -1,1 +1,1 @@
-{"name":"단추 사건수첩 · 00:13의 편지","short_name":"단추 사건수첩","lang":"ko","start_url":"./","scope":"./","display":"standalone","background_color":"#f2ecdf","theme_color":"#f2ecdf","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
+{"name": "단추의 작은 모험 · 별빛 온실", "short_name": "단추의 모험", "lang": "ko", "start_url": "./", "scope": "./", "display": "standalone", "background_color": "#f2ecdf", "theme_color": "#213d36", "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]}
