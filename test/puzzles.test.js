@@ -1,0 +1,9 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {levels,chapters} from '../dist/story.js';
+import {fresh,active,dispatch,restore,complete,solve,visible} from '../dist/engine.js';
+for(let i=0;i<30;i++)test(`${i+1}. ${levels[i].title}: direct solution and save restore`,()=>{let s=fresh(i);for(const a of solve(i)){const before=structuredClone(s),rule=active(s),ids=new Set(['hero',...visible(s).map(o=>o.id)]);assert(ids.has(a.item));if(rule.target)assert(ids.has(rule.target));const r=dispatch(s,a);assert(r.changed);assert.deepEqual(before,s);s=r.state;const round=restore(i,JSON.parse(JSON.stringify(s)));assert.equal(round.step,s.step);assert.equal(round.count,s.count);}assert(complete(s));assert.equal(dispatch(s,{kind:'tap',item:'wrong'}).changed,false);});
+test('every episode has a brief goal and at most two simple tasks',()=>{assert.equal(levels.length,30);assert.equal(chapters.length,5);for(const l of levels){assert(l.goal.length<=25,l.goal);assert(l.steps.length<=2);assert.equal(new Set(l.objects.map(o=>o.id)).size,l.objects.length);for(const r of l.steps)assert(['tap','move','shift'].includes(r.kind));}});
+test('wrong destinations, future actions and tiny drags cannot advance',()=>{let s=fresh(0);assert.equal(dispatch(s,{kind:'move',item:'blanket',target:'lamp'}).changed,false);s=fresh(2);assert.equal(dispatch(s,{kind:'tap',item:'star'}).changed,false);assert.equal(dispatch(s,{kind:'shift',item:'pillow',distance:5}).changed,false);assert.equal(dispatch(s,{kind:'shift',item:'pillow',distance:NaN}).changed,false);});
+test('repeated tapping gives real intermediate progress',()=>{let s=fresh(24);for(let k=1;k<=3;k++){s=dispatch(s,{kind:'tap',item:'jar'}).state;assert.equal(s.step,k===3?1:0);assert.equal(s.count,k===3?0:k);}});
+test('damaged save data is ignored',()=>{assert.deepEqual(restore(0,null),fresh(0));assert.equal(restore(0,{history:[null,{}, {kind:'hack',item:'hero'}]}).step,0);});

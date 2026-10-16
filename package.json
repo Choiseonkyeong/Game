@@ -1,1 +1,1 @@
-{"name":"button-and-the-lost-starlight","version":"0.2.0","private":true,"type":"module","scripts":{"test":"node --test","start":"python3 -m http.server 8080 --directory dist"}}
+{"name":"buttons-little-bedtime-trouble","version":"0.3.0","private":true,"type":"module","scripts":{"test":"node --test","start":"python3 -m http.server 8080 --directory dist"}}
