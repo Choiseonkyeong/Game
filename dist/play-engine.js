@@ -1,5 +1,5 @@
 import {stages,tools} from './adventure.js';
-export const fresh=()=>({version:5,stage:0,completed:[],flags:{},inventory:[],sequence:{},history:[]});
+export const fresh=()=>({version:6,stage:0,completed:[],flags:{},inventory:[],sequence:{},history:[]});
 export const visible=(s,o)=>!(o.tool&&s.flags[o.tool+'_taken'])&&(o.need||[]).every(f=>s.flags[f])&&!(o.hide||[]).some(f=>s.flags[f]);
 export function act(state,a,record=true){
  const s=structuredClone(state),level=stages[s.stage];let result={state,ok:false,message:'지금은 사용할 수 없어.'};
@@ -24,4 +24,4 @@ export function act(state,a,record=true){
  if(record)s.history.push(a);
  return {state:s,ok:true,message:rule.msg,rule};
 }
-export function restore(raw){let s=fresh();if(raw?.version!==5||!Array.isArray(raw.history))return s;for(const a of raw.history.slice(0,3000)){if(a&&['tap','use','combine','code','next','visit'].includes(a.type)){try{const r=act(s,a);if(r.ok)s=r.state;}catch{}}}return s;}
+export function restore(raw){let s=fresh();if(raw?.version!==6||!Array.isArray(raw.history))return s;for(const a of raw.history.slice(0,3000)){if(a&&['tap','use','combine','code','next','visit'].includes(a.type)){try{const r=act(s,a);if(r.ok)s=r.state;}catch{}}}return s;}
