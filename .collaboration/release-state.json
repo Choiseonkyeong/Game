@@ -4,36 +4,36 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.8.0",
-    "github_commit": "bb602712dbbe43c9b00f788bdfd364b4f707e75b",
-    "github_dist_tree": "ff26a9955560ebcc15e2959ed9d464f5b2c43732",
-    "entrypoint": "dist/index.html -> entry.js?v=080 -> first-room.js?v=080; ?mode=legacy -> play.js?v=070",
+    "version": "0.8.1",
+    "github_commit": "c27ed02d2743a68231100d6bb2417c115b732202",
+    "github_dist_tree": "8824be61016acf395845390e404ed7dc95ead3e2",
+    "entrypoint": "dist/index.html -> entry.js?v=081 -> first-room.js?v=081; ?mode=legacy -> play.js?v=070",
     "checks": {
-      "automated_tests_passed": 30,
-      "non_reduced_default_chapter_pointer_flow_verified": true,
+      "automated_tests_passed": 33,
+      "non_reduced_first_chapter_pointer_flow_verified": true,
+      "pinch_anchor_and_accidental_tap_suppression_verified": true,
+      "phone_landscape_desktop_cover_geometry_verified": true,
       "static_canvas_focus_states_checked": 8,
       "actual_mobile_touch_verified": false,
-      "actual_browser_css_or_framerate_verified": false,
-      "service_worker_asset_paths_checked": true
+      "actual_browser_css_or_framerate_verified": false
     },
     "changes": [
-      "Default scope deliberately reduced to one connected stage: discover camera and film, load camera, compose and capture the actual photograph.",
-      "Independent pillow/tin/film/camera cutouts, proportional drag-follow, reversible drawer reveal, pickup landing and failed-film-drop return.",
-      "Isolated Shadow DOM and first-chapter save; old thirty-stage game and danchu-travel-v6 save preserved under ?mode=legacy; original curtain/sunlight compositor retained."
+      "Remove repeated room backdrop; normal room has one full-cover image and overview uses a solid matte.",
+      "Opaque close-up views hide underlying HUD; drawer no longer includes the closed desk behind its open interior.",
+      "Anchored two-finger room/detail zoom, panning, consumed releases; cache room light/material composition across camera gestures;1.5x canvas density and elapsed-time follow."
     ],
     "limitations": [
-      "Static Canvas and DOM substitute verification only; browser CSS, iPhone frame rate/touch and player engagement unverified.",
-      "New default intentionally omits warped duvet and arbitrary number-lock chain. The earlier full game remains intact via menu.",
-      "No claim of movie-level animation or general cloth physics."
+      "Actual iPhone touch/frame rate and browser CSS unverified; static Canvas and DOM substitutes only.",
+      "Existing external-collaborator access and Pages activation issue remain separate and unresolved."
     ]
   },
   "last_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "1c0c742d5760f69465d1624ea911a455464a5340",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_c300d17e970c819180df135c7f00090c",
-    "deployment_id": "appgdep_6ad39458de2c8191a47634f81a589e1e",
-    "deployed_at": "2026-10-17T15:29:43.625753+00:00",
+    "source_commit": "092d912279c82f00b96575cd09af8c6451678ac7",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_de311b796e688191a6943b4ea6d80cbe",
+    "deployment_id": "appgdep_6ad3978d09e081919cbfd72e9e54148d",
+    "deployed_at": "2026-10-17T15:43:22.717502+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -68,10 +68,10 @@
   "previous_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "b4eb88dd04053ec7632cc502025d4724f0849459",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_df7c0e4c2d88819195ad1d122ac78ad9",
-    "deployment_id": "appgdep_6ad38c8fb0808191a6e484921a86bb3f",
-    "deployed_at": "2026-10-17T14:56:30.783374+00:00",
+    "source_commit": "1c0c742d5760f69465d1624ea911a455464a5340",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_c300d17e970c819180df135c7f00090c",
+    "deployment_id": "appgdep_6ad39458de2c8191a47634f81a589e1e",
+    "deployed_at": "2026-10-17T15:29:43.625753+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -82,33 +82,23 @@
   },
   "handoff": {
     "source_branch": "master",
-    "source_commit": "bb602712dbbe43c9b00f788bdfd364b4f707e75b",
+    "source_commit": "c27ed02d2743a68231100d6bb2417c115b732202",
     "sites_and_github_dist_identical": true,
     "experience_contract": "docs/experience-contract.md",
     "reference_and_verification_notes": "docs/polish-reference.md",
     "art_prompts": "docs/art-direction.md",
-    "visible_release_marker": "Menu: 0.8.0 · FIRST CHAPTER",
-    "cache_busting_test_url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/?v=0.8.0",
-    "remaining": "Actual browser CSS and iPhone touch/frame-rate, first-time player testing. Pages activation and other collaborator access not declared fixed. Keep default entry and both save keys; fetch current master before editing."
+    "visible_release_marker": "Menu: 0.8.1 · PINCH CHAPTER",
+    "cache_busting_test_url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/?v=0.8.1",
+    "remaining": "Real iPhone pinch/touch and frame-rate review; browser CSS check. Keep single room/background, anchored pinch, cached material render and both saves. Existing Pages/access issue remains."
   },
   "latest_verification": {
-    "checked_at": "2026-10-18T00:35:00+09:00",
-    "version": "0.8.0",
-    "source_commit": "bb602712dbbe43c9b00f788bdfd364b4f707e75b",
-    "automated_tests_passed": 30,
-    "source_archive_files_matched": 43,
-    "generated_archive_metadata_files": 1,
+    "checked_at": "2026-10-17T15:43:22.717502+00:00",
+    "version": "0.8.1",
+    "automated_tests_passed": 33,
     "static_canvas_focus_states": 8,
-    "curtain_rug_luminance": [
-      175,
-      146,
-      116
-    ],
-    "provider_version_matches": true,
-    "provider_screenshot": "loading screen only; timing versus stalled load unresolved",
-    "http_fetch": "6 requests returned403 in this execution environment",
+    "source_dist_matches": true,
     "actual_browser_play_verified": false,
     "actual_mobile_touch_verified": false,
-    "status": "logic checks passed; real browser verification blocked"
+    "prior_access_probe": "v0.8.0 direct fetch from execution environment returned403; no new universal-access claim"
   }
 }
