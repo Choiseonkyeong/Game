@@ -45,18 +45,22 @@
   "shared_github_pages": {
     "target_url": "https://choiseonkyeong.github.io/Game/",
     "workflow": ".github/workflows/pages.yml",
-    "status": "pending_repository_pages_activation",
+    "status": "deploying_from_master",
     "live_url_verified": false,
-    "last_attempt": {
-      "run_id": 39002004958,
-      "source_commit": "966f4a439c37eba55d86c060ad1b42be08aed8d0",
+    "last_successful": {
+      "run_id": 39052883329,
+      "run_number": 9,
+      "source_commit": "3c406e431acd704dd0a1478aaf2ca379c989589f",
+      "version": "0.9.0",
       "game_checks": "passed",
-      "deployment": "failed",
-      "failed_step": "Configure Pages",
-      "reason": "Pages site not found; enable Settings > Pages > Source > GitHub Actions",
-      "observed_at": "2026-10-17T04:17:37Z"
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-17T17:14:51Z",
+      "deployed_at_kst": "2026-10-18 02:14:51 KST",
+      "worker": "Claude"
     },
-    "remaining_action": "Enable Pages with GitHub Actions, run Publish shared game, then verify successful deployment and build-info.json."
+    "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
+    "access_check": "Not verified from the Claude environment (outbound fetch to github.io is blocked). Owner/collaborator browser access not confirmed by Claude.",
+    "remaining_action": "Open the URL on a phone, confirm build-info.json shows 3c406e4, and record real-device touch review."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -100,5 +104,13 @@
     "actual_browser_play_verified": false,
     "actual_mobile_touch_verified": false,
     "prior_access_probe": "v0.8.0 direct fetch from execution environment returned403; no new universal-access claim"
+  },
+  "latest_github_pages_release": {
+    "version": "0.9.0",
+    "source": "master@3c406e431acd704dd0a1478aaf2ca379c989589f",
+    "entry": "dist/index.html -> entry.js?v=090 -> first-room.js?v=090 | tokyo-room.js?v=090 (?chapter=tokyo)",
+    "tests_passed": 42,
+    "headless_browser": "390x844, 1280x800, 844x390 screenshots; Tokyo chapter completed with mouse input",
+    "actual_mobile_touch_verified": false
   }
 }
