@@ -29,5 +29,5 @@ export function restoreTokyo(raw){
 }
 // Each item leaves the bag once it has been used for the next step.
 export const tokyoInventory=s=>[...(s.ticket&&!s.negative?['ticket']:[]),...(s.negative&&!s.print?['negative']:[]),...(s.print&&!s.pinned?['print']:[])];
-export const tokyoHint=s=>!s.dropped?'카운터 고리에 걸린 가방 바깥 주머니에 종이가 끼어 있어요. 가방을 크게 흔들어 보세요.':!s.ticket?'바닥에 떨어진 종이를 주워요.':!s.negative?'카운터 큰 서랍에 맡긴 봉투들이 있어요. 맡김표 번호와 같은 봉투를 찾아요.':!s.print&&!s.lampOn?'필름은 빛에 비춰야 보여요. 뒤 선반의 스탠드를 켜 보세요.':!s.print?'스탠드 아래 라이트박스에서 확대경으로 컷을 살펴보고, 잘 나온 컷을 눌러요.':'인화한 사진을 왼쪽 벽 사진 보드에 붙여요.';
+export const tokyoHint=s=>!s.dropped?'창가 풍경(風鈴)의 종이 띠를 읽어 보세요. 카운터 고리의 가방을 크게 흔들면 주머니에서 무언가 떨어질지도 몰라요.':!s.ticket?'바닥에 떨어진 종이를 주워요.':!s.negative?'카운터 큰 서랍에 맡긴 봉투들이 있어요. 맡김표 번호와 같은 봉투를 찾아요.':!s.print&&!s.lampOn?'필름은 빛에 비춰야 보여요. 뒤 선반의 스탠드를 켜 보세요.':!s.print?'라이트박스에서 확대경으로 컷을 살펴봐요. 카운터 모서리 바닥의 영수증에 잘 나온 컷 번호가 적혀 있어요.':'인화한 사진을 왼쪽 벽 사진 보드에 붙여요.';
 export const failText={'no-ticket':'맡김표가 있어야 찾아갈 수 있어요.','other-envelope':'번호가 다른 봉투예요.',dark:'빛이 없으면 필름 속이 보이지 않아요.',fogged:'빛이 샌 컷이에요. 하얗게 날아갔어요.',shaken:'흔들린 컷이에요.',blank:'아무것도 찍히지 않은 칸이에요.'};

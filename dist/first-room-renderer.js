@@ -1,9 +1,9 @@
-import {stageFit} from './view-gestures.js?v=091';
-import {BodyLayer,SEOUL_BODIES} from './room-bodies.js?v=091';
-import {paintMargins,featherEdges,releaseCanvases} from './room-frame.js?v=091';
+import {stageFit,innerGeometry,PLATE} from './view-gestures.js?v=100';
+import {BodyLayer,SEOUL_BODIES} from './room-bodies.js?v=100';
+import {paintMargins,featherEdges,releaseCanvases} from './room-frame.js?v=100';
 export {releaseCanvases};
-import {SceneSurface} from './scene-surface.js?v=091';
-import {bound,frameReady} from './first-room-engine.js?v=091';
+import {SceneSurface} from './scene-surface.js?v=100';
+import {bound,frameReady} from './first-room-engine.js?v=100';
 export const BOARD={width:800,height:1000};
 export const ROOM_TARGETS={pillow:{x:.13,y:.46},drawer:{x:.88,y:.49},tin:{x:.745,y:.075},window:{x:.46,y:.23},lamp:{x:.16,y:.32},chair:{x:.76,y:.61},frame:{x:.025,y:.17},bin:{x:.985,y:.68}};
 const round=(c,x,y,w,h,r=8)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
@@ -14,10 +14,11 @@ export class ChapterRenderer{
  renderRoom(state,camera={x:.28,y:.5},overview=false,zoom=1){
   const c=this.c,w=this.canvas.width,h=this.canvas.height;c.clearRect(0,0,w,h);
   const surfaceKey=[state.shade,state.drawer].join('|');if(this.surfaceKey!==surfaceKey){this.surfaceKey=surfaceKey;this.surface.render({stage:0,flags:{},world:{},positions:{window:{progress:state.shade},drawer:{progress:state.drawer}}},0);this.bodies.reset();}
-  const g=stageFit(w,h,camera,zoom,overview),{tx,ty,rw,rh}=g;
+  // The taller plate (ceiling and close floor) frames the original room, which stays in its own coordinates.
+  const plate=this.assets.plate,g=stageFit(w,h,camera,zoom,overview,plate?PLATE.height:1024),inner=plate?innerGeometry(g,PLATE.top):g,{tx,ty,rw,rh}=inner;
   // One room image, one coordinate space. Overview margins are a solid matte, never another room.
-  c.fillStyle='#c6bea8';c.fillRect(0,0,w,h);paintMargins(c,this.room,g);
-  c.drawImage(this.room,tx,ty,rw,rh);this.bodies.draw(c,this.room,g);featherEdges(c,this.room,g);if(state.lampOff){c.fillStyle=`rgba(20,30,23,${state.shade>.85?.75:.25})`;c.fillRect(0,0,w,h);}this.geometry={tx,ty,rw,rh,w,h};
+  c.fillStyle='#c6bea8';c.fillRect(0,0,w,h);const frame=plate||this.room;paintMargins(c,frame,g);if(plate)c.drawImage(plate,g.tx,g.ty,g.rw,g.rh);
+  c.drawImage(this.room,tx,ty,rw,rh);this.bodies.draw(c,this.room,inner);featherEdges(c,frame,g);this.plate=g;if(state.lampOff){c.fillStyle=`rgba(20,30,23,${state.shade>.85?.75:.25})`;c.fillRect(0,0,w,h);}this.geometry={tx,ty,rw,rh,w,h};
  }
  roomPoint(x,y){const g=this.geometry;return {x:(x-g.tx)/g.rw,y:(y-g.ty)/g.rh};}
  renderFocus(type,state,ui={}){
