@@ -1,6 +1,6 @@
 // Room furniture and props cut from the painted room and moved in place with spring physics.
 // Coordinates are source pixels of a 1536×1024 room. Pivots are where the object touches or hangs.
-import {BodyMotion} from './interaction-motion.js?v=090';
+import {BodyMotion} from './interaction-motion.js?v=091';
 
 export const SEOUL_BODIES=[
  {id:'bed',kind:'squash',strength:.35,pivot:[420,940],points:[[0,515],[300,478],[560,500],[835,640],[800,700],[430,945],[0,830]]},
@@ -60,22 +60,25 @@ export class BodyLayer{
   for(const [link,amount] of d.links||[])this.queue.push({id:link,at:.05+Math.random()*.06,strength:strength*amount,x});return true;}
  step(seconds){for(const q of this.queue)q.at-=seconds;for(const q of this.queue.filter(q=>q.at<=0))this.impulse(q.id,q.x,q.strength);this.queue=this.queue.filter(q=>q.at>0);for(const [id,m] of this.motions)if(!m.step(seconds))this.motions.delete(id);return this.active;}
  get active(){return this.motions.size>0||this.queue.length>0;}
- reset(){this.cache.clear();}
+ reset(){for(const p of this.cache.values()){p.sprite.width=p.fill.width=0;}this.cache.clear();}
  // Sprite: the object's own pixels. Fill: the surroundings pushed into the hole, so movement never shows a duplicate edge.
  parts(def,source){
   if(this.cache.has(def.id))return this.cache.get(def.id);
   const pad=16,b=boxOf(def.points,pad),sprite=this.makeCanvas(),fill=this.makeCanvas();sprite.width=fill.width=b.w;sprite.height=fill.height=b.h;
-  const s=sprite.getContext('2d');s.drawImage(source,b.x,b.y,b.w,b.h,0,0,b.w,b.h);s.globalCompositeOperation='destination-in';s.filter='blur(1.2px)';pathOf(s,def.points,b.x,b.y);s.fillStyle='#000';s.fill();s.filter='none';s.globalCompositeOperation='source-over';
-  const f=fill.getContext('2d');f.drawImage(source,b.x,b.y,b.w,b.h,0,0,b.w,b.h);f.globalCompositeOperation='destination-out';pathOf(f,def.points,b.x,b.y);f.lineWidth=6;f.fill();f.stroke();
-  const tmp=this.makeCanvas();tmp.width=b.w;tmp.height=b.h;const t=tmp.getContext('2d');
-  for(const r of [3,7,14,28]){t.clearRect(0,0,b.w,b.h);t.filter=`blur(${r}px)`;t.drawImage(fill,0,0);t.filter='none';f.globalCompositeOperation='destination-over';f.drawImage(tmp,0,0);f.drawImage(tmp,0,0);}
-  f.globalCompositeOperation='destination-in';f.filter='blur(3px)';pathOf(f,def.points,b.x,b.y);f.lineWidth=12;f.fill();f.stroke();f.filter='none';f.globalCompositeOperation='source-over';
+  const s=sprite.getContext('2d'),f=fill.getContext('2d');if(!s||!f)return null;
+  s.drawImage(source,b.x,b.y,b.w,b.h,0,0,b.w,b.h);s.globalCompositeOperation='destination-in';pathOf(s,def.points,b.x,b.y);s.fillStyle='#000';s.fill();s.globalCompositeOperation='source-over';
+  f.drawImage(source,b.x,b.y,b.w,b.h,0,0,b.w,b.h);f.globalCompositeOperation='destination-out';pathOf(f,def.points,b.x,b.y);f.lineWidth=6;f.fill();f.stroke();
+  // Push the surroundings into the hole by shrinking and re-enlarging (works without canvas filter support).
+  const tmp=this.makeCanvas();f.globalCompositeOperation='destination-over';
+  for(const k of [2,4,8,16,32]){const w=Math.max(1,Math.round(b.w/k)),h=Math.max(1,Math.round(b.h/k));tmp.width=w;tmp.height=h;const t=tmp.getContext('2d');if(!t)break;t.imageSmoothingEnabled=true;t.drawImage(fill,0,0,w,h);f.imageSmoothingEnabled=true;f.drawImage(tmp,0,0,w,h,0,0,b.w,b.h);f.drawImage(tmp,0,0,w,h,0,0,b.w,b.h);}
+  tmp.width=tmp.height=0;
+  f.globalCompositeOperation='destination-in';pathOf(f,def.points,b.x,b.y);f.lineWidth=14;f.lineJoin='round';f.fill();f.stroke();f.globalCompositeOperation='source-over';
   const part={sprite,fill,box:b};this.cache.set(def.id,part);return part;
  }
  // Draws moving bodies on top of an already painted room. Geometry maps source pixels to canvas pixels.
  draw(ctx,source,g){
   if(!this.motions.size)return;const scale=g.rw/1536;
-  for(const def of this.defs){const motion=this.motions.get(def.id);if(!motion)continue;const {sprite,fill,box}=this.parts(def,source),p=motion.pose,[px,py]=def.pivot;
+  for(const def of this.defs){const motion=this.motions.get(def.id);if(!motion)continue;const part=this.parts(def,source);if(!part)continue;const {sprite,fill,box}=part,p=motion.pose,[px,py]=def.pivot;
    ctx.save();ctx.setTransform(scale,0,0,scale,g.tx,g.ty);ctx.drawImage(fill,box.x,box.y);
    ctx.translate(px+p.x,py+p.y);ctx.rotate(p.angle);ctx.scale(1+p.squash*.5,1-p.squash);ctx.translate(-px,-py);ctx.drawImage(sprite,box.x,box.y);ctx.restore();}
  }
