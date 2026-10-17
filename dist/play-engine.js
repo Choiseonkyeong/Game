@@ -1,5 +1,5 @@
-import {stages,tools} from './adventure.js';
-import {worldPlaces,describePlace,isDark} from './world.js';
+import {stages,tools} from './adventure.js?v=070';
+import {worldPlaces,describePlace,isDark} from './world.js?v=070';
 export const fresh=()=>({version:6,revision:3,positions:{},stage:0,completed:[],flags:{},world:{},observations:[],inventory:[],sequence:{},history:[]});
 export const visible=(s,o)=>!(o.tool&&s.flags[o.tool+'_taken'])&&(o.need||[]).every(f=>s.flags[f])&&!(o.hide||[]).some(f=>s.flags[f]);
 export function act(state,a,record=true){

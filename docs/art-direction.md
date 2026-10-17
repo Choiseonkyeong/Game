@@ -110,3 +110,12 @@ Final asset: `dist/travel-art/travel-props-empty-v5.webp` (1254×1254, transpare
 Prompt: precise-object-edit of the existing 2×2 `travel-props-v3.webp` atlas. Preserve cell layout, object scale, viewpoint, beige canvas material, brass hardware, lighting and silhouettes. Remove ONLY the camera from the top-right open case, showing an empty dark fabric lining. Keep its open lid, lock and tag, the closed case, telescope and ownership tag unchanged. Preserve genuine transparency; clean stray edge pixels; no new props, background or UI.
 
 The scene uses the empty open case plus the independently collectible camera, so taking the camera leaves an empty container. Existing original room, clean mattress plate and pillow-under plate supply the runtime-isolated moving materials; no replacement room art is blended to animate the duvet. Runtime layer transforms are not an ImageGen animation or a cloth physics simulation.
+
+## V7.0 · built-in ImageGen, original room referenced
+
+| Final repository path | Prompt specification |
+|---|---|
+| `dist/travel-art/seoul-drawer-v7.webp` | Precise-object-edit of original Seoul 1536×1024 room. Preserve exact camera, perspective, materials, furniture, chair, suitcase, objects, bed and sunlight. Change only the right desk shallow drawer at x80–96%, y46–52%: pull it out naturally about15cm; retain finger-slot front, show physically attached side walls, rails and shallow oak tray. No floating board, new props or UI. Runtime extracts only its assembly, preserving the original room elsewhere. |
+| `dist/travel-art/drawer-interior-v7.webp` | Illustration-story, original room as style/material reference. Close overhead three-quarter view DOWN INTO the same shallow light-oak drawer. Empty oak bottom and side walls, front finger-slot lip, one thin divider atx38%, warm diffuse light from left, matching grain and contact shadows. No objects, papers, luggage, camera, text or UI; dynamic game props are separate. |
+
+Both are 1536×1024, encoded with Sharp WebP quality92, opaque. Original reference was inspected. Built-in ImageGen was used, not API/CLI fallback. The movable postcard and lock controls are code-native UI/prop surfaces; existing room and item atlases supply their photographs and collectible images. Existing V6 imagery and other cities are retained.

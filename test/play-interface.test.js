@@ -1,7 +1,7 @@
 // Exercises the shipped event handlers with a DOM substitute; this is not browser visual QA.
 import test from 'node:test';import assert from 'node:assert/strict';import {stages} from '../dist/adventure.js';import {restore} from '../dist/play-engine.js';
 class Classes{constructor(){this.s=new Set();}add(v){this.s.add(v);}remove(v){this.s.delete(v);}toggle(v,f){f??=!this.s.has(v);f?this.s.add(v):this.s.delete(v);}}
-class Element{constructor(id){this.id=id;this.innerHTML='';this.textContent='';this.style={};this.dataset={};this.handlers={};this.hidden=false;this.open=false;this.classList=new Classes();}addEventListener(k,f){this.handlers[k]=f;}setAttribute(){}showModal(){assert(!this.open);this.open=true;}close(){this.open=false;}getBoundingClientRect(){return {left:0,top:0,width:390,height:844};}append(){}remove(){}setPointerCapture(){}hasPointerCapture(){return false;}releasePointerCapture(){}closest(){return null;}}
+class Element{constructor(id){this.id=id;this._html='';this.htmlWrites=0;Object.defineProperty(this,'innerHTML',{get:()=>this._html,set:value=>{this._html=value;this.htmlWrites++;}});this.textContent='';this.style={};this.dataset={};this.handlers={};this.hidden=false;this.open=false;this.classList=new Classes();}addEventListener(k,f){const previous=this.handlers[k];this.handlers[k]=previous?(...args)=>{previous(...args);return f(...args);}:f;}setAttribute(){}showModal(){assert(!this.open);this.open=true;}close(){this.open=false;}getBoundingClientRect(){return {left:0,top:0,width:390,height:844};}append(){}remove(){}setPointerCapture(){}hasPointerCapture(){return false;}releasePointerCapture(){}closest(){return null;}}
 const els=new Map(),get=id=>{if(!els.has(id))els.set(id,new Element(id));return els.get(id);},events={},storage=new Map();globalThis.localStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};globalThis.document={getElementById:get,querySelector:q=>q.startsWith('[data-object')?new Element('object'):null,addEventListener:(k,f)=>events[k]=f,createElement:()=>new Element('created'),body:new Element('body')};globalThis.window={matchMedia:()=>({matches:true}),innerHeight:844,addEventListener(){}};Object.defineProperty(globalThis,'navigator',{value:{},configurable:true});globalThis.requestAnimationFrame=f=>f();globalThis.setTimeout=f=>{queueMicrotask(f);return 1;};await import('../dist/play.js');
 async function click(dataset={},id=''){await events.click({target:{closest:()=>({dataset,id})}});for(let i=0;i<15;i++)await Promise.resolve();}
 const state=()=>restore(JSON.parse(storage.get('danchu-travel-v6')));
@@ -30,4 +30,36 @@ test('the pillow note, frame back and book pages have reachable close-ups; the c
 
 test('shipped markup and handlers contain no avatar or character movement dependency',async()=>{
  const {readFile}=await import('node:fs/promises');const html=await readFile(new URL('../dist/index.html',import.meta.url),'utf8'),js=await readFile(new URL('../dist/play.js',import.meta.url),'utf8');assert(!html.includes('id="actor"'));assert(!html.includes('actor-sprite'));assert(!js.includes('actorGesture'));assert(!js.includes('moveTo('));assert(!html.includes('welcome-cat'));assert(!html.includes('class="portrait"'));
+});
+
+
+test('the drawer uses a dedicated interior with a draggable reversible postcard; collection remains validated',async()=>{
+ await click({close:'detail'});await click({},'menu');await click({stage:'1'});await click({object:'drawer'});
+ assert(get('detail-content').innerHTML.includes('drawer-interior-v7.webp'));
+ assert(get('detail-content').innerHTML.includes('drawer-paper'));
+ assert(!get('detail-content').innerHTML.includes('drawer-canvas'));
+ const target={closest:q=>q==='#drawer-paper'?{}:null},e=(x,y)=>({target,pointerId:68,clientX:x,clientY:y,preventDefault(){}});
+ get('detail').handlers.pointerdown(e(280,350));get('detail').handlers.pointermove(e(100,360));get('detail').handlers.pointerup(e(100,360));
+ assert(get('drawer-paper').style.transform.includes('translate('));
+ await Promise.resolve();await click({},'drawer-paper');assert(get('drawer-paper').classList.s.has('back'));
+ assert(!state().inventory.includes('adapter'));await click({object:'adapter'});assert(state().inventory.includes('adapter'));
+});
+test('three physical number wheels open the same camera box and failed attempts preserve play progress',async()=>{
+ await click({close:'detail'});await click({},'menu');await click({stage:'0'});await click({},'replay');await click({object:'blanket'});await click({object:'camera_box'});
+ assert(get('keypad').hidden);await click({key:'확인'});assert(!state().flags.camera_box_open);
+ for(const [dial,step] of [[0,3],[1,1],[2,4]])await click({dial:String(dial),step:String(step)});
+ assert.equal(get('dial-0').textContent,'3');assert.equal(get('dial-1').textContent,'1');assert.equal(get('dial-2').textContent,'4');await click({key:'확인'});assert(state().flags.camera_box_open);
+});
+
+
+test('sub-threshold pointer preview keeps hotspot nodes stable and never saves exploratory commands',async()=>{
+ await click({close:'detail'});await click({},'menu');await click({stage:'0'});await click({},'replay');
+ const target={closest:q=>q==='.scene-hotspot'?{dataset:{object:'blanket'}}:null},e=x=>({target,button:0,pointerId:77,clientX:x,clientY:420,preventDefault(){}}),history=state().history.length,writes=get('objects').htmlWrites;
+ get('viewport').handlers.pointerdown(e(150));get('viewport').handlers.pointermove(e(130));get('viewport').handlers.pointermove(e(110));
+ assert.equal(state().history.length,history);assert.equal(get('objects').htmlWrites,writes);get('viewport').handlers.pointercancel();assert.equal(state().history.length,history);
+});
+test('a locked drawer drag cannot play an opening or expose its inspection surface',async()=>{
+ await click({close:'detail'});await click({},'menu');await click({stage:'8'});
+ const target={closest:q=>q==='.scene-hotspot'?{dataset:{object:'drawer'}}:null},e=y=>({target,button:0,pointerId:78,clientX:200,clientY:y,preventDefault(){}});
+ get('viewport').handlers.pointerdown(e(420));get('viewport').handlers.pointermove(e(620));await get('viewport').handlers.pointerup(e(620));assert(!state().world.drawer);assert(!state().positions.drawer);assert(!get('detail').open);
 });
