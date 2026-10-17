@@ -88,11 +88,64 @@ def ceiling(plate, x0, x1, y1, color=(214, 200, 172)):
     d.rectangle([x0, y1 + 10, x1, y1 + 13], fill=(112, 78, 46, 255))
 
 # ---------------------------------------------------------------- Tokyo
+
+def tokyo_tower(h):
+    """Tokyo Tower: slim antenna, special observatory near the top, main observatory, then legs splaying to an arch.
+    Drawn at 4x then reduced, lit from the left and hazed for distance."""
+    S = 4; W = int(h * .36); img = Image.new('RGBA', (W * S, h * S)); d = ImageDraw.Draw(img); cx = W * S / 2
+    O, Wt, D = (222, 96, 54, 255), (238, 234, 226, 255), (150, 62, 38, 255)
+    def half(t):                                   # half width as a fraction of W
+        if t < .14: return .012
+        if t < .27: return .012 + (t - .14) / .13 * .035
+        if t < .56: return .047 + (t - .27) / .29 * .07
+        return .117 + ((t - .56) / .44) ** 1.6 * .38
+    Y = lambda t: t * h * S; X = lambda t: half(t) * W * S
+    steps = np.linspace(0, 1, 120)
+    def white(t): return any(a <= t < b for a, b in ((.14, .17), (.35, .38), (.66, .69), (.86, .89)))
+    for t0, t1 in zip(steps[:-1], steps[1:]):
+        d.polygon([(cx - X(t0), Y(t0)), (cx + X(t0), Y(t0)), (cx + X(t1), Y(t1)), (cx - X(t1), Y(t1))], fill=Wt if white(t0) else O)
+    d.polygon([(cx - X(.8) * .55, Y(1)), (cx, Y(.8)), (cx + X(.8) * .55, Y(1))], fill=(0, 0, 0, 0))   # arch between the legs
+    for k in range(18):                             # cross bracing
+        t0 = .17 + k * .046; t1 = t0 + .046
+        if t1 > 1: break
+        d.line([(cx - X(t0), Y(t0)), (cx + X(t1), Y(t1))], fill=D, width=max(1, S // 2)); d.line([(cx + X(t0), Y(t0)), (cx - X(t1), Y(t1))], fill=D, width=max(1, S // 2))
+    for t, k in ((.27, 1.9), (.56, 1.5)):          # observatories
+        w2 = X(t) * k; d.rectangle([cx - w2, Y(t) - .03 * h * S, cx + w2, Y(t) + .012 * h * S], fill=(226, 224, 216, 255)); d.rectangle([cx - w2, Y(t) - .012 * h * S, cx + w2, Y(t) - .002 * h * S], fill=(96, 110, 122, 255))
+    img = img.resize((W, h), Image.LANCZOS)
+    a = np.asarray(img).astype(np.float32); light = np.linspace(1.12, .78, W)[None, :, None]
+    a[..., :3] = np.clip(a[..., :3] * light, 0, 255); a[..., :3] = a[..., :3] * .8 + np.array([214, 220, 226]) * .2
+    return Image.fromarray(a.astype(np.uint8), 'RGBA')
+
+def tokyo_street_view(plate, Y):
+    """Replace the upper street view in the big shop window with sky, a distant skyline and Tokyo Tower; trees stay in front."""
+    x0, x1, horizon = 1240, 1442, 178
+    view = plate.crop((x0, Y(0), x1, Y(horizon))).convert('RGB'); a = np.asarray(view).astype(np.float32)
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    tree = ((g > r * 1.04) & (g > b * 1.08) & (g > 80)).astype(np.float32)
+    tree = np.asarray(Image.fromarray((tree * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(1.2))).astype(np.float32) / 255
+    w, h = x1 - x0, horizon
+    sky = np.zeros((h, w, 3), np.float32); t = np.linspace(0, 1, h)[:, None]
+    for y in range(h): sky[y, :] = np.array([176, 202, 224]) * (1 - y / h) + np.array([228, 229, 222]) * (y / h)
+    skyimg = Image.fromarray(sky.astype(np.uint8)).convert('RGBA'); sd = ImageDraw.Draw(skyimg)
+    rnd = random.Random(11); x = 0
+    while x < w:                                                    # hazy distant skyline
+        bw = rnd.randint(10, 26); bh = rnd.randint(6, 26); tone = rnd.randint(200, 214); sd.rectangle([x, h - bh, x + bw, h], fill=(tone, tone + 4, tone + 8, 255)); x += bw + rnd.randint(0, 4)
+    tower = tokyo_tower(236); tw = tower.size[0]
+    haze = Image.new('RGBA', tower.size, (214, 220, 224, 70)); haze.putalpha(ImageChops.multiply(tower.getchannel('A'), Image.new('L', tower.size, 70)))
+    skyimg.alpha_composite(tower, (64 - tw // 2, 4))
+    for y0, sag in ((26, 10), (40, 12)):                            # Tokyo street power lines
+        pts = [(xx, y0 + sag * (1 - ((xx - w / 2) / (w / 2)) ** 2)) for xx in range(0, w + 1, 4)]
+        sd.line(pts, fill=(70, 72, 74, 200), width=1)
+    sd.line([(0, h - 2), (w, h - 2)], fill=(132, 126, 118, 255), width=2)   # roof cornice of the near building
+    s = np.asarray(skyimg.convert('RGB').filter(ImageFilter.GaussianBlur(.7))).astype(np.float32)
+    out = s * (1 - tree[..., None]) + a * tree[..., None]
+    plate.paste(Image.fromarray(np.clip(out, 0, 255).astype(np.uint8)).convert('RGBA'), (x0, Y(0)))
 def bake_tokyo():
     src = Image.open(ART + 'tokyo.webp').convert('RGBA')
     W, H = 1536, 1024 + TOP + BOTTOM
     plate = Image.new('RGBA', (W, H)); plate.alpha_composite(src, (0, TOP))
     Y = lambda y: y + TOP                      # original → tall coordinates
+    tokyo_street_view(plate, Y)
 
     # Above: wall continues, a further bookcase row reaches the ceiling, the storefront gets a teal header.
     plate.alpha_composite(extend_wall(src, 0, 1536), (0, 0))
@@ -126,21 +179,21 @@ def bake_tokyo():
     vertical_text(ld, 45, 62, '写真', font(JP, 30), (24, 18, 16, 235), 6)
     place(plate, lan, (1018, Y(-8)), blur=10, dy=14)
 
-    # Noren over the shop door: indigo cotton, three panels, white crest.
-    nw, nh = 196, 168
+    # Noren over the shop door only (the big window beside it keeps its street view): indigo cotton, two panels, white crest.
+    nw, nh = 108, 168
     nor = Image.new('RGBA', (nw, nh)); nd = ImageDraw.Draw(nor)
-    for i in range(3):
-        x0 = i * nw // 3 + (2 if i else 0); x1 = (i + 1) * nw // 3 - 2
-        nd.rectangle([x0, 0, x1, nh - (6 if i == 1 else 0)], fill=(38, 54, 92, 250))
+    for i in range(2):
+        x0 = i * nw // 2 + (2 if i else 0); x1 = (i + 1) * nw // 2 - 2
+        nd.rectangle([x0, 0, x1, nh], fill=(38, 54, 92, 250))
     a = np.asarray(nor).astype(np.float32)
-    folds = (1 + .09 * np.sin(np.linspace(0, 18 * math.pi, nw)))[None, :, None]
+    folds = (1 + .09 * np.sin(np.linspace(0, 10 * math.pi, nw)))[None, :, None]
     a[..., :3] = np.clip(a[..., :3] * folds, 0, 255); nor = Image.fromarray(a.astype(np.uint8))
     nd = ImageDraw.Draw(nor)
-    nd.ellipse([nw / 2 - 40, 34, nw / 2 + 40, 114], outline=(238, 232, 214, 255), width=5)
-    nd.text((nw / 2 - 26, 46), '写', font=font(JP, 54), fill=(240, 234, 216, 255))
-    nd.text((nw / 2 - 58, 128), 'しゃしん', font=font(JP, 26), fill=(226, 220, 200, 230))
+    nd.ellipse([nw / 2 - 30, 30, nw / 2 + 30, 90], outline=(238, 232, 214, 255), width=4)
+    nd.text((nw / 2 - 20, 40), '写', font=font(JP, 40), fill=(240, 234, 216, 255))
+    vertical_text(nd, nw / 2, 100, '写真', font(JP, 22), (226, 220, 200, 230), 2)
     nd.rectangle([0, 0, nw, 9], fill=(110, 78, 46, 255))
-    place(plate, nor, (1142, Y(-6)), blur=6, dy=10, alpha=.4)
+    place(plate, nor, (1132, Y(-6)), blur=6, dy=10, alpha=.4)
 
     # Door glass decal and shelf price cards.
     dec = Image.new('RGBA', (70, 330)); dd = ImageDraw.Draw(dec)

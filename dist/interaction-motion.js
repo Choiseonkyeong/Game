@@ -45,13 +45,15 @@ export const MATERIALS={
 // Per-object body reaction in the room: tilt, sway, hop, squash and shake, all returning to rest.
 // [stiffness, damping, kick]; kicks are sized so the first swing is a few degrees or pixels.
 const BODY_KINDS={
- sway:{angle:[26,1.5,.34]},leaf:{angle:[62,3.2,.32]},rock:{angle:[300,8,.85]},wobble:{angle:[190,7,.8]},
- squash:{squash:[260,10,.85],angle:[260,12,.2]},hop:{y:[420,12,-200],angle:[380,11,1.2]},shake:{x:[1300,20,140]}
+ sway:{angle:[26,1.6,.34]},leaf:{angle:[62,3.4,.32]},rock:{angle:[320,10,.42]},wobble:{angle:[210,9,.5]},
+ squash:{squash:[260,11,.6],angle:[260,13,.12]},hop:{y:[420,13,-150],angle:[380,12,.7]},shake:{x:[1300,22,80]}
 };
 export class BodyMotion{
- constructor(kind){this.kind=BODY_KINDS[kind]?kind:'wobble';this.springs={};for(const [key,[stiffness,damping]] of Object.entries(BODY_KINDS[this.kind]))this.springs[key]=new Spring(0,{stiffness,damping,rest:.002,...(key==='y'?{max:0,bounce:.35}:{})});}
- impulse(direction=1,strength=1){for(const [key,spring] of Object.entries(this.springs)){const v=BODY_KINDS[this.kind][key][2];spring.kick(v*strength*(key==='angle'||key==='x'?direction:1));}}
- step(seconds){for(const spring of Object.values(this.springs))spring.step(seconds);return !this.resting;}
+ constructor(kind){this.kind=BODY_KINDS[kind]?kind:'wobble';this.springs={};for(const [key,[stiffness,damping]] of Object.entries(BODY_KINDS[this.kind]))this.springs[key]=new Spring(0,{stiffness,damping,rest:.002,...(key==='y'?{max:0,bounce:.35}:{})});
+  // Cloth and leaves bend: the free end follows the swing a moment later.
+  if(this.kind==='sway'||this.kind==='leaf')this.springs.bend=new Spring(0,{stiffness:this.kind==='sway'?16:34,damping:this.kind==='sway'?3.2:4.4,rest:.002});}
+ impulse(direction=1,strength=1){for(const [key,spring] of Object.entries(this.springs)){if(key==='bend')continue;const v=BODY_KINDS[this.kind][key][2];spring.kick(v*strength*(key==='angle'||key==='x'?direction:1));}}
+ step(seconds){const {bend,...rest}=this.springs;for(const spring of Object.values(rest))spring.step(seconds);if(bend){bend.set(this.springs.angle.value);bend.step(seconds);}return !this.resting;}
  get resting(){return Object.values(this.springs).every(s=>s.resting);}
- get pose(){const s=this.springs;return {angle:s.angle?.value||0,x:s.x?.value||0,y:s.y?.value||0,squash:s.squash?.value||0};}
+ get pose(){const s=this.springs;return {angle:s.angle?.value||0,x:s.x?.value||0,y:s.y?.value||0,squash:s.squash?.value||0,bend:s.bend?.value||0};}
 }

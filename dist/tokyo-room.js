@@ -1,15 +1,15 @@
 // Chapter 2 · Tokyo photo shop. Swing the tote until the claim ticket slips out, find envelope 27 in the counter
 // drawer, read the negative on the lightbox under the desk lamp, print the good frame and pin it on the photo board.
-import {stageFit,innerGeometry,PLATE,pinchStart,pinchTransform,constrainFocus} from './view-gestures.js?v=100';
-import {Spring,MATERIALS,FollowValue} from './interaction-motion.js?v=100';
-import {BodyLayer,TOKYO_BODIES,insidePolygon} from './room-bodies.js?v=100';
-import {paintMargins,featherEdges,softDraw,releaseCanvases} from './room-frame.js?v=100';
-import {initialTokyo,restoreTokyo,tokyoAction,tokyoInventory,tokyoHint,failText,TOKYO_SAVE,CHAPTER_KEY,GOOD_FRAME} from './tokyo-engine.js?v=100';
-import {FIRST_SAVE} from './first-room-engine.js?v=100';
+import {stageFit,innerGeometry,PLATE,pinchStart,pinchTransform,constrainFocus} from './view-gestures.js?v=110';
+import {Spring,MATERIALS,FollowValue} from './interaction-motion.js?v=110';
+import {BodyLayer,TOKYO_BODIES,insidePolygon} from './room-bodies.js?v=110';
+import {paintMargins,featherEdges,softDraw,releaseCanvases} from './room-frame.js?v=110';
+import {initialTokyo,restoreTokyo,tokyoAction,tokyoInventory,tokyoHint,failText,TOKYO_SAVE,CHAPTER_KEY,GOOD_FRAME} from './tokyo-engine.js?v=110';
+import {FIRST_SAVE} from './first-room-engine.js?v=110';
 const bound=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const legacy=document.getElementById('game');if(legacy)legacy.hidden=true;
 const host=document.createElement('little-travel-chapter');document.body.append(host);const root=host.attachShadow({mode:'open'});
-root.innerHTML=`<link rel="stylesheet" href="first-room.css?v=100"><main class="screen"><div class="room"><canvas id="room" aria-label="도쿄의 작은 사진관, 밀어서 둘러보고 물건을 만져 보세요" tabindex="0"></canvas></div><header class="header"><button id="menu" aria-label="메뉴">≡</button><div class="heading"><small>TOKYO · ミナミ写真館</small><h1>사진관의 맡김표</h1></div><button id="hint" aria-label="힌트">?</button></header><div class="nav"><button id="left" aria-label="왼쪽 보기">‹</button><button id="right" aria-label="오른쪽 보기">›</button></div><section class="focus" id="focus"><canvas id="board" tabindex="0" aria-label="물건 가까이 살펴보기"></canvas><div class="focus-title" id="focus-title"></div><button class="focus-hint" id="focus-hint" aria-label="힌트">?</button><button class="back" id="back" aria-label="가게로 돌아가기">×</button></section><section class="dock empty" id="dock" aria-label="소지품"><span class="empty-icon" id="empty">▱</span><div class="inventory" id="inventory"></div></section><div class="toast" id="toast" role="status"></div><div class="flash" id="flash"></div><div class="overlay" id="overlay" hidden></div><div class="loading" id="loading">Tokyo is getting ready…</div></main>`;
+root.innerHTML=`<link rel="stylesheet" href="first-room.css?v=110"><main class="screen"><div class="room"><canvas id="room" aria-label="도쿄의 작은 사진관, 밀어서 둘러보고 물건을 만져 보세요" tabindex="0"></canvas></div><header class="header"><button id="menu" aria-label="메뉴">≡</button><div class="heading"><small>TOKYO · ミナミ写真館</small><h1>사진관의 맡김표</h1></div><button id="hint" aria-label="힌트">?</button></header><div class="nav"><button id="left" aria-label="왼쪽 보기">‹</button><button id="right" aria-label="오른쪽 보기">›</button></div><section class="focus" id="focus"><canvas id="board" tabindex="0" aria-label="물건 가까이 살펴보기"></canvas><div class="focus-title" id="focus-title"></div><button class="focus-hint" id="focus-hint" aria-label="힌트">?</button><button class="back" id="back" aria-label="가게로 돌아가기">×</button></section><section class="dock empty" id="dock" aria-label="소지품"><span class="empty-icon" id="empty">▱</span><div class="inventory" id="inventory"></div></section><div class="toast" id="toast" role="status"></div><div class="flash" id="flash"></div><div class="overlay" id="overlay" hidden></div><div class="loading" id="loading">Tokyo is getting ready…</div></main>`;
 const $=id=>root.getElementById(id),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 try{localStorage.setItem(CHAPTER_KEY,'tokyo');}catch{}
 let state;try{state=restoreTokyo(JSON.parse(localStorage.getItem(TOKYO_SAVE)||'null'));}catch{state=initialTokyo();}
@@ -26,7 +26,7 @@ const RECEIPT=[[506,900],[628,900],[628,1004],[506,1004]],FURIN='furin',TICKET_R
 const load=src=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=reject;image.src=src;if(image.decode)image.decode().then(()=>resolve(image),()=>{});});
 // The taller shop plate carries the painted Japanese details; T converts original room rows to plate rows.
 const T=PLATE.top;
-const assets=await Promise.all([load('travel-art/tokyo-tall-v10.webp?v=100'),load('travel-art/drawer-interior-v7.webp'),load('travel-art/seoul.webp'),load('travel-art/tokyo-papers-v10.webp?v=100')]).then(([room,interior,seoul,papers])=>({room,interior,seoul,papers})).catch(()=>null);
+const assets=await Promise.all([load('travel-art/tokyo-tall-v10.webp?v=110'),load('travel-art/drawer-interior-v7.webp'),load('travel-art/seoul.webp'),load('travel-art/tokyo-papers-v10.webp?v=110')]).then(([room,interior,seoul,papers])=>({room,interior,seoul,papers})).catch(()=>null);
 if(!assets){$('loading').textContent='그림을 불러오지 못했어요. 화면을 새로고침해 주세요.';throw Error('Tokyo assets could not load');}
 if(seoulPhoto)assets.photo=await load(seoulPhoto).catch(()=>null);
 
@@ -132,7 +132,7 @@ async function back(){if(ui.busy)return;ui.drag=null;ui.preview=null;$('focus').
 function printImage(){try{const c=document.createElement('canvas');c.width=920;c.height=700;photoSource(c.getContext('2d'),0,0,920,700);return c.toDataURL('image/jpeg',.82);}catch{return '';}}
 function overlay(html){$('overlay').innerHTML=html;$('overlay').hidden=false;}
 function result(){overlay(`<article class="card"><small>THE SECOND PAGE · TOKYO</small><h2>두 번째 장이 생겼어요.</h2><div class="result-photo"><img src="${printImage()}" alt="도쿄 사진관에서 인화한 서울의 사진"><span>Printed in Tokyo.</span></div><button class="primary" data-action="return">사진관 더 둘러보기</button><p class="chapter-end">두 번째 장 완료 · 세 번째 장은 준비 중이에요.</p><a class="primary quiet" href="?chapter=seoul">첫 장 · 서울 다시 보기</a></article>`);}
-function menu(){overlay(`<article class="card"><small>A LITTLE TRAVEL JOURNAL</small><h2>두 번째 장 · 도쿄</h2><div class="menu-list"><button data-action="resume">계속 둘러보기</button><button data-action="sound">소리 ${ui.sound?'끄기':'켜기'}</button><button data-action="overview">가게 전체 보기</button>${state.done?'<button data-action="result">두 번째 장 보기</button>':''}<a href="?chapter=seoul">첫 장 · 서울</a><a href="?mode=legacy">이전 여행책 열기</a></div><p class="version">0.10.0 · ミナミ写真館<br>각 장의 진행은 이 기기에 따로 저장됩니다.</p></article>`);}
+function menu(){overlay(`<article class="card"><small>A LITTLE TRAVEL JOURNAL</small><h2>두 번째 장 · 도쿄</h2><div class="menu-list"><button data-action="resume">계속 둘러보기</button><button data-action="sound">소리 ${ui.sound?'끄기':'켜기'}</button><button data-action="overview">가게 전체 보기</button>${state.done?'<button data-action="result">두 번째 장 보기</button>':''}<a href="?chapter=seoul">첫 장 · 서울</a><a href="?mode=legacy">이전 여행책 열기</a></div><p class="version">0.11.0 · 東京タワーの見える写真館<br>각 장의 진행은 이 기기에 따로 저장됩니다.</p></article>`);}
 
 async function pin(){if(ui.busy||!state.print)return;ui.busy=true;ui.selected=null;const g=roomRenderer.geometry,dpr=$('room').width/host.clientWidth,r=$('dock').getBoundingClientRect(),from={x:r.left+r.width/2,y:r.top},to={x:(g.tx+PIN.x/1536*g.rw)/dpr,y:(g.ty+(PIN.y+44)/1024*g.rh)/dpr},el=document.createElement('div');el.className='flight';el.innerHTML='<canvas width="128" height="104"></canvas>';itemArt(el.querySelector('canvas').getContext('2d'),'print',0,0,128,104);root.append(el);
  await animate(650,t=>{const arc=Math.sin(t*Math.PI)*60;el.style.transform=`translate(${from.x+(to.x-from.x)*t-32}px,${from.y+(to.y-from.y)*t-arc-26}px) rotate(${(1-t)*12}deg)`;});el.remove();
@@ -195,5 +195,5 @@ $('room').addEventListener('keydown',e=>{const shift={ArrowLeft:[-.15,0],ArrowRi
 $('board').addEventListener('keydown',async e=>{if(ui.busy||!ui.focus)return;if(e.key==='Escape'){e.preventDefault();await back();}else if(ui.focus==='drawer'&&['ArrowUp','ArrowDown','Enter',' '].includes(e.key)){e.preventDefault();await moveDrawer(e.key==='ArrowDown'||((e.key==='Enter'||e.key===' ')&&state.drawer<.5)?1:0);}});
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{roomRenderer.bodies.reset();releaseCanvases([$('room'),$('board')]);});window.addEventListener('pageshow',e=>{if(e.persisted)location.reload();});inventory();resize();$('loading').classList.add('loaded');setTimeout(()=>$('loading').remove(),500);
 if(!state.started)overlay(`<article class="card"><small>02 · 東京 · 下町の写真館</small><h2>사진관의 맡김표</h2><p>${seoulPhoto?'서울에서 찍은 필름을':'윤이 맡긴 필름을'} 찾아<br>사진으로 인화해요.</p><button class="primary" data-action="start">사진관 둘러보기</button></article>`);
-if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=100',{updateViaCache:'none'}).catch(()=>{});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=110',{updateViaCache:'none'}).catch(()=>{});
 export {GOOD_FRAME};
