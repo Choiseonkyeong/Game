@@ -24,7 +24,7 @@ function area(id,name,anchor,extra={}){const [x,y,w,h]=roomAreas[ri][anchor];ret
 function container(id,name,anchor,kind=anchor,extra={}){const v=views[kind]||views.drawer;return area(id,name,anchor,{container:true,view:v[0],openView:v[1],flag:id+'_open',verb:v[2],detail:'겉모습보다 안쪽과 접힌 부분을 살펴보자.',...extra});}
 function hidden(item,parent,extra={}){const p=roomAreas[ri][parent.anchor||'desk'];return {id:item,name:tools[item][0],tool:item,x:p[0],y:p[1],w:8,h:8,inside:parent.id,need:[parent.flag],hide:[item+'_taken'],...extra};}
 const tap=(target,set,msg,extra={})=>({action:'tap',target,set,msg,...extra});
-const open=(o,msg='단추가 조심스럽게 안쪽을 살펴봤어.')=>tap(o.id,o.flag,msg,{pose:6});
+const open=(o,msg='안쪽을 살펴봤어.')=>tap(o.id,o.flag,msg,{pose:6});
 const take=(item,extra={})=>tap(item,item+'_taken',`${tools[item][0]}을 챙겼어.`,{grant:item,pose:0,...extra});
 const use=(item,target,set,msg,extra={})=>({action:'use',item,target,set,msg,...extra});
 const join=(a,b,out,set,msg)=>({action:'combine',items:[a,b],grant:out,set,msg,consume:[a,b]});
@@ -124,8 +124,8 @@ const desk=area('notes','책상 위 여섯 도시 메모','desk'),s=lock('suitca
 add('길을 되짚는 순서','세 도시의 순서로 사진 케이스를 열어줘.','사진을 찍은 순서가 케이스의 암호가 됐어. 지도보다 우리가 지나온 길을 떠올려 보자.',[desk,s],[tap('notes','read','도시 순서: 서울① → 도쿄② → 타이베이③ → 방콕④ → 파리⑤ → 리스본⑥.',{reveal:'마지막 → 세 번째 → 출발'}),code(s,'631',['read'],'리스본⑥, 타이베이③, 서울①. 서로 다른 도시의 사진이 한 케이스에 모였어.')],['케이스가 묻는 건 실제 이동 순서 속 위치야.','마지막⑥, 세 번째③, 출발①이야.']);}
 {
 const b=container('tote','의자 위 여행 가방','tote'),tin=container('tin','책상 위 작은 틴','tin'),book=area('book','펼쳐 둔 여행책','desk');
-add('비어 있던 마지막 장','마지막 사진과 새 메모를 여행책에 넣어줘.','윤의 책을 채웠지만 단추 자신의 이야기도 필요해. 가장 기억하고 싶은 순간을 남겨 보자.',[b,hidden('photo',b),tin,hidden('note',tin),book],[open(b),take('photo'),open(tin),take('note'),join('photo','note','page','page_ready','사진 옆에 단추의 메모를 함께 놓았어.'),use('page','book','done','“좋은 여행은 유명한 곳의 개수보다, 자세히 본 순간으로 남는다.” 마지막 장을 채웠어.',{consume:['page']})],['가방의 사진과 틴에 넣어 둔 메모가 마지막 재료야.','조합한 한 장을 펼친 여행책에 끼워줘.']);}
+add('비어 있던 마지막 장','마지막 사진과 새 메모를 여행책에 넣어줘.','윤의 책을 채웠지만 단추 자신의 이야기도 필요해. 가장 기억하고 싶은 순간을 남겨 보자.',[b,hidden('photo',b),tin,hidden('note',tin),book],[open(b),take('photo'),open(tin),take('note'),join('photo','note','page','page_ready','사진 옆에 나의 메모를 함께 놓았어.'),use('page','book','done','“좋은 여행은 유명한 곳의 개수보다, 자세히 본 순간으로 남는다.” 마지막 장을 채웠어.',{consume:['page']})],['가방의 사진과 틴에 넣어 둔 메모가 마지막 재료야.','조합한 한 장을 펼친 여행책에 끼워줘.']);}
 {
 const d=container('drawer','책상 서랍','drawer'),b=container('tote','여행 가방','tote'),desk=area('book','완성한 여행책','desk'),window=area('window','숙소 발코니','window');
-add('다음 여행의 여백','완성한 책을 묶고 마지막 풍경을 바라봐줘.','서울에서 시작한 빈 책이 여섯 도시의 기억으로 채워졌어. 다 채우지 않은 여백도 조금 남겨 두자.',[d,hidden('cord',d),b,hidden('photo',b),desk,window],[open(d),take('cord'),open(b),take('photo'),use('photo','book','cover','마지막 사진을 책의 표지 안쪽에 끼웠어.',{consume:['photo']}),use('cord','book','bound','면 끈으로 책을 묶었어. 물건을 찾던 여행이, 기억을 모은 여행이 됐네.',{need:['cover'],consume:['cord']}),finish('window','단추의 첫 여행책 완성. 다음 여행의 첫 장은 아직 비워 두었어.',['bound'])],['마지막 사진을 끼운 뒤 끈으로 책을 묶어 봐.','책을 정리했으면 발코니의 풍경을 바라봐.']);}
+add('다음 여행의 여백','완성한 책을 묶고 마지막 풍경을 바라봐줘.','서울에서 시작한 빈 책이 여섯 도시의 기억으로 채워졌어. 다 채우지 않은 여백도 조금 남겨 두자.',[d,hidden('cord',d),b,hidden('photo',b),desk,window],[open(d),take('cord'),open(b),take('photo'),use('photo','book','cover','마지막 사진을 책의 표지 안쪽에 끼웠어.',{consume:['photo']}),use('cord','book','bound','면 끈으로 책을 묶었어. 물건을 찾던 여행이, 기억을 모은 여행이 됐네.',{need:['cover'],consume:['cord']}),finish('window','나의 첫 여행책 완성. 다음 여행의 첫 장은 아직 비워 두었어.',['bound'])],['마지막 사진을 끼운 뒤 끈으로 책을 묶어 봐.','책을 정리했으면 발코니의 풍경을 바라봐.']);}
 export {stages};

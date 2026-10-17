@@ -38,7 +38,7 @@ export function act(state,a,record=true){
  if(a.type==='use'&&!s.inventory.includes(a.item))return fail('먼저 그 물건을 소지품에 넣어줘.');
  if(a.type==='combine'&&(!Array.isArray(a.items)||a.items.length!==2||a.items[0]===a.items[1]||!a.items.every(i=>s.inventory.includes(i))))return fail('서로 다른 소지품 두 개를 골라줘.');
  const rule=level.rules.find(r=>r.action===a.type&&(a.type==='combine'?r.items?.every(i=>a.items.includes(i)):r.target===a.target&&(a.type!=='use'||r.item===a.item)));
- if(!rule)return fail(level.wrong?.[a.target]||(a.type==='combine'?'모양은 재미있지만 이 둘은 함께 쓸 이유가 없겠어. 다른 조합도 시도해 보자.':a.type==='use'?`${tools[a.item]?.[0]||'이 도구'}로는 해결되지 않아. ${target.detail||'대상의 모양과 지금 목표를 다시 보자.'}`:target.detail||'단추가 살펴봤어. 소지품을 쓰거나 다른 물건과 함께 생각해 보자.'));
+ if(!rule)return fail(level.wrong?.[a.target]||(a.type==='combine'?'모양은 재미있지만 이 둘은 함께 쓸 이유가 없겠어. 다른 조합도 시도해 보자.':a.type==='use'?`${tools[a.item]?.[0]||'이 도구'}로는 해결되지 않아. ${target.detail||'대상의 모양과 지금 목표를 다시 보자.'}`:target.detail||'살펴봤어. 소지품을 쓰거나 다른 물건과 함께 생각해 보자.'));
  if(rule.set&&s.flags[rule.set])return fail(target?.detail||'여기는 이미 준비됐어. 다음 물건을 살펴보자.');
  if(!(rule.need||[]).every(f=>s.flags[f]))return fail(target?.detail||'아직 준비가 덜 됐어. 다른 물건을 먼저 살펴보자.');
  if(a.type==='observe'&&(!Number.isFinite(a.x)||!Number.isFinite(a.y)||!Number.isFinite(a.focus)||Math.abs(a.x-48.5)>1.5||Math.abs(a.y-16)>1.4||Math.abs(a.focus-75)>10))return fail('');

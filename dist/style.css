@@ -135,3 +135,8 @@
 .journal-photo{aspect-ratio:1.4;background-size:cover;background-position:center;border:7px solid #f9f4e9;border-bottom-width:23px;box-shadow:0 4px 12px #5e4f2a22;transform:rotate(-3deg);margin:15px 0}
 
 #hidden-mark{left:31.2%;width:25px;height:30px}
+
+/* V6.4 — direct scene interaction, no avatar layer. */
+#room-tone{transition:opacity .12s linear}
+.scene-hotspot{cursor:grab}.scene-hotspot:hover{background:transparent;filter:none;transform:translate(-50%,-50%)}
+#scene-surface{pointer-events:none;transform:none;filter:none}

@@ -90,3 +90,15 @@ All assets are stored in `dist/travel-art/`. Existing source backgrounds were re
 | `travel-props-v3.webp` | Transparent 2×2 atlas matching room materials and daylight. Closed canvas camera box with 3-dial lock and ownership tag; same open box with film camera; tabletop charcoal/brass telescope on mini tripod; blank ownership tag with crescent and 3 squares. No text or UI, clean alpha. |
 
 The floor clue is replaced by a physical ownership label on the camera box. Its digits and paper text are rendered by code for legibility; the tag and camera box are painted assets. The blind samples the ORIGINAL linen, so it does not introduce a different graphic material.
+
+
+## V6.4 production assets · built-in ImageGen edit mode
+
+Original Seoul room was inspected and supplied as the reference. Output PNGs were encoded to 1536×1024 WebP with Sharp quality 92. Existing backgrounds and all other cities remain unchanged.
+
+| Repository path | Prompt specification |
+|---|---|
+| `dist/travel-art/seoul-folded-v4.webp` | Exact same registered bedroom composition, perspective, furniture, tote position and daylight. Fold only the sage duvet naturally toward the pillows/head of bed, exposing the front ivory mattress. Realistic settled folds on the bed, no floating cloth, no geometry stretching; preserve all other objects and surfaces. |
+| `dist/travel-art/seoul-diffuse-v4.webp` | Lighting-only edit of the exact original room. Preserve blind, window, duvet, furniture and object geometry. Remove direct sun patches and window-shaped shadows from bed, headboard, rug and floor. Soft diffuse daytime ambient light; same materials, camera and palette. |
+
+Folded art is feathered into a fixed bed silhouette with smooth gesture-controlled blending, replacing the V6.3 triangle mesh. A cached multiply correction derived from the original and diffuse-light plate removes baked-in sunlight as the original linen blind descends. This is an illustrated transition, not a cloth physics simulation. Danchu assets remain archived for history but no character is rendered or controlled in the game.
