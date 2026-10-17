@@ -4,14 +4,16 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.6.4",
-    "github_commit": "c74fe33a01a0d3991985771a57f0830f4c06d0c0",
-    "github_dist_tree": "c84c5f519908eef03493c51df322d850ee346e4d",
+    "version": "0.6.5",
+    "github_commit": "faef3479ca5a5b0caa4520a584b103afe4f6e637",
+    "github_dist_tree": "6e7102c1643c1966452e7810411c70a1ac9ad62b",
     "entrypoint": "dist/index.html -> dist/play.js",
     "checks": {
-      "automated_tests_passed": 19,
+      "automated_tests_passed": 21,
+      "non_reduced_first_room_animation_path_verified": true,
       "static_canvas_states_checked": 6,
       "actual_mobile_touch_verified": false,
+      "actual_browser_framerate_verified": false,
       "static_light_measurement": {
         "rug_luminance_open": 175,
         "rug_luminance_half": 146,
@@ -20,18 +22,23 @@
       }
     },
     "changes": [
-      "Removed scene avatar and movement; direct item interaction, existing saves and 30 stages retained.",
-      "Replaced triangle duvet deformation with registered feathered folded artwork transition; not cloth physics.",
-      "Curtain progression applies baked sunlight correction to bed, rug and floor; original linen texture retained."
+      "First Seoul room: isolated opaque quilt strips, fixed underlay, lifted pillow with note behind it, physically occluded box and sliding drawer tray with same-scene close-up.",
+      "Pickup follows a curved flight to inventory before the destination becomes visible; materials converge for combination and first photograph has exposure feedback.",
+      "Camera collection leaves empty open case. Avatar remains removed; books/frame/note/scope, four-way pan, saved progress and 30 stages retained."
+    ],
+    "limitations": [
+      "Prepared 2D layer animation, not a general cloth physics engine.",
+      "Continuous cloth/pillow/drawer renderer is currently specific to Seoul; other cities are not claimed to have equivalent animation fidelity.",
+      "Real phone touch/frame rate and new-player engagement remain unverified."
     ]
   },
   "last_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "57b74a3c682cc668c25ac828809ddccf86fdea82",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_5d8cae7cb9308191ad56605a30b75321",
-    "deployment_id": "appgdep_6ad37df2a24881918df02a0a4abb278b",
-    "deployed_at": "2026-10-17T13:54:10.797488+00:00",
+    "source_commit": "9b426f3fbe43f5629e3f1b54e139aa5b58a95e0d",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_277d31f90c0881919b4b7c6b76d0ad0e",
+    "deployment_id": "appgdep_6ad383a1f60c8191b8bf5088148110e5",
+    "deployed_at": "2026-10-17T14:18:25.231696+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -66,10 +73,10 @@
   "previous_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "3e9dc777f18018df167edcabfbd99c2503b3d414",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_187edb7734b88191af97a15497355ddb",
-    "deployment_id": "appgdep_6ad2c666e14c8191bf47d8ca6d3970ea",
-    "deployed_at": "2026-10-17T00:51:01.412017Z",
+    "source_commit": "57b74a3c682cc668c25ac828809ddccf86fdea82",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_5d8cae7cb9308191ad56605a30b75321",
+    "deployment_id": "appgdep_6ad37df2a24881918df02a0a4abb278b",
+    "deployed_at": "2026-10-17T13:54:10.797488+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -80,8 +87,10 @@
   },
   "handoff": {
     "source_branch": "master",
-    "source_commit": "c74fe33a01a0d3991985771a57f0830f4c06d0c0",
+    "source_commit": "faef3479ca5a5b0caa4520a584b103afe4f6e637",
     "sites_and_github_dist_identical": true,
-    "remaining": "Actual mobile touch/frame-rate verification; existing shared GitHub Pages activation remains pending. Other worker must fetch current master."
+    "experience_contract": "docs/experience-contract.md",
+    "art_prompts": "docs/art-direction.md",
+    "remaining": "Verify actual mobile touch/frame rate and player engagement. Shared GitHub Pages activation remains pending per previous evidence; no URL or access settings changed. Other worker must fetch current master."
   }
 }
