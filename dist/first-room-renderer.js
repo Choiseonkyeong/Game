@@ -1,8 +1,8 @@
-import {fitRoom} from './view-gestures.js?v=081';
-import {SceneSurface} from './scene-surface.js?v=081';
-import {bound,frameReady} from './first-room-engine.js?v=081';
+import {fitRoom} from './view-gestures.js?v=082';
+import {SceneSurface} from './scene-surface.js?v=082';
+import {bound,frameReady} from './first-room-engine.js?v=082';
 export const BOARD={width:800,height:1000};
-export const ROOM_TARGETS={pillow:{x:.13,y:.46},drawer:{x:.88,y:.49},tin:{x:.745,y:.075},window:{x:.46,y:.23},lamp:{x:.16,y:.32}};
+export const ROOM_TARGETS={pillow:{x:.13,y:.46},drawer:{x:.88,y:.49},tin:{x:.745,y:.075},window:{x:.46,y:.23},lamp:{x:.16,y:.32},chair:{x:.76,y:.61},frame:{x:.025,y:.17},bin:{x:.985,y:.68}};
 const round=(c,x,y,w,h,r=8)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
 export function atlas(c,img,index,columns,rows,x,y,w,h){if(!img)return;const sw=img.width/columns,sh=img.height/rows;c.drawImage(img,index%columns*sw+5,Math.floor(index/columns)*sh+5,sw-10,sh-10,x,y,w,h);}
 export function itemArt(c,assets,item,x,y,w,h){if(item==='film')atlas(c,assets.props,2,2,2,x,y,w,h);else atlas(c,assets.tools,0,4,4,x,y,w,h);}
@@ -20,22 +20,27 @@ export class ChapterRenderer{
  renderFocus(type,state,ui={}){
   const c=this.c,w=this.canvas.width,h=this.canvas.height;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,w,h);const shade=c.createLinearGradient(0,0,0,h);shade.addColorStop(0,'#b3ab94');shade.addColorStop(1,'#888775');c.fillStyle=shade;c.fillRect(0,0,w,h);
   const v=ui.focusView||{scale:1,x:0,y:0},base=Math.min(w/800,h/1000),scale=base*v.scale,tx=(w-800*scale)/2+v.x*w/Math.max(1,ui.cssWidth||w),ty=(h-1000*scale)/2+v.y*h/Math.max(1,ui.cssHeight||h);this.focusGeometry={scale,tx,ty};c.setTransform(scale,0,0,scale,tx,ty);
-  if(type==='pillow')this.pillow(state,ui);if(type==='drawer')this.drawer(state,ui);if(type==='tin')this.tin(state,ui);if(type==='camera')this.camera(state,ui);if(type==='photo')this.photo(state,ui);
+  if(type==='pillow')this.pillow(state,ui);if(type==='drawer')this.drawer(state,ui);if(type==='tin')this.tin(state,ui);if(type==='camera')this.camera(state,ui);if(type==='photo')this.photo(state,ui);if(type==='chair')this.chair(state);if(type==='frame')this.frame(state);if(type==='bin')this.bin(state);
   c.setTransform(1,0,0,1,0,0);
  }
  pillow(s){const c=this.c,p=s.pillow;c.drawImage(this.assets.bed,0,280,650,744,0,0,800,1000);
   c.save();c.translate(380,550);c.rotate(-.14);c.shadowColor='#3b302b33';c.shadowBlur=5;c.fillStyle='#ece1c7';c.fillRect(-112,-80,224,160);c.shadowBlur=0;c.fillStyle='#847558';c.font='italic 20px Georgia';c.fillText('Yun · Seoul',-80,-30);c.font='19px system-ui';c.fillText('필름은 햇빛을 싫어해.',-90,13);c.fillText('선반 위 초록 틴에.',-90,45);c.restore();
   c.save();c.translate(400+130*p,470-300*p);c.rotate(-.13-.08*p);c.shadowColor='#302a2455';c.shadowBlur=8+18*p;c.shadowOffsetY=4+20*p;c.drawImage(this.assets.pillow,-330,-220,660,440);c.restore();
  }
- drawer(s){const c=this.c,p=s.drawer,y=225,edge=y+540*p;
-  // Neutral close-up matte: no closed drawer or duplicated room behind the open tray.
-  c.fillStyle='#a28e70';c.fillRect(-30,0,860,1000);
-  c.save();c.beginPath();c.rect(-30,y,860,540*p+5);c.clip();c.drawImage(this.assets.interior,0,0,1536,740,-45,y,890,540);
-  if(!s.camera){c.save();c.translate(455,535);c.rotate(-.1);c.shadowColor='#362d2244';c.shadowBlur=8;itemArt(c,this.assets,'camera',-160,-106,320,212);c.restore();}
-  c.restore();
-  // The front lip stays attached to the growing tray, rather than floating over the room.
-  c.save();c.shadowColor='#33271d44';c.shadowBlur=7;c.shadowOffsetY=4;c.drawImage(this.assets.interior,90,790,1350,165,-35,edge,870,108);c.restore();
+ plate(image,zoom=1){const c=this.c,iw=image.width,ih=image.height,ratio=800/1000;let sw=iw,sh=ih;if(iw/ih>ratio)sw=ih*ratio;else sh=iw/ratio;sw/=zoom;sh/=zoom;c.drawImage(image,(iw-sw)/2,(ih-sh)/2,sw,sh,0,0,800,1000);}
+ drawer(s){const c=this.c,p=s.drawer;this.plate(this.assets.station);
+  // Drawer rails stay in one fixed desk opening; the tray extends towards the player.
+  const x=100,y=358,w=600,depth=230*p,front=y+depth;
+  c.save();c.fillStyle='#30271e';c.fillRect(x,y,w,100);c.restore();
+  if(p>0){c.save();c.beginPath();c.rect(x,y,w,depth+2);c.clip();c.drawImage(this.assets.interior,0,125,1536,605,x,y,w,230);
+   if(!s.camera){c.save();c.translate(455,y+135);c.rotate(-.1);c.shadowColor='#362d2255';c.shadowBlur=6;itemArt(c,this.assets,'camera',-110,-73,220,146);c.restore();}c.restore();
+   c.fillStyle='#745435';c.beginPath();c.moveTo(x,y);c.lineTo(x+12,y+depth);c.lineTo(x+12,y+depth+60);c.lineTo(x,y+60);c.fill();c.beginPath();c.moveTo(x+w,y);c.lineTo(x+w-12,y+depth);c.lineTo(x+w-12,y+depth+60);c.lineTo(x+w,y+60);c.fill();
+  }
+  c.save();c.shadowColor='#33271d55';c.shadowBlur=5;c.shadowOffsetY=4;c.drawImage(this.assets.interior,90,790,1350,165,x,front,w,100);c.restore();
  }
+ chair(s){const c=this.c,p=s.chair;this.drawer(s);c.save();c.translate(385-50*p,630+80*p);c.rotate(-.035*p);c.shadowColor='#372d2255';c.shadowBlur=14;c.shadowOffsetY=9;c.drawImage(this.assets.seat,-180,-260,360,520);c.restore();}
+ frame(s){this.plate(this.assets.frame,1+.025*s.frame);}
+ bin(s){this.plate(this.assets.bin,1+.12*s.bin);}
  tin(s){const c=this.c,p=s.lid;
   c.save();c.shadowColor='#1f211844';c.shadowBlur=20;c.shadowOffsetY=10;atlas(c,this.assets.props,0,2,2,85,270,630,630);c.restore();
   if(!s.film){c.save();c.translate(395,575);c.rotate(-.18);atlas(c,this.assets.props,2,2,2,-100,-100,200,200);c.restore();}

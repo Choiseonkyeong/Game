@@ -49,3 +49,9 @@ Future workers: improve this default chapter rather than reverting entry.js to p
 ### 0.8.1 — one background and direct pinch inspection
 
 Remove the second room backdrop entirely. Normal room view uses a single cover transform; overview letterboxing is a solid matte. Detail views are opaque and hide the room HUD; drawer interior never shows a closed desk/drawer behind it. Two-finger pinch zooms room (1–2.6×) and detail (1–2.8×), preserves the source point beneath the midpoint, suppresses object commands throughout the gesture, consumes both releases and allows detail panning from empty space. Finger drag maps1:1 to room pixels. Room material/light composition is cached across camera moves; redraw only transformed room pixels while panning. Cap rendering density1.5× and use elapsed time for damped object follow. Previous full game and both saves unchanged.
+
+### 0.8.2 — desk structure and optional room life
+
+Drawer close-up now has a complete matching desk station with fixed cavity/rails/legs and floor. A registered tray grows from the opening and its front remains attached, instead of a detached front over a brown rectangle. Chair uses the same desk rendering and an independent woven-seat chair sprite; pulling it out and returning it does not grant an item. Botanical frame close-up/pinch and basket interior/lean-in are optional, have no fabricated code or clue, and never complete a mission. Return settles these optional actions before the original room reappears.
+
+Only the new first chapter is playable in this default experience. Completion explicitly says the next story is in preparation; the primary action is to keep exploring, with retaking the photo available. Do not create a fake next-stage button or imply all30 legacy scenes match this quality. Legacy route and saves remain.

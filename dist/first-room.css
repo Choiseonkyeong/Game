@@ -3,3 +3,5 @@
 .focus-hint{position:absolute;right:69px;top:calc(env(safe-area-inset-top) + 9px);z-index:4;width:42px;height:42px;border-radius:50%;background:#fbf6e8d9;font-size:18px}
 
 .header.in-detail{visibility:hidden}.focus{transform:none;transition:opacity .24s ease,visibility .24s}.focus.open{transform:none}
+
+.chapter-end{font-size:11px;line-height:1.7;color:#81836c;margin:14px 0 0}
