@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {Spring,BodyMotion} from '../dist/interaction-motion.js';import {stageFit,roomGeometry,PLATE} from '../dist/view-gestures.js';import {insidePolygon,SEOUL_BODIES,TOKYO_BODIES} from '../dist/room-bodies.js';
+import {Spring,BodyMotion} from '../dist/interaction-motion.js';import {stageFit,roomGeometry,PLATE} from '../dist/view-gestures.js';import {BodyLayer,bodyPoint,bendsBody,insidePolygon,SEOUL_BODIES,TOKYO_BODIES} from '../dist/room-bodies.js';
 test('a drawer spring overshoots against its stop, bounces back and rests exactly at the end',()=>{
  const s=new Spring(0,{stiffness:120,damping:17,bounce:.28,min:0,max:1}).set(1);s.kick(3);let hit=0,t=0;while(!s.resting&&t<3){s.step(1/60);t+=1/60;if(s.impact)hit++;assert(s.value>=0&&s.value<=1);}
  assert(hit>=1,'the tray knocks its stop');assert.equal(s.value,1);assert(t<1.2);
@@ -16,4 +16,14 @@ test('portrait phones see the taller room nearly top to bottom and a wide slice 
 });
 test('every body polygon contains its own centre region and stays inside the room',()=>{
  for(const b of [...SEOUL_BODIES,...TOKYO_BODIES]){for(const [x,y] of b.points){assert(x>=0&&x<=1536&&y>=-176&&y<=1024,b.id);}const cx=b.points.reduce((a,p)=>a+p[0],0)/b.points.length,cy=b.points.reduce((a,p)=>a+p[1],0)/b.points.length;assert(insidePolygon(b.points,cx,cy)||b.id==='desk'||b.id==='chair'||b.id==='stool',b.id);}
+});
+test('holding the bag retains its pose, releasing or cancelling restores the hook and settles',()=>{
+ for(const angle of [-.42,.08,.42]){const layer=new BodyLayer(TOKYO_BODIES);layer.hold('tote',angle);for(let i=0;i<240;i++)layer.step(1/60);
+  assert(layer.motions.has('tote'),'a resting held bag must not disappear');assert(Math.abs(layer.motions.get('tote').pose.angle-angle)<.003);
+  layer.release('tote');for(let i=0;i<720&&layer.active;i++)layer.step(1/60);assert(!layer.active,'released bag returns exactly to rest');
+ }
+});
+test('ticket and cloth use the same pocket coordinates while rigid frames keep their shape',()=>{
+ const bag=TOKYO_BODIES.find(d=>d.id==='tote'),pose={angle:.3,bend:.2};assert(bendsBody(bag));assert.deepEqual(bodyPoint(bag,pose,...bag.pivot),{x:bag.pivot[0],y:bag.pivot[1]});assert(bodyPoint(bag,pose,590,620).x<590,'rightward hand angle shifts cloth and pocket left together');
+ for(const d of [...SEOUL_BODIES,...TOKYO_BODIES].filter(d=>['frame','board','lantern','furin','hanji'].includes(d.id))){assert(!bendsBody(d),d.id);const [a,b]=d.points,p=bodyPoint(d,pose,...a),q=bodyPoint(d,pose,...b);assert(Math.abs(Math.hypot(p.x-q.x,p.y-q.y)-Math.hypot(a[0]-b[0],a[1]-b[1]))<1e-7,d.id);}
 });

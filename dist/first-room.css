@@ -5,6 +5,7 @@
 .header.in-detail{visibility:hidden}.focus{transform:none;transition:opacity .24s ease,visibility .24s}.focus.open{transform:none}
 
 .chapter-end{font-size:11px;line-height:1.7;color:#81836c;margin:14px 0 0}
+.print-cut{position:absolute;z-index:4;bottom:calc(env(safe-area-inset-bottom) + 98px);left:50%;transform:translateX(-50%);max-width:85%;padding:13px 20px;border-radius:16px;background:#f7f0dc;color:#455a46;box-shadow:0 4px 20px #2d302633;font-size:13px;white-space:nowrap}.print-cut:disabled{background:#e5dfcbd9;color:#7d806e;cursor:default}.print-cut:not(:disabled):active{transform:translateX(-50%) scale(.97)}
 
 a.primary{text-decoration:none;text-align:center;box-sizing:border-box}.primary.quiet{background:transparent;color:#87917c;margin-top:4px;padding:11px}
 

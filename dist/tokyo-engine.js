@@ -29,5 +29,15 @@ export function restoreTokyo(raw){
 }
 // Each item leaves the bag once it has been used for the next step.
 export const tokyoInventory=s=>[...(s.ticket&&!s.negative?['ticket']:[]),...(s.negative&&!s.print?['negative']:[]),...(s.print&&!s.pinned?['print']:[])];
-export const tokyoHint=s=>!s.dropped?'창가 풍경(風鈴)의 종이 띠를 읽어 보세요. 카운터 고리의 가방을 크게 흔들면 주머니에서 무언가 떨어질지도 몰라요.':!s.ticket?'바닥에 떨어진 종이를 주워요.':!s.negative?'카운터 큰 서랍에 맡긴 봉투들이 있어요. 맡김표 번호와 같은 봉투를 찾아요.':!s.print&&!s.lampOn?'필름은 빛에 비춰야 보여요. 뒤 선반의 스탠드를 켜 보세요.':!s.print?'라이트박스에서 확대경으로 컷을 살펴봐요. 카운터 모서리 바닥의 영수증에 잘 나온 컷 번호가 적혀 있어요.':'인화한 사진을 왼쪽 벽 사진 보드에 붙여요.';
+export const tokyoHintPhase=s=>!s.dropped?'pocket':!s.ticket?'floor':!s.negative?'envelope':!s.print&&!s.lampOn?'light':!s.print?'negative':'board';
+const HINTS={
+ pocket:['고리에 걸린 가방의 바깥 주머니를 살펴봐요.','주머니 밖으로 종이 끝이 조금 나와 있어요.','가방을 옆으로 당겼다가 놓아 흔들어 보세요. 창가 풍경의 종이 띠에도 메모가 있어요.'],
+ floor:['방금 떨어진 것은 어디에 멈췄을까요?','가방 아래 바닥의 작은 종이를 살펴봐요.','바닥에 떨어진 맡김표를 눌러 주워요.'],
+ envelope:['맡김표는 어떤 물건을 찾아가는 표일까요?','표의 번호와 봉투의 번호를 비교해요.','카운터 서랍을 열고 맡김표와 같은 27번 봉투를 골라요.'],
+ light:['필름 속 그림은 어두운 곳에서 잘 보이지 않아요.','라이트박스 위 스탠드가 꺼져 있어요.','뒤 선반의 스탠드를 눌러 켠 뒤 필름을 살펴봐요.'],
+ negative:['네 컷의 선명도가 서로 달라요.','확대경을 각 컷 위로 옮겨 비교해요. 원하는 컷을 누르면 확대경이 이동해요.','3번째 컷이 선명해요. 확대경을 그 위에 놓고 ‘이 컷 인화하기’를 눌러요. 바닥 영수증에서도 확인할 수 있어요.'],
+ board:['인화한 사진을 걸어 둘 곳이 있어요.','왼쪽 벽의 사진 보드에 빈자리가 있어요.','소지품의 사진을 선택하고 왼쪽 벽 사진 보드를 눌러요.']
+};
+export const tokyoHint=(s,level=0)=>HINTS[tokyoHintPhase(s)][Math.max(0,Math.min(2,Math.floor(level)||0))];
+export const loupeFrame=p=>{if(!p||p.y<634||p.y>746)return 0;for(let f=1;f<=4;f++)if(Math.abs(p.x-(170+(f-1)*160))<=65)return f;return 0;};
 export const failText={'no-ticket':'맡김표가 있어야 찾아갈 수 있어요.','other-envelope':'번호가 다른 봉투예요.',dark:'빛이 없으면 필름 속이 보이지 않아요.',fogged:'빛이 샌 컷이에요. 하얗게 날아갔어요.',shaken:'흔들린 컷이에요.',blank:'아무것도 찍히지 않은 칸이에요.'};

@@ -86,3 +86,15 @@ User feedback (2026-10-18 KST): touched objects move cheaply; Tokyo needs a land
 - Hanging cloth (tote, coat, noren, lantern, wind chime) now bends from its hook in thin slices: displacement grows with distance from the anchor and the free end follows a moment later (`BodyMotion.bend`). Plants bend from the pot the same way. Rigid furniture (chair, suitcase, desk items) moves about half as much as in 0.9–0.10, so a tap reads as a nudge rather than a cardboard wobble.
 - Tokyo Tower (international orange with white bands, two observatories, lattice, haze) stands in the sky of the big shop window between the trees, with a hazy skyline and street power lines (`tokyo_street_view` in `tools/bake_rooms.py`). The noren now hangs over the door only, so the window view stays open.
 - Asset query bumped to `v=110` because image contents changed under the same file names.
+
+
+## 0.11.1 — observe before printing; interruptible bag handling (Codex)
+
+Continue from remote master `8b0a22f622b444d89ac76efc281d747a3cc7e31c` (Claude's v0.11.0). Keep both chapters, Tokyo Tower, extended room plates and all existing save keys.
+
+- Holding the Tokyo tote uses a damped hand-follow spring in source coordinates. Held poses remain visible even after their spring rests. Release, pointer cancellation and the second finger of a pinch all restore the free swing towards zero. A cancelled/pinched grip must not leave a tilted bag or keep requesting frames forever.
+- The visible paper tip and falling ticket use the same `bodyPoint` transform as the cloth. The ticket starts at the moving outer pocket and inherits its lateral motion rather than jumping to the opposite side of the bag.
+- Cloth and foliage bend; framed pictures, lanterns, glass wind chimes and pendant lamps keep their shape and pivot as rigid objects. Existing source art/masking is retained. Texture reconstruction and more precise object silhouettes remain a separate art pass, not claimed solved here.
+- Inspecting or dragging across film frames never prints or consumes an attempt. Tapping a frame moves the loupe there; the player compares the images and explicitly chooses **이 컷 인화하기**. The button is enabled only with a negative, light, a loupe centred on a frame and no animation in progress. Wrong prints preserve the negative. Keyboard arrows move the loupe and Enter/Space prints the selected frame.
+- Hints advance per puzzle phase from an observation to a location to an explicit solution. Finishing a phase starts the next phase's hints gently; longer messages stay visible long enough to read. No new mandatory clue-reading flags or save schema were introduced.
+- Verification: deterministic pointer-handler flows, interrupted-grip settling, rigid shape preservation and static Canvas film/bag renders. Actual browser CSS and real iPhone touch/frame rate are not verified by these checks. Seoul desk/chair close-up continuity and hole-fill art remain follow-up work.

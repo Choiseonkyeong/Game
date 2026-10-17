@@ -9,6 +9,15 @@ const event=(x,y)=>({pointerId:1,clientX:x,clientY:y,preventDefault(){}});async 
 async function drag(id,x,y,xx,yy){await get(id).handlers.pointerdown(event(x,y));await get(id).handlers.pointermove(event(xx,yy));await settle();await get(id).handlers.pointerup(event(xx,yy));await settle();}
 const roomXY=(x,y,cam)=>{const g=roomGeometry(390,844,{x:cam,y:.45},1);return[g.tx+x/1536*g.rw,g.ty+y/1024*g.rh];};
 const boardXY=(x,y)=>[x*.4875,178.25+y*.4875];
+test('cancel and a second finger release the held bag instead of leaving it suspended',async()=>{
+ await click({action:'start'});const room=get('room'),p=roomXY(575,600,.42);
+ for(const pinch of [false,true]){
+  await room.handlers.pointerdown(event(...p));await room.handlers.pointermove(event(p[0]+12,p[1]));await settle();
+  if(pinch){await room.handlers.pointerdown({...event(p[0]+60,p[1]),pointerId:2});await room.handlers.pointerup({...event(p[0]+60,p[1]),pointerId:2});await room.handlers.pointerup(event(...p));}
+  else await room.handlers.pointercancel(event(...p));
+  for(let i=0;i<12;i++)await settle();const stopped=frames;await settle();assert.equal(frames,stopped,'interrupted grip returns to rest and stops requesting frames');assert(!saved().dropped,'a small interrupted pull does not invent a ticket');
+ }
+});
 test('tokyo chapter completes through shipped pointer handlers and keeps other saves',async()=>{
  await click({action:'start'});assert(saved().started);
  await drag('room',...roomXY(575,600,.42),...roomXY(575,600,.42).map((v,i)=>i?v:v-130));for(let i=0;i<6;i++)await settle();assert(saved().dropped,'swinging the tote drops the ticket');
@@ -19,10 +28,14 @@ test('tokyo chapter completes through shipped pointer handlers and keeps other s
  await tap('board',...boardXY(350,500));assert.equal(saved().drawer,1);
  const top=(552-320)*800/560+300-235;await tap('board',...boardXY(160,top+120));assert.equal(saved().negative,false);
  await tap('board',...boardXY(400,top+120));assert(saved().negative);await click({},'back');
+ await click({item:'negative'});assert(get('print-cut').disabled);await tap('board',...boardXY(490,690));await click({},'print-cut');assert(!saved().print);assert.equal(saved().tries,0,'unlit inspection does not consume a print attempt');await click({},'back');
  await tap('room',...roomXY(466,300,.42));assert(saved().lampOn);
  await tap('room',...roomXY(470,385,.42));assert.equal(get('focus-title').textContent,'스탠드 아래 · 라이트박스');
- await tap('board',...boardXY(95+160+75,690));assert.equal(saved().print,false);assert.equal(saved().tries,1);
- await tap('board',...boardXY(95+320+75,690));assert(saved().print);
+ assert(get('print-cut').disabled,'no printing while the loupe is off the film');
+ await tap('board',...boardXY(95+160+75,690));assert.equal(saved().print,false);assert.equal(saved().tries,0,'inspection never prints or counts as a failed attempt');
+ await click({},'print-cut');assert.equal(saved().print,false);assert.equal(saved().tries,1);
+ await tap('board',...boardXY(95+320+75,690));assert.equal(saved().print,false);assert.equal(saved().tries,1);assert(!get('print-cut').disabled);
+ await click({},'print-cut');assert(saved().print);
  await click({},'left');await click({item:'print'});await tap('room',...roomXY(256,200,.12));assert(saved().done);
  assert(get('overlay').innerHTML.includes('두 번째 장'));assert.equal(storage.get('danchu-travel-v6'),'previous shared travel save');assert.equal(storage.get('little-travel-chapter'),'tokyo');
 });

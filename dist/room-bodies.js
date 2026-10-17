@@ -1,6 +1,6 @@
 // Room furniture and props cut from the painted room and moved in place with spring physics.
 // Coordinates are source pixels of a 1536×1024 room. Pivots are where the object touches or hangs.
-import {BodyMotion} from './interaction-motion.js?v=110';
+import {BodyMotion} from './interaction-motion.js?v=111';
 
 export const SEOUL_BODIES=[
  {id:'bed',kind:'squash',strength:.35,pivot:[420,940],points:[[0,515],[300,478],[560,500],[835,640],[800,700],[430,945],[0,830]]},
@@ -56,6 +56,19 @@ export const TOKYO_BODIES=[
 
 function pathOf(ctx,points,dx=0,dy=0){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x-dx,y-dy):ctx.moveTo(x-dx,y-dy));ctx.closePath();}
 export function insidePolygon(points,x,y){let inside=false;for(let i=0,j=points.length-1;i<points.length;j=i++){const [xi,yi]=points[i],[xj,yj]=points[j];if(((yi>y)!==(yj>y))&&x<(xj-xi)*(y-yi)/(yj-yi)+xi)inside=!inside;}return inside;}
+// Wood, glass and metal keep their shape. Only cloth and foliage bend.
+export const bendsBody=def=>def.kind==='leaf'||['tote','jacket','noren'].includes(def.id)&&def.kind==='sway';
+const spans=new WeakMap();
+export function bodyPoint(def,pose,x,y){
+ const [px,py]=def.pivot;
+ if(bendsBody(def)){
+  const hang=def.kind==='sway';let L=spans.get(def);if(!L){const ys=def.points.map(p=>p[1]);L=Math.max(1,hang?Math.max(...ys)+16-py:py-Math.min(...ys)+16);spans.set(def,L);}const dd=hang?y-py:py-y;
+  if(dd<=0)return {x,y};const u=dd/L;
+  return {x:x+(hang?-(dd*Math.sin(pose.angle)*.7+L*u*u*(pose.bend||0)*.55):L*Math.pow(u,1.7)*(pose.angle*.7+(pose.bend||0)*.45)),y:y-(hang?dd*(1-Math.cos(pose.angle)):0)};
+ }
+ const a=pose.angle||0,dx=(x-px)*(1+(pose.squash||0)*.5),dy=(y-py)*(1-(pose.squash||0));
+ return {x:px+(pose.x||0)+dx*Math.cos(a)-dy*Math.sin(a),y:py+(pose.y||0)+dx*Math.sin(a)+dy*Math.cos(a)};
+}
 const boxOf=(points,pad)=>{const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x=Math.floor(Math.min(...xs)-pad),y=Math.floor(Math.min(...ys)-pad);return {x,y,w:Math.ceil(Math.max(...xs)+pad)-x,h:Math.ceil(Math.max(...ys)+pad)-y};};
 
 export class BodyLayer{
@@ -65,7 +78,9 @@ export class BodyLayer{
  impulse(id,x,strength=1){const d=this.byId.get(id);if(!d)return false;const motion=this.motions.get(id)||new BodyMotion(d.kind);const direction=x==null?1:(x<d.pivot[0]?1:-1);motion.impulse(direction,strength*(d.strength??1));this.motions.set(id,motion);
   // Things resting on a surface react a moment later and a little less.
   for(const [link,amount] of d.links||[])this.queue.push({id:link,at:.05+Math.random()*.06,strength:strength*amount,x});return true;}
- step(seconds){for(const q of this.queue)q.at-=seconds;for(const q of this.queue.filter(q=>q.at<=0))this.impulse(q.id,q.x,q.strength);this.queue=this.queue.filter(q=>q.at>0);for(const [id,m] of this.motions)if(!m.step(seconds))this.motions.delete(id);return this.active;}
+ hold(id,angle){const def=this.byId.get(id);if(!def)return;const m=this.motions.get(id)||new BodyMotion(def.kind),s=m.springs.angle;if(s){m.freeSpring??={stiffness:s.stiffness,damping:s.damping};s.stiffness=170;s.damping=26;s.set(Math.max(-.42,Math.min(.42,angle)));}m.held=true;this.motions.set(id,m);}
+ release(id){const m=this.motions.get(id);if(m){m.held=false;const s=m.springs.angle;if(s){if(m.freeSpring)Object.assign(s,m.freeSpring);s.set(0);}}}
+ step(seconds){for(const q of this.queue)q.at-=seconds;for(const q of this.queue.filter(q=>q.at<=0))this.impulse(q.id,q.x,q.strength);this.queue=this.queue.filter(q=>q.at>0);for(const [id,m] of this.motions)if(!m.step(seconds)&&!m.held)this.motions.delete(id);return this.active;}
  get active(){return this.motions.size>0||this.queue.length>0;}
  reset(){for(const p of this.cache.values()){p.sprite.width=p.fill.width=0;}this.cache.clear();}
  // Sprite: the object's own pixels. Fill: the surroundings pushed into the hole, so movement never shows a duplicate edge.
@@ -92,12 +107,12 @@ export class BodyLayer{
  draw(ctx,source,g){
   if(!this.motions.size)return;const scale=g.rw/1536;
   for(const def of this.defs){const motion=this.motions.get(def.id);if(!motion)continue;const part=this.parts(def,source);if(!part)continue;const {sprite,fill,box}=part,p=motion.pose,[px,py]=def.pivot;
+   if(Object.values(p).every(v=>Math.abs(v)<.00001))continue;
    ctx.save();ctx.setTransform(scale,0,0,scale,g.tx,g.ty);ctx.drawImage(fill,box.x,box.y);
    // Hanging cloth bends from its hook and plants bend from the pot: thin slices shift more the further they are from the anchor.
-   if(def.kind==='sway'||def.kind==='leaf'){const hang=def.kind==='sway',L=Math.max(1,hang?box.y+box.h-py:py-box.y);
-    for(let y=0;y<box.h;y+=2){const sy=box.y+y,dd=hang?sy-py:py-sy;if(dd<=0){ctx.drawImage(sprite,0,y,box.w,2,box.x,sy,box.w,2);continue;}const u=dd/L;
-     const off=hang?-(dd*Math.sin(p.angle)*.7+L*u*u*p.bend*.55):L*Math.pow(u,1.7)*(p.angle*.7+p.bend*.45),lift=hang?dd*(1-Math.cos(p.angle)):0;
-     ctx.drawImage(sprite,0,y,box.w,2.6,box.x+off,sy-lift,box.w,2.6);}
+   if(bendsBody(def)){
+    for(let y=0;y<box.h;y+=2){const sy=box.y+y,point=bodyPoint(def,p,box.x,sy);
+     ctx.drawImage(sprite,0,y,box.w,Math.min(2,box.h-y),point.x,point.y,box.w,2.2);}
     ctx.restore();continue;}
    ctx.translate(px+p.x,py+p.y);ctx.rotate(p.angle);ctx.scale(1+p.squash*.5,1-p.squash);ctx.translate(-px,-py);ctx.drawImage(sprite,box.x,box.y);ctx.restore();}
  }
