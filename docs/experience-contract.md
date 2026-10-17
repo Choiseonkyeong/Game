@@ -37,3 +37,11 @@
 - 조사 창의 열림/닫힘, 책 넘김, 사진 뒤집기와 잘못 놓은 아이템의 복귀에도 마무리 동작을 둔다.
 - 화면 버전을 메뉴에서 확인할 수 있게 하고, 오래된 코드/CSS가 새 화면에 섞이지 않도록 자산 버전을 함께 관리한다. 캐시 문제 해결을 이유로 플레이 기록을 초기화하지 않는다.
 - 실제 기기 검수와 자동 검사/정적 합성은 별도다. 아직 검증하지 않은 손맛을 완성했다고 말하지 않는다.
+
+## 0.8.0 — one finished chapter before expansion
+
+User decision: prioritize one coherent first stage, even ahead of the thirty-stage story. Default entry now routes to `first-room.js` in an isolated Shadow DOM. The previous full game remains intact at `?mode=legacy`; its `danchu-travel-v6` save is never read or overwritten by the first chapter (`little-travel-first-room-v1`). This is an intentional replacement of the default experience, not accidental loss of requirements.
+
+First chapter: pull desk drawer → collect camera; lift pillow → read film storage note; lift shelf tin lid → collect film; drag film into camera → frame Namsan Tower → save actual captured photo. These are linked discoveries with one goal. No avatar, arbitrary glowing code, duplicated notebook, generic dead investigation targets or warped duvet slab in this chapter. Curtain retains the original fabric and registered sunlight compensation. Horizontal and vertical room gestures remain. New independent pillow/tin/film/camera layers move with damped follow, settle and return; only validated collection commits on landing.
+
+Future workers: improve this default chapter rather than reverting entry.js to play.js or importing a stale whole-folder snapshot. Preserve legacy access and both save keys. Do not claim movie-quality animation or real-phone smoothness from unit tests.

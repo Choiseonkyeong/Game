@@ -24,3 +24,9 @@
 27개 자동 검사: 전 30단계/저장 복구, 애니메이션을 생략하지 않는 첫 방 이벤트 경로, 반전에도 연속인 추적 값, 저장을 건드리지 않는 미리보기, 엽서 이동/뒤집기와 획득, 세 자리 다이얼, 잠긴 서랍 보호, 조사 버튼 유지.
 
 캔버스 6상태 정적 합성과 서랍 내부 원화를 확인했다. 러그 햇빛 평균 밝기는 열림175 → 절반146 → 닫힘116으로 감소했고 이불 이동 중 책상 외부 영역 변화는0이었다. 실제 브라우저 레이아웃, iPhone 터치/프레임 속도, 초보 플레이어 흥미도는 검증하지 못했다. 자동 검사만으로 완성도/매끄러움을 보장하지 않는다. 현재 공간별 고유 천/서랍 렌더링은 서울에 집중돼 있으며, 다른 도시까지 같은 품질로 완성됐다고 보고하지 않는다.
+
+## 0.8.0 first-chapter rebuild
+
+Scope is now one complete default stage. Earlier references remain design principles, not a claim to have played or copied those games. Separate props replace warped photo regions; short enter/hold/settle/exit, source-to-inventory continuity, failed-drop return and a tangible photograph connect the stage.
+
+Checks:30 automated tests passed, including the new default controller's real non-reduced pointer/animation path (drawer, pillow note, tin, pickup flights, loading, aiming, capture, legacy save preservation); pure state guards and malformed-save recovery. Native Canvas rendered8 close-up states at390×844 and initial room. Visual review corrected a partially covered note and duplicated drawer lip; same original curtain/sunlight compositor is reused. These are static renderings and DOM substitutes. Actual browser CSS layout, iPhone touch/frame rate and a first-time player's enjoyment are NOT verified. Existing public hosting/access limitations remain separate from code quality.
