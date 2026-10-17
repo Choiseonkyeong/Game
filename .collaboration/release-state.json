@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "purpose": "Dated shared deployment record. Reverify live provider and remote source before every task.",
+  "repository": "Choiseonkyeong/Game",
+  "authoritative_branch": "master",
+  "last_reviewed_game": {
+    "version": "0.6.3",
+    "github_commit": "1d6e1437478f0dcb8e426dac5d7819eef84e18f2",
+    "github_dist_tree": "a22a8ca346155c2cbe5f148502a55626b1d8788a",
+    "entrypoint": "dist/index.html -> dist/play.js",
+    "checks": {
+      "automated_tests_passed": 19,
+      "static_canvas_states_checked": 6,
+      "actual_mobile_touch_verified": false
+    }
+  },
+  "last_successful_deployment": {
+    "provider": "Sites",
+    "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
+    "source_commit": "3e9dc777f18018df167edcabfbd99c2503b3d414",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_187edb7734b88191af97a15497355ddb",
+    "deployment_id": "appgdep_6ad2c666e14c8191bf47d8ca6d3970ea",
+    "deployed_at": "2026-10-17T00:51:01.412017Z",
+    "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
+    "status": "succeeded",
+    "access": {
+      "provider_setting": "public",
+      "external_collaborator_status": "access_failure_reported",
+      "universal_access_verified": false
+    }
+  },
+  "shared_github_pages": {
+    "target_url": "https://choiseonkyeong.github.io/Game/",
+    "workflow": ".github/workflows/pages.yml",
+    "status": "pending_repository_pages_activation",
+    "live_url_verified": false,
+    "last_attempt": {
+      "run_id": 39002004958,
+      "source_commit": "966f4a439c37eba55d86c060ad1b42be08aed8d0",
+      "game_checks": "passed",
+      "deployment": "failed",
+      "failed_step": "Configure Pages",
+      "reason": "Pages site not found; enable Settings > Pages > Source > GitHub Actions",
+      "observed_at": "2026-10-17T04:17:37Z"
+    },
+    "remaining_action": "Enable Pages with GitHub Actions, run Publish shared game, then verify successful deployment and build-info.json."
+  },
+  "restoration_record": {
+    "branch": "claude/game-repo-url-2shcos",
+    "restored_commit": "36be29fe0c5b39a6b8b77fbd382e28840c9b7205",
+    "matches_master_content_at": "966f4a439c37eba55d86c060ad1b42be08aed8d0",
+    "note": "Game source restored to reviewed v0.6.3 while keeping URL/deployment files. Both histories retained; no force push."
+  },
+  "update_rule": "Do not replace last_successful_deployment with a proposed, saved-only or failed release. Re-read provider state; update provenance only with evidence."
+}

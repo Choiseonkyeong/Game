@@ -1,5 +1,10 @@
 # 단추의 여행책 · 여섯 도시의 작은 단서
 
+## 공동 작업 보호 규칙
+
+Codex와 Claude는 게임 작업 전에 [AGENTS.md](AGENTS.md), [공동 작업 보호 스킬](skills/guard-shared-game/SKILL.md), [최신 배포 기록](.collaboration/release-state.json)을 확인합니다. Claude 안내는 [CLAUDE.md](CLAUDE.md)에 연결되어 있습니다. 저장소를 최신으로 받은 뒤 적용하며, 오래된 브랜치의 덮어쓰기·검증되지 않은 배포 완료 안내를 방지합니다.
+
+
 ## 공용 GitHub 배포 · Codex / Claude
 
 공동 작업의 원본은 [Choiseonkyeong/Game](https://github.com/Choiseonkyeong/Game)의 `master`이며, 게임 파일은 `dist/`입니다. 작업자는 수밍과 별도 계정일 수 있으므로 수밍의 ChatGPT 로그인이나 개인 Sites 배포 권한을 공동 작업의 전제로 삼지 않습니다.

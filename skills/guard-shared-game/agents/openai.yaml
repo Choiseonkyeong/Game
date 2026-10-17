@@ -1,0 +1,4 @@
+interface:
+  display_name: "게임 공동작업 보호"
+  short_description: "Codex와 Claude의 최신 소스·배포본을 확인하고 오래된 브랜치의 덮어쓰기를 방지합니다"
+  default_prompt: "Use $guard-shared-game to check the shared Game repository and latest deployment before making changes."
