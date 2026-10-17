@@ -13,18 +13,18 @@ export function softDraw(ctx,src,sx,sy,sw,sh,dx,dy,dw,dh,factor=8,key='soft'){
 }
 
 export function paintMargins(c,room,{tx,ty,rw,rh,w,h},tint='#cfc5ad'){
- if(ty<=0&&tx<=0)return;
- if(ty>0){softDraw(c,room,0,0,1536,10,tx-60,-60,rw+120,ty+72,24);softDraw(c,room,0,1014,1536,10,tx-60,ty+rh-12,rw+120,h-ty-rh+72,24);}
- if(tx>0){softDraw(c,room,0,0,10,1024,-60,ty-60,tx+72,rh+120,24);softDraw(c,room,1526,0,10,1024,tx+rw-12,ty-60,w-tx-rw+72,rh+120,24);}
+ if(ty<=0&&tx<=0)return;const SW=room.width,SH=room.height;
+ if(ty>0){softDraw(c,room,0,0,SW,10,tx-60,-60,rw+120,ty+72,24);softDraw(c,room,0,SH-10,SW,10,tx-60,ty+rh-12,rw+120,h-ty-rh+72,24);}
+ if(tx>0){softDraw(c,room,0,0,10,SH,-60,ty-60,tx+72,rh+120,24);softDraw(c,room,SW-10,0,10,SH,tx+rw-12,ty-60,w-tx-rw+72,rh+120,24);}
  const fade=(x0,y0,x1,y1)=>{const gr=c.createLinearGradient(x0,y0,x1,y1);gr.addColorStop(0,tint+'66');gr.addColorStop(1,tint+'00');return gr;};
  if(ty>0){c.fillStyle=fade(0,0,0,ty);c.fillRect(0,0,w,ty);c.fillStyle=fade(0,h,0,ty+rh);c.fillRect(0,ty+rh,w,h-ty-rh);}
  if(tx>0){c.fillStyle=fade(0,0,tx,0);c.fillRect(0,0,tx,h);c.fillStyle=fade(w,0,tx+rw,0);c.fillRect(tx+rw,0,w-tx-rw,h);}
 }
 
 export function featherEdges(c,room,{tx,ty,rw,rh}){
- if(ty<=0&&tx<=0)return;const band=Math.round(Math.min(46,Math.max(ty,tx)*.5));if(band<4)return;const e=pad('edge'),edges=[];
- if(ty>0)edges.push([0,0,1536,band*1024/rh,tx,ty,rw,band,0,0,0,band],[0,1024-band*1024/rh,1536,band*1024/rh,tx,ty+rh-band,rw,band,0,band,0,0]);
- if(tx>0)edges.push([0,0,band*1536/rw,1024,tx,ty,band,rh,0,0,band,0],[1536-band*1536/rw,0,band*1536/rw,1024,tx+rw-band,ty,band,rh,band,0,0,0]);
+ if(ty<=0&&tx<=0)return;const SW=room.width,SH=room.height;const band=Math.round(Math.min(46,Math.max(ty,tx)*.5));if(band<4)return;const e=pad('edge'),edges=[];
+ if(ty>0)edges.push([0,0,SW,band*SH/rh,tx,ty,rw,band,0,0,0,band],[0,SH-band*SH/rh,SW,band*SH/rh,tx,ty+rh-band,rw,band,0,band,0,0]);
+ if(tx>0)edges.push([0,0,band*SW/rw,SH,tx,ty,band,rh,0,0,band,0],[SW-band*SW/rw,0,band*SW/rw,SH,tx+rw-band,ty,band,rh,band,0,0,0]);
  for(const [sx,sy,sw,sh,dx,dy,dw,dh,gx0,gy0,gx1,gy1] of edges){
   e.width=Math.max(1,Math.round(dw));e.height=Math.max(1,Math.round(dh));const x=e.getContext('2d');if(!x)return;
   softDraw(x,room,sx,sy,sw,sh,0,0,e.width,e.height,6,'band');

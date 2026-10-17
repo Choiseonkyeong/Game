@@ -7,3 +7,6 @@
 .chapter-end{font-size:11px;line-height:1.7;color:#81836c;margin:14px 0 0}
 
 a.primary{text-decoration:none;text-align:center;box-sizing:border-box}.primary.quiet{background:transparent;color:#87917c;margin-top:4px;padding:11px}
+
+.card.clue{text-align:center}.receipt{margin:18px auto 6px;width:200px;padding:16px 18px;background:#f6f3ea;box-shadow:0 6px 18px #2d261b33;font:12px/2 'Hiragino Sans','IPAGothic',system-ui;color:#4e4740;text-align:left;transform:rotate(-2deg);background-image:repeating-linear-gradient(0deg,#0000 0 23px,#00000008 23px 24px)}.receipt b{display:block;text-align:center;font-size:14px}.receipt span,.receipt em{display:block}.receipt em{font-style:normal;color:#b2452f}
+.tanzaku{margin:18px auto 8px;width:64px;padding:16px 8px;background:#eee4c8;box-shadow:0 6px 16px #2d261b33;writing-mode:vertical-rl;font:17px/1.6 'Hiragino Mincho ProN','IPAGothic',serif;color:#4a3b2c;height:190px;letter-spacing:.1em;background-image:linear-gradient(90deg,#0000,#ffffff40,#0000)}
