@@ -1,4 +1,4 @@
-import {stages,roomAreas} from './adventure.js';
+import {stages,roomAreas} from './adventure.js?v=070';
 const names={bed:'침대와 접힌 이불',pillow:'베개 아래',window:'커튼과 창가',jacket:'옷 주머니',drawer:'책상 서랍',tote:'가방 안쪽',tin:'작은 틴',desk:'책상 위 종이',shelf:'선반과 책',suitcase:'캐리어 안쪽',door:'출입문과 손잡이'};
 const verbs={bed:'이불 걷기',pillow:'베개 들추기',window:'커튼 조절하기',jacket:'주머니 뒤적이기',drawer:'서랍 열기',tote:'가방 벌려 보기',tin:'뚜껑 들기',desk:'종이 뒤집기',shelf:'책 사이 살피기',suitcase:'짐 안쪽 확인하기',door:'손잡이와 문틈 살피기'};
 const hints=[

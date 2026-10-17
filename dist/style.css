@@ -135,3 +135,25 @@
 .journal-photo{aspect-ratio:1.4;background-size:cover;background-position:center;border:7px solid #f9f4e9;border-bottom-width:23px;box-shadow:0 4px 12px #5e4f2a22;transform:rotate(-3deg);margin:15px 0}
 
 #hidden-mark{left:31.2%;width:25px;height:30px}
+
+/* V6.4 — direct scene interaction, no avatar layer. */
+#room-tone{transition:opacity .12s linear}
+.scene-hotspot{cursor:grab}.scene-hotspot:hover{background:transparent;filter:none;transform:translate(-50%,-50%)}
+#scene-surface{pointer-events:none;transform:none;filter:none}
+
+/* V6.5: continuous material motion and one uninterrupted pickup path. */
+.painted-box-hit{width:52px;height:48px;z-index:5}
+.pickup-flight{position:fixed;left:0;top:0;width:60px;height:60px;z-index:100;pointer-events:none;will-change:transform;filter:drop-shadow(0 5px 4px #443b2b40)}
+.pickup-flight .item-art,.pickup-flight .prop-art{width:60px;height:60px}
+.pickup-pending{visibility:hidden}.pickup-landed{animation:pickup-land .4s ease-out}
+@keyframes pickup-land{0%{transform:scale(.8)}55%{transform:scale(1.12);background:#d5ddc5}100%{transform:scale(1)}}
+.item-received{animation:target-receive .25s ease-out}@keyframes target-receive{50%{filter:brightness(1.1)}}
+#world.camera-shutter:after{content:'';position:absolute;inset:0;background:#fff8dc;z-index:19;pointer-events:none;animation:camera-exposure .32s ease-out forwards}
+@keyframes camera-exposure{0%{opacity:0}20%{opacity:.82}100%{opacity:0}}
+.drawer-inspection{overflow:hidden;border-radius:8px;margin:15px 0;background:#594c38}.drawer-inspection canvas{width:100%;display:block;aspect-ratio:2.78}
+#detail[open]{animation:detail-arrive .22s ease-out}@keyframes detail-arrive{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.pickup-landed,.item-received,#detail[open]{animation:none}}
+
+#pillow-note{background:transparent;box-shadow:none;color:transparent;font-size:0;border:0}
+#hidden-mark{left:29%;top:62%;width:22px;height:26px}
+.attempt-miss{animation:attempt-miss .25s ease}@keyframes attempt-miss{25%{transform:translate(-53%,-50%)}75%{transform:translate(-47%,-50%)}}

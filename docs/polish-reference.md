@@ -1,0 +1,40 @@
+# V7.0 조작·화면 개편 기준
+
+2026-10-17. 사용자가 지적한 끊기는 흐름, 판처럼 보이는 서랍, 내부 대신 캐리어를 보여 주는 확대, 큰 빈 UI, 베개 가장자리 문제를 기준으로 개편했다. 실제 플레이 영상의 프레임별 분석이나 참고 게임 직접 플레이를 했다고 주장하지 않는다. 아래 공식 설명/개발 기록을 읽고 본 게임에 적용할 설계를 정했다. 두 공식 페이지의 개별 스크린샷 fetch는 접근 오류로 열리지 않았다.
+
+## 공식 참고 자료와 적용 판단
+
+- [Brain Puzzle 3: Crazy Mind · Google Play](https://play.google.com/store/apps/details?hl=en-US&id=com.brain.crazy.joygame): 짧고 다양한 상황, 관찰과 예상 밖의 해결, 간단한 조작. 본 게임에서는 조사 카드 연결보다 물건을 조작하고 발견/사용하는 흐름을 유지한다. 제품 전체의 복제나 실제 플레이 체험 주장이 아니다.
+- [Assemble With Care · ustwo games](https://ustwogames.co.uk/our-games/assemble-with-care/): 소중한 물건의 복원과 인물 이야기를 연결한다. 본 게임에서는 카메라, 필름, 엽서가 같은 여행 기록에 속하도록 연결한다.
+- [A Little to the Left · Max Inferno 개발 기록](https://maxinferno.itch.io/a-little-to-the-left/devlog/163334/post-jam-roadmap): 물건을 잡음/배치 가능/성공을 구분하는 반응을 설명한다. 본 게임에서는 엽서를 들었을 때 그림자, 놓을 때 복귀/정착, 획득과 조합의 마무리를 구분한다. 상시 정답 위치 강조는 넣지 않는다.
+- [Disney Animation · Animation process](https://www.disneyanimation.com/process/animation/): timing, staging, anticipation, follow-through와 secondary action을 설명한다. 본 게임에서는 시작/이동/마무리를 같은 시간축에 두고, 갑작스러운 창 교체보다 전환을 연결한다. 디즈니 수준의 제작 품질을 달성했다는 의미가 아니다.
+
+## 이번 개편
+
+- 전체 화면: 작은 HUD, 비어 있을 때 접히는 소지품 도크, 전체 보기 배경 연속 처리.
+- 입력: 속도를 유지하는 감쇠 추적, pointer preview 중 저장 기록 복제와 불필요한 DOM 교체 제거. 잠긴 가구의 드래그는 시각적 열림도 막는다.
+- 서울의 천/베개: 원본 소재의 말림 곡률과 가림 유지. 베개 아래 원화의 경계와 실루엣을 수정했다.
+- 서랍: 같은 방의 열린 서랍 원화로 몸체/앞판을 함께 움직인다. 확대는 방의 잘못된 크롭이 아니라 별도 내부 원화다. 엽서를 직접 옮겨 물건을 찾고 뒤집어 보관 힌트를 읽는다.
+- 보관함: 물리적 세 자리 다이얼을 탭/세로 드래그로 조절한다. 실패해도 숫자를 유지해 한 자리씩 수정할 수 있다.
+- 마무리: 아이템 잘못 놓기의 복귀, 책 페이지 교체, 사진 뒤집기, 조사 창 닫힘, 획득/조합/촬영을 연결한다.
+- 버전: 메뉴 0.7.0, 버전이 붙은 코드/CSS 참조와 no-store 갱신. 저장 기록을 지워 갱신하는 방식을 사용하지 않는다.
+
+## 확인한 것과 남은 것
+
+27개 자동 검사: 전 30단계/저장 복구, 애니메이션을 생략하지 않는 첫 방 이벤트 경로, 반전에도 연속인 추적 값, 저장을 건드리지 않는 미리보기, 엽서 이동/뒤집기와 획득, 세 자리 다이얼, 잠긴 서랍 보호, 조사 버튼 유지.
+
+캔버스 6상태 정적 합성과 서랍 내부 원화를 확인했다. 러그 햇빛 평균 밝기는 열림175 → 절반146 → 닫힘116으로 감소했고 이불 이동 중 책상 외부 영역 변화는0이었다. 실제 브라우저 레이아웃, iPhone 터치/프레임 속도, 초보 플레이어 흥미도는 검증하지 못했다. 자동 검사만으로 완성도/매끄러움을 보장하지 않는다. 현재 공간별 고유 천/서랍 렌더링은 서울에 집중돼 있으며, 다른 도시까지 같은 품질로 완성됐다고 보고하지 않는다.
+
+## 0.8.0 first-chapter rebuild
+
+Scope is now one complete default stage. Earlier references remain design principles, not a claim to have played or copied those games. Separate props replace warped photo regions; short enter/hold/settle/exit, source-to-inventory continuity, failed-drop return and a tangible photograph connect the stage.
+
+Checks:30 automated tests passed, including the new default controller's real non-reduced pointer/animation path (drawer, pillow note, tin, pickup flights, loading, aiming, capture, legacy save preservation); pure state guards and malformed-save recovery. Native Canvas rendered8 close-up states at390×844 and initial room. Visual review corrected a partially covered note and duplicated drawer lip; same original curtain/sunlight compositor is reused. These are static renderings and DOM substitutes. Actual browser CSS layout, iPhone touch/frame rate and a first-time player's enjoyment are NOT verified. Existing public hosting/access limitations remain separate from code quality.
+
+### 0.8.1 screenshot-driven correction
+
+User screenshots identify duplicated floor at the bottom and closed desk behind open drawer. These were real repeated render layers, not user zoom error. Remove both repeated scene backgrounds and detail CSS backdrop; hide underlying header in detail. Add anchor-preserving two-pointer zoom, detail panning, full-cover room geometry, source-coordinate hit tests and gesture release suppression. Cache room composition instead of repeating masks/light work for camera movement.33 tests pass (including full controller flow after geometry change, pinch release without state mutation, midpoint anchoring, phone/landscape/desktop coverage). Native Canvas8 states reviewed again. This still does not prove actual iPhone frame rate or touch feel; no browser control capability was available.
+
+### 0.8.2 user-confirmed play and remaining roughness
+
+User completed the default photo mission on iPhone and confirmed the direction improved; that verifies their reported playthrough, not all touch/frame-rate cases. Their new screenshot shows the closed drawer as an isolated strip on a solid rectangle. Replace its close-up with an actual fixed desk station and cavity plus extending tray. Add optional chair/frame/basket interactions without clue rewards and state-preserving return. Clarify current first-chapter-only completion rather than misleading the player with an absent next transition.35 automatic tests pass;12 Canvas states reviewed (including optional scenes), actual new-version iPhone feel still unverified.

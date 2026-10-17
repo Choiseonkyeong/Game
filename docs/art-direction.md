@@ -90,3 +90,46 @@ All assets are stored in `dist/travel-art/`. Existing source backgrounds were re
 | `travel-props-v3.webp` | Transparent 2×2 atlas matching room materials and daylight. Closed canvas camera box with 3-dial lock and ownership tag; same open box with film camera; tabletop charcoal/brass telescope on mini tripod; blank ownership tag with crescent and 3 squares. No text or UI, clean alpha. |
 
 The floor clue is replaced by a physical ownership label on the camera box. Its digits and paper text are rendered by code for legibility; the tag and camera box are painted assets. The blind samples the ORIGINAL linen, so it does not introduce a different graphic material.
+
+
+## V6.4 production assets · built-in ImageGen edit mode
+
+Original Seoul room was inspected and supplied as the reference. Output PNGs were encoded to 1536×1024 WebP with Sharp quality 92. Existing backgrounds and all other cities remain unchanged.
+
+| Repository path | Prompt specification |
+|---|---|
+| `dist/travel-art/seoul-folded-v4.webp` | Exact same registered bedroom composition, perspective, furniture, tote position and daylight. Fold only the sage duvet naturally toward the pillows/head of bed, exposing the front ivory mattress. Realistic settled folds on the bed, no floating cloth, no geometry stretching; preserve all other objects and surfaces. |
+| `dist/travel-art/seoul-diffuse-v4.webp` | Lighting-only edit of the exact original room. Preserve blind, window, duvet, furniture and object geometry. Remove direct sun patches and window-shaped shadows from bed, headboard, rug and floor. Soft diffuse daytime ambient light; same materials, camera and palette. |
+
+Folded art is feathered into a fixed bed silhouette with smooth gesture-controlled blending, replacing the V6.3 triangle mesh. A cached multiply correction derived from the original and diffuse-light plate removes baked-in sunlight as the original linen blind descends. This is an illustrated transition, not a cloth physics simulation. Danchu assets remain archived for history but no character is rendered or controlled in the game.
+
+## V6.5 · empty camera case · built-in ImageGen edit mode
+
+Final asset: `dist/travel-art/travel-props-empty-v5.webp` (1254×1254, transparent alpha, Sharp WebP quality 92).
+
+Prompt: precise-object-edit of the existing 2×2 `travel-props-v3.webp` atlas. Preserve cell layout, object scale, viewpoint, beige canvas material, brass hardware, lighting and silhouettes. Remove ONLY the camera from the top-right open case, showing an empty dark fabric lining. Keep its open lid, lock and tag, the closed case, telescope and ownership tag unchanged. Preserve genuine transparency; clean stray edge pixels; no new props, background or UI.
+
+The scene uses the empty open case plus the independently collectible camera, so taking the camera leaves an empty container. Existing original room, clean mattress plate and pillow-under plate supply the runtime-isolated moving materials; no replacement room art is blended to animate the duvet. Runtime layer transforms are not an ImageGen animation or a cloth physics simulation.
+
+## V7.0 · built-in ImageGen, original room referenced
+
+| Final repository path | Prompt specification |
+|---|---|
+| `dist/travel-art/seoul-drawer-v7.webp` | Precise-object-edit of original Seoul 1536×1024 room. Preserve exact camera, perspective, materials, furniture, chair, suitcase, objects, bed and sunlight. Change only the right desk shallow drawer at x80–96%, y46–52%: pull it out naturally about15cm; retain finger-slot front, show physically attached side walls, rails and shallow oak tray. No floating board, new props or UI. Runtime extracts only its assembly, preserving the original room elsewhere. |
+| `dist/travel-art/drawer-interior-v7.webp` | Illustration-story, original room as style/material reference. Close overhead three-quarter view DOWN INTO the same shallow light-oak drawer. Empty oak bottom and side walls, front finger-slot lip, one thin divider atx38%, warm diffuse light from left, matching grain and contact shadows. No objects, papers, luggage, camera, text or UI; dynamic game props are separate. |
+
+Both are 1536×1024, encoded with Sharp WebP quality92, opaque. Original reference was inspected. Built-in ImageGen was used, not API/CLI fallback. The movable postcard and lock controls are code-native UI/prop surfaces; existing room and item atlases supply their photographs and collectible images. Existing V6 imagery and other cities are retained.
+
+## 0.8.0 independent close-up assets
+
+Built-in imagegen, transparent-background edit/generation; conversion only to WebP (quality94). Existing original room, cleaned pillow plate and empty drawer interior retained.
+- `dist/travel-art/first-pillow-v8.webp`: independent floral linen pillow, warm sage botanical print, original room-compatible daylight, genuine alpha; runtime contact shadow. Generated source `generated_images/exec-063aaa2f-4d52-4490-856a-0b0a0b5e1b6d.png`, derived by editing pillow source `exec-7c651cbf-2a39-46ab-8711-bb9640b47fe5.png`. Edit prompt: preserve the exact pillow design and weave; remove every background, broad halo and cast shadow, keep only the pillow opaque on genuine transparency. Original brief: separate rectangular cream linen cushion with muted sage botanical print matching the room; top/front three-quarter view; no room, text, border or floor, alpha background.
+- `dist/travel-art/first-props-v8.webp`: generated source `generated_images/exec-b34d05c4-a8dd-4037-a4b9-d708baf13e89.png`. Prompt: coherent 2×2 prop atlas on true transparent background, equal square cells: top-left open empty round sage botanical metal tin with warm golden interior; top-right its matching detached lid; bottom-left realistic35mm film cartridge with short brown film leader; bottom-right silver/black vintage camera seen from rear with back door swung open and empty film chamber. Warm natural daylight, matte detailed materials matching the Seoul room; no labels, writing, grid, surrounding scene or hands. Runtime samples5px inside cells to avoid separator artifacts.
+
+## 0.8.2 room close-ups (built-in imagegen)
+
+All4 assets generated separately using `seoul.webp` as visual reference, not edited with Python. Converted with Sharp to WebP quality92, preserved alpha for chair.
+- `dist/travel-art/desk-station-v82.webp`: source `generated_images/exec-5ce5a264-dba7-4a2b-83e8-b7cef2fc2958.png`. Prompt: same warm oak desk, laptop/mug/notebooks/linen lamp, portrait front slightly-above close-up, fixed empty drawer cavity with rails under desktop, desk legs and oak floor/rug; no chair, suitcase, drawer tray/front, duplicate room or text. Used as fixed station beneath separately composited tray.
+- `dist/travel-art/chair-v82.webp`: source `generated_images/exec-786aceed-67c2-46cd-b91c-cb3da54826a7.png`. Prompt: extract/recreate exact reference oak chair with woven straw seat, full four legs, natural proportions, same front-left slightly-above view and warm light, real transparent background, no floor/cast shadow/room/text. Independent sprite; runtime contact shadow.
+- `dist/travel-art/botanical-v82.webp`: source `generated_images/exec-4a203be8-ff35-4617-bf6e-2ab88b84ae1f.png`. Prompt: complete thin oak frame around muted sage botanical leaves on cream paper, same ivory plaster wall and natural light, no secret writing/numbers/items/UI or extra furniture.
+- `dist/travel-art/wastebasket-v82.webp`: source `generated_images/exec-97a7388b-e2c1-48eb-8b59-dbdbc8773cbb.png`. Prompt: steep downward view into reference-style honey wicker bin on oak floor, detailed rim/fibers, unmarked crumpled cream paper and dried leaf, nothing valuable/hidden, natural contact shadow, adult quiet room aesthetic, no text/numbers/furniture/UI.

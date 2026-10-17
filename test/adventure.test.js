@@ -32,9 +32,10 @@ test('old first-scene saves retain collected items and valid progress after addi
  const s=restore(old);assert.deepEqual(s.inventory,['camera','film']);assert(s.flags.camera_box_open);assert.deepEqual(restore(s),s);
 });
 
-import {clothPoint,shadowPolygon} from '../dist/scene-surface.js';
-test('cloth displacement is continuous in both axes and curtain shadows grow with the occluded window',()=>{
- const a=clothPoint(.3,.75,.2,'up'),b=clothPoint(.3,.75,.21,'up'),c=clothPoint(.3,.75,.8,'up');assert(Math.abs(a[1]-b[1])<.01);assert(c[1]<a[1]);assert(clothPoint(.3,.75,.8,'left')[0]<.3);assert(clothPoint(.3,.75,.8,'right')[0]>.3);assert(shadowPolygon(.9)[2][1]>shadowPolygon(.2)[2][1]);
+import {foldBlend,sunlightGain} from '../dist/scene-surface.js';
+test('registered bed transition stays bounded and sunlight compensation removes the brighter patch rather than darkening every pixel equally',()=>{
+ assert.equal(foldBlend(0),0);assert.equal(foldBlend(1),1);assert.equal(foldBlend(-1),0);assert.equal(foldBlend(2),1);assert(foldBlend(.51)>foldBlend(.5));assert(foldBlend(.51)-foldBlend(.5)<.02);
+ assert(sunlightGain(230,130)<sunlightGain(140,130));assert(sunlightGain(230,130)<.65);assert.equal(sunlightGain(100,100),1);
 });
 test('a telescope observation needs installation, a matching view and sharp focus',()=>{
  let s=fresh();s.stage=2;assert(!act(s,{type:'observe',target:'tower',x:48.5,y:16,focus:75}).ok);

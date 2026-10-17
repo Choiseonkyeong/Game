@@ -4,23 +4,36 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.6.3",
-    "github_commit": "1d6e1437478f0dcb8e426dac5d7819eef84e18f2",
-    "github_dist_tree": "a22a8ca346155c2cbe5f148502a55626b1d8788a",
-    "entrypoint": "dist/index.html -> dist/play.js",
+    "version": "0.8.1",
+    "github_commit": "c27ed02d2743a68231100d6bb2417c115b732202",
+    "github_dist_tree": "8824be61016acf395845390e404ed7dc95ead3e2",
+    "entrypoint": "dist/index.html -> entry.js?v=081 -> first-room.js?v=081; ?mode=legacy -> play.js?v=070",
     "checks": {
-      "automated_tests_passed": 19,
-      "static_canvas_states_checked": 6,
-      "actual_mobile_touch_verified": false
-    }
+      "automated_tests_passed": 33,
+      "non_reduced_first_chapter_pointer_flow_verified": true,
+      "pinch_anchor_and_accidental_tap_suppression_verified": true,
+      "phone_landscape_desktop_cover_geometry_verified": true,
+      "static_canvas_focus_states_checked": 8,
+      "actual_mobile_touch_verified": false,
+      "actual_browser_css_or_framerate_verified": false
+    },
+    "changes": [
+      "Remove repeated room backdrop; normal room has one full-cover image and overview uses a solid matte.",
+      "Opaque close-up views hide underlying HUD; drawer no longer includes the closed desk behind its open interior.",
+      "Anchored two-finger room/detail zoom, panning, consumed releases; cache room light/material composition across camera gestures;1.5x canvas density and elapsed-time follow."
+    ],
+    "limitations": [
+      "Actual iPhone touch/frame rate and browser CSS unverified; static Canvas and DOM substitutes only.",
+      "Existing external-collaborator access and Pages activation issue remain separate and unresolved."
+    ]
   },
   "last_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "3e9dc777f18018df167edcabfbd99c2503b3d414",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_187edb7734b88191af97a15497355ddb",
-    "deployment_id": "appgdep_6ad2c666e14c8191bf47d8ca6d3970ea",
-    "deployed_at": "2026-10-17T00:51:01.412017Z",
+    "source_commit": "092d912279c82f00b96575cd09af8c6451678ac7",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_de311b796e688191a6943b4ea6d80cbe",
+    "deployment_id": "appgdep_6ad3978d09e081919cbfd72e9e54148d",
+    "deployed_at": "2026-10-17T15:43:22.717502+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -51,5 +64,41 @@
     "matches_master_content_at": "966f4a439c37eba55d86c060ad1b42be08aed8d0",
     "note": "Game source restored to reviewed v0.6.3 while keeping URL/deployment files. Both histories retained; no force push."
   },
-  "update_rule": "Do not replace last_successful_deployment with a proposed, saved-only or failed release. Re-read provider state; update provenance only with evidence."
+  "update_rule": "Do not replace last_successful_deployment with a proposed, saved-only or failed release. Re-read provider state; update provenance only with evidence.",
+  "previous_successful_deployment": {
+    "provider": "Sites",
+    "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
+    "source_commit": "1c0c742d5760f69465d1624ea911a455464a5340",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_c300d17e970c819180df135c7f00090c",
+    "deployment_id": "appgdep_6ad39458de2c8191a47634f81a589e1e",
+    "deployed_at": "2026-10-17T15:29:43.625753+00:00",
+    "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
+    "status": "succeeded",
+    "access": {
+      "provider_setting": "public",
+      "external_collaborator_status": "access_failure_reported",
+      "universal_access_verified": false
+    }
+  },
+  "handoff": {
+    "source_branch": "master",
+    "source_commit": "c27ed02d2743a68231100d6bb2417c115b732202",
+    "sites_and_github_dist_identical": true,
+    "experience_contract": "docs/experience-contract.md",
+    "reference_and_verification_notes": "docs/polish-reference.md",
+    "art_prompts": "docs/art-direction.md",
+    "visible_release_marker": "Menu: 0.8.1 · PINCH CHAPTER",
+    "cache_busting_test_url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/?v=0.8.1",
+    "remaining": "Real iPhone pinch/touch and frame-rate review; browser CSS check. Keep single room/background, anchored pinch, cached material render and both saves. Existing Pages/access issue remains."
+  },
+  "latest_verification": {
+    "checked_at": "2026-10-17T15:43:22.717502+00:00",
+    "version": "0.8.1",
+    "automated_tests_passed": 33,
+    "static_canvas_focus_states": 8,
+    "source_dist_matches": true,
+    "actual_browser_play_verified": false,
+    "actual_mobile_touch_verified": false,
+    "prior_access_probe": "v0.8.0 direct fetch from execution environment returned403; no new universal-access claim"
+  }
 }
