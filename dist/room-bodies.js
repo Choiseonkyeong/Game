@@ -1,6 +1,6 @@
 // Room furniture and props cut from the painted room and moved in place with spring physics.
 // Coordinates are source pixels of a 1536×1024 room. Pivots are where the object touches or hangs.
-import {BodyMotion} from './interaction-motion.js?v=100';
+import {BodyMotion} from './interaction-motion.js?v=110';
 
 export const SEOUL_BODIES=[
  {id:'bed',kind:'squash',strength:.35,pivot:[420,940],points:[[0,515],[300,478],[560,500],[835,640],[800,700],[430,945],[0,830]]},
@@ -50,7 +50,7 @@ export const TOKYO_BODIES=[
  // Painted Japanese details (tools/bake_rooms.py); negative y reaches into the added ceiling rows.
  {id:'cat',kind:'wobble',pivot:[590,378],points:[[560,300],[620,300],[620,379],[560,379]]},
  {id:'lantern',kind:'sway',strength:.8,pivot:[1063,-8],points:[[1050,-8],[1076,-8],[1082,22],[1104,40],[1106,152],[1082,166],[1044,166],[1020,152],[1022,40],[1044,22]]},
- {id:'noren',kind:'leaf',strength:.8,pivot:[1240,-6],points:[[1140,-6],[1340,-6],[1340,164],[1140,164]]},
+ {id:'noren',kind:'sway',strength:.7,pivot:[1186,-6],points:[[1130,-6],[1242,-6],[1242,164],[1130,164]]},
  {id:'furin',kind:'sway',strength:1.2,pivot:[1445,-26],points:[[1430,-26],[1460,-26],[1478,-4],[1478,74],[1462,232],[1428,232],[1412,74],[1412,-4]]}
 ];
 
@@ -93,6 +93,12 @@ export class BodyLayer{
   if(!this.motions.size)return;const scale=g.rw/1536;
   for(const def of this.defs){const motion=this.motions.get(def.id);if(!motion)continue;const part=this.parts(def,source);if(!part)continue;const {sprite,fill,box}=part,p=motion.pose,[px,py]=def.pivot;
    ctx.save();ctx.setTransform(scale,0,0,scale,g.tx,g.ty);ctx.drawImage(fill,box.x,box.y);
+   // Hanging cloth bends from its hook and plants bend from the pot: thin slices shift more the further they are from the anchor.
+   if(def.kind==='sway'||def.kind==='leaf'){const hang=def.kind==='sway',L=Math.max(1,hang?box.y+box.h-py:py-box.y);
+    for(let y=0;y<box.h;y+=2){const sy=box.y+y,dd=hang?sy-py:py-sy;if(dd<=0){ctx.drawImage(sprite,0,y,box.w,2,box.x,sy,box.w,2);continue;}const u=dd/L;
+     const off=hang?-(dd*Math.sin(p.angle)*.7+L*u*u*p.bend*.55):L*Math.pow(u,1.7)*(p.angle*.7+p.bend*.45),lift=hang?dd*(1-Math.cos(p.angle)):0;
+     ctx.drawImage(sprite,0,y,box.w,2.6,box.x+off,sy-lift,box.w,2.6);}
+    ctx.restore();continue;}
    ctx.translate(px+p.x,py+p.y);ctx.rotate(p.angle);ctx.scale(1+p.squash*.5,1-p.squash);ctx.translate(-px,-py);ctx.drawImage(sprite,box.x,box.y);ctx.restore();}
  }
 }

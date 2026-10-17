@@ -5,8 +5,8 @@ test('a drawer spring overshoots against its stop, bounces back and rests exactl
  assert(hit>=1,'the tray knocks its stop');assert.equal(s.value,1);assert(t<1.2);
 });
 test('touched room objects move a little and always return to rest',()=>{
- for(const kind of ['sway','leaf','rock','wobble','squash','hop','shake']){const m=new BodyMotion(kind);m.impulse(1,1);let moved=0,t=0;while(!m.resting&&t<6){m.step(1/60);t+=1/60;const p=m.pose;moved=Math.max(moved,Math.abs(p.angle)+Math.abs(p.x)+Math.abs(p.y)+Math.abs(p.squash));assert(p.y<=0,'hopping things never sink into the surface');}
-  assert(moved>.005,kind);assert(m.resting,kind);assert.deepEqual(m.pose,{angle:0,x:0,y:0,squash:0});}
+ for(const kind of ['sway','leaf','rock','wobble','squash','hop','shake']){const m=new BodyMotion(kind);m.impulse(1,1);let moved=0,t=0;while(!m.resting&&t<6){m.step(1/60);t+=1/60;const p=m.pose;moved=Math.max(moved,Math.abs(p.angle)+Math.abs(p.x)+Math.abs(p.y)+Math.abs(p.squash)+Math.abs(p.bend));assert(p.y<=0,'hopping things never sink into the surface');}
+  assert(moved>.005,kind);assert(m.resting,kind);assert(Object.values(m.pose).every(v=>v===0),kind);}
 });
 test('portrait phones see the taller room nearly top to bottom and a wide slice of it; desktop keeps the room whole',()=>{
  for(const [w,h] of [[390,844],[390,700],[430,932]]){const g=stageFit(w,h,{x:.4,y:.5},1,false,PLATE.height);assert(g.rh>=h*.85,`${w}x${h} height`);assert(w/g.rw>=.4,`${w}x${h} width`);assert(g.rh<=h+1e-6);}

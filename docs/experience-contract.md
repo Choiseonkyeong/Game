@@ -78,3 +78,11 @@ User feedback (2026-10-18 KST): Tokyo looked like Korea; the tote, coat and desk
 - Paper clues (claim ticket, envelopes 12/27/31, film strip, photo paper) come from a painted sprite sheet (`tokyo-papers-v10.webp`) instead of vector drawing.
 - Doubled image fix: the moved object's old place is filled from its surroundings and backed by their true average colour (previously a 1-pixel downscale sampled the empty centre, and a second destination-in pass reduced the mask to a thin ring, so the original showed through). Tote, coat and bag outlines were widened so no part stays behind.
 - Limits: added ceiling/floor are painted extensions of the existing art, not newly commissioned illustrations. Real iPhone/KakaoTalk confirmation is still needed.
+
+## 0.11.0 — natural bending motion and Tokyo Tower (Claude)
+
+User feedback (2026-10-18 KST): touched objects move cheaply; Tokyo needs a landmark like Tokyo Tower outside, not only Japanese text.
+
+- Hanging cloth (tote, coat, noren, lantern, wind chime) now bends from its hook in thin slices: displacement grows with distance from the anchor and the free end follows a moment later (`BodyMotion.bend`). Plants bend from the pot the same way. Rigid furniture (chair, suitcase, desk items) moves about half as much as in 0.9–0.10, so a tap reads as a nudge rather than a cardboard wobble.
+- Tokyo Tower (international orange with white bands, two observatories, lattice, haze) stands in the sky of the big shop window between the trees, with a hazy skyline and street power lines (`tokyo_street_view` in `tools/bake_rooms.py`). The noren now hangs over the door only, so the window view stays open.
+- Asset query bumped to `v=110` because image contents changed under the same file names.
