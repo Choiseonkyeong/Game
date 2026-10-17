@@ -31,3 +31,16 @@
 Pages 주소와 build-info.json을 외부에서 확인한 뒤에만 배포 완료라고 보고한다. AI의 URL-fetch 차단과 실제 사용자 브라우저의 로그인/403/404 오류를 구분한다. 다른 작업자의 접속 성공을 직접 확인하지 않았다면 보장하지 않는다.
 
 게임 진행은 기기별 localStorage이므로 같은 코드라도 단계는 다를 수 있다. 타인의 진행을 임의로 초기화하지 않는다.
+
+
+## 작업 전 공통 스킬
+[skills/guard-shared-game/SKILL.md](skills/guard-shared-game/SKILL.md)를 모든 게임 수정·복구·병합·배포에 적용합니다. Codex는 AGENTS.md, Claude는 CLAUDE.md와 프로젝트 스킬 안내에서 같은 원문을 읽습니다.
+
+GitHub 체크아웃 시작: `python skills/guard-shared-game/scripts/preflight.py --repo . --phase start`
+저장/병합 직전: `python skills/guard-shared-game/scripts/preflight.py --repo . --phase finish`
+
+이 검사는 원격 master 확인과 오래된 브랜치 탐지용입니다. 게임 수정, 강제 초기화, 커밋, 푸시는 하지 않습니다. Sites 체크아웃은 다른 저장소이므로 검사 대신 GitHub 커넥터에서 최신 커밋/트리를 비교하고 최신 소스를 동기화합니다.
+
+[.collaboration/release-state.json](.collaboration/release-state.json)은 마지막 확인 배포본과 공용 URL 미해결 상태를 구분합니다. 기록만 보고 오늘도 최신이라고 단정하지 않습니다. 게임 파일이 같은 문서 커밋과 실제 게임 변경도 구분합니다. 정상 배포 후에는 기록과 작업 인계 내용을 갱신합니다.
+
+커밋/PR 인계에는 소스 SHA, 반영 내용, 검사 결과, 실제 배포 버전과 URL, 접속 확인 방법/한계, 미완료 사항을 남깁니다. 서로 다른 작업자의 계정·로컬 진행은 공유되지 않으며, 이 채팅을 자동으로 읽었다고 가정하지 않습니다.
