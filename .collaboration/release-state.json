@@ -90,5 +90,25 @@
     "visible_release_marker": "Menu: 0.8.0 · FIRST CHAPTER",
     "cache_busting_test_url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/?v=0.8.0",
     "remaining": "Actual browser CSS and iPhone touch/frame-rate, first-time player testing. Pages activation and other collaborator access not declared fixed. Keep default entry and both save keys; fetch current master before editing."
+  },
+  "latest_verification": {
+    "checked_at": "2026-10-18T00:35:00+09:00",
+    "version": "0.8.0",
+    "source_commit": "bb602712dbbe43c9b00f788bdfd364b4f707e75b",
+    "automated_tests_passed": 30,
+    "source_archive_files_matched": 43,
+    "generated_archive_metadata_files": 1,
+    "static_canvas_focus_states": 8,
+    "curtain_rug_luminance": [
+      175,
+      146,
+      116
+    ],
+    "provider_version_matches": true,
+    "provider_screenshot": "loading screen only; timing versus stalled load unresolved",
+    "http_fetch": "6 requests returned403 in this execution environment",
+    "actual_browser_play_verified": false,
+    "actual_mobile_touch_verified": false,
+    "status": "logic checks passed; real browser verification blocked"
   }
 }
