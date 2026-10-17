@@ -1,14 +1,16 @@
 # 단추의 여행책 · 여섯 도시의 작은 단서
 
-## 공통 테스트 주소 · Codex / Claude
+## 공용 GitHub 배포 · Codex / Claude
 
-**[게임 실행하기](https://strange-cafe-suming.silkyfrost33.chatgpt.site/)**
+공동 작업의 원본은 [Choiseonkyeong/Game](https://github.com/Choiseonkyeong/Game)의 `master`이며, 게임 파일은 `dist/`입니다. 작업자는 수밍과 별도 계정일 수 있으므로 수밍의 ChatGPT 로그인이나 개인 Sites 배포 권한을 공동 작업의 전제로 삼지 않습니다.
 
-공식 확인 주소는 위 주소 하나입니다. 로그인 없이 수밍과 다른 Claude 작업자가 같은 배포본을 동시에 확인할 수 있습니다. 저장소의 소스 기준은 `Choiseonkyeong/Game`의 `master`, 서비스 파일은 `dist/`입니다.
+**GitHub Pages 공용 주소(활성화·배포 성공 확인 전):** https://choiseonkyeong.github.io/Game/
 
-GitHub에 저장한 코드가 이 주소에 자동 배포되는 구조는 아닙니다. 변경 사항은 **같은 Sites 프로젝트에 배포한 뒤** 위 주소에서 확인해야 합니다. 다른 임시 미리보기 주소를 공식 주소로 대체하지 않습니다. 협업 및 배포 방법은 [COLLABORATION.md](COLLABORATION.md)를 읽어 주세요.
+자동 배포 구성은 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)에 있습니다. 저장소 관리자가 [Settings → Pages](https://github.com/Choiseonkyeong/Game/settings/pages)의 **Build and deployment → Source**를 **GitHub Actions**로 한 번 선택해야 합니다. 그다음 Actions의 **Publish shared game → Run workflow**를 실행합니다. Pages가 활성화되지 않았다면 위 주소가 아직 열리지 않을 수 있으며, 접속이 검증되었다고 안내하지 않습니다.
 
-접근 설정: 2026-10-17 공개 전환. 게임 코드 기준: v0.6.3. 기기별 저장 진행은 별도이므로 같은 주소라도 현재 단계는 서로 다를 수 있습니다.
+이후 어느 작업자가 `master`의 게임 파일을 수정하든 검사가 통과하면 같은 Pages 주소로 자동 배포됩니다. 실제 배포 커밋은 주소 뒤 `build-info.json`에서 확인합니다. 동시에 서로 다른 작업을 할 때는 최신 원격 변경을 통합한 뒤 저장하며 강제 푸시로 상대 작업을 덮어쓰지 않습니다.
+
+기존 ChatGPT Sites 주소는 설정상 공개이지만 외부 작업자의 접속 실패가 보고되어 공용 접속 보장을 철회합니다. 클로드의 URL 읽기 도구 제한과 일반 브라우저의 접속 실패는 구분해서 확인해야 합니다. 자세한 절차는 [COLLABORATION.md](COLLABORATION.md)를 읽어 주세요.
 
 
 현대적인 숙소와 생활 공간에서 숨은 물건을 찾아 여행책을 완성하는 2D 상황 퍼즐. 서울 → 도쿄 → 타이베이 → 방콕 → 파리 → 리스본, 6개 배경에 5단계씩 총 30단계입니다.

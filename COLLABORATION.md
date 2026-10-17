@@ -1,35 +1,33 @@
-# Codex와 Claude의 공통 작업 기준
+# Codex / Claude 공용 작업 기준
 
-## 공식 URL
+## 단일 원본
+- 공용 저장소: https://github.com/Choiseonkyeong/Game
+- 기본 브랜치: master
+- 서비스 파일: dist/
+- 작업자는 수밍과 별도 사람/계정일 수 있다. 수밍 개인 로그인으로만 열리는 주소를 공용 주소라고 보고하지 않는다.
+- 작업 전 원격 master를 확인하고 상대 변경을 보존한다. 동시에 수정한 내용은 통합하고 강제 푸시하지 않는다.
 
-https://strange-cafe-suming.silkyfrost33.chatgpt.site/
+## GitHub Pages 배포
+목표 공용 URL: https://choiseonkyeong.github.io/Game/
 
-이 URL을 수밍과 모든 작업자의 공통 테스트 주소로 사용합니다. 공개 접근이며 수밍의 ChatGPT 로그인 계정이 필요하지 않습니다. 별도 작업자의 개인 계정이나 미리보기 URL을 기준으로 삼지 않습니다.
+상태: Pages 활성화 및 실제 배포 성공을 확인하기 전에는 접속 완료라고 안내하지 않는다. 기존 Sites는 공개 설정이지만 외부 접속 실패가 보고되었다.
 
-## 소스와 현재 배포
+저장소 관리자에게 필요한 1회 설정:
+1. https://github.com/Choiseonkyeong/Game/settings/pages
+2. Build and deployment → Source → GitHub Actions
+3. https://github.com/Choiseonkyeong/Game/actions 에서 Publish shared game → Run workflow
 
-- 저장소: https://github.com/Choiseonkyeong/Game
-- 기준 브랜치: `master`
-- 서비스 소스: `dist/` (빌드 없는 정적 HTML/JS)
-- 코드 버전: `package.json` v0.6.3
-- 현재 게임 코드의 GitHub 기준 커밋: `1d6e1437478f0dcb8e426dac5d7819eef84e18f2`
-- 현재 게임 코드의 Sites 소스 커밋: `3e9dc777f18018df167edcabfbd99c2503b3d414`
-- Sites 프로젝트: `appgprj_6ad1d1dbc290819197bc2cdd806a617d`
-- 마지막 게임 배포 버전: `appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_187edb7734b88191af97a15497355ddb`
+연결된 GitHub 도구는 파일·커밋 변경을 지원하지만 Pages 설정을 변경하는 관리 API는 제공하지 않는다. 개인 토큰을 코드/문서/대화에 요구하거나 저장하지 않는다.
 
-두 Git 저장소의 커밋 ID는 다릅니다. 위 두 커밋은 같은 v0.6.3 게임 파일을 담고 있습니다. 이후 협업 문서만 수정한 커밋과 게임 변경 커밋을 구분합니다.
+자동 배포: .github/workflows/pages.yml
+- master의 dist, test, package.json, 배포 workflow 변경 시 실행
+- npm test 통과 후 dist를 GitHub Pages에 게시
+- Codex와 Claude 모두 GitHub의 같은 배포 경로를 사용한다.
+- 배포 권한은 workflow의 기본 GITHUB_TOKEN과 OIDC를 사용하며 개인 Sites 토큰이 필요 없다.
+- build-info.json에 실제 배포 커밋을 기록한다.
+- Pages 활성화 후 첫 workflow가 실패했다면 Actions에서 실패 원인을 확인하고 재실행한다.
 
-## 작업 순서
+## 확인
+Pages 주소와 build-info.json을 외부에서 확인한 뒤에만 배포 완료라고 보고한다. AI의 URL-fetch 차단과 실제 사용자 브라우저의 로그인/403/404 오류를 구분한다. 다른 작업자의 접속 성공을 직접 확인하지 않았다면 보장하지 않는다.
 
-1. 작업 전 원격 `master`의 최신 내용을 확인합니다. 오래된 로컬 체크아웃으로 상대 작업을 덮어쓰지 않습니다.
-2. 변경 내용과 영향을 확인하고 필요한 검사를 수행합니다. 게임 변경은 `npm test`로 검증합니다.
-3. GitHub에 변경을 저장합니다. 동시 작업으로 원격 HEAD가 바뀌면 먼저 최신 변경을 가져와 통합합니다. 강제 푸시로 다른 작업을 덮어쓰지 않습니다.
-4. 배포 권한이 있는 작업자는 위 **동일 Sites 프로젝트**에 해당 소스를 동기화하고 배포합니다. 새 프로젝트나 다른 주소를 공식 테스트 주소로 만들지 않습니다.
-5. Sites 배포 기능을 사용할 수 없는 Claude 작업자는 GitHub 변경 커밋을 남기고 Codex에 해당 커밋의 동일 주소 배포를 요청합니다. **GitHub 저장만으로 배포 완료라고 보고하지 않습니다.**
-6. 실제 배포 성공을 확인하고 공식 URL과 배포된 코드 기준을 전달합니다. 테스트 한계도 함께 기록합니다.
-
-## 접근과 버전 혼선 방지
-
-공개 접근은 게임 열람 권한입니다. GitHub 수정 권한이나 Sites 배포 권한을 자동으로 부여하지 않습니다. 비밀번호나 토큰을 문서에 저장하지 않습니다.
-
-배포된 코드가 같아도 기기의 localStorage에 저장한 진행은 서로 다릅니다. 현재 단계가 다르다고 다른 버전인 것은 아닙니다. 코드가 오래된 경우 우선 새로고침하고 서비스 워커 캐시를 확인합니다. 검증 목적으로 진행 초기화가 필요하면 게임 메뉴의 처음부터 다시 기능을 사용하되 사용자의 저장 진행을 임의로 삭제하지 않습니다.
+게임 진행은 기기별 localStorage이므로 같은 코드라도 단계는 다를 수 있다. 타인의 진행을 임의로 초기화하지 않는다.

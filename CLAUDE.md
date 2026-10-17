@@ -1,9 +1,12 @@
-# Claude 작업 안내
+# Claude 공동 작업 안내
 
-이 저장소의 공통 테스트 URL은 다음 하나입니다.
+공동 원본: https://github.com/Choiseonkyeong/Game (master)
+게임 파일: dist/
+작업 전 README.md와 COLLABORATION.md를 읽고 원격 master의 최신 변경을 가져오세요. 다른 작업자의 변경을 강제로 덮어쓰지 마세요.
 
-https://strange-cafe-suming.silkyfrost33.chatgpt.site/
+GitHub Pages 공용 목표: https://choiseonkyeong.github.io/Game/
+배포는 .github/workflows/pages.yml를 사용합니다. Pages 활성화 전에는 이 URL이 동작한다고 보고하지 마세요. 저장소 관리자가 Settings → Pages → Source → GitHub Actions로 한 번 설정해야 합니다.
 
-수밍과 다른 작업자가 로그인 없이 같은 배포본을 확인합니다. 작업 전 `README.md`와 `COLLABORATION.md`를 읽고 원격 `master`의 최신 내용을 가져오세요. 서비스 파일은 `dist/`입니다.
+활성화 후에는 master에 게임 변경을 저장하면 검사 후 같은 주소로 자동 배포됩니다. build-info.json으로 실제 배포 커밋을 확인하세요. 수밍의 ChatGPT 계정이나 개인 Sites 배포 권한이 공동 작업의 필수 조건이 아닙니다.
 
-GitHub 저장은 사이트 자동 배포가 아닙니다. 같은 Sites 프로젝트에 배포한 뒤 공식 주소에서 확인해야 합니다. Sites 배포 권한/기능이 없으면 수정 커밋을 Codex에 전달해 동일 주소 배포를 요청하세요. 새로운 개인 미리보기 주소를 공식 주소로 안내하거나 다른 작업자의 최신 변경을 덮어쓰지 마세요.
+기존 Sites 주소가 모든 작업자에게 열린다고 단정하지 마세요. 외부 접속 실패가 보고되었습니다. Claude URL 읽기 도구 오류와 일반 브라우저 접속 실패를 구분하세요.
