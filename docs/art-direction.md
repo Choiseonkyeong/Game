@@ -1,24 +1,92 @@
-# V3 아트 제작 기록
+# 여행책 V6 아트 제작 기록
 
-제작 도구: 기본 제공 ImageGen. 아래 두 개의 새 이미지 자산을 생성하고 웹용 WebP로 인코딩했습니다. 주인공의 투명 배경을 유지하고, 인코딩 외에 이미지의 구도·색감·내용을 수정하지 않았습니다.
+Built-in imagegen을 사용했다. 아래는 최종 에셋 경로와 제작 프롬프트다. 배경과 발견 그림은 새로 제작하고, 단추는 기존 정체성을 참고해 현대 여행 공간에 맞춰 다시 그렸다.
 
-| 자산 | 프로젝트 경로 |
-| --- | --- |
-| 상세한 침실 배경 | `dist/art/bedroom.webp` |
-| 단추 주인공 컷아웃 | `dist/art/button.webp` |
+## 배경
 
-## 공통 프롬프트
+공통: Production 3:2 hand-painted travel editorial room background, warm cream light oak and muted sage, believable natural perspective and materials, contemporary 2020s furnishings, foreground floor clear from y80 to100, no characters, no UI or floating items.
 
-Use case: illustration-story. High-end lovingly detailed 2D painted game art with the warmth, craftsmanship and expressive toy-world storytelling of a family animated feature. Not a 3D viewport or low-poly render. Soft painterly modeling, rich material detail, beautiful color design, rounded forms, warm amber lamp light with soft cool moonlight. Original designs only, no existing movie characters, no text, no logo, no UI.
+### dist/travel-art/seoul.webp
 
-## 배경 프롬프트
+Seoul contemporary guesthouse bedroom, morning. Cream plaster, warm light oak, sage duvet on low bed LEFT taking x5-43 percent y48-80; subtle short black camera strap emerging from folds at x31 y62, camera itself completely hidden. Linen tote rests on the bed at x39 y62. Simple open wall shelf at x53 y30 with a small round biscuit tin, everyday books and ceramics. Low oak desk RIGHT x64-94 y51-75, closed shallow drawer x78 y62, laptop, ordinary notebook and white travel adapter resting quietly on desk x83 y51. Light jacket hanging on wall x56 y43. Modern window center-left x46 y26, Seoul low-rise rooftops outside. Suitcase under desk x79 y77. Small rug on foreground floor. No chest, no key visibly displayed.
 
-Asset type: portrait 2D puzzle game background, tall 2:3 composition. A cozy child's bedroom at night seen from the low eye level of a small toy. No characters. Deep teal walls with subtle wallpaper stars, large window at upper left with midnight blue curtains and moon, a neatly made low wooden bed at upper right with patchwork cream and dusty-blue quilt, a detailed small wooden bedside cabinet with a circular brass lamp base, stacks of illustrated books, a wicker basket of toys at far left, little wooden railway around edges, worn wooden floorboards, buttons and threads and a little hand-stitched fabric rug. Full, carefully drawn environment with convincing fabrics, wood grain, seams, tiny scratches, cozy storybook personality. IMPORTANT: leave the entire lower center 65% as relatively clear wooden floor/rug playground for interactive props and protagonist to be overlaid. Furnishings frame the edges and upper part. Main perspective should allow 2D sprites on the floor at front; no overhead view. Visually rich along the sides, quiet open center. No visible cats or dolls.
+### dist/travel-art/tokyo.webp
 
-## 주인공 프롬프트
+Tokyo small independent stationery and camera shop. Contemporary light wood shelving, gentle teal details, daylight, everyday urban Tokyo through glass storefront at RIGHT x81 y30. Oak service counter LEFT x8-45 y52-76 with closed shallow stationery drawer x28 y64 and a folded city map under notebook x32 y48. Shelf at CENTER x54 y36 with ordinary cylindrical film tins among books. Light canvas tote hooked to counter x41 y65. Small photo contact sheet pinned above counter x25 y30. Shop door RIGHT x89 y59, card reader quietly integrated at x80 y56. A jacket hangs at x60 y44. Floor clear, no conspicuous collectible objects.
 
-Asset type: one full-body 2D game character cutout on genuinely transparent background, no scenery. A charismatic small orange tabby plush cat toy named Button. Warm apricot plush with finely visible soft fiber texture and little stitches. Very large curious amber-brown eyes with light reflections, cream muzzle, cream tummy, small chocolate triangular nose, gentle cheek fur, round paws, three stitched whiskers each side, a rounded fluffy curled tail. A distinct muted blue fabric patch on its RIGHT ear (viewer left), hand stitched edges. A sage-green knitted scarf tied simply with a little brass bell. Tiny worn tan canvas satchel across body. Body facing front with slight 3/4 turn toward viewer right, standing on two short legs, looking curious and a little mischievous, one paw raised in a friendly questioning gesture. Appealing feature-film-quality proportions and expressive face. Entire figure including both ears, paws and tail inside canvas, no crop. Clear silhouette, no ground or cast shadow on background, no text. Painterly 2D style rather than literal 3D.
+### dist/travel-art/taipei.webp
 
-## 소품과 UI
+Taipei contemporary neighborhood cafe interior, rainy warm afternoon. Clean terrazzo floor, warm oak and muted sage furnishings, large rain-streaked window LEFT x20 y30 with a quiet Taipei lane outside. Round cafe table LEFT x28 y60 with ordinary paper napkin holder and a closed pastry box x29 y52. Counter RIGHT x65-95 y48-74 with closed shallow drawer x79 y61, ceramic cups and coffee tins on shelf x71 y30. Canvas tote on chair CENTER x49 y66. Menu notebook on table x35 y53. Umbrella by doorway RIGHT x90 y69. Welcoming mature travel editorial atmosphere, not a cartoon child scene. Floor clear.
 
-소품은 기존 SVG 기반 아트 시스템을 확장해 그라디언트, 이음선, 바느질, 반사광, 그림자를 추가했습니다. 주인공과 배경은 이미지 자산으로, 조작 소품은 코드로 그린 SVG로 구성합니다. 서로 다른 표현 방식이 섞인 프로토타입이며, 후속 단계에서 소품별 원화로 통일할 수 있습니다.
+### dist/travel-art/bangkok.webp
+
+Bangkok contemporary design hostel lounge, late afternoon tropical daylight. Warm pale wood, rattan and muted green, polished terrazzo floor. Rattan sofa LEFT x7-43 y53-76 with linen cushion x28 y60 and a canvas tote x38 y63. Low coffee table CENTER x51 y66 with folded paper map, ordinary notebook and tiny tin x52 y58. Wall shelf x59 y31 with ceramic planters and books. Modern small charging desk RIGHT x75 y54 with closed shallow drawer x80 y63, phone cable and blank power strip x83 y52. Wide window x22 y25 with tropical urban balcony outside. Modern luggage tucked by right door x90 y76.
+
+### dist/travel-art/paris.webp
+
+Paris contemporary film photography atelier and small rental studio, bright overcast daylight. Cream plaster, light oak, dusty blue sage accents, subtle city rooftops beyond tall window LEFT x19 y28. Modern worktable CENTER x49 y61 with small lightbox x48 y52, notebook, closed film tin x56 y54 and folded cotton cloth x40 y55 integrated among everyday supplies. Closed flat print drawer on worktable x49 y68. Canvas tote on low chair RIGHT x76 y67; light jacket on wall x88 y42. Narrow shelf above worktable x56 y29 holds photo books and ordinary camera boxes. Natural warm editorial paint, no antique ornate furniture.
+
+### dist/travel-art/lisbon.webp
+
+Lisbon contemporary rooftop guesthouse common room opening onto sunny balcony. Cream walls, quiet blue azulejo accent strip, pale oak furniture, mature travel editorial illustration. Large glass balcony door LEFT x20 y36 with Lisbon terracotta rooftops outside. Modern low desk RIGHT x70 y56 with travel notebook, folded city map, small metal tin x75 y50 and closed shallow drawer x77 y65. Canvas tote on upholstered chair CENTER x49 y65. Narrow wall shelf x58 y27 with ceramics and books, light jacket at x89 y42, suitcase tucked at x87 y77. Indoor foreground floor remains clear, nothing floating, no obvious collectibles.
+
+## dist/travel-art/tools.webp
+
+Use case: illustration-story. Modern 2020s travel puzzle game prop sprite atlas, transparent background, EXACT 4 columns and 4 rows equal cells, 16 isolated individual objects fully inside their square cells with 18% transparent gutters. Hand-painted refined gouache editorial illustration on tactile paper, soft warm cream light oak muted sage palette, subtle shadows, natural materials, no childish outlines, no interface text. Gentle consistent 3/4 overhead view. Row 1: small silver-and-black analog film camera with black fabric strap; closed analog film canister with roll inside; same analog camera with film compartment open; small plain silver modern door key. Row 2: white USB-C cable coiled; small white travel electrical plug adapter; matte sage powerbank with charging port; graphite pencil. Row 3: small oval pocket mirror; red metal paper clip; loose cream cotton cord; same red paperclip bent as hook tied to cotton cord. Row 4: folded city street map on cream paper with sage lines; strip of three small city travel photographs; modern muted sage transit card with one white circle and no lettering; folded cream cotton cleaning cloth. No letters, no numbers, no scenes, no people, no glowing outlines. Realistic object proportions. Each silhouette distinct at small size.
+
+## dist/travel-art/discoveries.webp
+
+Use case: illustration-story. Discovery close-up atlas for modern cozy adult travel puzzle game. Exact 4 columns by 4 rows equal square cells on transparent background, 16 isolated small vignette objects. Each cell 15% gutters. Soft hand-painted refined gouache, warm cream pale oak muted sage colors, believable tactile material, consistent three-quarter overhead view. No text, labels, numbers or UI. Pair states matching object and camera: row1 cell1 rumpled sage duvet with tiny black camera strap tip barely emerging; cell2 SAME duvet gently folded back revealing a small silver black film camera nestled underneath; cell3 closed natural linen tote bag; cell4 SAME tote open showing dark lining and a small film tin inside. row2 cell1 round ordinary biscuit tin with lid; cell2 SAME biscuit tin open showing paper envelope and film canister; cell3 closed shallow modern oak desk drawer; cell4 SAME drawer pulled out containing pencils, travel adapter and folded receipt. row3 cell1 pocket of beige modern jacket with tiny metal key tip just visible; cell2 SAME pocket pulled open revealing a small plain silver key; cell3 closed plain paper photo envelope; cell4 SAME envelope opened with three small travel photo cards partly emerging. row4 cell1 closed cream pastry box tied with simple string; cell2 SAME pastry box open showing paper napkin and a small paperclip with receipt; cell3 folded city map; cell4 SAME city map unfolded with subtle route lines and a corner photograph. These are intimate discovery vignettes, not giant treasure chests. No old medieval objects, no detached floating game icons around a vignette.
+
+## dist/travel-art/danchu.webp
+
+Use case: identity-preserve. New 4-column 2-row transparent character sprite atlas for a modern travel puzzle game, using the reference ONLY for Danchu's identity: orange tabby plush cat, cream muzzle belly paws, blue stitched patch on left ear, muted sage small scarf, small tan crossbody satchel. Preserve identity but restyle as refined soft hand-painted gouache editorial illustration, natural muted colors, less glossy than reference, smaller eyes and slightly longer body, gentle adult travel-book charm, no exaggerated baby expression. Exact 4x2 equal cells, each pose wholly within cell with 15% gutters, all same character scale; transparent background, no shadows outside cell. Row1: standing calmly front, thoughtful paw near chin, walking left profile, walking right profile. Row2: sleeping curled under sage duvet; standing shading eyes with both paws to look at sky; crouching reaching one paw forward to open a drawer with NO magnifying glass; standing holding small silver black film camera. No room, no text, no decorative particles.
+
+배경은 1536×1024, 도구는 4×4 직사각 셀(1536×1024), 발견 그림은 4×4 셀(1402×1122), 단추는 4×2 셀(1774×887)이다. CSS는 각 시트의 실제 비율에 맞춰 표시한다. PNG 원화를 WebP로 인코딩했으며 투명 알파를 유지했다.
+
+
+## V6.1 — 장소별 조사 후 배경
+
+Built-in imagegen edit mode로 기존 배경을 참고해 열린 상태를 제작했다. 사용 프롬프트 공통:
+
+Edit target: the supplied original game background. Produce an alternate SEARCHED STATE of EXACTLY THE SAME ROOM, same 3:2 image size, camera angle, furniture placement, lighting, palette and hand-painted materials. Preserve the room as closely as possible; do not redesign, zoom, crop, add furniture or add characters. Only change the movable small parts specified. These states will be clipped into the original room as local interactive game layers, so stationary edges and furniture must stay aligned. 
+
+### dist/travel-art/seoul-searched.webp
+
+Gently fold the sage duvet toward the foot of the bed to expose the cream mattress in its upper middle where a small camera might have been hidden, but place NO camera. Tilt the floral pillow forward, revealing a narrow cream folded note edge under it. Pull the right oak desk drawer outward visibly to show its wooden interior, keeping the drawer at its existing location. Pull the hanging jacket's lower pocket outward slightly. Lower the existing linen roller blind halfway down the window; keep lower city view visible. Open the linen tote mouth slightly and lift the small round tin lid on the high shelf. No extra objects or characters.
+
+### dist/travel-art/tokyo-searched.webp
+
+Pull the existing front counter drawer a little farther out so its interior is visibly accessible. Open the hanging canvas tote's mouth. Tilt the hanging jacket and pull its pocket edge outward. Open the lid of one small film tin on the middle shelf. Lift one corner of the folded map on the counter. Keep all architecture, shopfront, photos and furniture in the exact same positions.
+
+### dist/travel-art/taipei-searched.webp
+
+Open the small pastry box on the cafe table to reveal its paper lining, lift a corner of the notebook page on the table, open the tote on the chair a little, pull the existing cafe counter's oak drawer outward to show the interior, lift the lid of one ordinary coffee tin on the upper shelf. Gently part the left window's upper soft shade only if present. Keep all furniture and rain view unchanged.
+
+### dist/travel-art/bangkok-searched.webp
+
+Tilt the sofa's loose beige pillow forward, open the canvas tote mouth on the sofa, lift the lid off the round tin on the coffee table, lift one map page corner, pull the desk drawer outward visibly, open the small canvas backpack by the right door a little. Keep all furniture and sunlight exactly where they are.
+
+### dist/travel-art/paris-searched.webp
+
+Pull one of the existing flat print drawers outward by a modest amount so a dark wood interior is visible. Open the linen tote on the chair, pull the jacket pocket outward, lift the lid of the round tin on the worktable, lift a corner of a paper on the lightbox. Keep the exact composition, furniture and lighting.
+
+### dist/travel-art/lisbon-searched.webp
+
+Pull the right desk drawer outward so its interior is visible. Open the tote on the chair, pull the hanging jacket pocket outward, tilt the chair cushion slightly, lift the lid of the little tin on the desk, lift one page of the travel notebook. Keep all composition and the balcony unchanged.
+
+원래 배경의 일부 영역만 조사 후 그림으로 전환하며, 나머지 공간은 원래 그림을 유지한다. 침대, 베개, 커튼, 서랍과 주머니는 별도 합성 영역과 모션을 사용한다.
+
+
+## V6.3 production assets · built-in ImageGen
+
+All assets are stored in `dist/travel-art/`. Existing source backgrounds were retained. PNG→WebP encoding used Sharp with alpha preserved; image content edits used built-in ImageGen.
+
+| File | Final prompt specification |
+|---|---|
+| `seoul-clean-v3.webp` | Precise-object-edit of original Seoul room; keep exact geometry, daylight and materials; remove duvet, pillows, tote/strap on bed, and roman blind; reveal ivory fitted mattress and window; no other changes. 1536×1024. |
+| `seoul-pillow-v3.webp` | Precise-object-edit of original Seoul room; remove ONLY floral throw pillow at x6–18%, y41–52%; preserve sage pillows and duvet underneath, all other geometry, original light and palette. 1536×1024. |
+| `danchu-v3.webp` | Transparent 4×2 atlas, same orange tabby, sage scarf, brown bag, patched ear. Fine matte fur and restrained natural-light palette to match room, smaller eyes/head, no glossy toy finish. Poses: neutral, thought, left/right walk, asleep, shading eyes, crouch reaching, holding camera. |
+| `travel-props-v3.webp` | Transparent 2×2 atlas matching room materials and daylight. Closed canvas camera box with 3-dial lock and ownership tag; same open box with film camera; tabletop charcoal/brass telescope on mini tripod; blank ownership tag with crescent and 3 squares. No text or UI, clean alpha. |
+
+The floor clue is replaced by a physical ownership label on the camera box. Its digits and paper text are rendered by code for legibility; the tag and camera box are painted assets. The blind samples the ORIGINAL linen, so it does not introduce a different graphic material.

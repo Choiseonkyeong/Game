@@ -1,1 +1,1 @@
-{"name":"단추의 한밤중 소동","short_name":"단추 퍼즐","lang":"ko","start_url":"./","scope":"./","display":"standalone","background_color":"#f4eddf","theme_color":"#f4eddf","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
+{"name": "단추의 여행책 · 여섯 도시의 작은 단서", "short_name": "단추의 여행책", "lang": "ko", "start_url": "./", "scope": "./", "display": "standalone", "background_color": "#e6e0d1", "theme_color": "#e6e0d1", "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]}
