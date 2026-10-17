@@ -5,3 +5,5 @@
 .header.in-detail{visibility:hidden}.focus{transform:none;transition:opacity .24s ease,visibility .24s}.focus.open{transform:none}
 
 .chapter-end{font-size:11px;line-height:1.7;color:#81836c;margin:14px 0 0}
+
+a.primary{text-decoration:none;text-align:center;box-sizing:border-box}.primary.quiet{background:transparent;color:#87917c;margin-top:4px;padding:11px}
