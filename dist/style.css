@@ -91,3 +91,18 @@
 .world-discovery{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;padding:0;border:0;background:transparent;display:grid;place-items:center;z-index:5;touch-action:manipulation;cursor:pointer}
 .world-discovery .item-art{width:var(--found-size);aspect-ratio:1.5;filter:saturate(.88) brightness(.96);pointer-events:none}
 .world-discovery:focus-visible{outline:1px dashed #9ca78b;outline-offset:1px;border-radius:8px}
+
+/* V6.2 — quiet, direct manipulation; no action-name overlays. */
+.speech,.controls-note,#camera-label,#drop-cue,.scene-hotspot span{display:none!important}
+.scene-hotspot{touch-action:none;cursor:grab}.scene-hotspot:active{cursor:grabbing}
+#clear-item{border:0;background:none;color:#7b8975;font-size:22px;padding:10px}
+#blind{position:absolute;z-index:3;left:24%;top:0;width:33%;height:0;pointer-events:none;background:repeating-linear-gradient(0deg,#d6c9a9 0px,#d6c9a9 3px,#c3b695 4px);box-shadow:0 3px 4px #554c3c44;border-bottom:3px solid #bcb098}
+#world.lights-off #room-image,#world.lights-off .room-state-layer,#world.lights-off #foreground{filter:brightness(.65) saturate(.85)}
+#world.dark-room #room-image,#world.dark-room .room-state-layer,#world.dark-room #foreground,#world.dark-room #blind{filter:brightness(.19) saturate(.6)}
+#world.dark-room #actor,#world.dark-room .world-discovery{filter:brightness(.45)}
+#hidden-mark{position:absolute;z-index:10;left:10%;top:77%;font:italic 17px Georgia,serif;color:#c9edb8;text-shadow:0 0 5px #b8f5a8aa;transform:rotate(-8deg);pointer-events:none;letter-spacing:2px}
+#pillow-note{position:absolute;left:13%;top:47%;width:5%;height:5%;z-index:3;background:#e4d6ad;transform:rotate(-12deg);color:#5f654f;font:9px Georgia;text-align:center;pointer-events:auto;border:0;min-width:30px;min-height:30px;cursor:zoom-in;box-shadow:1px 1px 2px #332c2244}
+.mini-box{width:var(--found-size);display:block;filter:saturate(.65) brightness(.95);transform:rotate(-8deg)}
+.mini-box .discovery-art{width:100%;margin:0;animation:none;aspect-ratio:1.25}
+.physical-note{margin:26px 8px;padding:24px 18px;background:#eee5cc;box-shadow:0 3px 14px #47391e12;line-height:1.9;font-size:15px;color:#4d594b;white-space:pre-line}
+#motion-action{z-index:3}#world.lights-off #motion-action{filter:none}

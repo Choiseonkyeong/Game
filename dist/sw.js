@@ -1,4 +1,4 @@
-const CACHE='danchu-travel-v6-motion-1';
+const CACHE='danchu-travel-v6-quiet-2';
 const ASSETS=['./','./index.html','./style.css','./play.js','./play-engine.js','./world.js','./adventure.js','./manifest.webmanifest','./icon.svg','./travel-art/seoul.webp','./travel-art/tokyo.webp','./travel-art/taipei.webp','./travel-art/bangkok.webp','./travel-art/paris.webp','./travel-art/lisbon.webp','./travel-art/tools.webp','./travel-art/discoveries.webp','./travel-art/danchu.webp','./travel-art/seoul-searched.webp','./travel-art/tokyo-searched.webp','./travel-art/taipei-searched.webp','./travel-art/bangkok-searched.webp','./travel-art/paris-searched.webp','./travel-art/lisbon-searched.webp'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>(k.startsWith('strange-cafe-')||k.startsWith('button-')||k.startsWith('danchu-case-')||k.startsWith('danchu-adventure-')||k.startsWith('danchu-travel-'))&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
