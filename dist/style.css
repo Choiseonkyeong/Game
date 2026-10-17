@@ -106,3 +106,32 @@
 .mini-box .discovery-art{width:100%;margin:0;animation:none;aspect-ratio:1.25}
 .physical-note{margin:26px 8px;padding:24px 18px;background:#eee5cc;box-shadow:0 3px 14px #47391e12;line-height:1.9;font-size:15px;color:#4d594b;white-space:pre-line}
 #motion-action{z-index:3}#world.lights-off #motion-action{filter:none}
+/* V6.3: one continuous room, original linen textures, physical clue artifacts. */
+#viewport{background:#c7bda9}#scene-surface{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+#room-motion-layers{display:none}#motion-action{display:none}#blind{display:none!important}
+#world.lights-off #room-image,#world.lights-off .room-state-layer,#world.lights-off #foreground,#world.dark-room #room-image,#world.dark-room .room-state-layer,#world.dark-room #foreground,#world.dark-room #actor,#world.dark-room .world-discovery{filter:none}
+#room-tone{position:absolute;inset:0;z-index:12;pointer-events:none;background:linear-gradient(120deg,#1e271c00,#24302700);opacity:0;transition:opacity .2s}
+#world.lights-off #room-tone{background:#18211b;opacity:.27}#world.dark-room #room-tone{background:#111916;opacity:.79}
+#actor-sprite,.portrait,.welcome-cat{background-image:url('travel-art/danchu-v3.webp');filter:saturate(.68) brightness(.94) contrast(.92)}
+#actor{filter:drop-shadow(0 3px 3px #3a32264a)}
+#pillow-note{left:11.8%;top:46%;width:3.4%;height:3.8%;min-width:32px;min-height:32px;z-index:16;font:11px Georgia;box-shadow:1px 2px 2px #463b2650}
+#hidden-mark{left:33.2%;top:67%;transform:rotate(-13deg);z-index:16;width:30px;height:34px;font:6px Georgia;letter-spacing:0;background:#cdbf9b;color:#625d49;border:1px solid #a99a7b;border-radius:1px;text-shadow:none;padding:4px 1px;pointer-events:auto;cursor:zoom-in;box-shadow:1px 2px 3px #241e1633}
+#hidden-mark span{display:block;font-size:8px;color:#c8edb5;text-shadow:0 0 4px #baf39399;margin-top:3px}
+.prop-art{background:url('travel-art/travel-props-v3.webp') 0 0/200% 200%;aspect-ratio:1;width:100%;pointer-events:none}
+.mini-box{width:var(--found-size)}.mini-box .prop-art{width:100%}.box-closeup{position:relative;width:230px;margin:12px auto}.box-closeup .prop-art{height:230px}.tag-link{position:absolute;bottom:11%;right:-5%;font-size:9px;border:1px solid #b3a78c;background:#e8dcc0;padding:10px 8px;transform:rotate(-12deg);color:#605a47}
+.bag-item .prop-art{width:35px;height:35px}.found-item .prop-art{width:66px;flex-shrink:0}#inspect-item{border:0;background:transparent;font-size:25px;color:#72846a;padding:7px}
+.artifact-paper{margin:18px auto;padding:24px;background:#eee5cf;color:#535e4e;max-width:340px;box-shadow:0 5px 18px #473c2415;line-height:1.9;font-size:15px}.artifact-paper small{font-size:10px;color:#8e8e76;letter-spacing:.05em}.artifact-paper p{font-size:14px;line-height:2;color:#525d4d}.note-sign{display:block;text-align:right;font:italic 16px Georgia;color:#8e8d73}
+.ownership-tag{position:relative;text-align:center;background:#e0d3ad}.ownership-tag .prop-art{width:200px;margin:auto}.tag-ink{font:26px Georgia;letter-spacing:.2em;color:#b7aa89;margin:12px}.tag-ink.visible-ink{color:#bdeca8;text-shadow:0 0 8px #659456;background:#344233;padding:10px;border-radius:4px}
+.tower-photo{aspect-ratio:1.25;background:url('travel-art/seoul.webp') 48% 15%/500% 500%;border:8px solid #f7f2e3;border-bottom-width:28px;transform:rotate(-3deg);box-shadow:0 4px 10px #463b2520;margin:12px 0}
+.frame-print{aspect-ratio:.7;background:url('travel-art/seoul.webp') 0% 16%/1600% 370%;border:12px ridge #ad8b5e;box-shadow:0 4px 12px #4b3e2930}
+#scope-lens{width:min(72vw,330px);aspect-ratio:1;border-radius:50%;background:#29332c;overflow:hidden;position:relative;margin:20px auto;touch-action:none;border:10px solid #3a4038;box-shadow:0 0 0 3px #a89667,inset 0 0 30px #000}
+#scope-landscape{position:absolute;inset:0;background-image:url('travel-art/seoul.webp');background-size:1100% 1100%;will-change:background-position,filter}
+.scope-reticle{position:absolute;inset:0;background:linear-gradient(transparent 49.8%,#293e2f88 50%,transparent 50.2%),linear-gradient(90deg,transparent 49.8%,#293e2f88 50%,transparent 50.2%);box-shadow:inset 0 0 30px #0009;border-radius:50%;pointer-events:none}
+.scope-controls{display:flex;align-items:center;gap:10px}.scope-controls input{flex:1;min-width:0;accent-color:#73866b}.scope-controls button{border:1px solid #c5c8ae;border-radius:50%;font-size:24px;background:#e7ebdc;width:45px;height:45px}.photo-caption{text-align:center;font-size:15px;line-height:1.7;padding:14px;color:#65795b}.photo-caption small{font-size:11px}
+.vertical-controls{position:absolute;z-index:15;right:12px;bottom:22%;display:grid;gap:7px}.vertical-controls button{width:30px;height:30px;border:1px solid #b9bda56e;border-radius:50%;background:#f4f1e4c4;color:#4b5d51;font-size:18px}
+.book-spread{background:#eee5cf;border-radius:3px 12px 12px 3px;padding:22px;box-shadow:inset 9px 0 12px #8c7a4d22,0 6px 20px #3c332022;min-height:340px;transform-origin:left center;animation:page-turn .3s ease}.book-spread h3{font:italic 22px Georgia;color:#64775d}.book-spread p{font-size:14px;line-height:2}.book-spread .page-index{text-align:right;font:italic 13px Georgia;color:#a89b7b}.book-navigation{display:flex;justify-content:space-between;margin-top:12px}.book-navigation button{border:0;background:none;font-size:25px;padding:8px 20px;color:#718164}@keyframes page-turn{from{opacity:.4;transform:perspective(500px) rotateY(-8deg)}to{opacity:1;transform:none}}
+
+#scene-surface{image-rendering:auto}#world.room-shaded #room-image{filter:none}
+.journal-photo{aspect-ratio:1.4;background-size:cover;background-position:center;border:7px solid #f9f4e9;border-bottom-width:23px;box-shadow:0 4px 12px #5e4f2a22;transform:rotate(-3deg);margin:15px 0}
+
+#hidden-mark{left:31.2%;width:25px;height:30px}

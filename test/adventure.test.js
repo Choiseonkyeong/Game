@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {stages,tools,roomAreas} from '../dist/adventure.js';import {fresh,act,restore,visible} from '../dist/play-engine.js';
-function solve(s){for(const r of stages[s.stage].rules){const result=act(s,{type:r.action,target:r.target,item:r.item,items:r.items,answer:r.answer});assert(result.ok,`Stage ${s.stage+1} ${r.action} ${r.target}: ${result.message}`);s=result.state;}assert(s.flags.done);return s;}
+function solve(s){for(const r of stages[s.stage].rules){const result=act(s,{type:r.action,target:r.target,item:r.item,items:r.items,answer:r.answer,...r.solution});assert(result.ok,`Stage ${s.stage+1} ${r.action} ${r.target}: ${result.message}`);s=result.state;}assert(s.flags.done);return s;}
 test('all 30 travel scenes solve and every save boundary restores the same state',()=>{let s=fresh();for(let i=0;i<30;i++){assert.equal(s.stage,i);s=solve(s);assert.deepEqual(restore({version:6,history:s.history}),s);if(i<29)s=act(s,{type:'next'}).state;}assert.equal(s.completed.length,30);assert(!act(s,{type:'next'}).ok);const revisit=act(s,{type:'visit',stage:0});assert(revisit.ok);s=solve(revisit.state);assert.equal(s.completed.length,30);assert.deepEqual(restore(s),s);});
 test('first camera and film cannot be collected before their real hiding places are searched',()=>{let s=fresh();for(const id of ['camera','film'])assert(!act(s,{type:'tap',target:id}).ok);s=act(s,{type:'tap',target:'blanket'}).state;assert(!visible(s,stages[0].objects.find(o=>o.id==='camera')));assert(visible(s,stages[0].objects.find(o=>o.id==='camera_box')));assert(!act(s,{type:'code',target:'camera_box',answer:'000'}).ok);s=act(s,{type:'code',target:'camera_box',answer:'314'}).state;assert(visible(s,stages[0].objects.find(o=>o.id==='camera')));assert(!visible(s,stages[0].objects.find(o=>o.id==='film')));s=act(s,{type:'tap',target:'camera'}).state;assert.deepEqual(s.inventory,['camera']);assert(!visible(s,stages[0].objects.find(o=>o.id==='camera')));assert(!act(s,{type:'use',item:'camera',target:'window'}).ok);});
 test('combination accepts either order, consumes materials and preserves them on failure',()=>{let s=fresh();s=act(s,{type:'tap',target:'blanket'}).state;s=act(s,{type:'code',target:'camera_box',answer:'314'}).state;for(const target of ['camera','tin','film'])s=act(s,{type:'tap',target}).state;const before=structuredClone(s);assert(!act(s,{type:'combine',items:['camera','camera']}).ok);assert.deepEqual(s,before);const r=act(s,{type:'combine',items:['film','camera']});assert(r.ok);assert.deepEqual(r.state.inventory,['loaded']);assert(!act(r.state,{type:'use',item:'film',target:'window'}).ok);});
@@ -30,4 +30,14 @@ test('the phosphor clue requires both darkness controls and persists after switc
 test('old first-scene saves retain collected items and valid progress after adding the nested box',()=>{
  const old={version:6,history:[{type:'tap',target:'blanket'},{type:'tap',target:'camera'},{type:'tap',target:'tin'},{type:'tap',target:'film'}]};
  const s=restore(old);assert.deepEqual(s.inventory,['camera','film']);assert(s.flags.camera_box_open);assert.deepEqual(restore(s),s);
+});
+
+import {clothPoint,shadowPolygon} from '../dist/scene-surface.js';
+test('cloth displacement is continuous in both axes and curtain shadows grow with the occluded window',()=>{
+ const a=clothPoint(.3,.75,.2,'up'),b=clothPoint(.3,.75,.21,'up'),c=clothPoint(.3,.75,.8,'up');assert(Math.abs(a[1]-b[1])<.01);assert(c[1]<a[1]);assert(clothPoint(.3,.75,.8,'left')[0]<.3);assert(clothPoint(.3,.75,.8,'right')[0]>.3);assert(shadowPolygon(.9)[2][1]>shadowPolygon(.2)[2][1]);
+});
+test('a telescope observation needs installation, a matching view and sharp focus',()=>{
+ let s=fresh();s.stage=2;assert(!act(s,{type:'observe',target:'tower',x:48.5,y:16,focus:75}).ok);
+ for(const a of [{type:'tap',target:'drawer'},{type:'tap',target:'scope'},{type:'use',item:'scope',target:'tower'}]){const r=act(s,a);assert(r.ok);s=r.state;}
+ assert(!act(s,{type:'observe',target:'tower',x:48.5,y:16,focus:10}).ok);assert(!act(s,{type:'observe',target:'tower',x:43,y:16,focus:75}).ok);assert(act(s,{type:'observe',target:'tower',x:48.5,y:16,focus:75}).ok);
 });

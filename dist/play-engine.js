@@ -1,6 +1,6 @@
 import {stages,tools} from './adventure.js';
 import {worldPlaces,describePlace,isDark} from './world.js';
-export const fresh=()=>({version:6,revision:2,positions:{},stage:0,completed:[],flags:{},world:{},observations:[],inventory:[],sequence:{},history:[]});
+export const fresh=()=>({version:6,revision:3,positions:{},stage:0,completed:[],flags:{},world:{},observations:[],inventory:[],sequence:{},history:[]});
 export const visible=(s,o)=>!(o.tool&&s.flags[o.tool+'_taken'])&&(o.need||[]).every(f=>s.flags[f])&&!(o.hide||[]).some(f=>s.flags[f]);
 export function act(state,a,record=true){
  const s=structuredClone(state),level=stages[s.stage];let result={state,ok:false,message:'지금은 사용할 수 없어.'};
@@ -41,6 +41,7 @@ export function act(state,a,record=true){
  if(!rule)return fail(level.wrong?.[a.target]||(a.type==='combine'?'모양은 재미있지만 이 둘은 함께 쓸 이유가 없겠어. 다른 조합도 시도해 보자.':a.type==='use'?`${tools[a.item]?.[0]||'이 도구'}로는 해결되지 않아. ${target.detail||'대상의 모양과 지금 목표를 다시 보자.'}`:target.detail||'단추가 살펴봤어. 소지품을 쓰거나 다른 물건과 함께 생각해 보자.'));
  if(rule.set&&s.flags[rule.set])return fail(target?.detail||'여기는 이미 준비됐어. 다음 물건을 살펴보자.');
  if(!(rule.need||[]).every(f=>s.flags[f]))return fail(target?.detail||'아직 준비가 덜 됐어. 다른 물건을 먼저 살펴보자.');
+ if(a.type==='observe'&&(!Number.isFinite(a.x)||!Number.isFinite(a.y)||!Number.isFinite(a.focus)||Math.abs(a.x-48.5)>1.5||Math.abs(a.y-16)>1.4||Math.abs(a.focus-75)>10))return fail('');
  if(a.type==='code'&&a.answer!==rule.answer)return fail('아직 맞지 않아. 표시된 단서의 순서와 방향을 다시 살펴보자.');
  if(rule.set)s.flags[rule.set]=true;
  if(rule.reveal||/메모:|영수증:|카페②|도시 순서:/.test(rule.msg||'')){s.observations??=[];const text=rule.msg;if(!s.observations.some(o=>o.text===text))s.observations.push({anchor:target?.anchor||'desk',text});}
@@ -51,4 +52,4 @@ export function act(state,a,record=true){
  if(record)s.history.push(a);
  return {state:s,ok:true,message:rule.msg,rule};
 }
-export function restore(raw){let s=fresh();if(raw?.version!==6||!Array.isArray(raw.history))return s;for(const a of raw.history.slice(0,3000)){if(a&&['tap','use','combine','code','next','visit','explore','shift','light'].includes(a.type)){try{if(raw.revision!==2&&s.stage===0&&a.type==='tap'&&a.target==='camera'&&s.flags.blanket_open&&!s.flags.camera_box_open)s=act(s,{type:'code',target:'camera_box',answer:'314'}).state;const r=act(s,a);if(r.ok)s=r.state;}catch{}}}return s;}
+export function restore(raw){let s=fresh();if(raw?.version!==6||!Array.isArray(raw.history))return s;for(const a of raw.history.slice(0,3000)){if(a&&['tap','use','combine','code','next','visit','explore','shift','light','observe'].includes(a.type)){try{if(!raw.revision&&s.stage===0&&a.type==='tap'&&a.target==='camera'&&s.flags.blanket_open&&!s.flags.camera_box_open)s=act(s,{type:'code',target:'camera_box',answer:'314'}).state;if((raw.revision||0)<3&&s.stage===2&&a.type==='use'&&a.target==='book'&&s.flags.page_ready&&!s.flags.tower_seen){for(const legacy of [{type:'tap',target:'scope'},{type:'use',item:'scope',target:'tower'},{type:'observe',target:'tower',x:48.5,y:16,focus:75}]){const migrated=act(s,legacy);if(migrated.ok)s=migrated.state;}}const r=act(s,a);if(r.ok)s=r.state;}catch{}}}return s;}

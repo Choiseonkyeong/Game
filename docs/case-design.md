@@ -57,3 +57,10 @@
 
 ### V6.2 첫 방 개정
 이불의 직접 드래그 → 숨은 번호 보관함 → 베개 아래 쪽지 → 창빛·등불 차단 → 축광 숫자 → 카메라 → 별도 보관 필름 → 첫 사진. 정답 번호는 메모에 직접 쓰지 않는다. 동작 이름 안내와 반복 조사 팝업은 제거한다. 다른 단계의 실제 번호·순서 메모는 수첩에 기록한다.
+
+
+### V6.3 connected discoveries
+- Seoul 1: the travel book explains why the ownership tag uses phosphor ink and repeats the box combination; the pillow note refers to that tag; darkness reveals digits on the attached tag; the camera is nested in the box.
+- Seoul 3: frame-back photo → desk-drawer telescope → window installation → pan/focus on Namsan Tower → annotate the photo page. An inventory tap alone does not complete the observation.
+- Every city has three book pages connecting its objects, techniques and next destination; these are optional environmental reading rather than action instructions.
+- Frame and photograph backs can be inspected; paper order/number clues stay in physical artifacts and the notebook.

@@ -76,3 +76,17 @@ Pull one of the existing flat print drawers outward by a modest amount so a dark
 Pull the right desk drawer outward so its interior is visible. Open the tote on the chair, pull the hanging jacket pocket outward, tilt the chair cushion slightly, lift the lid of the little tin on the desk, lift one page of the travel notebook. Keep all composition and the balcony unchanged.
 
 원래 배경의 일부 영역만 조사 후 그림으로 전환하며, 나머지 공간은 원래 그림을 유지한다. 침대, 베개, 커튼, 서랍과 주머니는 별도 합성 영역과 모션을 사용한다.
+
+
+## V6.3 production assets · built-in ImageGen
+
+All assets are stored in `dist/travel-art/`. Existing source backgrounds were retained. PNG→WebP encoding used Sharp with alpha preserved; image content edits used built-in ImageGen.
+
+| File | Final prompt specification |
+|---|---|
+| `seoul-clean-v3.webp` | Precise-object-edit of original Seoul room; keep exact geometry, daylight and materials; remove duvet, pillows, tote/strap on bed, and roman blind; reveal ivory fitted mattress and window; no other changes. 1536×1024. |
+| `seoul-pillow-v3.webp` | Precise-object-edit of original Seoul room; remove ONLY floral throw pillow at x6–18%, y41–52%; preserve sage pillows and duvet underneath, all other geometry, original light and palette. 1536×1024. |
+| `danchu-v3.webp` | Transparent 4×2 atlas, same orange tabby, sage scarf, brown bag, patched ear. Fine matte fur and restrained natural-light palette to match room, smaller eyes/head, no glossy toy finish. Poses: neutral, thought, left/right walk, asleep, shading eyes, crouch reaching, holding camera. |
+| `travel-props-v3.webp` | Transparent 2×2 atlas matching room materials and daylight. Closed canvas camera box with 3-dial lock and ownership tag; same open box with film camera; tabletop charcoal/brass telescope on mini tripod; blank ownership tag with crescent and 3 squares. No text or UI, clean alpha. |
+
+The floor clue is replaced by a physical ownership label on the camera box. Its digits and paper text are rendered by code for legibility; the tag and camera box are painted assets. The blind samples the ORIGINAL linen, so it does not introduce a different graphic material.
