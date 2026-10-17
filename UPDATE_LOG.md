@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 02:14 KST — Claude · v0.9.0 master 병합 및 GitHub Pages 배포 성공
+
+- 요청: 작업 브랜치의 v0.9.0을 master에 합쳐 배포.
+- 병합: 원격 master `7cf3d48` 위에 v0.9.0 변경 19개 파일만 하나의 커밋으로 올림(강제 푸시 없음, master가 그대로인 것 확인 후 fast-forward). master `3c406e431acd704dd0a1478aaf2ca379c989589f`. 작업 브랜치의 예전 커밋 이력은 master에 넣지 않음.
+- 검사: 병합 전 자동 검사 42개 통과, preflight finish `ready`. 배포 워크플로의 게임 검사도 통과.
+- 배포: GitHub Pages **성공 2026-10-18 02:14:51 KST** (Publish shared game #9, run `39052883329`).
+- 주소: https://choiseonkyeong.github.io/Game/ (도쿄 장: `?chapter=tokyo`). Claude 실행 환경에서는 github.io 접속이 차단되어 실제 화면 접속과 `build-info.json`은 직접 확인하지 못함. 다른 작업자 접속 미확인.
+- 남은 사항: 휴대폰에서 주소 접속·`build-info.json` 커밋 확인, 실제 터치감·프레임 속도 검수. Sites 주소는 이번에 갱신하지 않음.
+
 ## 2026-10-18 02:04 KST — Claude · v0.9.0 사물 움직임 / 화면 비율 / 두 번째 장(도쿄) — 소스 저장, 배포 전
 
 - 요청: 책상·침대·의자 등 모든 대상이 실제 사물처럼 자연스럽게 움직이게, 화면 대비 배경이 너무 커서 적절한 비율로 축소, 첫 단계 다음 단계 제작.
