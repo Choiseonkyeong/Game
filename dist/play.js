@@ -1,10 +1,10 @@
-import {SceneSurface,sceneProgress} from './scene-surface.js';
+import {SceneSurface,sceneProgress,motionEase} from './scene-surface.js';
 import {stages,roomList,tools} from './adventure.js';
 import {fresh,restore,act,visible} from './play-engine.js';
 import {worldPlaces,describePlace,patchRect,gestureFrame,isDark} from './world.js';
 const $=id=>document.getElementById(id),KEY='danchu-travel-v6',reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let raw=null;try{raw=JSON.parse(localStorage.getItem(KEY)||'null');}catch{}
-let propGesture=null,suppressSceneClick=false;
+let propGesture=null,suppressSceneClick=false,propFramePending=false;
 let state=restore(raw),selected=[],busy=false,camera=50,cameraY=50,overview=false,geometry={w:0,h:0,scale:1,tx:0,ty:0},hint=0,sound=false,audio=null,codeTarget=null,code='',gesture=null,token=0;
 const surface=new SceneSurface($('scene-surface'));let scopeView=null,artifactBack=false,bookPage=0;
 const level=()=>stages[state.stage];
@@ -20,10 +20,11 @@ function layout(){const r=$('viewport').getBoundingClientRect();geometry.h=Math.
 
 function focusAt(x){camera=Math.max(0,Math.min(100,x));layout();}
 function worldPoint(e){const r=$('viewport').getBoundingClientRect();return{x:(e.clientX-r.left-geometry.tx)/(geometry.w*geometry.scale)*100,y:logicalY((e.clientY-r.top-geometry.ty)/(geometry.h*geometry.scale)*100)};}
-function renderObjects(){
+function renderObjects(preview=null){
+ const view=preview?act(state,{type:"shift",target:preview.target,...preview.frame},false).state:state;
  $('objects').innerHTML=worldPlaces(state).filter(o=>visible(state,o)).map(o=>`<button class="scene-hotspot" data-object="${o.id}" style="left:${o.x}%;top:${o.y}%;width:${o.w||12}%;height:${o.h||12}%" aria-label="${esc(o.name)}"></button>`).join('');
- const finds=level().objects.filter(o=>o.inside&&visible(state,o)&&(!state.positions?.bed||o.inside!=='blanket'||state.positions.bed.progress>=.6)&&(!state.positions?.[level().objects.find(p=>p.id===o.inside)?.anchor]||state.positions[level().objects.find(p=>p.id===o.inside).anchor].progress>=.6));
- $('objects').innerHTML+=finds.map(o=>{const parent=level().objects.find(p=>p.id===o.inside),anchor=parent?.anchor;let x=o.x,y=o.y;if(level().room===0&&anchor==='bed'){x=30;y=66;}else if(anchor==='drawer'){x=parent.x;y=parent.y-1;}else if(anchor==='jacket'){x=parent.x+1;y=parent.y+4;}else if(anchor==='tote'){x=level().room===0?40:parent.x;y=parent.y-2;}const size=Math.max(20,Math.min(o.special==='camera-box'?46:34,geometry.h*(o.special==='camera-box'?.08:o.id==='camera'?.06:.045)));return `<button class="world-discovery" data-object="${o.id}" aria-label="발견한 ${esc(o.name)} 챙기기" style="left:${x}%;top:${y}%;--found-size:${size}px">${o.special==='camera-box'?`<span class="mini-box ${state.flags.camera_box_open?'open':''}">${propArt(state.flags.camera_box_open?1:0)}</span>`:art(o.tool)}</button>`;}).join('');
+ const finds=level().objects.filter(o=>o.inside&&visible(view,o)&&!(level().room===0&&o.inside==='camera_box'&&sceneProgress(view,'bed')<.6)&&(!view.positions?.bed||o.inside!=='blanket'||view.positions.bed.progress>=.6)&&(!view.positions?.[level().objects.find(p=>p.id===o.inside)?.anchor]||view.positions[level().objects.find(p=>p.id===o.inside).anchor].progress>=.6));
+ $('objects').innerHTML+=finds.map(o=>{const parent=level().objects.find(p=>p.id===o.inside),anchor=parent?.anchor;let x=o.x,y=o.y;if(level().room===0&&anchor==='bed'){x=26.5;y=60.3;}else if(anchor==='drawer'){x=parent.x;y=parent.y-1;}else if(anchor==='jacket'){x=parent.x+1;y=parent.y+4;}else if(anchor==='tote'){x=level().room===0?40:parent.x;y=parent.y-2;}const size=Math.max(20,Math.min(o.special==='camera-box'?46:34,geometry.h*(o.special==='camera-box'?.08:o.id==='camera'?.06:.045)));return `<button class="world-discovery ${o.special==='camera-box'?'painted-box-hit':''}" data-object="${o.id}" aria-label="발견한 ${esc(o.name)} 챙기기" style="left:${x}%;top:${y}%;--found-size:${size}px">${o.special==='camera-box'?'':art(o.tool)}</button>`;}).join('');
  if(state.flags.scope_ready)$('objects').innerHTML+=`<button class="world-discovery placed-scope" data-object="tower" aria-label="창가의 망원경" style="left:51%;top:40%;width:64px;height:64px">${propArt(2)}</button>`;
 }
 function renderMotions(){
@@ -32,20 +33,32 @@ function renderMotions(){
  surface.render(state,level().room);renderEnvironment();$('observations').textContent=`수첩 ${state.observations?.length||0}`;
 }
 function roomCrop(o,opened=false){const rect=patchRect(level().room,o.anchor)||[Math.max(0,o.x-10),Math.max(0,o.y-10),20,20], [x,y,w,h]=rect,room=roomList[level().room][0];return `<div class="room-closeup" style="aspect-ratio:${1.5*w/h}"><div class="crop-content"><img src="travel-art/${room}.webp" alt="${esc(o.name)} 확대" style="width:${100/w*100}%;height:${100/h*100}%;left:${-x/w*100}%;top:${-y/h*100}%"></div></div>`;}
-async function animatePlace(o){
+function paintManipulation(o,frame){
+ surface.render(state,level().room,{anchor:o.anchor,frame});
+ renderEnvironment({anchor:o.anchor,frame});
+ renderObjects({target:o.id,frame});
+}
+async function animatePlace(o,to=1,from=sceneProgress(state,o?.anchor)){
  if(!o?.anchor||o.tool)return;
- const from=sceneProgress(state,o.anchor),to=from>.5?from:1,direction=o.anchor==='window'?'down':'up';
- if(!reduced&&level().room===0&&['bed','pillow','window'].includes(o.anchor)){
-  await new Promise(resolve=>{const begin=performance.now();const frame=now=>{const t=Math.min(1,(now-begin)/650),p=from+(to-from)*(t*t*(3-2*t));surface.render(state,level().room,{anchor:o.anchor,frame:{progress:p,direction}});if(t<1)requestAnimationFrame(frame);else resolve();};requestAnimationFrame(frame);});
- }else await sleep(180);
- 
+ const direction=state.positions?.[o.anchor]?.direction||(o.anchor==='window'?'down':'up');
+ if(reduced){paintManipulation(o,{progress:to,direction});return;}
+ await new Promise(resolve=>{const begin=performance.now(),duration=o.anchor==='bed'?800:o.anchor==='pillow'?580:480;
+  const frame=now=>{const t=Math.min(1,(now-begin)/duration),p=from+(to-from)*motionEase(t);
+   paintManipulation(o,{progress:p,direction});if(t<1)requestAnimationFrame(frame);else resolve();};requestAnimationFrame(frame);
+ });
+}
+async function settlePlace(o,frame,velocity=0){
+ // Small damped release, returning to the exact saved position. A partial opening stays partial.
+ if(reduced||Math.abs(velocity)<.002){paintManipulation(o,frame);return;}
+ const amplitude=Math.max(-.025,Math.min(.025,velocity*2));
+ await new Promise(resolve=>{const begin=performance.now();const tick=now=>{const t=Math.min(1,(now-begin)/240),p=Math.max(0,Math.min(1,frame.progress+amplitude*Math.sin(t*Math.PI*2)*Math.exp(-4*t)));paintManipulation(o,{...frame,progress:p});if(t<1)requestAnimationFrame(tick);else resolve();};requestAnimationFrame(tick);});
 }
 function renderEnvironment(preview=null){
  const position=preview?.anchor==='window'?preview.frame:state.positions?.window;
  const amount=position?.progress??(state.world?.window?1:0),dark=!!state.world?.light&&amount>=.88;
  $('room-tone').style.opacity=dark?'.79':state.world?.light?String(.24+.2*amount):String(.11*amount);$('world').classList.toggle('lights-off',!!state.world?.light);$('world').classList.toggle('dark-room',dark);
  $('blind').style.height='0%';
- $('hidden-mark').hidden=!(state.stage===0&&dark&&state.flags.blanket_open);$('hidden-mark').classList.toggle('tag-glowing',dark);
+ $('hidden-mark').hidden=!(state.stage===0&&dark&&state.flags.blanket_open&&sceneProgress(state,'bed')>=.6);$('hidden-mark').classList.toggle('tag-glowing',dark);
  $('pillow-note').hidden=!(state.stage===0&&(preview?.anchor==='pillow'?preview.frame.progress:(state.positions?.pillow?.progress??(state.world?.pillow?1:0)))>=.6);
 }
 async function explore(o){
@@ -61,9 +74,12 @@ async function activatePlace(id){
  selected=[];renderBag();if(o.pad){openCode(o);return;}
  const rule=level().rules.find(r=>r.action==='tap'&&r.target===id);
  if(o.container&&rule&&!state.flags[rule.set]){await perform({type:'tap',target:id});return;}
- if(o.container&&state.flags[o.flag]){if(o.anchor==='drawer')openInspection(o);return;}
+ if(o.container&&state.flags[o.flag]){if(o.anchor==='drawer'){openInspection(o);return;}await manipulateTap(o);return;}
  if(rule&&!state.flags[rule.set]){await perform({type:'tap',target:id});return;}
+ if(state.world?.[o.anchor]&&['pillow','window','bed'].includes(o.anchor)){await manipulateTap(o);return;}
  await explore(o);
+}
+async function manipulateTap(o){busy=true;const to=sceneProgress(state,o.anchor)>.5?0:1;await animatePlace(o,to);const r=act(state,{type:'shift',target:o.id,progress:to,direction:state.positions?.[o.anchor]?.direction||'up'});if(r.ok)state=r.state;render();busy=false;
 }
 function showObservations(){
  $('detail-tag').textContent=roomList[level().room][1]+' · 관찰 수첩';$('detail-content').innerHTML='<h2>만져 보고 알게 된 것들</h2>'+((state.observations||[]).map(v=>`<article class="observation-entry"><b>${esc(worldPlaces(state).find(o=>o.anchor===v.anchor)?.name||'메모')}</b><p>${esc(v.text)}</p></article>`).join('')||'<p>장면에서 발견한 흔적이 여기에 남아요.</p>');showDetail();
@@ -75,8 +91,9 @@ function openInspection(o,message=''){
  const l=level(),opened=!!state.flags[o.flag]||!!state.world?.[o.anchor],found=l.objects.filter(v=>v.inside===o.id&&visible(state,v)),hasRule=l.rules.some(r=>r.action==='tap'&&r.target===o.id&&!state.flags[r.set]);
  $('detail-tag').textContent=`${roomList[l.room][1]} · 가까이 살펴보기`;
  let picture=roomCrop(o,opened);
- $('detail-content').innerHTML=`<h2>${esc(o.name)}</h2>${o.container?discoveryArt(opened?o.openView:o.view):picture}${o.anchor==='drawer'?'<button class="zoom-inside" id="zoom-inside" aria-label="서랍 내부 확대">＋</button>':''}${found.length?`<div class="found-list">${found.map(v=>`<button class="found-item" data-object="${v.id}">${v.tool?art(v.tool):discoveryArt(4)}<span>${esc(v.name)}</span></button>`).join('')}</div>`:''}`;
+ $('detail-content').innerHTML=`<h2>${esc(o.name)}</h2>${o.anchor==='drawer'&&l.room===0?'<div class="drawer-inspection"><canvas id="drawer-canvas" width="780" height="280" aria-label="열린 서랍 내부"></canvas></div>':o.container?discoveryArt(opened?o.openView:o.view):picture}${o.anchor==='drawer'?'<button class="zoom-inside" id="zoom-inside" aria-label="서랍 내부 확대">＋</button>':''}${found.length?`<div class="found-list">${found.map(v=>`<button class="found-item" data-object="${v.id}">${v.tool?art(v.tool):discoveryArt(4)}<span>${esc(v.name)}</span></button>`).join('')}</div>`:''}`;
  $('detail').dataset.place=o.id;showDetail();
+ if(o.anchor==='drawer'&&l.room===0){const c=$('drawer-canvas'),ctx=c?.getContext?.('2d');if(ctx&&surface.canvas)ctx.drawImage(surface.canvas,1200,440,300,170,0,0,780,280);}
 }
 
 const journalPages=[
@@ -112,15 +129,43 @@ function render(){const l=level(),room=roomList[l.room];$('chapter').textContent
 function ping(notes=[660],force=false){if(!sound&&!force)return;try{audio??=new(window.AudioContext||window.webkitAudioContext)();audio.resume();notes.forEach((f,i)=>{const o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+i*.33;o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.09,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.28);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+.3);});}catch{}}
 function sleep(ms){return new Promise(r=>setTimeout(r,reduced?0:ms));}
 
-function fly(item,origin){if(reduced||!origin)return;const start=origin.getBoundingClientRect?.()||origin,end=$('bag').getBoundingClientRect(),el=document.createElement('div');el.className='flying-item';el.innerHTML=art(item);el.style.left=start.left+start.width/2-40+'px';el.style.top=start.top+start.height/2-40+'px';document.body.append(el);requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.transform=`translate(${end.left+35-(start.left+start.width/2)}px,${end.top+25-(start.top+start.height/2)}px) scale(.45)`;el.style.opacity='.15';}));setTimeout(()=>el.remove(),850);}
+async function fly(item,origin){
+ if(reduced)return;
+ const target=document.querySelector(`[data-item="${item}"]`),end=target?.getBoundingClientRect?.()||$('bag').getBoundingClientRect();
+ const start=origin?.getBoundingClientRect?.()||origin||{left:window.innerWidth/2,top:window.innerHeight*.45,width:0,height:0};
+ const el=document.createElement('div');el.className='pickup-flight';el.innerHTML=art(item);document.body.append(el);
+ const x0=start.left+start.width/2,y0=start.top+start.height/2,x1=end.left+end.width/2,y1=end.top+end.height/2;
+ target?.classList.add('pickup-pending');
+ await new Promise(resolve=>{const begin=performance.now();const tick=now=>{const t=Math.min(1,(now-begin)/660),e=motionEase(t),arc=Math.sin(t*Math.PI)*Math.min(110,Math.abs(y1-y0)*.24+35);
+  el.style.transform=`translate(${x0+(x1-x0)*e-30}px,${y0+(y1-y0)*e-arc-30}px) scale(${.85+.3*Math.sin(t*Math.PI)})`;
+  if(t<1)requestAnimationFrame(tick);else resolve();};requestAnimationFrame(tick);});
+ el.remove();target?.classList.remove('pickup-pending');target?.classList.add('pickup-landed');ping([784,1047]);setTimeout(()=>target?.classList.remove('pickup-landed'),450);
+}
+async function combineMotion(items){
+ if(reduced||!items?.length)return;
+ const rect=$('bag').getBoundingClientRect(),cx=rect.left+rect.width/2,cy=rect.top-55;
+ const pieces=items.map((item,i)=>{const el=document.createElement('div');el.className='pickup-flight';el.innerHTML=art(item);document.body.append(el);return {el,i};});
+ await new Promise(resolve=>{const begin=performance.now();const tick=now=>{const t=Math.min(1,(now-begin)/400),e=motionEase(t);for(const {el,i} of pieces){el.style.transform=`translate(${cx+(i?1:-1)*62*(1-e)-30}px,${cy-30-Math.sin(t*Math.PI)*10}px) rotate(${(i?1:-1)*12*(1-e)}deg) scale(${1-.25*e})`;el.style.opacity=String(1-Math.max(0,(t-.75)*4));}if(t<1)requestAnimationFrame(tick);else resolve();};requestAnimationFrame(tick);});pieces.forEach(({el})=>el.remove());
+}
+async function receiveAt(o){
+ if(!o||reduced)return;
+ const el=document.querySelector(`[data-object="${o.id}"]`);el?.classList.add('item-received');
+ if(state.stage===0&&o.anchor==='window'){$('world').classList.add('camera-shutter');await sleep(320);$('world').classList.remove('camera-shutter');}
+ else await sleep(180);
+ el?.classList.remove('item-received');
+}
 async function perform(action){
  if(busy)return;const l=level(),o=l.objects.find(v=>v.id===action.target),r=act(state,action);say(r.message);
- if(!r.ok){if(o)focusAt(o.x);return false;}
- busy=true;const serial=++token,origin=o?document.querySelector(`[data-object="${o.id}"]`)?.getBoundingClientRect():null;
+ if(!r.ok){if(o){focusAt(o.x);const el=document.querySelector(`[data-object="${o.id}"]`);el?.classList.add('attempt-miss');setTimeout(()=>el?.classList.remove('attempt-miss'),260);}return false;}
+ busy=true;const serial=++token,origin=o?document.querySelector(`[data-object="${o.id}"]`)?.getBoundingClientRect():action.type==='combine'?(()=>{const b=$('bag').getBoundingClientRect();return {left:b.left+b.width/2,top:b.top-55,width:0,height:0};})():null;
  if($('detail').open)$('detail').close();
- if(o){if(o.container||!o.tool&&action.type==='use')await animatePlace(o);if(o.tool){await sleep(220);}}
+ if(o){if(action.type==='code'&&o.special==='camera-box')await animatePlace({...o,anchor:'camera-box'});else if(o.container)await animatePlace(o);}
  if(serial!==token){busy=false;return false;}state=r.state;selected=selected.filter(i=>state.inventory.includes(i));if(action.type==='use'||action.type==='combine')selected=[];
- if(r.rule?.grant)fly(r.rule.grant,origin);render();$('world-reveal').hidden=true;
+ render();$('world-reveal').hidden=true;
+ if(r.rule?.grant&&!reduced)document.querySelector(`[data-item="${r.rule.grant}"]`)?.classList.add('pickup-pending');
+ if(action.type==='combine')await combineMotion(action.items);
+ if(r.rule?.grant)await fly(r.rule.grant,origin||document.querySelector(`[data-item="${action.items?.[0]}"]`));
+ if(action.type==='use'&&r.ok)await receiveAt(o);
  if(r.rule?.melody)ping([261.63,329.63,293.66,392]);else ping([659,784]);say(r.message);
  if(action.type==='use'&&action.item==='scope'){openScope();}
  if(state.flags.done){await sleep(550);showSuccess(r.message);}else if(o?.anchor==='drawer'){openInspection(o);}else if(r.rule?.reveal||(!o?.container&&o&&!o.tool&&action.type==='tap')){showClue(r.rule?.reveal||r.message);}
@@ -148,7 +193,7 @@ function replay(){const r=act(state,{type:'visit',stage:state.stage});if(r.ok){s
 function map(){ $('stage-map').innerHTML=roomList.map((r,ri)=>`<section><h3>${r[1]} · ${r[2]}</h3><div class="stage-row">${stages.filter(l=>l.room===ri).map(l=>`<button data-stage="${l.id-1}" class="${state.stage===l.id-1?'current':state.completed.includes(l.id-1)?'completed':''}" ${l.id-1>Math.max(-1,...state.completed)+1?'disabled':''} aria-label="${l.id}단계 ${l.title}">${state.completed.includes(l.id-1)?'✓ ':''}${l.id}</button>`).join('')}</div></section>`).join('');$('map').showModal();}
 document.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.close){scopeView=null;$(b.dataset.close).close();return;}if(b.dataset.search){await perform({type:'tap',target:b.dataset.search});return;}if(b.dataset.tag){openArtifact('tag');return;}if(b.dataset.object){if(suppressSceneClick)return;await interact(b.dataset.object);return;}if(b.dataset.item){if(suppressItemClick){suppressItemClick=false;return;}select(b.dataset.item);return;}if(b.dataset.key){if(busy)return;const k=b.dataset.key;if(k==='지우기')code=code.slice(0,-1);else if(k==='확인'){const o=codeTarget,r=act(state,{type:'code',target:o.id,answer:code});if(r.ok){$('detail').close();await perform({type:'code',target:o.id,answer:code});}else{ $('pad-feedback').textContent=r.message;code='';}}else{code=(code+k).slice(0,codeTarget.answer.length);if(codeTarget.music)ping([{1:261.63,2:293.66,3:329.63,5:392}[k]||440]);}if($('code-readout'))$('code-readout').textContent=code.padEnd(codeTarget.answer.length,'—').split('').join(' ');return;}
  if(b.dataset.stage!==undefined){if(busy)return;const target=Number(b.dataset.stage);if(target>Math.max(-1,...state.completed)+1)return;$('map').close();if(target===state.stage)return;const r=act(state,{type:'visit',stage:target});if(r.ok)state=r.state;enterStage();return;}
- switch(b.id){case 'pillow-note':openArtifact('pillow-note');break;case 'observations':showObservations();break;case 'zoom-inside':{const zoomed=$('detail').classList.toggle('zoomed-inside');$('zoom-inside').textContent=zoomed?'원래 크기로 −':'서랍 안쪽 더 확대하기 ＋';break;}case 'read-tag':openArtifact('tag');break;case 'inspect-item':openArtifact(selected[0]);break;case 'flip-artifact':artifactBack=!artifactBack;renderArtifact($('detail').dataset.artifact);break;case 'scope-shutter':checkScope();break;case 'clear-item':selected=[];renderBag();break;case 'combine':perform({type:'combine',items:[...selected]});break;case 'dismiss-selection':selected=[];renderBag();say('선택을 해제했어. 다른 방법도 시도해 보자.');break;case 'next':if(state.stage===29){$('success').hidden=true;map();}else{const r=act(state,{type:'next'});if(r.ok){state=r.state;enterStage();}}break;case 'replay':replay();break;case 'menu':if(!busy)map();break;case 'zoom':overview=!overview;layout();break;case 'pan-up':overview=false;cameraY=Math.max(0,cameraY-30);layout();break;case 'pan-down':overview=false;cameraY=Math.min(100,cameraY+30);layout();break;case 'book-prev':bookPage=Math.max(0,bookPage-1);renderBook();break;case 'book-next':bookPage=Math.min(2,bookPage+1);renderBook();break;case 'pan-left':overview=false;focusAt(camera-23);break;case 'pan-right':overview=false;focusAt(camera+23);break;case 'hint':{hint=Math.min(hint+1,level().hints.length);showClue(level().hints[hint-1]);$('detail-tag').textContent=`힌트 ${hint}/${level().hints.length}`;if(hint>=2){const first=level().rules.find(r=>r.set&&!state.flags[r.set]);const o=level().objects.find(o=>o.id===first?.target)||level().objects.find(o=>o.inside===first?.target);const target=o?.inside?level().objects.find(v=>v.id===o.inside):o;if(target){focusAt(target.x);const el=document.querySelector(`[data-object=${target.id}]`);el?.classList.add('hinted');setTimeout(()=>el?.classList.remove('hinted'),4500);}}break;}case 'sound':sound=!sound;$('sound').textContent=sound?'♪ ON':'♪ OFF';$('sound').setAttribute('aria-pressed',String(sound));$('sound').setAttribute('aria-label',sound?'소리 끄기':'소리 켜기');if(sound)ping();break;case 'help':$('map').close();$('detail-tag').textContent='조작 방법';$('detail-content').innerHTML='<h2>겉모습보다,<br>안쪽을 살펴보세요.</h2><p>① 이불, 가방, 서랍처럼 그림 속 생활 소품을 눌러요.<br>② 확대 화면에서 이불을 걷거나 가방을 열어요.<br>③ 발견한 물건을 챙겨 아래 소지품에서 골라 사용해요.<br>④ 두 물건을 조합하면 새로운 쓰임이 생겨요.</p><p>열린 서랍은 안쪽 확대 버튼으로 더 가까이 볼 수 있어요. 관찰 수첩에는 발견한 흔적이 남아요. 막혔을 때만 ? 힌트를 확인해 보세요.</p>';showDetail();break;case 'fullscreen':if(document.fullscreenElement)document.exitFullscreen?.();else if($('game').requestFullscreen){try{await $('game').requestFullscreen();$('map').close();}catch{say('이 브라우저에서는 홈 화면에 추가하면 독립 화면으로 열 수 있어.');}}else{$('map').close();say('아이폰은 Safari 공유 → 홈 화면에 추가로 독립 화면에서 열 수 있어.');}break;case 'restart':$('map').close();$('detail-tag').textContent='처음부터 다시';$('detail-content').innerHTML='<h2>모험을 처음부터 시작할까요?</h2><p>이 기기에 저장된 현재 진행이 초기화돼요.</p><div class="detail-actions"><button data-close="detail">계속 플레이</button><button id="confirm-restart">처음부터 시작</button></div>';$('detail').showModal();break;case 'confirm-restart':state=fresh();$('detail').close();enterStage();break;}
+ switch(b.id){case 'pillow-note':openArtifact('pillow-note');break;case 'observations':showObservations();break;case 'zoom-inside':{const zoomed=$('detail').classList.toggle('zoomed-inside');$('zoom-inside').textContent=zoomed?'원래 크기로 −':'서랍 안쪽 더 확대하기 ＋';break;}case 'read-tag':openArtifact('tag');break;case 'inspect-item':openArtifact(selected[0]);break;case 'flip-artifact':artifactBack=!artifactBack;renderArtifact($('detail').dataset.artifact);break;case 'scope-shutter':checkScope();break;case 'clear-item':selected=[];renderBag();break;case 'combine':await perform({type:'combine',items:[...selected]});break;case 'dismiss-selection':selected=[];renderBag();say('선택을 해제했어. 다른 방법도 시도해 보자.');break;case 'next':if(state.stage===29){$('success').hidden=true;map();}else{const r=act(state,{type:'next'});if(r.ok){state=r.state;enterStage();}}break;case 'replay':replay();break;case 'menu':if(!busy)map();break;case 'zoom':overview=!overview;layout();break;case 'pan-up':overview=false;cameraY=Math.max(0,cameraY-30);layout();break;case 'pan-down':overview=false;cameraY=Math.min(100,cameraY+30);layout();break;case 'book-prev':bookPage=Math.max(0,bookPage-1);renderBook();break;case 'book-next':bookPage=Math.min(2,bookPage+1);renderBook();break;case 'pan-left':overview=false;focusAt(camera-23);break;case 'pan-right':overview=false;focusAt(camera+23);break;case 'hint':{hint=Math.min(hint+1,level().hints.length);showClue(level().hints[hint-1]);$('detail-tag').textContent=`힌트 ${hint}/${level().hints.length}`;if(hint>=2){const first=level().rules.find(r=>r.set&&!state.flags[r.set]);const o=level().objects.find(o=>o.id===first?.target)||level().objects.find(o=>o.inside===first?.target);const target=o?.inside?level().objects.find(v=>v.id===o.inside):o;if(target){focusAt(target.x);const el=document.querySelector(`[data-object=${target.id}]`);el?.classList.add('hinted');setTimeout(()=>el?.classList.remove('hinted'),4500);}}break;}case 'sound':sound=!sound;$('sound').textContent=sound?'♪ ON':'♪ OFF';$('sound').setAttribute('aria-pressed',String(sound));$('sound').setAttribute('aria-label',sound?'소리 끄기':'소리 켜기');if(sound)ping();break;case 'help':$('map').close();$('detail-tag').textContent='조작 방법';$('detail-content').innerHTML='<h2>겉모습보다,<br>안쪽을 살펴보세요.</h2><p>① 이불, 가방, 서랍처럼 그림 속 생활 소품을 눌러요.<br>② 확대 화면에서 이불을 걷거나 가방을 열어요.<br>③ 발견한 물건을 챙겨 아래 소지품에서 골라 사용해요.<br>④ 두 물건을 조합하면 새로운 쓰임이 생겨요.</p><p>열린 서랍은 안쪽 확대 버튼으로 더 가까이 볼 수 있어요. 관찰 수첩에는 발견한 흔적이 남아요. 막혔을 때만 ? 힌트를 확인해 보세요.</p>';showDetail();break;case 'fullscreen':if(document.fullscreenElement)document.exitFullscreen?.();else if($('game').requestFullscreen){try{await $('game').requestFullscreen();$('map').close();}catch{say('이 브라우저에서는 홈 화면에 추가하면 독립 화면으로 열 수 있어.');}}else{$('map').close();say('아이폰은 Safari 공유 → 홈 화면에 추가로 독립 화면에서 열 수 있어.');}break;case 'restart':$('map').close();$('detail-tag').textContent='처음부터 다시';$('detail-content').innerHTML='<h2>모험을 처음부터 시작할까요?</h2><p>이 기기에 저장된 현재 진행이 초기화돼요.</p><div class="detail-actions"><button data-close="detail">계속 플레이</button><button id="confirm-restart">처음부터 시작</button></div>';$('detail').showModal();break;case 'confirm-restart':state=fresh();$('detail').close();enterStage();break;}
 });
 const viewport=$('viewport');
 viewport.addEventListener('pointerdown',e=>{
@@ -166,12 +211,11 @@ viewport.addEventListener('pointerdown',e=>{
 viewport.addEventListener('pointermove',e=>{
  if(propGesture&&e.pointerId===propGesture.id){const g=propGesture,dx=e.clientX-g.x,dy=e.clientY-g.y;
   if(Math.hypot(dx,dy)<5&&!g.moved)return;g.moved=true;e.preventDefault?.();
-  g.frame=gestureFrame(dx,dy,geometry.w*geometry.scale*g.o.w/100,geometry.h*geometry.scale*g.o.h/100,g.start);
+  const previous=g.frame?.progress??g.start.progress;g.frame=gestureFrame(dx,dy,geometry.w*geometry.scale*g.o.w/100,geometry.h*geometry.scale*g.o.h/100,g.start);g.velocity=g.frame.progress-previous;
   const check=act(state,{type:'shift',target:g.o.id,...g.frame});if(!check.ok){return;}
   // Stable objects move continuously; rendering has no engine side effects before release.
   $('motion-action').dataset.progress=String(g.frame.progress);
-  surface.render(state,level().room,{anchor:g.o.anchor,frame:g.frame});
-  renderEnvironment({anchor:g.o.anchor,frame:g.frame});return;
+  if(!propFramePending){propFramePending=true;requestAnimationFrame(()=>{propFramePending=false;if(propGesture===g)paintManipulation(g.o,g.frame);});}return;
  }
  if(!gesture||e.pointerId!==gesture.id)return;const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;if(Math.hypot(dx,dy)>6)gesture.moved=true;
  if(gesture.moved&&!overview){$('world').classList.add('dragging');camera=Math.max(0,Math.min(100,gesture.camera-dx/geometry.w*100));cameraY=Math.max(0,Math.min(100,gesture.cameraY-dy/Math.max(1,geometry.h-$('viewport').getBoundingClientRect().height)*100));layout();}
@@ -179,13 +223,13 @@ viewport.addEventListener('pointermove',e=>{
 viewport.addEventListener('pointerup',async e=>{
  if(propGesture&&e.pointerId===propGesture.id){const g=propGesture;propGesture=null;
   if(g.moved){suppressSceneClick=true;setTimeout(()=>suppressSceneClick=false,350);if(g.frame){const r=act(state,{type:'shift',target:g.o.id,...g.frame});if(r.ok)state=r.state;}
-   $('motion-action').innerHTML='';render();if(g.o.anchor==='drawer'&&g.frame?.progress>=.6)openInspection(g.o);
+   busy=true;if(g.frame)await settlePlace(g.o,g.frame,g.velocity);$('motion-action').innerHTML='';render();busy=false;if(g.o.anchor==='drawer'&&g.frame?.progress>=.6)openInspection(g.o);
   }else{suppressSceneClick=true;await interact(g.o.id);setTimeout(()=>suppressSceneClick=false,350);}return;
  }
  if(!gesture||e.pointerId!==gesture.id)return;const g=gesture;gesture=null;$('world').classList.remove('dragging');
  
 });
-viewport.addEventListener('pointercancel',()=>{gesture=null;propGesture=null;$('motion-action').innerHTML='';$('world').classList.remove('dragging');renderMotions();});
+viewport.addEventListener('pointercancel',()=>{gesture=null;propGesture=null;$('motion-action').innerHTML='';$('world').classList.remove('dragging');renderMotions();renderObjects();});
 // Item drag/drop uses the same validated engine actions as tapping.
 let itemDrag=null,suppressItemClick=false;
 document.addEventListener('pointerdown',e=>{const b=e.target.closest('[data-item]');if(!b||busy||e.button!==0)return;itemDrag={id:e.pointerId,item:b.dataset.item,x:e.clientX,y:e.clientY,moved:false,ghost:null};});

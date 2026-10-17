@@ -102,3 +102,11 @@ Original Seoul room was inspected and supplied as the reference. Output PNGs wer
 | `dist/travel-art/seoul-diffuse-v4.webp` | Lighting-only edit of the exact original room. Preserve blind, window, duvet, furniture and object geometry. Remove direct sun patches and window-shaped shadows from bed, headboard, rug and floor. Soft diffuse daytime ambient light; same materials, camera and palette. |
 
 Folded art is feathered into a fixed bed silhouette with smooth gesture-controlled blending, replacing the V6.3 triangle mesh. A cached multiply correction derived from the original and diffuse-light plate removes baked-in sunlight as the original linen blind descends. This is an illustrated transition, not a cloth physics simulation. Danchu assets remain archived for history but no character is rendered or controlled in the game.
+
+## V6.5 · empty camera case · built-in ImageGen edit mode
+
+Final asset: `dist/travel-art/travel-props-empty-v5.webp` (1254×1254, transparent alpha, Sharp WebP quality 92).
+
+Prompt: precise-object-edit of the existing 2×2 `travel-props-v3.webp` atlas. Preserve cell layout, object scale, viewpoint, beige canvas material, brass hardware, lighting and silhouettes. Remove ONLY the camera from the top-right open case, showing an empty dark fabric lining. Keep its open lid, lock and tag, the closed case, telescope and ownership tag unchanged. Preserve genuine transparency; clean stray edge pixels; no new props, background or UI.
+
+The scene uses the empty open case plus the independently collectible camera, so taking the camera leaves an empty container. Existing original room, clean mattress plate and pillow-under plate supply the runtime-isolated moving materials; no replacement room art is blended to animate the duvet. Runtime layer transforms are not an ImageGen animation or a cloth physics simulation.
