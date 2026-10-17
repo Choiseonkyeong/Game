@@ -4,43 +4,36 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.7.0",
-    "github_commit": "7117a246fbc1cb8f0a8d590f06308e5e66baffc7",
-    "github_dist_tree": "1573af49d354738631aa9bf60d19cd2c29fa6d11",
-    "entrypoint": "dist/index.html -> dist/play.js?v=070",
+    "version": "0.8.0",
+    "github_commit": "bb602712dbbe43c9b00f788bdfd364b4f707e75b",
+    "github_dist_tree": "ff26a9955560ebcc15e2959ed9d464f5b2c43732",
+    "entrypoint": "dist/index.html -> entry.js?v=080 -> first-room.js?v=080; ?mode=legacy -> play.js?v=070",
     "checks": {
-      "automated_tests_passed": 27,
-      "non_reduced_first_room_animation_path_verified": true,
-      "static_canvas_states_checked": 6,
+      "automated_tests_passed": 30,
+      "non_reduced_default_chapter_pointer_flow_verified": true,
+      "static_canvas_focus_states_checked": 8,
       "actual_mobile_touch_verified": false,
       "actual_browser_css_or_framerate_verified": false,
-      "static_light_measurement": {
-        "rug_luminance_open": 175,
-        "rug_luminance_half": 146,
-        "rug_luminance_closed": 116,
-        "unrelated_desk_change_during_bed_interaction": 0
-      },
-      "service_worker_asset_paths_checked": 39
+      "service_worker_asset_paths_checked": true
     },
     "changes": [
-      "Compact mobile HUD, collapsible empty inventory dock, continuous overview backdrop, connected detail/book/artifact/drop transitions.",
-      "Velocity-preserving pointer follow; gesture validation once, shallow preview without history cloning, keyed hotspot markup updates.",
-      "Seoul drawer assembly from registered artwork, dedicated interior art, draggable/flippable postcard hiding collectibles and carrying a linked hint.",
-      "Physical three-number combination lock with tap/swipe control; refined pillow mask and rolled cloth geometry. Versioned source/CSS and no-store service worker requests."
+      "Default scope deliberately reduced to one connected stage: discover camera and film, load camera, compose and capture the actual photograph.",
+      "Independent pillow/tin/film/camera cutouts, proportional drag-follow, reversible drawer reveal, pickup landing and failed-film-drop return.",
+      "Isolated Shadow DOM and first-chapter save; old thirty-stage game and danchu-travel-v6 save preserved under ?mode=legacy; original curtain/sunlight compositor retained."
     ],
     "limitations": [
-      "Prepared 2D layer animation; not general cloth physics or movie-level animation.",
-      "Specialized cloth/pillow/drawer artwork remains Seoul-specific. Common UI motion applies across all stages.",
-      "Real iPhone touch/frame rate, browser CSS layout and player engagement remain unverified. Official descriptions/developer notes reviewed; no claim of playing reference games or analyzing video frames."
+      "Static Canvas and DOM substitute verification only; browser CSS, iPhone frame rate/touch and player engagement unverified.",
+      "New default intentionally omits warped duvet and arbitrary number-lock chain. The earlier full game remains intact via menu.",
+      "No claim of movie-level animation or general cloth physics."
     ]
   },
   "last_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "b4eb88dd04053ec7632cc502025d4724f0849459",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_df7c0e4c2d88819195ad1d122ac78ad9",
-    "deployment_id": "appgdep_6ad38c8fb0808191a6e484921a86bb3f",
-    "deployed_at": "2026-10-17T14:56:30.783374+00:00",
+    "source_commit": "1c0c742d5760f69465d1624ea911a455464a5340",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_c300d17e970c819180df135c7f00090c",
+    "deployment_id": "appgdep_6ad39458de2c8191a47634f81a589e1e",
+    "deployed_at": "2026-10-17T15:29:43.625753+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -75,10 +68,10 @@
   "previous_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "9b426f3fbe43f5629e3f1b54e139aa5b58a95e0d",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_277d31f90c0881919b4b7c6b76d0ad0e",
-    "deployment_id": "appgdep_6ad383a1f60c8191b8bf5088148110e5",
-    "deployed_at": "2026-10-17T14:18:25.231696+00:00",
+    "source_commit": "b4eb88dd04053ec7632cc502025d4724f0849459",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_df7c0e4c2d88819195ad1d122ac78ad9",
+    "deployment_id": "appgdep_6ad38c8fb0808191a6e484921a86bb3f",
+    "deployed_at": "2026-10-17T14:56:30.783374+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -89,13 +82,13 @@
   },
   "handoff": {
     "source_branch": "master",
-    "source_commit": "7117a246fbc1cb8f0a8d590f06308e5e66baffc7",
+    "source_commit": "bb602712dbbe43c9b00f788bdfd364b4f707e75b",
     "sites_and_github_dist_identical": true,
     "experience_contract": "docs/experience-contract.md",
     "reference_and_verification_notes": "docs/polish-reference.md",
     "art_prompts": "docs/art-direction.md",
-    "visible_release_marker": "Menu: 0.7.0 · 모션 개편",
-    "cache_busting_test_url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/?v=0.7.0",
-    "remaining": "Actual iPhone touch/frame-rate and browser CSS review; player engagement testing; other-city bespoke animation. Existing Pages activation/access issues are not declared resolved. Fetch current master before editing."
+    "visible_release_marker": "Menu: 0.8.0 · FIRST CHAPTER",
+    "cache_busting_test_url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/?v=0.8.0",
+    "remaining": "Actual browser CSS and iPhone touch/frame-rate, first-time player testing. Pages activation and other collaborator access not declared fixed. Keep default entry and both save keys; fetch current master before editing."
   }
 }
