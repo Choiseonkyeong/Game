@@ -17,3 +17,41 @@ export function previewState(state,place,frame,rule){
 }
 export function paperPosition(dx,dy,width,height){return {x:Math.max(-.32,Math.min(.32,dx/Math.max(1,width))),y:Math.max(-.3,Math.min(.3,dy/Math.max(1,height)))};}
 export const drawerRegion=[1206,469,275,95];
+// Underdamped spring for physical objects: keeps velocity, may overshoot, bounces off end stops and settles exactly.
+export class Spring{
+ constructor(value=0,{stiffness=170,damping=18,min=-Infinity,max=Infinity,bounce=0,rest=.0008}={}){Object.assign(this,{value,target:value,velocity:0,stiffness,damping,min,max,bounce,rest,impact:0});}
+ set(target){this.target=Math.max(this.min,Math.min(this.max,target));return this;}
+ kick(velocity){this.velocity+=velocity;return this;}
+ step(seconds){
+  const total=Math.max(0,Math.min(.05,seconds)),n=Math.max(1,Math.ceil(total/(1/240))),dt=total/n;this.impact=0;
+  for(let i=0;i<n;i++){
+   this.velocity+=(-this.stiffness*(this.value-this.target)-this.damping*this.velocity)*dt;this.value+=this.velocity*dt;
+   // A hard stop (drawer rail, mattress) reflects part of the speed instead of passing through.
+   if(this.value<this.min||this.value>this.max){this.impact=Math.max(this.impact,Math.abs(this.velocity));this.value=this.value<this.min?this.min:this.max;this.velocity*=-this.bounce;}
+  }
+  if(Math.abs(this.value-this.target)<this.rest&&Math.abs(this.velocity)<this.rest*20){this.value=this.target;this.velocity=0;}
+  return this.value;
+ }
+ get resting(){return this.value===this.target&&this.velocity===0;}
+}
+// Material presets for opening and closing things in close-up views.
+export const MATERIALS={
+ drawer:{stiffness:120,damping:17,bounce:.28},
+ chair:{stiffness:70,damping:15,bounce:.1},
+ pillow:{stiffness:95,damping:13,bounce:.05},
+ lid:{stiffness:150,damping:13,bounce:.2},
+ light:{stiffness:210,damping:15,bounce:.15}
+};
+// Per-object body reaction in the room: tilt, sway, hop, squash and shake, all returning to rest.
+// [stiffness, damping, kick]; kicks are sized so the first swing is a few degrees or pixels.
+const BODY_KINDS={
+ sway:{angle:[26,1.5,.34]},leaf:{angle:[62,3.2,.32]},rock:{angle:[300,8,.85]},wobble:{angle:[190,7,.8]},
+ squash:{squash:[260,10,.85],angle:[260,12,.2]},hop:{y:[420,12,-200],angle:[380,11,1.2]},shake:{x:[1300,20,140]}
+};
+export class BodyMotion{
+ constructor(kind){this.kind=BODY_KINDS[kind]?kind:'wobble';this.springs={};for(const [key,[stiffness,damping]] of Object.entries(BODY_KINDS[this.kind]))this.springs[key]=new Spring(0,{stiffness,damping,rest:.002,...(key==='y'?{max:0,bounce:.35}:{})});}
+ impulse(direction=1,strength=1){for(const [key,spring] of Object.entries(this.springs)){const v=BODY_KINDS[this.kind][key][2];spring.kick(v*strength*(key==='angle'||key==='x'?direction:1));}}
+ step(seconds){for(const spring of Object.values(this.springs))spring.step(seconds);return !this.resting;}
+ get resting(){return Object.values(this.springs).every(s=>s.resting);}
+ get pose(){const s=this.springs;return {angle:s.angle?.value||0,x:s.x?.value||0,y:s.y?.value||0,squash:s.squash?.value||0};}
+}
