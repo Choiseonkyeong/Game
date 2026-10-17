@@ -4,27 +4,27 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.8.1",
-    "github_commit": "c27ed02d2743a68231100d6bb2417c115b732202",
-    "github_dist_tree": "8824be61016acf395845390e404ed7dc95ead3e2",
-    "entrypoint": "dist/index.html -> entry.js?v=081 -> first-room.js?v=081; ?mode=legacy -> play.js?v=070",
+    "version": "0.11.1",
+    "github_commit": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
+    "github_dist_tree": "e8175b95149e063d6edc2ad9f1b5330e206aa4db",
+    "entrypoint": "dist/index.html -> entry.js?v=111 -> first-room.js?v=111 | tokyo-room.js?v=111",
     "checks": {
-      "automated_tests_passed": 33,
-      "non_reduced_first_chapter_pointer_flow_verified": true,
-      "pinch_anchor_and_accidental_tap_suppression_verified": true,
-      "phone_landscape_desktop_cover_geometry_verified": true,
-      "static_canvas_focus_states_checked": 8,
+      "automated_tests_passed": 46,
+      "pointer_handler_chapter_flows_verified": true,
+      "interrupted_tote_grip_settles": true,
+      "loupe_inspection_separate_from_printing": true,
+      "static_canvas_film_states_checked": 4,
       "actual_mobile_touch_verified": false,
       "actual_browser_css_or_framerate_verified": false
     },
     "changes": [
-      "Remove repeated room backdrop; normal room has one full-cover image and overview uses a solid matte.",
-      "Opaque close-up views hide underlying HUD; drawer no longer includes the closed desk behind its open interior.",
-      "Anchored two-finger room/detail zoom, panning, consumed releases; cache room light/material composition across camera gestures;1.5x canvas density and elapsed-time follow."
+      "Tote grip retains its held pose, returns on release/cancel/pinch and shares cloth coordinates with its paper tip and falling ticket.",
+      "Only cloth and foliage bend; framed artwork, glass chimes, lanterns and pendant lights keep their shape.",
+      "Compare film with the loupe before explicitly printing; dim/unselected frames cannot print. Gradual per-phase hints."
     ],
     "limitations": [
-      "Actual iPhone touch/frame rate and browser CSS unverified; static Canvas and DOM substitutes only.",
-      "Existing external-collaborator access and Pages activation issue remain separate and unresolved."
+      "Actual iPhone touch and browser CSS/frame rate remain unverified.",
+      "Seoul desk/chair close-up continuity and precise hole-fill art remain follow-up work."
     ]
   },
   "last_successful_deployment": {
@@ -45,22 +45,22 @@
   "shared_github_pages": {
     "target_url": "https://choiseonkyeong.github.io/Game/",
     "workflow": ".github/workflows/pages.yml",
-    "status": "deploying_from_master",
-    "live_url_verified": false,
+    "status": "deployed",
+    "live_url_verified": true,
     "last_successful": {
-      "run_id": 39063506834,
-      "run_number": 12,
-      "source_commit": "330c3a941ac5341aca49531c99cc2d23f25a13f4",
-      "version": "0.11.0",
+      "run_id": 39069992444,
+      "run_number": 13,
+      "source_commit": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
+      "version": "0.11.1",
       "game_checks": "passed",
       "deployment": "succeeded",
-      "deployed_at": "2026-10-17T19:41:28Z",
-      "deployed_at_kst": "2026-10-18 04:41 KST",
-      "worker": "Claude"
+      "deployed_at": "2026-10-17T21:13:19Z",
+      "deployed_at_kst": "2026-10-18 06:13 KST",
+      "worker": "Codex"
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Not verified from the Claude environment (outbound fetch to github.io is blocked). Owner/collaborator browser access not confirmed by Claude.",
-    "remaining_action": "Owner to check on iPhone: menu shows 0.11.0, Tokyo Tower visible in the shop window, hanging objects bend naturally."
+    "access_check": "Execution-environment HTTPS GET build-info.json returned 200 and exact intended source SHA. Actual mobile/browser and other collaborators not verified.",
+    "remaining_action": "Actual iPhone touch, CSS and frame-rate review. Seoul desk/chair close-up continuity and hole-fill art follow up."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -85,34 +85,48 @@
     }
   },
   "handoff": {
-    "source_branch": "master",
-    "source_commit": "c27ed02d2743a68231100d6bb2417c115b732202",
-    "sites_and_github_dist_identical": true,
+    "source_branch": "codex/room-details-next-page",
+    "source_commit": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
+    "synchronized_master": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
+    "sites_and_github_dist_identical": false,
     "experience_contract": "docs/experience-contract.md",
     "reference_and_verification_notes": "docs/polish-reference.md",
-    "art_prompts": "docs/art-direction.md",
-    "visible_release_marker": "Menu: 0.8.1 · PINCH CHAPTER",
-    "cache_busting_test_url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/?v=0.8.1",
-    "remaining": "Real iPhone pinch/touch and frame-rate review; browser CSS check. Keep single room/background, anchored pinch, cached material render and both saves. Existing Pages/access issue remains."
+    "visible_release_marker": "Menu: 0.11.1 · 살펴보고 인화하기",
+    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/?chapter=tokyo&v=111",
+    "remaining": "Actual phone touch/browser CSS, Seoul desk/chair close-up continuity and hole-fill art. Existing Sites was not redeployed; use shared GitHub Pages for this version."
   },
   "latest_verification": {
-    "checked_at": "2026-10-17T15:43:22.717502+00:00",
-    "version": "0.8.1",
-    "automated_tests_passed": 33,
-    "static_canvas_focus_states": 8,
-    "source_dist_matches": true,
+    "checked_at": "2026-10-17T21:14:13.667349+00:00",
+    "version": "0.11.1",
+    "automated_tests_passed": 46,
+    "static_canvas_focus_states": 4,
+    "static_canvas_bag_poses": 3,
     "actual_browser_play_verified": false,
     "actual_mobile_touch_verified": false,
-    "prior_access_probe": "v0.8.0 direct fetch from execution environment returned403; no new universal-access claim"
+    "live_build_info_commit": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
+    "live_build_info_http_status": 200,
+    "verification_scope": "Deterministic DOM/pointer handlers and static Canvas renders; not actual browser CSS/touch.",
+    "live_files_byte_matched": [
+      "index.html",
+      "entry.js",
+      "first-room.js",
+      "first-room.css",
+      "room-bodies.js",
+      "tokyo-room.js",
+      "tokyo-engine.js",
+      "sw.js"
+    ]
   },
   "latest_github_pages_release": {
-    "version": "0.11.0",
-    "source": "master@330c3a941ac5341aca49531c99cc2d23f25a13f4",
-    "entry": "dist/index.html -> entry.js?v=110 -> first-room.js?v=110 | tokyo-room.js?v=110",
-    "tests_passed": 42,
-    "headless_browser": "390x844, 1280x800, 844x390 screenshots; Tokyo chapter completed with mouse input",
+    "version": "0.11.1",
+    "source": "master@d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
+    "entry": "dist/index.html -> entry.js?v=111 -> first-room.js?v=111 | tokyo-room.js?v=111",
+    "tests_passed": 46,
+    "headless_browser": "Not run in this Codex pass; use previous Claude records only for their exact source versions.",
     "actual_mobile_touch_verified": false,
-    "iphone_issue": "0.9.0 Tokyo shop blank in KakaoTalk in-app browser (reported); fix deployed, device confirmation pending",
-    "art": "seoul-tall-v10.webp, tokyo-tall-v10.webp, tokyo-papers-v10.webp (tools/bake_rooms.py)"
+    "art": "Preserved Claude v0.11.0 room plates, Tokyo Tower and paper assets.",
+    "workflow_run": 39069992444,
+    "deployment_status": "succeeded",
+    "live_build_info_verified": true
   }
 }

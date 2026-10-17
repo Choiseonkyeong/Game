@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 06:14 KST — Codex · v0.11.1 공용 GitHub Pages 배포 및 소스 확인 완료
+
+- 소스: `codex/room-details-next-page@d180a11e7ddc82493b387a4c22fc4f45cfe1954f`; master 동기화 `d180a11e7ddc82493b387a4c22fc4f45cfe1954f`. 기준 master `8b0a22f622b444d89ac76efc281d747a3cc7e31c` 위의 후속 수정, 강제 푸시 없음. CLI push는 인증 불가로 실패하여 연결된 GitHub 도구로 동일 트리 `6195af6be56313ddc5d6050c10e5917ac155c3fd`를 저장하고 expected-HEAD 조건으로 반영.
+- 최종 검사: 자동 검사 **46개 통과**, diff 공백 검사 통과. 서울·도쿄 전체 이벤트 경로와 저장 보존, 가방 잡기/해제/터치취소/핀치 전환, 단단한 물건 거리 보존, 필름 관찰/인화 구분, 어두운 상태의 인화 차단, 점진 힌트 검증. 정적 Canvas 필름 4컷 비교 및 가방 3자세 검토.
+- 배포: Publish shared game **run #13 `39069992444` 성공**, 2026-10-18 06:13:19 KST. 배포 검사의 Validate game 및 Deploy shared game 모두 성공. 실제 배포 dist 트리 `e8175b95149e063d6edc2ad9f1b5330e206aa4db`.
+- 접근: https://choiseonkyeong.github.io/Game/?chapter=tokyo&v=111 . 실행 환경에서 `build-info.json` HTTP200 및 커밋 `d180a11e7ddc82493b387a4c22fc4f45cfe1954f` 직접 확인. 진입점·서울·도쿄·스타일·사물·서비스워커 핵심 파일 8개도 HTTP200 및 로컬 바이트 일치. 타인/아이폰 브라우저 접속은 미확인. 기존 Sites는 재배포하지 않음.
+- 남은 사항: 실제 iPhone 터치·CSS·프레임 속도, 서울 책상/의자 확대 일관성, 움직인 가방 뒤 배경 원화/가림 정교화. 이번에 해결했다고 주장하지 않음.
+
 ## 2026-10-18 06:11 KST — Codex · v0.11.1 관찰 후 인화 / 가방 조작 중단 처리 — 검사 및 저장 준비
 
 - 기준: 최신 원격 master `8b0a22f622b444d89ac76efc281d747a3cc7e31c` (Claude v0.11.0 배포 기록). 작업 브랜치 `codex/room-details-next-page`. 도쿄·도쿄타워·서울·각 저장 키를 유지한 작은 후속 수정.
