@@ -48,19 +48,19 @@
     "status": "deploying_from_master",
     "live_url_verified": false,
     "last_successful": {
-      "run_id": 39052883329,
-      "run_number": 9,
-      "source_commit": "3c406e431acd704dd0a1478aaf2ca379c989589f",
-      "version": "0.9.0",
+      "run_id": 39055518873,
+      "run_number": 10,
+      "source_commit": "bbd03424f1eb282fff72856ae4dc86385a987d7a",
+      "version": "0.9.1",
       "game_checks": "passed",
       "deployment": "succeeded",
-      "deployed_at": "2026-10-17T17:14:51Z",
-      "deployed_at_kst": "2026-10-18 02:14:51 KST",
+      "deployed_at": "2026-10-17T17:51:00Z",
+      "deployed_at_kst": "2026-10-18 02:51:00 KST",
       "worker": "Claude"
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "Not verified from the Claude environment (outbound fetch to github.io is blocked). Owner/collaborator browser access not confirmed by Claude.",
-    "remaining_action": "Open the URL on a phone, confirm build-info.json shows 3c406e4, and record real-device touch review."
+    "remaining_action": "Owner reported a blank Tokyo shop in the iPhone KakaoTalk in-app browser on 0.9.0; 0.9.1 targets it. Re-open on that phone and confirm the menu shows 0.9.1 and the shop image appears."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -106,11 +106,12 @@
     "prior_access_probe": "v0.8.0 direct fetch from execution environment returned403; no new universal-access claim"
   },
   "latest_github_pages_release": {
-    "version": "0.9.0",
-    "source": "master@3c406e431acd704dd0a1478aaf2ca379c989589f",
-    "entry": "dist/index.html -> entry.js?v=090 -> first-room.js?v=090 | tokyo-room.js?v=090 (?chapter=tokyo)",
+    "version": "0.9.1",
+    "source": "master@bbd03424f1eb282fff72856ae4dc86385a987d7a",
+    "entry": "dist/index.html -> entry.js?v=091 -> first-room.js?v=091 | tokyo-room.js?v=091 (?chapter=tokyo)",
     "tests_passed": 42,
     "headless_browser": "390x844, 1280x800, 844x390 screenshots; Tokyo chapter completed with mouse input",
-    "actual_mobile_touch_verified": false
+    "actual_mobile_touch_verified": false,
+    "iphone_issue": "0.9.0 Tokyo shop blank in KakaoTalk in-app browser (reported); fix deployed, device confirmation pending"
   }
 }
