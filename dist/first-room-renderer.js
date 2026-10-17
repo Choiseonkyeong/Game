@@ -1,5 +1,6 @@
-import {SceneSurface} from './scene-surface.js?v=080';
-import {bound,frameReady} from './first-room-engine.js?v=080';
+import {fitRoom} from './view-gestures.js?v=081';
+import {SceneSurface} from './scene-surface.js?v=081';
+import {bound,frameReady} from './first-room-engine.js?v=081';
 export const BOARD={width:800,height:1000};
 export const ROOM_TARGETS={pillow:{x:.13,y:.46},drawer:{x:.88,y:.49},tin:{x:.745,y:.075},window:{x:.46,y:.23},lamp:{x:.16,y:.32}};
 const round=(c,x,y,w,h,r=8)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
@@ -7,16 +8,18 @@ export function atlas(c,img,index,columns,rows,x,y,w,h){if(!img)return;const sw=
 export function itemArt(c,assets,item,x,y,w,h){if(item==='film')atlas(c,assets.props,2,2,2,x,y,w,h);else atlas(c,assets.tools,0,4,4,x,y,w,h);}
 export class ChapterRenderer{
  constructor(canvas,assets,makeCanvas=()=>document.createElement('canvas')){this.canvas=canvas;this.c=canvas.getContext('2d');this.assets=assets;this.room=makeCanvas();this.room.width=1536;this.room.height=1024;this.surface=new SceneSurface(this.room);for(const [key,value] of Object.entries({ 'seoul.webp':assets.room,'seoul-clean-v3.webp':assets.clean,'seoul-diffuse-v4.webp':assets.diffuse,'seoul-pillow-v3.webp':assets.bed,'seoul-drawer-v7.webp':assets.drawer}))this.surface.images.set('travel-art/'+key,value);}
- renderRoom(state,camera={x:.28,y:.5},overview=false){
+ renderRoom(state,camera={x:.28,y:.5},overview=false,zoom=1.08){
   const c=this.c,w=this.canvas.width,h=this.canvas.height;c.clearRect(0,0,w,h);
-  this.surface.render({stage:0,flags:{},world:{},positions:{window:{progress:state.shade},drawer:{progress:state.drawer}}},0);
-  const inset=80*Math.min(w/390,2),available=Math.max(200,h-inset*2),scale=overview?Math.min(w/1536,available/1024):Math.max(w/1536,available/1024)*1.1,rw=1536*scale,rh=1024*scale,tx=rw<=w?(w-rw)/2:bound(w/2-camera.x*rw,w-rw,0),ty=inset+(rh<=available?(available-rh)/2:bound(available/2-camera.y*rh,available-rh,0));
-  c.fillStyle='#b4ab96';c.fillRect(0,0,w,h);c.save();c.filter=overview?'blur(22px) brightness(.65)':'blur(18px)';c.drawImage(this.assets.room,-20,-20,w+40,h+40);c.restore();
+  const surfaceKey=[state.shade,state.drawer].join('|');if(this.surfaceKey!==surfaceKey){this.surfaceKey=surfaceKey;this.surface.render({stage:0,flags:{},world:{},positions:{window:{progress:state.shade},drawer:{progress:state.drawer}}},0);}
+  const {tx,ty,rw,rh}=fitRoom(w,h,camera,zoom,overview);
+  // One room image, one coordinate space. Overview margins are a solid matte, never another room.
+  c.fillStyle='#c6bea8';c.fillRect(0,0,w,h);
   c.drawImage(this.room,tx,ty,rw,rh);if(state.lampOff){c.fillStyle=`rgba(20,30,23,${state.shade>.85?.75:.25})`;c.fillRect(0,0,w,h);}this.geometry={tx,ty,rw,rh,w,h};
  }
  roomPoint(x,y){const g=this.geometry;return {x:(x-g.tx)/g.rw,y:(y-g.ty)/g.rh};}
  renderFocus(type,state,ui={}){
-  const c=this.c;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.canvas.width,this.canvas.height);const scale=Math.min(this.canvas.width/800,this.canvas.height/1000),tx=(this.canvas.width-800*scale)/2,ty=(this.canvas.height-1000*scale)/2;this.focusGeometry={scale,tx,ty};c.setTransform(scale,0,0,scale,tx,ty);
+  const c=this.c,w=this.canvas.width,h=this.canvas.height;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,w,h);const shade=c.createLinearGradient(0,0,0,h);shade.addColorStop(0,'#b3ab94');shade.addColorStop(1,'#888775');c.fillStyle=shade;c.fillRect(0,0,w,h);
+  const v=ui.focusView||{scale:1,x:0,y:0},base=Math.min(w/800,h/1000),scale=base*v.scale,tx=(w-800*scale)/2+v.x*w/Math.max(1,ui.cssWidth||w),ty=(h-1000*scale)/2+v.y*h/Math.max(1,ui.cssHeight||h);this.focusGeometry={scale,tx,ty};c.setTransform(scale,0,0,scale,tx,ty);
   if(type==='pillow')this.pillow(state,ui);if(type==='drawer')this.drawer(state,ui);if(type==='tin')this.tin(state,ui);if(type==='camera')this.camera(state,ui);if(type==='photo')this.photo(state,ui);
   c.setTransform(1,0,0,1,0,0);
  }
@@ -25,7 +28,8 @@ export class ChapterRenderer{
   c.save();c.translate(400+130*p,470-300*p);c.rotate(-.13-.08*p);c.shadowColor='#302a2455';c.shadowBlur=8+18*p;c.shadowOffsetY=4+20*p;c.drawImage(this.assets.pillow,-330,-220,660,440);c.restore();
  }
  drawer(s){const c=this.c,p=s.drawer,y=225,edge=y+540*p;
-  c.save();c.filter='blur(8px) brightness(.75)';c.drawImage(this.assets.room,1060,350,476,674,-30,-30,860,1060);c.restore();
+  // Neutral close-up matte: no closed drawer or duplicated room behind the open tray.
+  c.fillStyle='#a28e70';c.fillRect(-30,0,860,1000);
   c.save();c.beginPath();c.rect(-30,y,860,540*p+5);c.clip();c.drawImage(this.assets.interior,0,0,1536,740,-45,y,890,540);
   if(!s.camera){c.save();c.translate(455,535);c.rotate(-.1);c.shadowColor='#362d2244';c.shadowBlur=8;itemArt(c,this.assets,'camera',-160,-106,320,212);c.restore();}
   c.restore();
