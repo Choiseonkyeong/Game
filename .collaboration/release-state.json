@@ -4,23 +4,34 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.6.3",
-    "github_commit": "1d6e1437478f0dcb8e426dac5d7819eef84e18f2",
-    "github_dist_tree": "a22a8ca346155c2cbe5f148502a55626b1d8788a",
+    "version": "0.6.4",
+    "github_commit": "c74fe33a01a0d3991985771a57f0830f4c06d0c0",
+    "github_dist_tree": "c84c5f519908eef03493c51df322d850ee346e4d",
     "entrypoint": "dist/index.html -> dist/play.js",
     "checks": {
       "automated_tests_passed": 19,
       "static_canvas_states_checked": 6,
-      "actual_mobile_touch_verified": false
-    }
+      "actual_mobile_touch_verified": false,
+      "static_light_measurement": {
+        "rug_luminance_open": 175,
+        "rug_luminance_half": 146,
+        "rug_luminance_closed": 116,
+        "unrelated_desk_change_during_bed_interaction": 0
+      }
+    },
+    "changes": [
+      "Removed scene avatar and movement; direct item interaction, existing saves and 30 stages retained.",
+      "Replaced triangle duvet deformation with registered feathered folded artwork transition; not cloth physics.",
+      "Curtain progression applies baked sunlight correction to bed, rug and floor; original linen texture retained."
+    ]
   },
   "last_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "3e9dc777f18018df167edcabfbd99c2503b3d414",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_187edb7734b88191af97a15497355ddb",
-    "deployment_id": "appgdep_6ad2c666e14c8191bf47d8ca6d3970ea",
-    "deployed_at": "2026-10-17T00:51:01.412017Z",
+    "source_commit": "57b74a3c682cc668c25ac828809ddccf86fdea82",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_5d8cae7cb9308191ad56605a30b75321",
+    "deployment_id": "appgdep_6ad37df2a24881918df02a0a4abb278b",
+    "deployed_at": "2026-10-17T13:54:10.797488+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -51,5 +62,26 @@
     "matches_master_content_at": "966f4a439c37eba55d86c060ad1b42be08aed8d0",
     "note": "Game source restored to reviewed v0.6.3 while keeping URL/deployment files. Both histories retained; no force push."
   },
-  "update_rule": "Do not replace last_successful_deployment with a proposed, saved-only or failed release. Re-read provider state; update provenance only with evidence."
+  "update_rule": "Do not replace last_successful_deployment with a proposed, saved-only or failed release. Re-read provider state; update provenance only with evidence.",
+  "previous_successful_deployment": {
+    "provider": "Sites",
+    "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
+    "source_commit": "3e9dc777f18018df167edcabfbd99c2503b3d414",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_187edb7734b88191af97a15497355ddb",
+    "deployment_id": "appgdep_6ad2c666e14c8191bf47d8ca6d3970ea",
+    "deployed_at": "2026-10-17T00:51:01.412017Z",
+    "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
+    "status": "succeeded",
+    "access": {
+      "provider_setting": "public",
+      "external_collaborator_status": "access_failure_reported",
+      "universal_access_verified": false
+    }
+  },
+  "handoff": {
+    "source_branch": "master",
+    "source_commit": "c74fe33a01a0d3991985771a57f0830f4c06d0c0",
+    "sites_and_github_dist_identical": true,
+    "remaining": "Actual mobile touch/frame-rate verification; existing shared GitHub Pages activation remains pending. Other worker must fetch current master."
+  }
 }
