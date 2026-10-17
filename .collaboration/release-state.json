@@ -4,41 +4,43 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.6.5",
-    "github_commit": "faef3479ca5a5b0caa4520a584b103afe4f6e637",
-    "github_dist_tree": "6e7102c1643c1966452e7810411c70a1ac9ad62b",
-    "entrypoint": "dist/index.html -> dist/play.js",
+    "version": "0.7.0",
+    "github_commit": "7117a246fbc1cb8f0a8d590f06308e5e66baffc7",
+    "github_dist_tree": "1573af49d354738631aa9bf60d19cd2c29fa6d11",
+    "entrypoint": "dist/index.html -> dist/play.js?v=070",
     "checks": {
-      "automated_tests_passed": 21,
+      "automated_tests_passed": 27,
       "non_reduced_first_room_animation_path_verified": true,
       "static_canvas_states_checked": 6,
       "actual_mobile_touch_verified": false,
-      "actual_browser_framerate_verified": false,
+      "actual_browser_css_or_framerate_verified": false,
       "static_light_measurement": {
         "rug_luminance_open": 175,
         "rug_luminance_half": 146,
         "rug_luminance_closed": 116,
         "unrelated_desk_change_during_bed_interaction": 0
-      }
+      },
+      "service_worker_asset_paths_checked": 39
     },
     "changes": [
-      "First Seoul room: isolated opaque quilt strips, fixed underlay, lifted pillow with note behind it, physically occluded box and sliding drawer tray with same-scene close-up.",
-      "Pickup follows a curved flight to inventory before the destination becomes visible; materials converge for combination and first photograph has exposure feedback.",
-      "Camera collection leaves empty open case. Avatar remains removed; books/frame/note/scope, four-way pan, saved progress and 30 stages retained."
+      "Compact mobile HUD, collapsible empty inventory dock, continuous overview backdrop, connected detail/book/artifact/drop transitions.",
+      "Velocity-preserving pointer follow; gesture validation once, shallow preview without history cloning, keyed hotspot markup updates.",
+      "Seoul drawer assembly from registered artwork, dedicated interior art, draggable/flippable postcard hiding collectibles and carrying a linked hint.",
+      "Physical three-number combination lock with tap/swipe control; refined pillow mask and rolled cloth geometry. Versioned source/CSS and no-store service worker requests."
     ],
     "limitations": [
-      "Prepared 2D layer animation, not a general cloth physics engine.",
-      "Continuous cloth/pillow/drawer renderer is currently specific to Seoul; other cities are not claimed to have equivalent animation fidelity.",
-      "Real phone touch/frame rate and new-player engagement remain unverified."
+      "Prepared 2D layer animation; not general cloth physics or movie-level animation.",
+      "Specialized cloth/pillow/drawer artwork remains Seoul-specific. Common UI motion applies across all stages.",
+      "Real iPhone touch/frame rate, browser CSS layout and player engagement remain unverified. Official descriptions/developer notes reviewed; no claim of playing reference games or analyzing video frames."
     ]
   },
   "last_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "9b426f3fbe43f5629e3f1b54e139aa5b58a95e0d",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_277d31f90c0881919b4b7c6b76d0ad0e",
-    "deployment_id": "appgdep_6ad383a1f60c8191b8bf5088148110e5",
-    "deployed_at": "2026-10-17T14:18:25.231696+00:00",
+    "source_commit": "b4eb88dd04053ec7632cc502025d4724f0849459",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_df7c0e4c2d88819195ad1d122ac78ad9",
+    "deployment_id": "appgdep_6ad38c8fb0808191a6e484921a86bb3f",
+    "deployed_at": "2026-10-17T14:56:30.783374+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -73,10 +75,10 @@
   "previous_successful_deployment": {
     "provider": "Sites",
     "project_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d",
-    "source_commit": "57b74a3c682cc668c25ac828809ddccf86fdea82",
-    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_5d8cae7cb9308191ad56605a30b75321",
-    "deployment_id": "appgdep_6ad37df2a24881918df02a0a4abb278b",
-    "deployed_at": "2026-10-17T13:54:10.797488+00:00",
+    "source_commit": "9b426f3fbe43f5629e3f1b54e139aa5b58a95e0d",
+    "saved_version_id": "appgprj_6ad1d1dbc290819197bc2cdd806a617d~appgver_277d31f90c0881919b4b7c6b76d0ad0e",
+    "deployment_id": "appgdep_6ad383a1f60c8191b8bf5088148110e5",
+    "deployed_at": "2026-10-17T14:18:25.231696+00:00",
     "url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/",
     "status": "succeeded",
     "access": {
@@ -87,10 +89,13 @@
   },
   "handoff": {
     "source_branch": "master",
-    "source_commit": "faef3479ca5a5b0caa4520a584b103afe4f6e637",
+    "source_commit": "7117a246fbc1cb8f0a8d590f06308e5e66baffc7",
     "sites_and_github_dist_identical": true,
     "experience_contract": "docs/experience-contract.md",
+    "reference_and_verification_notes": "docs/polish-reference.md",
     "art_prompts": "docs/art-direction.md",
-    "remaining": "Verify actual mobile touch/frame rate and player engagement. Shared GitHub Pages activation remains pending per previous evidence; no URL or access settings changed. Other worker must fetch current master."
+    "visible_release_marker": "Menu: 0.7.0 · 모션 개편",
+    "cache_busting_test_url": "https://strange-cafe-suming.silkyfrost33.chatgpt.site/?v=0.7.0",
+    "remaining": "Actual iPhone touch/frame-rate and browser CSS review; player engagement testing; other-city bespoke animation. Existing Pages activation/access issues are not declared resolved. Fetch current master before editing."
   }
 }
