@@ -48,19 +48,19 @@
     "status": "deploying_from_master",
     "live_url_verified": false,
     "last_successful": {
-      "run_id": 39060318355,
-      "run_number": 11,
-      "source_commit": "b1fe2fa9d0786d9b0ddb9d78cd273d13ce57d909",
-      "version": "0.10.0",
+      "run_id": 39063506834,
+      "run_number": 12,
+      "source_commit": "330c3a941ac5341aca49531c99cc2d23f25a13f4",
+      "version": "0.11.0",
       "game_checks": "passed",
       "deployment": "succeeded",
-      "deployed_at": "2026-10-17T18:57:17Z",
-      "deployed_at_kst": "2026-10-18 03:57 KST",
+      "deployed_at": "2026-10-17T19:41:28Z",
+      "deployed_at_kst": "2026-10-18 04:41 KST",
       "worker": "Claude"
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "Not verified from the Claude environment (outbound fetch to github.io is blocked). Owner/collaborator browser access not confirmed by Claude.",
-    "remaining_action": "Confirm on the owner's iPhone (KakaoTalk and Safari) that the menu shows 0.10.0, the taller Tokyo shop shows its Japanese details, swinging objects no longer double and paper clues match the art."
+    "remaining_action": "Owner to check on iPhone: menu shows 0.11.0, Tokyo Tower visible in the shop window, hanging objects bend naturally."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -106,9 +106,9 @@
     "prior_access_probe": "v0.8.0 direct fetch from execution environment returned403; no new universal-access claim"
   },
   "latest_github_pages_release": {
-    "version": "0.10.0",
-    "source": "master@b1fe2fa9d0786d9b0ddb9d78cd273d13ce57d909",
-    "entry": "dist/index.html -> entry.js?v=100 -> first-room.js?v=100 | tokyo-room.js?v=100",
+    "version": "0.11.0",
+    "source": "master@330c3a941ac5341aca49531c99cc2d23f25a13f4",
+    "entry": "dist/index.html -> entry.js?v=110 -> first-room.js?v=110 | tokyo-room.js?v=110",
     "tests_passed": 42,
     "headless_browser": "390x844, 1280x800, 844x390 screenshots; Tokyo chapter completed with mouse input",
     "actual_mobile_touch_verified": false,
