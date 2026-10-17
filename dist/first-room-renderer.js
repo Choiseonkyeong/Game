@@ -1,8 +1,9 @@
-import {stageFit} from './view-gestures.js?v=090';
-import {BodyLayer,SEOUL_BODIES} from './room-bodies.js?v=090';
-import {paintMargins,featherEdges} from './room-frame.js?v=090';
-import {SceneSurface} from './scene-surface.js?v=090';
-import {bound,frameReady} from './first-room-engine.js?v=090';
+import {stageFit} from './view-gestures.js?v=091';
+import {BodyLayer,SEOUL_BODIES} from './room-bodies.js?v=091';
+import {paintMargins,featherEdges,releaseCanvases} from './room-frame.js?v=091';
+export {releaseCanvases};
+import {SceneSurface} from './scene-surface.js?v=091';
+import {bound,frameReady} from './first-room-engine.js?v=091';
 export const BOARD={width:800,height:1000};
 export const ROOM_TARGETS={pillow:{x:.13,y:.46},drawer:{x:.88,y:.49},tin:{x:.745,y:.075},window:{x:.46,y:.23},lamp:{x:.16,y:.32},chair:{x:.76,y:.61},frame:{x:.025,y:.17},bin:{x:.985,y:.68}};
 const round=(c,x,y,w,h,r=8)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
