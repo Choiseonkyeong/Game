@@ -111,3 +111,8 @@ Continue from remote master `4969160ab757981852ea447d9fe21aeb95d45173` (v0.11.1 
 - Tokyo close-ups draw their background into the visible area rather than leaving large grey bars. Seoul desk/chair views use a cover crop, share the same chair sprite and drawer contents move with the tray. Opening the desk moves the chair aside; closing/return restores it. Separate chair inspection still pulls it forward.
 - Empty inventory circles and empty toast pills are hidden. Room pan arrows hide behind detail views. Detail headings wrap safely; cards scroll in short viewports; print controls have a minimum touch height.
 - Verification: full existing pointer flows (including return closure), drawer seam/rigid envelope geometry, static Canvas states. Actual browser and mobile checks must be separately recorded against the deployed source, not inferred from these tests.
+
+
+### 0.12.1 — issues found in the deployed browser pass
+
+Actual desktop browser inspection of v0.12.0 found a wide blank left margin in the Tokyo close-up and a missed click on the visible room drawer handle. Align the drawer scene to the left in landscape without cropping the envelope row; portrait framing remains unchanged. Room hit testing now uses the same projected drawer front/tray polygons as the renderer instead of an old rectangular hotspot. Assets/cache queries are v121. Deployment provenance and browser checks are recorded separately in release-state/UPDATE_LOG.

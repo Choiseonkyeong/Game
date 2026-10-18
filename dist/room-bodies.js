@@ -1,6 +1,6 @@
 // Room furniture and props cut from the painted room and moved in place with spring physics.
 // Coordinates are source pixels of a 1536×1024 room. Pivots are where the object touches or hangs.
-import {BodyMotion} from './interaction-motion.js?v=120';
+import {BodyMotion} from './interaction-motion.js?v=121';
 
 export const SEOUL_BODIES=[
  {id:'bed',kind:'squash',strength:.35,pivot:[420,940],points:[[0,515],[300,478],[560,500],[835,640],[800,700],[430,945],[0,830]]},
