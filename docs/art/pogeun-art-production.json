@@ -1,0 +1,1169 @@
+{
+  "generation_mode": "built-in image_gen",
+  "reference": "docs/art/pogeun-rig-template.png",
+  "original_design": true,
+  "canvas": [
+    512,
+    768
+  ],
+  "neutral_connectors": "Unmarked cream connectors share one painted source with different joint-aligned exports; no empty placeholder sheets. Proximal/distal overlap has no cap stroke.",
+  "parts": [
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "head",
+      "bounds": [
+        134,
+        110,
+        244,
+        242
+      ],
+      "file": "dist/island/art/char/body/cream/front-head.webp",
+      "source_generation": "exec-95314c96-9674-47d9-b0fd-b58b0635ced8.png",
+      "source_sha256": "b02fb2d2f901c91b45c6f4f6e1c9a51fa48d9f0767aca0d45fb100051789033a",
+      "sha256": "11e328b9a163f44d021dce1cb5adc3e1a6f33d9ac64f6c11c825a190bcac3375"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "torso",
+      "bounds": [
+        200,
+        312,
+        112,
+        216
+      ],
+      "file": "dist/island/art/char/body/cream/front-torso.webp",
+      "source_generation": "exec-5da58919-74d8-4e50-9daf-406469c8770b.png",
+      "source_sha256": "08a7307c20f44da4ceda137e62b9907eb529951e8e237b35a695d4bcd46989f4",
+      "sha256": "5329fa8116957bb8ecc38bab945df196bd57fd168d750d0a71e14f3cdaeda12f"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "pelvis",
+      "bounds": [
+        201,
+        498,
+        110,
+        64
+      ],
+      "file": "dist/island/art/char/body/cream/front-pelvis.webp",
+      "source_generation": "exec-e9cb7228-736f-4d9b-9212-b6ca6333dfac.png",
+      "source_sha256": "17682f4fd9b6edcdc2f67f851561bf9791876884c50c75f5fd06aa31d68c8151",
+      "sha256": "73efa78ade0f4e8f9bddcba5d46eb3e3be1bfc6c5aec1eed80459061031effcc"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "upperArmL",
+      "bounds": [
+        162,
+        328,
+        56,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/front-upperArmL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "d9369d44e67a17d1440d0efbe751e91406c168b1d0967c6a45b331df3369b5b4"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "upperArmR",
+      "bounds": [
+        294,
+        328,
+        56,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/front-upperArmR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "ab970244791da717069f66870448e6cf38989455c47c88d7499bf95b2a7d913a"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "foreArmL",
+      "bounds": [
+        166,
+        433,
+        36,
+        118
+      ],
+      "file": "dist/island/art/char/body/cream/front-foreArmL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "46b388e9022dd36c6e0cd779036f7c08a1ae261d09e9e5e35022e8f30105bd33"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "foreArmR",
+      "bounds": [
+        310,
+        433,
+        36,
+        118
+      ],
+      "file": "dist/island/art/char/body/cream/front-foreArmR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "4eeeb04df1a9cd96ff13743bdd67b155602de71552d25429e403dff4a00212ae"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "thighL",
+      "bounds": [
+        202,
+        512,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/front-thighL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "aaf17f438d017ae48d492723b97ee203996bb8ccaddb9604888cd9225b4a8890"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "thighR",
+      "bounds": [
+        266,
+        512,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/front-thighR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "07af2122c8f371a10390525cb7e0ad84e173c9ae4549160112180f3eb645780c"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "shinL",
+      "bounds": [
+        202,
+        604,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/front-shinL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "60d097c5d17bacbe7a803d08da9732003b73be9c976ee429a30cde610018dab1"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "front",
+      "part": "shinR",
+      "bounds": [
+        266,
+        604,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/front-shinR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "a729dcdbbe1bf4ec253c23338082c1d504db44f156f3eeff0a78088d725ea2ae"
+    },
+    {
+      "layer": "face",
+      "variant": "cream",
+      "view": "front",
+      "part": "face",
+      "bounds": [
+        172,
+        198,
+        168,
+        104
+      ],
+      "file": "dist/island/art/char/face/cream/front-face.webp",
+      "source_generation": "exec-e2cd69c0-70bd-4153-b1f8-c0df50c0a115.png",
+      "source_sha256": "c2dfd595a7ef065e9ff8263f6f412f6f9eac439cbbd1a22427c8a59a2deb3cc9",
+      "sha256": "61151cde5b282267fcf734218a50caea4bd87b52ec58e9fcf1c7cab536e6f13e"
+    },
+    {
+      "layer": "hairBack",
+      "variant": "bob-chestnut",
+      "view": "front",
+      "part": "hairBack",
+      "bounds": [
+        138,
+        64,
+        236,
+        278
+      ],
+      "file": "dist/island/art/char/hairBack/bob-chestnut/front-hairBack.webp",
+      "source_generation": "exec-8b20106c-5af5-4622-a257-f91db833171a.png",
+      "source_sha256": "1190e3358f96adedb1c2c50bd5d0dcd436279cf8529ac1f263262d67a1d8f665",
+      "sha256": "ddb842728ebad810cbcd325cf16899b032b13e157eebff451cd7989dd9aa8ec0"
+    },
+    {
+      "layer": "hairFront",
+      "variant": "bob-chestnut",
+      "view": "front",
+      "part": "hairFront",
+      "bounds": [
+        138,
+        64,
+        236,
+        260
+      ],
+      "file": "dist/island/art/char/hairFront/bob-chestnut/front-hairFront.webp",
+      "source_generation": "exec-102e6595-4513-4504-9005-229320285b17.png",
+      "source_sha256": "5075e0c42a6fe8dd297bc218760cf307312b82cf1e59425e15e290b4060cbf60",
+      "sha256": "8db05e455a448ddd3ff7c059c25c0614b2ace4d3270459d431c2b6b931d74b9e"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "front",
+      "part": "torso",
+      "bounds": [
+        196,
+        328,
+        120,
+        200
+      ],
+      "file": "dist/island/art/char/top/sailor/front-torso.webp",
+      "source_generation": "exec-e52d8a4e-3ddf-4947-b112-25c413491455.png",
+      "source_sha256": "cfafc3b7e665425d4de05419ecd2e82e0fb084b0b15ccdb43b938b6e1dec6908",
+      "sha256": "1b4ed74fa491df5992fc00099378490133ac5da353a77c709e1951d448e302b8"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "front",
+      "part": "upperArmL",
+      "bounds": [
+        160,
+        328,
+        60,
+        144
+      ],
+      "file": "dist/island/art/char/top/sailor/front-upperArmL.webp",
+      "source_generation": "exec-97375f8f-5639-4015-a789-964863308ad8.png",
+      "source_sha256": "36acbf4168cb00dba4e2c7647c7847b12f3d2d00fb86adf9a3c843c45d10db7f",
+      "sha256": "4de93e7ada0bb5b256125faaaf20055e17c4cf4ee1705827bf4fad89f1401391"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "front",
+      "part": "upperArmR",
+      "bounds": [
+        292,
+        328,
+        60,
+        144
+      ],
+      "file": "dist/island/art/char/top/sailor/front-upperArmR.webp",
+      "source_generation": "exec-a0ecd744-67f6-4750-8e84-53e91476bf90.png",
+      "source_sha256": "ae3ef9ceda7e88fdebfabdc407ade2ded94f810fe9eb684d62c085ae3dc672b8",
+      "sha256": "03df44c8400b5a27f817302762299e3f07b09b29e73a77a6247bd81d6cbdda60"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "front",
+      "part": "foreArmL",
+      "bounds": [
+        163,
+        441,
+        42,
+        6
+      ],
+      "file": "dist/island/art/char/top/sailor/front-foreArmL.webp",
+      "source_generation": "exec-acce073b-7894-49c3-803e-1f1403dd85a9.png",
+      "source_sha256": "78ede241a9d591558b3506a7e46e828d53b06e5144abf540df4a8ba9f18195e4",
+      "sha256": "d72e54e366cb476c6bdef4c7ece8a7f1edb1ce773ea88bafb014fb51072fd8a1"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "front",
+      "part": "foreArmR",
+      "bounds": [
+        307,
+        441,
+        42,
+        6
+      ],
+      "file": "dist/island/art/char/top/sailor/front-foreArmR.webp",
+      "source_generation": "exec-f2cf8032-db81-494f-8dfb-d5e765ad50ef.png",
+      "source_sha256": "42fa87e2300661f1cc4efb79ce47f188d2ebcaaa3a3d30c6e77746ebac531565",
+      "sha256": "42fa67d5094e1ea2d56a20ebc95e21649e127ae890fa1b6ff3b5ae052f9b3dae"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "front",
+      "part": "pelvis",
+      "bounds": [
+        174,
+        502,
+        164,
+        84
+      ],
+      "file": "dist/island/art/char/bottom/skirt/front-pelvis.webp",
+      "source_generation": "exec-e1b8db43-f7e1-4c2d-9fb3-0644d4407e20.png",
+      "source_sha256": "24a3f765658940d4fa30f38ee8063626c6aa6f2d2f71c03ae47497beac4f1687",
+      "sha256": "e68b0500f2a82dc88d9239a9fbae66ab68f1c427c0dd5ec89635e9fc50427aac"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "front",
+      "part": "thighL",
+      "bounds": [
+        202,
+        518,
+        52,
+        48
+      ],
+      "file": "dist/island/art/char/bottom/skirt/front-thighL.webp",
+      "source_generation": "exec-184386e1-8a0f-480e-8475-c75b1043cf63.png",
+      "source_sha256": "6ec2da464078f0fe39373f9aa30918d40625126d009af68023f5dc210f06aa0f",
+      "sha256": "f432bc35e2b961c2952d8cdf9504dc2b276935d9a2f5f58257852a5d99149b3e"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "front",
+      "part": "thighR",
+      "bounds": [
+        258,
+        518,
+        52,
+        48
+      ],
+      "file": "dist/island/art/char/bottom/skirt/front-thighR.webp",
+      "source_generation": "exec-6cb7f4d3-0e27-43d1-a779-faa4ff49b114.png",
+      "source_sha256": "62edb56735f5e431ceedc70e912d7eb4d5f7e770edae13b5c1364f72072cf1b8",
+      "sha256": "94917f86980dff1f6d5c82a4d0961b985e65ea5c2dc67fc27806fb54d2475541"
+    },
+    {
+      "layer": "shoes",
+      "variant": "brown",
+      "view": "front",
+      "part": "shinL",
+      "bounds": [
+        195,
+        678,
+        58,
+        66
+      ],
+      "file": "dist/island/art/char/shoes/brown/front-shinL.webp",
+      "source_generation": "exec-276faae7-8c74-4042-a848-e5f5bfbe15c5.png",
+      "source_sha256": "807ded505a800ba2146133cbb578baa2c8c639ff5aa6366585219984a8dd7701",
+      "sha256": "e35a5ad82a138032e976eba83bbf76e6cb7412b607c3017e5d099f60e8c3db26"
+    },
+    {
+      "layer": "shoes",
+      "variant": "brown",
+      "view": "front",
+      "part": "shinR",
+      "bounds": [
+        259,
+        678,
+        58,
+        66
+      ],
+      "file": "dist/island/art/char/shoes/brown/front-shinR.webp",
+      "source_generation": "exec-a8f3da3c-fbab-4e81-bc8d-d9d3624956c7.png",
+      "source_sha256": "493ef9864069ce13e570af0ecca549066edec6d8780c4a06cce5394ecc136a3d",
+      "sha256": "64aca96ec3abbda97ae413f05a96a299af9ccfe6bae6c816e2aa440bdc2676d4"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "head",
+      "bounds": [
+        134,
+        110,
+        244,
+        242
+      ],
+      "file": "dist/island/art/char/body/cream/back-head.webp",
+      "source_generation": "exec-eb68bb06-39bf-4b0b-8d15-9a50118e286d.png",
+      "source_sha256": "ee7ffecb0f63247fea2ccd894af1ed00adcd9df617d6d19e403b0493aeccc0a1",
+      "sha256": "b6cd27619b4d23970fc97b3eee2f93e6959b896e12e08fdf288f42779eb2080f"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "torso",
+      "bounds": [
+        200,
+        312,
+        112,
+        216
+      ],
+      "file": "dist/island/art/char/body/cream/back-torso.webp",
+      "source_generation": "exec-3f2f5c4e-524c-4bf3-bfbc-44dc6dd04d9c.png",
+      "source_sha256": "3936a3bba6527abedf8d833858457a72c99360d2f193e6f92df9432c66d92abf",
+      "sha256": "251637d521adf0cd389400514d2d74244b10e26cc3aa574eefd540f9dad60bcf"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "pelvis",
+      "bounds": [
+        201,
+        498,
+        110,
+        64
+      ],
+      "file": "dist/island/art/char/body/cream/back-pelvis.webp",
+      "source_generation": "exec-a336fca5-6d23-43c7-ab6d-eb83b2f44bd3.png",
+      "source_sha256": "20ee1df2cd5d5ecdeefeda9d893fa9ec8b307cf0378cb93cd2c83bceb1d93286",
+      "sha256": "cb53e5749d68640c125926d33671ea2039732f02363d0eaeec5d5b1a6a8f0453"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "upperArmL",
+      "bounds": [
+        162,
+        328,
+        56,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/back-upperArmL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "d9369d44e67a17d1440d0efbe751e91406c168b1d0967c6a45b331df3369b5b4"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "upperArmR",
+      "bounds": [
+        294,
+        328,
+        56,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/back-upperArmR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "ab970244791da717069f66870448e6cf38989455c47c88d7499bf95b2a7d913a"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "foreArmL",
+      "bounds": [
+        166,
+        433,
+        36,
+        118
+      ],
+      "file": "dist/island/art/char/body/cream/back-foreArmL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "46b388e9022dd36c6e0cd779036f7c08a1ae261d09e9e5e35022e8f30105bd33"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "foreArmR",
+      "bounds": [
+        310,
+        433,
+        36,
+        118
+      ],
+      "file": "dist/island/art/char/body/cream/back-foreArmR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "4eeeb04df1a9cd96ff13743bdd67b155602de71552d25429e403dff4a00212ae"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "thighL",
+      "bounds": [
+        202,
+        512,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/back-thighL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "aaf17f438d017ae48d492723b97ee203996bb8ccaddb9604888cd9225b4a8890"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "thighR",
+      "bounds": [
+        266,
+        512,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/back-thighR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "07af2122c8f371a10390525cb7e0ad84e173c9ae4549160112180f3eb645780c"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "shinL",
+      "bounds": [
+        202,
+        604,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/back-shinL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "60d097c5d17bacbe7a803d08da9732003b73be9c976ee429a30cde610018dab1"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "back",
+      "part": "shinR",
+      "bounds": [
+        266,
+        604,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/back-shinR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "a729dcdbbe1bf4ec253c23338082c1d504db44f156f3eeff0a78088d725ea2ae"
+    },
+    {
+      "layer": "hairBack",
+      "variant": "bob-chestnut",
+      "view": "back",
+      "part": "hairBack",
+      "bounds": [
+        138,
+        64,
+        236,
+        278
+      ],
+      "file": "dist/island/art/char/hairBack/bob-chestnut/back-hairBack.webp",
+      "source_generation": "exec-53c009fa-5c1e-47be-9576-a0cbd1444e2d.png",
+      "source_sha256": "5e756c9a51e65512a9759a29a59ff97d3624d1932241aefb15de99cac44dd331",
+      "sha256": "90ccfaa33ed97f28463e4303c2072545d9fa0a11c43032b64dc6eb9ddd86bccc"
+    },
+    {
+      "layer": "hairFront",
+      "variant": "bob-chestnut",
+      "view": "back",
+      "part": "hairFront",
+      "bounds": [
+        138,
+        64,
+        236,
+        278
+      ],
+      "file": "dist/island/art/char/hairFront/bob-chestnut/back-hairFront.webp",
+      "source_generation": "exec-53c009fa-5c1e-47be-9576-a0cbd1444e2d.png",
+      "source_sha256": "5e756c9a51e65512a9759a29a59ff97d3624d1932241aefb15de99cac44dd331",
+      "sha256": "90ccfaa33ed97f28463e4303c2072545d9fa0a11c43032b64dc6eb9ddd86bccc"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "back",
+      "part": "torso",
+      "bounds": [
+        196,
+        328,
+        120,
+        200
+      ],
+      "file": "dist/island/art/char/top/sailor/back-torso.webp",
+      "source_generation": "exec-bf8cd576-ef00-4454-b1e7-8a501b093487.png",
+      "source_sha256": "d5aa6957794f5b4e0afdadaccf193bbc0e4b6baac343b0ca02f4712e2e096c21",
+      "sha256": "5e3363bd555fa73c2e62082bc9f6789a46e50fb8f32b2b61bc03e8d203cb37fb"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "back",
+      "part": "upperArmL",
+      "bounds": [
+        160,
+        328,
+        60,
+        144
+      ],
+      "file": "dist/island/art/char/top/sailor/back-upperArmL.webp",
+      "source_generation": "exec-0b8a8930-85d6-4ec8-afd9-8a423b7021de.png",
+      "source_sha256": "9808bb9888a389b6c6190d9227996b6f5e82324bbd67f11b11aa7a536a8e6a82",
+      "sha256": "5d7a7129f897bcffe18b0990c69817e12f2a3d50268902f12eaf6dd817abfd06"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "back",
+      "part": "upperArmR",
+      "bounds": [
+        292,
+        328,
+        60,
+        144
+      ],
+      "file": "dist/island/art/char/top/sailor/back-upperArmR.webp",
+      "source_generation": "exec-e1e3a5d9-eba0-4cbc-91ae-19dc7df79af4.png",
+      "source_sha256": "3b183302cff2f340b21862b2ee2accf6d54742620b1b9cf30ef369bbfeafe27f",
+      "sha256": "ccc10d5d168a2c15b3d63b9a69249c9a58c4fccf22ef9637dfda100f1ff4e26c"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "back",
+      "part": "foreArmL",
+      "bounds": [
+        163,
+        441,
+        42,
+        6
+      ],
+      "file": "dist/island/art/char/top/sailor/back-foreArmL.webp",
+      "source_generation": "exec-db51cc9a-39f6-4a98-bbfc-7b5e5f7b9933.png",
+      "source_sha256": "f323a7147878b6e71006d27fe942a4a2eedaf6ab1c90c521605dbd07c52b4e38",
+      "sha256": "eed8809b5e5e84e24cb792b536130c9ab94c82420b9538be52e4bf554c45f21e"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "back",
+      "part": "foreArmR",
+      "bounds": [
+        307,
+        441,
+        42,
+        6
+      ],
+      "file": "dist/island/art/char/top/sailor/back-foreArmR.webp",
+      "source_generation": "exec-7d5e8392-9788-43cd-ade6-620f0810853c.png",
+      "source_sha256": "bdbb6efe321551a3f93498cdf0f71219d846ffcb4422679917c5289b598c3129",
+      "sha256": "1c60de9c75182b00bff982af4995cec43b7296093af29be12b4ebd58d84d63b5"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "back",
+      "part": "pelvis",
+      "bounds": [
+        174,
+        502,
+        164,
+        84
+      ],
+      "file": "dist/island/art/char/bottom/skirt/back-pelvis.webp",
+      "source_generation": "exec-1457316e-206c-4206-9dbf-f618c72ba50f.png",
+      "source_sha256": "8a6012f07229752f03ae28b5477b1fa1e3fff29deae28dd9365e4ccdc35c06ba",
+      "sha256": "f61eca028af4e394f8cd548eb964066856ccd4a96f439cb078fdc802b2959d43"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "back",
+      "part": "thighL",
+      "bounds": [
+        202,
+        518,
+        52,
+        48
+      ],
+      "file": "dist/island/art/char/bottom/skirt/back-thighL.webp",
+      "source_generation": "exec-1f158b1c-0769-4125-89e3-effb542d96e5.png",
+      "source_sha256": "d3d8e272216ac3a0cdd3fa643a37f1c7c91f6283d61c0cabf5b5ef823783d122",
+      "sha256": "53837f5cde1011b125ff453a1e93552ed077036c66234c550712947dc05d6738"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "back",
+      "part": "thighR",
+      "bounds": [
+        258,
+        518,
+        52,
+        48
+      ],
+      "file": "dist/island/art/char/bottom/skirt/back-thighR.webp",
+      "source_generation": "exec-bf721f5e-2c12-400f-93f8-72e7d166803e.png",
+      "source_sha256": "84699e9560541b81d2122f7523e03946aff6a2a763b08470443467542bf87650",
+      "sha256": "7a0c8d70fa14df2263f3f6df8e9859562e8a7596b7dccecb0b93dd4c48121dc8"
+    },
+    {
+      "layer": "shoes",
+      "variant": "brown",
+      "view": "back",
+      "part": "shinL",
+      "bounds": [
+        195,
+        678,
+        58,
+        66
+      ],
+      "file": "dist/island/art/char/shoes/brown/back-shinL.webp",
+      "source_generation": "exec-d550b9d5-fc9f-47a6-a5cf-1e21ae625de6.png",
+      "source_sha256": "811db8f31f7ffbc984a8acc937a51b9f2b1d7a3172c5e9c64bc172a0f41c463d",
+      "sha256": "e2ed004fd1c84c749962cb686e2dc62bb852c70bb1115f20097a34cf3ef0731e"
+    },
+    {
+      "layer": "shoes",
+      "variant": "brown",
+      "view": "back",
+      "part": "shinR",
+      "bounds": [
+        259,
+        678,
+        58,
+        66
+      ],
+      "file": "dist/island/art/char/shoes/brown/back-shinR.webp",
+      "source_generation": "exec-79b66ffb-5eba-450c-874d-c16ed66f2434.png",
+      "source_sha256": "e01eae9117ee11fb107f206ec0d08100fae39ae7a65a55d0892fce692cacb471",
+      "sha256": "e8200d1067f0e919fc293740ef283edc01fa94072d021540fb0ca979d41bd42a"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "head",
+      "bounds": [
+        160,
+        110,
+        210,
+        242
+      ],
+      "file": "dist/island/art/char/body/cream/side-head.webp",
+      "source_generation": "exec-31ac350a-daf0-4758-84fe-12e89bfac61f.png",
+      "source_sha256": "1e0bf649d6e3eea5ca9087f56e5c055f25935d68b82eb4e575e3f1e160b799eb",
+      "sha256": "49be0d31fdbf13c88a4127a862084ca6e15da51239c9f622bed79a098e6d8a30"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "torso",
+      "bounds": [
+        216,
+        312,
+        88,
+        216
+      ],
+      "file": "dist/island/art/char/body/cream/side-torso.webp",
+      "source_generation": "exec-bdc1d3a9-e326-4ab2-8d12-2b6303a0d0c4.png",
+      "source_sha256": "e456ea83e62357505a6fae26109766ff4ee54f33784d3d05b3df77aad9705f2a",
+      "sha256": "36851b91db704d7ba7ece0c0f83441bd45666444e2994390e648e76c5c7467e6"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "pelvis",
+      "bounds": [
+        228,
+        498,
+        64,
+        64
+      ],
+      "file": "dist/island/art/char/body/cream/side-pelvis.webp",
+      "source_generation": "exec-34ad46ee-ffb1-40c6-956b-38f9d83f0896.png",
+      "source_sha256": "d325c2e9615574c739d0df4878d7d733526102583ff999b37333aab1fe128665",
+      "sha256": "004dcf7b295ffe11d46ce71642aaf959b15a56089e8109b95420308283140fd9"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "upperArmL",
+      "bounds": [
+        226,
+        332,
+        48,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/side-upperArmL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "8aa2b3513ec27c6db5fb71e6179ee1c493c8137a083be99a2365743d4e14751b"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "upperArmR",
+      "bounds": [
+        238,
+        332,
+        48,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/side-upperArmR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "b27c5b7af30fe799812d3701e32f2aceed94c7cb49f98976aedcbd17215cfb48"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "foreArmL",
+      "bounds": [
+        230,
+        437,
+        36,
+        114
+      ],
+      "file": "dist/island/art/char/body/cream/side-foreArmL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "f3170c2b49fc6d1ce241137a8414b97a01f5a2268c53ef0ce5b2841d6b3d89e2"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "foreArmR",
+      "bounds": [
+        246,
+        437,
+        36,
+        114
+      ],
+      "file": "dist/island/art/char/body/cream/side-foreArmR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "2a7377725833b118a4ca565960ec6ae935a29a3cc7223fcc255d7e2dd4fa493a"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "thighL",
+      "bounds": [
+        226,
+        512,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/side-thighL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "a5da23110485cca321476e8e25d1699e52fbba642e7b38969d3c42199bb4926e"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "thighR",
+      "bounds": [
+        242,
+        512,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/side-thighR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "99312424777627d078549825fb7b8fcafe43d0e77d94e874a463f2bc98e5961a"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "shinL",
+      "bounds": [
+        226,
+        604,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/side-shinL.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "363717d49d1f2c6166bec883d94a4ff3d2ff612866e01685327c8ea4ff234390"
+    },
+    {
+      "layer": "body",
+      "variant": "cream",
+      "view": "side",
+      "part": "shinR",
+      "bounds": [
+        242,
+        604,
+        44,
+        140
+      ],
+      "file": "dist/island/art/char/body/cream/side-shinR.webp",
+      "source_generation": "exec-6adc9691-d3c9-4396-af79-1b8c6027218a.png",
+      "source_sha256": "491f9363d337f3b8a86def619fad9149a38073a52655dd943c5677255ceca7c8",
+      "sha256": "d04c12dd57ce98e6946001627e20afa57b5365d91f66c5a023b885405da069bd"
+    },
+    {
+      "layer": "face",
+      "variant": "cream",
+      "view": "side",
+      "part": "face",
+      "bounds": [
+        282,
+        198,
+        66,
+        104
+      ],
+      "file": "dist/island/art/char/face/cream/side-face.webp",
+      "source_generation": "exec-934694a6-1a17-4ca0-b98f-9861965334e2.png",
+      "source_sha256": "e34bc5b2bb9740a774e985346b657d8e3e197b681769b70add0d5455414f0f08",
+      "sha256": "9a8cde3cf16f554174e60e6f0f59936a950511e274fa7db996db053a6d2d4fb7"
+    },
+    {
+      "layer": "hairBack",
+      "variant": "bob-chestnut",
+      "view": "side",
+      "part": "hairBack",
+      "bounds": [
+        148,
+        64,
+        198,
+        278
+      ],
+      "file": "dist/island/art/char/hairBack/bob-chestnut/side-hairBack.webp",
+      "source_generation": "exec-4d47ea95-3aa7-40ef-a70a-eaf7609d807a.png",
+      "source_sha256": "20dea009ace6492eb3d40ca73fdd7c0aabb5998cf7d1872d06cb84879df32ef3",
+      "sha256": "fd812139c0a642baab0bd530d79a662a7f72ff2a8ab805c84f4636adf473e035"
+    },
+    {
+      "layer": "hairFront",
+      "variant": "bob-chestnut",
+      "view": "side",
+      "part": "hairFront",
+      "bounds": [
+        170,
+        64,
+        194,
+        256
+      ],
+      "file": "dist/island/art/char/hairFront/bob-chestnut/side-hairFront.webp",
+      "source_generation": "exec-398c4277-ca35-4c73-abfe-d981e545e739.png",
+      "source_sha256": "39ae73a308c6ff5c7ec08811ff3584e33745e6aa3ac2ce01d12a9ba4ac3bc648",
+      "sha256": "d7763a3df432c23da507fa2f63a7ea352ca6bb2689cd5c203f384debb306a2bd"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "side",
+      "part": "torso",
+      "bounds": [
+        212,
+        328,
+        106,
+        200
+      ],
+      "file": "dist/island/art/char/top/sailor/side-torso.webp",
+      "source_generation": "exec-f0d136c3-b5c2-425a-85fc-fc2b32d8254b.png",
+      "source_sha256": "65a247a9896898abf44c85b97edc797b9511b161d178bf0c0aba68e41b25e32a",
+      "sha256": "968fa0403581779951e4962c1ae6372a58cdb4a33f55aee28f74e08d912fab42"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "side",
+      "part": "upperArmL",
+      "bounds": [
+        224,
+        332,
+        52,
+        144
+      ],
+      "file": "dist/island/art/char/top/sailor/side-upperArmL.webp",
+      "source_generation": "exec-5757f8a2-5ee7-4ddd-ad6d-9955b49de5f9.png",
+      "source_sha256": "4c65426ffb035b6271a7cfe884eb42d1db17f180f106eb8cf5393182ef5dbfa5",
+      "sha256": "0693b7b950b5c43ca88c22c250f38e625ce68739abe0d370b9d064a0194d7a45"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "side",
+      "part": "upperArmR",
+      "bounds": [
+        236,
+        332,
+        52,
+        144
+      ],
+      "file": "dist/island/art/char/top/sailor/side-upperArmR.webp",
+      "source_generation": "exec-9c7ca90b-c2cc-4049-9b59-d37a09f54236.png",
+      "source_sha256": "74cc68cfb35bee8eef7c5414b5586344483f646ead5c0853558c6c3894f1a8ec",
+      "sha256": "b1b7c93781fa54837cf0f2cfe38aaa4ea1cb8af3ef8c85825e23563facf87b3d"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "side",
+      "part": "foreArmL",
+      "bounds": [
+        227,
+        445,
+        42,
+        6
+      ],
+      "file": "dist/island/art/char/top/sailor/side-foreArmL.webp",
+      "source_generation": "exec-53bde4f0-c830-48b9-85cd-ac8bf47764da.png",
+      "source_sha256": "c18ce1e35b0a020bfef2bcbd082911bda63915c79fa3dffe65090e1755e68fd0",
+      "sha256": "808dd91af27a1abbc304dfa5ed371fb2084ce9e9ea09ae2cb783e28f81644585"
+    },
+    {
+      "layer": "top",
+      "variant": "sailor",
+      "view": "side",
+      "part": "foreArmR",
+      "bounds": [
+        243,
+        445,
+        42,
+        6
+      ],
+      "file": "dist/island/art/char/top/sailor/side-foreArmR.webp",
+      "source_generation": "exec-2a1c2506-9950-4958-a5e6-0922e321452c.png",
+      "source_sha256": "18da5df15076978ae23da6a4efc7376b4de08f29885ccbb1f7fc91a0acb8e1b6",
+      "sha256": "ccd5defd9de2b7c72f453429585f179c3eaab01ef292d348041630904473f79f"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "side",
+      "part": "pelvis",
+      "bounds": [
+        202,
+        502,
+        120,
+        84
+      ],
+      "file": "dist/island/art/char/bottom/skirt/side-pelvis.webp",
+      "source_generation": "exec-07bc4a36-00f8-4bd9-ba0f-cc5fd0d2089f.png",
+      "source_sha256": "ad9a2d5aae2d4bf512ca3f2bc6b97062006e96d8d71083ab515229e9a3a8dcf8",
+      "sha256": "ad26a82ed627323029468698dc5491d633683ce1b2197cb9010619fb2179311f"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "side",
+      "part": "thighL",
+      "bounds": [
+        222,
+        518,
+        52,
+        48
+      ],
+      "file": "dist/island/art/char/bottom/skirt/side-thighL.webp",
+      "source_generation": "exec-6f7059f8-1c9a-435b-a594-9aeb65fca3f8.png",
+      "source_sha256": "793977a36e640b38198e54d6c1def1e14f0a22469b7754dc1a4e738e1d3839ae",
+      "sha256": "646e306116226954a6ea832a61efa14323a74002231fb27019df6a3008099750"
+    },
+    {
+      "layer": "bottom",
+      "variant": "skirt",
+      "view": "side",
+      "part": "thighR",
+      "bounds": [
+        238,
+        518,
+        52,
+        48
+      ],
+      "file": "dist/island/art/char/bottom/skirt/side-thighR.webp",
+      "source_generation": "exec-f40e3d71-0340-4960-a474-1617e8d8bf06.png",
+      "source_sha256": "a8b5786a23e4b2edca744beb11c865c3ccc7e262f6d0a78286b6d3a5859cf3ca",
+      "sha256": "22e06edd60b81ec61f4c89ed7dd493d177abdfa5639597f459e70da4a88df85d"
+    },
+    {
+      "layer": "shoes",
+      "variant": "brown",
+      "view": "side",
+      "part": "shinL",
+      "bounds": [
+        219,
+        678,
+        74,
+        66
+      ],
+      "file": "dist/island/art/char/shoes/brown/side-shinL.webp",
+      "source_generation": "exec-9642563b-bf77-4175-8e2b-096e8969d4ae.png",
+      "source_sha256": "6c20f0a2041acd89cf9bdf260e48e908e4e84594b0c2ab6de7d3df8487eb280f",
+      "sha256": "38942e15c0824fcc7709bb160a89cfa30efcefee3b13370a52c02eef6d19b3a1"
+    },
+    {
+      "layer": "shoes",
+      "variant": "brown",
+      "view": "side",
+      "part": "shinR",
+      "bounds": [
+        235,
+        678,
+        74,
+        66
+      ],
+      "file": "dist/island/art/char/shoes/brown/side-shinR.webp",
+      "source_generation": "exec-0c721b4d-cb97-458a-8c52-248329070ca8.png",
+      "source_sha256": "07f5350dc6b96dab370479ae893232f5c3d1a587563bb127c971f5cccc01947b",
+      "sha256": "4e5106011796ba86385bd15f071088ed70ebb8fde1203659ff625b98c4f5dd80"
+    }
+  ],
+  "world": {
+    "day": "world/island-day.webp",
+    "sunset": "world/island-sunset.webp"
+  },
+  "props": {
+    "house": "props/house.webp",
+    "bench": "props/bench.webp",
+    "pot": "props/pot.webp",
+    "tree": "props/tree.webp",
+    "bowl": "props/bowl.webp",
+    "pond": "props/pond.webp",
+    "table": "props/table.webp",
+    "cushion": "props/cushion.webp",
+    "lamp": "props/lamp.webp",
+    "path": "props/path.webp",
+    "fence": "props/fence.webp",
+    "daisy": "props/daisy.webp",
+    "tulip": "props/tulip.webp",
+    "lavender": "props/lavender.webp"
+  },
+  "icon_safe_area": "Dedicated maskable composition keeps portrait/flower in central60%; store icon separate close portrait."
+}

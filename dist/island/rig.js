@@ -71,25 +71,31 @@ function partStack(o,view,part,uid){
  // Artwork wins layer by layer; the vector body already carries the outfit colours, so clothing layers need no vector fallback.
  let out='';
  for(const layer of LAYER_ORDER.concat(['hairBack'])){if(!LAYER_PARTS[layer].includes(part))continue;const file=artFile(o,layer,view,part);
-  if(file)out+=`<image href="${file}" width="256" height="384"/>`;
+  // The legacy vector body includes clothing. Preserve that fallback for outfits
+  // not yet painted, rather than exposing the neutral cutout connector layer.
+  const needs=part==='torso'||part.includes('Arm')?'top':part==='pelvis'||part.startsWith('thigh')?'bottom':part.startsWith('shin')?'shoes':null;
+  const fallbackOutfit=layer==='body'&&file&&needs&&(!artFile(o,needs,view,part)||(part.startsWith('shin')&&o.bottom==='trousers'&&!artFile(o,'bottom',view,part)));
+  if(fallbackOutfit)out+=vectorPart(o,view,part,uid);
+  else if(file)out+=`<image href="${file}" width="256" height="384" pointer-events="none"/>`;
   else if(['body','face','hairBack','hairFront','hat'].includes(layer))out+=vectorPart(o,view,part,uid);}
  return out;
 }
 const rot=(a,[x,y])=>a?` transform="rotate(${a.toFixed(2)} ${x} ${y})"`:'';
 // Returns SVG markup with the feet at (0,0), `height` world units tall.
-export function rigAvatar(o,{anim='idle',time=0,view='front',flip=false,height=112,uid='rig'}={}){
- const p=pose(anim,time),J=JOINTS[view],s=height/340,P=(n)=>partStack(o,view,n,uid);
+export function rigAvatar(o,{anim='idle',time=0,view='front',flip=false,height=112,uid='rig',jointAngle}={}){
+ const p=pose(jointAngle===undefined?anim:'idle',jointAngle===undefined?time:0),J=JOINTS[view],s=height/340,P=(n)=>partStack(o,view,n,uid);
+ if(jointAngle!==undefined)for(const part of ['upperArmL','upperArmR','foreArmL','foreArmR','thighL','thighR','shinL','shinR'])p[part]=jointAngle;
  // Seen from the front or back a stride is a lift and a knee bend, not a sideways split; arms swing mostly toward the viewer.
- const flat=view!=='side',k=flat?.3:1;
- const arm=(side)=>`<g${rot(p['upperArm'+side]*(flat&&Math.abs(p['upperArm'+side])<40?k:1),J['shoulder'+side])}>${P('upperArm'+side)}<g${rot(p['foreArm'+side]*(flat?.5:1),J['elbow'+side])}>${P('foreArm'+side)}</g></g>`;
- const leg=(side)=>{const a=p['thigh'+side],knee=p['shin'+side];if(!flat||p.sit)return `<g${rot(a,J['thigh'+side])}>${P('thigh'+side)}<g${rot(knee,J['knee'+side])}>${P('shin'+side)}</g></g>`;
+ const flat=view!=='side',k=flat&&jointAngle===undefined?0.3:1;
+ const arm=(side)=>`<g${rot(p['upperArm'+side]*(flat&&Math.abs(p['upperArm'+side])<40?k:1),J['shoulder'+side])}><g${rot(p['foreArm'+side]*(flat&&jointAngle===undefined?0.5:1),J['elbow'+side])}>${P('foreArm'+side)}</g>${P('upperArm'+side)}</g>`;
+ const leg=(side)=>{const a=p['thigh'+side],knee=p['shin'+side];if(!flat||p.sit||jointAngle!==undefined)return `<g${rot(a,J['thigh'+side])}>${P('thigh'+side)}<g${rot(knee,J['knee'+side])}>${P('shin'+side)}</g></g>`;
   const lift=Math.max(0,a)*.55+knee*.25,[hx,hy]=J['thigh'+side],sc=1-Math.max(0,a)/160;return `<g transform="translate(0 ${(-lift).toFixed(2)}) translate(${hx} ${hy}) scale(1 ${sc.toFixed(3)}) translate(${-hx} ${-hy})">${P('thigh'+side)}${P('shin'+side)}</g>`;};
- const headG=`<g${rot(p.head,J.neck)}>${view==='back'?P('face'):''}${P('head')}${view!=='back'?P('face'):''}${P('hairFront')}${P('hat')}</g>`;
+ const headG=`<g${rot(p.head,J.neck)}>${view==='back'?P('head')+P('hairFront')+P('hairBack'):P('hairBack')+P('head')+P('face')+P('hairFront')}${P('hat')}</g>`;
  const breathe=p.breath?` transform="translate(0 ${(-p.breath*1.2).toFixed(2)})"`:'';
  let body;
- if(view==='side')body=`${arm('L')}${leg('L')}<g${rot(p.torso,J.hip)}>${P('pelvis')}<g${breathe}>${P('torso')}${P('hairBack')}${headG}</g></g>${leg('R')}${arm('R')}`;
- else if(view==='back')body=`${leg('L')}${leg('R')}<g${rot(p.torso,J.hip)}>${P('pelvis')}<g${breathe}>${arm('L')}${arm('R')}${P('torso')}${headG}${P('hairBack')}</g></g>`;
- else body=`<g${rot(p.torso,J.hip)}><g${breathe}>${P('hairBack')}</g></g>${leg('L')}${leg('R')}<g${rot(p.torso,J.hip)}>${P('pelvis')}<g${breathe}>${P('torso')}${arm('L')}${arm('R')}${headG}</g></g>`;
+ if(view==='side')body=`${arm('L')}${leg('L')}<g${rot(p.torso,J.hip)}>${P('pelvis')}<g${breathe}>${P('torso')}${headG}</g></g>${leg('R')}${arm('R')}`;
+ else if(view==='back')body=`${leg('L')}${leg('R')}<g${rot(p.torso,J.hip)}>${P('pelvis')}<g${breathe}>${arm('L')}${arm('R')}${P('torso')}${headG}</g></g>`;
+ else body=`${leg('L')}${leg('R')}<g${rot(p.torso,J.hip)}>${P('pelvis')}<g${breathe}>${P('torso')}${arm('L')}${arm('R')}${headG}</g></g>`;
  const [rx,ry]=p.root;
  return `${vectorDefs(o,uid)}<ellipse cy="4" rx="${22*(1-Math.min(.25,Math.abs(ry)/40))}" ry="7" fill="#4a5a3a2e"/><g transform="scale(${(flip?-s:s).toFixed(4)} ${s.toFixed(4)}) translate(${-CANVAS.foot[0]+rx} ${-CANVAS.foot[1]+ry})">${body}</g>`;
 }

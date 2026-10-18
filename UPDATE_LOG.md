@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-19 00:45 KST — Codex · 포근섬 원화 본 게임 연결
+
+- 기준 master bb5cafb (독립 검수 자산). 캐릭터71파트·배경2·소품14·아이콘3을 본 manifest/PWA에 연결. 관절 계층/머리카락/팔 겹침과 투명 이미지 클릭 가로채기 최소 보정. 다른 코디는 벡터 대체 및 기존 저장 보존.
+- 검사: 자동81개 통과,87개 WebP 디코딩·규격 및33개 몸체 관절 중심 알파 확인. Chrome390×844에서 코디 저장, 이동·데이지 심기·물주기·벤치 앉기·노을 전환 확인. 실제 폰 터치 미확인.
+- 소스: codex/pogeun-art. 본 게임 배포는 이 커밋 후 실행·실제 검증하여 별도 기록. 원화/해시/합성은 docs/art/pogeun-art-production.* 및 qa/*.png.
+
 ## 2026-10-19 00:16 KST — Codex · 포근섬 아트 독립 검수 경로 준비
 
 - 기준 master e2ab351. 원화71파트/2배경/14소품 제작. 본 게임 manifest는 유지한 채 art-review.html 및 rig-preview-review.html에서 먼저 검수하기 위한 후보 자산 저장.
