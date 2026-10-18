@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 11:50 KST — Codex · v0.20.0 플레이어 발견 중심 첫 사건 구현/검수 준비
+
+- 기준 원격 master `9af3f3d56f1aa88adf9352a6c50c925cebd12d93`, 작업 `codex/playable-afterlight-020`. 시작 검사 통과. 새 실제 플레이 요청에 따라 앞서 확정한 세 퍼즐을 한 방/직접 조사/단계별 장치로 구현.
+- Changes: `dist/afterlight/`의 독립 첫 사건. 봉투 발견→개별 양면 포스트잇→판 순서 드래그/탭 교환→실제 투과 마스크와 샘플/실험 기록→C3 장부→이름·행선지 카드 배정→결말. 기존 `experiments/afterlight/puzzle-core.mjs` 그대로 배포 코어로 사용. 모든 기존 저장/챕터/URL 경로 유지, 새 메뉴 링크와 모드만 추가.
+- Art: 새 전용 세로 암실 원화 생성/직접 검토, 게임 자산 `dist/afterlight/room.webp`. 정확한 단서 기호/문자는 코드. 상세 프롬프트와 범위 `docs/afterlight-playable.md`.
+- Checks: 신규 3개 포함 전체 자동 검사 결과는 최종 로그로 기록. 실제 브라우저 진행/모바일은 확인 전으로 구분. 새 첫 사건은 배포 준비 중, 기존 v0.13.1 성공 상태는 유지.
+
 ## 2026-10-18 11:30 KST — Codex · 게임 앱 전면 재설계 및 첫 사건 논리 검증 — 미배포
 
 - Source 기준: 원격 master `d3a04a5a3899c2c17e6f6e677cc2337222f77b13`. 시작 검사 통과. 사용자 최신 요청에 따라 의자/UI 개별 보정 대신 방탈출형 규칙·실험·다중 단서 추론 앱을 설계. 작업 `codex/reboot-spec-020`; 이전 보정 브랜치는 미변경 상태.
