@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 09:46 KST — Codex · v0.13.0 첫 사진관 의뢰 구현/배포 준비
+
+- 기준 원격 master `94334f5b92131624a96027054796e404843b7123`, 작업 `codex/photo-case-013`. `guard-shared-game` 시작 검사 통과. 원본 챕터·세이브·배포 경로 보존.
+- Changes: 별도 첫 의뢰 ‘빈자리의 주인’: 옛 사진 정렬/비교, 의자 직접 드래그·대체 버튼, 사진 뒷면·편지·조명 흔적 연결 추론, 두 구도 촬영·분기 답장·사진책 JPG, 상태별 힌트·저장·키보드 접근. 기존 배경·의자 원화 재사용, 다음 의뢰는 준비 중으로 구분. 사양 `docs/photo-case-01.md`.
+- Checks: 신규 6개 포함 자동 검사 55개 통과(첫 실행). 최종 검사/소스/배포/실제 브라우저는 후속 기록. 로컬 Playwright Chromium 설치는 다운로드가 손상된 응답으로 실패; 검증 성공으로 취급하지 않음.
+- Deployment: 아직 배포 전. 기존 0.12.1 성공 기록 유지. 실제 폰 터치와 다른 작업자 접근 미확인.
+
 ## 2026-10-18 09:13 KST — Codex · v0.12.1 배포·실제 브라우저 도쿄 완료 검증
 
 - Source: `codex/visual-continuity-012@d4867f26456572fa7f2d0ee48714ea6bcbc3fa76`; synchronized master `d4867f26456572fa7f2d0ee48714ea6bcbc3fa76`. 기준 `4969160` 이후 원화/가구 개선 `fa8697a`와 실제 브라우저 발견 2건 보정 `d4867f26456572fa7f2d0ee48714ea6bcbc3fa76`. 기존 코드·서울/도쿄·저장 키 보존, expected-HEAD 사용/강제 푸시 없음.
