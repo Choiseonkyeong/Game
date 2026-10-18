@@ -8,7 +8,7 @@
 - 투과 장치: 마스크와 좌우 반사를 정확히 렌더링. 샘플 실험, 실제 통과점, 최근 실험 비교, C3 서랍 개방. 숨겨진 정답용 그림 없음.
 - 보관함/배달: 장부의 두 사실과 메모 뒷면을 교차 추론. 빈 사진에 이름표/행선지표를 한 장씩 놓고 가설 수정. 옳은 조합으로 전체 사건 해결.
 - 첫 사건 결말, 답장 재열기, 단계별 무료 힌트, 선택형 짧은 효과음, 저장 제한 안내, 이 사건만 재시작하는 확인 흐름.
-- 실제 폰 검수, 외부 사용자 재미 검증, 상용 결제 및 다음 사건은 별도이며 이번 완료로 주장하지 않는다. 현재 결말의 네 인화 이미지는 같은 공간 원화의 서로 다른 부분을 사용한 첫 사건 표현이다.
+- 실제 폰 검수, 외부 사용자 재미 검증, 상용 결제 및 다음 사건은 별도이며 이번 완료로 주장하지 않는다. 네 인화 사진은 별도 생성한 2×2 사진 아틀라스의 새 작업실·오래된 가게·소포·카메라 장면을 사용한다.
 
 ## 원화
 
@@ -21,3 +21,9 @@ Prompt:
 ## 검증
 
 검증 코어와 배포 코어 바이트 일치, 3개 신규 플레이 인터페이스 검사, 전체 엔진 3단계/오답/저장 검증. 실제 브라우저에서 수행한 범위와 배포 SHA는 UPDATE_LOG와 release-state의 후속 기록이 기준이다. 자동 검사는 이미지 품질과 재미를 입증하지 않는다.
+
+## 인화 사진 원화 보정
+
+Built-in image generation. 원본 `/workspace/scratch/b26c220b52f1/generated_images/exec-6d5c55d8-636a-4d8d-b177-b4fe1b825029.png`, 게임 자산 `dist/afterlight/photos.webp`. 2×2 사진 아틀라스이며 정밀 퍼즐 도면이 아닌 이야기 보상용 사진.
+
+Prompt: Use case: illustration-story. Asset type: one 2-by-2 contact sheet atlas of four distinct fictional photographic prints for a premium atmospheric escape room game about the last day of a Tokyo neighborhood photo studio. Four equal rectangular quadrants arranged exactly in a clean 2x2 grid, no gutters, no frames, no borders, no visible text, no letters or numbers, no UI. Top left: warm sunlit small empty new studio with two plain wooden chairs near a large window and pale olive walls, hopeful morning. Top right: wide nostalgic exterior of the old neighborhood photo shop, weathered dark green glass door and wooden frame, no readable signage, late afternoon. Bottom left: intimate still life of a hand-tied parcel wrapped in brown paper beside a cup and small flower on the counter, quiet farewell. Bottom right: nostalgic still life of an old film camera beside a folded scarf and a small potted plant in warm window light, personal keepsake. All four are well-composed believable documentary analog photographs, consistent warm film grain, nuanced real materials, sophisticated quiet Japanese photography, physically plausible perspective. No people. Each of the four quadrant pictures should have a clearly different recognizable main subject. Full image landscape 1536x1024. Only the four photographs, no lettering, no watermarks.
