@@ -1,9 +1,9 @@
-import {stageFit,innerGeometry,PLATE} from './view-gestures.js?v=111';
-import {BodyLayer,SEOUL_BODIES} from './room-bodies.js?v=111';
-import {paintMargins,featherEdges,releaseCanvases} from './room-frame.js?v=111';
+import {stageFit,innerGeometry,PLATE} from './view-gestures.js?v=120';
+import {BodyLayer,SEOUL_BODIES} from './room-bodies.js?v=120';
+import {paintMargins,featherEdges,releaseCanvases} from './room-frame.js?v=120';
 export {releaseCanvases};
-import {SceneSurface} from './scene-surface.js?v=111';
-import {bound,frameReady} from './first-room-engine.js?v=111';
+import {SceneSurface} from './scene-surface.js?v=120';
+import {bound,frameReady} from './first-room-engine.js?v=120';
 export const BOARD={width:800,height:1000};
 export const ROOM_TARGETS={pillow:{x:.13,y:.46},drawer:{x:.88,y:.49},tin:{x:.745,y:.075},window:{x:.46,y:.23},lamp:{x:.16,y:.32},chair:{x:.76,y:.61},frame:{x:.025,y:.17},bin:{x:.985,y:.68}};
 const round=(c,x,y,w,h,r=8)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
@@ -23,7 +23,7 @@ export class ChapterRenderer{
  roomPoint(x,y){const g=this.geometry;return {x:(x-g.tx)/g.rw,y:(y-g.ty)/g.rh};}
  renderFocus(type,state,ui={}){
   const c=this.c,w=this.canvas.width,h=this.canvas.height;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,w,h);const shade=c.createLinearGradient(0,0,0,h);shade.addColorStop(0,'#b3ab94');shade.addColorStop(1,'#888775');c.fillStyle=shade;c.fillRect(0,0,w,h);
-  const v=ui.focusView||{scale:1,x:0,y:0},base=Math.min(w/800,h/1000),scale=base*v.scale,tx=(w-800*scale)/2+v.x*w/Math.max(1,ui.cssWidth||w),ty=(h-1000*scale)/2+v.y*h/Math.max(1,ui.cssHeight||h);this.focusGeometry={scale,tx,ty};c.setTransform(scale,0,0,scale,tx,ty);
+  const v=ui.focusView||{scale:1,x:0,y:0},base=(type==='drawer'||type==='chair'?Math.max(w/800,h/1000):Math.min(w/800,h/1000)),scale=base*v.scale,tx=(w-800*scale)/2+v.x*w/Math.max(1,ui.cssWidth||w),ty=(h-1000*scale)/2+v.y*h/Math.max(1,ui.cssHeight||h);this.focusGeometry={scale,tx,ty};c.setTransform(scale,0,0,scale,tx,ty);
   const pv=ui.preview||{};this.speed=pv.velocity||0;this.moving=pv.object;
   if(type==='pillow')this.pillow(state,ui);if(type==='drawer')this.drawer(state,ui);if(type==='tin')this.tin(state,ui);if(type==='camera')this.camera(state,ui);if(type==='photo')this.photo(state,ui);if(type==='chair')this.chair(state);if(type==='frame')this.frame(state);if(type==='bin')this.bin(state);
   c.setTransform(1,0,0,1,0,0);
@@ -35,19 +35,20 @@ export class ChapterRenderer{
   c.save();c.translate(400+130*p,470-300*p+8*land);c.rotate(-.13-.08*p+bound(v*.025,-.08,.08));c.scale(1+.05*land,1-.08*land);c.shadowColor='#302a2455';c.shadowBlur=8+18*p;c.shadowOffsetY=4+20*p;c.drawImage(this.assets.pillow,-330,-220,660,440);c.restore();
  }
  plate(image,zoom=1){const c=this.c,iw=image.width,ih=image.height,ratio=800/1000;let sw=iw,sh=ih;if(iw/ih>ratio)sw=ih*ratio;else sh=iw/ratio;sw/=zoom;sh/=zoom;c.drawImage(image,(iw-sw)/2,(ih-sh)/2,sw,sh,0,0,800,1000);}
- drawer(s){const c=this.c,p=s.drawer;this.plate(this.assets.station);
+ drawer(s,showChair=true){const c=this.c,p=s.drawer;this.plate(this.assets.station);
   // Drawer rails stay in one fixed desk opening; the tray extends towards the player.
   const x=100,y=358,w=600,depth=230*p,front=y+depth;
   c.save();c.fillStyle='#30271e';c.fillRect(x,y,w,100);c.restore();
-  if(p>0){c.save();c.beginPath();c.rect(x,y,w,depth+2);c.clip();c.drawImage(this.assets.interior,0,125,1536,605,x,y,w,230);
+  if(p>0){c.save();c.beginPath();c.rect(x,y,w,depth+2);c.clip();c.drawImage(this.assets.interior,0,125,1536,605,x,y+depth-230,w,230);
    // The loose camera slides a little against the tray's motion before friction catches it.
    const slide=this.moving==='drawer'?bound(-this.speed*9,-14,14):0;
-   if(!s.camera){c.save();c.translate(455,y+135+slide);c.rotate(-.1+slide*.002);c.shadowColor='#362d2255';c.shadowBlur=6;itemArt(c,this.assets,'camera',-110,-73,220,146);c.restore();}c.restore();
+   if(!s.camera){c.save();c.translate(455,y+depth-95+slide);c.rotate(-.1+slide*.002);c.shadowColor='#362d2255';c.shadowBlur=6;itemArt(c,this.assets,'camera',-110,-73,220,146);c.restore();}c.restore();
    c.fillStyle='#745435';c.beginPath();c.moveTo(x,y);c.lineTo(x+12,y+depth);c.lineTo(x+12,y+depth+60);c.lineTo(x,y+60);c.fill();c.beginPath();c.moveTo(x+w,y);c.lineTo(x+w-12,y+depth);c.lineTo(x+w-12,y+depth+60);c.lineTo(x+w,y+60);c.fill();
   }
-  c.save();c.shadowColor='#33271d55';c.shadowBlur=5;c.shadowOffsetY=4;c.drawImage(this.assets.interior,90,790,1350,165,x,front,w,100);c.restore();
+  c.save();c.shadowColor='#33271d55';c.shadowBlur=5;c.shadowOffsetY=4;c.drawImage(this.assets.interior,90,790,1350,165,x,front,w,100);c.restore();if(showChair)this.drawChair({...s,chair:Math.max(s.chair,bound(p*4))},true);
  }
- chair(s){const c=this.c,p=s.chair;this.drawer(s);const tilt=this.moving==='chair'?bound(this.speed*.03,-.05,.05):0;c.save();c.translate(385-50*p,630+80*p);c.rotate(-.035*p+tilt);c.shadowColor='#372d2255';c.shadowBlur=14;c.shadowOffsetY=9;c.drawImage(this.assets.seat,-180,-260,360,520);c.restore();}
+ chair(s){this.drawer(s,false);this.drawChair(s);}
+ drawChair(s,aside=false){const c=this.c,p=s.chair;const tilt=this.moving==='chair'?bound(this.speed*.03,-.05,.05):0;c.save();c.translate(385-(aside?280:50)*p,630+(aside?110:80)*p);c.rotate(-.035*p+tilt);c.shadowColor='#372d2255';c.shadowBlur=14;c.shadowOffsetY=9;c.drawImage(this.assets.seat,-180,-260,360,520);c.restore();}
  frame(s){this.plate(this.assets.frame,1+.025*s.frame);}
  bin(s){this.plate(this.assets.bin,1+.12*s.bin);}
  tin(s){const c=this.c,p=s.lid;

@@ -1,15 +1,16 @@
 // Chapter 2 · Tokyo photo shop. Swing the tote until the claim ticket slips out, find envelope 27 in the counter
 // drawer, read the negative on the lightbox under the desk lamp, print the good frame and pin it on the photo board.
-import {stageFit,innerGeometry,PLATE,pinchStart,pinchTransform,constrainFocus} from './view-gestures.js?v=111';
-import {Spring,MATERIALS,FollowValue} from './interaction-motion.js?v=111';
-import {BodyLayer,TOKYO_BODIES,insidePolygon,bodyPoint} from './room-bodies.js?v=111';
-import {paintMargins,featherEdges,softDraw,releaseCanvases} from './room-frame.js?v=111';
-import {initialTokyo,restoreTokyo,tokyoAction,tokyoInventory,tokyoHint,tokyoHintPhase,loupeFrame,failText,TOKYO_SAVE,CHAPTER_KEY,GOOD_FRAME} from './tokyo-engine.js?v=111';
-import {FIRST_SAVE} from './first-room-engine.js?v=111';
+import {stageFit,innerGeometry,PLATE,pinchStart,pinchTransform,constrainFocus} from './view-gestures.js?v=120';
+import {Spring,MATERIALS,FollowValue} from './interaction-motion.js?v=120';
+import {BodyLayer,TOKYO_BODIES,insidePolygon,bodyPoint} from './room-bodies.js?v=120';
+import {paintMargins,featherEdges,softDraw,releaseCanvases} from './room-frame.js?v=120';
+import {initialTokyo,restoreTokyo,tokyoAction,tokyoInventory,tokyoHint,tokyoHintPhase,loupeFrame,failText,TOKYO_SAVE,CHAPTER_KEY,GOOD_FRAME} from './tokyo-engine.js?v=120';
+import {paintCounterDrawer,paintDeskLight,drawerGeometry,envelopeQuad,fromDrawerBoard,DRAWER_VIEW} from './tokyo-visuals.js?v=120';
+import {FIRST_SAVE} from './first-room-engine.js?v=120';
 const bound=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const legacy=document.getElementById('game');if(legacy)legacy.hidden=true;
 const host=document.createElement('little-travel-chapter');document.body.append(host);const root=host.attachShadow({mode:'open'});
-root.innerHTML=`<link rel="stylesheet" href="first-room.css?v=111"><main class="screen"><div class="room"><canvas id="room" aria-label="도쿄의 작은 사진관, 밀어서 둘러보고 물건을 만져 보세요" tabindex="0"></canvas></div><header class="header"><button id="menu" aria-label="메뉴">≡</button><div class="heading"><small>TOKYO · ミナミ写真館</small><h1>사진관의 맡김표</h1></div><button id="hint" aria-label="힌트">?</button></header><div class="nav"><button id="left" aria-label="왼쪽 보기">‹</button><button id="right" aria-label="오른쪽 보기">›</button></div><section class="focus" id="focus"><canvas id="board" tabindex="0" aria-label="물건 가까이 살펴보기"></canvas><div class="focus-title" id="focus-title"></div><button class="print-cut" id="print-cut" hidden disabled>확대경으로 컷을 살펴봐요</button><button class="focus-hint" id="focus-hint" aria-label="힌트">?</button><button class="back" id="back" aria-label="가게로 돌아가기">×</button></section><section class="dock empty" id="dock" aria-label="소지품"><span class="empty-icon" id="empty">▱</span><div class="inventory" id="inventory"></div></section><div class="toast" id="toast" role="status"></div><div class="flash" id="flash"></div><div class="overlay" id="overlay" hidden></div><div class="loading" id="loading">Tokyo is getting ready…</div></main>`;
+root.innerHTML=`<link rel="stylesheet" href="first-room.css?v=120"><main class="screen"><div class="room"><canvas id="room" aria-label="도쿄의 작은 사진관, 밀어서 둘러보고 물건을 만져 보세요" tabindex="0"></canvas></div><header class="header"><button id="menu" aria-label="메뉴">≡</button><div class="heading"><small>TOKYO · ミナミ写真館</small><h1>사진관의 맡김표</h1></div><button id="hint" aria-label="힌트">?</button></header><div class="nav"><button id="left" aria-label="왼쪽 보기">‹</button><button id="right" aria-label="오른쪽 보기">›</button></div><section class="focus" id="focus"><canvas id="board" tabindex="0" aria-label="물건 가까이 살펴보기"></canvas><div class="focus-title" id="focus-title"></div><button class="print-cut" id="print-cut" hidden disabled>확대경으로 컷을 살펴봐요</button><button class="focus-hint" id="focus-hint" aria-label="힌트">?</button><button class="back" id="back" aria-label="가게로 돌아가기">×</button></section><section class="dock empty" id="dock" aria-label="소지품"><span class="empty-icon" id="empty">▱</span><div class="inventory" id="inventory"></div></section><div class="toast" id="toast" role="status"></div><div class="flash" id="flash"></div><div class="overlay" id="overlay" hidden></div><div class="loading" id="loading">Tokyo is getting ready…</div></main>`;
 const $=id=>root.getElementById(id),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 try{localStorage.setItem(CHAPTER_KEY,'tokyo');}catch{}
 let state;try{state=restoreTokyo(JSON.parse(localStorage.getItem(TOKYO_SAVE)||'null'));}catch{state=initialTokyo();}
@@ -21,12 +22,12 @@ const AREAS={
  lightbox:[[340,360],[610,360],[610,402],[340,402]],
  board:[[172,126],[338,126],[338,282],[172,282]]
 };
-const RECEIPT=[[506,900],[628,900],[628,1004],[506,1004]],FURIN='furin',TICKET_REST={x:642,y:806},POCKET={x:590,y:640},PIN={x:256,y:150},ENVELOPES=[{n:12,x:160},{n:27,x:400},{n:31,x:640}];
+const RECEIPT=[[506,900],[628,900],[628,1004],[506,1004]],FURIN='furin',TICKET_REST={x:642,y:806},POCKET={x:590,y:640},PIN={x:256,y:174},ENVELOPES=[{n:12,x:160},{n:27,x:400},{n:31,x:640}];
 
 const load=src=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=reject;image.src=src;if(image.decode)image.decode().then(()=>resolve(image),()=>{});});
 // The taller shop plate carries the painted Japanese details; T converts original room rows to plate rows.
 const T=PLATE.top;
-const assets=await Promise.all([load('travel-art/tokyo-tall-v10.webp?v=111'),load('travel-art/drawer-interior-v7.webp'),load('travel-art/seoul.webp'),load('travel-art/tokyo-papers-v10.webp?v=111')]).then(([room,interior,seoul,papers])=>({room,interior,seoul,papers})).catch(()=>null);
+const assets=await Promise.all([load('travel-art/tokyo-tall-v10.webp?v=120'),load('travel-art/drawer-interior-v7.webp'),load('travel-art/seoul.webp'),load('travel-art/tokyo-papers-v10.webp?v=120'),load('travel-art/tokyo-clear-v12.webp?v=120'),load('travel-art/tokyo-tote-v12.webp?v=120')]).then(([room,interior,seoul,papers,clear,tote])=>({room,interior,seoul,papers,clear,tote})).catch(()=>null);
 if(!assets){$('loading').textContent='그림을 불러오지 못했어요. 화면을 새로고침해 주세요.';throw Error('Tokyo assets could not load');}
 if(seoulPhoto)assets.photo=await load(seoulPhoto).catch(()=>null);
 
@@ -46,43 +47,36 @@ const SPRITE={ticket:[4,4,232,142],env:n=>[8+[12,27,31].indexOf(n)*300,160,292,3
 function sprite(c,[sx,sy,sw,sh],x,y,w,h){c.drawImage(assets.papers,sx,sy,sw,sh,x,y,w,h);}
 function ticketArt(c,x,y,w,h,angle=0){c.save();c.translate(x,y);c.rotate(angle);c.shadowColor='#2c241855';c.shadowBlur=Math.max(2,w*.08);c.shadowOffsetY=Math.max(1,h*.06);sprite(c,SPRITE.ticket,-w/2,-h/2,w,h);c.restore();}
 function negativeArt(c,x,y,w,h){c.save();c.shadowColor='#2c241844';c.shadowBlur=3;sprite(c,SPRITE.strip,x,y,w,h);c.restore();}
-function printArt(c,x,y,w,h,angle=0){c.save();c.translate(x,y);c.rotate(angle);c.shadowColor='#2b231944';c.shadowBlur=6;c.shadowOffsetY=3;sprite(c,SPRITE.paper,-w/2,-h/2,w,h);c.shadowColor='transparent';photoSource(c,-w/2+w*.06,-h/2+h*.06,w*.88,h*.7);c.restore();}
+function printArt(c,x,y,w,h,angle=0){c.save();c.translate(x,y);c.rotate(angle);c.shadowColor='#2b23192b';c.shadowBlur=2.4;c.shadowOffsetY=1.5;sprite(c,SPRITE.paper,-w/2,-h/2,w,h);c.shadowColor='transparent';photoSource(c,-w/2+w*.06,-h/2+h*.06,w*.88,h*.7);c.globalCompositeOperation='multiply';c.fillStyle='#c9b58e2b';c.fillRect(-w/2,-h/2,w,h);c.restore();}
 function itemArt(c,item,x,y,w,h){if(item==='ticket')ticketArt(c,x+w/2,y+h/2,w*.78,h*.74,-.08);else if(item==='negative')negativeArt(c,x+w*.04,y+h*.28,w*.92,h*.44);else printArt(c,x+w/2,y+h/2,w*.62,h*.86,.05);}
 function negativeLook(c,x,y,w,h){c.save();c.globalCompositeOperation='difference';c.fillStyle='#fff';c.fillRect(x,y,w,h);c.globalCompositeOperation='multiply';c.fillStyle='#e0904c';c.fillRect(x,y,w,h);c.restore();}
 
 class TokyoRenderer{
- constructor(canvas){this.canvas=canvas;this.c=canvas.getContext('2d');this.bodies=new BodyLayer(TOKYO_BODIES,undefined,T);}
+ constructor(canvas){this.canvas=canvas;this.c=canvas.getContext('2d');this.bodies=new BodyLayer(TOKYO_BODIES,undefined,T);if(assets.tote)this.bodies.spriteOverrides.set('tote',{sprite:assets.tote,fill:null,box:{x:499,y:498,w:110,h:255}});}
  // The shop image is drawn straight to the screen. A hidden full-size canvas can silently stay blank on iPhones.
- overlays(c,s){const d=s.drawer;
-  if(d>0){c.save();c.beginPath();AREAS.drawer.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();c.clip();const gr=c.createLinearGradient(0,552,0,700);gr.addColorStop(0,'#2b2117');gr.addColorStop(1,'#5b4630');c.fillStyle=gr;c.fillRect(0,552,488,150);c.restore();
-   // The drawer front comes forward and down along the counter's perspective.
-   c.save();c.shadowColor='#2b211855';c.shadowBlur=10*d;c.shadowOffsetY=6*d;c.drawImage(assets.room,0,552+T,488,140,-10*d,552+30*d,488*(1+.05*d),140*(1+.05*d));c.restore();}
-  if(s.lampOn){c.save();c.globalCompositeOperation='lighter';const g=c.createRadialGradient(468,330,10,468,360,240);g.addColorStop(0,'#ffe3a055');g.addColorStop(1,'#ffe3a000');c.fillStyle=g;c.fillRect(220,200,500,260);c.beginPath();c.moveTo(452,282);c.lineTo(486,282);c.lineTo(590,388);c.lineTo(350,388);c.closePath();const cone=c.createLinearGradient(0,282,0,388);cone.addColorStop(0,'#fff0c044');cone.addColorStop(1,'#fff0c010');c.fillStyle=cone;c.fill();c.restore();}}
+ base(c){
+  c.drawImage(assets.clear||assets.room,0,-T);
+  // Retain the exact painted Japanese shelf labels from the shared original artwork.
+  if(assets.clear)for(const [x,y,w,h] of [[637,285,76,34],[757,398,76,34],[855,285,76,34],[642,518,76,34],[787,643,76,34]])c.drawImage(assets.room,x,y+T,w,h,x,y,w,h);
+ }
+ overlays(c,s,ui={}){paintCounterDrawer(c,assets,s,{top:T,lift:ui.lift});paintDeskLight(c,s.lampOn);}
  renderRoom(s,ui){const c=this.c,w=this.canvas.width,h=this.canvas.height,view=ui.preview?{...s,drawer:ui.preview.value}:s,room=assets.room;
-  const plate=stageFit(w,h,ui.camera,ui.overview?1:ui.zoom,ui.overview,PLATE.height),g=innerGeometry(plate,T);this.plate=plate;this.geometry=g;c.setTransform(1,0,0,1,0,0);c.fillStyle='#d3c8ae';c.fillRect(0,0,w,h);paintMargins(c,room,plate,'#d3c8ae');c.drawImage(room,plate.tx,plate.ty,plate.rw,plate.rh);
-  const k=g.rw/1536;c.save();c.setTransform(k,0,0,k,g.tx,g.ty);this.overlays(c,view);c.restore();this.bodies.draw(c,room,g);
+  const plate=stageFit(w,h,ui.camera,ui.overview?1:ui.zoom,ui.overview,PLATE.height),g=innerGeometry(plate,T);this.plate=plate;this.geometry=g;c.setTransform(1,0,0,1,0,0);c.fillStyle='#d3c8ae';c.fillRect(0,0,w,h);paintMargins(c,room,plate,'#d3c8ae');c.save();c.setTransform(g.rw/1536,0,0,g.rw/1536,g.tx,g.ty);this.base(c);c.restore();
+  const k=g.rw/1536;c.save();c.setTransform(k,0,0,k,g.tx,g.ty);this.overlays(c,view,ui);c.restore();this.bodies.draw(c,assets.clear||room,g);
   c.save();c.setTransform(k,0,0,k,g.tx,g.ty);
-  if(s.pinned){const a=ui.pinSwing?.value||0;c.save();c.translate(PIN.x,PIN.y);c.rotate(-.05+a);printArt(c,0,44,84,98,0);c.fillStyle='#c4573f';c.beginPath();c.arc(0,0,5,0,7);c.fill();c.restore();}
+  if(s.pinned){const a=ui.pinSwing?.value||0;c.save();c.translate(PIN.x,PIN.y);c.rotate(-.05+a);printArt(c,0,31,58,70,0);c.fillStyle='#a64b37';c.beginPath();c.arc(0,0,2.7,0,7);c.fill();c.restore();}
   if(ui.ticketFall)ticketArt(c,ui.ticketFall.x,ui.ticketFall.y,46,30,ui.ticketFall.a);else if(s.dropped&&!s.ticket)ticketArt(c,TICKET_REST.x,TICKET_REST.y,46,30,.42);
   if(!s.dropped&&!ui.ticketFall){const pose=this.bodies.motions.get('tote')?.pose||{angle:0,bend:0},p=bodyPoint(TOKYO_BODIES.find(b=>b.id==='tote'),pose,POCKET.x,POCKET.y-20);c.save();c.translate(p.x,p.y);c.rotate(pose.angle);c.fillStyle='#f3ead2';c.fillRect(-14,-6,26,12);c.restore();}
   c.restore();featherEdges(c,room,plate);}
  roomPoint(x,y){const g=this.geometry;return {x:(x-g.tx)/g.rw*1536,y:(y-g.ty)/g.rh*1024};}
- renderFocus(type,s,ui){const c=this.c,w=this.canvas.width,h=this.canvas.height;c.setTransform(1,0,0,1,0,0);c.fillStyle='#8f8a76';c.fillRect(0,0,w,h);
+ renderFocus(type,s,ui){const c=this.c,w=this.canvas.width,h=this.canvas.height;c.setTransform(1,0,0,1,0,0);c.fillStyle='#bba98d';c.fillRect(0,0,w,h);
   const v=ui.focusView,scale=Math.min(w/800,h/1000)*v.scale,tx=(w-800*scale)/2+v.x*w/Math.max(1,ui.cssWidth||w),ty=(h-1000*scale)/2+v.y*h/Math.max(1,ui.cssHeight||h);this.focusGeometry={scale,tx,ty};c.setTransform(scale,0,0,scale,tx,ty);
   if(type==='drawer')this.drawer(ui.preview?.object==='drawer'?{...s,drawer:ui.preview.value}:s,ui);else this.lightbox(s,ui);c.setTransform(1,0,0,1,0,0);}
  focusPoint(x,y){const g=this.focusGeometry;return {x:(x-g.tx)/g.scale,y:(y-g.ty)/g.scale};}
  // Counter drawer: the tray slides out of a fixed opening; envelopes ride inside it.
- drawer(s,ui){const c=this.c,d=s.drawer,k=800/560,top=(552-320)*k,depth=300*d,speed=ui.preview?.object==='drawer'?ui.preview.velocity||0:0;
-  c.drawImage(assets.room,0,320+T,560,700,0,0,800,1000);
-  c.fillStyle='#241b13';c.fillRect(0,top,488*k,140*k);
-  if(d>0){c.save();c.beginPath();c.rect(0,top,488*k,depth+6);c.clip();c.drawImage(assets.interior,0,125,1536,605,0,top+depth-300,488*k,300);
-   const slide=bound(-speed*10,-16,16);
-   for(const e of ENVELOPES){if(e.n===27&&s.negative)continue;const lift=ui.lift?.n===e.n?ui.lift.spring.value:0,x=e.x,y=top+depth-235+slide+lift;c.save();c.translate(x,y+95);c.rotate((e.n-27)*.004);c.shadowColor='#2a201555';c.shadowBlur=8;c.shadowOffsetY=4;sprite(c,SPRITE.env(e.n),-74,-95,148,190);c.restore();}
-   c.restore();
-   c.fillStyle='#5d4630';c.beginPath();c.moveTo(0,top);c.lineTo(14,top+depth);c.lineTo(14,top+depth+40);c.lineTo(0,top+40);c.fill();}
-  c.save();c.shadowColor='#2b211866';c.shadowBlur=8+10*d;c.shadowOffsetY=4+8*d;c.drawImage(assets.room,0,552+T,488,140,-8*d,top+depth,488*k*(1+.04*d),140*k*(1+.04*d));c.restore();}
+ drawer(s,ui){const c=this.c,k=800/DRAWER_VIEW.width;c.save();c.scale(k,k);c.translate(-DRAWER_VIEW.x,-DRAWER_VIEW.y);this.base(c);paintCounterDrawer(c,assets,s,{top:T,lift:ui.lift});c.restore();}
  // Lightbox under the desk lamp: the negative shows its true picture only through the loupe and only in light.
- lightbox(s,ui){const c=this.c,on=s.lampOn;c.drawImage(assets.room,290,180+T,420,525,0,0,800,1000);c.fillStyle='#00000033';c.fillRect(0,0,800,1000);
+ lightbox(s,ui){const c=this.c,on=s.lampOn;c.save();c.scale(800/420,800/420);c.translate(-290,-180);this.base(c);c.restore();c.fillStyle='#00000026';c.fillRect(-2000,-2000,4800,5000);
   c.save();c.shadowColor=on?'#ffe7b0aa':'#0006';c.shadowBlur=on?40:10;c.fillStyle=on?'#fbf3dc':'#5e5a4f';round(c,60,540,680,300,14);c.fill();c.restore();
   if(!s.negative)return;sprite(c,SPRITE.strip,70,600,660,180);if(!on){c.fillStyle='#0009';c.fillRect(70,600,660,180);}
   for(let f=1;f<=4;f++){const x=FRAME_X(f),y=634;framePositive(c,f,x,y,150,112);negativeLook(c,x,y,150,112);if(!on){c.fillStyle='#000a';c.fillRect(x,y,150,112);}c.fillStyle=on?'#f2dfb9':'#8c7a5a';c.font='13px Georgia';c.fillText(String(f),x+4,y+128);}
@@ -129,13 +123,13 @@ async function moveDrawer(target,velocity=0){const spring=new Spring(ui.preview?
 async function flyToDock(item,from){const r=$('dock').getBoundingClientRect(),to={x:r.left+r.width/2,y:r.top+r.height/2},el=document.createElement('div');el.className='flight';el.innerHTML='<canvas width="128" height="104"></canvas>';itemArt(el.querySelector('canvas').getContext('2d'),item,0,0,128,104);root.append(el);
  await animate(600,t=>{const arc=Math.sin(t*Math.PI)*75;el.style.transform=`translate(${from.x+(to.x-from.x)*t-32}px,${from.y+(to.y-from.y)*t-arc-26}px) scale(${1+.15*Math.sin(t*Math.PI)})`;});el.remove();inventory();$('dock').classList.add('landing');setTimeout(()=>$('dock').classList.remove('landing'),360);sound('pickup');}
 function releaseTote(){roomRenderer.bodies.release('tote');}
-async function focus(type){if(ui.busy)return;releaseTote();ui.drag=null;ui.preview=null;ui.focus=type;ui.focusView={scale:1,x:0,y:0};ui.loupe={x:400,y:420};root.querySelector('.header').classList.add('in-detail');$('focus-title').textContent=type==='drawer'?'카운터 · 맡긴 봉투 서랍':'스탠드 아래 · 라이트박스';invalidate();$('focus').classList.add('open');}
-async function back(){if(ui.busy)return;releaseTote();ui.drag=null;ui.preview=null;$('focus').classList.remove('open');await wait(260);ui.focus=null;root.querySelector('.header').classList.remove('in-detail');invalidate();}
+async function focus(type){if(ui.busy)return;releaseTote();ui.drag=null;ui.preview=null;ui.focus=type;ui.focusView={scale:1,x:0,y:0};ui.loupe={x:400,y:420};root.querySelector('.header').classList.add('in-detail');$('focus-title').textContent=type==='drawer'?'카운터 · 맡긴 봉투 서랍':'스탠드 아래 · 라이트박스';invalidate();$('focus').classList.add('open');root.querySelector('.screen').classList.add('detail-open');$('toast').classList.remove('on');}
+async function back(){if(ui.busy)return;releaseTote();ui.drag=null;ui.preview=null;if(ui.focus==='drawer'&&state.drawer>0)await moveDrawer(0);$('focus').classList.remove('open');await wait(260);ui.focus=null;root.querySelector('.header').classList.remove('in-detail');root.querySelector('.screen').classList.remove('detail-open');invalidate();}
 // The printed picture: the player's own Seoul shot when it exists, otherwise Yun's Namsan frame.
 function printImage(){try{const c=document.createElement('canvas');c.width=920;c.height=700;photoSource(c.getContext('2d'),0,0,920,700);return c.toDataURL('image/jpeg',.82);}catch{return '';}}
 function overlay(html){$('overlay').innerHTML=html;$('overlay').hidden=false;}
 function result(){overlay(`<article class="card"><small>THE SECOND PAGE · TOKYO</small><h2>두 번째 장이 생겼어요.</h2><div class="result-photo"><img src="${printImage()}" alt="도쿄 사진관에서 인화한 서울의 사진"><span>Printed in Tokyo.</span></div><button class="primary" data-action="return">사진관 더 둘러보기</button><p class="chapter-end">두 번째 장 완료 · 세 번째 장은 준비 중이에요.</p><a class="primary quiet" href="?chapter=seoul">첫 장 · 서울 다시 보기</a></article>`);}
-function menu(){overlay(`<article class="card"><small>A LITTLE TRAVEL JOURNAL</small><h2>두 번째 장 · 도쿄</h2><div class="menu-list"><button data-action="resume">계속 둘러보기</button><button data-action="sound">소리 ${ui.sound?'끄기':'켜기'}</button><button data-action="overview">가게 전체 보기</button>${state.done?'<button data-action="result">두 번째 장 보기</button>':''}<a href="?chapter=seoul">첫 장 · 서울</a><a href="?mode=legacy">이전 여행책 열기</a></div><p class="version">0.11.1 · 살펴보고 인화하기<br>각 장의 진행은 이 기기에 따로 저장됩니다.</p></article>`);}
+function menu(){overlay(`<article class="card"><small>A LITTLE TRAVEL JOURNAL</small><h2>두 번째 장 · 도쿄</h2><div class="menu-list"><button data-action="resume">계속 둘러보기</button><button data-action="sound">소리 ${ui.sound?'끄기':'켜기'}</button><button data-action="overview">가게 전체 보기</button>${state.done?'<button data-action="result">두 번째 장 보기</button>':''}<a href="?chapter=seoul">첫 장 · 서울</a><a href="?mode=legacy">이전 여행책 열기</a></div><p class="version">0.12.0 · 살펴보고 인화하기<br>각 장의 진행은 이 기기에 따로 저장됩니다.</p></article>`);}
 
 async function printCut(){
  if(ui.busy||ui.focus!=='lightbox'||state.print)return;const frame=state.lampOn?loupeFrame(ui.loupe):0;if(!frame)return;
@@ -144,7 +138,7 @@ async function printCut(){
  const g=focusRenderer.focusGeometry,dpr=$('board').width/host.clientWidth;await flyToDock('print',{x:(g.tx+ui.loupe.x*g.scale)/dpr,y:(g.ty+ui.loupe.y*g.scale)/dpr});ui.busy=false;await back();toast('인화한 사진을 벽 사진 보드에 붙여 볼까요?');
 }
 
-async function pin(){if(ui.busy||!state.print)return;ui.busy=true;ui.selected=null;const g=roomRenderer.geometry,dpr=$('room').width/host.clientWidth,r=$('dock').getBoundingClientRect(),from={x:r.left+r.width/2,y:r.top},to={x:(g.tx+PIN.x/1536*g.rw)/dpr,y:(g.ty+(PIN.y+44)/1024*g.rh)/dpr},el=document.createElement('div');el.className='flight';el.innerHTML='<canvas width="128" height="104"></canvas>';itemArt(el.querySelector('canvas').getContext('2d'),'print',0,0,128,104);root.append(el);
+async function pin(){if(ui.busy||!state.print)return;ui.busy=true;ui.selected=null;const g=roomRenderer.geometry,dpr=$('room').width/host.clientWidth,r=$('dock').getBoundingClientRect(),from={x:r.left+r.width/2,y:r.top},to={x:(g.tx+PIN.x/1536*g.rw)/dpr,y:(g.ty+(PIN.y+31)/1024*g.rh)/dpr},el=document.createElement('div');el.className='flight';el.innerHTML='<canvas width="128" height="104"></canvas>';itemArt(el.querySelector('canvas').getContext('2d'),'print',0,0,128,104);root.append(el);
  await animate(650,t=>{const arc=Math.sin(t*Math.PI)*60;el.style.transform=`translate(${from.x+(to.x-from.x)*t-32}px,${from.y+(to.y-from.y)*t-arc-26}px) rotate(${(1-t)*12}deg)`;});el.remove();
  apply({type:'pin'});inventory();ui.pinSwing=new Spring(0,{stiffness:30,damping:1.8,rest:.002}).kick(.9);roomRenderer.bodies.impulse('board',PIN.x+30,.6);sound('knock');ui.busy=false;invalidate();await wait(1700);result();}
 
@@ -176,26 +170,26 @@ $('room').addEventListener('pointerup',async e=>{const d=ui.drag;ui.drag=null;if
 });
 $('room').addEventListener('pointercancel',()=>{releaseTote();ui.drag=null;invalidate();});
 const boardPoint=e=>{const p=canvasPoint($('board'),e);return focusRenderer.focusPoint(p.x,p.y);};
-$('board').addEventListener('pointerdown',e=>{if(ui.busy||!ui.focus)return;const p=boardPoint(e);const onLoupe=ui.focus==='lightbox'&&Math.hypot(p.x-ui.loupe.x,p.y-ui.loupe.y)<110,onDrawer=ui.focus==='drawer'&&p.y>(552-320)*800/560+300*state.drawer-40;
+$('board').addEventListener('pointerdown',e=>{if(ui.busy||!ui.focus)return;const p=boardPoint(e);const onLoupe=ui.focus==='lightbox'&&Math.hypot(p.x-ui.loupe.x,p.y-ui.loupe.y)<110,onDrawer=ui.focus==='drawer'&&insidePolygon(drawerGeometry(state.drawer).front,fromDrawerBoard(p).x,fromDrawerBoard(p).y);
  ui.drag={id:e.pointerId,type:ui.focus,x:e.clientX,y:e.clientY,p,loupe:{...ui.loupe},onLoupe,onDrawer,start:state.drawer,follow:ui.focus==='drawer'?new FollowValue(state.drawer):null,viewStart:{...ui.focusView},moved:false,speed:0};$('board').setPointerCapture?.(e.pointerId);});
 $('board').addEventListener('pointermove',e=>{const d=ui.drag;if(!d||d.type==='room'||d.id!==e.pointerId)return;const p=boardPoint(e),dx=p.x-d.p.x,dy=p.y-d.p.y;if(Math.hypot(dx,dy)>9)d.moved=true;if(!d.moved)return;e.preventDefault?.();
  if(d.onLoupe){ui.loupe={x:bound(d.loupe.x+dx,60,740),y:bound(d.loupe.y+dy,120,900)};}
- else if(d.type==='drawer'&&d.onDrawer){const target=bound(d.start+dy/300),now=performance.now();if(d.sample){const dt=Math.max(.008,(now-d.sample.t)/1000);d.speed=d.speed*.4+.6*(target-d.sample.v)/dt;}d.sample={t:now,v:target};d.follow.set(target);}
+ else if(d.type==='drawer'&&d.onDrawer){const target=bound(d.start+dy/(190*800/DRAWER_VIEW.width)),now=performance.now();if(d.sample){const dt=Math.max(.008,(now-d.sample.t)/1000);d.speed=d.speed*.4+.6*(target-d.sample.v)/dt;}d.sample={t:now,v:target};d.follow.set(target);}
  else if(ui.focusView.scale>1.02){ui.focusView=constrainFocus({...d.viewStart,x:d.viewStart.x+e.clientX-d.x,y:d.viewStart.y+e.clientY-d.y},host.clientWidth,host.clientHeight);}invalidate();});
 $('board').addEventListener('pointerup',async e=>{const d=ui.drag;ui.drag=null;if(!d||d.id!==e.pointerId)return;const p=boardPoint(e);
  if(d.moved){if(d.type==='drawer'&&d.onDrawer&&ui.preview){const s=d.speed||0;await moveDrawer(Math.abs(s)>1.6?(s>0?1:0):d.follow.target,Math.abs(s)>1.6?s*.6:d.follow.velocity);sound();}else if(d.onLoupe)sound('soft');invalidate();return;}
- if(d.type==='drawer'){const k=800/560,top=(552-320)*k+300*state.drawer-235,env=state.drawer>=.7?ENVELOPES.find(en=>Math.abs(p.x-en.x)<72&&p.y>top&&p.y<top+190):null;
+ if(d.type==='drawer'){const point=fromDrawerBoard(p),env=state.drawer>=.7?ENVELOPES.find(en=>insidePolygon(envelopeQuad(state.drawer,en.n),point.x,point.y)):null;
   if(env&&!(env.n===27&&state.negative)){const r=tokyoAction(state,{type:'take',item:'negative',envelope:env.n});
    ui.lift={n:env.n,spring:new Spring(0,{stiffness:160,damping:11,rest:.3}).kick(-420)};sound('paper');invalidate();
    if(r.ok){ui.busy=true;await wait(220);apply({type:'take',item:'negative',envelope:env.n});ui.lift=null;await flyToDock('negative',{x:e.clientX,y:e.clientY});ui.busy=false;toast('봉투 안에 네거티브 필름이 들어 있어요.');}else toast(failText[r.reason]||'');invalidate();}
   else await moveDrawer(state.drawer>.5?0:1);}
  if(d.type==='lightbox'){if(!state.negative){toast(state.lampOn?'라이트박스예요. 비춰 볼 필름이 필요해요.':'불이 꺼진 라이트박스예요.');return;}const f=frameAt(p);if(!f)return;const from={...ui.loupe},to={x:FRAME_X(f)+75,y:690};ui.busy=true;await animate(240,t=>ui.loupe={x:from.x+(to.x-from.x)*t,y:from.y+(to.y-from.y)*t});ui.busy=false;invalidate();}
 });
-$('board').addEventListener('pointercancel',()=>{ui.drag=null;invalidate();});
+$('board').addEventListener('pointercancel',()=>{ui.drag=null;ui.preview=null;invalidate();});
 // Two-finger zoom for the shop and close-ups; the anchor stays under the fingers and no object is touched meanwhile.
 const fingers={room:new Map(),board:new Map()},pinches={room:null,board:null},blocked={room:false,board:false};
 for(const id of ['room','board']){const canvas=$(id),points=fingers[id];
- canvas.addEventListener('pointerdown',e=>{if(ui.busy)return;points.set(e.pointerId,{x:e.clientX,y:e.clientY});if(points.size===2){e.preventDefault?.();e.stopImmediatePropagation?.();releaseTote();ui.drag=null;blocked[id]=true;const [a,b]=[...points.values()];if(id==='room'){const g=roomRenderer.plate,dpr=canvas.width/host.clientWidth;pinches[id]=pinchStart(a,b,{scale:ui.overview?1:ui.zoom,x:g.tx/dpr,y:g.ty/dpr});ui.overview=false;}else pinches[id]=pinchStart(a,b,{scale:ui.focusView.scale,x:ui.focusView.x+(1-ui.focusView.scale)*host.clientWidth/2,y:ui.focusView.y+(1-ui.focusView.scale)*host.clientHeight/2});}},true);
+ canvas.addEventListener('pointerdown',e=>{if(ui.busy)return;points.set(e.pointerId,{x:e.clientX,y:e.clientY});if(points.size===2){e.preventDefault?.();e.stopImmediatePropagation?.();releaseTote();ui.drag=null;ui.preview=null;blocked[id]=true;const [a,b]=[...points.values()];if(id==='room'){const g=roomRenderer.plate,dpr=canvas.width/host.clientWidth;pinches[id]=pinchStart(a,b,{scale:ui.overview?1:ui.zoom,x:g.tx/dpr,y:g.ty/dpr});ui.overview=false;}else pinches[id]=pinchStart(a,b,{scale:ui.focusView.scale,x:ui.focusView.x+(1-ui.focusView.scale)*host.clientWidth/2,y:ui.focusView.y+(1-ui.focusView.scale)*host.clientHeight/2});}},true);
  canvas.addEventListener('pointermove',e=>{if(!points.has(e.pointerId))return;points.set(e.pointerId,{x:e.clientX,y:e.clientY});if(!blocked[id])return;e.preventDefault?.();e.stopImmediatePropagation?.();if(points.size<2)return;const [a,b]=[...points.values()],v=pinchTransform(pinches[id],a,b,1,id==='room'?3.2:2.8);if(id==='room'){ui.zoom=v.scale;const g=stageFit(host.clientWidth,host.clientHeight,ui.camera,ui.zoom,false,PLATE.height);ui.camera={x:bound((host.clientWidth/2-v.x)/g.rw,.05,.95),y:bound((host.clientHeight/2-v.y)/g.rh,.05,.95)};}else ui.focusView=constrainFocus({scale:v.scale,x:v.x-(1-v.scale)*host.clientWidth/2,y:v.y-(1-v.scale)*host.clientHeight/2},host.clientWidth,host.clientHeight);invalidate();},true);
  const end=e=>{points.delete(e.pointerId);if(!blocked[id])return;e.preventDefault?.();e.stopImmediatePropagation?.();ui.drag=null;if(points.size===0){blocked[id]=false;pinches[id]=null;}invalidate();};canvas.addEventListener('pointerup',end,true);canvas.addEventListener('pointercancel',end,true);
  canvas.addEventListener('wheel',e=>{e.preventDefault?.();if(ui.busy)return;const factor=Math.exp(-e.deltaY*.0015);if(id==='room')ui.zoom=bound(ui.zoom*factor,1,3.2);else ui.focusView=constrainFocus({...ui.focusView,scale:bound(ui.focusView.scale*factor,1,2.8)},host.clientWidth,host.clientHeight);invalidate();},{passive:false});
@@ -204,5 +198,5 @@ $('room').addEventListener('keydown',e=>{const shift={ArrowLeft:[-.15,0],ArrowRi
 $('board').addEventListener('keydown',async e=>{if(ui.busy||!ui.focus)return;if(e.key==='Escape'){e.preventDefault();await back();}else if(ui.focus==='lightbox'&&e.key.startsWith('Arrow')){e.preventDefault();ui.loupe={x:bound(ui.loupe.x+(e.key==='ArrowLeft'?-40:e.key==='ArrowRight'?40:0),60,740),y:bound(ui.loupe.y+(e.key==='ArrowUp'?-40:e.key==='ArrowDown'?40:0),120,900)};invalidate();}else if(ui.focus==='lightbox'&&['Enter',' '].includes(e.key)){e.preventDefault();await printCut();}else if(ui.focus==='drawer'&&['ArrowUp','ArrowDown','Enter',' '].includes(e.key)){e.preventDefault();await moveDrawer(e.key==='ArrowDown'||((e.key==='Enter'||e.key===' ')&&state.drawer<.5)?1:0);}});
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{roomRenderer.bodies.reset();releaseCanvases([$('room'),$('board')]);});window.addEventListener('pageshow',e=>{if(e.persisted)location.reload();});inventory();resize();$('loading').classList.add('loaded');setTimeout(()=>$('loading').remove(),500);
 if(!state.started)overlay(`<article class="card"><small>02 · 東京 · 下町の写真館</small><h2>사진관의 맡김표</h2><p>${seoulPhoto?'서울에서 찍은 필름을':'윤이 맡긴 필름을'} 찾아<br>사진으로 인화해요.</p><button class="primary" data-action="start">사진관 둘러보기</button></article>`);
-if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=111',{updateViaCache:'none'}).catch(()=>{});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=120',{updateViaCache:'none'}).catch(()=>{});
 export {GOOD_FRAME};

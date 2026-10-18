@@ -27,7 +27,7 @@ test('tokyo chapter completes through shipped pointer handlers and keeps other s
  await tap('room',...roomXY(420,620,.42));assert.equal(get('focus-title').textContent,'카운터 · 맡긴 봉투 서랍');
  await tap('board',...boardXY(350,500));assert.equal(saved().drawer,1);
  const top=(552-320)*800/560+300-235;await tap('board',...boardXY(160,top+120));assert.equal(saved().negative,false);
- await tap('board',...boardXY(400,top+120));assert(saved().negative);await click({},'back');
+ await tap('board',...boardXY(400,top+120));assert(saved().negative);await click({},'back');assert.equal(saved().drawer,0,'return closes the same drawer without losing the negative');
  await click({item:'negative'});assert(get('print-cut').disabled);await tap('board',...boardXY(490,690));await click({},'print-cut');assert(!saved().print);assert.equal(saved().tries,0,'unlit inspection does not consume a print attempt');await click({},'back');
  await tap('room',...roomXY(466,300,.42));assert(saved().lampOn);
  await tap('room',...roomXY(470,385,.42));assert.equal(get('focus-title').textContent,'스탠드 아래 · 라이트박스');

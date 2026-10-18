@@ -1,6 +1,6 @@
 // Room furniture and props cut from the painted room and moved in place with spring physics.
 // Coordinates are source pixels of a 1536×1024 room. Pivots are where the object touches or hangs.
-import {BodyMotion} from './interaction-motion.js?v=111';
+import {BodyMotion} from './interaction-motion.js?v=120';
 
 export const SEOUL_BODIES=[
  {id:'bed',kind:'squash',strength:.35,pivot:[420,940],points:[[0,515],[300,478],[560,500],[835,640],[800,700],[430,945],[0,830]]},
@@ -72,7 +72,7 @@ export function bodyPoint(def,pose,x,y){
 const boxOf=(points,pad)=>{const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x=Math.floor(Math.min(...xs)-pad),y=Math.floor(Math.min(...ys)-pad);return {x,y,w:Math.ceil(Math.max(...xs)+pad)-x,h:Math.ceil(Math.max(...ys)+pad)-y};};
 
 export class BodyLayer{
- constructor(defs,makeCanvas=()=>document.createElement('canvas'),offsetY=0){this.offsetY=offsetY;this.defs=defs;this.byId=new Map(defs.map(d=>[d.id,d]));this.motions=new Map();this.cache=new Map();this.makeCanvas=makeCanvas;this.queue=[];}
+ constructor(defs,makeCanvas=()=>document.createElement('canvas'),offsetY=0){this.offsetY=offsetY;this.defs=defs;this.byId=new Map(defs.map(d=>[d.id,d]));this.motions=new Map();this.cache=new Map();this.makeCanvas=makeCanvas;this.queue=[];this.spriteOverrides=new Map();}
  // Topmost body under a source pixel (later entries are drawn in front).
  hit(x,y){for(let i=this.defs.length-1;i>=0;i--)if(insidePolygon(this.defs[i].points,x,y))return this.defs[i].id;return null;}
  impulse(id,x,strength=1){const d=this.byId.get(id);if(!d)return false;const motion=this.motions.get(id)||new BodyMotion(d.kind);const direction=x==null?1:(x<d.pivot[0]?1:-1);motion.impulse(direction,strength*(d.strength??1));this.motions.set(id,motion);
@@ -85,7 +85,7 @@ export class BodyLayer{
  reset(){for(const p of this.cache.values()){p.sprite.width=p.fill.width=0;}this.cache.clear();}
  // Sprite: the object's own pixels. Fill: the surroundings pushed into the hole, so movement never shows a duplicate edge.
  parts(def,source){
-  if(this.cache.has(def.id))return this.cache.get(def.id);
+  if(this.spriteOverrides.has(def.id))return this.spriteOverrides.get(def.id);if(this.cache.has(def.id))return this.cache.get(def.id);
   const pad=16,b=boxOf(def.points,pad),sprite=this.makeCanvas(),fill=this.makeCanvas();sprite.width=fill.width=b.w;sprite.height=fill.height=b.h;
   const s=sprite.getContext('2d'),f=fill.getContext('2d');if(!s||!f)return null;
   const oy=this.offsetY;s.drawImage(source,b.x,b.y+oy,b.w,b.h,0,0,b.w,b.h);s.globalCompositeOperation='destination-in';pathOf(s,def.points,b.x,b.y);s.fillStyle='#000';s.fill();s.globalCompositeOperation='source-over';
@@ -105,15 +105,15 @@ export class BodyLayer{
  }
  // Draws moving bodies on top of an already painted room. Geometry maps source pixels to canvas pixels.
  draw(ctx,source,g){
-  if(!this.motions.size)return;const scale=g.rw/1536;
-  for(const def of this.defs){const motion=this.motions.get(def.id);if(!motion)continue;const part=this.parts(def,source);if(!part)continue;const {sprite,fill,box}=part,p=motion.pose,[px,py]=def.pivot;
-   if(Object.values(p).every(v=>Math.abs(v)<.00001))continue;
-   ctx.save();ctx.setTransform(scale,0,0,scale,g.tx,g.ty);ctx.drawImage(fill,box.x,box.y);
+  if(!this.motions.size&&!this.spriteOverrides.size)return;const scale=g.rw/1536;
+  for(const def of this.defs){const motion=this.motions.get(def.id);if(!motion&&!this.spriteOverrides.has(def.id))continue;const part=this.parts(def,source);if(!part)continue;const {sprite,fill,box}=part,p=motion?.pose||{angle:0,x:0,y:0,squash:0,bend:0},[px,py]=def.pivot;
+   if(!this.spriteOverrides.has(def.id)&&Object.values(p).every(v=>Math.abs(v)<.00001))continue;
+   ctx.save();ctx.setTransform(scale,0,0,scale,g.tx,g.ty);if(fill)ctx.drawImage(fill,box.x,box.y);
    // Hanging cloth bends from its hook and plants bend from the pot: thin slices shift more the further they are from the anchor.
    if(bendsBody(def)){
     for(let y=0;y<box.h;y+=2){const sy=box.y+y,point=bodyPoint(def,p,box.x,sy);
-     ctx.drawImage(sprite,0,y,box.w,Math.min(2,box.h-y),point.x,point.y,box.w,2.2);}
+     ctx.drawImage(sprite,0,y/box.h*sprite.height,sprite.width,Math.min(2,box.h-y)/box.h*sprite.height,point.x,point.y,box.w,2.2);}
     ctx.restore();continue;}
-   ctx.translate(px+p.x,py+p.y);ctx.rotate(p.angle);ctx.scale(1+p.squash*.5,1-p.squash);ctx.translate(-px,-py);ctx.drawImage(sprite,box.x,box.y);ctx.restore();}
+   ctx.translate(px+p.x,py+p.y);ctx.rotate(p.angle);ctx.scale(1+p.squash*.5,1-p.squash);ctx.translate(-px,-py);ctx.drawImage(sprite,box.x,box.y,box.w,box.h);ctx.restore();}
  }
 }
