@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 21:11 KST — Codex · 미니파크 시각·생활감 개편 준비
+
+- 기준 master f52f8a5, 작업 codex/littlepark-living-world. 새 투명 원화2종, 정원 중심 화면, 사물 비율과 재질 통일, 경로 기반 모모 이동/자세/휴식, 테마3종/간식. 기존 배치·진행·사진관 유지.
+- 원화·제작 범위 docs/littlepark-art-direction.md. 73 자동 검사 통과, JS 문법/공백 검사. 배포/브라우저 검수는 후속 확인.
+
 ## 2026-10-18 20:40 KST — Codex · 작은 정원 첫 체험판 배포·브라우저 검수
 
 - Source: codex/littlepark-polish@59c2e2ec59b1b6a5b46a52090224a82f54335e99; master 동기화. 기본 진입과 기존 게임은 유지. 별도 URL https://choiseonkyeong.github.io/Game/littlepark/?v=2.
