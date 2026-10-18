@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 20:35 KST — Codex · 별도 미니파크 첫 체험판 제작
+
+- 기준 master 7e70dace, 작업 codex/littlepark-first. dist/littlepark 별도 진입. 기존 사진관·도쿄·서울·저장·기본 진입 보존.
+- 직접 제작 SVG 등각 정원, 가구10종, 세 식물/실시간·오프라인 성장/물주기, 꽃+물에 고양이 방문/벤치·방석 반응/쓰다듬기 친밀도, 탭·드래그 배치와 회전/보관, 독립 저장. 실제 친구 방문·서버·결제는 구현 범위 밖.
+- 자동 검사 70개 통과(배치 충돌/한도/복원/오프라인 성장/쿨다운/고양이 조건 포함). 배포·실제 브라우저는 후속 확인.
+
 ## 2026-10-18 13:52 KST — Codex · v0.21.0 가독성/첫 진입 배포 확인
 
 - Source: codex/afterlight-readable-021@ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3; synchronized master ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3. 기존 기록·코어 보존.
