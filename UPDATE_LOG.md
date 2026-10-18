@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 09:13 KST — Codex · v0.12.1 배포·실제 브라우저 도쿄 완료 검증
+
+- Source: `codex/visual-continuity-012@d4867f26456572fa7f2d0ee48714ea6bcbc3fa76`; synchronized master `d4867f26456572fa7f2d0ee48714ea6bcbc3fa76`. 기준 `4969160` 이후 원화/가구 개선 `fa8697a`와 실제 브라우저 발견 2건 보정 `d4867f26456572fa7f2d0ee48714ea6bcbc3fa76`. 기존 코드·서울/도쿄·저장 키 보존, expected-HEAD 사용/강제 푸시 없음.
+- Changes/checks: 서랍·봉투·가방 배경·사진·조명·확대/빈 표시 개선. 전체 자동 검사 **49개 통과**, 공백 검사 통과. 정적 도쿄8상태 및 서울 책상/의자4상태 확인. 관련 원화·프롬프트: `docs/art-direction.md`.
+- Deployment: GitHub Pages **run #15 `39081605598` 성공**, 2026-10-18 09:07:54 KST. 소스 `d4867f26456572fa7f2d0ee48714ea6bcbc3fa76`, dist `da0acc9b05f1a4bd3f5738b935a1fb6525955778`. 이전 v0.12.0 run #14 `39081346161`도 성공했으나 추가 브라우저 보정 후 최종판으로 대체.
+- URL/access: https://choiseonkyeong.github.io/Game/?chapter=tokyo&v=121 . HTTPS `build-info.json` HTTP200/정확한 커밋, 핵심 코드/원화11개 HTTP200·로컬 바이트 일치. 실제 Cloud Chrome 1363×938에서 열고 검수. 다른 이용자의 아이폰 접근 성공을 대신 보장하지 않음.
+- Browser: v0.12.0에서 가방 당김→맡김표 낙하/획득, v0.12.1로 이동 후 저장 복원 확인. 최종판에서 손잡이 클릭/가로 여백 수정 재검증→서랍 열기→27번 봉투 획득→꺼진 조명 인화 차단→스탠드 켜기→3번 컷 관찰→인화→보드에 붙이기→완료 확인. 붙인 사진/빈 도크/조명/가방 뒤/서랍 조합 최종 화면 확인. 증거: `docs/qa/v0121-desktop.jpg`.
+- Remaining: 실제 iPhone/KakaoTalk 터치·핀치·프레임 속도, 서울 실제 브라우저 전체 진행. 서울은 자동 전체 흐름과 정적 화면 확인으로 구분. 기존 Sites 주소는 재배포하지 않음.
+
 ## 2026-10-18 09:05 KST — Codex · v0.12.1 실제 브라우저 점검에서 발견한 2건 보정
 
 - v0.12.0 소스 `fa8697aea4bfec78f7b5ff6044e1c56963c94285`를 공용 주소에서 실제 브라우저로 열고 첫 안내→가게→서랍 확대→열기를 조작. 서랍 내부/봉투/앞판 연결과 가방 배경/투명 이미지 표시를 관찰.

@@ -4,27 +4,28 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.11.1",
-    "github_commit": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
-    "github_dist_tree": "e8175b95149e063d6edc2ad9f1b5330e206aa4db",
-    "entrypoint": "dist/index.html -> entry.js?v=111 -> first-room.js?v=111 | tokyo-room.js?v=111",
+    "version": "0.12.1",
+    "github_commit": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
+    "github_dist_tree": "da0acc9b05f1a4bd3f5738b935a1fb6525955778",
+    "entrypoint": "dist/index.html -> entry.js?v=121 -> first-room.js?v=121 | tokyo-room.js?v=121",
     "checks": {
-      "automated_tests_passed": 46,
+      "automated_tests_passed": 49,
       "pointer_handler_chapter_flows_verified": true,
-      "interrupted_tote_grip_settles": true,
-      "loupe_inspection_separate_from_printing": true,
-      "static_canvas_film_states_checked": 4,
-      "actual_mobile_touch_verified": false,
-      "actual_browser_css_or_framerate_verified": false
+      "drawer_geometry_and_rigid_envelope_verified": true,
+      "static_tokyo_states": 8,
+      "static_seoul_states": 4,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false
     },
     "changes": [
-      "Tote grip retains its held pose, returns on release/cancel/pinch and shares cloth coordinates with its paper tip and falling ticket.",
-      "Only cloth and foliage bend; framed artwork, glass chimes, lanterns and pendant lights keep their shape.",
-      "Compare film with the loupe before explicitly printing; dim/unselected frames cannot print. Gradual per-phase hints."
+      "Registered clean Tokyo plate and true-alpha tote replace guessed hole-fill patches; ceiling band repaired and Japanese labels restored.",
+      "Shared projected drawer face/tray/rails for room and detail; rigid clipped envelopes, matching hit targets and landscape alignment.",
+      "Smaller warm print/pin, weak surface light, hidden empty dock/toasts/pan arrows in detail.",
+      "Seoul desk/chair cover close-up, shared chair and tray-attached camera; return closes drawer."
     ],
     "limitations": [
-      "Actual iPhone touch and browser CSS/frame rate remain unverified.",
-      "Seoul desk/chair close-up continuity and precise hole-fill art remain follow-up work."
+      "Real iPhone/KakaoTalk touch, pinch and frame rate remain unverified.",
+      "Seoul actual browser walkthrough was not performed in this pass; its complete pointer flow and static desk/chair states were checked."
     ]
   },
   "last_successful_deployment": {
@@ -48,19 +49,19 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "run_id": 39069992444,
-      "run_number": 13,
-      "source_commit": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
-      "version": "0.11.1",
+      "run_id": 39081605598,
+      "run_number": 15,
+      "source_commit": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
+      "version": "0.12.1",
       "game_checks": "passed",
       "deployment": "succeeded",
-      "deployed_at": "2026-10-17T21:13:19Z",
-      "deployed_at_kst": "2026-10-18 06:13 KST",
+      "deployed_at": "2026-10-18T00:07:54Z",
+      "deployed_at_kst": "2026-10-18 09:07 KST",
       "worker": "Codex"
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Execution-environment HTTPS GET build-info.json returned 200 and exact intended source SHA. Actual mobile/browser and other collaborators not verified.",
-    "remaining_action": "Actual iPhone touch, CSS and frame-rate review. Seoul desk/chair close-up continuity and hole-fill art follow up."
+    "access_check": "HTTPS GET build-info returned200 and intended source; 11 deployed files/assets byte-match local. Cloud Chrome opened final v121, restored the ticket across reload, verified drawer handle/framing, collected envelope 27, blocked printing without light, turned on lamp, inspected/printed frame3 and pinned the photo to completion.",
+    "remaining_action": "Real iPhone/KakaoTalk touch, pinch and frame-rate review; Seoul actual-browser walkthrough."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -85,47 +86,56 @@
     }
   },
   "handoff": {
-    "source_branch": "codex/room-details-next-page",
-    "source_commit": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
-    "synchronized_master": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
+    "source_branch": "codex/visual-continuity-012",
+    "source_commit": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
+    "synchronized_master": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
     "sites_and_github_dist_identical": false,
     "experience_contract": "docs/experience-contract.md",
-    "reference_and_verification_notes": "docs/polish-reference.md",
-    "visible_release_marker": "Menu: 0.11.1 · 살펴보고 인화하기",
-    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/?chapter=tokyo&v=111",
-    "remaining": "Actual phone touch/browser CSS, Seoul desk/chair close-up continuity and hole-fill art. Existing Sites was not redeployed; use shared GitHub Pages for this version."
+    "art_prompts": "docs/art-direction.md",
+    "browser_proof": "docs/qa/v0121-desktop.jpg",
+    "visible_release_marker": "Menu: 0.12.1 · 살펴보고 인화하기",
+    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/?chapter=tokyo&v=121",
+    "remaining": "Real phone touch/pinch/frame rate and Seoul browser walkthrough. Preserve both chapters and all saves; existing Sites not redeployed."
   },
   "latest_verification": {
-    "checked_at": "2026-10-17T21:14:13.667349+00:00",
-    "version": "0.11.1",
-    "automated_tests_passed": 46,
-    "static_canvas_focus_states": 4,
-    "static_canvas_bag_poses": 3,
-    "actual_browser_play_verified": false,
+    "checked_at": "2026-10-18T00:13:53.295322+00:00",
+    "version": "0.12.1",
+    "automated_tests_passed": 49,
+    "static_tokyo_states": 8,
+    "static_seoul_states": 4,
+    "actual_browser_play_verified": true,
     "actual_mobile_touch_verified": false,
-    "live_build_info_commit": "d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
+    "browser": "Cloud Chrome, 1363x938",
+    "browser_scope": "Tote drop/pickup first on v0.12.0; final v0.12.1 restored that ticket on reload and completed envelope→dark/light check→inspect→print→pin. Final drawer hit and landscape frame rechecked.",
+    "live_build_info_commit": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
     "live_build_info_http_status": 200,
-    "verification_scope": "Deterministic DOM/pointer handlers and static Canvas renders; not actual browser CSS/touch.",
     "live_files_byte_matched": [
       "index.html",
       "entry.js",
-      "first-room.js",
-      "first-room.css",
-      "room-bodies.js",
       "tokyo-room.js",
-      "tokyo-engine.js",
-      "sw.js"
-    ]
+      "tokyo-visuals.js",
+      "room-bodies.js",
+      "first-room.js",
+      "first-room-renderer.js",
+      "first-room.css",
+      "sw.js",
+      "travel-art/tokyo-clear-v12.webp",
+      "travel-art/tokyo-tote-v12.webp"
+    ],
+    "proof": "docs/qa/v0121-desktop.jpg"
   },
   "latest_github_pages_release": {
-    "version": "0.11.1",
-    "source": "master@d180a11e7ddc82493b387a4c22fc4f45cfe1954f",
-    "entry": "dist/index.html -> entry.js?v=111 -> first-room.js?v=111 | tokyo-room.js?v=111",
-    "tests_passed": 46,
-    "headless_browser": "Not run in this Codex pass; use previous Claude records only for their exact source versions.",
+    "version": "0.12.1",
+    "source": "master@d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
+    "entry": "dist/index.html -> entry.js?v=121 -> first-room.js?v=121 | tokyo-room.js?v=121",
+    "tests_passed": 49,
+    "browser_verification": "Cloud Chrome desktop, Tokyo completion and final visual/framing verification; docs/qa/v0121-desktop.jpg",
     "actual_mobile_touch_verified": false,
-    "art": "Preserved Claude v0.11.0 room plates, Tokyo Tower and paper assets.",
-    "workflow_run": 39069992444,
+    "art": [
+      "travel-art/tokyo-clear-v12.webp",
+      "travel-art/tokyo-tote-v12.webp"
+    ],
+    "workflow_run": 39081605598,
     "deployment_status": "succeeded",
     "live_build_info_verified": true
   }
