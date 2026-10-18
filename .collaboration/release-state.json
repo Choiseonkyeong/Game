@@ -177,5 +177,17 @@
     "save_key": "afterlight-case-01-v1",
     "spec": "docs/photo-case-01.md",
     "existing_art_reused": true
+  },
+  "pending_game_reboot": {
+    "status": "design_and_logic_verified_not_deployed",
+    "requested_direction": "Mobile escape-room mystery; rule discovery, experiments, multi-clue reasoning; TV references as abstract inspiration. User rejects incremental layout fixes as sufficient.",
+    "spec": "experiments/afterlight/APP_BLUEPRINT.md",
+    "episode": "experiments/afterlight/EPISODE_01.md",
+    "verification": "experiments/afterlight/verification.json",
+    "tests": "9 new reasoning-core tests; total 64 passed",
+    "art_and_player_ui_complete": false,
+    "real_mobile_verified": false,
+    "public_dist_unchanged": true,
+    "next": "Build the first-episode interaction proof and one art-complete zone before replacing the live game. Preserve all legacy saves."
   }
 }

@@ -116,3 +116,14 @@ Continue from remote master `4969160ab757981852ea447d9fe21aeb95d45173` (v0.11.1 
 ### 0.12.1 — issues found in the deployed browser pass
 
 Actual desktop browser inspection of v0.12.0 found a wide blank left margin in the Tokyo close-up and a missed click on the visible room drawer handle. Align the drawer scene to the left in landscape without cropping the envelope row; portrait framing remains unchanged. Room hit testing now uses the same projected drawer front/tray polygons as the renderer instead of an old rectangular hotspot. Assets/cache queries are v121. Deployment provenance and browser checks are recorded separately in release-state/UPDATE_LOG.
+
+
+## 2026-10-18 — product reboot: reasoning before presentation polish
+
+The user explicitly rejected incremental button/layout fixes as the product direction. Preserve the warm photo-studio story but rebuild as a mobile escape-room mystery with observable rules, experiments, multi-clue deductions and reused evidence. References: The Genius, The Devil’s Plan and The Great Escape as design inspiration, not copied games/sets.
+
+The v0.13.1 public request is not a release candidate for the new product. First author the complete logic and then one coherent room with matched perspective, chair/ground contact, per-person two-sided sticky notes and consistent close-ups. Keep a single scene in the phone viewport with direct object manipulation, not a scrolling webpage with action buttons and a mission panel. No player avatar. Preserve all previous chapter saves.
+
+Authoritative reboot specifications: `experiments/afterlight/APP_BLUEPRINT.md` and `EPISODE_01.md`. `puzzle-core.mjs`, its tests, `verification.json` and the generated `projection-plates.svg` verify logic, not final game UI, art, fun or real phone input. The first episode contains order reconstruction, actual optical-mask intersection and joint owner/destination deduction. Every required clue contributes to a unique solution; explicit mirror ambiguity is removed by a visible keyed carrier.
+
+Do not silently deploy this experimental engine as a finished new game. Build and observe an interaction proof, approve art against the stated production criteria, then complete the episode. Existing public deployment is retained until real implementation and QA justify replacement.

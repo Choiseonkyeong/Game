@@ -1,0 +1,91 @@
+{
+  "kind": "design proof; not player usability or art QA",
+  "order": {
+    "candidates": 24,
+    "remainingByClue": [
+      6,
+      3,
+      1
+    ],
+    "solutions": [
+      [
+        "triangle",
+        "circle",
+        "square",
+        "cross"
+      ]
+    ],
+    "remainingWhenEachClueOmitted": [
+      4,
+      3,
+      3
+    ]
+  },
+  "projection": {
+    "candidates": 8,
+    "solutions": [
+      {
+        "faces": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "address": "C3"
+      }
+    ],
+    "unkeyedCounterexample": [
+      {
+        "faces": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "address": "C3"
+      },
+      {
+        "faces": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "address": "C2"
+      }
+    ]
+  },
+  "delivery": {
+    "candidates": 576,
+    "remainingByClue": [
+      144,
+      36,
+      10,
+      3,
+      1
+    ],
+    "solutions": [
+      {
+        "people": [
+          "haru",
+          "maki",
+          "yui",
+          "ken"
+        ],
+        "destinations": [
+          "workshop",
+          "gallery",
+          "post",
+          "locker"
+        ]
+      }
+    ],
+    "remainingWhenEachClueOmitted": [
+      8,
+      8,
+      4,
+      7,
+      3
+    ]
+  }
+}
