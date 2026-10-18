@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 22:40 KST — Codex · 포근섬 0.1 배포 및 실제 검수
+
+- 소스58628cf149b35cd575b98657fc8097ce6a7da22f, Pages run39132145320 성공, 배포2026-10-18 22:34:55 KST.
+- https://choiseonkyeong.github.io/Game/island/?v=1 공개 URL 실제 열림, build-info 및 코드5개 일치.
+- 자동78검사. Chrome390x844에서 코디/저장, 걸어가 튤립 심기·물주기·개화, 확대, 정원등 배치, 새로고침 복원 확인. 사진PNG960x860 다운로드 확인.
+- 기존 정원·사진관 보존. 실제 휴대폰/다른 작업자 접속 미확인. 친구방문·여러 동물·계정/결제는 미구현, 상용 출시본 아님.
+
 ## 2026-10-18 22:33 KST — Codex · 사람 아바타 중심 포근섬 제작
 
 - 최신 master32f8655 기준, codex/island-avatar-first. 기존 정원/사진관 보존하고 dist/island 별도 진입, 기존 지도 메뉴에 링크 추가.

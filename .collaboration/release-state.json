@@ -4,20 +4,17 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "littlepark-0.2",
-    "github_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
-    "entrypoint": "dist/littlepark/index.html -> park.js?v=5 -> core.js?v=5",
+    "version": "island-0.1",
+    "github_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
+    "entrypoint": "dist/island/index.html -> island.js?v=1 -> core.js/avatar.js?v=1",
     "checks": {
-      "automated_tests_passed": 73,
+      "automated_tests_passed": 78,
       "actual_desktop_browser_verified": true,
       "responsive_390x844_desktop_iframe_verified": true,
       "actual_mobile_touch_verified": false
     },
-    "changes": [
-      "New consistent 3D-rendered transparent art, garden framing and compact full-screen UI, zoom, Momo route/pose loop, treats and saved themes. Existing layouts/plants/affinity preserved."
-    ],
     "limitations": [
-      "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
+      "Playable prototype; no online friends, multiple animals, accounts, payments or validated business. Avatar uses modular SVG 2.5D, not commercial 3D rig. Real phone touch not verified."
     ]
   },
   "last_successful_deployment": {
@@ -41,22 +38,21 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "littlepark-0.2",
-      "source_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
-      "source_branch": "codex/littlepark-v4-qa",
-      "url": "https://choiseonkyeong.github.io/Game/littlepark/?v=5",
-      "run_id": 39126779225,
+      "version": "island-0.1",
+      "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
+      "source_branch": "codex/island-first-qa",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=1",
+      "run_id": 39132145320,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-18T12:19:30Z",
-      "checked_at": "2026-10-18T21:24:43.706923+09:00",
-      "checks": "73 automated checks; actual Chrome390x844 desktop iframe: restored old garden and affinity; themes switched, treat hearts1→2; view5 zoom and native pointer drag bench from c1r5 to c2r5; new pot placed, tulip planted/watered, reload restore and eventual bloom; cat moving and resting at moved bench. Main URL opened. build-info exact source; assets checked against local.",
+      "deployed_at": "2026-10-18T13:34:55Z",
+      "checked_at": "2026-10-18T22:40:46.100426+09:00",
+      "checks": "78 automated tests. Chrome390x844 iframe: cardigan/straw hat and saved look, walk to pot and plant tulip, water and bloom, zoom, place garden lamp, reload preserves outfit/plant/furniture. Photo preview and downloaded PNG960x860 inspected. Main public URL opened. build-info exact source and five code assets byte-matched.",
       "actual_mobile_touch_verified": false,
-      "actual_pointer_drag_verified": true,
-      "remaining": "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
+      "remaining": "Playable prototype; no online friends, multiple animals, accounts, payments or validated business. Avatar uses modular SVG 2.5D, not commercial 3D rig. Real phone touch not verified."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "73 automated checks; actual Chrome390x844 desktop iframe: restored old garden and affinity; themes switched, treat hearts1→2; view5 zoom and native pointer drag bench from c1r5 to c2r5; new pot placed, tulip planted/watered, reload restore and eventual bloom; cat moving and resting at moved bench. Main URL opened. build-info exact source; assets checked against local.",
-    "remaining_action": "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
+    "access_check": "78 automated tests. Chrome390x844 iframe: cardigan/straw hat and saved look, walk to pot and plant tulip, water and bloom, zoom, place garden lamp, reload preserves outfit/plant/furniture. Photo preview and downloaded PNG960x860 inspected. Main public URL opened. build-info exact source and five code assets byte-matched.",
+    "remaining_action": "Playable prototype; no online friends, multiple animals, accounts, payments or validated business. Avatar uses modular SVG 2.5D, not commercial 3D rig. Real phone touch not verified."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -239,5 +235,48 @@
       "A playable first-episode prototype, not a completed commercial app or validated business.",
       "Actual iPhone/KakaoTalk touch and external player engagement remain unverified; next episode is not implemented."
     ]
+  },
+  "island_release": {
+    "version": "island-0.1",
+    "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
+    "source_branch": "codex/island-first-qa",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=1",
+    "run_id": 39132145320,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-18T13:34:55Z",
+    "checked_at": "2026-10-18T22:40:46.100426+09:00",
+    "checks": "78 automated tests. Chrome390x844 iframe: cardigan/straw hat and saved look, walk to pot and plant tulip, water and bloom, zoom, place garden lamp, reload preserves outfit/plant/furniture. Photo preview and downloaded PNG960x860 inspected. Main public URL opened. build-info exact source and five code assets byte-matched.",
+    "actual_mobile_touch_verified": false,
+    "remaining": "Playable prototype; no online friends, multiple animals, accounts, payments or validated business. Avatar uses modular SVG 2.5D, not commercial 3D rig. Real phone touch not verified."
+  },
+  "previous_reviewed_littlepark": {
+    "version": "littlepark-0.2",
+    "github_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
+    "entrypoint": "dist/littlepark/index.html -> park.js?v=5 -> core.js?v=5",
+    "checks": {
+      "automated_tests_passed": 73,
+      "actual_desktop_browser_verified": true,
+      "responsive_390x844_desktop_iframe_verified": true,
+      "actual_mobile_touch_verified": false
+    },
+    "changes": [
+      "New consistent 3D-rendered transparent art, garden framing and compact full-screen UI, zoom, Momo route/pose loop, treats and saved themes. Existing layouts/plants/affinity preserved."
+    ],
+    "limitations": [
+      "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
+    ]
+  },
+  "island_handoff": {
+    "version": "island-0.1",
+    "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
+    "source_branch": "codex/island-first-qa",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=1",
+    "run_id": 39132145320,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-18T13:34:55Z",
+    "checked_at": "2026-10-18T22:40:46.100426+09:00",
+    "checks": "78 automated tests. Chrome390x844 iframe: cardigan/straw hat and saved look, walk to pot and plant tulip, water and bloom, zoom, place garden lamp, reload preserves outfit/plant/furniture. Photo preview and downloaded PNG960x860 inspected. Main public URL opened. build-info exact source and five code assets byte-matched.",
+    "actual_mobile_touch_verified": false,
+    "remaining": "Playable prototype; no online friends, multiple animals, accounts, payments or validated business. Avatar uses modular SVG 2.5D, not commercial 3D rig. Real phone touch not verified."
   }
 }
