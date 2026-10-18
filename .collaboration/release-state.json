@@ -4,28 +4,21 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.12.1",
-    "github_commit": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
-    "github_dist_tree": "da0acc9b05f1a4bd3f5738b935a1fb6525955778",
-    "entrypoint": "dist/index.html -> entry.js?v=121 -> first-room.js?v=121 | tokyo-room.js?v=121",
+    "version": "0.13.1",
+    "github_commit": "2a48e0b3478a86397aa3700776ec9ca60d8620e2",
+    "entrypoint": "dist/photo-case.html -> photo-case.js?v=131; index/entry retain both old chapters and add case route",
     "checks": {
-      "automated_tests_passed": 49,
-      "pointer_handler_chapter_flows_verified": true,
-      "drawer_geometry_and_rigid_envelope_verified": true,
-      "static_tokyo_states": 8,
-      "static_seoul_states": 4,
+      "automated_tests_passed": 55,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false
     },
     "changes": [
-      "Registered clean Tokyo plate and true-alpha tote replace guessed hole-fill patches; ceiling band repaired and Japanese labels restored.",
-      "Shared projected drawer face/tray/rails for room and detail; rigid clipped envelopes, matching hit targets and landscape alignment.",
-      "Smaller warm print/pin, weak surface light, hidden empty dock/toasts/pan arrows in detail.",
-      "Seoul desk/chair cover close-up, shared chair and tray-attached camera; return closes drawer."
+      "First photo-studio request: compare two dates, move chair, observe three clues, infer the visitors seat, choose and shoot two distinct compositions, receive matching replies and download JPG journal.",
+      "Original Seoul/Tokyo/legacy routes and saves retained. Room aspect ratio corrected from actual browser review."
     ],
     "limitations": [
-      "Real iPhone/KakaoTalk touch, pinch and frame rate remain unverified.",
-      "Seoul actual browser walkthrough was not performed in this pass; its complete pointer flow and static desk/chair states were checked."
+      "Existing background/chair art reused for prototype. Next request is explicitly not yet available.",
+      "Actual iPhone/KakaoTalk touch and pinch not verified."
     ]
   },
   "last_successful_deployment": {
@@ -49,19 +42,19 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "run_id": 39081605598,
-      "run_number": 15,
-      "source_commit": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
-      "version": "0.12.1",
+      "run_id": 39084232925,
+      "run_number": 17,
+      "source_commit": "2a48e0b3478a86397aa3700776ec9ca60d8620e2",
+      "version": "0.13.1",
       "game_checks": "passed",
       "deployment": "succeeded",
-      "deployed_at": "2026-10-18T00:07:54Z",
-      "deployed_at_kst": "2026-10-18 09:07 KST",
+      "deployed_at": "2026-10-18T00:50:35Z",
+      "deployed_at_kst": "2026-10-18 09:50:35 KST",
       "worker": "Codex"
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "HTTPS GET build-info returned200 and intended source; 11 deployed files/assets byte-match local. Cloud Chrome opened final v121, restored the ticket across reload, verified drawer handle/framing, collected envelope 27, blocked printing without light, turned on lamp, inspected/printed frame3 and pinned the photo to completion.",
-    "remaining_action": "Real iPhone/KakaoTalk touch, pinch and frame-rate review; Seoul actual-browser walkthrough."
+    "access_check": "HTTP200 build-info exact source; photo-case.html/css/js/engine and entry byte-match local. Actual Cloud Chrome: v130 full evidence flow and first ending; v131 restored all progress, verified complete room/chair, direct chair drag, chose second ending, took photo and received distinct reply. JPG download exists, 313961 bytes,1200x1450.",
+    "remaining_action": "Real iPhone/KakaoTalk touch and phone JPG saving behavior; next request not implemented."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -86,18 +79,73 @@
     }
   },
   "handoff": {
-    "source_branch": "codex/visual-continuity-012",
-    "source_commit": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
-    "synchronized_master": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
+    "source_branch": "codex/photo-case-013",
+    "source_commit": "2a48e0b3478a86397aa3700776ec9ca60d8620e2",
+    "synchronized_master": "2a48e0b3478a86397aa3700776ec9ca60d8620e2",
     "sites_and_github_dist_identical": false,
     "experience_contract": "docs/experience-contract.md",
     "art_prompts": "docs/art-direction.md",
-    "browser_proof": "docs/qa/v0121-desktop.jpg",
-    "visible_release_marker": "Menu: 0.12.1 · 살펴보고 인화하기",
-    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/?chapter=tokyo&v=121",
-    "remaining": "Real phone touch/pinch/frame rate and Seoul browser walkthrough. Preserve both chapters and all saves; existing Sites not redeployed."
+    "browser_proof": "docs/qa/v0131-desktop.jpg",
+    "visible_release_marker": "첫 의뢰 체험 · 0.13.1",
+    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/photo-case.html?v=131",
+    "remaining": "Real phone touch and saving; first request prototype only. Preserve prior chapters, all saves and source history. Existing Sites not redeployed."
   },
   "latest_verification": {
+    "checked_at": "2026-10-18T00:54:16.985243+00:00",
+    "version": "0.13.1",
+    "automated_tests_passed": 55,
+    "actual_browser_play_verified": true,
+    "actual_mobile_touch_verified": false,
+    "browser": "Cloud Chrome desktop, screenshot 1348x926",
+    "browser_scope": "V130 comparison, back, chair button, letter, light, floor mark, wrong/correct inference, space ending. V131 save restore, full uncropped room, direct chair drag, rechoose preserves evidence, window ending. Actual download file inspected for dimensions.",
+    "live_build_info_commit": "2a48e0b3478a86397aa3700776ec9ca60d8620e2",
+    "live_build_info_http_status": 200,
+    "live_files_byte_matched": [
+      "photo-case.html",
+      "photo-case.css",
+      "photo-case.js",
+      "photo-case-engine.js",
+      "entry.js"
+    ],
+    "proof": "docs/qa/v0131-desktop.jpg"
+  },
+  "latest_github_pages_release": {
+    "version": "0.13.1",
+    "source": "master@2a48e0b3478a86397aa3700776ec9ca60d8620e2",
+    "entry": "dist/photo-case.html -> photo-case.js?v=131",
+    "tests_passed": 55,
+    "browser_verification": "V130 comparison, back, chair button, letter, light, floor mark, wrong/correct inference, space ending. V131 save restore, full uncropped room, direct chair drag, rechoose preserves evidence, window ending. Actual download file inspected for dimensions.",
+    "actual_mobile_touch_verified": false,
+    "workflow_run": 39084232925,
+    "deployment_status": "succeeded",
+    "live_build_info_verified": true
+  },
+  "previous_reviewed_game": {
+    "version": "0.12.1",
+    "github_commit": "d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
+    "github_dist_tree": "da0acc9b05f1a4bd3f5738b935a1fb6525955778",
+    "entrypoint": "dist/index.html -> entry.js?v=121 -> first-room.js?v=121 | tokyo-room.js?v=121",
+    "checks": {
+      "automated_tests_passed": 49,
+      "pointer_handler_chapter_flows_verified": true,
+      "drawer_geometry_and_rigid_envelope_verified": true,
+      "static_tokyo_states": 8,
+      "static_seoul_states": 4,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false
+    },
+    "changes": [
+      "Registered clean Tokyo plate and true-alpha tote replace guessed hole-fill patches; ceiling band repaired and Japanese labels restored.",
+      "Shared projected drawer face/tray/rails for room and detail; rigid clipped envelopes, matching hit targets and landscape alignment.",
+      "Smaller warm print/pin, weak surface light, hidden empty dock/toasts/pan arrows in detail.",
+      "Seoul desk/chair cover close-up, shared chair and tray-attached camera; return closes drawer."
+    ],
+    "limitations": [
+      "Real iPhone/KakaoTalk touch, pinch and frame rate remain unverified.",
+      "Seoul actual browser walkthrough was not performed in this pass; its complete pointer flow and static desk/chair states were checked."
+    ]
+  },
+  "previous_verification": {
     "checked_at": "2026-10-18T00:13:53.295322+00:00",
     "version": "0.12.1",
     "automated_tests_passed": 49,
@@ -124,19 +172,10 @@
     ],
     "proof": "docs/qa/v0121-desktop.jpg"
   },
-  "latest_github_pages_release": {
-    "version": "0.12.1",
-    "source": "master@d4867f26456572fa7f2d0ee48714ea6bcbc3fa76",
-    "entry": "dist/index.html -> entry.js?v=121 -> first-room.js?v=121 | tokyo-room.js?v=121",
-    "tests_passed": 49,
-    "browser_verification": "Cloud Chrome desktop, Tokyo completion and final visual/framing verification; docs/qa/v0121-desktop.jpg",
-    "actual_mobile_touch_verified": false,
-    "art": [
-      "travel-art/tokyo-clear-v12.webp",
-      "travel-art/tokyo-tote-v12.webp"
-    ],
-    "workflow_run": 39081605598,
-    "deployment_status": "succeeded",
-    "live_build_info_verified": true
+  "photo_request": {
+    "url": "https://choiseonkyeong.github.io/Game/photo-case.html?v=131",
+    "save_key": "afterlight-case-01-v1",
+    "spec": "docs/photo-case-01.md",
+    "existing_art_reused": true
   }
 }

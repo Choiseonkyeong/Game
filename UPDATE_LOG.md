@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 09:54 KST — Codex · v0.13.1 배포·첫 의뢰 두 구도 브라우저 검증 완료
+
+- Source: `codex/photo-case-013@2a48e0b3478a86397aa3700776ec9ca60d8620e2`; synchronized master `2a48e0b3478a86397aa3700776ec9ca60d8620e2`. 이전 `5c8d757` 0.13.0 다음 작은 보정. 모든 기존 챕터와 저장 유지.
+- Checks: 자동 검사 **55개 통과** 및 diff 검사. Cloud Chrome에서 v0.13.0 사진 정렬→뒷면→의자 버튼→편지→조명→바닥 흔적→오답/정답→빈자리 구도 촬영까지 직접 플레이. 최종 v0.13.1에서 기록 3/3과 완료 복원, 의자 전체 구도, 실제 포인터 의자 드래그, 증거 보존 재촬영, 창가 구도와 다른 답장 확인. 증거 `docs/qa/v0131-desktop.jpg`.
+- Download: 사진책 저장 클릭 후 브라우저 download 이벤트 대기는 시간 초과로 런타임 재연결. 실제 동기화된 `afterlight-case01.jpg` **313961 bytes /1200×1450** 확인하여 파일 생성 성공과 관찰 도구 대기 오류를 구분.
+- Deployment: GitHub Pages **run #17 `39084232925` 성공**, deploy job 완료 **2026-10-18 09:50:35 KST**. build-info HTTP200 / `2a48e0b3478a86397aa3700776ec9ca60d8620e2`. 첫 의뢰 html/css/js/engine·entry 5개 바이트 일치. 기록 커밋은 게임 트리를 바꾸지 않음.
+- URL/access: https://choiseonkyeong.github.io/Game/photo-case.html?v=131 실제 브라우저에서 열고 플레이 확인. 다른 작업자 접속/실제 iPhone·KakaoTalk 터치와 사진 저장은 미확인. 새 원화/상용결제/다음 의뢰 미구현, 기존 원화로 만든 첫 체험임을 구분. 기존 Sites 재배포 없음.
+
 ## 2026-10-18 09:49 KST — Codex · v0.13.1 실제 브라우저 화면 보정
 
 - 소스 기준 `5c8d75718e09a9177d008d1b4ed2186ac4bbea89`(v0.13.0), GitHub Pages run #16 `39084039665` 성공 및 build-info HTTP200/해당 소스 확인. 브라우저에서 사진 정렬/뒷면/의자 버튼/편지/조명/자국 3개 기록까지 진행 확인.
