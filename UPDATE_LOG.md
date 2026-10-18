@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-19 00:51 KST — Codex · 포근섬 아트 배포·실제 검수 완료
+
+- 소스 master `e7708cc5d190a8f0c1a025efa4cfed791ffcba4d`. Pages run `39142124943` 성공, 배포 2026-10-19 00:48:59 KST. 본 게임 URL https://choiseonkyeong.github.io/Game/island/?v=3 .
+- 원화71파트/배경2/소품14/PNG아이콘3 및 manifest 등록. 세이브·다른 게임 보존.
+- 81 automated tests; 87 WebP decode/dimensions, 33 body joint alpha centers. Chrome rig preview idle/walk/side sit/water/wave and hierarchical ±30 degrees. Actual Chrome 390x844 iframe: wardrobe, walk, daisy plant/water, bench sit, sunset/day, photo preview and reload restore. Main public URL opened; build-info exact source; 8 public files byte-matched. Actual phone/touch and other collaborator access unverified.
+- 검수 캡처 docs/art/qa/pogeun-art-mobile-final.jpg, pogeun-rig-final.jpg. 리그 주소 /island/rig-preview.html?t=0.18 .
+- 이 항목은 배포 후 기록 커밋이며 dist 변경 없음. 실제 휴대폰/상대 작업자 접속 미확인. 기본 세트 외 코디는 벡터 대체, 스토어 출시 미진행.
+
 ## 2026-10-19 00:45 KST — Codex · 포근섬 원화 본 게임 연결
 
 - 기준 master bb5cafb (독립 검수 자산). 캐릭터71파트·배경2·소품14·아이콘3을 본 manifest/PWA에 연결. 관절 계층/머리카락/팔 겹침과 투명 이미지 클릭 가로채기 최소 보정. 다른 코디는 벡터 대체 및 기존 저장 보존.
