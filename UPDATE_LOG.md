@@ -9,6 +9,7 @@
 - 변경: `dist/island/rig.js` 컷아웃 리그(정면·뒷면·옆, 관절 회전으로 대기·걷기·앉기·물주기·심기·인사 연속 애니메이션). 아트가 없으면 개선된 벡터 임시 파트. `art/manifest.json`에 등록한 캐릭터 파트·섬 배경·소품 그림을 코드 수정 없이 사용. 대기 중에도 숨쉬기 애니메이션. PWA 매니페스트·임시 아이콘·오프라인 sw, 개인정보처리방침 초안, `android-app/` Capacitor 포장 설정.
 - 문서: `docs/pogeun-art-spec.md`(512×768 파트 규격·관절 좌표·파일명·최소 71장), `docs/art/pogeun-rig-template.png`, `docs/play-store-release.md`.
 - 검사: 자동 78개 통과. 헤드리스 Chromium 390×844 실행·걷기, 리그 미리보기 확인. Android SDK 없음 → APK/AAB 미빌드. 실제 폰·스토어 등록 미진행.
+- 소스/배포: master `49d0028f5fbbf7088842662230ebc7b1dd97b62c`. GitHub Pages **성공 2026-10-18 23:22 KST** (run #30 `39135692541`). https://choiseonkyeong.github.io/Game/island/ . Claude 환경에서 공개 URL 직접 확인 불가.
 - 남은 사항: 아트 제작·등록, 운영자 정보 기입, 소유자의 플레이 개발자 계정·서명·비공개 테스트.
 
 ## 2026-10-18 22:40 KST — Codex · 포근섬 0.1 배포 및 실제 검수
