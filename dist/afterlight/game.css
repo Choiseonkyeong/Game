@@ -5,3 +5,5 @@
 
 .photo-image{background-image:url(photos.webp);background-size:200% 200%;background-position:var(--position);filter:sepia(.08)}
 .photo-image,.result-photos .photo-image{height:auto;aspect-ratio:3/2}
+
+.mini-machine .label{display:none}.sticky-mini{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7px 3px;font-size:clamp(9px,1.5dvh,13px);line-height:1.5}.sticky-mini small{font-size:.7em;display:block;margin-top:6px;opacity:.72}
