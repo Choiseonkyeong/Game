@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 20:40 KST — Codex · 작은 정원 첫 체험판 배포·브라우저 검수
+
+- Source: codex/littlepark-polish@59c2e2ec59b1b6a5b46a52090224a82f54335e99; master 동기화. 기본 진입과 기존 게임은 유지. 별도 URL https://choiseonkyeong.github.io/Game/littlepark/?v=2.
+- Pages run 39124024765 성공, 2026-10-18 20:38:25 KST. 자동 검사70개 통과. build-info/공개 코드4개 바이트 일치 검증.
+- 실제 Cloud Chrome: 심기/물주기/물그릇 배치·채움/시간 경과 개화/모모 방문·쓰다듬기/벤치 배치·탭 이동·회전/나무·연못/새로고침/성장 수첩 개화1·친밀도1 확인. 390×844 desktop iframe 시각 검수. 드래그 구현은 있으나 실제 포인터 드래그·아이폰 터치 미검증.
+- 브라우저 보정: 집이 마당 위에 떠 보이는 구도 수정, 집 footprint를 배치 금지 영역과 정렬. 초기 검수 벤치가 새 집 영역에 속해 복원에서 제외되었으며 검수 환경에서 다시 배치. 사용자 전달 전 수정. 심은 화분 보관은 거부하여 식물 보존.
+- 범위: 첫 체험판, 온라인/친구방문/여러 동물/장기 경제 미구현. 원화는 외부 IP가 아닌 직접 작성 SVG. 사진관·서울·도쿄·기존 진행 유지.
+
 ## 2026-10-18 20:35 KST — Codex · 별도 미니파크 첫 체험판 제작
 
 - 기준 master 7e70dace, 작업 codex/littlepark-first. dist/littlepark 별도 진입. 기존 사진관·도쿄·서울·저장·기본 진입 보존.
