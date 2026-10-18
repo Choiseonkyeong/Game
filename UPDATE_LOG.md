@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 22:33 KST — Codex · 사람 아바타 중심 포근섬 제작
+
+- 최신 master32f8655 기준, codex/island-avatar-first. 기존 정원/사진관 보존하고 dist/island 별도 진입, 기존 지도 메뉴에 링크 추가.
+- 사람 아바타/부위별 의상8슬롯/저장 코디, 자유 산책과 경로 기반 접근 후 돌봄, 식물3종·사과 수확·앉기·고양이, 가구배치/이동/회전, 기념사진PNG, 독립저장 구현.
+- 자동78검사 통과. 배포/브라우저는 후속 기록. 실제 폰/친구 방문/서버·실결제는 범위 밖.
+
 ## 2026-10-18 21:24 KST — Codex · 작은 정원 0.2 추구미 반영·배포 검수
 
 - Source: c17f4ca7420faf7c6cd39673073d43f9110fcb0d, 작업 codex/littlepark-living-world 및 QA 후속 브랜치. 원격 master expected-HEAD 사용.
