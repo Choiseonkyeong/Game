@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 12:13 KST — Codex · v0.20.3 첫 사건 배포·실제 플레이/390px 검수 완료
+
+- Source: `codex/playable-afterlight-020@c1b17b07a6ad190caed9fef9830d26e0d14b6e8b`; synchronized master `c1b17b07a6ad190caed9fef9830d26e0d14b6e8b`; dist `0acf032ab9089be04e0a2d27d159e9fcd40c0e93`. 기준 `9af3f3d` 이후 새 첫 사건과 좁은 화면 보정. 원격 expected-HEAD 사용, 기존 챕터/저장/도쿄/서울/별도 사진관 의뢰 보존. Sites 재배포 없음.
+- Changes: 별도 세로 앱 첫 사건(새 암실 원화·사진 원화, 봉투 첫 발견, 양면 포스트잇3개, 규칙 순서·실제 광학 실험·교차 배달 추론, 수첩/힌트/오답 복구/저장·재시작·결말). 자산·프롬프트·구현 범위 `docs/afterlight-playable.md`.
+- Checks: **67개 자동 검사 통과**, 배포 코어=검증 코어, diff 검사. v200 실제 Cloud Chrome: 봉투/세 기록 앞뒤/잘못된 순서 보존/실제 드래그/탭 대체/캐리어 열림/실패 투과2점/고정핀 차단/○·+ 반사/C3. v201 실제 390×844 CSS 뷰포트: 저장된 오답 배달 가설·메모 복원, 확대 힌트 열고 닫기, 이름표 교환→해결→답장. v203 완료 저장 복원/4사진 정상 표시/203메뉴/검수 진행만 초기화 후 새 플레이어 첫 장면 확인. 실제 폰 터치 검수로 간주하지 않음.
+- QA corrections: 집중 화면 뒤 사물 비침·숨은 키보드 포커스·직접 힌트·샘플 반복/사진 개별 원화·원본비율·노트 잘림·자막 중첩·결말 CSS의 사진 배경 덮임 보정. 일부 캡처의 직전 프레임/clip시간초과는 새 관찰과 전체 캡처로 확인. 증거 `docs/qa/v0203-room.jpg`, `docs/qa/v0203-completed.jpg`.
+- Deployment: GitHub Pages run #22 **`39092591389` 성공**, deploy job **2026-10-18 12:09:21 KST**. build-info HTTP200 / `c1b17b07a6ad190caed9fef9830d26e0d14b6e8b`. entry/js/css/core/room/photos 공개 자산6개 HTTP200·바이트 일치.
+- URL/access: https://choiseonkyeong.github.io/Game/afterlight/?v=203 실제 브라우저에 열고 최종URL 확인. 타인 접속·실제 iPhone/KakaoTalk 입력·외부 사용자 몰입도는 미확인. 첫 사건 체험판이며 상용 출시 완료·사업성 검증·후속 사건 완료로 주장하지 않음.
+
 ## 2026-10-18 12:06 KST — Codex · v0.20.2 390px 실제 브라우저 레이아웃 검수 보정
 
 - v0.20.1 주요 코드 `9abd4a51fadb1fa2fffa5f018e7f1f05bd6f9a95`, QA 뷰포트 추가 소스 `059359babcdd04b48219fbe79c914c7ca88c0a7d`. Pages run #19 `39092139196` 및 #20 `39092251905` 성공.

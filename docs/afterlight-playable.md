@@ -1,4 +1,4 @@
-# 마지막 현상실 · 플레이 가능한 첫 사건 · v0.20.0
+# 마지막 현상실 · 플레이 가능한 첫 사건 · v0.20.3
 
 별도 진입 `dist/afterlight/index.html`, `?mode=afterlight` 또는 기존 메뉴의 새 사건 링크. 기존 여행·사진관 첫 의뢰·모든 저장 보존. 새 저장은 검증 코어의 `afterlight-lab-episode01-v2`이며 이벤트 재생과 UI 관찰/메모/배달 가설을 저장한다.
 
@@ -27,3 +27,7 @@ Prompt:
 Built-in image generation. 원본 `/workspace/scratch/b26c220b52f1/generated_images/exec-6d5c55d8-636a-4d8d-b177-b4fe1b825029.png`, 게임 자산 `dist/afterlight/photos.webp`. 2×2 사진 아틀라스이며 정밀 퍼즐 도면이 아닌 이야기 보상용 사진.
 
 Prompt: Use case: illustration-story. Asset type: one 2-by-2 contact sheet atlas of four distinct fictional photographic prints for a premium atmospheric escape room game about the last day of a Tokyo neighborhood photo studio. Four equal rectangular quadrants arranged exactly in a clean 2x2 grid, no gutters, no frames, no borders, no visible text, no letters or numbers, no UI. Top left: warm sunlit small empty new studio with two plain wooden chairs near a large window and pale olive walls, hopeful morning. Top right: wide nostalgic exterior of the old neighborhood photo shop, weathered dark green glass door and wooden frame, no readable signage, late afternoon. Bottom left: intimate still life of a hand-tied parcel wrapped in brown paper beside a cup and small flower on the counter, quiet farewell. Bottom right: nostalgic still life of an old film camera beside a folded scarf and a small potted plant in warm window light, personal keepsake. All four are well-composed believable documentary analog photographs, consistent warm film grain, nuanced real materials, sophisticated quiet Japanese photography, physically plausible perspective. No people. Each of the four quadrant pictures should have a clearly different recognizable main subject. Full image landscape 1536x1024. Only the four photographs, no lettering, no watermarks.
+
+## 최종 관찰 결과
+
+v0.20.3 소스 `c1b17b07a6ad190caed9fef9830d26e0d14b6e8b`, GitHub Pages run #22 `39092591389`, deploy 완료 2026-10-18 12:09:21 KST. 전체 검사67개, build-info HTTP200/소스 일치, 공개 자산6개 바이트 일치. 실제 브라우저 전체 순서·실패 실험·배달 오답/정답·결말과 390×844 CSS 뷰포트 저장 복원/사진 표시 확인. 실제 iPhone/KakaoTalk 터치와 외부 플레이어의 재미는 별도 미검증. 검수 이미지 `docs/qa/v0203-room.jpg`, `docs/qa/v0203-completed.jpg`.
