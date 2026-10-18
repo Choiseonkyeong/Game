@@ -1,0 +1,161 @@
+{
+  "body": {
+    "cream": {
+      "front": {
+        "head": "char/body/cream/front-head.webp",
+        "torso": "char/body/cream/front-torso.webp",
+        "pelvis": "char/body/cream/front-pelvis.webp",
+        "upperArmL": "char/body/cream/front-upperArmL.webp",
+        "upperArmR": "char/body/cream/front-upperArmR.webp",
+        "foreArmL": "char/body/cream/front-foreArmL.webp",
+        "foreArmR": "char/body/cream/front-foreArmR.webp",
+        "thighL": "char/body/cream/front-thighL.webp",
+        "thighR": "char/body/cream/front-thighR.webp",
+        "shinL": "char/body/cream/front-shinL.webp",
+        "shinR": "char/body/cream/front-shinR.webp"
+      },
+      "back": {
+        "head": "char/body/cream/back-head.webp",
+        "torso": "char/body/cream/back-torso.webp",
+        "pelvis": "char/body/cream/back-pelvis.webp",
+        "upperArmL": "char/body/cream/back-upperArmL.webp",
+        "upperArmR": "char/body/cream/back-upperArmR.webp",
+        "foreArmL": "char/body/cream/back-foreArmL.webp",
+        "foreArmR": "char/body/cream/back-foreArmR.webp",
+        "thighL": "char/body/cream/back-thighL.webp",
+        "thighR": "char/body/cream/back-thighR.webp",
+        "shinL": "char/body/cream/back-shinL.webp",
+        "shinR": "char/body/cream/back-shinR.webp"
+      },
+      "side": {
+        "head": "char/body/cream/side-head.webp",
+        "torso": "char/body/cream/side-torso.webp",
+        "pelvis": "char/body/cream/side-pelvis.webp",
+        "upperArmL": "char/body/cream/side-upperArmL.webp",
+        "upperArmR": "char/body/cream/side-upperArmR.webp",
+        "foreArmL": "char/body/cream/side-foreArmL.webp",
+        "foreArmR": "char/body/cream/side-foreArmR.webp",
+        "thighL": "char/body/cream/side-thighL.webp",
+        "thighR": "char/body/cream/side-thighR.webp",
+        "shinL": "char/body/cream/side-shinL.webp",
+        "shinR": "char/body/cream/side-shinR.webp"
+      }
+    }
+  },
+  "face": {
+    "cream": {
+      "front": {
+        "face": "char/face/cream/front-face.webp"
+      },
+      "side": {
+        "face": "char/face/cream/side-face.webp"
+      }
+    }
+  },
+  "hairBack": {
+    "bob-chestnut": {
+      "front": {
+        "hairBack": "char/hairBack/bob-chestnut/front-hairBack.webp"
+      },
+      "back": {
+        "hairBack": "char/hairBack/bob-chestnut/back-hairBack.webp"
+      },
+      "side": {
+        "hairBack": "char/hairBack/bob-chestnut/side-hairBack.webp"
+      }
+    }
+  },
+  "hairFront": {
+    "bob-chestnut": {
+      "front": {
+        "hairFront": "char/hairFront/bob-chestnut/front-hairFront.webp"
+      },
+      "back": {
+        "hairFront": "char/hairFront/bob-chestnut/back-hairFront.webp"
+      },
+      "side": {
+        "hairFront": "char/hairFront/bob-chestnut/side-hairFront.webp"
+      }
+    }
+  },
+  "top": {
+    "sailor": {
+      "front": {
+        "torso": "char/top/sailor/front-torso.webp",
+        "upperArmL": "char/top/sailor/front-upperArmL.webp",
+        "upperArmR": "char/top/sailor/front-upperArmR.webp",
+        "foreArmL": "char/top/sailor/front-foreArmL.webp",
+        "foreArmR": "char/top/sailor/front-foreArmR.webp"
+      },
+      "back": {
+        "torso": "char/top/sailor/back-torso.webp",
+        "upperArmL": "char/top/sailor/back-upperArmL.webp",
+        "upperArmR": "char/top/sailor/back-upperArmR.webp",
+        "foreArmL": "char/top/sailor/back-foreArmL.webp",
+        "foreArmR": "char/top/sailor/back-foreArmR.webp"
+      },
+      "side": {
+        "torso": "char/top/sailor/side-torso.webp",
+        "upperArmL": "char/top/sailor/side-upperArmL.webp",
+        "upperArmR": "char/top/sailor/side-upperArmR.webp",
+        "foreArmL": "char/top/sailor/side-foreArmL.webp",
+        "foreArmR": "char/top/sailor/side-foreArmR.webp"
+      }
+    }
+  },
+  "bottom": {
+    "skirt": {
+      "front": {
+        "pelvis": "char/bottom/skirt/front-pelvis.webp",
+        "thighL": "char/bottom/skirt/front-thighL.webp",
+        "thighR": "char/bottom/skirt/front-thighR.webp"
+      },
+      "back": {
+        "pelvis": "char/bottom/skirt/back-pelvis.webp",
+        "thighL": "char/bottom/skirt/back-thighL.webp",
+        "thighR": "char/bottom/skirt/back-thighR.webp"
+      },
+      "side": {
+        "pelvis": "char/bottom/skirt/side-pelvis.webp",
+        "thighL": "char/bottom/skirt/side-thighL.webp",
+        "thighR": "char/bottom/skirt/side-thighR.webp"
+      }
+    }
+  },
+  "shoes": {
+    "brown": {
+      "front": {
+        "shinL": "char/shoes/brown/front-shinL.webp",
+        "shinR": "char/shoes/brown/front-shinR.webp"
+      },
+      "back": {
+        "shinL": "char/shoes/brown/back-shinL.webp",
+        "shinR": "char/shoes/brown/back-shinR.webp"
+      },
+      "side": {
+        "shinL": "char/shoes/brown/side-shinL.webp",
+        "shinR": "char/shoes/brown/side-shinR.webp"
+      }
+    }
+  },
+  "world": {
+    "day": "world/island-day.webp",
+    "sunset": "world/island-sunset.webp"
+  },
+  "props": {
+    "house": "props/house.webp",
+    "bench": "props/bench.webp",
+    "pot": "props/pot.webp",
+    "tree": "props/tree.webp",
+    "bowl": "props/bowl.webp",
+    "pond": "props/pond.webp",
+    "table": "props/table.webp",
+    "cushion": "props/cushion.webp",
+    "lamp": "props/lamp.webp",
+    "path": "props/path.webp",
+    "fence": "props/fence.webp",
+    "daisy": "props/daisy.webp",
+    "tulip": "props/tulip.webp",
+    "lavender": "props/lavender.webp"
+  }
+}

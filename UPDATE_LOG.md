@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-19 00:16 KST — Codex · 포근섬 아트 독립 검수 경로 준비
+
+- 기준 master e2ab351. 원화71파트/2배경/14소품 제작. 본 게임 manifest는 유지한 채 art-review.html 및 rig-preview-review.html에서 먼저 검수하기 위한 후보 자산 저장.
+- 로컬 file 브라우저 접근 정책으로 불가하여 공개 HTTPS 검수 경로 사용. 아직 본 게임 아트 교체/검수 완료 아님. 다른 게임·저장키 보존.
+
 ## 2026-10-18 23:21 KST — Claude · 포근섬 0.2 컷아웃 캐릭터 리그 · 아트 규격 · 플레이스토어 포장 준비
 
 - 요청: 포근섬을 퍼피레드/메이플 수준의 캐릭터·배경·움직임으로, 플레이스토어 등록 가능하게. 아트는 사용자가 제작(선택 A), Claude는 엔진·규격·포장.
