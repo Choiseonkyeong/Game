@@ -4,10 +4,9 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.20.3",
-    "github_commit": "c1b17b07a6ad190caed9fef9830d26e0d14b6e8b",
-    "github_dist_tree": "0acf032ab9089be04e0a2d27d159e9fcd40c0e93",
-    "entrypoint": "dist/afterlight/index.html -> game.js?v=203 -> core.js?v=203",
+    "version": "0.21.0",
+    "github_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
+    "entrypoint": "dist/afterlight/index.html -> game.js?v=210 -> core.js?v=210",
     "checks": {
       "automated_tests_passed": 67,
       "actual_desktop_browser_verified": true,
@@ -15,9 +14,7 @@
       "actual_mobile_touch_verified": false
     },
     "changes": [
-      "New full-viewport Afterlight room and four story-specific photographs. Envelope-first discovery and individual two-sided person notes.",
-      "Verified ordering core with drag/tap swaps, physical mask/flip/AND light experiments and C3 discovery, owner/destination deductions with reversible assignments and story ending.",
-      "Notebook, hints in close-ups, isolated event-replay save, restart confirmation, optional effects, hidden background focus, no page scroll."
+      "Two-plate first clue rehearsal, read-clue rail, fixed delivery token tray with selection guidance and preserved scroll, legible sans-serif paper text, staged relational hints; logical core and saves unchanged."
     ],
     "limitations": [
       "A playable first-episode prototype, not a completed commercial app or validated business.",
@@ -45,19 +42,21 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "run_id": 39092591389,
-      "run_number": 22,
-      "source_commit": "c1b17b07a6ad190caed9fef9830d26e0d14b6e8b",
-      "version": "0.20.3",
-      "game_checks": "passed",
+      "version": "0.21.0",
+      "source_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
+      "run_id": 39098358518,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-18T03:09:21Z",
-      "deployed_at_kst": "2026-10-18 12:09:21 KST",
-      "worker": "Codex"
+      "deployed_at": "2026-10-18T04:48:39Z",
+      "url": "https://choiseonkyeong.github.io/Game/afterlight/?v=210",
+      "checked_at": "2026-10-18T13:52:54.060375+09:00",
+      "checks": "67 automated tests passed; HTTP200 build-info exact source and entry/js/css byte-match; actual Cloud Chrome 390x650 iframe new envelope, two-plate rehearsal, notes front/back, ordering, C3, fixed delivery labels, all eight assignments, reload persistence and ending. Main URL opened.",
+      "actual_mobile_touch_verified": false,
+      "beginner_usability_study_verified": false,
+      "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "HTTP200 build-info exact source. Six Afterlight entry/code/art assets byte-match local. Cloud Chrome full episode progressed from envelope and notes through wrong/correct order, actual drag and tap swaps, failed optical experiment, fixed pin, C3, wrong/incomplete delivery and corrected delivery to ending. V203 completed save, four ending photos and fresh first scene verified. Responsive 390x844 CSS viewport on desktop; actual phone is separate.",
-    "remaining_action": "Real iPhone/KakaoTalk touch, external player study, next episode; no new Sites deployment."
+    "access_check": "67 automated tests passed; HTTP200 build-info exact source and entry/js/css byte-match; actual Cloud Chrome 390x650 iframe new envelope, two-plate rehearsal, notes front/back, ordering, C3, fixed delivery labels, all eight assignments, reload persistence and ending. Main URL opened.",
+    "remaining_action": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -82,50 +81,42 @@
     }
   },
   "handoff": {
-    "source_branch": "codex/playable-afterlight-020",
-    "source_commit": "c1b17b07a6ad190caed9fef9830d26e0d14b6e8b",
-    "synchronized_master": "c1b17b07a6ad190caed9fef9830d26e0d14b6e8b",
+    "source_branch": "codex/afterlight-readable-021",
+    "source_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
+    "synchronized_master": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
     "sites_and_github_dist_identical": false,
     "experience_contract": "docs/experience-contract.md",
     "art_prompts": "docs/art-direction.md",
     "browser_proof": "docs/qa/v0203-room.jpg",
-    "visible_release_marker": "Menu: AFTERLIGHT · 0.20.3",
-    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/afterlight/?v=203",
-    "remaining": "First episode playable. External engagement and real phone touch not verified. Existing chapters/saves/Sites preserved; second episode not implemented."
+    "visible_release_marker": "Menu: AFTERLIGHT · 0.21.0",
+    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/afterlight/?v=210",
+    "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
   },
   "latest_verification": {
-    "checked_at": "2026-10-18T03:13:25.133580+00:00",
-    "version": "0.20.3",
-    "automated_tests_passed": 67,
-    "actual_browser_play_verified": true,
+    "version": "0.21.0",
+    "source_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
+    "run_id": 39098358518,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-18T04:48:39Z",
+    "url": "https://choiseonkyeong.github.io/Game/afterlight/?v=210",
+    "checked_at": "2026-10-18T13:52:54.060375+09:00",
+    "checks": "67 automated tests passed; HTTP200 build-info exact source and entry/js/css byte-match; actual Cloud Chrome 390x650 iframe new envelope, two-plate rehearsal, notes front/back, ordering, C3, fixed delivery labels, all eight assignments, reload persistence and ending. Main URL opened.",
     "actual_mobile_touch_verified": false,
-    "responsive_viewport": "390x844 desktop iframe of the actual public app",
-    "browser_scope": "Full sequence on v200, wrong delivery and final reasoning completion in v201 at390px; v203 restored completed progress, displayed all four photos, showed203 menu, then reset only agent QA episode and verified first scene. Logic core unchanged and identical to verified source.",
-    "live_build_info_commit": "c1b17b07a6ad190caed9fef9830d26e0d14b6e8b",
-    "live_build_info_http_status": 200,
-    "live_files_byte_matched": [
-      "afterlight/index.html",
-      "afterlight/game.js",
-      "afterlight/game.css",
-      "afterlight/core.js",
-      "afterlight/room.webp",
-      "afterlight/photos.webp"
-    ],
-    "proof": [
-      "docs/qa/v0203-room.jpg",
-      "docs/qa/v0203-completed.jpg"
-    ]
+    "beginner_usability_study_verified": false,
+    "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
   },
   "latest_github_pages_release": {
-    "version": "0.20.3",
-    "source": "master@c1b17b07a6ad190caed9fef9830d26e0d14b6e8b",
-    "entry": "dist/afterlight/index.html -> game.js?v=203",
-    "tests_passed": 67,
-    "browser_verification": "Full sequence on v200, wrong delivery and final reasoning completion in v201 at390px; v203 restored completed progress, displayed all four photos, showed203 menu, then reset only agent QA episode and verified first scene. Logic core unchanged and identical to verified source.",
+    "version": "0.21.0",
+    "source_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
+    "run_id": 39098358518,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-18T04:48:39Z",
+    "url": "https://choiseonkyeong.github.io/Game/afterlight/?v=210",
+    "checked_at": "2026-10-18T13:52:54.060375+09:00",
+    "checks": "67 automated tests passed; HTTP200 build-info exact source and entry/js/css byte-match; actual Cloud Chrome 390x650 iframe new envelope, two-plate rehearsal, notes front/back, ordering, C3, fixed delivery labels, all eight assignments, reload persistence and ending. Main URL opened.",
     "actual_mobile_touch_verified": false,
-    "workflow_run": 39092591389,
-    "deployment_status": "succeeded",
-    "live_build_info_verified": true
+    "beginner_usability_study_verified": false,
+    "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
   },
   "previous_reviewed_game": {
     "version": "0.13.1",
@@ -187,5 +178,18 @@
     "first_episode_source": "c1b17b07a6ad190caed9fef9830d26e0d14b6e8b",
     "url": "https://choiseonkyeong.github.io/Game/afterlight/?v=203",
     "responsive_390px_verified": true
+  },
+  "readability_release_0210": {
+    "version": "0.21.0",
+    "source_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
+    "run_id": 39098358518,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-18T04:48:39Z",
+    "url": "https://choiseonkyeong.github.io/Game/afterlight/?v=210",
+    "checked_at": "2026-10-18T13:52:54.060375+09:00",
+    "checks": "67 automated tests passed; HTTP200 build-info exact source and entry/js/css byte-match; actual Cloud Chrome 390x650 iframe new envelope, two-plate rehearsal, notes front/back, ordering, C3, fixed delivery labels, all eight assignments, reload persistence and ending. Main URL opened.",
+    "actual_mobile_touch_verified": false,
+    "beginner_usability_study_verified": false,
+    "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
   }
 }

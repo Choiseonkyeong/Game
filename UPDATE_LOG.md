@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 13:52 KST — Codex · v0.21.0 가독성/첫 진입 배포 확인
+
+- Source: codex/afterlight-readable-021@ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3; synchronized master ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3. 기존 기록·코어 보존.
+- Deployment: Pages run 39098358518 성공, 2026-10-18 13:48:39 KST. build-info 정확한 SHA, entry/js/css HTTP200 바이트 일치. URL https://choiseonkyeong.github.io/Game/afterlight/?v=210.
+- Checks: 67 자동 검사; Cloud Chrome 실제 390×650 CSS iframe에서 새 봉투→두 판 연습→세 메모 앞뒤→순서→빛/C3→고정 이름표 8개→새로고침 배치 복원→결말. 최종 메인 URL 직접 열어 확인. 검수용 진행만 앱 내 초기화.
+- Limit: 실제 iPhone 터치/초보 플레이어 이탈률은 미확인. 기존 진행은 보존되며 연습은 의뢰 시작 흐름에서 제공.
+
 ## 2026-10-18 13:47 KST — Codex · v0.21.0 초보 진입·가독성 수정, 배포 준비
 
 - 최신 master c575c14 기준, 작업 codex/afterlight-readable-021. 첫 두 판 연습→실제 네 판 적용, 읽은 단서 펼치기, 배달 이름표 고정 영역/선택 설명/스크롤 보존, 본문 고딕·16px·대비/행간 수정, 관계 중심 단계 힌트. 기존 논리·해법·저장 보존.
