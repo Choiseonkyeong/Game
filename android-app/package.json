@@ -1,0 +1,1 @@
+{"name":"pogeun-island-android","private":true,"version":"0.2.0","type":"module","scripts":{"build:web":"node build-web.mjs","sync":"npm run build:web && npx cap sync android","open":"npx cap open android"},"dependencies":{"@capacitor/android":"6.1.2","@capacitor/core":"6.1.2"},"devDependencies":{"@capacitor/cli":"6.1.2"}}
