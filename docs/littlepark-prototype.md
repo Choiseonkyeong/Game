@@ -7,3 +7,8 @@
 핵심 가설: 사물 배치에 반응하는 동물과 자라는 식물이 꾸미기 동기를 만든다. 현재 고양이는 조건에 따른 위치/표정 변화이며 길찾기·자율 행동 AI는 아니다. 실제 장기 재미·모바일 입력 검증 필요.
 
 검사70개, 공개 버전 actual browser 검수 범위는 UPDATE_LOG 및 release-state littlepark_release 참조. 390px helper는 QA만 사용하며 전달 URL은 정원 본체다.
+
+
+## 0.2 시각·생활감 개편
+
+2026-10-18: 입체 원화3종과 정원 중심 전체 화면, 1~1.5배 확대, 사물을 피하는 모모 경로/세 자세, 간식/테마 저장. 이전 저장키·배치·식물·친밀도 유지. 원화 및 프롬프트는 littlepark-art-direction.md와 littlepark-image-prompts.json. 최종 진입 index.html→park.js?v=5→core.js?v=5. 공개 경로 littlepark/?v=5.

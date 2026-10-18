@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 21:24 KST — Codex · 작은 정원 0.2 추구미 반영·배포 검수
+
+- Source: c17f4ca7420faf7c6cd39673073d43f9110fcb0d, 작업 codex/littlepark-living-world 및 QA 후속 브랜치. 원격 master expected-HEAD 사용.
+- Changes: 정원 둘레/집/가구/꽃/모모 원화3종, 모바일 정원 중심 구성, 카메라 확대, 경로 기반 모모 이동·자세·휴식, 간식/테마3종 저장. 기존 배치/꽃/친밀도 보존, 다른 게임 불변. 원화 제작/전체 프롬프트 docs/littlepark-art-direction.md 및 littlepark-image-prompts.json.
+- Checks: 자동73개/문법/diff 통과. Chrome 실제390×844 iframe에서 이전 배치·친밀도 복원, 테마 변경/간식 hearts1→2, 확대 후 네이티브 포인터 벤치 드래그 c1r5→c2r5, 새 화분·튤립 심기/물주기/리로드/개화, 이동하는 모모와 옮겨진 벤치 휴식 확인. 실제 아이폰과 구분.
+- QA corrections: 중첩SVG에 100% 크기가 전파되어 전체 아틀라스 조각이 보이는 문제를 최상위 선택자와 clipPath로 해결. 실제 화면 변환으로 드래그 좌표 보정. 모모 수면 자세 슬라이딩/벤치 높이/과한 활동 문구 보정. UI 선택자 중심이 실제 그림을 벗어난 경우 실제 화면 좌표와 키보드 조작으로 확인.
+- Deployment: Pages run39126779225 성공, 2026-10-18 21:19:30 KST. build-info HTTP200 정확한 소스, 공개 자산 로컬바이트 일치 확인. URL https://choiseonkyeong.github.io/Game/littlepark/?v=5 직접 열어 확인.
+- Limits: 실제 폰 터치/외부 유저/장기 재미 미검증. 온라인/친구방문/복수 동물/장기 경제 미구현. 이동은 경로 보간·자세전환이며 리깅 걷기 애니메이션은 아님.
+
 ## 2026-10-18 21:11 KST — Codex · 미니파크 시각·생활감 개편 준비
 
 - 기준 master f52f8a5, 작업 codex/littlepark-living-world. 새 투명 원화2종, 정원 중심 화면, 사물 비율과 재질 통일, 경로 기반 모모 이동/자세/휴식, 테마3종/간식. 기존 배치·진행·사진관 유지.

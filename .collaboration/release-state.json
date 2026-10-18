@@ -4,21 +4,20 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "0.21.0",
-    "github_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
-    "entrypoint": "dist/afterlight/index.html -> game.js?v=210 -> core.js?v=210",
+    "version": "littlepark-0.2",
+    "github_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
+    "entrypoint": "dist/littlepark/index.html -> park.js?v=5 -> core.js?v=5",
     "checks": {
-      "automated_tests_passed": 67,
+      "automated_tests_passed": 73,
       "actual_desktop_browser_verified": true,
       "responsive_390x844_desktop_iframe_verified": true,
       "actual_mobile_touch_verified": false
     },
     "changes": [
-      "Two-plate first clue rehearsal, read-clue rail, fixed delivery token tray with selection guidance and preserved scroll, legible sans-serif paper text, staged relational hints; logical core and saves unchanged."
+      "New consistent 3D-rendered transparent art, garden framing and compact full-screen UI, zoom, Momo route/pose loop, treats and saved themes. Existing layouts/plants/affinity preserved."
     ],
     "limitations": [
-      "A playable first-episode prototype, not a completed commercial app or validated business.",
-      "Actual iPhone/KakaoTalk touch and external player engagement remain unverified; next episode is not implemented."
+      "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
     ]
   },
   "last_successful_deployment": {
@@ -42,22 +41,22 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "littlepark-0.1",
-      "source_commit": "59c2e2ec59b1b6a5b46a52090224a82f54335e99",
-      "source_branch": "codex/littlepark-polish",
-      "url": "https://choiseonkyeong.github.io/Game/littlepark/?v=2",
-      "run_id": 39124024765,
+      "version": "littlepark-0.2",
+      "source_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
+      "source_branch": "codex/littlepark-v4-qa",
+      "url": "https://choiseonkyeong.github.io/Game/littlepark/?v=5",
+      "run_id": 39126779225,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-18T11:38:25Z",
-      "checked_at": "2026-10-18T20:40:19.625689+09:00",
-      "checks": "70 automated tests. Actual Cloud Chrome: seed/water/place bowl/fill, bloom over elapsed time, cat arrival/pet, bench placement/move/rotate, tree/pond, reload and journal confirmation of bloom and affinity1. 390x844 desktop iframe visual review. Main URL opened. build-info and four public code assets checked separately.",
+      "deployed_at": "2026-10-18T12:19:30Z",
+      "checked_at": "2026-10-18T21:24:43.706923+09:00",
+      "checks": "73 automated checks; actual Chrome390x844 desktop iframe: restored old garden and affinity; themes switched, treat hearts1→2; view5 zoom and native pointer drag bench from c1r5 to c2r5; new pot placed, tulip planted/watered, reload restore and eventual bloom; cat moving and resting at moved bench. Main URL opened. build-info exact source; assets checked against local.",
       "actual_mobile_touch_verified": false,
-      "actual_pointer_drag_verified": false,
-      "remaining": "First local prototype; real iPhone touch, sustained engagement, friend visits/online account, multiple animal species and broader progression not implemented. Old photo games and saves preserved."
+      "actual_pointer_drag_verified": true,
+      "remaining": "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "70 automated tests. Actual Cloud Chrome: seed/water/place bowl/fill, bloom over elapsed time, cat arrival/pet, bench placement/move/rotate, tree/pond, reload and journal confirmation of bloom and affinity1. 390x844 desktop iframe visual review. Main URL opened. build-info and four public code assets checked separately.",
-    "remaining_action": "First local prototype; real iPhone touch, sustained engagement, friend visits/online account, multiple animal species and broader progression not implemented. Old photo games and saves preserved."
+    "access_check": "73 automated checks; actual Chrome390x844 desktop iframe: restored old garden and affinity; themes switched, treat hearts1→2; view5 zoom and native pointer drag bench from c1r5 to c2r5; new pot placed, tulip planted/watered, reload restore and eventual bloom; cat moving and resting at moved bench. Main URL opened. build-info exact source; assets checked against local.",
+    "remaining_action": "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
   },
   "restoration_record": {
     "branch": "claude/game-repo-url-2shcos",
@@ -82,42 +81,44 @@
     }
   },
   "handoff": {
-    "source_branch": "codex/afterlight-readable-021",
-    "source_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
-    "synchronized_master": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
+    "source_branch": "codex/littlepark-v4-qa",
+    "source_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
+    "synchronized_master": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
     "sites_and_github_dist_identical": false,
     "experience_contract": "docs/experience-contract.md",
-    "art_prompts": "docs/art-direction.md",
+    "art_prompts": "docs/littlepark-image-prompts.json",
     "browser_proof": "docs/qa/v0203-room.jpg",
-    "visible_release_marker": "Menu: AFTERLIGHT · 0.21.0",
-    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/afterlight/?v=210",
-    "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
+    "visible_release_marker": "Help: 모모의 작은 정원 · 0.2",
+    "cache_busting_test_url": "https://choiseonkyeong.github.io/Game/littlepark/?v=5",
+    "remaining": "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
   },
   "latest_verification": {
-    "version": "0.21.0",
-    "source_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
-    "run_id": 39098358518,
+    "version": "littlepark-0.2",
+    "source_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
+    "source_branch": "codex/littlepark-v4-qa",
+    "url": "https://choiseonkyeong.github.io/Game/littlepark/?v=5",
+    "run_id": 39126779225,
     "deployment": "succeeded",
-    "deployed_at": "2026-10-18T04:48:39Z",
-    "url": "https://choiseonkyeong.github.io/Game/afterlight/?v=210",
-    "checked_at": "2026-10-18T13:52:54.060375+09:00",
-    "checks": "67 automated tests passed; HTTP200 build-info exact source and entry/js/css byte-match; actual Cloud Chrome 390x650 iframe new envelope, two-plate rehearsal, notes front/back, ordering, C3, fixed delivery labels, all eight assignments, reload persistence and ending. Main URL opened.",
+    "deployed_at": "2026-10-18T12:19:30Z",
+    "checked_at": "2026-10-18T21:24:43.706923+09:00",
+    "checks": "73 automated checks; actual Chrome390x844 desktop iframe: restored old garden and affinity; themes switched, treat hearts1→2; view5 zoom and native pointer drag bench from c1r5 to c2r5; new pot placed, tulip planted/watered, reload restore and eventual bloom; cat moving and resting at moved bench. Main URL opened. build-info exact source; assets checked against local.",
     "actual_mobile_touch_verified": false,
-    "beginner_usability_study_verified": false,
-    "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
+    "actual_pointer_drag_verified": true,
+    "remaining": "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
   },
   "latest_github_pages_release": {
-    "version": "0.21.0",
-    "source_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
-    "run_id": 39098358518,
+    "version": "littlepark-0.2",
+    "source_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
+    "source_branch": "codex/littlepark-v4-qa",
+    "url": "https://choiseonkyeong.github.io/Game/littlepark/?v=5",
+    "run_id": 39126779225,
     "deployment": "succeeded",
-    "deployed_at": "2026-10-18T04:48:39Z",
-    "url": "https://choiseonkyeong.github.io/Game/afterlight/?v=210",
-    "checked_at": "2026-10-18T13:52:54.060375+09:00",
-    "checks": "67 automated tests passed; HTTP200 build-info exact source and entry/js/css byte-match; actual Cloud Chrome 390x650 iframe new envelope, two-plate rehearsal, notes front/back, ordering, C3, fixed delivery labels, all eight assignments, reload persistence and ending. Main URL opened.",
+    "deployed_at": "2026-10-18T12:19:30Z",
+    "checked_at": "2026-10-18T21:24:43.706923+09:00",
+    "checks": "73 automated checks; actual Chrome390x844 desktop iframe: restored old garden and affinity; themes switched, treat hearts1→2; view5 zoom and native pointer drag bench from c1r5 to c2r5; new pot placed, tulip planted/watered, reload restore and eventual bloom; cat moving and resting at moved bench. Main URL opened. build-info exact source; assets checked against local.",
     "actual_mobile_touch_verified": false,
-    "beginner_usability_study_verified": false,
-    "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
+    "actual_pointer_drag_verified": true,
+    "remaining": "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
   },
   "previous_reviewed_game": {
     "version": "0.13.1",
@@ -194,6 +195,20 @@
     "remaining": "Actual novice players and real iPhone touch; first-episode prototype. Existing saves preserved; rehearsal appears when beginning from envelope."
   },
   "littlepark_release": {
+    "version": "littlepark-0.2",
+    "source_commit": "c17f4ca7420faf7c6cd39673073d43f9110fcb0d",
+    "source_branch": "codex/littlepark-v4-qa",
+    "url": "https://choiseonkyeong.github.io/Game/littlepark/?v=5",
+    "run_id": 39126779225,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-18T12:19:30Z",
+    "checked_at": "2026-10-18T21:24:43.706923+09:00",
+    "checks": "73 automated checks; actual Chrome390x844 desktop iframe: restored old garden and affinity; themes switched, treat hearts1→2; view5 zoom and native pointer drag bench from c1r5 to c2r5; new pot placed, tulip planted/watered, reload restore and eventual bloom; cat moving and resting at moved bench. Main URL opened. build-info exact source; assets checked against local.",
+    "actual_mobile_touch_verified": false,
+    "actual_pointer_drag_verified": true,
+    "remaining": "Ongoing development, not commercial release. Online/friends, multiple animals and long-term progression unimplemented. Real iPhone touch and sustained player engagement not verified. Cat uses route interpolation and pose changes, not skeletal animation."
+  },
+  "littlepark_release_previous": {
     "version": "littlepark-0.1",
     "source_commit": "59c2e2ec59b1b6a5b46a52090224a82f54335e99",
     "source_branch": "codex/littlepark-polish",
@@ -206,5 +221,23 @@
     "actual_mobile_touch_verified": false,
     "actual_pointer_drag_verified": false,
     "remaining": "First local prototype; real iPhone touch, sustained engagement, friend visits/online account, multiple animal species and broader progression not implemented. Old photo games and saves preserved."
+  },
+  "previous_reviewed_afterlight": {
+    "version": "0.21.0",
+    "github_commit": "ed160c6e268c1db8df37c8cb48d8ffb19af6c1c3",
+    "entrypoint": "dist/afterlight/index.html -> game.js?v=210 -> core.js?v=210",
+    "checks": {
+      "automated_tests_passed": 67,
+      "actual_desktop_browser_verified": true,
+      "responsive_390x844_desktop_iframe_verified": true,
+      "actual_mobile_touch_verified": false
+    },
+    "changes": [
+      "Two-plate first clue rehearsal, read-clue rail, fixed delivery token tray with selection guidance and preserved scroll, legible sans-serif paper text, staged relational hints; logical core and saves unchanged."
+    ],
+    "limitations": [
+      "A playable first-episode prototype, not a completed commercial app or validated business.",
+      "Actual iPhone/KakaoTalk touch and external player engagement remain unverified; next episode is not implemented."
+    ]
   }
 }
