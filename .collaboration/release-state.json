@@ -188,6 +188,8 @@
     "art_and_player_ui_complete": false,
     "real_mobile_verified": false,
     "public_dist_unchanged": true,
-    "next": "Build the first-episode interaction proof and one art-complete zone before replacing the live game. Preserve all legacy saves."
+    "next": "Build the first-episode interaction proof and one art-complete zone before replacing the live game. Preserve all legacy saves.",
+    "source_branch": "codex/reboot-spec-020",
+    "source_commit": "962248ebe96455776af1af3cdde15c4c92379298"
   }
 }
