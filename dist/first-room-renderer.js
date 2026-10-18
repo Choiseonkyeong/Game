@@ -1,16 +1,16 @@
-import {stageFit,innerGeometry,PLATE} from './view-gestures.js?v=110';
-import {BodyLayer,SEOUL_BODIES} from './room-bodies.js?v=110';
-import {paintMargins,featherEdges,releaseCanvases} from './room-frame.js?v=110';
+import {stageFit,innerGeometry,PLATE} from './view-gestures.js?v=120';
+import {BodyLayer,SEOUL_BODIES} from './room-bodies.js?v=120';
+import {paintMargins,featherEdges,releaseCanvases} from './room-frame.js?v=120';
 export {releaseCanvases};
-import {SceneSurface} from './scene-surface.js?v=110';
-import {bound,frameReady} from './first-room-engine.js?v=110';
+import {SceneSurface} from './scene-surface.js?v=120';
+import {bound,frameReady} from './first-room-engine.js?v=120';
 export const BOARD={width:800,height:1000};
 export const ROOM_TARGETS={pillow:{x:.13,y:.46},drawer:{x:.88,y:.49},tin:{x:.745,y:.075},window:{x:.46,y:.23},lamp:{x:.16,y:.32},chair:{x:.76,y:.61},frame:{x:.025,y:.17},bin:{x:.985,y:.68}};
 const round=(c,x,y,w,h,r=8)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
 export function atlas(c,img,index,columns,rows,x,y,w,h){if(!img)return;const sw=img.width/columns,sh=img.height/rows;c.drawImage(img,index%columns*sw+5,Math.floor(index/columns)*sh+5,sw-10,sh-10,x,y,w,h);}
 export function itemArt(c,assets,item,x,y,w,h){if(item==='film')atlas(c,assets.props,2,2,2,x,y,w,h);else atlas(c,assets.tools,0,4,4,x,y,w,h);}
 export class ChapterRenderer{
- constructor(canvas,assets,makeCanvas=()=>document.createElement('canvas')){this.canvas=canvas;this.c=canvas.getContext('2d');this.assets=assets;this.room=makeCanvas();this.room.width=1536;this.room.height=1024;this.surface=new SceneSurface(this.room);this.bodies=new BodyLayer(SEOUL_BODIES,makeCanvas);for(const [key,value] of Object.entries({ 'seoul.webp':assets.room,'seoul-clean-v3.webp':assets.clean,'seoul-diffuse-v4.webp':assets.diffuse,'seoul-pillow-v3.webp':assets.bed,'seoul-drawer-v7.webp':assets.drawer}))this.surface.images.set('travel-art/'+key,value);}
+ constructor(canvas,assets,makeCanvas=()=>document.createElement('canvas')){this.canvas=canvas;this.c=canvas.getContext('2d');this.assets=assets;this.room=makeCanvas();this.room.width=1536;this.room.height=1024;this.surface=new SceneSurface(this.room);this.bodies=new BodyLayer(SEOUL_BODIES,makeCanvas,0,assets.layerManifest&&assets.layers?{sheet:assets.layers,manifest:assets.layerManifest}:null);for(const [key,value] of Object.entries({ 'seoul.webp':assets.room,'seoul-clean-v3.webp':assets.clean,'seoul-diffuse-v4.webp':assets.diffuse,'seoul-pillow-v3.webp':assets.bed,'seoul-drawer-v7.webp':assets.drawer}))this.surface.images.set('travel-art/'+key,value);}
  renderRoom(state,camera={x:.28,y:.5},overview=false,zoom=1){
   const c=this.c,w=this.canvas.width,h=this.canvas.height;c.clearRect(0,0,w,h);
   const surfaceKey=[state.shade,state.drawer].join('|');if(this.surfaceKey!==surfaceKey){this.surfaceKey=surfaceKey;this.surface.render({stage:0,flags:{},world:{},positions:{window:{progress:state.shade},drawer:{progress:state.drawer}}},0);this.bodies.reset();}

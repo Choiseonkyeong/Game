@@ -1,6 +1,6 @@
 // Room furniture and props cut from the painted room and moved in place with spring physics.
 // Coordinates are source pixels of a 1536×1024 room. Pivots are where the object touches or hangs.
-import {BodyMotion} from './interaction-motion.js?v=110';
+import {BodyMotion} from './interaction-motion.js?v=120';
 
 export const SEOUL_BODIES=[
  {id:'bed',kind:'squash',strength:.35,pivot:[420,940],points:[[0,515],[300,478],[560,500],[835,640],[800,700],[430,945],[0,830]]},
@@ -12,7 +12,7 @@ export const SEOUL_BODIES=[
  {id:'cardA',kind:'sway',strength:.6,pivot:[128,222],points:[[108,220],[148,220],[148,296],[108,296]]},
  {id:'cardB',kind:'sway',strength:.6,pivot:[170,286],points:[[152,284],[188,284],[188,336],[152,336]]},
  {id:'frame',kind:'sway',strength:.35,pivot:[38,44],points:[[0,38],[80,48],[80,288],[0,282]]},
- {id:'jacket',kind:'sway',pivot:[912,222],points:[[876,210],[940,210],[972,330],[986,470],[960,548],[850,548],[840,470],[856,330]]},
+ {id:'jacket',kind:'sway',pivot:[914,216],points:[[876,210],[940,210],[972,330],[986,470],[960,548],[850,548],[840,470],[856,330]]},
  {id:'ivy',kind:'leaf',pivot:[1012,95],points:[[914,18],[1092,18],[1092,112],[1012,122],[1002,302],[952,302],[914,140]]},
  {id:'shelfPlant',kind:'leaf',pivot:[1440,190],points:[[1364,108],[1482,108],[1472,302],[1394,302]]},
  {id:'tin',kind:'hop',strength:.5,pivot:[1144,95],points:[[1104,56],[1184,56],[1184,96],[1104,96]]},
@@ -36,8 +36,8 @@ export const TOKYO_BODIES=[
  {id:'vine',kind:'leaf',pivot:[540,20],points:[[458,0],[622,0],[612,120],[560,300],[520,300],[470,150]]},
  {id:'deskLamp',kind:'wobble',strength:.7,pivot:[490,372],points:[[426,226],[502,226],[506,358],[474,360],[426,286]]},
  {id:'board',kind:'sway',strength:.25,pivot:[255,128],points:[[172,126],[338,126],[338,282],[172,282]]},
- {id:'tote',kind:'sway',pivot:[553,494],points:[[528,472],[574,472],[612,556],[628,600],[626,754],[524,754],[522,600],[530,520]]},
- {id:'jacket',kind:'sway',pivot:[982,124],points:[[956,110],[1008,110],[1040,240],[1048,380],[1020,440],[944,440],[926,380],[936,240]]},
+ {id:'tote',kind:'sway',pivot:[551,490],points:[[528,472],[574,472],[612,556],[628,600],[626,754],[524,754],[522,600],[530,520]]},
+ {id:'jacket',kind:'sway',pivot:[982,118],points:[[956,110],[1008,110],[1040,240],[1048,380],[1020,440],[944,440],[926,380],[936,240]]},
  {id:'floorPlant',kind:'leaf',pivot:[962,650],points:[[922,456],[1006,456],[1000,560],[992,652],[934,652],[928,560]]},
  {id:'shelfPlant',kind:'leaf',pivot:[874,644],points:[[826,536],[934,536],[920,646],[830,646]]},
  {id:'stool',kind:'rock',pivot:[1050,662],points:[[1000,460],[1106,460],[1108,520],[1100,662],[1080,662],[1060,560],[1036,560],[1014,662],[994,662],[1002,520]]},
@@ -59,7 +59,7 @@ export function insidePolygon(points,x,y){let inside=false;for(let i=0,j=points.
 const boxOf=(points,pad)=>{const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x=Math.floor(Math.min(...xs)-pad),y=Math.floor(Math.min(...ys)-pad);return {x,y,w:Math.ceil(Math.max(...xs)+pad)-x,h:Math.ceil(Math.max(...ys)+pad)-y};};
 
 export class BodyLayer{
- constructor(defs,makeCanvas=()=>document.createElement('canvas'),offsetY=0){this.offsetY=offsetY;this.defs=defs;this.byId=new Map(defs.map(d=>[d.id,d]));this.motions=new Map();this.cache=new Map();this.makeCanvas=makeCanvas;this.queue=[];}
+ constructor(defs,makeCanvas=()=>document.createElement('canvas'),offsetY=0,layers=null){this.offsetY=offsetY;this.layers=layers;this.defs=defs;this.byId=new Map(defs.map(d=>[d.id,d]));this.motions=new Map();this.cache=new Map();this.makeCanvas=makeCanvas;this.queue=[];}
  // Topmost body under a source pixel (later entries are drawn in front).
  hit(x,y){for(let i=this.defs.length-1;i>=0;i--)if(insidePolygon(this.defs[i].points,x,y))return this.defs[i].id;return null;}
  impulse(id,x,strength=1){const d=this.byId.get(id);if(!d)return false;const motion=this.motions.get(id)||new BodyMotion(d.kind);const direction=x==null?1:(x<d.pivot[0]?1:-1);motion.impulse(direction,strength*(d.strength??1));this.motions.set(id,motion);
@@ -89,16 +89,24 @@ export class BodyLayer{
   const part={sprite,fill,box:b};this.cache.set(def.id,part);return part;
  }
  // Draws moving bodies on top of an already painted room. Geometry maps source pixels to canvas pixels.
+ // Objects with their own painted layer (tools/bake_rooms.py) are removed from the room art, so they are always drawn here;
+ // when they move, the real repainted background shows behind them. Others keep the in-place cut and only nudge slightly.
+ layerOf(id){const m=this.layers?.manifest?.[id];return m&&this.layers.sheet?m:null;}
+ drawLayer(ctx,def,m,p){const S=this.layers.sheet,[px,py]=def.pivot;
+  if(!p){ctx.drawImage(S,m.sx,m.sy,m.w,m.h,m.x,m.y,m.w,m.h);return;}
+  if(def.kind==='sway'||def.kind==='leaf'){const hang=def.kind==='sway',L=Math.max(1,hang?m.y+m.h-py:py-m.y);
+   for(let y=0;y<m.h;y+=2){const sy=m.y+y,dd=hang?sy-py:py-sy,u=Math.max(0,dd)/L;
+    const off=dd<=0?0:hang?-(dd*Math.sin(p.angle)+L*u*u*p.bend*.6):L*Math.pow(u,1.7)*(p.angle*.7+p.bend*.45),lift=dd>0&&hang?dd*(1-Math.cos(p.angle)):0;
+    ctx.drawImage(S,m.sx,m.sy+y,m.w,Math.min(2.6,m.h-y),m.x+off,sy-lift,m.w,Math.min(2.6,m.h-y));}
+   return;}
+  ctx.save();ctx.translate(px+p.x,py+p.y);ctx.rotate(p.angle);ctx.scale(1+p.squash*.5,1-p.squash);ctx.translate(-px,-py);ctx.drawImage(S,m.sx,m.sy,m.w,m.h,m.x,m.y,m.w,m.h);ctx.restore();}
  draw(ctx,source,g){
-  if(!this.motions.size)return;const scale=g.rw/1536;
-  for(const def of this.defs){const motion=this.motions.get(def.id);if(!motion)continue;const part=this.parts(def,source);if(!part)continue;const {sprite,fill,box}=part,p=motion.pose,[px,py]=def.pivot;
+  const scale=g.rw/1536;
+  for(const def of this.defs){const motion=this.motions.get(def.id),m=this.layerOf(def.id);
+   if(m){ctx.save();ctx.setTransform(scale,0,0,scale,g.tx,g.ty);this.drawLayer(ctx,def,m,motion?.pose);ctx.restore();continue;}
+   if(!motion)continue;const part=this.parts(def,source);if(!part)continue;const {sprite,fill,box}=part,[px,py]=def.pivot,q=motion.pose,k=.35;
+   const p={angle:q.angle*k,x:q.x*k,y:q.y*k,squash:q.squash*k,bend:q.bend*k};
    ctx.save();ctx.setTransform(scale,0,0,scale,g.tx,g.ty);ctx.drawImage(fill,box.x,box.y);
-   // Hanging cloth bends from its hook and plants bend from the pot: thin slices shift more the further they are from the anchor.
-   if(def.kind==='sway'||def.kind==='leaf'){const hang=def.kind==='sway',L=Math.max(1,hang?box.y+box.h-py:py-box.y);
-    for(let y=0;y<box.h;y+=2){const sy=box.y+y,dd=hang?sy-py:py-sy;if(dd<=0){ctx.drawImage(sprite,0,y,box.w,2,box.x,sy,box.w,2);continue;}const u=dd/L;
-     const off=hang?-(dd*Math.sin(p.angle)*.7+L*u*u*p.bend*.55):L*Math.pow(u,1.7)*(p.angle*.7+p.bend*.45),lift=hang?dd*(1-Math.cos(p.angle)):0;
-     ctx.drawImage(sprite,0,y,box.w,2.6,box.x+off,sy-lift,box.w,2.6);}
-    ctx.restore();continue;}
    ctx.translate(px+p.x,py+p.y);ctx.rotate(p.angle);ctx.scale(1+p.squash*.5,1-p.squash);ctx.translate(-px,-py);ctx.drawImage(sprite,box.x,box.y);ctx.restore();}
  }
 }

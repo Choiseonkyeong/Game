@@ -87,6 +87,155 @@ def ceiling(plate, x0, x1, y1, color=(214, 200, 172)):
     d.rectangle([x0, y1, x1, y1 + 10], fill=(150, 108, 66, 255))
     d.rectangle([x0, y1 + 10, x1, y1 + 13], fill=(112, 78, 46, 255))
 
+
+# ---------------------------------------------------------------- separate layers
+LAYERS = {}          # room -> {id: (RGBA sprite, x, y in plate coordinates)}
+
+def harmonic_fill(region, mask, iters=160):
+    """Fill masked pixels smoothly from their surroundings (plaster, floor) by diffusion, coarse to fine so large holes converge."""
+    a = region.astype(np.float32).copy(); m = mask.astype(bool)
+    border = (np.asarray(Image.fromarray(m.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(9))) > 0) & ~m
+    a[m] = np.median(a[border] if border.any() else a[~m], axis=0)
+    if min(a.shape[:2]) > 24:                        # solve a half-size problem first and use it as the starting point
+        h, w = a.shape[:2]; small = harmonic_fill(np.asarray(Image.fromarray(np.clip(a, 0, 255).astype(np.uint8)).resize((w // 2, h // 2), Image.BILINEAR)).astype(np.float32),
+                                                   np.asarray(Image.fromarray(m.astype(np.uint8) * 255).resize((w // 2, h // 2))) > 127, iters)
+        up = np.asarray(Image.fromarray(np.clip(small, 0, 255).astype(np.uint8)).resize((w, h), Image.BILINEAR)).astype(np.float32); a[m] = up[m]
+    for _ in range(iters):
+        avg = (np.roll(a, 1, 0) + np.roll(a, -1, 0) + np.roll(a, 1, 1) + np.roll(a, -1, 1)) / 4
+        a[m] = avg[m]
+    return a
+
+def column_fill(region, mask):
+    """Fill masked pixels column by column between the nearest clear pixels above and below (vertical wood grain)."""
+    a = region.astype(np.float32).copy(); h = a.shape[0]
+    for x in range(a.shape[1]):
+        col = mask[:, x]
+        if not col.any(): continue
+        ys = np.where(~col)[0]
+        if len(ys) == 0: continue
+        for y in np.where(col)[0]:
+            up = ys[ys < y]; dn = ys[ys > y]
+            if len(up) and len(dn):
+                t = (y - up[-1]) / (dn[0] - up[-1]); a[y, x] = a[up[-1], x] * (1 - t) + a[dn[0], x] * t
+            else: a[y, x] = a[(up[-1] if len(up) else dn[0]), x]
+    return a
+
+def lift_object(plate, room, oid, polys, mode='plaster', keep_above=None, threshold=(24, 56), erode=9, robust=True, sd_max=16, zt=2.6, fill_holes=True, cloth=False):
+    """Cut an object out of the painted plate as its own layer and repaint the background behind it.
+    polys (plate coordinates) trace the object; thin parts such as straps get their own polygon so the gaps between them stay
+    background. The inside of each polygon is solid; only a thin edge band is decided by difference from the repainted background."""
+    pts = [p for poly in polys for p in poly]; xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
+    x0, y0, x1, y1 = int(min(xs)) - 10, int(min(ys)) - 10, int(max(xs)) + 10, int(max(ys)) + 10
+    region = np.asarray(plate.crop((x0, y0, x1, y1)).convert('RGB')).astype(np.float32)
+    shape = Image.new('L', (x1 - x0, y1 - y0)); d = ImageDraw.Draw(shape)
+    for poly in polys: d.polygon([(x - x0, y - y0) for x, y in poly], fill=255)
+    if keep_above is not None: d.rectangle([0, 0, x1 - x0, keep_above - y0], fill=0)
+    mimg = shape.filter(ImageFilter.MaxFilter(9)); mask = np.asarray(mimg) > 0
+    clean = harmonic_fill(region, mask)
+    if mode == 'wood':                                  # vertical grain: per-column streaks plus fine noise
+        grainc = rng.normal(0, 7, (1, region.shape[1], 1))
+        streak = np.asarray(Image.fromarray(rng.normal(128, 50, (region.shape[0] // 8 + 1, region.shape[1])).clip(0, 255).astype(np.uint8)).resize((region.shape[1], region.shape[0]), Image.BICUBIC)).astype(np.float32)[..., None]
+        clean = np.where(mask[..., None], clean * (1 + (streak - 128) / 900) + grainc, clean)
+    clean[mask] += rng.normal(0, 3.2, (mask.sum(), 1)); clean = np.clip(clean, 0, 255)
+    diff = np.abs(region - clean).sum(axis=2); lo, hi = threshold
+    # Object = clearly different from the repainted background, inside the traced area; close small gaps and fill holes.
+    # Background colour statistics from a ring just outside the traced area; far-from-background pixels are the object.
+    ring = (np.asarray(shape.filter(ImageFilter.MaxFilter(41))) > 0) & ~(np.asarray(shape.filter(ImageFilter.MaxFilter(13))) > 0)
+    bgpx = region[ring]
+    if robust: med = np.median(bgpx, axis=0); bgpx = bgpx[np.abs(bgpx - med).sum(axis=1) < 60]   # dominant wall/wood colour only
+    mu = bgpx.mean(axis=0); sd = np.clip(bgpx.std(axis=0), 7, sd_max)
+    z = np.sqrt((((region - mu) / sd) ** 2).sum(axis=2) / 3)
+    core = np.asarray(shape.filter(ImageFilter.MinFilter(erode))) > 0 if erode else np.zeros_like(mask)
+    if cloth:                                  # olive cloth on pale plaster: darker than the repainted wall and not orange like wood
+        lum_o = region.mean(axis=2); lum_c = clean.mean(axis=2); warm = (region[..., 0] - region[..., 2]) / np.maximum(region[..., 0], 1)
+        z = np.where((lum_c - lum_o > 14) & (warm < .58), 9.0, 0.0); core = np.zeros_like(mask)
+    obj = (((z > zt) & (diff > lo)) | core) & (np.asarray(shape.filter(ImageFilter.MaxFilter(5))) > 0)
+    solid = Image.fromarray(obj.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(7)).filter(ImageFilter.MinFilter(7))
+    if fill_holes:
+        holes = solid.copy(); ImageDraw.floodfill(holes, (0, 0), 128)
+        solid = Image.fromarray(np.where(np.asarray(holes) == 128, 0, 255).astype(np.uint8))
+    solid = solid.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.MaxFilter(3))              # drop specks
+    near = np.asarray(solid.filter(ImageFilter.MaxFilter(5))) > 0
+    edge = np.clip((diff - lo) / (hi - lo), 0, 1) * near
+    alpha = np.maximum(np.asarray(solid).astype(np.float32) / 255 * .999, edge * .9)
+    alpha = np.asarray(Image.fromarray((alpha * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(.7))).astype(np.float32) / 255
+    sprite = np.dstack([region, alpha * 255]).astype(np.uint8)
+    soft = np.asarray(mimg.filter(ImageFilter.GaussianBlur(2))).astype(np.float32)[..., None] / 255
+    out = region * (1 - soft) + clean * soft
+    plate.paste(Image.fromarray(out.astype(np.uint8)).convert('RGBA'), (x0, y0))
+    LAYERS.setdefault(room, {})[oid] = (Image.fromarray(sprite, 'RGBA'), x0, y0)
+
+
+def repaint_tote(plate, Y):
+    """Remove the tote completely: rebuild the counter side panel from clean wood above and beside it,
+    then repaint the tote as its own layer (canvas body with folds, two straps, the original city print)."""
+    src = plate.copy()
+    # 2) the tote layer keeps the original painted pixels. Canvas is far less orange than the wood, which separates the straps cleanly.
+    lx, ly, lw, lh = 514, Y(486), 116, 272
+    orig = np.asarray(src.crop((lx, ly, lx + lw, ly + lh)).convert('RGB')).astype(np.float32)
+    shape = Image.new('L', (lw, lh)); d = ImageDraw.Draw(shape)
+    P = lambda pts: [(x - lx, Y(y) - ly) for x, y in pts]
+    d.polygon(P([(528, 586), (622, 586), (624, 600), (624, 748), (532, 752), (526, 600)]), fill=255)
+    d.polygon(P([(541, 486), (558, 486), (546, 596), (528, 596)]), fill=255); d.polygon(P([(553, 486), (570, 486), (624, 596), (606, 596)]), fill=255)
+    warm = (orig[..., 0] - orig[..., 2]) / np.maximum(orig[..., 0], 1)
+    canvas = np.clip((.47 - warm) / .07, 0, 1)
+    # Straps: wherever the pale canvas runs down from the hook, whatever polygon was guessed.
+    strap = np.zeros((lh, lw), bool); strap[Y(500) - ly:Y(600) - ly, 520 - lx:] = canvas[Y(500) - ly:Y(600) - ly, 520 - lx:] > .5
+    strap = np.asarray(Image.fromarray((strap * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.MinFilter(3))) > 0
+    shape = Image.fromarray(np.maximum(np.asarray(shape), strap.astype(np.uint8) * 255))
+    body = np.asarray(shape.filter(ImageFilter.MinFilter(11))).astype(np.float32) / 255
+    hook = np.zeros((lh, lw)); hook[:Y(512) - ly] = 1                 # brass hooks stay in the plate
+    alpha = np.maximum(canvas, body) * (np.asarray(shape).astype(np.float32) / 255) * (1 - hook * (canvas < .5))
+    alpha = np.asarray(Image.fromarray((alpha * 255).astype(np.uint8)).filter(ImageFilter.MedianFilter(3)).filter(ImageFilter.GaussianBlur(.5))).astype(np.float32)
+    tote = Image.fromarray(np.dstack([orig, alpha]).astype(np.uint8), 'RGBA')
+    # 1) repaint only where the bag was: wood from the same row of the bag-free panel to the left keeps the vertical grain;
+    #    the few pixels past the panel edge (x>=617) and below its base are filled down their own column.
+    m = (np.asarray(Image.fromarray(alpha.astype(np.uint8)).filter(ImageFilter.MaxFilter(7))) > 8) | (np.asarray(shape.filter(ImageFilter.MaxFilter(7))) > 0)
+    m[:Y(500) - ly] &= np.asarray(shape.filter(ImageFilter.MaxFilter(5)))[:Y(500) - ly] > 0      # leave the hooks
+    m[Y(590) - ly:Y(752) - ly, :530 - lx] = True                                             # the bag's painted shadow on the panel
+    reg = orig.copy(); pool = np.asarray(src.crop((474, ly, 530, ly + lh)).convert('RGB')).astype(np.float32)
+    lum = pool.mean(axis=(0, 2)); keep = np.abs(lum - np.median(lum)) < .08 * np.median(lum)     # drop grooves and shadow columns
+    donor = pool[:, keep]; DW = donor.shape[1]
+    med = np.median(donor, axis=1, keepdims=True); donor = med + np.clip(donor - med, -14, 14)   # keep grain, drop local shadows
+    edge_x = 617 - lx; base_y = Y(744) - ly
+    for y in range(lh):
+        row = m[y]
+        if not row.any(): continue
+        clear = np.where(~row[:edge_x])[0]
+        ref = reg[y, clear].mean(axis=0) if len(clear) else donor[y].mean(axis=0)
+        for x in np.where(row)[0]:
+            if x < edge_x and y < base_y:
+                k = x % (2 * DW); dx = k if k < DW else 2 * DW - 1 - k
+                reg[y, x] = donor[y, dx] - donor[y].mean(axis=0) + ref
+    col = column_fill(reg, m & ((np.arange(lw)[None, :] >= edge_x) | (np.arange(lh)[:, None] >= base_y)))
+    reg = np.clip(col + rng.normal(0, 2.5, col.shape[:2])[..., None] * m[..., None], 0, 255)
+    soft = np.asarray(Image.fromarray((m * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.5))).astype(np.float32)[..., None] / 255
+    plate.paste(Image.fromarray((orig * (1 - soft) + reg * soft).astype(np.uint8)).convert('RGBA'), (lx, ly))
+    LAYERS.setdefault('tokyo', {})['tote'] = (tote, lx, ly)
+    return
+    add_layer(plate, 'tokyo', 'tote', tote, (514 + 3, Y(490)), blur=7, dx=5, dy=6, alpha=.32)
+
+def add_layer(plate, room, oid, img, xy, **kw):
+    """A painted prop becomes its own layer; only its soft shadow is baked into the plate."""
+    img = grain(img)
+    soft_shadow(plate, img.copy(), (xy[0] + kw.get('dx', 4), xy[1] + kw.get('dy', 8)), kw.get('blur', 8), kw.get('alpha', .3))
+    LAYERS.setdefault(room, {})[oid] = (img, xy[0], xy[1])
+
+def write_layers(room, out):
+    """Pack a room's layers into one sheet plus a manifest (positions in original room coordinates, y may be negative)."""
+    import json
+    items = LAYERS.get(room, {}); x = y = rowh = 0; W = 1024; placed = {}
+    for oid, (im, px, py) in items.items():
+        if x + im.width > W: x = 0; y += rowh + 2; rowh = 0
+        placed[oid] = (x, y); x += im.width + 2; rowh = max(rowh, im.height)
+    sheet = Image.new('RGBA', (W, y + rowh + 2))
+    manifest = {}
+    for oid, (im, px, py) in items.items():
+        sx, sy = placed[oid]; sheet.alpha_composite(im, (sx, sy))
+        manifest[oid] = {'sx': sx, 'sy': sy, 'w': im.width, 'h': im.height, 'x': px, 'y': py - TOP}
+    sheet.save(ART + out + '.webp', lossless=True)
+    json.dump(manifest, open(ART + out + '.json', 'w'))
+
 # ---------------------------------------------------------------- Tokyo
 
 def tokyo_tower(h):
@@ -146,6 +295,10 @@ def bake_tokyo():
     plate = Image.new('RGBA', (W, H)); plate.alpha_composite(src, (0, TOP))
     Y = lambda y: y + TOP                      # original → tall coordinates
     tokyo_street_view(plate, Y)
+    # The tote on the counter hook and the coat on the wall hook become their own layers (hooks stay in the plate).
+    T_ = lambda pts: [(x, Y(y)) for x, y in pts]
+    repaint_tote(plate, Y)
+    lift_object(plate, 'tokyo', 'jacket', [T_([(976, 116), (988, 116), (1012, 140), (1022, 200), (1030, 290), (1040, 360), (1042, 410), (1026, 430), (952, 432), (932, 410), (928, 330), (934, 250), (942, 180), (952, 140)])], 'plaster', keep_above=Y(124), erode=25, cloth=True)
 
     # Above: wall continues, a further bookcase row reaches the ceiling, the storefront gets a teal header.
     plate.alpha_composite(extend_wall(src, 0, 1536), (0, 0))
@@ -177,7 +330,7 @@ def bake_tokyo():
     red.putalpha(body); lan.alpha_composite(red)
     for yy in range(46, 152, 9): ld.arc([8, yy - 40, 82, yy + 40], 200, 340, fill=(140, 30, 22, 160), width=1)
     vertical_text(ld, 45, 62, '写真', font(JP, 30), (24, 18, 16, 235), 6)
-    place(plate, lan, (1018, Y(-8)), blur=10, dy=14)
+    add_layer(plate, 'tokyo', 'lantern', lan, (1018, Y(-8)), blur=10, dy=14)
 
     # Noren over the shop door only (the big window beside it keeps its street view): indigo cotton, two panels, white crest.
     nw, nh = 108, 168
@@ -193,7 +346,7 @@ def bake_tokyo():
     nd.text((nw / 2 - 20, 40), '写', font=font(JP, 40), fill=(240, 234, 216, 255))
     vertical_text(nd, nw / 2, 100, '写真', font(JP, 22), (226, 220, 200, 230), 2)
     nd.rectangle([0, 0, nw, 9], fill=(110, 78, 46, 255))
-    place(plate, nor, (1132, Y(-6)), blur=6, dy=10, alpha=.4)
+    add_layer(plate, 'tokyo', 'noren', nor, (1132, Y(-6)), blur=6, dy=10, alpha=.4)
 
     # Door glass decal and shelf price cards.
     dec = Image.new('RGBA', (70, 330)); dd = ImageDraw.Draw(dec)
@@ -214,7 +367,7 @@ def bake_tokyo():
     c.arc([18, 22, 28, 30], 200, 340, fill=(40, 34, 30, 255), width=2); c.arc([32, 22, 42, 30], 200, 340, fill=(40, 34, 30, 255), width=2)
     c.rectangle([14, 40, 46, 45], fill=(200, 48, 36, 255)); c.ellipse([26, 42, 34, 50], fill=(232, 186, 70, 255))
     c.ellipse([20, 52, 40, 70], fill=(232, 186, 70, 255)); c.text((24, 54), '福', font=font(JP, 13), fill=(150, 40, 30, 255))
-    place(plate, shade(cat, 1, .86), (560, Y(300)), blur=4, dy=4)
+    add_layer(plate, 'tokyo', 'cat', shade(cat, 1, .86), (560, Y(300)), blur=4, dy=4)
 
     # Doormat inside the door, painted in floor perspective (narrower towards the door).
     mat = Image.new('RGBA', (420, 140), (52, 56, 62, 255)); md = ImageDraw.Draw(mat)
@@ -241,7 +394,7 @@ def bake_tokyo():
     strip = Image.new('RGBA', (30, 132), (238, 228, 200, 255)); sd = ImageDraw.Draw(strip)
     vertical_text(sd, 15, 6, 'お預り証は鞄の外へ', font(JP, 12), (70, 54, 40, 255), 1)
     fur.alpha_composite(strip, (30, 116))
-    place(plate, fur, (1400, Y(-26)), blur=6, dy=10, alpha=.25)
+    add_layer(plate, 'tokyo', 'furin', fur, (1400, Y(-26)), blur=6, dy=10, alpha=.25)
 
     # A receipt dropped by the counter corner: the shop marked which frame came out sharp.
     rec = Image.new('RGBA', (120, 190), (246, 243, 234, 255)); rd = ImageDraw.Draw(rec)
@@ -254,7 +407,8 @@ def bake_tokyo():
     plate.alpha_composite(extend_floor(src, 0, 1536), (0, Y(1024)))
     soften_seam(plate, Y(1024))
     plate = grain(plate.convert('RGB').convert('RGBA'), 3, 0)
-    plate.convert('RGB').save(ART + 'tokyo-tall-v10.webp', quality=88)
+    plate.convert('RGB').save(ART + 'tokyo-tall-v11.webp', quality=88)
+    write_layers('tokyo', 'tokyo-layers-v11')
 
 
 # ---------------------------------------------------------------- paper clues
@@ -299,6 +453,9 @@ def bake_seoul(name, out):
     src = Image.open(ART + name).convert('RGBA')
     W, H = 1536, 1024 + TOP + BOTTOM
     plate = Image.new('RGBA', (W, H)); plate.alpha_composite(src, (0, TOP))
+    # The coat becomes a layer; the room image used by the scene compositor is saved without it.
+    lift_object(plate, 'seoul', 'jacket', [[(x, y + TOP) for x, y in [(905, 214), (922, 214), (945, 245), (962, 300), (972, 380), (986, 470), (978, 520), (958, 548), (870, 548), (850, 500), (846, 430), (854, 330), (872, 260), (890, 240)]]], 'plaster', keep_above=TOP + 216, erode=0, robust=False, sd_max=999, cloth=True)
+    plate.crop((0, TOP, 1536, TOP + 1024)).convert('RGB').save(ART + 'seoul-base-v11.webp', quality=90)
     plate.alpha_composite(extend_wall(src, 0, 1536), (0, 0)); ceiling(plate, 0, 1536, 70)
     d = ImageDraw.Draw(plate)
     pel = Image.new('RGBA', (484, 34), (176, 138, 94, 255)); pdw = ImageDraw.Draw(pel)   # wooden pelmet over the roman shade
@@ -315,15 +472,16 @@ def bake_seoul(name, out):
     for x in (30, 48, 65, 82, 100): ld.line([(x, 38), (65 + (x - 65) * 1.15, 90), (x, 142)], fill=(170, 128, 84, 150), width=2)
     ld.ellipse([52, 30, 78, 40], fill=(150, 106, 64, 255)); ld.ellipse([46, 138, 84, 148], fill=(150, 106, 64, 255))
     glow = Image.new('RGBA', (130, 150)); ImageDraw.Draw(glow).ellipse([30, 60, 100, 130], fill=(255, 226, 160, 70)); lamp.alpha_composite(glow.filter(ImageFilter.GaussianBlur(14)))
-    place(plate, lamp, (650, 50), blur=10, dy=14, alpha=.2)
+    add_layer(plate, 'seoul', 'hanji', lamp, (650, 50), blur=10, dy=14, alpha=.2)
     plate.alpha_composite(extend_floor(src, 0, 1536), (0, TOP + 1024))
     soften_seam(plate, TOP + 1024)
     plate = grain(plate.convert('RGB').convert('RGBA'), 3, 0)
     plate.convert('RGB').save(ART + out, quality=88)
+    write_layers('seoul', 'seoul-layers-v11')
 
 if __name__ == '__main__':
     random.seed(3)
     bake_tokyo()
     bake_papers()
-    bake_seoul('seoul.webp', 'seoul-tall-v10.webp')
+    bake_seoul('seoul.webp', 'seoul-tall-v11.webp')
     print('baked')
