@@ -1,8 +1,8 @@
 export const KEY='suming-littlepark-v1';
 export const TYPES={bench:{name:'나무 벤치',limit:2},bowl:{name:'물그릇',limit:2},pond:{name:'작은 연못',limit:1},path:{name:'디딤돌',limit:12},fence:{name:'낮은 울타리',limit:6},lamp:{name:'정원등',limit:3},table:{name:'티 테이블',limit:2},cushion:{name:'포근한 방석',limit:2},tree:{name:'사과나무',limit:2},pot:{name:'빈 화분',limit:6}};
 export const SEEDS={daisy:'데이지',tulip:'튤립',lavender:'라벤더'};
-export function fresh(){return{v:1,items:[{id:1,type:'bench',c:1,r:2,rot:0},{id:2,type:'pot',c:4,r:2,rot:0},{id:3,type:'path',c:3,r:3,rot:0},{id:4,type:'path',c:3,r:4,rot:0}],next:5,hearts:0,lastPet:0,water:0,welcomed:false};}
-export function validCell(c,r){return Number.isInteger(c)&&Number.isInteger(r)&&c>=0&&r>=0&&c<7&&r<7&&!(c<3&&r<2);}
+export function fresh(){return{v:1,items:[{id:1,type:'bench',c:1,r:3,rot:0},{id:2,type:'pot',c:4,r:2,rot:0},{id:3,type:'path',c:3,r:3,rot:0},{id:4,type:'path',c:3,r:4,rot:0}],next:5,hearts:0,lastPet:0,water:0,welcomed:false};}
+export function validCell(c,r){return Number.isInteger(c)&&Number.isInteger(r)&&c>=0&&r>=0&&c<7&&r<7&&!(c<3&&r<3);}
 export function growth(p,now=Date.now()){return p.seed?Math.max(0,Math.min(1,(Math.max(0,now-p.planted)+(p.boost||0))/120000)):0;}
 export function habitat(s,now=Date.now()){const flowers=s.items.filter(p=>p.type==='pot'&&growth(p,now)>=1).length;return{flowers,water:s.water>0,cozy:s.items.some(p=>p.type==='bench'||p.type==='cushion'),ready:flowers>0&&s.water>0};}
 export function apply(s,e,now=Date.now()){
