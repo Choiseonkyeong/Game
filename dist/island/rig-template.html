@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Rig template</title><body style="margin:0;background:#fff">
+<svg id="s" width="768" height="384" viewBox="0 0 768 384"></svg>
+<script type="module">import{rigAvatar,JOINTS,CANVAS}from'./rig.js';
+const o={skin:'cream',hair:'short',hairColor:'chestnut',top:'tee',bottom:'shorts',shoes:'cream',hat:'none',accessory:'none'};let h='';
+['front','back','side'].forEach((v,i)=>{const x=i*256;h+=`<g transform="translate(${x} 0)"><rect width="256" height="384" fill="none" stroke="#c9c9c9"/>`;
+ for(let gy=0;gy<=384;gy+=32)h+=`<path d="M0 ${gy}h256" stroke="#f0f0f0"/>`;for(let gx=0;gx<=256;gx+=32)h+=`<path d="M${gx} 0v384" stroke="#f0f0f0"/>`;
+ h+=`<g opacity=".55" transform="translate(${CANVAS.foot[0]} ${CANVAS.foot[1]}) scale(${340/340})">${rigAvatar(o,{view:v,height:340,uid:'t'+i})}</g>`;
+ for(const [k,[jx,jy]] of Object.entries(JOINTS[v]))h+=`<circle cx="${jx}" cy="${jy}" r="3.5" fill="#e0453a"/><text x="${jx+5}" y="${jy-3}" font-size="7" fill="#c0392b" font-family="sans-serif">${k}</text>`;
+ h+=`<path d="M${CANVAS.foot[0]-20} ${CANVAS.foot[1]}h40" stroke="#2b7de9" stroke-width="2"/><text x="6" y="14" font-size="12" font-family="sans-serif" fill="#333">${v} · 256×384 (2x 512×768)</text><text x="6" y="380" font-size="8" fill="#2b7de9" font-family="sans-serif">foot line y=372</text></g>`;});
+document.getElementById('s').innerHTML=h;</script>

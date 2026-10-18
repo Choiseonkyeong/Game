@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 23:21 KST — Claude · 포근섬 0.2 컷아웃 캐릭터 리그 · 아트 규격 · 플레이스토어 포장 준비
+
+- 요청: 포근섬을 퍼피레드/메이플 수준의 캐릭터·배경·움직임으로, 플레이스토어 등록 가능하게. 아트는 사용자가 제작(선택 A), Claude는 엔진·규격·포장.
+- 기준: master `42733cb`, preflight start `ready`. 기존 포근섬 기능/저장키 유지, 다른 작업 미변경.
+- 변경: `dist/island/rig.js` 컷아웃 리그(정면·뒷면·옆, 관절 회전으로 대기·걷기·앉기·물주기·심기·인사 연속 애니메이션). 아트가 없으면 개선된 벡터 임시 파트. `art/manifest.json`에 등록한 캐릭터 파트·섬 배경·소품 그림을 코드 수정 없이 사용. 대기 중에도 숨쉬기 애니메이션. PWA 매니페스트·임시 아이콘·오프라인 sw, 개인정보처리방침 초안, `android-app/` Capacitor 포장 설정.
+- 문서: `docs/pogeun-art-spec.md`(512×768 파트 규격·관절 좌표·파일명·최소 71장), `docs/art/pogeun-rig-template.png`, `docs/play-store-release.md`.
+- 검사: 자동 78개 통과. 헤드리스 Chromium 390×844 실행·걷기, 리그 미리보기 확인. Android SDK 없음 → APK/AAB 미빌드. 실제 폰·스토어 등록 미진행.
+- 남은 사항: 아트 제작·등록, 운영자 정보 기입, 소유자의 플레이 개발자 계정·서명·비공개 테스트.
+
 ## 2026-10-18 22:40 KST — Codex · 포근섬 0.1 배포 및 실제 검수
 
 - 소스58628cf149b35cd575b98657fc8097ce6a7da22f, Pages run39132145320 성공, 배포2026-10-18 22:34:55 KST.

@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>Rig preview</title><body style="margin:0;background:#cfe9e2"><svg id="s" width="1200" height="520" viewBox="0 0 1200 520"></svg>
+<script type="module">import{rigAvatar}from'./rig.js';const o={skin:'cream',hair:'bob',hairColor:'chestnut',top:'sailor',bottom:'skirt',shoes:'brown',hat:'beret',accessory:'none'};
+const q=new URLSearchParams(location.search),t=+(q.get('t')||0);let h='';const cells=[['front','idle'],['side','idle'],['back','idle'],['front','walk'],['side','walk'],['side','sit'],['front','water'],['front','wave']];
+cells.forEach(([v,a],i)=>{h+=`<g transform="translate(${80+i*145} 230)">${rigAvatar(o,{view:v,anim:a,time:t,height:190,uid:'u'+i})}</g><text x="${80+i*145}" y="260" font-size="13" text-anchor="middle">${v} ${a}</text>`;});
+const o2={...o,hair:'twin',hairColor:'caramel',top:'hoodie',bottom:'trousers',shoes:'sage',hat:'straw',skin:'honey'};
+cells.forEach(([v,a],i)=>{h+=`<g transform="translate(${80+i*145} 490)">${rigAvatar(o2,{view:v,anim:a,time:t+.15,height:190,uid:'w'+i,flip:v==='side'&&i%2})}</g>`;});
+document.getElementById('s').innerHTML=h;</script>
