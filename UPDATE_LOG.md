@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-18 13:47 KST — Codex · v0.21.0 초보 진입·가독성 수정, 배포 준비
+
+- 최신 master c575c14 기준, 작업 codex/afterlight-readable-021. 첫 두 판 연습→실제 네 판 적용, 읽은 단서 펼치기, 배달 이름표 고정 영역/선택 설명/스크롤 보존, 본문 고딕·16px·대비/행간 수정, 관계 중심 단계 힌트. 기존 논리·해법·저장 보존.
+- 67개 자동 검사 통과. 배포 및 실제 브라우저 확인은 후속 기록. 실제 초보자 이탈률/폰 터치는 미검증.
+
 ## 2026-10-18 12:13 KST — Codex · v0.20.3 첫 사건 배포·실제 플레이/390px 검수 완료
 
 - Source: `codex/playable-afterlight-020@c1b17b07a6ad190caed9fef9830d26e0d14b6e8b`; synchronized master `c1b17b07a6ad190caed9fef9830d26e0d14b6e8b`; dist `0acf032ab9089be04e0a2d27d159e9fcd40c0e93`. 기준 `9af3f3d` 이후 새 첫 사건과 좁은 화면 보정. 원격 expected-HEAD 사용, 기존 챕터/저장/도쿄/서울/별도 사진관 의뢰 보존. Sites 재배포 없음.

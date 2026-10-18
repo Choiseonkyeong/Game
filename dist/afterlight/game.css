@@ -7,3 +7,16 @@
 .photo-image,.result-photos .photo-image{height:auto;aspect-ratio:3/2}
 
 .mini-machine .label{display:none}.sticky-mini{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7px 3px;font-size:clamp(9px,1.5dvh,13px);line-height:1.5}.sticky-mini small{font-size:.7em;display:block;margin-top:6px;opacity:.72}
+
+/* v0.21: reading and controls stay legible at narrow/short viewports. */
+.paper{transform:none;padding:30px 24px;color:#283426;background:#eee5cc}
+.paper h2{font-family:inherit;font-size:25px;font-weight:600;line-height:1.45;letter-spacing:-.5px}
+.paper p,.paper.sticky p,.folio p{font-family:inherit;font-size:16px;line-height:1.8;letter-spacing:0;overflow-wrap:break-word}
+.paper .small,.paper .note-side,.paper .overline{font-size:12px;opacity:1;letter-spacing:.3px;color:#59604d}
+.paper .signature{font-family:inherit;font-size:14px}.paper .subtle{font-size:14px}
+.stamp,.caption,.dark-note,.group-label{font-size:13px;line-height:1.65;letter-spacing:0;color:#d9dec8}
+.view-head h2{font-size:16px;letter-spacing:0;font-weight:500}.action{font-size:15px;letter-spacing:0}.view-message{min-height:0;font-size:13px;line-height:1.6}.view-message:empty{display:none}
+.view-foot{background:#142019;padding:10px 16px max(12px,env(safe-area-inset-bottom));border-top:1px solid #9caa7733}
+.photo-packet .attach{font-size:14px;min-height:40px}.token{font-size:14px;min-height:42px;padding:8px 12px}.token.used{opacity:.75}.token.chosen{opacity:1;background:#fff0b7;color:#172719;outline:2px solid #f7dc8c}.label-tray .group-label{margin:3px 0}.label-tray .token-pool{margin:5px 0 9px;gap:6px}.label-tray .token{flex:1;padding:7px 5px}.label-tray{padding-bottom:4px}.workspace{padding:10px 16px 28px;scroll-padding-bottom:24px}
+.clue-rail{background:#eae2c9;color:#2a382b;padding:12px 14px;margin:0 0 18px;border-radius:3px;font-size:14px}.clue-rail summary{cursor:pointer;min-height:30px;font-weight:600}.clue-rail div{border-top:1px solid #a4ac91;padding:12px 0}.clue-rail p{margin:5px 0;white-space:pre-line;line-height:1.75}.clue-rail .caption{color:#56614e;text-align:left;font-size:12px}.practice-pair{display:flex;align-items:center;justify-content:center;gap:22px;margin:24px 0}.practice-pair span{font-size:34px}.practice-pair span:nth-child(2){font-size:21px}.practice-pair span:nth-child(odd){background:#c8b47f;padding:16px 24px;box-shadow:0 3px 6px #443b2422}
+@media(max-height:700px){.view[data-station="delivery"] .photo-grid{gap:8px}.view[data-station="delivery"] .photo-packet{padding:6px}.view[data-station="delivery"] .photo-image{aspect-ratio:2/1}.label-tray .token{min-height:38px;font-size:13px}.label-tray .group-label{font-size:12px}.paper p{font-size:16px}.view-foot{padding-top:7px}.paper{padding:28px 22px}.paper h2{font-size:23px}}
