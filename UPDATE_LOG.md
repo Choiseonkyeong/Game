@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-20 02:57 KST — Codex · 포근섬 지속 렌더링·꾸미기·바다·집
+
+- 기준 master `319c404d3874c5745cdd024ae45c6b81278cdbba`, 새 작업 `codex/island-living`. 기존 dirty 작업은 별도 worktree에 그대로 보존.
+- 매 프레임 SVG 이미지 재생성 제거, 지속 Canvas/DOM patch와60fps 위치 보간. 선택한 성별을 유지하는 남녀별 옷장, 요청한 기본 반팔/반바지, 상의/하의/신발/가방/모자/악세서리36종.
+- 바다 전용 동물 경로, 물개/물거북 등 해변 왕복, 물고기 선물/수집. 픽셀 섬 배경/정면 집/침대와 러그 방 추가, 집 출입/실내 걷기. 미용실과 방 가구 배치는 향후 기능.
+- 검사: 자동90개 통과; Chromium390×844 코디 연속 변경/남녀별 복원, 이동 중 Canvas/배경 노드 유지(제거0), 집 출입, 물고기 수집, 콘솔오류0. 최종 배포 전 재확인. 실제 iPhone 미검수.
+- 소스 저장/공개 배포는 아직 진행 중이며 성공 후 별도 기록.
+
+
 ## 2026-10-20 02:29 KST — Codex · 포근섬 남녀 플레이어·방문 동물 등록
 
 - 기준 master a04d053f89c70aee028caa1bb61b0568c36dce34. 작업 codex/island-animal-sprites. 기존 저장·다른 게임 보존.
