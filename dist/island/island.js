@@ -2,7 +2,7 @@ import{loadHumanSprites,humanChoice,chooseHuman,humanMarkup,paintHumans,currentO
 import{ITEMS,SLOT_LABELS}from'./wardrobe.js?v=5';
 import{patchSvg}from'./dom-render.js?v=5';
 import{createRoom}from'./room.js?v=5';
-import{createAnimalVisitors}from'./animal-visitors.js?v=5';
+import{createAnimalVisitors}from'./animal-visitors.js?v=6';
 import{KEY,FURNITURE,SEEDS,CLOSET,LABELS,fresh,restore,apply,growth,validCell,passable,route,approach}from'./core.js?v=1';
 import{avatar}from'./avatar.js?v=1';
 import{rigAvatar,loadArt,artUrl}from'./rig.js?v=3';
