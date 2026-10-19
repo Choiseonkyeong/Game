@@ -312,5 +312,18 @@
       "docs/art/qa/pogeun-art-mobile-final.jpg",
       "docs/art/qa/pogeun-rig-final.jpg"
     ]
+  },
+  "pop_tower": {
+    "version": "pop-tower-1",
+    "source_commit": "aaa88daee5c8fcef7febc00225bc235052a8a915",
+    "entrypoint": "dist/pop-tower/index.html (single file, inline script)",
+    "url": "https://choiseonkyeong.github.io/Game/pop-tower/?v=1",
+    "run_id": 39205040578,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-19T05:32:41Z",
+    "checks": "npm test 85 passed (4 pop-tower). Local http server + headless Chromium 390x844 home and level 1 rendered with no console errors.",
+    "live_url_verified": false,
+    "actual_mobile_touch_verified": false,
+    "remaining": "Public URL not fetched from Claude environment (proxy blocks github.io). Real phone touch and other collaborator access unverified."
   }
 }

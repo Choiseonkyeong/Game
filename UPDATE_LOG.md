@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-19 14:40 KST — Claude · 팝팝 타워 Pages 배포 성공
+
+- 소스 master `aaa88daee5c8fcef7febc00225bc235052a8a915`. Pages run #33 `39205040578` 성공, 완료 2026-10-19 14:32:41 KST.
+- URL: https://choiseonkyeong.github.io/Game/pop-tower/?v=1 (여행책 메뉴에도 링크).
+- Claude 환경 프록시가 github.io 접속을 차단해 공개 URL·build-info 직접 확인 불가. 배포 전 로컬 http 서버 + Chromium 390×844에서 동일 파일 확인. 실제 휴대폰/다른 작업자 접속 미확인.
+- 이 항목은 기록 커밋이며 dist 변경 없음.
+
 ## 2026-10-19 14:35 KST — Claude · 팝팝 타워 추가 (dist/pop-tower)
 
 - 요청: 다른 저장소(Choiseonkyeong/auto-ticketing 브랜치 claude/wizardly-lamport-kacsdn)에서 만든 팝팝 타워를 공용 Game 저장소로 이전.
