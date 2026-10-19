@@ -2,6 +2,16 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-20 03:52 KST — Codex · 공중섬·전신 캐릭터·서울 날씨 다듬기
+
+- 기준 master `39f5b4fea3c09df86ace2748f8d999a6b9e9a533`; `codex/island-sky` 별도 worktree. 이전 변경/다른 게임/정원 저장 유지.
+- 검정 긴 생머리 여자와 같은 화풍의 남자 전신4방향×6걷기 그림으로 교체. 기존 기하학 몸 제거, 명암 있는 의상 합성/미리보기/앉기 전환/물뿌리개. 모모도 걷기 프레임 사용.
+- 잔디의 빈 길은 직선, 장애물 모서리는 안전 곡선, 실제 누른 위치에 도착/정확 위치 저장/연속 목적지 변경, 일정한72 world units/sec. 지속 Canvas와 깊이 정렬.
+- 푸른 하늘 아래 공중섬/아래 바다/계단. 서울 Open-Meteo 현재 날씨10분 확인, 비/눈/구름/안개/낮밤, 캐시·연결 실패 명시. 사용자 위치 미사용. 조개 지갑과 사과/물고기 교환, 기본 옷장 무료 유지.
+- 검사: 자동97개 통과(최종 브라우저 재검수 중). 정확한 탭/미세 이동/새로고침 위치, 직선/가구 회피/앉기, 성별/옷장, 비/눈/오프라인·사진·물고기/조개를 검사한다. 실제 iPhone/장시간 체류는 미검수.
+- 소스/배포 상태: 작업 중. 최종 commit/Pages 성공/실제 공개 URL은 검증 후 별도 기록한다. 아트/날씨 출처와 한계는 docs/island-sky-manual.md.
+
+
 ## 2026-10-20 03:06 KST — Codex · 포근섬 생활 업데이트 공개 배포 확인
 
 - Source: `codex/island-living@ee92a744a5c7beca0fa867b4dcc1349fd7641c35`; master same source. Main implementation db21e379ccdd943160e89efdd8acf65a6d15c66e, waterline followup ee92a744a5c7beca0fa867b4dcc1349fd7641c35.
