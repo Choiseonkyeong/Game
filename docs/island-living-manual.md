@@ -1,6 +1,6 @@
 # 포근섬 생활 업데이트 — 구현/아트 기록
 
-최신 기본 게임은 `island.js?v=5`다. 기존 정원 저장(`suming-cozy-island-v1`)은 보존한다.
+최신 기본 게임은 `island.js?v=6`다. 기존 정원 저장(`suming-cozy-island-v1`)은 보존한다.
 
 ## 렌더링과 코디
 

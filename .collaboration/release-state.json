@@ -38,27 +38,35 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-animals-4",
-      "source_commit": "1659fc2c35771ad339c303e431b4d46ffd8626da",
-      "source_branch": "codex/island-animal-sprites",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=4",
-      "run_id": 39294855017,
+      "version": "island-living-6",
+      "source_commit": "ee92a744a5c7beca0fa867b4dcc1349fd7641c35",
+      "source_branch": "codex/island-living",
+      "synchronized_master": "ee92a744a5c7beca0fa867b4dcc1349fd7641c35",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=6",
+      "run_id": 39299480845,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-19T17:32:24Z",
-      "checked_at": "2026-10-19T17:34:21.294Z",
-      "checks": "86 automated tests passed. 2082 nonempty atlas frames decoded. Local Chromium 390x844: 4/8 direction movement, idle on release, chroma key, crisp pixels, gender selection/reload, poodle actions and animal visitor; no console errors. Public Chrome opened main island; build-info exactly matches source commit.",
+      "deployed_at": "2026-10-19T18:05:13Z",
+      "checked_at": "2026-10-19T18:06:38.162Z",
+      "checks": "90 automated tests passed. Local Chromium390x844: repeated clothing selections retain gender; male/female outfits restore independently after reload; walking keeps same Canvas/background nodes with zero removed nodes; smoothing disabled, smooth position samples; house enter/exit, fish pickup and PNG photograph pass, no console errors. Public Chrome opened v6 and entered cottage; build-info exactly matches ee92a744a5c7beca0fa867b4dcc1349fd7641c35. Nine v5 code/art assets were byte-matched before the waterline-only followup.",
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
+      "changes": [
+        "Persistent Canvas sprites and SVG reconciliation replace repeated innerHTML image creation; interpolated movement.",
+        "Independent male/female wardrobe with requested basic tees and shorts;33 wearable items plus3 unequip choices.",
+        "Sea-only species swim; shoreline animals emerge and return; thrown fish can be collected and counted.",
+        "New pixel island, front cottage and fixed bed/rug interior with walking and entrance/exit."
+      ],
       "limitations": [
-        "Existing island background/props retained; full graphic redesign not completed.",
-        "Default human sprite outfits are baked; modular wardrobe rig preserved for future clothes/accessories.",
-        "Female head enlarged 1.12 about neck pivot; exact pixel-identical male/female head dimensions not asserted.",
-        "Actual phone touch and every animal animation direction not visually verified."
+        "Actual iPhone Safari/in-app flicker and touch not verified.",
+        "Original face/hair sprites combined with procedural cutout clothing, not a new full 512x768 image set per wearable.",
+        "Existing outdoor furniture remains; not every asset was regenerated.",
+        "Room bed/rug are fixed background art; room decoration and salon not yet implemented.",
+        "Currency name remains a discussion; no new currency economy was implemented."
       ]
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "86 automated tests passed. 2082 nonempty atlas frames decoded. Local Chromium 390x844: 4/8 direction movement, idle on release, chroma key, crisp pixels, gender selection/reload, poodle actions and animal visitor; no console errors. Public Chrome opened main island; build-info exactly matches source commit.",
-    "remaining_action": "Existing island background/props retained; full graphic redesign not completed. Default human sprite outfits are baked; modular wardrobe rig preserved for future clothes/accessories. Female head enlarged 1.12 about neck pivot; exact pixel-identical male/female head dimensions not asserted. Actual phone touch and every animal animation direction not visually verified.",
+    "access_check": "90 automated tests passed. Local Chromium390x844: repeated clothing selections retain gender; male/female outfits restore independently after reload; walking keeps same Canvas/background nodes with zero removed nodes; smoothing disabled, smooth position samples; house enter/exit, fish pickup and PNG photograph pass, no console errors. Public Chrome opened v6 and entered cottage; build-info exactly matches ee92a744a5c7beca0fa867b4dcc1349fd7641c35. Nine v5 code/art assets were byte-matched before the waterline-only followup.",
+    "remaining_action": "Actual iPhone Safari/in-app flicker and touch not verified. Original face/hair sprites combined with procedural cutout clothing, not a new full 512x768 image set per wearable. Existing outdoor furniture remains; not every asset was regenerated. Room bed/rug are fixed background art; room decoration and salon not yet implemented. Currency name remains a discussion; no new currency economy was implemented.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -87,6 +95,25 @@
       "proof": [
         "docs/art/qa/pogeun-art-mobile-final.jpg",
         "docs/art/qa/pogeun-rig-final.jpg"
+      ]
+    },
+    "previous_successful_before_living": {
+      "version": "island-animals-4",
+      "source_commit": "1659fc2c35771ad339c303e431b4d46ffd8626da",
+      "source_branch": "codex/island-animal-sprites",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=4",
+      "run_id": 39294855017,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-19T17:32:24Z",
+      "checked_at": "2026-10-19T17:34:21.294Z",
+      "checks": "86 automated tests passed. 2082 nonempty atlas frames decoded. Local Chromium 390x844: 4/8 direction movement, idle on release, chroma key, crisp pixels, gender selection/reload, poodle actions and animal visitor; no console errors. Public Chrome opened main island; build-info exactly matches source commit.",
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "limitations": [
+        "Existing island background/props retained; full graphic redesign not completed.",
+        "Default human sprite outfits are baked; modular wardrobe rig preserved for future clothes/accessories.",
+        "Female head enlarged 1.12 about neck pivot; exact pixel-identical male/female head dimensions not asserted.",
+        "Actual phone touch and every animal animation direction not visually verified."
       ]
     }
   },
@@ -362,6 +389,33 @@
       "Default human sprite outfits are baked; modular wardrobe rig preserved for future clothes/accessories.",
       "Female head enlarged 1.12 about neck pivot; exact pixel-identical male/female head dimensions not asserted.",
       "Actual phone touch and every animal animation direction not visually verified."
+    ]
+  },
+  "island_living_release": {
+    "version": "island-living-6",
+    "source_commit": "ee92a744a5c7beca0fa867b4dcc1349fd7641c35",
+    "source_branch": "codex/island-living",
+    "synchronized_master": "ee92a744a5c7beca0fa867b4dcc1349fd7641c35",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=6",
+    "run_id": 39299480845,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-19T18:05:13Z",
+    "checked_at": "2026-10-19T18:06:38.162Z",
+    "checks": "90 automated tests passed. Local Chromium390x844: repeated clothing selections retain gender; male/female outfits restore independently after reload; walking keeps same Canvas/background nodes with zero removed nodes; smoothing disabled, smooth position samples; house enter/exit, fish pickup and PNG photograph pass, no console errors. Public Chrome opened v6 and entered cottage; build-info exactly matches ee92a744a5c7beca0fa867b4dcc1349fd7641c35. Nine v5 code/art assets were byte-matched before the waterline-only followup.",
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "changes": [
+      "Persistent Canvas sprites and SVG reconciliation replace repeated innerHTML image creation; interpolated movement.",
+      "Independent male/female wardrobe with requested basic tees and shorts;33 wearable items plus3 unequip choices.",
+      "Sea-only species swim; shoreline animals emerge and return; thrown fish can be collected and counted.",
+      "New pixel island, front cottage and fixed bed/rug interior with walking and entrance/exit."
+    ],
+    "limitations": [
+      "Actual iPhone Safari/in-app flicker and touch not verified.",
+      "Original face/hair sprites combined with procedural cutout clothing, not a new full 512x768 image set per wearable.",
+      "Existing outdoor furniture remains; not every asset was regenerated.",
+      "Room bed/rug are fixed background art; room decoration and salon not yet implemented.",
+      "Currency name remains a discussion; no new currency economy was implemented."
     ]
   }
 }

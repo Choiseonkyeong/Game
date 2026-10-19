@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-20 03:06 KST — Codex · 포근섬 생활 업데이트 공개 배포 확인
+
+- Source: `codex/island-living@ee92a744a5c7beca0fa867b4dcc1349fd7641c35`; master same source. Main implementation db21e379ccdd943160e89efdd8acf65a6d15c66e, waterline followup ee92a744a5c7beca0fa867b4dcc1349fd7641c35.
+- Changes/checks: 90 automated tests passed. Local Chromium390x844: repeated clothing selections retain gender; male/female outfits restore independently after reload; walking keeps same Canvas/background nodes with zero removed nodes; smoothing disabled, smooth position samples; house enter/exit, fish pickup and PNG photograph pass, no console errors. Public Chrome opened v6 and entered cottage; build-info exactly matches ee92a744a5c7beca0fa867b4dcc1349fd7641c35. Nine v5 code/art assets were byte-matched before the waterline-only followup.
+- Deployment: GitHub Pages run39299480845 succeeded, completed 2026-10-19T18:05:13Z. URL https://choiseonkyeong.github.io/Game/island/?v=6; public Chrome main and cottage entry verified. Source saved, checks passed, deployment succeeded and public browser opened; real iPhone/other collaborator access unverified.
+- Wardrobe counts: 33 wearables plus3 unequip options (36 choices). New body/clothing uses Canvas cutouts with original raster face/hair. Existing garden data and other games preserved.
+- Remaining: room decoration, salon, full per-outfit raster art and physical-phone QA. Currency choice discussed only, not implemented. Documentation-only record does not alter deployed game content.
+
+
 ## 2026-10-20 02:57 KST — Codex · 포근섬 지속 렌더링·꾸미기·바다·집
 
 - 기준 master `319c404d3874c5745cdd024ae45c6b81278cdbba`, 새 작업 `codex/island-living`. 기존 dirty 작업은 별도 worktree에 그대로 보존.
