@@ -1,0 +1,1 @@
+{"female": {"name": "여자 캐릭터", "src": "art/humans/female.webp", "frameWidth": 128, "frameHeight": 192, "rows": 4, "columns": 6}, "male": {"name": "남자 캐릭터", "src": "art/humans/male.webp", "frameWidth": 128, "frameHeight": 192, "rows": 4, "columns": 6}}

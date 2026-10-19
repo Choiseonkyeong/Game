@@ -1,0 +1,21 @@
+{
+  "style": "Rounded compact friendly pixel art, 2026-10-19 user reference",
+  "generator": "image_gen",
+  "animals": [
+    {
+      "id": "poodle-white",
+      "name": "흰색 푸들",
+      "source": "docs/art/animals/poodle-white-original.png"
+    },
+    {
+      "id": "poodle-black",
+      "name": "검정 푸들",
+      "source": "docs/art/animals/poodle-black-original.png"
+    },
+    {
+      "id": "poodle-brown",
+      "name": "갈색 푸들",
+      "source": "docs/art/animals/poodle-brown-original.png"
+    }
+  ]
+}

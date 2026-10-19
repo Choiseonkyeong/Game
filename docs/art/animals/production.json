@@ -1,0 +1,454 @@
+{
+  "generator": "image_gen built-in",
+  "reference": "docs/art/animals/reference.jpeg",
+  "prompt": "Use case: stylized-concept. Asset: ONE production pixel art animal animation atlas for a cozy original community game. Reference is a collage: match each named animal's specific colors, markings, face and silhouette from it, without copying unrelated animals. Create an exact uniform SIX COLUMN by SIXTEEN ROW grid with NO TEXT, NO labels, NO borders, NO gutters, NO margin. Every cell has identical dimensions, character center x at cell midpoint, feet at 88% cell height, consistent scale. Fill background solid EXACT #FF00FF. Crisp 16-bit JRPG pixel art, soft gray/dark colored outline, two-tone shading, cute but recognisable original animal anatomy. No human clothes or legs on sea mammals. Each animal occupies exactly FOUR consecutive rows; each row has SIX animation frames. Row order for each animal: FRONT facing viewer, BACK facing away, LEFT profile looking left, RIGHT profile looking right. Columns: 0 resting idle, 1-5 five sequential coherent walking/waddling/flapping/swimming frames, appropriate to species. Frame 0 must be idle and all six frames maintain species design, scale and alignment. Exact frame grid matters more than decoration. Front/back must differ. Bodies entirely inside cells. No extra animals or props in any cell. Wide species must fit. Render a tall image, preferably 1536x3072, 1:2 aspect, 6x16 equal cells. Four species top to bottom: ",
+  "groups": [
+    {
+      "source": "docs/art/animals/atlas-01.png",
+      "animals": [
+        {
+          "id": "toucan",
+          "name": "큰부리새"
+        },
+        {
+          "id": "hanging-monkey",
+          "name": "매달린 원숭이"
+        },
+        {
+          "id": "panda",
+          "name": "판다"
+        },
+        {
+          "id": "meerkat",
+          "name": "미어캣"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-02.png",
+      "animals": [
+        {
+          "id": "camel",
+          "name": "낙타"
+        },
+        {
+          "id": "hedgehog",
+          "name": "고슴도치"
+        },
+        {
+          "id": "sloth",
+          "name": "나무늘보"
+        },
+        {
+          "id": "leopard",
+          "name": "표범"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-03.png",
+      "animals": [
+        {
+          "id": "eagle",
+          "name": "갈색 독수리"
+        },
+        {
+          "id": "blue-whale",
+          "name": "파란 고래"
+        },
+        {
+          "id": "yellow-tiger",
+          "name": "노란 호랑이"
+        },
+        {
+          "id": "koala",
+          "name": "코알라"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-04.png",
+      "animals": [
+        {
+          "id": "parrot",
+          "name": "앵무새"
+        },
+        {
+          "id": "penguin",
+          "name": "펭귄"
+        },
+        {
+          "id": "moose",
+          "name": "큰사슴"
+        },
+        {
+          "id": "tortoise",
+          "name": "육지거북"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-05.png",
+      "animals": [
+        {
+          "id": "crocodile",
+          "name": "악어"
+        },
+        {
+          "id": "brown-bear",
+          "name": "갈색 곰"
+        },
+        {
+          "id": "orange-tiger",
+          "name": "주황 호랑이"
+        },
+        {
+          "id": "chimpanzee",
+          "name": "침팬지"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-06.png",
+      "animals": [
+        {
+          "id": "ram",
+          "name": "숫양"
+        },
+        {
+          "id": "antelope",
+          "name": "영양"
+        },
+        {
+          "id": "bison",
+          "name": "들소"
+        },
+        {
+          "id": "pink-pig",
+          "name": "진분홍 돼지"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-07.png",
+      "animals": [
+        {
+          "id": "porcupine",
+          "name": "호저"
+        },
+        {
+          "id": "turtle",
+          "name": "물거북"
+        },
+        {
+          "id": "boar",
+          "name": "멧돼지"
+        },
+        {
+          "id": "polar-bear",
+          "name": "북극곰"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-08.png",
+      "animals": [
+        {
+          "id": "skunk",
+          "name": "스컹크"
+        },
+        {
+          "id": "red-bear",
+          "name": "붉은 곰"
+        },
+        {
+          "id": "seal",
+          "name": "회색 물개"
+        },
+        {
+          "id": "otter",
+          "name": "수달"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-09.png",
+      "animals": [
+        {
+          "id": "dolphin",
+          "name": "돌고래"
+        },
+        {
+          "id": "flamingo",
+          "name": "홍학"
+        },
+        {
+          "id": "squirrel",
+          "name": "다람쥐"
+        },
+        {
+          "id": "raccoon",
+          "name": "너구리"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-10.png",
+      "animals": [
+        {
+          "id": "monkey",
+          "name": "원숭이"
+        },
+        {
+          "id": "lion",
+          "name": "사자"
+        },
+        {
+          "id": "teal-whale",
+          "name": "청록 고래"
+        },
+        {
+          "id": "wolf",
+          "name": "늑대"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-11.png",
+      "animals": [
+        {
+          "id": "ostrich",
+          "name": "타조"
+        },
+        {
+          "id": "golden-eagle",
+          "name": "황금 독수리"
+        },
+        {
+          "id": "platypus",
+          "name": "오리너구리"
+        },
+        {
+          "id": "crane",
+          "name": "두루미"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-12.png",
+      "animals": [
+        {
+          "id": "hippo",
+          "name": "하마"
+        },
+        {
+          "id": "zebra",
+          "name": "얼룩말"
+        },
+        {
+          "id": "giraffe",
+          "name": "기린"
+        },
+        {
+          "id": "elephant",
+          "name": "코끼리"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-13.png",
+      "animals": [
+        {
+          "id": "long-neck-ostrich",
+          "name": "긴목 타조"
+        },
+        {
+          "id": "rhino",
+          "name": "코뿔소"
+        },
+        {
+          "id": "cow",
+          "name": "젖소"
+        },
+        {
+          "id": "sheep",
+          "name": "양"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-14.png",
+      "animals": [
+        {
+          "id": "horse",
+          "name": "말"
+        },
+        {
+          "id": "pale-pig",
+          "name": "연분홍 돼지"
+        },
+        {
+          "id": "frog",
+          "name": "개구리"
+        },
+        {
+          "id": "donkey",
+          "name": "당나귀"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-15.png",
+      "animals": [
+        {
+          "id": "fox",
+          "name": "여우"
+        },
+        {
+          "id": "llama",
+          "name": "라마"
+        },
+        {
+          "id": "shark",
+          "name": "상어"
+        },
+        {
+          "id": "duck",
+          "name": "오리"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-16.png",
+      "animals": [
+        {
+          "id": "rooster",
+          "name": "수탉"
+        },
+        {
+          "id": "hen",
+          "name": "암탉"
+        },
+        {
+          "id": "rabbit",
+          "name": "토끼"
+        },
+        {
+          "id": "turkey",
+          "name": "칠면조"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-17.png",
+      "animals": [
+        {
+          "id": "dalmatian",
+          "name": "달마시안"
+        },
+        {
+          "id": "dog",
+          "name": "갈색 강아지"
+        },
+        {
+          "id": "walrus",
+          "name": "바다코끼리"
+        },
+        {
+          "id": "cat",
+          "name": "고양이"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-pets-1.png",
+      "animals": [
+        {
+          "id": "maltese",
+          "name": "말티즈"
+        },
+        {
+          "id": "pomeranian",
+          "name": "포메라니안"
+        },
+        {
+          "id": "shih-tzu",
+          "name": "시츄"
+        },
+        {
+          "id": "bichon-frise",
+          "name": "비숑 프리제"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-pets-2.png",
+      "animals": [
+        {
+          "id": "chihuahua",
+          "name": "치와와"
+        },
+        {
+          "id": "cat-ginger",
+          "name": "치즈 고양이"
+        },
+        {
+          "id": "cat-tabby",
+          "name": "고등어 고양이"
+        },
+        {
+          "id": "cat-calico",
+          "name": "삼색 고양이"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-pets-3.png",
+      "animals": [
+        {
+          "id": "cat-black",
+          "name": "검정 고양이"
+        },
+        {
+          "id": "cat-white",
+          "name": "흰 고양이"
+        },
+        {
+          "id": "hamster",
+          "name": "햄스터"
+        },
+        {
+          "id": "guinea-pig",
+          "name": "기니피그"
+        }
+      ]
+    },
+    {
+      "source": "docs/art/animals/atlas-dogs-extra.png",
+      "animals": [
+        {
+          "id": "dachshund",
+          "name": "닥스훈트"
+        },
+        {
+          "id": "golden-retriever",
+          "name": "골든리트리버"
+        },
+        {
+          "id": "welsh-corgi",
+          "name": "웰시코기"
+        },
+        {
+          "id": "shiba-inu",
+          "name": "시바견"
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    "porcupine"
+  ],
+  "approvedSeal": "seal-approved-original.png",
+  "roundStyleReference": "round-style-reference.jpeg",
+  "poodleOverride": true
+}
