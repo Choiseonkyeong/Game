@@ -38,6 +38,41 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
+      "version": "island-animals-4",
+      "source_commit": "1659fc2c35771ad339c303e431b4d46ffd8626da",
+      "source_branch": "codex/island-animal-sprites",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=4",
+      "run_id": 39294855017,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-19T17:32:24Z",
+      "checked_at": "2026-10-19T17:34:21.294Z",
+      "checks": "86 automated tests passed. 2082 nonempty atlas frames decoded. Local Chromium 390x844: 4/8 direction movement, idle on release, chroma key, crisp pixels, gender selection/reload, poodle actions and animal visitor; no console errors. Public Chrome opened main island; build-info exactly matches source commit.",
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "limitations": [
+        "Existing island background/props retained; full graphic redesign not completed.",
+        "Default human sprite outfits are baked; modular wardrobe rig preserved for future clothes/accessories.",
+        "Female head enlarged 1.12 about neck pivot; exact pixel-identical male/female head dimensions not asserted.",
+        "Actual phone touch and every animal animation direction not visually verified."
+      ]
+    },
+    "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
+    "access_check": "86 automated tests passed. 2082 nonempty atlas frames decoded. Local Chromium 390x844: 4/8 direction movement, idle on release, chroma key, crisp pixels, gender selection/reload, poodle actions and animal visitor; no console errors. Public Chrome opened main island; build-info exactly matches source commit.",
+    "remaining_action": "Existing island background/props retained; full graphic redesign not completed. Default human sprite outfits are baked; modular wardrobe rig preserved for future clothes/accessories. Female head enlarged 1.12 about neck pivot; exact pixel-identical male/female head dimensions not asserted. Actual phone touch and every animal animation direction not visually verified.",
+    "previous_successful_before_art": {
+      "version": "island-0.1",
+      "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
+      "source_branch": "codex/island-first-qa",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=1",
+      "run_id": 39132145320,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-18T13:34:55Z",
+      "checked_at": "2026-10-18T22:40:46.100426+09:00",
+      "checks": "78 automated tests. Chrome390x844 iframe: cardigan/straw hat and saved look, walk to pot and plant tulip, water and bloom, zoom, place garden lamp, reload preserves outfit/plant/furniture. Photo preview and downloaded PNG960x860 inspected. Main public URL opened. build-info exact source and five code assets byte-matched.",
+      "actual_mobile_touch_verified": false,
+      "remaining": "Playable prototype; no online friends, multiple animals, accounts, payments or validated business. Avatar uses modular SVG 2.5D, not commercial 3D rig. Real phone touch not verified."
+    },
+    "previous_successful_before_animals": {
       "version": "island-art-1",
       "source_commit": "e7708cc5d190a8f0c1a025efa4cfed791ffcba4d",
       "source_branch": "codex/pogeun-art",
@@ -53,22 +88,6 @@
         "docs/art/qa/pogeun-art-mobile-final.jpg",
         "docs/art/qa/pogeun-rig-final.jpg"
       ]
-    },
-    "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "81 automated tests; 87 WebP decode/dimensions, 33 body joint alpha centers. Chrome rig preview idle/walk/side sit/water/wave and hierarchical ±30 degrees. Actual Chrome 390x844 iframe: wardrobe, walk, daisy plant/water, bench sit, sunset/day, photo preview and reload restore. Main public URL opened; build-info exact source; 8 public files byte-matched. Actual phone/touch and other collaborator access unverified.",
-    "remaining_action": "Real phone touch not verified; non-base wardrobe choices still use vector fallback. Commercial app/store release not performed.",
-    "previous_successful_before_art": {
-      "version": "island-0.1",
-      "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
-      "source_branch": "codex/island-first-qa",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=1",
-      "run_id": 39132145320,
-      "deployment": "succeeded",
-      "deployed_at": "2026-10-18T13:34:55Z",
-      "checked_at": "2026-10-18T22:40:46.100426+09:00",
-      "checks": "78 automated tests. Chrome390x844 iframe: cardigan/straw hat and saved look, walk to pot and plant tulip, water and bloom, zoom, place garden lamp, reload preserves outfit/plant/furniture. Photo preview and downloaded PNG960x860 inspected. Main public URL opened. build-info exact source and five code assets byte-matched.",
-      "actual_mobile_touch_verified": false,
-      "remaining": "Playable prototype; no online friends, multiple animals, accounts, payments or validated business. Avatar uses modular SVG 2.5D, not commercial 3D rig. Real phone touch not verified."
     }
   },
   "restoration_record": {
@@ -325,5 +344,24 @@
     "live_url_verified": false,
     "actual_mobile_touch_verified": false,
     "remaining": "Public URL not fetched from Claude environment (proxy blocks github.io). Real phone touch and other collaborator access unverified."
+  },
+  "island_animals_release": {
+    "version": "island-animals-4",
+    "source_commit": "1659fc2c35771ad339c303e431b4d46ffd8626da",
+    "source_branch": "codex/island-animal-sprites",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=4",
+    "run_id": 39294855017,
+    "deployment": "succeeded",
+    "deployed_at": "2026-10-19T17:32:24Z",
+    "checked_at": "2026-10-19T17:34:21.294Z",
+    "checks": "86 automated tests passed. 2082 nonempty atlas frames decoded. Local Chromium 390x844: 4/8 direction movement, idle on release, chroma key, crisp pixels, gender selection/reload, poodle actions and animal visitor; no console errors. Public Chrome opened main island; build-info exactly matches source commit.",
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "limitations": [
+      "Existing island background/props retained; full graphic redesign not completed.",
+      "Default human sprite outfits are baked; modular wardrobe rig preserved for future clothes/accessories.",
+      "Female head enlarged 1.12 about neck pivot; exact pixel-identical male/female head dimensions not asserted.",
+      "Actual phone touch and every animal animation direction not visually verified."
+    ]
   }
 }

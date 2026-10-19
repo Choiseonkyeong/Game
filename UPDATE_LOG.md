@@ -296,3 +296,12 @@
 - 주소: 동일 Sites 주소. 외부 작업자 접속 실패 보고/Pages 활성화 대기는 해결됐다고 보고하지 않음.
 
 이보다 오래된 작업의 상세 시각은 이 로그에서 추정하지 않습니다. Git 커밋 이력과 기존 배포 기록을 확인합니다.
+
+
+## 2026-10-20 02:35 KST — 포근섬 동물/남녀 캐릭터 공개 배포 확인
+
+- Source: `codex/island-animal-sprites@1659fc2c35771ad339c303e431b4d46ffd8626da`; master synchronized at that source commit.
+- Changes/checks: 86 animal/color variants, occasional routed visitors, original seal, one hedgehog, three rounded poodles with special poses; previous female/male designs selectable; female head region enlarged. 86 tests passed; local Chromium movement/idle/chroma/selection/visitor passed, no console errors.
+- Deployment: GitHub Pages run `39294855017` succeeded at 2026-10-19T17:32:24Z. Public build-info reports exact source commit.
+- URL/access: https://choiseonkyeong.github.io/Game/island/?v=4 opened in public Chrome. External collaborator access and real phone touch unverified.
+- Remaining: Existing background/props retained. Default human outfits baked; modular wardrobe preserved for future accessories. Every species direction has not been visually reviewed. This documentation-only commit does not change deployed game content.
