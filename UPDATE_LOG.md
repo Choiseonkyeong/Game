@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-19 14:35 KST — Claude · 팝팝 타워 추가 (dist/pop-tower)
+
+- 요청: 다른 저장소(Choiseonkyeong/auto-ticketing 브랜치 claude/wizardly-lamport-kacsdn)에서 만든 팝팝 타워를 공용 Game 저장소로 이전.
+- 기준: master `eb00328`, preflight start `ready`. 기존 게임·세이브·URL 미변경. `dist/index.html` 여행책 메뉴에 링크 한 줄만 추가.
+- 변경: `dist/pop-tower/index.html` 단일 파일 게임(3D 회전 과일 탑 + 7칸 보관함 3개 모으기, 1000 레벨 시드 고정, 20개 월드, 기둥 2개(20레벨~), ?상자·얼음·폭탄, 한 줄 보너스, 콤보 점수·피버 타임, 망치/자석/섞기/되돌리기). 저장 키 `pop-tower`(localStorage). `test/pop-tower.test.js` 추가.
+- 검사: npm test 85개 통과. 로컬 http 서버 + 헤드리스 Chromium 390×844에서 홈→레벨 1 화면 확인, 콘솔 오류 없음. 실제 휴대폰 터치 미확인.
+- 배포: master 반영 후 Pages workflow 결과를 별도 기록. 대상 URL https://choiseonkyeong.github.io/Game/pop-tower/ (배포 확인 전).
+
 ## 2026-10-19 00:51 KST — Codex · 포근섬 아트 배포·실제 검수 완료
 
 - 소스 master `e7708cc5d190a8f0c1a025efa4cfed791ffcba4d`. Pages run `39142124943` 성공, 배포 2026-10-19 00:48:59 KST. 본 게임 URL https://choiseonkyeong.github.io/Game/island/?v=3 .
