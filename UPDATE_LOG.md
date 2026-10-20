@@ -5,7 +5,7 @@
 ## 2026-10-20 10:31 KST — Claude · 포근섬 v0.4 master 병합·Pages 배포 성공
 
 - Source: `claude/optimistic-franklin-aoguar@213cb053e2d8f49789581babd42502288eff311b`; master fast-forward `1572891 → 213cb05`(강제 푸시 없음, 병합 직전 원격 master 재확인).
-- Changes/checks: 하늘섬 지형·조개 경제·섬 확장/추가·야생/바다 동물 제거(10:31 항목) + 화면 결함 수정(10:00 항목). npm test 102개 통과(로컬·워크플로).
+- Changes/checks: 하늘섬 지형·조개 경제·섬 확장/추가·야생/바다 동물 제거(10:26 항목) + 화면 결함 수정(10:00 항목). npm test 102개 통과(로컬·워크플로).
 - Deployment: GitHub Pages run #38 `39353798228` 성공, 배포 완료 2026-10-20 10:30:43 KST. URL https://choiseonkyeong.github.io/Game/island/?v=9
 - URL/access: Claude 환경 프록시가 github.io를 403으로 차단해 공개 URL·build-info 직접 확인 못 함. 실제 휴대폰·다른 작업자 접속 미확인.
 - Remaining: 실제 휴대폰 검수, 경제 밸런스 조정, 일부 지붕 재채색 경계.
