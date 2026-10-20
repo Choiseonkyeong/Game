@@ -1,4 +1,4 @@
-import{KEY,FURNITURE,SEEDS,CLOSET,LABELS,fresh,restore,apply,growth,validCell,passable,route,approach}from'./core.js?v=1';
+import{KEY,FURNITURE,SEEDS,CLOSET,LABELS,fresh,restore,apply,growth,validCell,passable,route,approach}from'./core.js?v=9';
 import{avatar}from'./avatar.js?v=1';
 import{rigAvatar,loadArt,artUrl}from'./rig-review.js?v=3';
 // Cut-out rig with drop-in artwork (docs/pogeun-art-spec.md); vector parts until art/manifest.json exists.

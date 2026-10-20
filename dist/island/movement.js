@@ -1,6 +1,9 @@
-import{passable}from'./core.js?v=1';
-export const project=(c,r)=>[480+(c-r)*42,210+(c+r)*20];
-export const unproject=(x,y)=>[((x-480)/42+(y-210)/20)/2,((y-210)/20-(x-480)/42)/2];
+import{passable}from'./core.js?v=9';
+// Tile size is configurable: sky islands use half-size tiles (art/world/sky-terrain.json).
+export const GRID={hx:42,hy:20,ox:480,oy:210};
+export function setGrid(g){for(const k of ['hx','hy','ox','oy'])if(Number.isFinite(g?.[k])&&g[k]>0)GRID[k]=g[k];}
+export const project=(c,r)=>[GRID.ox+(c-r)*GRID.hx,GRID.oy+(c+r)*GRID.hy];
+export const unproject=(x,y)=>[((x-GRID.ox)/GRID.hx+(y-GRID.oy)/GRID.hy)/2,((y-GRID.oy)/GRID.hy-(x-GRID.ox)/GRID.hx)/2];
 export function lineClear(state,a,b,radius=.12){const n=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])*20));for(let i=0;i<=n;i++){const p=i/n,c=a[0]+(b[0]-a[0])*p,r=a[1]+(b[1]-a[1])*p;for(const[dc,dr]of [[-radius,-radius],[radius,-radius],[radius,radius],[-radius,radius]])if(!passable(state,Math.round(c+dc),Math.round(r+dr)))return false;}return true;}
 export function smoothRoute(state,path,position){if(!path.length)return[];const start=position?unproject(...position):path[0],points=[start,...path.filter((p,i)=>i||Math.hypot(p[0]-start[0],p[1]-start[1])>.01)],out=[start];let i=0;while(i<points.length-1){let j=points.length-1;while(j>i+1&&!lineClear(state,points[i],points[j]))j--;out.push(points[j]);i=j;}return out;}
 export function nearestCell(state,position,fallback){const[c,r]=unproject(...position),cell=[Math.round(c),Math.round(r)];return passable(state,...cell)?cell:fallback;}

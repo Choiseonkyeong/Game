@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-20 10:26 KST — Claude · 포근섬 하늘섬·조개 경제 개편 (v0.4)
+
+- 기준 master `15728910aeac133ef2f3edc9b558caafe9d3ed2a` + 작업 브랜치 `claude/optimistic-franklin-aoguar`의 이전 수정 `f2876be`.
+- 맵: 바다(바다 그림·해변/바다 동물·물고기)와 동물 산책길 페이지(sprite-playground)·안내 링크 제거. 파스텔 하늘·구름 배경. 사용자 참조 1번 시트의 성장 단계 6개를 섬 지형으로, 3번 시트 지붕색을 1번 집에 재채색(`tools/build-sky-islands.py`, `art/world/sky-stage-1..6.webp`, `sky-terrain.json`). 메인 캐릭터는 각 섬 지형의 걸을 수 있는 칸에 배치.
+- 동물: 야생·바다 동물 52종 데이터/그림 삭제, 반려·농장 동물 34종 유지. `cute.js`로 통통한 체형·숨쉬기·깡총 걷기 렌더링(원화 재제작 아님).
+- 조개: 텃밭 수확·가축 생산물로 획득, 상점에서 가구 추가·가축 입양·섬 넓히기(Lv1~6)·새 섬(최대 4개) 구매. 섬별 배치 분리 저장, 조개 공용. 기존 물고기는 1마리당 조개 8개로 1회 교환.
+- 검사: npm test 102개 통과(경제·멀티섬·지형 테스트 추가, 바다 테스트 제거). 로컬 Chromium 390×844에서 섬 렌더·걷기·텃밭 수확(+6)·암탉 수확(+4)·가축 입양·섬 넓히기 Lv3·새 섬 생성/이동·새로고침 후 유지·집 입장·꾸미기 배치 확인, 콘솔 오류 없음(날씨 API 차단 제외). 실제 휴대폰 미검수.
+- 배포: 작업 브랜치 푸시만 함. master 병합·Pages 배포 전.
+
 ## 2026-10-20 10:00 KST — Claude · 포근섬 화면 결함 수정 및 run #37 배포 기록 보완
 
 - 기준 master `15728910aeac133ef2f3edc9b558caafe9d3ed2a`, 작업 브랜치 `claude/optimistic-franklin-aoguar`. preflight start `ready`.
