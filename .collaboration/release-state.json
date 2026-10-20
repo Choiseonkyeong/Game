@@ -38,29 +38,33 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-sky-7",
-      "source_commit": "15728910aeac133ef2f3edc9b558caafe9d3ed2a",
-      "source_branch": "codex/island-sky",
-      "synchronized_master": "15728910aeac133ef2f3edc9b558caafe9d3ed2a",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=7",
-      "run_id": 39319653512,
+      "version": "island-sky-economy-9",
+      "source_commit": "213cb053e2d8f49789581babd42502288eff311b",
+      "source_branch": "claude/optimistic-franklin-aoguar",
+      "synchronized_master": "213cb053e2d8f49789581babd42502288eff311b",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=9",
+      "run_id": 39353798228,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-19T20:29:17Z",
-      "checked_at": "2026-10-20 (Claude, from GitHub Actions run record)",
-      "checks": "Claude rechecked: 97 automated tests passed on 1572891; local Chromium 390x844 intro dismiss, floating island render and grass-tap walking worked, no console errors except blocked Open-Meteo request in Claude's sandbox. Public URL and build-info not opened by Claude (sandbox proxy blocks github.io).",
+      "deployed_at": "2026-10-20T01:30:43Z",
+      "checked_at": "2026-10-20 (Claude, GitHub Actions job record)",
+      "checks": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
       "live_url_verified": false,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
       "changes": [
-        "Floating island over sea, full-body female/male walking sprites, straight-line/curved movement to exact tap point, Seoul Open-Meteo weather, shell wallet."
+        "Sea, marine visitors, fish and the animal walkway page removed; pastel sky background.",
+        "Island terrain from reference sheet 1 growth stages (6 levels) with sheet-3 pink roofs; half-size walk tiles.",
+        "52 wild/sea animals removed; remaining pets and farm animals drawn round/chubby (transform, not redrawn art).",
+        "Shell economy: crops and livestock earn; shop furniture, livestock, island expansion Lv1-6, up to 4 islands."
       ],
       "limitations": [
-        "Public URL not opened after run #37 by Claude.",
-        "Actual iPhone/long-session not verified."
+        "Roof recolour edges imperfect on some AI-generated stages.",
+        "Characters can overlap low fences/beds behind them.",
+        "Economy balance and real phone touch not verified."
       ]
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Claude rechecked: 97 automated tests passed on 1572891; local Chromium 390x844 intro dismiss, floating island render and grass-tap walking worked, no console errors except blocked Open-Meteo request in Claude's sandbox. Public URL and build-info not opened by Claude (sandbox proxy blocks github.io).",
+    "access_check": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
     "remaining_action": "Actual iPhone Safari/in-app flicker and touch not verified. Original face/hair sprites combined with procedural cutout clothing, not a new full 512x768 image set per wearable. Existing outdoor furniture remains; not every asset was regenerated. Room bed/rug are fixed background art; room decoration and salon not yet implemented. Currency name remains a discussion; no new currency economy was implemented.",
     "previous_successful_before_art": {
       "version": "island-0.1",
@@ -136,6 +140,28 @@
         "Existing outdoor furniture remains; not every asset was regenerated.",
         "Room bed/rug are fixed background art; room decoration and salon not yet implemented.",
         "Currency name remains a discussion; no new currency economy was implemented."
+      ]
+    },
+    "previous_successful_sky": {
+      "version": "island-sky-7",
+      "source_commit": "15728910aeac133ef2f3edc9b558caafe9d3ed2a",
+      "source_branch": "codex/island-sky",
+      "synchronized_master": "15728910aeac133ef2f3edc9b558caafe9d3ed2a",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=7",
+      "run_id": 39319653512,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-19T20:29:17Z",
+      "checked_at": "2026-10-20 (Claude, from GitHub Actions run record)",
+      "checks": "Claude rechecked: 97 automated tests passed on 1572891; local Chromium 390x844 intro dismiss, floating island render and grass-tap walking worked, no console errors except blocked Open-Meteo request in Claude's sandbox. Public URL and build-info not opened by Claude (sandbox proxy blocks github.io).",
+      "live_url_verified": false,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "changes": [
+        "Floating island over sea, full-body female/male walking sprites, straight-line/curved movement to exact tap point, Seoul Open-Meteo weather, shell wallet."
+      ],
+      "limitations": [
+        "Public URL not opened after run #37 by Claude.",
+        "Actual iPhone/long-session not verified."
       ]
     }
   },
