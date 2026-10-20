@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-20 10:00 KST — Claude · 포근섬 화면 결함 수정 및 run #37 배포 기록 보완
+
+- 기준 master `15728910aeac133ef2f3edc9b558caafe9d3ed2a`, 작업 브랜치 `claude/optimistic-franklin-aoguar`. preflight start `ready`.
+- 배포 기록 보완: 03:52 항목의 공중섬 업데이트는 소스 `1572891`로 저장되었고 Pages run #37 `39319653512` 성공(완료 2026-10-20 05:29 KST). release-state `shared_github_pages.last_successful`을 island-sky-7로 갱신, 이전 기록은 `previous_successful_living`에 보존. Claude 환경은 github.io 접속이 막혀 공개 URL·build-info 직접 확인 안 함.
+- 수정: 세로 화면에서 섬 그림 위에 생기던 단색 파란 띠/경계선을 하늘 그라데이션으로 이음(#scene 배경색도 그림 상단색과 맞춤). 안내 창 '동물 산책길' 링크를 기본 파란 밑줄 대신 게임 색상으로 표시. 서울 날씨 연결 실패 시 '연결 대기' 대신 '날씨 연결 실패'로 표시. island.js/css/weather.js v=8, SW 캐시 pogeun-island-8.
+- 검사: npm test 98개 통과(날씨 실패 표시 테스트 1개 추가). 로컬 Chromium 390×844에서 하늘 경계 제거, 링크 색상, '서울 · 날씨 연결 실패' 표시, 잔디 걷기 확인. 실제 휴대폰 미검수.
+- 배포: 작업 브랜치 푸시만 함. master 병합·Pages 배포 전.
+
 ## 2026-10-20 03:52 KST — Codex · 공중섬·전신 캐릭터·서울 날씨 다듬기
 
 - 기준 master `39f5b4fea3c09df86ace2748f8d999a6b9e9a533`; `codex/island-sky` 별도 worktree. 이전 변경/다른 게임/정원 저장 유지.
