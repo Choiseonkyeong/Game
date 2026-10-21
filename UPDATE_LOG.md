@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 23:30:19 KST — Codex · 씨앗 상점 연결
+
+- Source: codex/seed-shop-28; 기준 master 90d81afd1de78bcc28f25b98cf2dcd953700ede3. 사과·레몬·감·바나나 나무 씨앗 조개120, 밭작물 조개90. 과일나무/밭작물 설명을 요청 문장으로 적용. 씨앗 구매/보유/잔디에 심기/물주기/5·4단계 성장/마지막 단계 수확·재접속 보존 연결. 수정 안내 그림 추가. 기존 캐릭터/의상/섬 배경 보존.
+- Checks: 113 tests passed; 구문·diff 검사 통과. 공유 terrain 모듈의 import 버전 일치. 로컬 Chrome 설치 다운로드 실패로 실제 화면 검수는 배포 후 수행 예정. 실제 iPhone 미검수.
+- Deployment: pending; 기존 GitHub Pages 자동 배포 사용. 배포 소스/접속 결과는 후속 기록.
+
 ## 2026-10-21 17:26 KST — Codex · 섬 중앙 캐릭터 배치
 
 - Source codex/center-avatar-23@f758beb4b7efcdc09ff383ebfc140bcd5fa4e4ad; synchronized master same, 기준 6bced8895dfbb352c1455048ecf1728e370901b8. 기존 플레이어를 1회 중앙 빈 잔디 칸에 배치하고 이동 위치 저장 갱신. 이후 산책 위치는 유지. 가구/진행/의상 보존. island.js·index·SW 캐시 v23.
