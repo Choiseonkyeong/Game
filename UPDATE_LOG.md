@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 11:48:57 KST — Codex · 프로필·중앙 배치 게시 승인 및 배포 확인
+
+- 사용자 승인: GitHub 반영·배포 진행 승인. 앞선 자동 승인 차단 해소; shell Git 인증 불가로 연결된 GitHub API 사용.
+- Source: master@ca17dab5b80a24e3881351a1b891396a4b526b47, baseline 8b3bfb9c103a9f85a663f45eae85f294f3a31d22. expected_sha/force:false 적용.
+- 검사: 자동 104개 통과, Pages run 39534929688 success (2026-10-21T02:47:32Z). 공개 build-info 소스 일치, index.html/island.js/profile.js/island.css/sw.js 5개 바이트 일치.
+- URL: https://choiseonkyeong.github.io/Game/island/?v=10 . 실제 휴대폰·외부 협업자 접속·폼 조작 미검수.
+
 ## 2026-10-21 11:44 KST — Codex · 포근섬 첫 실행 프로필·섬 중앙 배치
 
 - 기준 master: `8b3bfb9c103a9f85a663f45eae85f294f3a31d22`; branch `codex/island-profile-center`.
