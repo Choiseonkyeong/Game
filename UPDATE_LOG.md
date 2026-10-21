@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 12:01 KST — Codex · 캐릭터 표시 호환성·소품 제거
+
+- 기준 master e4facb600ad4a298714383e2b97e44c606a74543, branch codex/island-visible.
+- 사용자 iPhone 화면: 섬은 보이나 캐릭터 누락, 기존 나무/화분/연못 잔존. WebKit foreignObject Canvas 합성 문제 가능성을 줄이기 위해 캐릭터를 SVG image PNG 프레임으로 표시; 지속 오프스크린 Canvas·8fps 걷기·성별/코디 유지. 실제 iPhone 원인은 콘솔 확인 전 추정.
+- 나무·화분·연못 배치 제거(조개/이름/성별 유지), 저장된 아바타 1회 중앙 복구. 캐시 v12.
+- 검사: 자동 104개·구문 검사 통과. 배포 후 브라우저 검수 예정; 실제 iPhone 미검수.
+
 ## 2026-10-21 11:56:52 KST — Codex · 참조 섬 배포·화면 검수 완료
 
 - Source: master@209b0982ef98b2f7c868ef118540383c52531584; Pages run 39535671982 succeeded 2026-10-21T02:55:35Z.

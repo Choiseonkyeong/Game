@@ -1,4 +1,4 @@
-import{humanMarkup,paintHumans}from'./human-sprites.js?v=7';
+import{humanMarkup,paintHumans}from'./human-sprites.js?v=12';
 import{patchSvg}from'./dom-render.js?v=5';
 export function roomTarget(x,y){return[Math.max(220,Math.min(810,x)),Math.max(448,Math.min(690,y))];}
 export function createRoom({world,announce,onChange}){

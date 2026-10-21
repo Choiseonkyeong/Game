@@ -5,10 +5,10 @@ import{createWeather,weatherHeadline}from'./weather.js?v=8';
 import{SHELL_KEY,readShells,sale,shellIcon,earn,spend,FISH_KEY,FISH_PRICE}from'./shells.js?v=9';
 import{ARCHIPELAGO_KEY,readArchipelago,activeIsland,expandCost,newIslandCost,expand,createIsland,switchIsland,MAX_LEVEL}from'./archipelago.js?v=9';
 import{loadLivestock,livestockMarkup,paintLivestock}from'./livestock.js?v=9';
-import{loadHumanSprites,humanChoice,chooseHuman,humanMarkup,paintHumans,currentOutfit,wearItem,saveLook,loadLook,savedLooks,humanSnapshot}from'./human-sprites.js?v=7';
+import{loadHumanSprites,humanChoice,chooseHuman,humanMarkup,paintHumans,currentOutfit,wearItem,saveLook,loadLook,savedLooks,humanSnapshot}from'./human-sprites.js?v=12';
 import{ITEMS,SLOT_LABELS}from'./wardrobe.js?v=5';
 import{patchSvg}from'./dom-render.js?v=5';
-import{createRoom}from'./room.js?v=7';
+import{createRoom}from'./room.js?v=12';
 import{createAnimalVisitors}from'./animal-visitors.js?v=9';
 import{KEY,FURNITURE,SEEDS,CLOSET,LABELS,CROPS,LIVESTOCK,ITEM_PRICES,MAX_ANIMALS,fresh,restore,apply,growth,validCell,passable,route,approach,limit,ripe,productReady,setTerrain,terrainCells}from'./core.js?v=9';
 import{avatar}from'./avatar.js?v=1';
@@ -30,8 +30,9 @@ const person=(o,opts={})=>rigAvatar(o,{anim:opts.pose||'idle',time:opts.time||0,
 const $=id=>document.getElementById(id);let state=fresh(),storage=true;try{state=restore(localStorage.getItem(KEY));}catch{storage=false;}let mode='walk',selected=null,placing=null,moving=false,zoom=1,seq=0,pending=null,steps=[],stepIndex=0,actorCell=[...state.avatar],from=null,to=null,started=0,pose='idle',face=1,back=false,busy=false,slot='top',pointer=null,photoUrl=null,photoBusy=false,lastFrame=0,petCell=[6,7],petPath=[],petStep=0,petStart=0,petFrom=null,petTo=null,petWait=0,petSleeping=false;
 let profile=null;try{profile=readProfile(localStorage.getItem(PROFILE_KEY));}catch{}
 if(profile)chooseHuman(profile.gender);
-let referenceStart=false;try{referenceStart=!!stage()?.reference&&localStorage.getItem('pogeun-reference-world-v1')!=='1';}catch{referenceStart=!!stage()?.reference;}
+let referenceStart=false;try{referenceStart=!!stage()?.reference&&localStorage.getItem('pogeun-visible-avatar-v12')!=='1';}catch{referenceStart=!!stage()?.reference;}
 if(referenceStart){if(!state.tasks.decorated)state.items=state.items.filter(p=>p.id>8||p.seed||p.crop);centerAvatar(state);}
+state.items=state.items.filter(p=>!['tree','pot','pond'].includes(p.kind));
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const P=project;
 let actorPosition=P(...actorCell),walkClock=0,tickTime=0,sitFrom=null,sitTo=null,sitAt=0,walkGoalCell=null;
@@ -105,7 +106,7 @@ function adopt(kind){const v=LIVESTOCK[kind];if(!v||shells<v.price){say('조개�
 function resetActor(){steps=[];to=null;pending=null;pose='idle';selected=null;placing=null;moving=false;mode='walk';actorCell=[...state.avatar];actorPosition=P(...actorCell);try{localStorage.removeItem('pogeun-avatar-position-v1');}catch{}placePet();}
 function growIsland(){const r=expand(archipelago,shells);if(!r.ok){say(r.why);return;}cancelWalk();save();archipelago=r.state;setShells(r.balance);saveArchipelago();applyTerrain();state=restore(JSON.stringify(state));save();resetActor();render();market();say(`섬이 넓어졌어요! 이제 Lv${activeIsland(archipelago).level} 섬이에요.`);}
 function starterIsland(){const base=fresh(),cells=terrainCells(),[c,r]=cells[Math.floor(cells.length*.3)]||[4,4];base.avatar=cells[Math.floor(cells.length*.7)]||[4,7];base.items=[{id:1,kind:'field',c,r,rot:0},{id:2,kind:'pot',c,r,rot:0},{id:3,kind:'bench',c,r,rot:0}];base.next=4;base.welcomed=true;if(stage()?.reference)base.items=[];const next=restore(JSON.stringify(base));centerAvatar(next);return next;}
-function loadIsland(saved){applyTerrain();state=saved?restore(saved):starterIsland();save();resetActor();render();}
+function loadIsland(saved){applyTerrain();state=saved?restore(saved):starterIsland();state.items=state.items.filter(p=>!['tree','pot','pond'].includes(p.kind));save();resetActor();render();}
 function newIsland(){cancelWalk();save();const r=createIsland(archipelago,shells,JSON.stringify(state));if(!r.ok){say(r.why);return;}archipelago=r.state;setShells(r.balance);saveArchipelago();loadIsland(null);$('dialog').close();say(activeIsland(archipelago).name+'을(를) 만들었어요. 텃밭부터 가꿔 볼까요?');}
 function goIsland(id){cancelWalk();save();const r=switchIsland(archipelago,id,JSON.stringify(state));if(!r.ok){say(r.why);return;}archipelago=r.state;saveArchipelago();loadIsland(r.saved);$('dialog').close();say(activeIsland(archipelago).name+'에 도착했어요.');}
 function islands(){const more=newIslandCost(archipelago);modal(`<small>MY SKY ISLANDS</small><h2>나의 하늘섬</h2>${archipelago.islands.map(i=>`<div class="journal-row shop-row"><span>${i.name}<small>Lv${i.level} / ${MAX_LEVEL}</small></span>${i.id===archipelago.active?'<button disabled>지금 여기</button>':`<button class="primary" data-island="${i.id}">이동</button>`}</div>`).join('')}<div class="journal-row shop-row"><span>새 섬 만들기<small>${more===null?'섬은 4개까지예요':'조개 '+more+'개'}</small></span><button class="primary" data-act="new-island" ${more!==null&&shells>=more?'':'disabled'}>만들기</button></div><p>섬마다 가구·텃밭·가축 배치가 따로 저장돼요.<br>조개는 모든 섬이 함께 써요.</p>`);}
@@ -121,4 +122,4 @@ function tick(t){const dt=tickTime?Math.min(.04,(t-tickTime)/1000):0;tickTime=t;
  if(!busy&&!pointer&&t>petWait&&!reduced){if(!petTo){if(!petPath.length||petStep>=petPath.length-1){const free=freeCells(),goal=free.length?free[Math.floor(t/9000)*7919%free.length]:petCell;petPath=route(state,petCell,goal);petStep=0;}if(petPath.length>1){petFrom=P(...petCell);petTo=P(...petPath[++petStep]);petStart=0;petSleeping=false;}}if(petTo){petStart+=dt*1000;const a=Math.min(1,petStart/950),x=petFrom[0]+(petTo[0]-petFrom[0])*a,y=petFrom[1]+(petTo[1]-petFrom[1])*a,el=$('pet');if(el)el.setAttribute('transform',`translate(${x} ${y})`);if(a===1){petCell=[...petPath[petStep]];petTo=null;if(petStep===petPath.length-1){petWait=t+8000;petSleeping=state.hearts>1;if(el&&!momoReady)el.innerHTML=kitten();}}}}
  }if(!$('dialog').open){paintLivestock($('world'),state.animals,t/1000,reduced);}if(!$('dialog').open)paintMomo($('world'),{walking:!!petTo,dx:petTo?petTo[0]-petFrom[0]:0,dy:petTo?petTo[1]-petFrom[1]:0,resting:petSleeping,time:t/1000});sortDepth();requestAnimationFrame(tick);}requestAnimationFrame(tick);
 let stages='';setInterval(()=>{if(busy||pointer||steps.length||$('dialog').open)return;const now=Date.now(),x=state.items.filter(p=>p.seed||p.crop).map(p=>p.crop?Math.floor(Math.min(1,(now-p.sown)/CROPS[p.crop].ms)*4):growth(p)>=1?'flower':'leaf').join()+'|'+state.animals.map(a=>productReady(a,now)).join();if(stages!==x){stages=x;render();}else if(selected)context();},1800);
-$('island-switch').onclick=islands;new ResizeObserver(camera).observe($('scene'));walletLabel();islandLabel();if(!profile||referenceStart){centerAvatar(state);resetActor();if(referenceStart){save();try{localStorage.setItem('pogeun-reference-world-v1','1');}catch{}}}render();say(fishExchanged?`바다가 사라져 물고기 ${fishExchanged}마리를 조개 ${fishExchanged*FISH_PRICE}개로 바꿔 드렸어요.`:'잔디를 눌러 걸어가거나, 텃밭과 가축을 돌봐 조개를 모아요.');if(!profile)onboarding();else if(!state.welcomed)help();
+$('island-switch').onclick=islands;new ResizeObserver(camera).observe($('scene'));walletLabel();islandLabel();if(!profile||referenceStart){centerAvatar(state);resetActor();if(referenceStart){save();try{localStorage.setItem('pogeun-visible-avatar-v12','1');}catch{}}}render();say(fishExchanged?`바다가 사라져 물고기 ${fishExchanged}마리를 조개 ${fishExchanged*FISH_PRICE}개로 바꿔 드렸어요.`:'잔디를 눌러 걸어가거나, 텃밭과 가축을 돌봐 조개를 모아요.');if(!profile)onboarding();else if(!state.welcomed)help();
