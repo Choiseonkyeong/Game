@@ -1,0 +1,257 @@
+{
+  "version": 24,
+  "frame": [
+    256,
+    320
+  ],
+  "pivot": [
+    128,
+    296
+  ],
+  "actions": [
+    "sitting",
+    "pickup",
+    "harvest",
+    "fishing",
+    "hoeing",
+    "jump",
+    "greeting",
+    "highfive"
+  ],
+  "characters": {
+    "female": {
+      "file": "art/humans/actions/female.webp",
+      "frames": [
+        {
+          "action": "sitting",
+          "source_pivot": [
+            138,
+            484
+          ],
+          "scale": 0.36,
+          "source_bounds": [
+            23,
+            19,
+            371,
+            490
+          ]
+        },
+        {
+          "action": "pickup",
+          "source_pivot": [
+            609,
+            470
+          ],
+          "scale": 0.36,
+          "source_bounds": [
+            412,
+            66,
+            764,
+            477
+          ]
+        },
+        {
+          "action": "harvest",
+          "source_pivot": [
+            926,
+            485
+          ],
+          "scale": 0.36,
+          "source_bounds": [
+            774,
+            4,
+            1124,
+            492
+          ]
+        },
+        {
+          "action": "fishing",
+          "source_pivot": [
+            1281,
+            487
+          ],
+          "scale": 0.36,
+          "source_bounds": [
+            1132,
+            63,
+            1527,
+            495
+          ]
+        },
+        {
+          "action": "hoeing",
+          "source_pivot": [
+            247,
+            962
+          ],
+          "scale": 0.36,
+          "source_bounds": [
+            9,
+            505,
+            433,
+            994
+          ]
+        },
+        {
+          "action": "jump",
+          "source_pivot": [
+            600,
+            960
+          ],
+          "scale": 0.36,
+          "source_bounds": [
+            430,
+            495,
+            784,
+            898
+          ]
+        },
+        {
+          "action": "greeting",
+          "source_pivot": [
+            942,
+            989
+          ],
+          "scale": 0.36,
+          "source_bounds": [
+            799,
+            500,
+            1134,
+            997
+          ]
+        },
+        {
+          "action": "highfive",
+          "source_pivot": [
+            1336,
+            989
+          ],
+          "scale": 0.36,
+          "source_bounds": [
+            1168,
+            509,
+            1516,
+            997
+          ]
+        }
+      ]
+    },
+    "male": {
+      "file": "art/humans/actions/male.webp",
+      "frames": [
+        {
+          "action": "sitting",
+          "source_pivot": [
+            192,
+            474
+          ],
+          "scale": 0.4,
+          "source_bounds": [
+            74,
+            61,
+            307,
+            480
+          ]
+        },
+        {
+          "action": "pickup",
+          "source_pivot": [
+            604,
+            477
+          ],
+          "scale": 0.4,
+          "source_bounds": [
+            438,
+            122,
+            700,
+            483
+          ]
+        },
+        {
+          "action": "harvest",
+          "source_pivot": [
+            904,
+            487
+          ],
+          "scale": 0.4,
+          "source_bounds": [
+            739,
+            24,
+            1103,
+            493
+          ]
+        },
+        {
+          "action": "fishing",
+          "source_pivot": [
+            1276,
+            487
+          ],
+          "scale": 0.4,
+          "source_bounds": [
+            1137,
+            67,
+            1509,
+            493
+          ]
+        },
+        {
+          "action": "hoeing",
+          "source_pivot": [
+            260,
+            970
+          ],
+          "scale": 0.4,
+          "source_bounds": [
+            35,
+            531,
+            417,
+            977
+          ]
+        },
+        {
+          "action": "jump",
+          "source_pivot": [
+            602,
+            982
+          ],
+          "scale": 0.4,
+          "source_bounds": [
+            480,
+            512,
+            758,
+            918
+          ]
+        },
+        {
+          "action": "greeting",
+          "source_pivot": [
+            972,
+            973
+          ],
+          "scale": 0.4,
+          "source_bounds": [
+            834,
+            535,
+            1092,
+            979
+          ]
+        },
+        {
+          "action": "highfive",
+          "source_pivot": [
+            1324,
+            973
+          ],
+          "scale": 0.4,
+          "source_bounds": [
+            1203,
+            535,
+            1450,
+            979
+          ]
+        }
+      ]
+    }
+  }
+}
