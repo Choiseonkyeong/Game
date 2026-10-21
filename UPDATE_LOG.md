@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 17:17 KST — Codex · 분홍 반팔 삭제·연청 기본 착용
+
+- Source codex/light-blue-default@7f3173af7e58b3dcf04a98f7b38b9bb0ccca8a19; synchronized master same; 기준 37910b47b3d8369f79a279eea1552f6927102fee. 분홍 반팔 삭제, 기존 연청 반바지(shorts/#9bb3ce) 복원. 남녀 모두 흰 반팔/연청 기본. 기존 캐릭터 하의도 1회 연청으로 변경·즉시 저장, 이후 사용자 선택 유지. 블랙 숏팬츠 선택 가능. 캐시 v22.
+- 108 tests 및 구문 검사 통과. Pages run 39567987111 success; 공개 build-info 소스 일치 및 wardrobe.js 바이트 일치. 실제 Chrome 흰 반팔 1개, 기존 여자 코디가 흰 반팔/연청으로 복원됨을 텍스트·스크린샷 확인. 실제 iPhone 미검수.
+- URL https://choiseonkyeong.github.io/Game/island/?v=22 . 진행·저장 코디 보존.
+
 ## 2026-10-21 17:12 KST — Codex · 의상 세 가지로 정리
 
 - Source codex/wardrobe-three@824a337efeab761e172cdf46d0c1aeeb49171d70; synchronized master same. 최신 master 21520f930143a913dbc530555502019fd4b1cb04 기준. 분홍 반팔/기본 흰 반팔/블랙 숏팬츠만 옷장에 유지. 나머지 목록 및 분류 제거, 기존 착용/저장 코디의 삭제 품목은 허용된 기본 코디로 정리. 원본 스프라이트 흰 신발은 기본 고정, 선택 목록 없음. 캐시 v21.
