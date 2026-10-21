@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 17:04 KST — Codex · 성인 여성 의상 배포 복구
+
+- 사용자 적용 요청. 최신 master e9859dabf1d232b2ba06573bbfaafe96855a2f7c 기준, task codex/apply-contemporary-wardrobe. 기존 의상 코드 보존; 과거 분홍 반팔/반바지를 강제한 테스트를 새 여성 기본 니트/블랙 숏팬츠/롱부츠 기준으로 수정. 저장 코디 보존 검사 유지.
+- Source master@edb6486a9e7f8ef867c0defee86f9ab78aebca61; 108 tests 통과. Pages run 39566443145 succeeded; 공개 build-info 정확히 일치, wardrobe.js 바이트 일치. Chrome 실제 옷장에서 니트/블랙 숏팬츠/롱부츠 선택 확인. 실제 iPhone 미검수.
+- URL https://choiseonkyeong.github.io/Game/island/?v=20 . 기존 사용자 코디는 보존되며 새 옷은 옷장에서 선택 가능.
+
 ## 2026-10-21 (KST 시각 미확인) — ChatGPT · 성인 여성 의상 교체 및 캐시 갱신
 
 - 여성 기본 코디와 옷장에 오버핏/브이넥/골지 니트, 블랙 숏팬츠, 롱스커트, 블랙 롱부츠 추가. 세일러 기본 아이템 제거. 실제 Canvas 옷감 디테일·긴 치마 실루엣·부츠 렌더링 수정.
