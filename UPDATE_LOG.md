@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 11:53 KST — Codex · 메인 섬 참조 원본 적용
+
+- 기준 master f28e66b07cac38bbf157784533f16b920868b566; branch codex/island-reference.
+- 변경: 사용자 JPEG 원본을 Level 1 메인 섬 배경으로 그대로 사용. 기존 다리/작은 섬 그림 및 중복 하늘 장식 제거. 새 잔디에 64개 이동 칸·집 입구 정렬, 1회 중앙 이동. 기본 미배치 소품 정리; 사용자 꾸미기·심은 식물·동물·재화 보존. 상위 레벨 그림 유지.
+- 검사: 자동 104개 통과, JS 문법·diff check 통과. 배포 후 실제 화면 확인 예정. 원본 픽셀 편집 없음.
+- 배포: 대기; 소스 SHA와 배포·화면 결과 후속 기록.
+
 ## 2026-10-21 11:48:57 KST — Codex · 프로필·중앙 배치 게시 승인 및 배포 확인
 
 - 사용자 승인: GitHub 반영·배포 진행 승인. 앞선 자동 승인 차단 해소; shell Git 인증 불가로 연결된 GitHub API 사용.
