@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 15:53 KST — Codex · 착용샷 잘림 수정·모바일 검수 준비
+
+- 기준 master e6ad81494918279d0e2e7123c40c23201e2413d1, branch codex/wardrobe-preview-fix. 사용자 사진에서 옷장 전체 스크롤로 큰 착용샷 머리/모자가 잘림. 큰 캐릭터·방향·분류·완료 버튼 고정, 물품 목록만 내부 스크롤하도록 레이아웃 분리. 옷 변경 시 목록 스크롤만 복원. 카드도 선택한 정면/옆/뒷 방향에 일치시킴. 캐시 v19.
+- 108개 검사 통과, 구문·diff 검사 통과. 실제 390x700/390x844 검수를 위한 fitting-check.html 준비. 게시 후 실제 조작/경계 수치/스크린샷 확인 전 완료 보고하지 않음.
+
 ## 2026-10-21 15:27:36 KST — Codex · 걷기·남녀 의상/액세서리 게시 승인·배포 완료
 
 - 사용자 ‘웅’으로 준비된 수정본 배포 승인. 이전 자동 승인 차단 해결. master 9228910312430ab5b11c0933dc3e7422d6a3465e → 4f99e67b45324e7648d7c8f6ddc72ec0d54a6051, expected_sha/force:false. 현재 master 선조 관계·검사된 로컬과 원격 트리 동일 확인.
