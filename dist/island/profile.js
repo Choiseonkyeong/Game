@@ -1,5 +1,5 @@
 import{terrainCells,passable}from'./core.js?v=28';
-import{project}from'./movement.js?v=28';
+import{project}from'./movement.js?v=30';
 export const PROFILE_KEY='pogeun-profile-v1';
 export function readProfile(raw){try{const p=JSON.parse(raw);return typeof p?.name==='string'&&p.name.trim()&&p.name.trim().length<=20&&['female','male'].includes(p.gender)?{name:p.name.trim(),gender:p.gender}:null;}catch{return null;}}
 // Choose the nearest free tile to the painted island's walkable center.

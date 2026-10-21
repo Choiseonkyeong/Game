@@ -1,4 +1,4 @@
-import{smoothRoute,lineClear}from'./movement.js?v=28';
+import{smoothRoute,lineClear}from'./movement.js?v=30';
 import{terrainCells}from'./core.js?v=28';
 import{paintCute}from'./cute.js?v=9';
 // Cute pets and farm friends occasionally visit a walkable tile, rest, then wander off.

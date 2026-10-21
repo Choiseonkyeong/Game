@@ -2,6 +2,23 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22 00:26:30 KST — Codex · 로컬 저장 / 배포 차단
+
+- Source: codex/landscape-seed-image@ddc2eb1. 첨부 JPEG 바이트 동일, 가로 화면·상점 패치 준비. 자동 검사 117개 통과, git diff --check 통과.
+- Deployment: master push 자동 승인 검토 거절. 이유: production Pages 배포를 유발하며 이번 사용자 요청에 명시적 배포 승인이 없다고 판단. 우회하지 않음. 기존 배포 기록 보존.
+- 브라우저 검사: Playwright 실행 파일 미설치로 실행 불가. 실제 가로 렌더/휴대폰 검수 미완료. 남은 사항: 사용자 배포 승인 및 배포 후 화면 검수.
+
+## 2026-10-22 00:25:29 KST — Codex · 첨부 원본 그대로 연결
+
+- 이번 첨부 JPEG를 재인코딩 없이 seed-shop-original.jpeg로 복사하고 실제 1536×864 비율로 표시. SHA256 302caedc964244f22731bbadfb6715ae091f3a9ee0fc29f89998470b167a9e0d. 기존 가로 운영 패치 및 이어서 준비된 보행 수정 보존. 원본 파일 바이트 일치 확인. 배포 검증 예정.
+
+## 2026-10-21 23:43:58 KST — Codex · 원본 씨앗 상점·가로 운영 전환
+
+- Source: codex/landscape-seed-image; 기준 master 137f78b5863763d51cfb17ee5ea8f995c0b7f1bf. 승인된 생성 PNG를 바이트 그대로 art/seed-shop-original.png로 복사(SHA256 d2dae33ee36a63cd08207f718a4ab6af0ea6fd581eb24da7abe037ef894fabef). 이미지 재생성/재압축/재배치 없음. 기존 이모지 카드 상점 대신 전체 원본 그림과 7개 투명 선택 영역; 구매/심기/보유 표시를 그림 밖에 배치.
+- 가로 전체 화면에 섬을 펼치고 상단 HUD·좌측 메뉴·하단 행동 패널 적용. 설치 manifest orientation landscape, 세로 기기 회전 안내/지원 브라우저 전체화면 시작. 가로 옷장 2열 배치. 캐릭터/섬 아트/진행 보존. 캐시 v30. 추가 요청: 경로 구간을 넘는 이동량 보존, 가속/감속과 거리 연동 60Hz 다리 움직임, 머리·손·상체 원본 유지, 실내외 동일 이동/캐릭터 모듈 연결.
+- Checks: 117 tests passed; JS 구문·diff 검사·원본/복사본 SHA256 일치. 30/60/120Hz 이동량 보존·코너 통과·정확한 도착/속도·보행 주기 검사; 남녀 4방향 8시점 Native Canvas 렌더 확인. 배포 후 공개 화면 검수 예정. 실제 iPhone 터치/회전 미검수.
+- Deployment: pending, 기존 GitHub Pages 자동 배포.
+
 ## 2026-10-21 23:37:15 KST — Codex · 씨앗 상점 배포 확인
 
 - Source: codex/seed-shop-28@ea742427c0d33f42ca0a67daf7d048d357a76963; synchronized master same. 가격/요청 설명·씨앗 구매/심기/성장/물주기/수확/저장 연결. 캐릭터·배경 변경 없음.
