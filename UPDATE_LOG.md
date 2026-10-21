@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 17:12 KST — Codex · 의상 세 가지로 정리
+
+- Source codex/wardrobe-three@824a337efeab761e172cdf46d0c1aeeb49171d70; synchronized master same. 최신 master 21520f930143a913dbc530555502019fd4b1cb04 기준. 분홍 반팔/기본 흰 반팔/블랙 숏팬츠만 옷장에 유지. 나머지 목록 및 분류 제거, 기존 착용/저장 코디의 삭제 품목은 허용된 기본 코디로 정리. 원본 스프라이트 흰 신발은 기본 고정, 선택 목록 없음. 캐시 v21.
+- 108 tests 통과. Pages run 39567427263 success; 공개 build-info 소스 일치. Chrome 실제 상의 2개·하의 1개·분류 2개 확인, 기존 니트/롱부츠 기본 복원 확인. 실제 iPhone 미검수.
+- URL https://choiseonkyeong.github.io/Game/island/?v=21 . 다른 게임·진행 보존.
+
 ## 2026-10-21 17:04 KST — Codex · 성인 여성 의상 배포 복구
 
 - 사용자 적용 요청. 최신 master e9859dabf1d232b2ba06573bbfaafe96855a2f7c 기준, task codex/apply-contemporary-wardrobe. 기존 의상 코드 보존; 과거 분홍 반팔/반바지를 강제한 테스트를 새 여성 기본 니트/블랙 숏팬츠/롱부츠 기준으로 수정. 저장 코디 보존 검사 유지.
