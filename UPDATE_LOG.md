@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T00:55:56.869194+09:00 — Codex · 전체화면 상점·가운데 구매창·글꼴 배포 확인
+
+- Source master@c3915a6401f9aaf7405d0189fa0ad7a80b269a7b, task codex/fullscreen-seed-dialog. 이번 사용자 배포 승인 후 expected master23e604a 기준 force false로 반영.
+- Checks:117개 자동 검사 통과. 공개 Chrome v31, dialog1363×936으로 viewport 전체 사용; 원본1536×864 로딩. 사과/바나나 선택별 가운데 구매창 및 잔액 부족 비활성 버튼 확인. 구매창 중심681.5,467.99로 viewport중심681.5,468과 일치. 로컬 Jua font loaded 확인.
+- Deployment: public build-info source 정확히 일치, 공개 화면 검증 완료. URL https://choiseonkyeong.github.io/Game/island/ . 실제 iPhone 회전/전체화면/터치 미검수. Actions run API는 rate limit으로 조회 불가; 실제 배포 소스·화면 직접 확인.
+
 ## 2026-10-22 00:52:17 KST — Codex · 상점 수정 배포 승인 차단
 
 - 준비된 원격 source200f0f92c008ca8b3acd930cb8ec5a68d384f988. 기존117개 검사·구문·diff 통과. 실브라우저/아이폰 검수는 미완료.

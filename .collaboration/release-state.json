@@ -699,5 +699,19 @@
     "actual_desktop_browser_verified": true,
     "actual_mobile_touch_verified": false,
     "checks": "Deploy shared game step succeeded; public build-info source exact. Published JPEG byte-identical to attachment (SHA256 302caedc964244f22731bbadfb6715ae091f3a9ee0fc29f89998470b167a9e0d). Chrome v30 modules, full original 1536x864 image, banana selection120, left vertical navigation verified. Actual iPhone rotation/touch unverified."
+  },
+  "island_fullscreen_shop_release": {
+    "source_commit": "c3915a6401f9aaf7405d0189fa0ad7a80b269a7b",
+    "source_branch": "master",
+    "version": "island-shop-31",
+    "url": "https://choiseonkyeong.github.io/Game/island/",
+    "deployment": "succeeded",
+    "checked_at": "2026-10-22T00:55:56.869194+09:00",
+    "automated_tests_passed": 117,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "checks": "Public build-info exact source. Chrome v31; full viewport dialog1363x936; original image loaded1536x864; purchase center681.5,467.99 equals viewport center681.5,468. Apple and banana open correct purchase modal; insufficient shells disabled. Local Jua font loaded and computed throughout UI. Original image unchanged.",
+    "limitations": "Actual iPhone browser chrome/fullscreen and touch unverified. Workflow run API rate-limited; deployed source and visible behavior verified directly."
   }
 }
