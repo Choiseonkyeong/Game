@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T01:11:22+09:00 — Codex · 여자 정면 적용본 저장 / 배포 승인 차단
+
+- Source: codex/female-front-smooth@36925fc926a35ec1c2f235ffad9312b981043d84; synchronized master base69036a5526f72b0e8186b1b884a844a2b6caf26a. 승인된 PNG blob SHA e17a07a6e5b61b98c4f4d9b8ac1dc9694c0979f2와 로컬 원본 일치. 117개 검사 통과; Native Canvas 남녀 3방향 렌더 검수.
+- Deployment: master update_ref 자동 승인 검토 거절. 캐릭터 적용 요청에 production Pages 공개 배포 승인이 포함되지 않았다고 판단. 우회하지 않음. 기존 배포 유지, 사용자의 명시적 배포 승인 필요. 실제 브라우저/iPhone/외부 접속 검수 미완료.
+
 ## 2026-10-22T01:08:36+09:00 — Codex · 여자 정면 캐릭터 이미지 적용
 
 - 기준 master69036a5526f72b0e8186b1b884a844a2b6caf26a; branch codex/female-front-smooth. 사용자 승인 정면 시선 PNG 원본을 female-front-32.png로 바이트 그대로 추가. 옷장/야외/실내 공통 front source 연결. 128×192 캔버스·기존 171px 인물 높이 유지, 원본 종횡비 유지. 정면 보행에 동일 이미지 사용, 기존 방향별 동작·옆/뒷면·남자 캐릭터 보존. 캐시32. 저장된 하의 선택 유지.
