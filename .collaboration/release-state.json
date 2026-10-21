@@ -38,33 +38,24 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-wardrobe-18",
-      "source_commit": "4f99e67b45324e7648d7c8f6ddc72ec0d54a6051",
-      "source_branch": "codex/wardrobe-detail",
-      "synchronized_master": "4f99e67b45324e7648d7c8f6ddc72ec0d54a6051",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=18",
-      "run_id": 39555254247,
+      "version": "island-contemporary-20",
+      "source_commit": "edb6486a9e7f8ef867c0defee86f9ab78aebca61",
+      "source_branch": "master",
+      "synchronized_master": "edb6486a9e7f8ef867c0defee86f9ab78aebca61",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=20",
+      "run_id": 39566443145,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-21T06:25:22Z",
-      "checked_at": "2026-10-21T06:27:36.088Z",
-      "checks": "108 tests; native Canvas 24 male/female accessory fittings and 10 garment/3 direction previews. Pages workflow success and public build-info exact source. Actual Chrome: first launch, female skirt/glasses + side preview, male cap/backpack + back preview, return to island. Actual phone touch unverified.",
+      "deployed_at": "2026-10-21T08:04:11Z",
+      "checked_at": "2026-10-21T08:06:39.007Z",
+      "checks": "108 tests passed locally and in Pages. Public build-info exact source; wardrobe.js byte-identical. Chrome wardrobe exposes contemporary knitwear, shorts, long skirts and boots; selected knit/shorts/boots. Actual phone unverified.",
       "live_url_verified": true,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "external_collaborator_access_verified": false,
-      "changes": [
-        "Walking head/sole registration.",
-        "Shaded garments, seams, folds, fixed trouser coverage.",
-        "Detailed male/female hats, bags, eyewear and accessories with fitted anchors.",
-        "Three-direction fitting preview and selected outfit labels."
-      ],
-      "limitations": [
-        "Actual iPhone touch and subjective walking feel not verified."
-      ]
+      "external_collaborator_access_verified": false
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
-    "remaining_action": "Actual iPhone touch and walking feel.",
+    "remaining_action": "Actual iPhone visual/touch verification.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -305,6 +296,31 @@
       "external_collaborator_access_verified": false,
       "limitations": [
         "Actual iPhone touch/walk feel unverified; artwork retains existing frames."
+      ]
+    },
+    "previous_successful_before_contemporary": {
+      "version": "island-wardrobe-18",
+      "source_commit": "4f99e67b45324e7648d7c8f6ddc72ec0d54a6051",
+      "source_branch": "codex/wardrobe-detail",
+      "synchronized_master": "4f99e67b45324e7648d7c8f6ddc72ec0d54a6051",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=18",
+      "run_id": 39555254247,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-21T06:25:22Z",
+      "checked_at": "2026-10-21T06:27:36.088Z",
+      "checks": "108 tests; native Canvas 24 male/female accessory fittings and 10 garment/3 direction previews. Pages workflow success and public build-info exact source. Actual Chrome: first launch, female skirt/glasses + side preview, male cap/backpack + back preview, return to island. Actual phone touch unverified.",
+      "live_url_verified": true,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "changes": [
+        "Walking head/sole registration.",
+        "Shaded garments, seams, folds, fixed trouser coverage.",
+        "Detailed male/female hats, bags, eyewear and accessories with fitted anchors.",
+        "Three-direction fitting preview and selected outfit labels."
+      ],
+      "limitations": [
+        "Actual iPhone touch and subjective walking feel not verified."
       ]
     }
   },
