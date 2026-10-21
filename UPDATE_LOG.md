@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 15:27:36 KST — Codex · 걷기·남녀 의상/액세서리 게시 승인·배포 완료
+
+- 사용자 ‘웅’으로 준비된 수정본 배포 승인. 이전 자동 승인 차단 해결. master 9228910312430ab5b11c0933dc3e7422d6a3465e → 4f99e67b45324e7648d7c8f6ddc72ec0d54a6051, expected_sha/force:false. 현재 master 선조 관계·검사된 로컬과 원격 트리 동일 확인.
+- 108 tests 통과. Pages run 39555254247 success (2026-10-21T06:25:22Z); build-info 소스 정확히 일치.
+- Chrome 실제 조작: 최초 프로필, 여자 스커트/안경/옆모습, 남자 볼캡/백팩/뒷모습, 산책 복귀 및 스크린샷 확인. 실제 iPhone 미검수.
+- URL https://choiseonkyeong.github.io/Game/island/?v=18
+
 ## 2026-10-21 14:59 KST — Codex · 남녀 액세서리 디테일 공통 적용
 
 - 기준 master 9228910312430ab5b11c0933dc3e7422d6a3465e와 게시 대기 codex/wardrobe-detail 수정본. 기존 걷기 중심 정렬/의상/3방향 착용샷 보존.

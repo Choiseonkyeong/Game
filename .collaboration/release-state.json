@@ -38,27 +38,33 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-walk-15",
-      "source_commit": "1fca5136bb3a06c6bdc10ed097f39ed27812deed",
-      "source_branch": "master",
-      "synchronized_master": "1fca5136bb3a06c6bdc10ed097f39ed27812deed",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=15",
-      "run_id": null,
+      "version": "island-wardrobe-18",
+      "source_commit": "4f99e67b45324e7648d7c8f6ddc72ec0d54a6051",
+      "source_branch": "codex/wardrobe-detail",
+      "synchronized_master": "4f99e67b45324e7648d7c8f6ddc72ec0d54a6051",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=18",
+      "run_id": 39555254247,
       "deployment": "succeeded",
-      "deployed_at": null,
-      "checked_at": "2026-10-21T03:20:14.152Z",
-      "checks": "106 tests pass; public build-info exact source (built_at 2026-10-21T03:18:18.079Z); actual Chrome v15: male movement positions change with distinct PNG frames (40914/45318/47650 bytes), stride screenshot; female selected, walking and sprite visibility pass. Actual iPhone unverified.",
+      "deployed_at": "2026-10-21T06:25:22Z",
+      "checked_at": "2026-10-21T06:27:36.088Z",
+      "checks": "108 tests; native Canvas 24 male/female accessory fittings and 10 garment/3 direction previews. Pages workflow success and public build-info exact source. Actual Chrome: first launch, female skirt/glasses + side preview, male cap/backpack + back preview, return to island. Actual phone touch unverified.",
       "live_url_verified": true,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
+      "changes": [
+        "Walking head/sole registration.",
+        "Shaded garments, seams, folds, fixed trouser coverage.",
+        "Detailed male/female hats, bags, eyewear and accessories with fitted anchors.",
+        "Three-direction fitting preview and selected outfit labels."
+      ],
       "limitations": [
-        "Actual iPhone touch/walk feel unverified; artwork retains existing frames."
+        "Actual iPhone touch and subjective walking feel not verified."
       ]
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
-    "remaining_action": "Real phone touch; higher-level artwork unchanged.",
+    "remaining_action": "Actual iPhone touch and walking feel.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -280,6 +286,25 @@
       "external_collaborator_access_verified": false,
       "limitations": [
         "Actual iPhone confirmation pending; Actions run metadata unavailable (HTTP403)."
+      ]
+    },
+    "previous_successful_before_wardrobe": {
+      "version": "island-walk-15",
+      "source_commit": "1fca5136bb3a06c6bdc10ed097f39ed27812deed",
+      "source_branch": "master",
+      "synchronized_master": "1fca5136bb3a06c6bdc10ed097f39ed27812deed",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=15",
+      "run_id": null,
+      "deployment": "succeeded",
+      "deployed_at": null,
+      "checked_at": "2026-10-21T03:20:14.152Z",
+      "checks": "106 tests pass; public build-info exact source (built_at 2026-10-21T03:18:18.079Z); actual Chrome v15: male movement positions change with distinct PNG frames (40914/45318/47650 bytes), stride screenshot; female selected, walking and sprite visibility pass. Actual iPhone unverified.",
+      "live_url_verified": true,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "limitations": [
+        "Actual iPhone touch/walk feel unverified; artwork retains existing frames."
       ]
     }
   },
