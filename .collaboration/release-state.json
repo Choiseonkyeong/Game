@@ -38,16 +38,15 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-contemporary-20",
-      "source_commit": "edb6486a9e7f8ef867c0defee86f9ab78aebca61",
-      "source_branch": "master",
-      "synchronized_master": "edb6486a9e7f8ef867c0defee86f9ab78aebca61",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=20",
-      "run_id": 39566443145,
+      "version": "island-wardrobe-21",
+      "source_commit": "824a337efeab761e172cdf46d0c1aeeb49171d70",
+      "source_branch": "codex/wardrobe-three",
+      "synchronized_master": "824a337efeab761e172cdf46d0c1aeeb49171d70",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=21",
+      "run_id": 39567427263,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-21T08:04:11Z",
-      "checked_at": "2026-10-21T08:06:39.007Z",
-      "checks": "108 tests passed locally and in Pages. Public build-info exact source; wardrobe.js byte-identical. Chrome wardrobe exposes contemporary knitwear, shorts, long skirts and boots; selected knit/shorts/boots. Actual phone unverified.",
+      "checked_at": "2026-10-21T08:12:50.568Z",
+      "checks": "108 tests passed locally and Pages deploy success. Public build-info exact source. Chrome actual wardrobe: only pink/white tees under tops; only black shorts under bottoms; removed categories absent. Previous knit and boots restored to allowed default. Base sprite white footwear remains fixed, no shoe catalogue.",
       "live_url_verified": true,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
@@ -322,6 +321,22 @@
       "limitations": [
         "Actual iPhone touch and subjective walking feel not verified."
       ]
+    },
+    "previous_successful_before_three": {
+      "version": "island-contemporary-20",
+      "source_commit": "edb6486a9e7f8ef867c0defee86f9ab78aebca61",
+      "source_branch": "master",
+      "synchronized_master": "edb6486a9e7f8ef867c0defee86f9ab78aebca61",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=20",
+      "run_id": 39566443145,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-21T08:04:11Z",
+      "checked_at": "2026-10-21T08:06:39.007Z",
+      "checks": "108 tests passed locally and in Pages. Public build-info exact source; wardrobe.js byte-identical. Chrome wardrobe exposes contemporary knitwear, shorts, long skirts and boots; selected knit/shorts/boots. Actual phone unverified.",
+      "live_url_verified": true,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false
     }
   },
   "restoration_record": {
