@@ -38,22 +38,22 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-no-bench-13",
-      "source_commit": "058b1ee1e379a17912fd208d44dd9f9f2834d110",
+      "version": "island-clean-14",
+      "source_commit": "be266e51cf05818797e66807d868463741f40a0a",
       "source_branch": "master",
-      "synchronized_master": "058b1ee1e379a17912fd208d44dd9f9f2834d110",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=13",
-      "run_id": 39536743987,
+      "synchronized_master": "be266e51cf05818797e66807d868463741f40a0a",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=14",
+      "run_id": null,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-21T03:06:59Z",
-      "checked_at": "2026-10-21T03:08:04.326Z",
-      "checks": "104 tests pass; workflow success; build-info exact source; actual Chrome screenshot and DOM: cushion bench button count 0, character visible.",
+      "deployed_at": null,
+      "checked_at": "2026-10-21T03:12:49.179Z",
+      "checks": "104 tests pass; public build-info exact source; Chrome v14 screenshot and DOM: path/bowl buttons 0, avatar present. Actions API returned HTTP403; run ID/completion time not retrieved.",
       "live_url_verified": true,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
       "limitations": [
-        "Actual iPhone confirmation pending."
+        "Actual iPhone confirmation pending; Actions run metadata unavailable (HTTP403)."
       ]
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
@@ -242,6 +242,25 @@
       "external_collaborator_access_verified": false,
       "limitations": [
         "WebKit foreignObject compositor suspected from iPhone screenshot; actual iPhone cause/retest not verified."
+      ]
+    },
+    "previous_successful_before_marked_removal": {
+      "version": "island-no-bench-13",
+      "source_commit": "058b1ee1e379a17912fd208d44dd9f9f2834d110",
+      "source_branch": "master",
+      "synchronized_master": "058b1ee1e379a17912fd208d44dd9f9f2834d110",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=13",
+      "run_id": 39536743987,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-21T03:06:59Z",
+      "checked_at": "2026-10-21T03:08:04.326Z",
+      "checks": "104 tests pass; workflow success; build-info exact source; actual Chrome screenshot and DOM: cushion bench button count 0, character visible.",
+      "live_url_verified": true,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "limitations": [
+        "Actual iPhone confirmation pending."
       ]
     }
   },

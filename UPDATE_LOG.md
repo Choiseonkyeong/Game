@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 12:12:49 KST — Codex · 표시한 디딤돌·물그릇 제거 배포 확인
+
+- Source master@be266e51cf05818797e66807d868463741f40a0a; 공개 build-info 정확히 일치 (built_at 2026-10-21T03:11:51.913Z). Actions API HTTP403으로 run ID/완료 시각 미확인.
+- 검사 104개 통과. 실제 Chrome v14 스크린샷·DOM에서 추가 디딤돌/모모 물그릇 버튼 0개·캐릭터 표시 확인. 원본 그림의 돌은 유지. 실제 iPhone 미검수.
+- URL https://choiseonkyeong.github.io/Game/island/?v=14
+
 ## 2026-10-21 12:10 KST — Codex · 빨간 표시 디딤돌·물그릇 제거
 
 - 기준 master d5ff670fc1fcbe382171b00eabdb1660e84758fe; branch codex/remove-marked. 사용자 표시의 덧놓인 path/bowl 배치를 시작·섬 이동 때 제거. 원본 섬 배경 유지. 캐시 v14.
