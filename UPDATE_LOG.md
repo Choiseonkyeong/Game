@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22 00:52:17 KST — Codex · 상점 수정 배포 승인 차단
+
+- 준비된 원격 source200f0f92c008ca8b3acd930cb8ec5a68d384f988. 기존117개 검사·구문·diff 통과. 실브라우저/아이폰 검수는 미완료.
+- Deployment: master update_ref가 자동 승인 검토에서 거절. 이번 코드 수정 요청에 production Pages 배포의 명시적 승인이 없다고 판단. 우회하지 않음. 배포본은 이전 버전 유지, 승인 후 반영·공개 검수 필요.
+
 ## 2026-10-22 00:49:37 KST — Codex · 상점 전체화면·가운데 구매창·둥근 글씨체
 
 - 기준 master23e604a, branch codex/fullscreen-seed-dialog. 씨앗 상점의 상하단 고정 영역 제거, 화면 전체 dialog 및 원본 비율 최대 크기 표시. 원본 JPEG 변경 없음. 아이템 선택시 가운데 별도 modal 구매창, 구매/보유/조개 부족/심기 연결. 전체 포근섬 UI를 로컬 Jua 글꼴로 변경하고 OFL 라이선스 포함. 캐시31.
