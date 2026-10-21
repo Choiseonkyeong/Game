@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 17:26 KST — Codex · 섬 중앙 캐릭터 배치
+
+- Source codex/center-avatar-23@f758beb4b7efcdc09ff383ebfc140bcd5fa4e4ad; synchronized master same, 기준 6bced8895dfbb352c1455048ecf1728e370901b8. 기존 플레이어를 1회 중앙 빈 잔디 칸에 배치하고 이동 위치 저장 갱신. 이후 산책 위치는 유지. 가구/진행/의상 보존. island.js·index·SW 캐시 v23.
+- 108 tests·구문·diff 통과. Pages run 39569143950 success, 공개 build-info 소스 정확히 일치. Chrome island.js?v=23 및 #person translate(480 470), 실제 스크린샷 중앙 잔디 배치 확인. 실제 iPhone 미검수.
+- URL https://choiseonkyeong.github.io/Game/island/?v=23 .
+
 ## 2026-10-21 17:17 KST — Codex · 분홍 반팔 삭제·연청 기본 착용
 
 - Source codex/light-blue-default@7f3173af7e58b3dcf04a98f7b38b9bb0ccca8a19; synchronized master same; 기준 37910b47b3d8369f79a279eea1552f6927102fee. 분홍 반팔 삭제, 기존 연청 반바지(shorts/#9bb3ce) 복원. 남녀 모두 흰 반팔/연청 기본. 기존 캐릭터 하의도 1회 연청으로 변경·즉시 저장, 이후 사용자 선택 유지. 블랙 숏팬츠 선택 가능. 캐시 v22.
