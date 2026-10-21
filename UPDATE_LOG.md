@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T01:13:43+09:00 — Codex · 여자 정면 캐릭터 배포 확인
+
+- Source master@6861bd68b5f76a77d55fed80b48e80aac7e89475; artwork source36925fc926a35ec1c2f235ffad9312b981043d84. 이번 사용자 명시적 배포 승인 후 최신master69036a5 기준 expected SHA, force false로 반영. 기존 차단 해소.
+- Checks: 117개 검사 통과; Pages run39632685227 Deploy shared game success. 공개 build-info 소스 일치, 공개 PNG blob e17a07a6e5b61b98c4f4d9b8ac1dc9694c0979f2 원본과 일치. 공개 Chrome 옷장 정면 및 야외 캐릭터 수정 이미지 확인. 기존 표시 높이·원본 비율·저장된 하의 선택 유지.
+- URL https://choiseonkyeong.github.io/Game/island/?v=32 . 옆/뒤/특수동작 기존 시트 보존. 실제 iPhone 터치·외부 작업자 접속 미검수.
+
 ## 2026-10-22T01:11:22+09:00 — Codex · 여자 정면 적용본 저장 / 배포 승인 차단
 
 - Source: codex/female-front-smooth@36925fc926a35ec1c2f235ffad9312b981043d84; synchronized master base69036a5526f72b0e8186b1b884a844a2b6caf26a. 승인된 PNG blob SHA e17a07a6e5b61b98c4f4d9b8ac1dc9694c0979f2와 로컬 원본 일치. 117개 검사 통과; Native Canvas 남녀 3방향 렌더 검수.
