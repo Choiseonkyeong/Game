@@ -1,3 +1,4 @@
+import{drawAccessories}from'./accessories.js?v=18';
 import{walkFrame,spriteOffset}from'./locomotion.js?v=16';
 import{WARDROBE_KEY,ITEMS,restoreWardrobe,cleanOutfit}from'./wardrobe.js?v=5';
 let closet=restoreWardrobe(null),sources={},direction=0;
@@ -50,20 +51,7 @@ function clothedFrame(g,row,col,o){const key=[g,row,col,...Object.values(o)].joi
  // Keep long hair in front of the back/side of the new skirt, rather than cutting it at the waist.
  if(g==='female'&&['skirt','pleats'].includes(o.bottom)){const over=new Uint8ClampedArray(d.length);for(let y=waist-1;y<151;y++)for(let x=0;x<128;x++){const i=(y*128+x)*4,r=original.data[i],gg=original.data[i+1],b=original.data[i+2],max=Math.max(r,gg,b),min=Math.min(r,gg,b),blue=b>r*1.065&&b>gg*.985;if((row===0?(x<43||x>85):row===1?((y<130||x<49||x>82)&&y<137&&x>33&&x<95):row===2?x>73:x<54)&&original.data[i+3]>20&&max<165&&max-min<45&&!blue){over.set(d.subarray(i,i+4),i);}}const hair=document.createElement('canvas');hair.width=128;hair.height=192;hair.getContext('2d').putImageData(new ImageData(over,128,192),0,0);ctx.drawImage(hair,0,0);}
 
- const sway=col?Math.sin(col/5*Math.PI*2)*2:0;
- if(o.bag==='backpack'&&!back&&!side){ctx.strokeStyle='#8fa788';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(48,topY+3);ctx.lineTo(51,hem-3);ctx.moveTo(80,topY+3);ctx.lineTo(77,hem-3);ctx.stroke();ctx.lineWidth=1.2;}
- if(o.bag==='backpack'&&(back||side))rounded(side?(row===2?77:25):48,topY+8,side?18:32,32,6,'#b1c6a3');
- if(o.bag==='crossbody'){ctx.strokeStyle='#987356';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(46,topY+3);ctx.lineTo(82+sway,hem-4);ctx.stroke();rounded(76+sway,hem-11,18,16,4,'#c29d7e');}
- if(o.bag==='tote'){ctx.strokeStyle=ink;ctx.beginPath();ctx.ellipse(88+sway,hem-12,5,7,0,Math.PI,Math.PI*2);ctx.stroke();rounded(79+sway,hem-12,18,24,4,'#e9dec7');}
- const headTop=g==='female'?12:13,eyeY=g==='female'?64:66;
- if(o.accessory==='glasses'&&!back){ctx.strokeStyle='#96745c';ctx.lineWidth=1;for(const x of side?[row===2?38:86]:[50,77]){ctx.beginPath();ctx.arc(x,eyeY,8,0,Math.PI*2);ctx.stroke();}if(!side){ctx.beginPath();ctx.moveTo(58,eyeY);ctx.lineTo(69,eyeY);ctx.stroke();}}
- if(o.accessory==='scarf'){rounded(53,topY-2,23,5,2,'#d5aa90');path([[65,topY+2],[73,topY+2],[75,topY+14],[69,topY+13]],'#d5aa90');}
- if(o.accessory==='heart'&&!back){ctx.fillStyle='#d79da8';ctx.font='9px sans-serif';ctx.fillText('♥',60,topY+13);}
- if(o.hat==='beret'){ctx.fillStyle='#d89fae';ctx.strokeStyle=ink;ctx.beginPath();ctx.ellipse(64,headTop+10,38,10,0,0,Math.PI*2);ctx.fill();ctx.stroke();rounded(64,headTop-1,3,6,1,'#b78392');}
- if(o.hat==='cap'){rounded(35,headTop,58,18,9,'#a9cadc');ctx.fillStyle='#94b8ce';ctx.beginPath();ctx.ellipse(side?(row===2?37:87):67,headTop+18,side?23:31,5,0,0,Math.PI*2);ctx.fill();ctx.stroke();}
- if(o.hat==='straw'){ctx.fillStyle='#e3c995';ctx.strokeStyle=ink;ctx.beginPath();ctx.ellipse(64,headTop+15,43,7,0,0,Math.PI*2);ctx.fill();ctx.stroke();rounded(40,headTop-6,48,23,9,'#e6d1a8');ctx.fillStyle='#b88c72';ctx.fillRect(42,headTop+10,44,4);}
- if(o.hat==='bow'){ctx.fillStyle='#deb0be';ctx.strokeStyle=ink;for(const side of [-1,1]){ctx.beginPath();ctx.moveTo(64,headTop+6);ctx.bezierCurveTo(64+side*35,headTop-12,64+side*35,headTop+23,64,headTop+10);ctx.fill();ctx.stroke();}rounded(59,headTop+3,10,9,4,'#cb94a6');}
- if(o.accessory==='flower'){for(let a=0;a<5;a++){ctx.fillStyle='#fff1c6';ctx.beginPath();ctx.arc(94+Math.cos(a*1.26)*4,50+Math.sin(a*1.26)*4,3,0,Math.PI*2);ctx.fill();}ctx.fillStyle='#dfb570';ctx.fillRect(92,48,4,4);}
+ drawAccessories(ctx,{gender:g,row,col,outfit:o,headCenter:64-baseFrame(g,row,0).offset[0],drift:baseFrame(g,row,0).offset[0]-original.offset[0]});
  if(wardrobeFrames.size>180)wardrobeFrames.delete(wardrobeFrames.keys().next().value);wardrobeFrames.set(key,c);return c;}
 function drawHuman(c,{pose='idle',face=1,back=false,time=0,preview=false,outfitOverride=null,settled=false,heading=null}={}){if(!sources[closet.gender])return;if(pose==='walk')direction=Number.isInteger(heading)&&heading>=0&&heading<4?heading:back?1:face<0?2:3;if(pose==='sit')direction=face<0?2:3;const row=preview?(Number.isInteger(heading)?heading:0):direction,frame=pose==='walk'?walkFrame(time):0,ctx=c.getContext('2d'),o=outfitOverride||currentOutfit();ctx.clearRect(0,0,128,192);ctx.imageSmoothingEnabled=false;ctx.save();const offset=baseFrame(closet.gender,row,frame).offset;ctx.translate(offset[0],offset[1]);
  const now=performance.now();let motion=canvasPose.get(c);if(!motion){motion={pose,from:0,to:pose==='sit'?1:0,start:now};canvasPose.set(c,motion);}if(motion.pose!==pose){const p=Math.min(1,(now-motion.start)/280),value=motion.from+(motion.to-motion.from)*p;motion={pose,from:value,to:pose==='sit'?1:0,start:now};canvasPose.set(c,motion);}const progress=settled?1:Math.min(1,(now-motion.start)/280),amount=motion.from+(motion.to-motion.from)*(.5-.5*Math.cos(progress*Math.PI));
