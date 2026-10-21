@@ -729,5 +729,20 @@
     "external_collaborator_access_verified": false,
     "checks": "Deploy shared game success; public build-info exact source. Published female-front PNG git blob e17a07a6e5b61b98c4f4d9b8ac1dc9694c0979f2 equals approved original. Chrome public wardrobe front and outdoor avatar visible with updated artwork; retained 128x192 canvas and existing 171px figure height with uniform scale.",
     "limitations": "Only approved front asset replaced; side/back/action sheets retained. Actual iPhone touch unverified. Existing saved outfit retained."
+  },
+  "island_female_proportions_release": {
+    "source_commit": "6511efbbdd2e74fc5daac06bb81acd58dd2b0c2e",
+    "source_branch": "master",
+    "version": "island-female-proportions-33",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=33",
+    "run_id": 39634181009,
+    "deployment": "succeeded",
+    "checked_at": "2026-10-22T01:24:08+09:00",
+    "automated_tests_passed": 117,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "checks": "GitHub Pages Deploy shared game success; public build-info exact source. Public Chrome wardrobe female/male front screenshots compared: neck100, shorts hem154, ankles168, sole183 registration on128x192 canvas. Female approved face/hair/outfit retained; legs shortened and head proportions matched. Existing sheets unchanged.",
+    "remaining": "Actual iPhone touch unverified. Side/back/action sheets retained."
   }
 }
