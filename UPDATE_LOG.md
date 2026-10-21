@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 14:52 KST — Codex · 의상 디테일·3방향 착용샷 수정
+
+- 기준 master 9228910312430ab5b11c0933dc3e7422d6a3465e, 기존 codex/walk-refine(게시 대기) 위에 codex/wardrobe-detail. 앞선 걷기 중심 보정 포함·보존.
+- 치마 곡선 실루엣/허리선/주름 명암/밑단 스티치, 상의 원단 마스크 안 목둘레/밑단/주름, 바지 포켓/스티치 및 긴바지 무릎 피부 틈 보정. 머리와 치마 겹침 보정. 옷장 정면/옆모습/뒷모습 버튼, 현재 코디 이름, 큰 착용 미리보기/카드. 캐시 v17.
+- 검사: Node native Canvas로 실제 렌더러 실행, 남녀 10코디/3방향 PNG 렌더·육안 확인. 기존 자동 검사 108개 통과; 최종 재검사 수행. 실제 브라우저 UI/iPhone은 게시 전이라 미검수.
+- 상태: 작업 브랜치 저장 예정, 배포하지 않음. 앞선 자동 승인 검토가 master 게시에 명시 승인을 요구했으며 이번 요청은 의상 수정 지시이므로 기존 배포 유지.
+
 ## 2026-10-21 14:44:34 KST — Codex · 걷기 재수정 저장·배포 차단
 
 - Source codex/walk-refine@d9e5b4e61b1448f7dbaf70056f9b9eaa908dbc4e; 기준 master 9228910312430ab5b11c0933dc3e7422d6a3465e. 108 tests 통과, 프레임별 머리 중심·발바닥 정렬. 작업 브랜치 저장 완료.
