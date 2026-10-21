@@ -1,0 +1,43 @@
+{
+  "version": 34,
+  "image": "art/humans/female-unified-34.png",
+  "views": [
+    "front",
+    "back",
+    "left",
+    "right"
+  ],
+  "rects": [
+    [
+      197,
+      85,
+      360,
+      534
+    ],
+    [
+      703,
+      85,
+      340,
+      534
+    ],
+    [
+      234,
+      668,
+      327,
+      521
+    ],
+    [
+      694,
+      668,
+      322,
+      521
+    ]
+  ],
+  "canvas": [
+    128,
+    192
+  ],
+  "sole": 182,
+  "height": 175,
+  "selection": "first-turnaround-original"
+}

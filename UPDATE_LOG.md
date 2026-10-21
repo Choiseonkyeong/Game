@@ -2,6 +2,19 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T01:39:29+09:00 — Codex · 첫 여자 원화 수정본 준비 / 원격 저장 차단
+
+- Local branch codex/female-style-34. 첫 선택 원화 정면/뒤/좌/우를 균일 축소만 적용. 원본 여자 actions.js/female.webp/catalog/test 유지; 남자 동작 기반/재생성 여자 동작은 모두 제외. 실제 서비스는 기존33 유지.
+- Checks:117개 자동 검사·구문/diff 통과. Native Canvas 남녀 비교 렌더 확인, 첫 원화 파일 blob6d87eca23d7257a035d54b31e237486b90f2a4c7과 원본 일치.
+- Remote: GitHub create_tree가 자동 승인 검토에서 거절. 외부 저장소 코드/문서/원화 업로드가 승인되지 않았다고 판단. 추가 원격 쓰기/배포를 시도하지 않음. 사용자의 Choiseonkyeong/Game 업로드 및 배포 명시적 승인 필요. 공개 배포·브라우저·iPhone 검수 미완료.
+
+## 2026-10-22T01:38:02+09:00 — Codex · 첫 번째 여자 원화 선택 고정 / 기존 여자 동작 보존
+
+- Source branch codex/female-style-34; 기준 master af659899838a3e2cdea22c3b75ed3ffa7d562352. 사용자가 선택한 첫 4방향 원화 PNG를 바이트 그대로 사용(blob6d87eca23d7257a035d54b31e237486b90f2a4c7). 정면/뒤/좌/우 원본 비율 유지, 전체 균일 축소와 발바닥 위치 정렬만 적용. 기존33버전의 머리/몸통 분할 재비율 조정 제거. 여자 머리색/명암에 임의 grain/tint 적용하지 않음. 남자 아틀라스/남자 렌더 유지.
+- 사용자 정정 반영: 남자 기반 새 동작과 후속 생성 동작은 전부 제외. actions.js/여자 원본 actions/female.webp/catalog/test 바이트 유지. 여자 원본 액션 SHA256 f4b7488ba34a582cfc55d4f24bc0ad005adc44962441f64d9b57864a3baf7766. 선택된 원화와 기존 여자 액션의 그림체 차이는 남아 있으며 완전 일치를 주장하지 않음.
+- Checks:117개 검사 통과, JS 구문/diff 검사, Native Canvas 남녀 정면/옆/뒤 검수. 캐시34 및 실내/야외 공통 loader. QA docs/qa/female-style34-comparison.png.
+- Deployment: pending; 기존 GitHub Pages 사용. 실제 브라우저/실제 iPhone 터치 미검수.
+
 ## 2026-10-22T01:24:08+09:00 — Codex · 여자 비율 수정 배포 완료
 
 - Source master@6511efbbdd2e74fc5daac06bb81acd58dd2b0c2e; artwork logic source32962dd6e3e0706d8f770047970c7ed7f491bb60. 사용자 명시적 배포 승인 후 최신 master d9042c5 기준 expected SHA, force false로 반영. 기존 자동 승인 차단 해소.
