@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T00:32:38.156716+09:00 — Codex · 가로 운영·원본 상점 공개 배포 확인
+
+- Source master@4dd6220852cc1f67b45ca842aa00910337d91ef6. 사용자 배포 승인 후 GitHub connector로 현재 master 기준 15개 변경 경로만 반영(expected SHA, force false). 로컬 준비 브랜치 codex/landscape-seed-image@c7a4a72와 게임 파일 동일.
+- Checks:117개 통과. 공개 Chrome v30 로딩·원본 이미지 전체 표시·바나나 선택120·가로 배치 좌측 메뉴 확인. 공개 JPEG 첨부 원본과 바이트 동일, build-info 소스 일치.
+- Deployment: Pages run39626380390 Deploy shared game success. URL https://choiseonkyeong.github.io/Game/island/ . 실제 iPhone 회전/터치 및 다른 작업자 접속 미검수. 이전 배포 차단은 이번 사용자 승인으로 해소.
+
 ## 2026-10-22 00:26:30 KST — Codex · 로컬 저장 / 배포 차단
 
 - Source: codex/landscape-seed-image@ddc2eb1. 첨부 JPEG 바이트 동일, 가로 화면·상점 패치 준비. 자동 검사 117개 통과, git diff --check 통과.

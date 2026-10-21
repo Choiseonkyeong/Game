@@ -686,5 +686,18 @@
     "external_collaborator_access_verified": false,
     "checks": "Public Chrome: wallet > seed shop; apple and banana 120, corn90, exact descriptions in both groups; screenshot viewed. Core unit tests cover purchase inventory, occupied cell rejection, all seven plants' stages, water cooldown, premature harvest rejection, rewards and save/restore.",
     "remaining": "Actual iPhone touch and real-browser purchase/plant/harvest not verified; unit tests verified these behaviors. Seed-guide illustration contains historical sweet-potato80 label; live catalogue follows earlier requested all field seeds90."
+  },
+  "island_landscape_original_image_release": {
+    "source_commit": "4dd6220852cc1f67b45ca842aa00910337d91ef6",
+    "source_branch": "master",
+    "version": "island-landscape-30",
+    "url": "https://choiseonkyeong.github.io/Game/island/",
+    "run_id": 39626380390,
+    "deployment": "succeeded",
+    "checked_at": "2026-10-22T00:32:38.156716+09:00",
+    "automated_tests_passed": 117,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "checks": "Deploy shared game step succeeded; public build-info source exact. Published JPEG byte-identical to attachment (SHA256 302caedc964244f22731bbadfb6715ae091f3a9ee0fc29f89998470b167a9e0d). Chrome v30 modules, full original 1536x864 image, banana selection120, left vertical navigation verified. Actual iPhone rotation/touch unverified."
   }
 }
