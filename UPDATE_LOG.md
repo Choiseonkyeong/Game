@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 12:05 KST — Codex · 물음표 쿠션 벤치 제거
+
+- 기준 master 366077c; branch codex/remove-bench. 사용자 화면의 ‘?’ 쿠션 벤치 배치 제거. 시작/섬 이동 때 기존 소품 정리 목록에 bench만 추가, 캐시 v13. 다른 기능·아트 유지.
+- 검사: 기존 자동 검사 및 구문·diff 검사 수행. 배포 결과 후속 기록.
+
 ## 2026-10-21 12:03:30 KST — Codex · 캐릭터 표시·소품 제거 배포 확인
 
 - Source master@c36bcfd758c11fabb90f7bb9da238ba2065cc3e6; Pages run 39536291273 success (2026-10-21T03:02:27Z). 공개 build-info 커밋 일치.

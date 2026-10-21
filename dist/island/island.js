@@ -32,7 +32,7 @@ let profile=null;try{profile=readProfile(localStorage.getItem(PROFILE_KEY));}cat
 if(profile)chooseHuman(profile.gender);
 let referenceStart=false;try{referenceStart=!!stage()?.reference&&localStorage.getItem('pogeun-visible-avatar-v12')!=='1';}catch{referenceStart=!!stage()?.reference;}
 if(referenceStart){if(!state.tasks.decorated)state.items=state.items.filter(p=>p.id>8||p.seed||p.crop);centerAvatar(state);}
-state.items=state.items.filter(p=>!['tree','pot','pond'].includes(p.kind));
+state.items=state.items.filter(p=>!['tree','pot','pond','bench'].includes(p.kind));
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const P=project;
 let actorPosition=P(...actorCell),walkClock=0,tickTime=0,sitFrom=null,sitTo=null,sitAt=0,walkGoalCell=null;
@@ -106,7 +106,7 @@ function adopt(kind){const v=LIVESTOCK[kind];if(!v||shells<v.price){say('조개�
 function resetActor(){steps=[];to=null;pending=null;pose='idle';selected=null;placing=null;moving=false;mode='walk';actorCell=[...state.avatar];actorPosition=P(...actorCell);try{localStorage.removeItem('pogeun-avatar-position-v1');}catch{}placePet();}
 function growIsland(){const r=expand(archipelago,shells);if(!r.ok){say(r.why);return;}cancelWalk();save();archipelago=r.state;setShells(r.balance);saveArchipelago();applyTerrain();state=restore(JSON.stringify(state));save();resetActor();render();market();say(`섬이 넓어졌어요! 이제 Lv${activeIsland(archipelago).level} 섬이에요.`);}
 function starterIsland(){const base=fresh(),cells=terrainCells(),[c,r]=cells[Math.floor(cells.length*.3)]||[4,4];base.avatar=cells[Math.floor(cells.length*.7)]||[4,7];base.items=[{id:1,kind:'field',c,r,rot:0},{id:2,kind:'pot',c,r,rot:0},{id:3,kind:'bench',c,r,rot:0}];base.next=4;base.welcomed=true;if(stage()?.reference)base.items=[];const next=restore(JSON.stringify(base));centerAvatar(next);return next;}
-function loadIsland(saved){applyTerrain();state=saved?restore(saved):starterIsland();state.items=state.items.filter(p=>!['tree','pot','pond'].includes(p.kind));save();resetActor();render();}
+function loadIsland(saved){applyTerrain();state=saved?restore(saved):starterIsland();state.items=state.items.filter(p=>!['tree','pot','pond','bench'].includes(p.kind));save();resetActor();render();}
 function newIsland(){cancelWalk();save();const r=createIsland(archipelago,shells,JSON.stringify(state));if(!r.ok){say(r.why);return;}archipelago=r.state;setShells(r.balance);saveArchipelago();loadIsland(null);$('dialog').close();say(activeIsland(archipelago).name+'을(를) 만들었어요. 텃밭부터 가꿔 볼까요?');}
 function goIsland(id){cancelWalk();save();const r=switchIsland(archipelago,id,JSON.stringify(state));if(!r.ok){say(r.why);return;}archipelago=r.state;saveArchipelago();loadIsland(r.saved);$('dialog').close();say(activeIsland(archipelago).name+'에 도착했어요.');}
 function islands(){const more=newIslandCost(archipelago);modal(`<small>MY SKY ISLANDS</small><h2>나의 하늘섬</h2>${archipelago.islands.map(i=>`<div class="journal-row shop-row"><span>${i.name}<small>Lv${i.level} / ${MAX_LEVEL}</small></span>${i.id===archipelago.active?'<button disabled>지금 여기</button>':`<button class="primary" data-island="${i.id}">이동</button>`}</div>`).join('')}<div class="journal-row shop-row"><span>새 섬 만들기<small>${more===null?'섬은 4개까지예요':'조개 '+more+'개'}</small></span><button class="primary" data-act="new-island" ${more!==null&&shells>=more?'':'disabled'}>만들기</button></div><p>섬마다 가구·텃밭·가축 배치가 따로 저장돼요.<br>조개는 모든 섬이 함께 써요.</p>`);}
