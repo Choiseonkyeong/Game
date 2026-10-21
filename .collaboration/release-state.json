@@ -38,23 +38,22 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-reference-11",
-      "source_commit": "209b0982ef98b2f7c868ef118540383c52531584",
+      "version": "island-visible-12",
+      "source_commit": "c36bcfd758c11fabb90f7bb9da238ba2065cc3e6",
       "source_branch": "master",
-      "synchronized_master": "209b0982ef98b2f7c868ef118540383c52531584",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=11",
-      "run_id": 39535671982,
+      "synchronized_master": "c36bcfd758c11fabb90f7bb9da238ba2065cc3e6",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=12",
+      "run_id": 39536291273,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-21T02:55:35Z",
-      "checked_at": "2026-10-21T02:56:52.896Z",
-      "checks": "104 tests pass; Pages success; public build-info matches source; supplied JPEG matches byte-for-byte. Chrome screenshot: reference cottage/island, no bridge/small island or duplicate clouds, centered character; lawn click starts walking.",
+      "deployed_at": "2026-10-21T03:02:27Z",
+      "checked_at": "2026-10-21T03:03:30.014Z",
+      "checks": "104 automated tests; Pages success; public build-info exact source. Chrome screenshot shows SVG image avatar, centered; lawn click changes position; no avatar foreignObject; no apple tree/pot/pond buttons. iPhone user confirmation pending.",
       "live_url_verified": true,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
       "limitations": [
-        "Higher island levels retain existing artwork.",
-        "Real phone touch unverified."
+        "WebKit foreignObject compositor suspected from iPhone screenshot; actual iPhone cause/retest not verified."
       ]
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
@@ -204,6 +203,26 @@
       ],
       "limitations": [
         "Actual browser interactions and phone touch not verified in this session."
+      ]
+    },
+    "previous_successful_before_avatar_fix": {
+      "version": "island-reference-11",
+      "source_commit": "209b0982ef98b2f7c868ef118540383c52531584",
+      "source_branch": "master",
+      "synchronized_master": "209b0982ef98b2f7c868ef118540383c52531584",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=11",
+      "run_id": 39535671982,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-21T02:55:35Z",
+      "checked_at": "2026-10-21T02:56:52.896Z",
+      "checks": "104 tests pass; Pages success; public build-info matches source; supplied JPEG matches byte-for-byte. Chrome screenshot: reference cottage/island, no bridge/small island or duplicate clouds, centered character; lawn click starts walking.",
+      "live_url_verified": true,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "limitations": [
+        "Higher island levels retain existing artwork.",
+        "Real phone touch unverified."
       ]
     }
   },

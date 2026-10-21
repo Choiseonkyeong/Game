@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 12:03:30 KST — Codex · 캐릭터 표시·소품 제거 배포 확인
+
+- Source master@c36bcfd758c11fabb90f7bb9da238ba2065cc3e6; Pages run 39536291273 success (2026-10-21T03:02:27Z). 공개 build-info 커밋 일치.
+- 104 자동 검사. 실제 Chrome 스크린샷에서 캐릭터 복원·중앙 배치 확인; 잔디 클릭 후 위치 변경, human-image visible, avatar foreignObject 0개, 사과나무/토분 화분/수련 연못 버튼 0개.
+- URL https://choiseonkyeong.github.io/Game/island/?v=12 . 실제 iPhone 재검수는 사용자 확인 필요.
+
 ## 2026-10-21 12:01 KST — Codex · 캐릭터 표시 호환성·소품 제거
 
 - 기준 master e4facb600ad4a298714383e2b97e44c606a74543, branch codex/island-visible.
