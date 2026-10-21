@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T01:20:08+09:00 — Codex · 여자 체형을 남자 캐릭터 비율에 정렬
+
+- Source branch codex/female-proportions-33; 기준 master d9042c5aac8b778632412d0bc0f32baae641077b. 승인된 여자 정면 원본 얼굴·헤어·의상 유지, 남자 아틀라스의 목100·반바지밑단154·발목168·발바닥183 위치에 정렬. 과도하게 긴 정면 다리 축소 및 머리 비율/폭 조정. 기존 128×192 캔버스와 전체 표시 높이 보존. 하의 컬러 마스크·정면 보행 골반 위치 동기화. 남자/옆·뒤/특수동작 시트와 저장 진행 보존. 캐시33.
+- Checks: 117개 자동 검사 통과; 구문/diff 검사; Native Canvas 남녀 정면/옆/뒤 비교 검수.
+- Deployment: pending, 기존 GitHub Pages 사용; 이전 사용자 배포 승인에 이은 비율 수정. 실제 iPhone 터치 미검수.
+
 ## 2026-10-22T01:13:43+09:00 — Codex · 여자 정면 캐릭터 배포 확인
 
 - Source master@6861bd68b5f76a77d55fed80b48e80aac7e89475; artwork source36925fc926a35ec1c2f235ffad9312b981043d84. 이번 사용자 명시적 배포 승인 후 최신master69036a5 기준 expected SHA, force false로 반영. 기존 차단 해소.

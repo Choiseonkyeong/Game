@@ -23,16 +23,33 @@ export async function loadHumanSprites(){await loadActionSprites();const front=n
 // SVG image works in iOS WebKit; foreignObject canvas can disappear after repaint.
 export function humanMarkup(){if(!sources[closet.gender])return'';return `<ellipse class="human-shadow" pointer-events="none" cy="2" rx="14" ry="4" fill="#5d785c26"/><image class="human-image" x="-43" y="-119" width="86" height="124" href="${humanSnapshot({preview:true})}" preserveAspectRatio="none" pointer-events="none" style="image-rendering:auto"/>`;}
 
+// Match the male atlas neck, shorts hem, ankles and planted sole on the same canvas.
+// Keep the approved female face/hair/outfit pixels; change only their relative proportions.
+const FEMALE_FRONT_ANCHORS=[[12,12],[84,100],[129,154],[159,168],[183,183]];
+function matchFemaleFront(canvas){
+ const source=document.createElement('canvas');source.width=128;source.height=192;
+ source.getContext('2d').drawImage(canvas,0,0);const ctx=canvas.getContext('2d');
+ ctx.clearRect(0,0,128,192);ctx.imageSmoothingEnabled=true;
+ for(let band=0;band<FEMALE_FRONT_ANCHORS.length-1;band++){
+  const [sy,dy]=FEMALE_FRONT_ANCHORS[band],[endY,endDest]=FEMALE_FRONT_ANCHORS[band+1];
+  const step=(endY-sy)/(endDest-dy);
+  for(let y=dy;y<endDest;y++){
+   const sourceY=sy+(y-dy)*step;
+   const widthScale=sourceY<84?88/72:sourceY<129?1.22-(sourceY-84)*.10/45:1.12-Math.min(1,(sourceY-129)/54)*.12;
+   ctx.drawImage(source,0,sourceY,128,step,64-64*widthScale,y,128*widthScale,1);
+  }
+ }
+}
 const rgb=hex=>[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16));
 const palette=Object.fromEntries(Object.values(ITEMS).flat().map(i=>[i[0],rgb(i[2])]));
-function baseFrame(g,row,col){const key=g+row+col;if(frames.has(key))return frames.get(key);const c=document.createElement('canvas');c.width=128;c.height=192;const x=c.getContext('2d',{willReadFrequently:true});x.imageSmoothingEnabled=false;if(g==='female'&&row===0&&sources.femaleFront){x.imageSmoothingEnabled=true;const scale=171/1100;x.drawImage(sources.femaleFront,296,86,631,1100,64-631*scale/2,12,631*scale,171);}else x.drawImage(g==='female'&&row===1&&sources.femaleBack?sources.femaleBack:sources[g],col*128,g==='female'&&row===1&&sources.femaleBack?0:row*192,128,192,0,0,128,192);const d=x.getImageData(0,0,128,192);d.offset=spriteOffset(d.data);d.footBottom=new Int16Array(128).fill(183);for(let x=0;x<128;x++)for(let y=191;y>142;y--)if(d.data[(y*128+x)*4+3]>120){d.footBottom[x]=y;break;}frames.set(key,d);return d;}
+function baseFrame(g,row,col){const key=g+row+col;if(frames.has(key))return frames.get(key);const c=document.createElement('canvas');c.width=128;c.height=192;const x=c.getContext('2d',{willReadFrequently:true});x.imageSmoothingEnabled=false;if(g==='female'&&row===0&&sources.femaleFront){x.imageSmoothingEnabled=true;const scale=171/1100;x.drawImage(sources.femaleFront,296,86,631,1100,64-631*scale/2,12,631*scale,171);matchFemaleFront(c);}else x.drawImage(g==='female'&&row===1&&sources.femaleBack?sources.femaleBack:sources[g],col*128,g==='female'&&row===1&&sources.femaleBack?0:row*192,128,192,0,0,128,192);const d=x.getImageData(0,0,128,192);d.offset=spriteOffset(d.data);d.footBottom=new Int16Array(128).fill(183);for(let x=0;x<128;x++)for(let y=191;y>142;y--)if(d.data[(y*128+x)*4+3]>120){d.footBottom[x]=y;break;}frames.set(key,d);return d;}
 const mix=(data,i,color,light)=>{for(let k=0;k<3;k++)data[i+k]=Math.max(0,Math.min(255,Math.round(color[k]*light)));};
 function clothedFrame(g,row,col,o){const key=[g,row,col,...Object.values(o)].join('|');if(wardrobeFrames.has(key))return wardrobeFrames.get(key);const original=baseFrame(g,row,col),d=new Uint8ClampedArray(original.data),top=palette[o.top],bottom=palette[o.bottom],shoe=palette[o.shoes],waist=g==='female'?122:138,bodyX=g==='female'?[43,85]:[42,86],topYs=g==='female'?[95,123]:[84,139],clothMask=new Uint8ClampedArray(original.data.length),bottomMask=new Uint8ClampedArray(original.data.length);
  for(let i=0;i<d.length;i+=4){if(d[i+3]<20)continue;const y=Math.floor(i/4/128),x=i/4%128,r=d[i],gg=d[i+1],b=d[i+2],max=Math.max(r,gg,b),min=Math.min(r,gg,b),sat=max?(max-min)/max:0,h=max===min?0:max===r?((gg-b)/(max-min)+6)%6/6:max===gg?((b-r)/(max-min)+2)/6:((r-gg)/(max-min)+4)/6;
  const blue=b>r*1.065&&b>gg*.985&&sat>.12;
  const smoothFront=g==='female'&&row===0&&sources.femaleFront;
  const fabric=smoothFront?false:g==='female'?y>=topYs[0]&&y<=waist&&h<.045&&sat>.12&&max>165:y>=100&&y<138&&sat<.16&&max>140;
- const shorts=smoothFront?y>=111&&y<=130&&x>43&&x<85&&max<155&&sat<.30:y>=(g==='male'?129:waist)&&y<166&&blue&&!fabric;
+ const shorts=smoothFront?y>=132&&y<=155&&x>40&&x<88&&max<155&&sat<.30:y>=(g==='male'?129:waist)&&y<166&&blue&&!fabric;
  const skin=r>gg*1.05&&gg>b*1.04&&h>=.035&&h<.13&&max>145;
  if(fabric){clothMask[i+3]=255;let color=top,light=g==='female'?Math.max(.52,Math.min(1.03,max/246)):Math.max(.5,Math.min(1.05,max/235));if(o.top==='stripes')color=Math.floor((y-topYs[0])/5)%2?palette['white-tee']:top;if(o.top==='raglan')color=x<bodyX[0]+5||x>bodyX[1]-5?rgb('#7f9c85'):palette['white-tee'];if(o.top==='crop'&&y>waist-10)color=rgb('#f7dbc2');mix(d,i,color,light);}
  else if(shorts&&(!smoothFront||o.bottom==='shorts')){bottomMask[i+3]=255;mix(d,i,bottom,Math.max(.48,Math.min(1.04,max/(smoothFront?85:165))));}
@@ -91,7 +108,7 @@ export function humanSnapshot(opts={}){const c=document.createElement('canvas');
 
 // Bend the illustrated leg pixels about real hips/knees for sitting; retain hair, hands, head and outfit layers.
 const seatedParts=new Map(),canvasPose=new WeakMap();
-function sittingParts(g,row,o){const key=[g,row,...Object.values(o)].join('|');if(seatedParts.has(key))return seatedParts.get(key);const full=clothedFrame(g,row,0,o),raw=baseFrame(g,row,0),pixels=full.getContext('2d').getImageData(0,0,128,192),mask=new Uint8Array(128*192),hip=g==='female'?132:147,knee=163;
+function sittingParts(g,row,o){const key=[g,row,...Object.values(o)].join('|');if(seatedParts.has(key))return seatedParts.get(key);const full=clothedFrame(g,row,0,o),raw=baseFrame(g,row,0),pixels=full.getContext('2d').getImageData(0,0,128,192),mask=new Uint8Array(128*192),hip=g==='female'?(row===0&&sources.femaleFront?147:132):147,knee=163;
  for(let y=hip;y<192;y++)for(let x=35;x<95;x++){const i=(y*128+x)*4,r=raw.data[i],gg=raw.data[i+1],b=raw.data[i+2],max=Math.max(r,gg,b),min=Math.min(r,gg,b);if(raw.data[i+3]>120&&(b>r*1.07&&b>gg*.985||r>150&&r>gg*1.04&&gg>b*1.025||max>175&&max-min<55))mask[y*128+x]=1;}
  for(let y=hip+10;y<192;y++)for(let x=0;x<128;x++)if(raw.data[(y*128+x)*4+3]>10)mask[y*128+x]=1;
  const expanded=new Uint8Array(mask);for(let y=hip;y<191;y++)for(let x=1;x<127;x++)if(mask[y*128+x])for(const[dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]])if(y+dy>=hip)expanded[(y+dy)*128+x+dx]=1;
@@ -100,7 +117,7 @@ function drawSitting(ctx,g,row,o,amount){const parts=sittingParts(g,row,o),angle
 
 // Extract the original illustrated legs once. Hair and hands stay in the upper layer.
 const walkingParts=new Map();
-function walkParts(g,row,o){const key=[g,row,...Object.values(o)].join('|');if(walkingParts.has(key))return walkingParts.get(key);const full=clothedFrame(g,row,0,o),pixels=full.getContext('2d').getImageData(0,0,128,192),side=row>1,stride=side?clothedFrame(g,row,2,o):full,stridePixels=stride.getContext('2d').getImageData(0,0,128,192),hip=g==='female'?134:145,upper=new Uint8ClampedArray(pixels.data),legs=[new Uint8ClampedArray(pixels.data.length),new Uint8ClampedArray(pixels.data.length)];
+function walkParts(g,row,o){const key=[g,row,...Object.values(o)].join('|');if(walkingParts.has(key))return walkingParts.get(key);const full=clothedFrame(g,row,0,o),pixels=full.getContext('2d').getImageData(0,0,128,192),side=row>1,stride=side?clothedFrame(g,row,2,o):full,stridePixels=stride.getContext('2d').getImageData(0,0,128,192),hip=g==='female'?(row===0&&sources.femaleFront?147:134):145,upper=new Uint8ClampedArray(pixels.data),legs=[new Uint8ClampedArray(pixels.data.length),new Uint8ClampedArray(pixels.data.length)];
  const legPixel=(data,x,y)=>{const i=(y*128+x)*4,r=data[i],green=data[i+1],b=data[i+2];if(!data[i+3]||y<hip||x<8||x>119)return false;return !(g==='female'&&y<149&&Math.max(r,green,b)<110&&Math.max(r,green,b)-Math.min(r,green,b)<38);};
  for(let y=hip;y<192;y++)for(let x=8;x<120;x++){const i=(y*128+x)*4;if(legPixel(pixels.data,x,y))upper[i+3]=0;if(legPixel(stridePixels.data,x,y))legs[x<64?0:1].set(stridePixels.data.subarray(i,i+4),i);}
  const canvas=data=>{const c=document.createElement('canvas');c.width=128;c.height=192;c.getContext('2d').putImageData(new ImageData(data,128,192),0,0);return c;};const parts={upper:canvas(upper),legs:legs.map(canvas),hip};if(walkingParts.size>40)walkingParts.delete(walkingParts.keys().next().value);walkingParts.set(key,parts);return parts;}
