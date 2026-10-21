@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T01:24:08+09:00 — Codex · 여자 비율 수정 배포 완료
+
+- Source master@6511efbbdd2e74fc5daac06bb81acd58dd2b0c2e; artwork logic source32962dd6e3e0706d8f770047970c7ed7f491bb60. 사용자 명시적 배포 승인 후 최신 master d9042c5 기준 expected SHA, force false로 반영. 기존 자동 승인 차단 해소.
+- Checks:117개 검사 통과; Pages run39634181009 Deploy shared game success; 공개 build-info 소스 일치. 공개 Chrome에서 옷장 여자/남자 정면을 번갈아 확인: 목/밑단/발목/발바닥 기준 일치, 여자 다리 축소 및 머리 비율 조정 반영. 얼굴·의상·옆/뒤 시트·남자 보존.
+- URL https://choiseonkyeong.github.io/Game/island/?v=33 . 실제 iPhone 터치/외부 작업자 접속 미검수.
+
 ## 2026-10-22T01:21:17+09:00 — Codex · 비율 수정본 저장 / 배포 승인 차단
 
 - Source codex/female-proportions-33@32962dd6e3e0706d8f770047970c7ed7f491bb60; synchronized master d9042c5aac8b778632412d0bc0f32baae641077b. 117개 검사 및 남녀 비교 Native Canvas 검수 통과.
