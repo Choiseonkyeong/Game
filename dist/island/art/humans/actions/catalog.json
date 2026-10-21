@@ -1,5 +1,5 @@
 {
-  "version": 24,
+  "version": 25,
   "frame": [
     256,
     320
@@ -137,118 +137,118 @@
       ]
     },
     "male": {
-      "file": "art/humans/actions/male.webp",
+      "file": "art/humans/actions/male-soft-25.webp",
       "frames": [
         {
           "action": "sitting",
           "source_pivot": [
-            192,
-            474
+            230,
+            466
           ],
-          "scale": 0.4,
+          "scale": 0.415,
           "source_bounds": [
-            74,
-            61,
-            307,
-            480
+            116,
+            60,
+            348,
+            467
           ]
         },
         {
           "action": "pickup",
           "source_pivot": [
-            604,
-            477
+            200,
+            466
           ],
-          "scale": 0.4,
+          "scale": 0.415,
           "source_bounds": [
-            438,
-            122,
-            700,
-            483
+            72,
+            124,
+            334,
+            467
           ]
         },
         {
           "action": "harvest",
           "source_pivot": [
-            904,
-            487
+            210,
+            466
           ],
-          "scale": 0.4,
+          "scale": 0.415,
           "source_bounds": [
-            739,
-            24,
-            1103,
-            493
+            83,
+            23,
+            433,
+            466
           ]
         },
         {
           "action": "fishing",
           "source_pivot": [
-            1276,
-            487
+            160,
+            466
           ],
-          "scale": 0.4,
+          "scale": 0.415,
           "source_bounds": [
-            1137,
-            67,
-            1509,
-            493
+            57,
+            50,
+            413,
+            466
           ]
         },
         {
           "action": "hoeing",
           "source_pivot": [
             260,
-            970
+            406
           ],
-          "scale": 0.4,
+          "scale": 0.415,
           "source_bounds": [
-            35,
-            531,
-            417,
-            977
+            54,
+            22,
+            406,
+            407
           ]
         },
         {
           "action": "jump",
           "source_pivot": [
-            602,
-            982
+            225,
+            406
           ],
-          "scale": 0.4,
+          "scale": 0.415,
           "source_bounds": [
-            480,
-            512,
-            758,
-            918
+            108,
+            0,
+            378,
+            377
           ]
         },
         {
           "action": "greeting",
           "source_pivot": [
-            972,
-            973
+            220,
+            406
           ],
-          "scale": 0.4,
+          "scale": 0.415,
           "source_bounds": [
-            834,
-            535,
-            1092,
-            979
+            92,
+            12,
+            339,
+            408
           ]
         },
         {
           "action": "highfive",
           "source_pivot": [
-            1324,
-            973
+            225,
+            406
           ],
-          "scale": 0.4,
+          "scale": 0.415,
           "source_bounds": [
-            1203,
-            535,
-            1450,
-            979
+            113,
+            12,
+            355,
+            408
           ]
         }
       ]
