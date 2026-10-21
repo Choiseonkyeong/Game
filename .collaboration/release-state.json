@@ -38,22 +38,22 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-clean-14",
-      "source_commit": "be266e51cf05818797e66807d868463741f40a0a",
+      "version": "island-walk-15",
+      "source_commit": "1fca5136bb3a06c6bdc10ed097f39ed27812deed",
       "source_branch": "master",
-      "synchronized_master": "be266e51cf05818797e66807d868463741f40a0a",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=14",
+      "synchronized_master": "1fca5136bb3a06c6bdc10ed097f39ed27812deed",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=15",
       "run_id": null,
       "deployment": "succeeded",
       "deployed_at": null,
-      "checked_at": "2026-10-21T03:12:49.179Z",
-      "checks": "104 tests pass; public build-info exact source; Chrome v14 screenshot and DOM: path/bowl buttons 0, avatar present. Actions API returned HTTP403; run ID/completion time not retrieved.",
+      "checked_at": "2026-10-21T03:20:14.152Z",
+      "checks": "106 tests pass; public build-info exact source (built_at 2026-10-21T03:18:18.079Z); actual Chrome v15: male movement positions change with distinct PNG frames (40914/45318/47650 bytes), stride screenshot; female selected, walking and sprite visibility pass. Actual iPhone unverified.",
       "live_url_verified": true,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
       "limitations": [
-        "Actual iPhone confirmation pending; Actions run metadata unavailable (HTTP403)."
+        "Actual iPhone touch/walk feel unverified; artwork retains existing frames."
       ]
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
@@ -261,6 +261,25 @@
       "external_collaborator_access_verified": false,
       "limitations": [
         "Actual iPhone confirmation pending."
+      ]
+    },
+    "previous_successful_before_walk": {
+      "version": "island-clean-14",
+      "source_commit": "be266e51cf05818797e66807d868463741f40a0a",
+      "source_branch": "master",
+      "synchronized_master": "be266e51cf05818797e66807d868463741f40a0a",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=14",
+      "run_id": null,
+      "deployment": "succeeded",
+      "deployed_at": null,
+      "checked_at": "2026-10-21T03:12:49.179Z",
+      "checks": "104 tests pass; public build-info exact source; Chrome v14 screenshot and DOM: path/bowl buttons 0, avatar present. Actions API returned HTTP403; run ID/completion time not retrieved.",
+      "live_url_verified": true,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "limitations": [
+        "Actual iPhone confirmation pending; Actions run metadata unavailable (HTTP403)."
       ]
     }
   },

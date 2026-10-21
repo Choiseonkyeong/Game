@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 12:20:14 KST — Codex · 걷기 개선 배포 검수
+
+- Source master@1fca5136bb3a06c6bdc10ed097f39ed27812deed; 공개 build-info 정확히 일치, built_at 2026-10-21T03:18:18.079Z. Actions run metadata 미수집.
+- 106 tests. Chrome v15에서 남자 캐릭터 이동 좌표·서로 다른 걷기 PNG 프레임 변화·보행 스크린샷 확인. 여자 캐릭터 전환 후 걷기·표시 확인. 실제 iPhone 미검수.
+- URL https://choiseonkyeong.github.io/Game/island/?v=15
+
 ## 2026-10-21 12:17 KST — Codex · 걷기 프레임·방향 다듬기
 
 - 기준 master 1126024a40fd523d78bdcf3ca4a407ce895a59e8; branch codex/walk-smooth. 벌린 다리 프레임만 반복하던 순서에 발 모으기 포함(0/1/2/0/4/5), 8fps. 아래쪽 이동 정면·위쪽 뒷면, 대각선 방향 경계 흔들림 방지. 실제 이동 거리로 발걸음 위상 갱신, 실내 속도/방향 동일 적용. 캐시 v15.
