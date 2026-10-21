@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 12:10 KST — Codex · 빨간 표시 디딤돌·물그릇 제거
+
+- 기준 master d5ff670fc1fcbe382171b00eabdb1660e84758fe; branch codex/remove-marked. 사용자 표시의 덧놓인 path/bowl 배치를 시작·섬 이동 때 제거. 원본 섬 배경 유지. 캐시 v14.
+- 구문·기존 자동 검사 수행, 배포 결과 후속 기록.
+
 ## 2026-10-21 12:08:04 KST — Codex · 물음표 소파 제거 배포 확인
 
 - Source master@058b1ee1e379a17912fd208d44dd9f9f2834d110; Pages run 39536743987 success (2026-10-21T03:06:59Z); build-info 소스 일치.
