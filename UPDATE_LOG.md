@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 (KST 시각 미확인) — ChatGPT · 성인 여성 의상 교체 및 캐시 갱신
+
+- 여성 기본 코디와 옷장에 오버핏/브이넥/골지 니트, 블랙 숏팬츠, 롱스커트, 블랙 롱부츠 추가. 세일러 기본 아이템 제거. 실제 Canvas 옷감 디테일·긴 치마 실루엣·부츠 렌더링 수정.
+- 변경 파일: dist/island/wardrobe.js, human-sprites.js, island.js, index.html, sw.js. JS import v20과 서비스워커 오프라인 캐시 v20 연결.
+- 최종 코드 커밋 aa82d698112f137db00dc73cda1f9f16b895bda7. GitHub 소스 반영 확인. 자동 테스트·GitHub Pages 배포 상태 및 모바일 렌더링 실검수는 이번 실행에서 확인 불가(외부 호스팅 접속 제한). 성공 배포로 기록하지 않음.
+
 ## 2026-10-21 15:53 KST — Codex · 착용샷 잘림 수정·모바일 검수 준비
 
 - 기준 master e6ad81494918279d0e2e7123c40c23201e2413d1, branch codex/wardrobe-preview-fix. 사용자 사진에서 옷장 전체 스크롤로 큰 착용샷 머리/모자가 잘림. 큰 캐릭터·방향·분류·완료 버튼 고정, 물품 목록만 내부 스크롤하도록 레이아웃 분리. 옷 변경 시 목록 스크롤만 복원. 카드도 선택한 정면/옆/뒷 방향에 일치시킴. 캐시 v19.
