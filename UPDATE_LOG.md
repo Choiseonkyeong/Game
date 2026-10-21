@@ -2,10 +2,10 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
-## 2026-10-21 14:42 KST — Codex · 걷기 재수정: 프레임 중심 정렬
+## 2026-10-21 14:44:34 KST — Codex · 걷기 재수정 저장·배포 차단
 
-- 기준 master 9228910312430ab5b11c0933dc3e7422d6a3465e; branch codex/walk-refine. 실제 여자 원본 프레임 머리 중심 x가 10~12px까지 이동하는 문제 분석. 머리 실루엣 중심·발바닥 바닥선을 프레임별 정렬해 반복 끝/정지 시 좌우 튀는 현상 보정. 코디·방향·기존 그림 유지. 캐시 v16.
-- 중심/접지 회귀 검사 2개 추가, 전체 검사·구문 검사 수행. 실제 iPhone 체감 미검수.
+- Source codex/walk-refine@d9e5b4e61b1448f7dbaf70056f9b9eaa908dbc4e; 기준 master 9228910312430ab5b11c0933dc3e7422d6a3465e. 108 tests 통과, 프레임별 머리 중심·발바닥 정렬. 작업 브랜치 저장 완료.
+- 자동 승인 검토가 이번 master 게시의 명시적 승인이 부족하다고 update_ref를 거부. 기존 대화의 GitHub 반영·배포 승인을 재확인했으나 재검토도 거부. master/현재 배포 변경 없음. 이번 게시 사용자 승인 대기.
 
 ## 2026-10-21 12:20:14 KST — Codex · 걷기 개선 배포 검수
 
