@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 11:44 KST — Codex · 포근섬 첫 실행 프로필·섬 중앙 배치
+
+- 기준 master: `8b3bfb9c103a9f85a663f45eae85f294f3a31d22`; branch `codex/island-profile-center`.
+- 변경: 첫 실행 이름·남녀 기본 캐릭터 선택 필수 입력, 기기 저장·재실행 복원, 옷장 성별 변경 동기화. 첫 진입·새 섬 생성 때 걸을 수 있는 잔디 중앙의 빈 칸에 배치; 기존 가구·동물·진행 보존, 이후 걸었던 위치 유지. 캐시 v10.
+- 검사: npm test 104개 통과, JS 구문 검사·diff check 통과, preflight start/finish ready. 실제 브라우저 실행 환경에 Chromium 없음; 실제 휴대폰 미검수.
+- 소스: 로컬 `codex/island-profile-center@6d2bce2` 저장. 배포하지 않음.
+- 차단: 자동 승인 검토가 명시적 게시 승인 부재로 master 및 작업 브랜치 push를 거부. 원격 업로드·Pages 배포 보류, 기존 배포 기록 유지. 사용자 게시 승인 필요.
+
 ## 2026-10-20 10:31 KST — Claude · 포근섬 v0.4 master 병합·Pages 배포 성공
 
 - Source: `claude/optimistic-franklin-aoguar@213cb053e2d8f49789581babd42502288eff311b`; master fast-forward `1572891 → 213cb05`(강제 푸시 없음, 병합 직전 원격 master 재확인).
