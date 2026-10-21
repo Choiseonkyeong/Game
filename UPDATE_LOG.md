@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 23:37:15 KST — Codex · 씨앗 상점 배포 확인
+
+- Source: codex/seed-shop-28@ea742427c0d33f42ca0a67daf7d048d357a76963; synchronized master same. 가격/요청 설명·씨앗 구매/심기/성장/물주기/수확/저장 연결. 캐릭터·배경 변경 없음.
+- Checks: 113 tests passed. 실제 공개 Chrome에서 조개 상점→씨앗 상점, 사과/바나나120·옥수수90, 두 그룹 설명 문장·카드 화면 확인. 실제 브라우저 구매/심기/수확·iPhone 터치는 미검수(로직은 단위 검사). 안내 그림의 고구마80은 이전 이미지 표기이며 실제 가격은 앞선 사용자 통일 지시대로90.
+- Deployment: GitHub Pages run39617511178 success (2026-10-21T14:35:43Z 확인). URL https://choiseonkyeong.github.io/Game/island/ . 공개 소스/접속 확인 결과는 release-state에 기록; 다른 작업자 직접 접속 미확인.
+
 ## 2026-10-21 23:30:19 KST — Codex · 씨앗 상점 연결
 
 - Source: codex/seed-shop-28; 기준 master 90d81afd1de78bcc28f25b98cf2dcd953700ede3. 사과·레몬·감·바나나 나무 씨앗 조개120, 밭작물 조개90. 과일나무/밭작물 설명을 요청 문장으로 적용. 씨앗 구매/보유/잔디에 심기/물주기/5·4단계 성장/마지막 단계 수확·재접속 보존 연결. 수정 안내 그림 추가. 기존 캐릭터/의상/섬 배경 보존.

@@ -671,5 +671,20 @@
       "Room bed/rug are fixed background art; room decoration and salon not yet implemented.",
       "Currency name remains a discussion; no new currency economy was implemented."
     ]
+  },
+  "island_seed_shop_release": {
+    "source_commit": "ea742427c0d33f42ca0a67daf7d048d357a76963",
+    "source_branch": "codex/seed-shop-28",
+    "version": "island-seeds-28",
+    "url": "https://choiseonkyeong.github.io/Game/island/",
+    "run_id": 39617511178,
+    "deployment": "succeeded",
+    "checked_at": "2026-10-21T14:37:15.954Z",
+    "automated_tests_passed": 113,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "checks": "Public Chrome: wallet > seed shop; apple and banana 120, corn90, exact descriptions in both groups; screenshot viewed. Core unit tests cover purchase inventory, occupied cell rejection, all seven plants' stages, water cooldown, premature harvest rejection, rewards and save/restore.",
+    "remaining": "Actual iPhone touch and real-browser purchase/plant/harvest not verified; unit tests verified these behaviors. Seed-guide illustration contains historical sweet-potato80 label; live catalogue follows earlier requested all field seeds90."
   }
 }
