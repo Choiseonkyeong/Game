@@ -41,6 +41,21 @@ function clothedFrame(g,row,col,o){const key=[g,row,col,...Object.values(o)].joi
  // The new straight hair is charcoal black, retaining its illustrated highlights.
  else if(g==='female'&&y<151&&max<165&&max-min<45&&!blue){d[i]=r*.68;d[i+1]=gg*.74;d[i+2]=b*.84;}
  }
+ // Match the male sprite's soft cel texture without moving a single female pixel or changing its alpha.
+ // Preserve the original highlights, silhouette, outfit geometry and facial details.
+ if(g==='female')for(let i=0;i<d.length;i+=4){
+  if(d[i+3]<20)continue;
+  const y=Math.floor(i/4/128),x=i/4%128;
+  if(y<24||y>183)continue;
+  const r=d[i],green=d[i+1],b=d[i+2];
+  const l=.299*r+.587*green+.114*b;
+  const tone=l<78?-.018:l<143?-.012:l>220?.012:.006;
+  const grain=((x*17+y*29)%7-3)*.003;
+  const factor=1+tone+grain;
+  d[i]=Math.min(255,Math.round(r*factor));
+  d[i+1]=Math.min(255,Math.round(green*factor));
+  d[i+2]=Math.min(255,Math.round(b*factor));
+ }
  const c=document.createElement('canvas');c.width=128;c.height=192;const ctx=c.getContext('2d');ctx.putImageData(new ImageData(d,128,192),0,0);ctx.imageSmoothingEnabled=false;const back=row===1,side=row>1,center=64,topY=topYs[0],hem=waist,ink='#73584e';ctx.lineWidth=1.2;ctx.lineJoin='round';
  function rounded(x,y,w,h,r,color){ctx.fillStyle=color;ctx.strokeStyle=ink;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill();ctx.stroke();ctx.save();ctx.clip();ctx.fillStyle='#634a4026';ctx.fillRect(x+w-3,y+2,3,h);ctx.restore();}
  function path(points,color){ctx.fillStyle=color;ctx.strokeStyle=ink;ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.fill();ctx.stroke();}
