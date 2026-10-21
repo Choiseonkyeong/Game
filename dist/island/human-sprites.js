@@ -15,7 +15,11 @@ export function saveLook(){closet.looks.unshift({gender:closet.gender,outfit:{..
 export function loadLook(i){const look=closet.looks[i];if(!look)return;closet[closet.gender]=cleanOutfit(look.outfit,closet.gender);save();}
 // A complete illustrated body is retained under every outfit; never attach a head to a replacement stick rig.
 const frames=new Map(),wardrobeFrames=new Map();
-export async function loadHumanSprites(){await loadActionSprites();const rear=new Image();try{rear.src='art/humans/female-back-24.webp?v=24';await rear.decode();sources.femaleBack=rear;}catch{}await Promise.all(['female','male'].map(async g=>{const img=new Image();try{img.src=g==='male'?'art/humans/male-soft-25.webp?v=25':`art/humans/${g}-cozy.webp?v=24`;await img.decode();sources[g]=img;}catch{try{img.src=`art/humans/${g}.webp`;await img.decode();sources[g]=img;}catch{}}}));}
+function loadFemaleImage(src){return new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Female sprite failed to load'));image.src=src;});}
+export async function loadHumanSprites(){await loadActionSprites();const rear=new Image();try{rear.src='art/humans/female-back-24.webp?v=24';await rear.decode();sources.femaleBack=rear;}catch{}await Promise.all([
+ (async()=>{for(const src of ['art/humans/female-cozy.webp?v=26','art/humans/female-cozy-26.png?v=26']){try{sources.female=await loadFemaleImage(src);break;}catch{}}})(),
+ (async()=>{const img=new Image();try{img.src='art/humans/male-soft-25.webp?v=25';await img.decode();sources.male=img;}catch{try{img.src='art/humans/male.webp';await img.decode();sources.male=img;}catch{}}})()
+]);}
 // SVG image works in iOS WebKit; foreignObject canvas can disappear after repaint.
 export function humanMarkup(){if(!sources[closet.gender])return'';return `<ellipse class="human-shadow" pointer-events="none" cy="2" rx="14" ry="4" fill="#5d785c26"/><image class="human-image" x="-43" y="-119" width="86" height="124" href="${humanSnapshot({preview:true})}" preserveAspectRatio="none" pointer-events="none" style="image-rendering:pixelated"/>`;}
 
