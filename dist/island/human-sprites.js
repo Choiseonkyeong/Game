@@ -1,6 +1,6 @@
 import{drawAccessories}from'./accessories.js?v=18';
 import{walkFrame,spriteOffset}from'./locomotion.js?v=16';
-import{WARDROBE_KEY,ITEMS,restoreWardrobe,cleanOutfit}from'./wardrobe.js?v=20';
+import{WARDROBE_KEY,ITEMS,restoreWardrobe,cleanOutfit}from'./wardrobe.js?v=21';
 let closet=restoreWardrobe(null),sources={},direction=0;
 try{const raw=localStorage.getItem(WARDROBE_KEY);closet=restoreWardrobe(raw);if(!raw&&localStorage.getItem('pogeun-human-choice-v1')==='male')closet.gender='male';}catch{}
 const save=()=>{try{localStorage.setItem(WARDROBE_KEY,JSON.stringify(closet));}catch{}};
