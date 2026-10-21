@@ -38,30 +38,28 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-profile-10",
-      "source_commit": "ca17dab5b80a24e3881351a1b891396a4b526b47",
+      "version": "island-reference-11",
+      "source_commit": "209b0982ef98b2f7c868ef118540383c52531584",
       "source_branch": "master",
-      "synchronized_master": "ca17dab5b80a24e3881351a1b891396a4b526b47",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=10",
-      "run_id": 39534929688,
+      "synchronized_master": "209b0982ef98b2f7c868ef118540383c52531584",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=11",
+      "run_id": 39535671982,
       "deployment": "succeeded",
-      "deployed_at": "2026-10-21T02:47:32Z",
-      "checked_at": "2026-10-21T02:48:57.376Z",
-      "checks": "104 automated tests passed; workflow succeeded. Public build-info exact source commit; island index.html, island.js, profile.js, island.css and sw.js byte-match local checked source.",
+      "deployed_at": "2026-10-21T02:55:35Z",
+      "checked_at": "2026-10-21T02:56:52.896Z",
+      "checks": "104 tests pass; Pages success; public build-info matches source; supplied JPEG matches byte-for-byte. Chrome screenshot: reference cottage/island, no bridge/small island or duplicate clouds, centered character; lawn click starts walking.",
       "live_url_verified": true,
+      "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
-      "changes": [
-        "Required first-launch name and gender selection, persistent profile and base character.",
-        "Central free-tile spawn on first entry/new island; saved walking positions and belongings preserved."
-      ],
       "limitations": [
-        "Actual browser interactions and phone touch not verified in this session."
+        "Higher island levels retain existing artwork.",
+        "Real phone touch unverified."
       ]
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
-    "remaining_action": "Actual phone touch and first-launch form visual review.",
+    "remaining_action": "Real phone touch; higher-level artwork unchanged.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -184,6 +182,28 @@
         "Roof recolour edges imperfect on some AI-generated stages.",
         "Characters can overlap low fences/beds behind them.",
         "Economy balance and real phone touch not verified."
+      ]
+    },
+    "previous_successful_before_reference": {
+      "version": "island-profile-10",
+      "source_commit": "ca17dab5b80a24e3881351a1b891396a4b526b47",
+      "source_branch": "master",
+      "synchronized_master": "ca17dab5b80a24e3881351a1b891396a4b526b47",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=10",
+      "run_id": 39534929688,
+      "deployment": "succeeded",
+      "deployed_at": "2026-10-21T02:47:32Z",
+      "checked_at": "2026-10-21T02:48:57.376Z",
+      "checks": "104 automated tests passed; workflow succeeded. Public build-info exact source commit; island index.html, island.js, profile.js, island.css and sw.js byte-match local checked source.",
+      "live_url_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "changes": [
+        "Required first-launch name and gender selection, persistent profile and base character.",
+        "Central free-tile spawn on first entry/new island; saved walking positions and belongings preserved."
+      ],
+      "limitations": [
+        "Actual browser interactions and phone touch not verified in this session."
       ]
     }
   },

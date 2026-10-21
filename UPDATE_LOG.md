@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-21 11:56:52 KST — Codex · 참조 섬 배포·화면 검수 완료
+
+- Source: master@209b0982ef98b2f7c868ef118540383c52531584; Pages run 39535671982 succeeded 2026-10-21T02:55:35Z.
+- 검사: 104 tests; 공개 build-info 소스 일치, JPEG 원본 바이트 일치. 실제 Chrome 메인 화면에서 요청 원본 섬/집/하늘·중앙 캐릭터·다리/작은 섬/중복 구름 제거 확인. 잔디 클릭 이동 시작 확인. 실제 휴대폰 미검수.
+- URL: https://choiseonkyeong.github.io/Game/island/?v=11 . 상위 레벨 그림은 기존 유지.
+
 ## 2026-10-21 11:53 KST — Codex · 메인 섬 참조 원본 적용
 
 - 기준 master f28e66b07cac38bbf157784533f16b920868b566; branch codex/island-reference.
