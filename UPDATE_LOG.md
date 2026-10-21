@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T01:08:36+09:00 — Codex · 여자 정면 캐릭터 이미지 적용
+
+- 기준 master69036a5526f72b0e8186b1b884a844a2b6caf26a; branch codex/female-front-smooth. 사용자 승인 정면 시선 PNG 원본을 female-front-32.png로 바이트 그대로 추가. 옷장/야외/실내 공통 front source 연결. 128×192 캔버스·기존 171px 인물 높이 유지, 원본 종횡비 유지. 정면 보행에 동일 이미지 사용, 기존 방향별 동작·옆/뒷면·남자 캐릭터 보존. 캐시32. 저장된 하의 선택 유지.
+- Checks: 117개 자동 검사 통과; JS 구문/diff 검사; Native Canvas 남녀 정면·옆·뒤 렌더 이미지 검수. 실제 브라우저 및 iPhone 터치 미검수.
+- Deployment: pending; 기존 GitHub Pages 자동 배포. URL https://choiseonkyeong.github.io/Game/island/ . 배포 성공/소스 확인 후 별도 기록 예정.
+
 ## 2026-10-22T00:55:56.869194+09:00 — Codex · 전체화면 상점·가운데 구매창·글꼴 배포 확인
 
 - Source master@c3915a6401f9aaf7405d0189fa0ad7a80b269a7b, task codex/fullscreen-seed-dialog. 이번 사용자 배포 승인 후 expected master23e604a 기준 force false로 반영.

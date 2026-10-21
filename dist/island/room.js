@@ -1,6 +1,6 @@
 import{WALK_SPEED,walkingSpeed}from'./movement.js?v=30';
 import{walkingView}from'./locomotion.js?v=30';
-import{humanMarkup,paintHumans}from'./human-sprites.js?v=30';
+import{humanMarkup,paintHumans}from'./human-sprites.js?v=32';
 import{patchSvg}from'./dom-render.js?v=5';
 export function roomTarget(x,y){return[Math.max(220,Math.min(810,x)),Math.max(448,Math.min(690,y))];}
 export function createRoom({world,announce,onChange}){
