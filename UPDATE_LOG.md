@@ -2,7 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
-## 2026-10-22T21:53:38.893Z (UTC; KST +09:00) — Codex · 공개 브라우저 검수 및 확대 섬 시점 보정
+## 2026-10-23T06:55:57.726+09:00 — Codex · 게임 루프·임시 설정 도구 최종 배포 검증 완료
+
+- Source master@5cd56cb347a75d3de4c080299c9262c863a4a72c; PR2 merged. Pages run39860917314 all steps success; public build-info exact source, built_at2026-10-22T21:54:25.981Z. URL https://choiseonkyeong.github.io/Game/island/?v=42 .
+- Checks:127 tests; 공개 Chrome 사과1→5단계·물주기·첫 수확+150조개/Lv2, 먹이 구매 잔액150→148→145 및 각 보유1, 재접속Lv2/145 유지. 옷장 승인 프레임·상점180/잔액부족 차단, Lv4 가축 제한 확인. v43 카메라 보정 후 섬 bounds 전부1363x936 안쪽. 게임 출처 콘솔 오류 미관찰.
+- 임시값 통합 balance.json, 스키마 검증·Node 편집 도구 show/set/validate/export 및 docs/pogeun-balance.md 저장 완료. UI/CSS/원화 보존.
+- Limits: 실제 iPhone 터치/외부 공동작업자 접속/브라우저 전체 가축 성장 루프 미검수(가축 로직 단위테스트 통과). 가격·시간 밸런스는 임시값. 배포 미완료 사항 없음.
+
+## 2026-10-23T06:53:38.893+09:00 — Codex · 공개 브라우저 검수 및 확대 섬 시점 보정
 
 - Source: master@ef7a8c2accf24bbd5381dde07b0f14fa844a0409, PR2 merged. Pages39860079485 all steps success. Public build-info exact source, built_at2026-10-22T21:47:55.527Z.
 - Public Chrome: first planted apple, watering, stages1→5, harvest+150 shells and Lv2 terrain/house transition observed; feed purchase150→148 and milk148→145 with stock1 each; Lv4 adoption lock; approved wardrobe frame/shop180 and insufficient-shell rejection checked. 127 tests pass. Actual iPhone/mobile touch and full animal lifecycle in browser unverified (unit-tested).

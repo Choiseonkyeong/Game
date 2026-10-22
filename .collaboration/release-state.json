@@ -38,23 +38,24 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-approved-wardrobe-40",
-      "source_commit": "a79e5d0ad6e622ffb5f0e7c8cd364271a72a7939",
-      "source_branch": "codex/approved-wardrobe-38",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=40",
-      "run_id": 39805155547,
+      "version": "island-loop-balance-43",
+      "source_commit": "5cd56cb347a75d3de4c080299c9262c863a4a72c",
+      "source_branch": "master",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=42",
+      "run_id": 39860917314,
       "deployment": "succeeded",
-      "checked_at": "2026-10-23T00:31:31+09:00",
-      "automated_tests_passed": 120,
-      "checks": "Pages all steps success; public build-info exact source; Chrome approved wardrobe artwork, shop within same frame, equip trench, bottom selection, turn, save, walk and reload; native Canvas full-detail512x768 portraits",
+      "built_at": "2026-10-22T21:54:25.981Z",
+      "checked_at": "2026-10-23T06:55:57.726+09:00",
+      "automated_tests_passed": 127,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
-      "limitations": "Eight illustrated but unsupported tops show a preparation notice; no invented inventory or prices."
+      "checks": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
+      "limitations": "Full livestock lifecycle checked in unit tests, not end-to-end browser. Actual iPhone/mobile touch and external collaborator access remain unverified. Provisional balance values; growth uses existing stage artwork; CLI editing tool in tools/pogeun-balance.mjs."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
-    "remaining_action": "Actual iPhone visual/touch verification.",
+    "access_check": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
+    "remaining_action": "Actual phone touch and external collaborator access unverified; no deployment setting remaining.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -368,6 +369,21 @@
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false
+    },
+    "previous_successful_before_lifecycle": {
+      "version": "island-approved-wardrobe-40",
+      "source_commit": "a79e5d0ad6e622ffb5f0e7c8cd364271a72a7939",
+      "source_branch": "codex/approved-wardrobe-38",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=40",
+      "run_id": 39805155547,
+      "deployment": "succeeded",
+      "checked_at": "2026-10-23T00:31:31+09:00",
+      "automated_tests_passed": 120,
+      "checks": "Pages all steps success; public build-info exact source; Chrome approved wardrobe artwork, shop within same frame, equip trench, bottom selection, turn, save, walk and reload; native Canvas full-detail512x768 portraits",
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "limitations": "Eight illustrated but unsupported tops show a preparation notice; no invented inventory or prices."
     }
   },
   "restoration_record": {
@@ -772,5 +788,21 @@
     "actual_mobile_touch_verified": false,
     "external_collaborator_access_verified": false,
     "limitations": "Eight illustrated but unsupported tops show a preparation notice; no invented inventory or prices."
+  },
+  "island_lifecycle_balance_release": {
+    "version": "island-loop-balance-43",
+    "source_commit": "5cd56cb347a75d3de4c080299c9262c863a4a72c",
+    "source_branch": "master",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=42",
+    "run_id": 39860917314,
+    "deployment": "succeeded",
+    "built_at": "2026-10-22T21:54:25.981Z",
+    "checked_at": "2026-10-23T06:55:57.726+09:00",
+    "automated_tests_passed": 127,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "checks": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
+    "limitations": "Full livestock lifecycle checked in unit tests, not end-to-end browser. Actual iPhone/mobile touch and external collaborator access remain unverified. Provisional balance values; growth uses existing stage artwork; CLI editing tool in tools/pogeun-balance.mjs."
   }
 }
