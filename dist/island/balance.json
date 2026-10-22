@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "provisional": true,
+  "progression": {
+    "firstHarvestLevel": 2,
+    "livestockUnlockLevel": 4,
+    "axisGrowth": 1.12,
+    "expandCosts": [
+      0,
+      60,
+      150,
+      300,
+      500,
+      800
+    ],
+    "islandCosts": [
+      0,
+      400,
+      900,
+      1600
+    ]
+  },
+  "feed": {
+    "feed": {
+      "name": "사료",
+      "price": 2
+    },
+    "milk": {
+      "name": "우유",
+      "price": 3
+    }
+  },
+  "animals": {
+    "hen": {
+      "product": "달걀",
+      "ms": 40000,
+      "shells": 4,
+      "price": 30,
+      "stages": 5
+    },
+    "duck": {
+      "product": "오리알",
+      "ms": 60000,
+      "shells": 5,
+      "price": 45,
+      "stages": 5
+    },
+    "sheep": {
+      "product": "똥",
+      "ms": 120000,
+      "shells": 12,
+      "price": 100,
+      "stages": 6
+    },
+    "cow": {
+      "product": "똥",
+      "ms": 150000,
+      "shells": 15,
+      "price": 140,
+      "stages": 7
+    },
+    "llama": {
+      "product": "똥",
+      "ms": 180000,
+      "shells": 20,
+      "price": 180,
+      "stages": 7
+    }
+  },
+  "seeds": {
+    "apple": {
+      "price": 120,
+      "ms": 240000,
+      "reward": 150
+    },
+    "lemon": {
+      "price": 120,
+      "ms": 240000,
+      "reward": 150
+    },
+    "persimmon": {
+      "price": 120,
+      "ms": 240000,
+      "reward": 150
+    },
+    "banana": {
+      "price": 120,
+      "ms": 240000,
+      "reward": 150
+    },
+    "corn": {
+      "price": 90,
+      "ms": 180000,
+      "reward": 110
+    },
+    "sweetpotato": {
+      "price": 90,
+      "ms": 180000,
+      "reward": 110
+    },
+    "potato": {
+      "price": 90,
+      "ms": 180000,
+      "reward": 110
+    }
+  },
+  "crops": {
+    "carrot": {
+      "ms": 45000,
+      "shells": 6
+    },
+    "potato": {
+      "ms": 80000,
+      "shells": 10
+    },
+    "strawberry": {
+      "ms": 150000,
+      "shells": 18
+    }
+  },
+  "furniture": {
+    "seedplot": 25,
+    "bench": 20,
+    "pot": 8,
+    "tree": 35,
+    "bowl": 10,
+    "pond": 40,
+    "table": 20,
+    "cushion": 12,
+    "lamp": 15,
+    "path": 3,
+    "fence": 5,
+    "field": 25
+  },
+  "clothing": {
+    "trench-set": 180
+  }
+}

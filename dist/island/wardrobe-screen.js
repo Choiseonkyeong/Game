@@ -19,7 +19,7 @@ export function createWardrobeScreen(api){
   const hit=(name,action,x,y,w,h,extra='')=>`<button class="wardrobe-image-hit" aria-label="${escape(name)}" title="${escape(name)}" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%" data-wui="${action}" ${extra}></button>`;
   const item=(id,label,kind,selected=false)=>`<button class="wui-bubble ${selected?'is-worn':''}" data-wui="item:${id}" aria-label="${escape(label)}" aria-pressed="${selected}">${kind==='trench'?`<img class="wui-coat-icon" src="${coatThumb()}" alt="">`:`<span class="wui-crop-icon" style="${cropStyle(...thumbs[kind])}"></span>`}<span class="wui-item-name">${escape(label)}</span>${selected?'<span class="wui-check" aria-hidden="true">✓</span>':''}</button>`;
   let inventory='';
-  if(view==='shop')inventory=item('trench-set',female?'베이지 트렌치 코디 · 입기':'여자 캐릭터 전용','trench',trench);
+  if(view==='shop')inventory=item('trench-set',female?(api.owns&&!api.owns('trench-set')?'베이지 트렌치 코디 · 조개 '+api.price('trench-set'):'베이지 트렌치 코디 · 입기'):'여자 캐릭터 전용','trench',trench);
   else if(category==='bottom')inventory=item('shorts','연청 반바지','bottom',outfit.bottom==='shorts'&&!trench)+item('black-shorts','블랙 숏팬츠','bottom',outfit.bottom==='black-shorts'&&!trench);
   else if(category==='dress')inventory=female?item('trench-set','베이지 트렌치 코디','trench',trench):'<p class="wui-empty">준비 중인 의상이에요</p>';
   else if(category==='shoes')inventory=item('sneakers','화이트 운동화','shoes',true);
@@ -38,7 +38,7 @@ export function createWardrobeScreen(api){
    else if(action==='rotate'){heading=(heading+1)%4;draw();}
    else if(action==='unavailable')inform('이 의상은 준비 중이에요.');
    else if(action==='item'){
-    if(key==='trench-set'){if(!female){inform('여자 캐릭터 전용 코디예요.');return;}api.wearItem('dress',key);}
+    if(key==='trench-set'){if(!female){inform('여자 캐릭터 전용 코디예요.');return;}if(api.purchase&&!api.purchase(key)){inform('조개가 부족해요.');return;}api.wearItem('dress',key);}
     else if(key==='white-tee')api.wearItem('top',key);
     else if(['shorts','black-shorts'].includes(key))api.wearItem('bottom',key);
     else {inform(key==='base-hair'?'기본 헤어를 사용 중이에요.':'기본 운동화를 사용 중이에요.');return;}

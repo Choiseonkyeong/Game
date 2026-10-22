@@ -1,13 +1,14 @@
+import{BALANCE}from'./balance.js?v=42';
 // Seed catalogue, stage progression and artwork are shared by the shop and planted items.
 export const SEED_DESCRIPTION='정성껏 돌보면, 마지막 단계에서 열매를 수확할 수 있어요!';
 export const SEED_CATALOG={
- apple:{name:'사과나무',icon:'🍎',type:'tree',price:120,ms:240000,reward:150},
- lemon:{name:'레몬나무',icon:'🍋',type:'tree',price:120,ms:240000,reward:150},
- persimmon:{name:'감나무',icon:'🟠',type:'tree',price:120,ms:240000,reward:150},
- banana:{name:'바나나나무',icon:'🍌',type:'tree',price:120,ms:240000,reward:150},
- corn:{name:'옥수수',icon:'🌽',type:'field',price:90,ms:180000,reward:110},
- sweetpotato:{name:'고구마',icon:'🍠',type:'field',price:90,ms:180000,reward:110},
- potato:{name:'감자',icon:'🥔',type:'field',price:90,ms:180000,reward:110}
+ apple:{name:'사과나무',icon:'🍎',type:'tree',...BALANCE.seeds.apple},
+ lemon:{name:'레몬나무',icon:'🍋',type:'tree',...BALANCE.seeds.lemon},
+ persimmon:{name:'감나무',icon:'🟠',type:'tree',...BALANCE.seeds.persimmon},
+ banana:{name:'바나나나무',icon:'🍌',type:'tree',...BALANCE.seeds.banana},
+ corn:{name:'옥수수',icon:'🌽',type:'field',...BALANCE.seeds.corn},
+ sweetpotato:{name:'고구마',icon:'🍠',type:'field',...BALANCE.seeds.sweetpotato},
+ potato:{name:'감자',icon:'🥔',type:'field',...BALANCE.seeds.potato}
 };
 export const seedStages=k=>SEED_CATALOG[k]?.type==='tree'?5:4;
 export function seedStage(p,now=Date.now()){const v=SEED_CATALOG[p.seedKind];if(!v)return 1;return Math.min(seedStages(p.seedKind),1+Math.floor(Math.max(0,now-p.seedAt+(p.seedBoost||0))/v.ms*(seedStages(p.seedKind)-1)));}
