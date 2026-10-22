@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T22:23:21+09:00 — Codex · 옷장 이미지 배포 검증 완료
+
+- Source master@db2b160dec71bcede93dd16c5c51207b71954837; task codex/wardrobe-reference-image. 원본 JPEG blob c709aa6c840ea449f72c9fdce787ffdb4ffc5d5c와 공개 파일 일치. 다른 게임 화면/캐릭터/카탈로그 미변경.
+- Checks:117 tests passed; Pages run39786002962 completed success; public build-info source matches. 실제 Chrome에서 16:9 원본 이미지 표시·하의 선택·블랙 숏팬츠 변경·코디 저장·산책 복귀 확인. 실제 iPhone/외부 작업자 접속 미검수.
+- URL https://choiseonkyeong.github.io/Game/island/?v=35 . 그림은 정적 옷장 첫 화면이며 의상 편집은 기존 편집 화면으로 연결. 그림 속 의상/180조개는 이미지 요소이며 새 인벤토리/실제 잔액으로 추가하지 않음.
+
 ## 2026-10-22T22:17:04+09:00 — Codex · 사용자 첨부 옷장 이미지 적용
 
 - Source branch codex/wardrobe-reference-image; base ef710da2efa89fd371906629d635033b7e8ee790. 첨부 JPEG를 원본 바이트 그대로 추가, 옷장 첫 화면에 16:9 전체 이미지 표시. 기존 의상 편집·저장·초기화·산책 연결. 다른 게임 화면/캐릭터/의상 카탈로그 보존.
