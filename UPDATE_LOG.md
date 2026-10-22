@@ -2,6 +2,18 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T23:57:55+09:00 — Codex · 트렌치 코디 원격 저장 차단
+
+- Local source codex/trench-outfit-37@9c84facaecd915694dd01ae99c9d3e6e544274e5; synchronized master 4e4090d57d4a56a9ca71fd43c130babc1f8607f0. 118 tests passed; source/diff checks passed.
+- GitHub create_tree rejected by automatic approval review: source/artwork disclosure to Choiseonkyeong/Game requires explicit repository authorization. No ref update or deployment attempted after rejection; last successful release unchanged. Artwork blob created before rejection, not reachable from deployed source.
+- Remaining: user explicit approval for uploading modified code and supplied artwork to Choiseonkyeong/Game and deployment; actual browser/iPhone checks pending.
+
+## 2026-10-22T23:51:52+09:00 — Codex · 트렌치 코디 상점 연결
+
+- Branch codex/trench-outfit-37; base master@4e4090d57d4a56a9ca71fd43c130babc1f8607f0. 첨부 원화의 4방향 트렌치코트·화이트 프릴 스커트 코디 추가. 기존 무료 의상 정책 유지, 상점에서 입기/방향 확인, 옷장 세트 해제·코디 저장·실내외 렌더 연결. 기존 캐릭터 원화/옷장 배경/다른 화면은 보존. 채팅의 얼굴 수정 이미지는 배포된 적 없어 복구할 앱 소스 없음.
+- Checks: 118 automated tests passed; syntax/diff checks passed. Browser binary download failed; actual browser/mobile verification pending.
+- Deployment: pending GitHub Pages; source commit to follow after commit creation.
+
 ## 2026-10-22T22:47:06+09:00 — Codex · 이전 옷장 복구 배포 완료
 
 - Source master@e436af408f4685eb10ffb1ac982348f02b506c50; 이전35의 4개 소스 blob과 정확히 일치. 다른 게임 파일·이력·진행 보존.
