@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T21:53:38.893Z (UTC; KST +09:00) — Codex · 공개 브라우저 검수 및 확대 섬 시점 보정
+
+- Source: master@ef7a8c2accf24bbd5381dde07b0f14fa844a0409, PR2 merged. Pages39860079485 all steps success. Public build-info exact source, built_at2026-10-22T21:47:55.527Z.
+- Public Chrome: first planted apple, watering, stages1→5, harvest+150 shells and Lv2 terrain/house transition observed; feed purchase150→148 and milk148→145 with stock1 each; Lv4 adoption lock; approved wardrobe frame/shop180 and insufficient-shell rejection checked. 127 tests pass. Actual iPhone/mobile touch and full animal lifecycle in browser unverified (unit-tested).
+- QA fix: enlarged island camera now centers on actual image bounds and adds8% padding; Lv1 view unchanged. Patch deployment pending; last verified success retained.
+
 ## 2026-10-23T06:46:18+09:00 — Codex · 사용자 승인 후 업로드 및 배포 재개
 
 - User explicitly approved uploading modified code/configuration to Choiseonkyeong/Game PR2 and continuing completion. Tests127 passed. Deployment pending; previous successful release preserved.
