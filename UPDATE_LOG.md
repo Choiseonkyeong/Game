@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T22:35:19+09:00 — Codex · 옷장 전환 오류 수정 배포 완료
+
+- Source master@40608f5195032000f3aa351b586fb222849b2fb3; task codex/wardrobe-inline-36, base4281bc8. 나무 프레임 옷장 안에서 실제 캐릭터/잔액/착용/선택 표시. 구형 편집 화면 진입 제거, 원본 배경은 채도 완화. 캐릭터 원화·카탈로그·다른 화면 보존.
+- Checks:117 tests passed; live-render wallet/equipped/empty-category exercise passed; Pages run39787741309 all steps success; public build-info exact source. 실제 Chrome에서 옷장 열기→하의 선택→연청 착용→뒷모습 전환 후 동일 옷장 구성 유지 확인, 중앙 게임 캐릭터·실제 잔액0 표시 확인.
+- URL https://choiseonkyeong.github.io/Game/island/?v=36 . 실제 iPhone 터치/외부 작업자 접속 미검수. 미보유 의상 추가 없음.
+
 ## 2026-10-22T22:29:12+09:00 — Codex · 옷장 화면 전환 오류 및 그래픽 조화 수정
 
 - Branch codex/wardrobe-inline-36; base4281bc8ee2f900ef17dba1f751fdff392e169d10. 이미지 hotspot→구형 편집 화면 연결 제거. 같은 나무 프레임 안에서 탭/의상/성별/방향/저장 코디/초기화 조작. 그림 속 고정 인물·아이템·잔액을 실제 게임 데이터로 덮어 표시, 배경 채도 완화. 기존 캐릭터 렌더러/카탈로그/다른 게임 화면 보존.
