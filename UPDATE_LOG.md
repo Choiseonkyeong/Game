@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T00:19:43+09:00 — Codex · 승인 옷장 화면으로 모든 조작 통합
+
+- Branch codex/approved-wardrobe-38; base master62059034ffb840efd251f9586dea258ba10c02b3. 사용자 재첨부 JPEG를 원본 바이트로 적용(blob2f265f80fa070c954a2ff3844c75571c478a9d70). 이전 일반 편집 화면으로 이동하던 옷장/상점 라우트를 동일 승인 나무프레임 화면으로 통합. 버블 아이템·토끼·배경 보존, 실제 착용/잔액/해제/저장/초기화/4방향 표시 연결. 미지원 의상은 준비 중 안내, 인벤토리 임의 추가 없음.
+- 변경 가능한 캐릭터 뒤 배경만 별도 분리, 중앙 원본 캐릭터가 남지 않도록 해당 영역에만 clean plate 합성. 검정 반바지 정면 기본 코디는 승인 원본 인물을 그대로 표시. 실제 코디 및 다른 방향은 기존 게임 스프라이트 렌더러 사용.
+- Checks:120 automated tests including wardrobe→shop→equip→rotate→save→remove→reset→walk regression; syntax/diff checks. Deployment pending; public UI checks follow.
+
 ## 2026-10-23T00:08:09+09:00 — Codex · 트렌치 코디 배포 검증 완료
 
 - Source codex/trench-outfit-37 / master@f28c6e0d77c64f0186d0c0762a6d05df6ad24e9e. Changes: 승인 원화 4방향 세트 코디 상점 추가, 입기/해제/코디 저장 및 실내외 공통 렌더 연결; 다른 원화·게임 화면 유지.

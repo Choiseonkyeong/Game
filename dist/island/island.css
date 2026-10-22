@@ -86,3 +86,29 @@ input,select,textarea,svg text{font-family:inherit}
 .wardrobe-image-stage .wardrobe-image-hit{position:absolute;margin:0;padding:0;min-width:0;min-height:0;background:transparent;border:0;border-radius:12px;box-shadow:none;color:transparent;cursor:pointer}
 .wardrobe-image-stage .wardrobe-image-hit:focus-visible{outline:3px solid #a34cdc;outline-offset:-3px;background:#ffffff22}
 #dialog.wardrobe-image-open #close{position:fixed;top:8px;right:8px;z-index:2;background:#fff4e9;color:#78391f}
+/* Approved artwork remains the shared surface for wardrobe AND clothing shop. */
+.wui-stage{container-type:inline-size;color:#57291b;font-family:'Pogeun Jua',cursive}
+.wui-stage .wui-original{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.wui-stage .wui-mirror-clean{position:absolute;left:41.2679%;top:27.0988%;width:19.7368%;height:55.2604%;object-fit:fill;pointer-events:none}
+.wui-stage .wui-person{position:absolute;left:40.3%;top:26.2%;width:22.4%;height:58%;object-fit:contain;pointer-events:none;image-rendering:auto}
+.wui-stage .wui-caption{position:absolute;left:43.2%;top:85.3%;width:17%;height:3.4%;display:grid;place-items:center;background:#fff1db;font-size:1.65cqw;line-height:1;white-space:nowrap}
+.wui-stage .wui-inventory{position:absolute;left:12.9%;top:29.3%;width:23.7%;height:44.9%;padding:.35cqw;background:linear-gradient(#fff0db,#ffe5c8);border-radius:1.2cqw;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:30.5%;gap:.65cqw;align-content:start;overflow:auto;scrollbar-width:thin}
+.wui-stage .wui-bubble{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:0;margin:0;padding:.35cqw .1cqw .1cqw;border:.15cqw solid #fffaf5;border-radius:1.15cqw;background:linear-gradient(140deg,#fff9f3e8,#ffe9d9a6 58%,#fffdf0ee);box-shadow:inset 0 .16cqw .5cqw #ffffffcf,0 .2cqw .35cqw #c3956633;font-size:.8cqw;color:#57291b;line-height:1.1}
+.wui-stage .wui-bubble:before{content:'';position:absolute;top:.35cqw;left:.4cqw;width:.9cqw;height:.6cqw;border-radius:50%;background:#fff;transform:rotate(-35deg)}
+.wui-stage .wui-bubble.is-worn{border-color:#b468ed;box-shadow:0 0 0 .1cqw #b468ed}
+.wui-stage .wui-item-name{width:100%;padding:.15cqw;text-align:center;font-size:.75cqw;line-height:1.1}
+.wui-stage .wui-check{position:absolute;top:-.1cqw;right:-.1cqw;background:#b26bf2;color:white;border-radius:50%;width:1.7cqw;height:1.7cqw;font-size:1.2cqw;display:grid;place-items:center}
+.wui-stage .wui-coat-icon{display:block;max-width:84%;height:75%;object-fit:contain;image-rendering:auto}
+.wui-stage .wui-crop-icon{width:85%;height:75%;display:block;background-repeat:no-repeat;border-radius:.6cqw}
+.wui-stage .wui-empty{grid-column:1/-1;align-self:center;text-align:center;font-size:1.2cqw;line-height:1.5;padding:2cqw}
+.wui-stage .wui-board-title,.wui-stage .wui-category-title{position:absolute;left:21.4%;top:23.4%;width:9.5%;height:3.3%;display:grid;place-items:center;background:#fff0dc;font-size:1.65cqw;line-height:1;white-space:nowrap;pointer-events:none}
+.wui-stage .wui-shop-selected{position:absolute;left:51.1%;top:2.4%;width:16.7%;height:7.9%;border:.2cqw solid #c73c65;border-radius:3cqw;pointer-events:none;box-shadow:inset 0 0 .6cqw #ffb3ca}
+.wui-stage .wui-equipped-name{position:absolute;left:78.2%;width:10.6%;height:3.8%;display:flex;align-items:center;background:#fff1e3;font-size:1.12cqw;line-height:1.1}
+.wui-stage .wui-top-name{top:35.8%}.wui-stage .wui-bottom-name{top:48.8%}
+.wui-stage .wui-equipped-icon{position:absolute;left:69.4%;top:30.7%;width:7.3%;height:10.1%;background:#fff4e8;border-radius:1cqw;display:grid;place-items:center}
+.wui-stage .wui-equipped-icon img{max-width:100%;max-height:100%;object-fit:contain}
+.wui-stage .wui-equipped-label{position:absolute;left:79.4%;top:31.2%;width:7.5%;height:3.6%;background:#fff3e6;display:flex;align-items:center;font-size:1.35cqw}
+.wui-stage .wui-wallet{position:absolute;left:91%;top:11.7%;width:6.6%;height:3.8%;display:grid;place-items:center;background:#fff6e8;font-size:1.5cqw;line-height:1;white-space:nowrap;border-radius:.35cqw}
+.wui-stage .wui-notice{position:absolute;left:42%;top:12%;width:19%;min-height:0;margin:0;text-align:center;background:#fff5e6e6;border-radius:1cqw;font-size:1cqw;line-height:1.4;padding:.25cqw;color:#6a3829;pointer-events:none}
+.wui-stage .wui-notice:empty{display:none}
+.wui-stage button:focus-visible{outline:.22cqw solid #ae68da;outline-offset:-.2cqw}
