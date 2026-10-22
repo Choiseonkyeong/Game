@@ -2,6 +2,20 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T00:08:09+09:00 — Codex · 트렌치 코디 배포 검증 완료
+
+- Source codex/trench-outfit-37 / master@f28c6e0d77c64f0186d0c0762a6d05df6ad24e9e. Changes: 승인 원화 4방향 세트 코디 상점 추가, 입기/해제/코디 저장 및 실내외 공통 렌더 연결; 다른 원화·게임 화면 유지.
+- Checks:119 tests passed; Native Canvas 4방향 투명 crop 및 16방향/동작 조합, 착용/해제/저장 복원·남자 정체성 보호 통과.
+- Deployment: Pages run39801088868 completed success. 공개 build-info commit=f28c6e0d77c64f0186d0c0762a6d05df6ad24e9e, built_at=2026-10-22T15:05:25.688Z. Chrome 공개 상점에서 착용 중 표시/정면·뒷모습 전환/산책 복귀/새로고침 후 세트 유지 확인.
+- URL https://choiseonkyeong.github.io/Game/island/?v=37 . 실제 iPhone 터치·외부 공동작업자 접속 미검수. 원화는 4방향 정지 그림이며 신규 액션 시트 생성 없음.
+
+## 2026-10-23T00:06:05+09:00 — Codex · 승인된 트렌치 코디 업로드 / 배포 대기
+
+- Source codex/trench-outfit-37 / master@f28c6e0d77c64f0186d0c0762a6d05df6ad24e9e; synchronized base4e4090d57d4a56a9ca71fd43c130babc1f8607f0. 사용자가 Choiseonkyeong/Game 원화·수정 코드 업로드 및 배포를 명시 승인. 원화 blob95b77175271dbc19645bda526bebce555860a2fb 원본 바이트 일치. 여성 전용 세트로 남자 정체성 보존.
+- Checks:119 automated tests passed; Native Canvas 4방향 투명 프레임 및 16방향/동작 조합 렌더, 착용/해제/저장 코디 복구·남자 착용 차단 통과. 소스/diff 검사 통과.
+- Deployment: Pages run39800724921 queued/waiting; latest run39801088868 pending. 공급자 실행 서버 배정 대기, pending_deployments=[] (사용자 승인 요청 없음). 공개 Chrome은 아직 island.js?v=35; 새 코디 브라우저/실제 iPhone 검수 미완료. 마지막 성공 배포 보존.
+- Remaining: 실행 완료 및 공개 build-info/실제 코디 UI 검증.
+
 ## 2026-10-22T23:57:55+09:00 — Codex · 트렌치 코디 원격 저장 차단
 
 - Local source codex/trench-outfit-37@9c84facaecd915694dd01ae99c9d3e6e544274e5; synchronized master 4e4090d57d4a56a9ca71fd43c130babc1f8607f0. 118 tests passed; source/diff checks passed.

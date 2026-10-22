@@ -38,14 +38,15 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "wardrobe-reference-35-restored",
-      "source_commit": "e436af408f4685eb10ffb1ac982348f02b506c50",
-      "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=35",
-      "run_id": 39789693928,
+      "version": "island-trench-37",
+      "source_commit": "f28c6e0d77c64f0186d0c0762a6d05df6ad24e9e",
+      "source_branch": "codex/trench-outfit-37",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=37",
+      "run_id": 39801088868,
       "deployment": "succeeded",
-      "checked_at": "2026-10-22T13:46:46.278Z",
-      "checks": "117 tests passed; four restored blobs exactly match db2b160 wardrobe image version; Pages run completed success; public build-info matches source; Chrome wardrobe image screen observed. Other game files preserved.",
+      "checked_at": "2026-10-23T00:08:09+09:00",
+      "automated_tests_passed": 119,
+      "checks": "Pages success; public build-info exact source; Chrome shop equip and back-view switch, walk return and reload persistence; native Canvas 16 pose/direction renders, remove/save restore and male identity guard",
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false
@@ -741,5 +742,19 @@
     "external_collaborator_access_verified": false,
     "checks": "GitHub Pages Deploy shared game success; public build-info exact source. Public Chrome wardrobe female/male front screenshots compared: neck100, shorts hem154, ankles168, sole183 registration on128x192 canvas. Female approved face/hair/outfit retained; legs shortened and head proportions matched. Existing sheets unchanged.",
     "remaining": "Actual iPhone touch unverified. Side/back/action sheets retained."
+  },
+  "island_trench_release": {
+    "version": "island-trench-37",
+    "source_commit": "f28c6e0d77c64f0186d0c0762a6d05df6ad24e9e",
+    "source_branch": "codex/trench-outfit-37",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=37",
+    "run_id": 39801088868,
+    "deployment": "succeeded",
+    "checked_at": "2026-10-23T00:08:09+09:00",
+    "automated_tests_passed": 119,
+    "checks": "Pages success; public build-info exact source; Chrome shop equip and back-view switch, walk return and reload persistence; native Canvas 16 pose/direction renders, remove/save restore and male identity guard",
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false
   }
 }
