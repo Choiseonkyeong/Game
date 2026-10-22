@@ -98,7 +98,7 @@ function closet(){
  const outfit=currentOutfit(),gender=humanChoice(),items=ITEMS[slot]||[],label=WARDROBE_TABS[slot]||'상의';
  const itemName=k=>ITEMS[k]?.find(i=>i[0]===outfit[k])?.[1]||({shoes:'화이트 운동화',hair:'기본 헤어',accessory:'착용 없음'}[k]||'');
  modal(`<div class="wardrobe-image-stage wardrobe-live"><img class="wardrobe-backdrop" src="art/wardrobe-reference-35.jpeg" alt="바다와 꽃으로 꾸민 나무 옷장" width="1536" height="864">
- <div class="wc-heading">내 옷장</div><div class="wc-shop-label">나의 코디</div><div class="wc-wallet">${shellIcon()} 조개 ${shells}</div>
+ <div class="wc-heading">내 옷장</div><div class="wc-shop-label">나의 코디</div><div class="wc-wallet">${shellIcon} 조개 ${shells}</div>
  <div class="wc-categories">${Object.entries(WARDROBE_TABS).map(([key,text])=>`<button data-slot="${key}" aria-pressed="${slot===key}" class="${slot===key?'chosen':''}">${text}</button>`).join('')}</div>
  <div class="wc-items" aria-label="${label} 보유 아이템">${items.length?items.map(([id,name,color])=>`<button data-wear="${id}" aria-label="${name}" aria-pressed="${outfit[slot]===id}" class="${outfit[slot]===id?'selected':''}">${garmentIcon(slot,color)}<span>${name}</span>${outfit[slot]===id?'<b aria-hidden="true">✓</b>':''}</button>`).join(''):`<p class="wc-empty">${slot==='shoes'?'화이트 운동화를 신고 있어요.':slot==='hair'?'지금 캐릭터의 기본 헤어예요.':`아직 보유한 ${label} 아이템이 없어요.`}</p>`}</div>
  <div class="wc-gender"><button data-human="female" aria-pressed="${gender==='female'}">여자</button><button data-human="male" aria-pressed="${gender==='male'}">남자</button></div>
