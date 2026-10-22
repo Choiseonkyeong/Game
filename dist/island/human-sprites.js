@@ -11,7 +11,7 @@ export const humanChoice=()=>closet.gender;
 export const currentOutfit=()=>closet[closet.gender];
 export const savedLooks=()=>closet.looks;
 export function chooseHuman(gender){if(!['female','male'].includes(gender))return;closet.gender=gender;direction=0;save();}
-export function wearItem(slot,value){if(!ITEMS[slot]?.some(i=>i[0]===value))return false;closet[closet.gender][slot]=value;if(slot==='top'||slot==='bottom')closet[closet.gender].dress='none';save();return true;}
+export function wearItem(slot,value){if(slot==='dress'&&value==='trench-set'&&closet.gender!=='female')return false;if(!ITEMS[slot]?.some(i=>i[0]===value))return false;closet[closet.gender][slot]=value;if(slot==='top'||slot==='bottom')closet[closet.gender].dress='none';save();return true;}
 export function saveLook(){closet.looks.unshift({gender:closet.gender,outfit:{...currentOutfit()}});closet.looks=closet.looks.slice(0,6);save();}
 export function loadLook(i){const look=closet.looks[i];if(!look)return;closet[closet.gender]=cleanOutfit(look.outfit,closet.gender);save();}
 // A complete illustrated body is retained under every outfit; never attach a head to a replacement stick rig.
