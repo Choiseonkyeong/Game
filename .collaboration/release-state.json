@@ -38,23 +38,17 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "wardrobe-inline-36",
-      "source_commit": "40608f5195032000f3aa351b586fb222849b2fb3",
+      "version": "wardrobe-reference-35-restored",
+      "source_commit": "e436af408f4685eb10ffb1ac982348f02b506c50",
       "source_branch": "master",
-      "synchronized_master": "40608f5195032000f3aa351b586fb222849b2fb3",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=36",
-      "run_id": 39787741309,
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=35",
+      "run_id": 39789693928,
       "deployment": "succeeded",
-      "checked_at": "2026-10-22T13:34:52.920Z",
-      "checks": "117 tests; live wardrobe render exercise verifies wallet/equipped/empty categories; syntax/diff checks. Public build-info matches 40608f5195032000f3aa351b586fb222849b2fb3. Actual Chrome confirms illustrated wardrobe remains through category/item/direction changes; actual character and balance replace baked sample. Other game surfaces/catalog unchanged.",
-      "live_url_verified": true,
+      "checked_at": "2026-10-22T13:46:46.278Z",
+      "checks": "117 tests passed; four restored blobs exactly match db2b160 wardrobe image version; Pages run completed success; public build-info matches source; Chrome wardrobe image screen observed. Other game files preserved.",
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "external_collaborator_access_verified": false,
-      "limitations": [
-        "Only actual existing inventory is selectable; no illustrated sample clothes added.",
-        "Actual iPhone touch not verified."
-      ]
+      "external_collaborator_access_verified": false
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
