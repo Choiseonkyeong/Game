@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T22:29:12+09:00 — Codex · 옷장 화면 전환 오류 및 그래픽 조화 수정
+
+- Branch codex/wardrobe-inline-36; base4281bc8ee2f900ef17dba1f751fdff392e169d10. 이미지 hotspot→구형 편집 화면 연결 제거. 같은 나무 프레임 안에서 탭/의상/성별/방향/저장 코디/초기화 조작. 그림 속 고정 인물·아이템·잔액을 실제 게임 데이터로 덮어 표시, 배경 채도 완화. 기존 캐릭터 렌더러/카탈로그/다른 게임 화면 보존.
+- Checks:117 tests passed; JS syntax/diff checks. Deployment pending; actual browser check follows publication.
+
 ## 2026-10-22T22:23:21+09:00 — Codex · 옷장 이미지 배포 검증 완료
 
 - Source master@db2b160dec71bcede93dd16c5c51207b71954837; task codex/wardrobe-reference-image. 원본 JPEG blob c709aa6c840ea449f72c9fdce787ffdb4ffc5d5c와 공개 파일 일치. 다른 게임 화면/캐릭터/카탈로그 미변경.
