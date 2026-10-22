@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T00:31:31+09:00 — Codex · 승인 옷장 디자인 통합 배포 완료
+
+- Source codex/approved-wardrobe-38 / master@a79e5d0ad6e622ffb5f0e7c8cd364271a72a7939; synchronized base62059034ffb840efd251f9586dea258ba10c02b3. 승인 JPEG 원본 바이트 유지. 옷장·상점·착용·해제·저장·초기화·캐릭터 회전이 모두 동일 나무프레임 화면 안에서 동작하며 일반 편집 화면 전환 제거. 실내외 게임 렌더와 캐릭터 원화는 보존, 큰 옷장 미리보기만 512×768 원화 표시.
+- Checks:120 test regression suite; final Pages Validate game passed. Native Canvas base/trench512×768 렌더 확인. Chrome 공개 화면에서 승인 원본 기본 코디, 상점 이동·트렌치 입기, 하의 선택, 캐릭터 뒷모습·코디 저장·산책 복귀, 재접속 유지 확인. 실제 iPhone 터치/외부 작업자 접속 미검수.
+- Deployment: Pages run39805155547 all steps success; public build-info exact sourcea79e5d0ad6e622ffb5f0e7c8cd364271a72a7939, built_at2026-10-22T15:28:45.799Z. URL https://choiseonkyeong.github.io/Game/island/?v=40 .
+- Limit: 그림에 있는 미지원 의상 8종은 준비 중 안내만 표시; 실제 인벤토리에 임의로 추가하거나 가격을 설정하지 않음.
+
 ## 2026-10-23T00:19:43+09:00 — Codex · 승인 옷장 화면으로 모든 조작 통합
 
 - Branch codex/approved-wardrobe-38; base master62059034ffb840efd251f9586dea258ba10c02b3. 사용자 재첨부 JPEG를 원본 바이트로 적용(blob2f265f80fa070c954a2ff3844c75571c478a9d70). 이전 일반 편집 화면으로 이동하던 옷장/상점 라우트를 동일 승인 나무프레임 화면으로 통합. 버블 아이템·토끼·배경 보존, 실제 착용/잔액/해제/저장/초기화/4방향 표시 연결. 미지원 의상은 준비 중 안내, 인벤토리 임의 추가 없음.

@@ -38,18 +38,19 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-trench-37",
-      "source_commit": "f28c6e0d77c64f0186d0c0762a6d05df6ad24e9e",
-      "source_branch": "codex/trench-outfit-37",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=37",
-      "run_id": 39801088868,
+      "version": "island-approved-wardrobe-40",
+      "source_commit": "a79e5d0ad6e622ffb5f0e7c8cd364271a72a7939",
+      "source_branch": "codex/approved-wardrobe-38",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=40",
+      "run_id": 39805155547,
       "deployment": "succeeded",
-      "checked_at": "2026-10-23T00:08:09+09:00",
-      "automated_tests_passed": 119,
-      "checks": "Pages success; public build-info exact source; Chrome shop equip and back-view switch, walk return and reload persistence; native Canvas 16 pose/direction renders, remove/save restore and male identity guard",
+      "checked_at": "2026-10-23T00:31:31+09:00",
+      "automated_tests_passed": 120,
+      "checks": "Pages all steps success; public build-info exact source; Chrome approved wardrobe artwork, shop within same frame, equip trench, bottom selection, turn, save, walk and reload; native Canvas full-detail512x768 portraits",
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "external_collaborator_access_verified": false
+      "external_collaborator_access_verified": false,
+      "limitations": "Eight illustrated but unsupported tops show a preparation notice; no invented inventory or prices."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
@@ -756,5 +757,20 @@
     "actual_desktop_browser_verified": true,
     "actual_mobile_touch_verified": false,
     "external_collaborator_access_verified": false
+  },
+  "island_approved_wardrobe_release": {
+    "version": "island-approved-wardrobe-40",
+    "source_commit": "a79e5d0ad6e622ffb5f0e7c8cd364271a72a7939",
+    "source_branch": "codex/approved-wardrobe-38",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=40",
+    "run_id": 39805155547,
+    "deployment": "succeeded",
+    "checked_at": "2026-10-23T00:31:31+09:00",
+    "automated_tests_passed": 120,
+    "checks": "Pages all steps success; public build-info exact source; Chrome approved wardrobe artwork, shop within same frame, equip trench, bottom selection, turn, save, walk and reload; native Canvas full-detail512x768 portraits",
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "limitations": "Eight illustrated but unsupported tops show a preparation notice; no invented inventory or prices."
   }
 }
