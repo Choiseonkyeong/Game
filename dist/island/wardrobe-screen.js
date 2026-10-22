@@ -1,10 +1,10 @@
-import{trenchFrame}from'./trench-outfit.js?v=37';
+import{trenchFrame,trenchPreview}from'./trench-outfit.js?v=38';
 const ART='art/wardrobe-approved-38.jpeg';
 const CATEGORIES=[['top','상의'],['bottom','하의'],['dress','드레스'],['shoes','신발'],['hair','헤어'],['accessory','액세서리']];
 const viewNames=['정면','뒷모습','왼쪽','오른쪽'];
 const cropStyle=(x,y,w,h)=>`background-image:url('${ART}');background-size:${1536/w*100}% ${864/h*100}%;background-position:${x/(1536-w)*100}% ${y/(864-h)*100}%;`;
 const thumbs={top:[206,264,105,95],bottom:[1070,374,105,86],shoes:[1070,487,105,83],accessory:[1070,600,105,82],hair:[646,250,280,330]};
-function coatThumb(){const frame=trenchFrame();if(!frame)return'';const c=document.createElement('canvas');c.width=156;c.height=128;c.getContext('2d').drawImage(frame,25,84,78,67,0,0,156,134);return c.toDataURL();}
+function coatThumb(){const frame=trenchPreview();if(!frame)return'';const c=document.createElement('canvas');c.width=156;c.height=128;c.getContext('2d').drawImage(frame,100,336,312,268,0,0,156,134);return c.toDataURL();}
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function createWardrobeScreen(api){
  let category='top',view='closet',heading=0,notice='';

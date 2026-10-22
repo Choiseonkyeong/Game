@@ -112,3 +112,4 @@ input,select,textarea,svg text{font-family:inherit}
 .wui-stage .wui-notice{position:absolute;left:42%;top:12%;width:19%;min-height:0;margin:0;text-align:center;background:#fff5e6e6;border-radius:1cqw;font-size:1cqw;line-height:1.4;padding:.25cqw;color:#6a3829;pointer-events:none}
 .wui-stage .wui-notice:empty{display:none}
 .wui-stage button:focus-visible{outline:.22cqw solid #ae68da;outline-offset:-.2cqw}
+.wui-stage .wui-mirror-clean{mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent),linear-gradient(to bottom,transparent,#000 2%,#000 99%,transparent);mask-composite:intersect;-webkit-mask-composite:source-in}

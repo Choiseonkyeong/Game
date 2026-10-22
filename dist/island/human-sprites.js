@@ -1,4 +1,4 @@
-import{loadTrenchOutfit,trenchFrame}from'./trench-outfit.js?v=37';
+import{loadTrenchOutfit,trenchFrame,trenchPreview}from'./trench-outfit.js?v=38';
 import{loadActionSprites,drawAction,actionName}from'./actions.js?v=25';
 import{drawAccessories}from'./accessories.js?v=18';
 import{walkFrame,spriteOffset,gaitSample,GAIT_FPS,GAIT_FRAMES}from'./locomotion.js?v=30';
@@ -114,4 +114,15 @@ function drawWalking(ctx,g,row,o,time,amount=1){const sample=gaitSample(time,amo
  }
  // The complete face, hair, hands and torso retain their original pixels and proportions.
  ctx.drawImage(parts.upper,0,0);ctx.restore();
+}
+
+// Keep full source detail in the large wardrobe preview; outdoor animation stays 128×192.
+export function humanWardrobeSnapshot(opts={}){
+ const o=opts.outfitOverride||currentOutfit(),row=Number.isInteger(opts.heading)?opts.heading:0;
+ if(closet.gender!=='female')return humanSnapshot(opts);
+ if(o.dress==='trench-set'){const frame=trenchPreview(row);return frame?frame.toDataURL():humanSnapshot(opts);}
+ if(!sources.femaleUnified)return humanSnapshot(opts);
+ const c=document.createElement('canvas');c.width=512;c.height=768;const x=c.getContext('2d'),[sx,sy,sw,sh]=FEMALE_VIEWS[row],scale=700/sh;x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';x.drawImage(sources.femaleUnified,sx,sy,sw,sh,256-sw*scale/2,728-sh*scale,sw*scale,sh*scale);
+ if(o.bottom==='shorts'&&row!==1){const p=x.getImageData(0,0,512,768),d=p.data,color=rgb('#9bb3ce');for(let yy=484;yy<564;yy++)for(let xx=0;xx<512;xx++){const nx=xx/4,i=(yy*512+xx)*4,r=d[i],g=d[i+1],b=d[i+2],max=Math.max(r,g,b),min=Math.min(r,g,b);if(d[i+3]>20&&(row===2?nx>35&&nx<64:row===3?nx>64&&nx<93:nx>40&&nx<88)&&max<155&&(max-min)/(max||1)<.3)mix(d,i,color,Math.max(.48,Math.min(1.04,max/85)));}x.putImageData(p,0,0);}
+ return c.toDataURL();
 }

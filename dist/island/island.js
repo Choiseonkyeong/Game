@@ -1,4 +1,4 @@
-import{createWardrobeScreen}from'./wardrobe-screen.js?v=38';
+import{createWardrobeScreen}from'./wardrobe-screen.js?v=39';
 import{SEED_CATALOG,SEED_DESCRIPTION,seedStage,seedStages,seedArt}from'./seed-shop.js?v=28';
 import{ACTIONS}from'./actions.js?v=25';
 import{walkingView}from'./locomotion.js?v=30';
@@ -9,10 +9,10 @@ import{createWeather,weatherHeadline}from'./weather.js?v=8';
 import{SHELL_KEY,readShells,sale,shellIcon,earn,spend,FISH_KEY,FISH_PRICE}from'./shells.js?v=9';
 import{ARCHIPELAGO_KEY,readArchipelago,activeIsland,expandCost,newIslandCost,expand,createIsland,switchIsland,MAX_LEVEL}from'./archipelago.js?v=9';
 import{loadLivestock,livestockMarkup,paintLivestock}from'./livestock.js?v=28';
-import{loadHumanSprites,humanChoice,chooseHuman,humanMarkup,paintHumans,currentOutfit,wearItem,saveLook,loadLook,savedLooks,humanSnapshot}from'./human-sprites.js?v=37';
+import{loadHumanSprites,humanChoice,chooseHuman,humanMarkup,paintHumans,currentOutfit,wearItem,saveLook,loadLook,savedLooks,humanSnapshot,humanWardrobeSnapshot}from'./human-sprites.js?v=38';
 import{ITEMS,SLOT_LABELS}from'./wardrobe.js?v=37';
 import{patchSvg}from'./dom-render.js?v=5';
-import{createRoom}from'./room.js?v=37';
+import{createRoom}from'./room.js?v=38';
 import{createAnimalVisitors}from'./animal-visitors.js?v=30';
 import{KEY,FURNITURE,SEEDS,CLOSET,LABELS,CROPS,LIVESTOCK,ITEM_PRICES,MAX_ANIMALS,fresh,restore,apply,growth,validCell,passable,route,approach,limit,ripe,productReady,setTerrain,terrainCells}from'./core.js?v=28';
 import{avatar}from'./avatar.js?v=1';
@@ -92,7 +92,7 @@ function modal(html){$('dialog').classList.remove('wardrobe-open','seed-image-op
 function onboarding(){cancelWalk();$('close').hidden=true;modal(`<small>WELCOME TO POGEUN ISLAND</small><h2>포근섬에 오신 걸 환영해요</h2><form id="profile-form"><label for="profile-name">이름</label><input id="profile-name" name="name" autocomplete="nickname" maxlength="20" required placeholder="섬에서 사용할 이름"><fieldset><legend>성별 · 기본 캐릭터</legend><label><input type="radio" name="gender" value="female" required checked> 여자 캐릭터</label><label><input type="radio" name="gender" value="male" required> 남자 캐릭터</label></fieldset><button class="primary" type="submit">포근섬 시작하기</button></form>`);$('profile-form').onsubmit=e=>{e.preventDefault();const form=new FormData(e.currentTarget),next=readProfile(JSON.stringify({name:form.get('name'),gender:form.get('gender')}));if(!next){$('profile-name').setCustomValidity('이름을 입력해 주세요.');$('profile-name').reportValidity();return;}profile=next;chooseHuman(profile.gender);centerAvatar(state);resetActor();state.welcomed=true;try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));}catch{say('정보를 저장하지 못했어요. 다음 실행 때 다시 입력해 주세요.');}save();$('close').hidden=false;$('dialog').close();render();say(profile.name+'님, 포근섬에 오신 걸 환영해요.');};$('profile-name').oninput=e=>e.target.setCustomValidity('');}
 $('dialog').addEventListener('cancel',e=>{if(!profile)e.preventDefault();});
 // A single approved scene owns every wardrobe/shop interaction.
-const wardrobeScreen=createWardrobeScreen({modal,paper:$('paper'),dialog:$('dialog'),currentOutfit,humanChoice,humanSnapshot,wearItem,saveLook,say,shells:()=>shells,changed:()=>{state.tasks.dressed=true;save();render();},done:()=>{$('dialog').close();mode='walk';render();say('새 코디로 산책을 시작해 볼까요?');}});
+const wardrobeScreen=createWardrobeScreen({modal,paper:$('paper'),dialog:$('dialog'),currentOutfit,humanChoice,humanSnapshot:humanWardrobeSnapshot,wearItem,saveLook,say,shells:()=>shells,changed:()=>{state.tasks.dressed=true;save();render();},done:()=>{$('dialog').close();mode='walk';render();say('새 코디로 산책을 시작해 볼까요?');}});
 function closet(){cancelWalk();wardrobeScreen.open();}
 function clothingShop(){cancelWalk();wardrobeScreen.open({view:'shop',category:'dress'});}
 function closetDetails(){cancelWalk();wardrobeScreen.open({category:slot});}

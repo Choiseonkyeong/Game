@@ -19,3 +19,8 @@ export function trenchFrame(row=0){
  const scale=175/sh,ctx=c.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
  ctx.drawImage(sheet,sx,sy,sw,sh,64-sw*scale/2,182-sh*scale,sw*scale,sh*scale);frames.set(row,c);return c;
 }
+// Wardrobe uses the original art at display resolution, independent of the small walking atlas.
+export function trenchPreview(row=0){
+ if(!sheet)return null;const key='preview'+row;if(frames.has(key))return frames.get(key);
+ const [sx,sy,sw,sh]=views[row],c=document.createElement('canvas');c.width=512;c.height=768;const x=c.getContext('2d'),scale=700/sh;x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';x.drawImage(sheet,sx,sy,sw,sh,256-sw*scale/2,728-sh*scale,sw*scale,sh*scale);frames.set(key,c);return c;
+}
