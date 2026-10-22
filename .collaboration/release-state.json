@@ -38,20 +38,21 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-center-23",
-      "source_commit": "f758beb4b7efcdc09ff383ebfc140bcd5fa4e4ad",
-      "source_branch": "codex/center-avatar-23",
-      "synchronized_master": "f758beb4b7efcdc09ff383ebfc140bcd5fa4e4ad",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=23",
-      "run_id": 39569143950,
+      "version": "wardrobe-reference-35",
+      "source_commit": "db2b160dec71bcede93dd16c5c51207b71954837",
+      "source_branch": "master",
+      "synchronized_master": "db2b160dec71bcede93dd16c5c51207b71954837",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=35",
       "deployment": "succeeded",
-      "deployed_at": "2026-10-21T08:25:57Z",
-      "checked_at": "2026-10-21T08:26:38.280Z",
-      "checks": "108 tests and syntax/diff checks passed. Pages success and public build-info exact source. Actual Chrome reloaded island.js?v=23; avatar DOM transform translate(480 470), screenshot shows central grass placement. Actual iPhone unverified.",
+      "checked_at": "2026-10-22T13:22:56.753Z",
+      "checks": "117 tests; syntax/diff checks; public build-info matches source; public JPEG blob c709aa6c840ea449f72c9fdce787ffdb4ffc5d5c matches uploaded original; actual Chrome visually confirmed intact 16:9 artwork, bottom selection, outfit change, save and return to walk.",
       "live_url_verified": true,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "external_collaborator_access_verified": false
+      "external_collaborator_access_verified": false,
+      "limitations": [
+        "The supplied artwork is a static wardrobe landing image. Existing wardrobe editor handles actual outfit selection; illustrated items and shell 180 are part of the image, not added inventory or actual balance."
+      ]
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "102 automated tests passed locally and in the workflow. Local Chromium 390x844: island render, walking, crop reap +6, hen product +4, livestock adoption, expansion to Lv3, new island create/switch, reload persistence, house entry, field placement; no console errors except blocked Open-Meteo. Public URL/build-info not opened by Claude (sandbox proxy blocks github.io, 403).",
