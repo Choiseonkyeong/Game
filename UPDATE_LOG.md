@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T22:17:04+09:00 — Codex · 사용자 첨부 옷장 이미지 적용
+
+- Source branch codex/wardrobe-reference-image; base ef710da2efa89fd371906629d635033b7e8ee790. 첨부 JPEG를 원본 바이트 그대로 추가, 옷장 첫 화면에 16:9 전체 이미지 표시. 기존 의상 편집·저장·초기화·산책 연결. 다른 게임 화면/캐릭터/의상 카탈로그 보존.
+- Checks:117 automated tests passed; JS syntax/diff checks; original image bytes compared. Browser validation unavailable: installed Playwright lacks Chromium executable. Actual iPhone unverified.
+- Deployment: pending GitHub Pages after authorized source push.
+
 ## 2026-10-22T01:39:29+09:00 — Codex · 첫 여자 원화 수정본 준비 / 원격 저장 차단
 
 - Local branch codex/female-style-34. 첫 선택 원화 정면/뒤/좌/우를 균일 축소만 적용. 원본 여자 actions.js/female.webp/catalog/test 유지; 남자 동작 기반/재생성 여자 동작은 모두 제외. 실제 서비스는 기존33 유지.
