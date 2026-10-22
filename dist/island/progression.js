@@ -1,0 +1,14 @@
+// Expand existing art and its collision tiles together; keep the approved level-one scene.
+const cache=new WeakMap();
+export function terrainStage(data,level){
+ if(!data)return null;let saved=cache.get(data);if(!saved){saved=new Map();cache.set(data,saved);}if(saved.has(level))return saved.get(level);
+ const source=data?.stages?.[Math.min(data.stages.length,level)-1];if(!source)return null;
+ if(level===1)return source;
+ const previous=terrainStage(data,level-1),factor=Math.max(1,previous.width*1.12/source.width,previous.height*1.12/source.height);
+ if(factor===1)return source;
+ const {hx,hy,ox,oy}=data.grid,cx=480,cy=400;
+ const transform=(x,y)=>[cx+(x-cx)*factor,cy+(y-cy)*factor];
+ const cells=new Map();for(const[c,r]of source.cells)for(let dc=-.5;dc<.5;dc+=.2)for(let dr=-.5;dr<.5;dr+=.2){const[x,y]=transform(ox+(c+dc-r-dr)*hx,oy+(c+dc+r+dr)*hy),u=(x-ox)/hx,v=(y-oy)/hy,n=[Math.round((u+v)/2),Math.round((v-u)/2)];cells.set(n.join(','),n);}
+ const[x,y]=transform(source.x,source.y),[a,b,w,h]=source.house,[houseX,houseY]=transform(a,b);
+ const result={...source,x,y,width:source.width*factor,height:source.height*factor,house:[houseX,houseY,w*factor,h*factor],cells:[...cells.values()]};saved.set(level,result);return result;
+}
