@@ -38,20 +38,19 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-loop-balance-43",
-      "source_commit": "5cd56cb347a75d3de4c080299c9262c863a4a72c",
+      "version": "island-right-starter-44",
+      "source_commit": "0676a3beebc610245f4b773ef471f1d8f5aece53",
       "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=42",
-      "run_id": 39860917314,
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=44",
+      "run_id": 39863124737,
       "deployment": "succeeded",
-      "built_at": "2026-10-22T21:54:25.981Z",
-      "checked_at": "2026-10-23T06:55:57.726+09:00",
-      "automated_tests_passed": 127,
-      "actual_desktop_browser_verified": true,
+      "built_at": "2026-10-22T22:11:57.664Z",
+      "checked_at": "2026-10-23T07:13:00.396+09:00",
+      "automated_tests_passed": 130,
+      "public_build_info_verified": true,
       "actual_mobile_touch_verified": false,
-      "external_collaborator_access_verified": false,
-      "checks": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
-      "limitations": "Full livestock lifecycle checked in unit tests, not end-to-end browser. Actual iPhone/mobile touch and external collaborator access remain unverified. Provisional balance values; growth uses existing stage artwork; CLI editing tool in tools/pogeun-balance.mjs."
+      "checks": "Pages all steps success; public build-info exact source. New/right starter, old left starter migration with growth/ID/watering retained, save/restore/idempotence, completed-progress and occupied-slot preservation tested. Original artwork and CSS unchanged.",
+      "limitations": "Fresh/legacy Lv1 screen not visually checked on the user's iPhone. Starter placement/render logic checked in tests; prior QA browser has Lv2 progress, which is deliberately preserved."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
@@ -384,6 +383,22 @@
       "actual_mobile_touch_verified": false,
       "external_collaborator_access_verified": false,
       "limitations": "Eight illustrated but unsupported tops show a preparation notice; no invented inventory or prices."
+    },
+    "previous_successful_before_right_starter": {
+      "version": "island-loop-balance-43",
+      "source_commit": "5cd56cb347a75d3de4c080299c9262c863a4a72c",
+      "source_branch": "master",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=42",
+      "run_id": 39860917314,
+      "deployment": "succeeded",
+      "built_at": "2026-10-22T21:54:25.981Z",
+      "checked_at": "2026-10-23T06:55:57.726+09:00",
+      "automated_tests_passed": 127,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "checks": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
+      "limitations": "Full livestock lifecycle checked in unit tests, not end-to-end browser. Actual iPhone/mobile touch and external collaborator access remain unverified. Provisional balance values; growth uses existing stage artwork; CLI editing tool in tools/pogeun-balance.mjs."
     }
   },
   "restoration_record": {
@@ -804,5 +819,20 @@
     "external_collaborator_access_verified": false,
     "checks": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
     "limitations": "Full livestock lifecycle checked in unit tests, not end-to-end browser. Actual iPhone/mobile touch and external collaborator access remain unverified. Provisional balance values; growth uses existing stage artwork; CLI editing tool in tools/pogeun-balance.mjs."
+  },
+  "island_right_starter_release": {
+    "version": "island-right-starter-44",
+    "source_commit": "0676a3beebc610245f4b773ef471f1d8f5aece53",
+    "source_branch": "master",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=44",
+    "run_id": 39863124737,
+    "deployment": "succeeded",
+    "built_at": "2026-10-22T22:11:57.664Z",
+    "checked_at": "2026-10-23T07:13:00.396+09:00",
+    "automated_tests_passed": 130,
+    "public_build_info_verified": true,
+    "actual_mobile_touch_verified": false,
+    "checks": "Pages all steps success; public build-info exact source. New/right starter, old left starter migration with growth/ID/watering retained, save/restore/idempotence, completed-progress and occupied-slot preservation tested. Original artwork and CSS unchanged.",
+    "limitations": "Fresh/legacy Lv1 screen not visually checked on the user's iPhone. Starter placement/render logic checked in tests; prior QA browser has Lv2 progress, which is deliberately preserved."
   }
 }

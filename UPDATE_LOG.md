@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T07:13:00.396+09:00 — Codex · 오른쪽 기본 새싹 수정 배포 완료
+
+- Source master@0676a3beebc610245f4b773ef471f1d8f5aece53. Pages39863124737 all steps success. Public build-info matches exact source; built_at2026-10-22T22:11:57.664Z. URL https://choiseonkyeong.github.io/Game/island/?v=44 .
+- Changes: 오른쪽 기존 새싹을 기본 사과나무 상태로 연결, 왼쪽 추가 자동 새싹만 성장/물주기/ID 유지 이전. 배경 원화·CSS·다른 작물·완료한 수확/Lv2 이상 진행 보존.130 tests passed.
+- Verification limits: 실제 iPhone 터치/사용자 Lv1 화면 미검수. 배포 provenance 및 신규/기존 저장 이전 로직 검증. 원격 배포 완료, 남은 설정 없음.
+
 ## 2026-10-23T07:11:16.103+09:00 — Codex · 승인된 오른쪽 기본 새싹 수정 업로드
 
 - User explicitly approved uploading and deploying this sprout-position patch to Choiseonkyeong/Game. Base master cabc98423bd5ee736a6f6f44c705e4b77d92bb5c; local source c11fbfd. New starter apple uses existing right sprout[14,8]; only legacy automatic left sprout[7,16] migrates with growth, watering and ID preserved. Existing reference artwork supplies stage1 appearance, no added left sprout. Other plants, artwork, CSS and completed progress unchanged.
