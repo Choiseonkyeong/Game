@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-22T22:47:06+09:00 — Codex · 이전 옷장 복구 배포 완료
+
+- Source master@e436af408f4685eb10ffb1ac982348f02b506c50; 이전35의 4개 소스 blob과 정확히 일치. 다른 게임 파일·이력·진행 보존.
+- Checks:117 tests passed; Pages run39789693928 completed success; 공개 build-info source 일치; Chrome 옷장 열기에서 이전 원본 이미지/버튼 구성 확인.
+- URL https://choiseonkyeong.github.io/Game/island/?v=35 . 실제 iPhone 터치/외부 작업자 접속 미검수.
+
 ## 2026-10-22T22:45:46+09:00 — Codex · 사용자 요청으로 직전 옷장 변경 취소
 
 - Source master@e436af408f4685eb10ffb1ac982348f02b506c50; branch codex/restore-wardrobe-35; synchronized base6b59e576bb7dd8857781906b4a2dc5ec51eab7c7. 직전36 옷장만 취소하고 승인 전35 이미지 화면(db2b160)의 index/CSS/JS/SW 4개 blob으로 정확히 복원. 원격 이력/다른 게임 파일/저장 진행/URL 유지.
