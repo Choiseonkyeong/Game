@@ -1,4 +1,4 @@
-import{createWardrobeScreen}from'./wardrobe-screen.js?v=39';
+import{createWardrobeScreen}from'./wardrobe-screen.js?v=40';
 import{SEED_CATALOG,SEED_DESCRIPTION,seedStage,seedStages,seedArt}from'./seed-shop.js?v=28';
 import{ACTIONS}from'./actions.js?v=25';
 import{walkingView}from'./locomotion.js?v=30';

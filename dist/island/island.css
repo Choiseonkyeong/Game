@@ -113,3 +113,5 @@ input,select,textarea,svg text{font-family:inherit}
 .wui-stage .wui-notice:empty{display:none}
 .wui-stage button:focus-visible{outline:.22cqw solid #ae68da;outline-offset:-.2cqw}
 .wui-stage .wui-mirror-clean{mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent),linear-gradient(to bottom,transparent,#000 2%,#000 99%,transparent);mask-composite:intersect;-webkit-mask-composite:source-in}
+
+.wui-stage .wui-caption{font-size:1.5cqw;overflow:hidden;white-space:nowrap}.wui-stage .wui-skirt-icon{top:43.5%}
