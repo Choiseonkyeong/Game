@@ -4,19 +4,19 @@ import{createWardrobeScreen}from'./wardrobe-screen.js?v=41';
 import{SEED_CATALOG,SEED_DESCRIPTION,seedStage,seedStages,seedArt}from'./seed-shop.js?v=42';
 import{ACTIONS}from'./actions.js?v=25';
 import{walkingView}from'./locomotion.js?v=30';
-import{PROFILE_KEY,readProfile,centerAvatar}from'./profile.js?v=42';
+import{PROFILE_KEY,readProfile,centerAvatar}from'./profile.js?v=44';
 import{loadMomo,momoMarkup,paintMomo}from'./momo.js?v=9';
-import{project,unproject,smoothRoute,nearestCell,roundRoute,WALK_SPEED,preciseRoute,GRID,setGrid,advancePolyline,remainingPath,walkingSpeed}from'./movement.js?v=42';
+import{project,unproject,smoothRoute,nearestCell,roundRoute,WALK_SPEED,preciseRoute,GRID,setGrid,advancePolyline,remainingPath,walkingSpeed}from'./movement.js?v=44';
 import{createWeather,weatherHeadline}from'./weather.js?v=8';
 import{CLOTHING_PRICES,purchaseClothing,SHELL_KEY,readShells,sale,shellIcon,earn,spend,FISH_KEY,FISH_PRICE}from'./shells.js?v=42';
 import{ARCHIPELAGO_KEY,readArchipelago,activeIsland,expandCost,newIslandCost,expand,createIsland,switchIsland,MAX_LEVEL}from'./archipelago.js?v=42';
-import{loadLivestock,livestockMarkup,paintLivestock}from'./livestock.js?v=42';
+import{loadLivestock,livestockMarkup,paintLivestock}from'./livestock.js?v=44';
 import{loadHumanSprites,humanChoice,chooseHuman,humanMarkup,paintHumans,currentOutfit,wearItem,saveLook,loadLook,savedLooks,humanSnapshot,humanWardrobeSnapshot}from'./human-sprites.js?v=38';
 import{ITEMS,SLOT_LABELS}from'./wardrobe.js?v=37';
 import{patchSvg}from'./dom-render.js?v=5';
-import{createRoom}from'./room.js?v=42';
-import{createAnimalVisitors}from'./animal-visitors.js?v=42';
-import{FEED,ANIMAL_STAGES,animalStage,mature,initializeLoop,KEY,FURNITURE,SEEDS,CLOSET,LABELS,CROPS,LIVESTOCK,ITEM_PRICES,MAX_ANIMALS,fresh,restore,apply,growth,validCell,passable,route,approach,limit,ripe,productReady,setTerrain,terrainCells}from'./core.js?v=42';
+import{createRoom}from'./room.js?v=44';
+import{createAnimalVisitors}from'./animal-visitors.js?v=44';
+import{referenceStarter,FEED,ANIMAL_STAGES,animalStage,mature,initializeLoop,KEY,FURNITURE,SEEDS,CLOSET,LABELS,CROPS,LIVESTOCK,ITEM_PRICES,MAX_ANIMALS,fresh,restore,apply,growth,validCell,passable,route,approach,limit,ripe,productReady,setTerrain,terrainCells}from'./core.js?v=44';
 import{avatar}from'./avatar.js?v=1';
 import{rigAvatar,loadArt,artUrl}from'./rig.js?v=3';
 // Cut-out rig with drop-in artwork (docs/pogeun-art-spec.md); vector parts until art/manifest.json exists.
@@ -65,7 +65,7 @@ function placePet(){const free=freeCells().filter(c=>c[0]!==state.avatar[0]||c[1
 placePet();
 const B={house:[0,0,418,416],bench:[428,80,355,322],daisy:[825,42,354,340],tulip:[1200,42,334,340],lavender:[0,401,380,324],pot:[425,460,307,257],pond:[773,445,415,280],tree:[1180,391,354,332],table:[18,720,363,300],bowl:[428,755,337,245],cushion:[779,741,420,267],lamp:[1270,716,191,305]};
 function sprite(name,w,h){const own=artUrl('props',name);if(own)return`<image href="${own}" x="${-w/2}" y="${-h+8}" width="${w}" height="${h}" preserveAspectRatio="xMidYMax meet" pointer-events="none"/>`;const b=B[name],id='art'+(++seq);return`<svg x="${-w/2}" y="${-h+8}" width="${w}" height="${h}" viewBox="${b.join(' ')}" preserveAspectRatio="xMidYMax meet" aria-hidden="true" pointer-events="none"><defs><clipPath id="${id}"><rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}"/></clipPath></defs><image href="../littlepark/garden-atlas.webp" width="1536" height="1024" clip-path="url(#${id})"/></svg>`;}
-function itemArt(p){if(p.seedKind)return seedArt(p);if((p.kind==='path'||p.kind==='fence')&&artUrl('props',p.kind))return sprite(p.kind,...(p.kind==='path'?[70,40]:[90,75]));if(p.kind==='path')return'<path d="M-29-4l18-13 32 7 10 14-26 14-31-8z" fill="#e5ddbc" stroke="#b6b997" stroke-width="2"/><path d="M-17-5l11-5 17 3" fill="none" stroke="#f6f0d8" stroke-width="3"/>';if(p.kind==='fence')return'<g stroke="#a4ac8a" stroke-width="2" fill="#e4dfbe"><path d="M-38-31l76-19v9l-76 19zM-38-10l76-19v9l-76 19z"/><path d="M-28-39v48M0-46v49M28-53v49" stroke="#dedcc0" stroke-width="8"/></g>';
+function itemArt(p){if(p.seedKind){if(stage()?.reference&&referenceStarter(state,p)&&seedStage(p)===1)return '';return seedArt(p);}if((p.kind==='path'||p.kind==='fence')&&artUrl('props',p.kind))return sprite(p.kind,...(p.kind==='path'?[70,40]:[90,75]));if(p.kind==='path')return'<path d="M-29-4l18-13 32 7 10 14-26 14-31-8z" fill="#e5ddbc" stroke="#b6b997" stroke-width="2"/><path d="M-17-5l11-5 17 3" fill="none" stroke="#f6f0d8" stroke-width="3"/>';if(p.kind==='fence')return'<g stroke="#a4ac8a" stroke-width="2" fill="#e4dfbe"><path d="M-38-31l76-19v9l-76 19zM-38-10l76-19v9l-76 19z"/><path d="M-28-39v48M0-46v49M28-53v49" stroke="#dedcc0" stroke-width="8"/></g>';
  if(p.kind==='pot'&&p.seed){if(growth(p)>=1)return sprite(p.seed,69,89);return sprite('pot',53,51)+`<g transform="translate(0 -24) scale(${.4+.6*growth(p)})"><path d="M0 0v-32" stroke="#72965b" stroke-width="4"/><path d="M0-12Q-27-38-22-15Q-10-5 0-9M0-21Q24-44 22-22Q10-12 0-16" fill="#97b47a"/></g>`;}
  if(p.kind==='field')return fieldArt(p);
  return sprite(p.kind,...({bench:[104,84],pot:[53,51],tree:[122,155],bowl:[44,34],pond:[119,79],table:[89,84],cushion:[79,58],lamp:[40,89]}[p.kind]));}

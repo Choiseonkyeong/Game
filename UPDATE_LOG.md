@@ -2,6 +2,11 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T07:11:16.103+09:00 — Codex · 승인된 오른쪽 기본 새싹 수정 업로드
+
+- User explicitly approved uploading and deploying this sprout-position patch to Choiseonkyeong/Game. Base master cabc98423bd5ee736a6f6f44c705e4b77d92bb5c; local source c11fbfd. New starter apple uses existing right sprout[14,8]; only legacy automatic left sprout[7,16] migrates with growth, watering and ID preserved. Existing reference artwork supplies stage1 appearance, no added left sprout. Other plants, artwork, CSS and completed progress unchanged.
+- Checks:130 tests passed; syntax/diff and preflight passed. Deployment pending; previous successful release preserved.
+
 ## 2026-10-23T06:55:57.726+09:00 — Codex · 게임 루프·임시 설정 도구 최종 배포 검증 완료
 
 - Source master@5cd56cb347a75d3de4c080299c9262c863a4a72c; PR2 merged. Pages run39860917314 all steps success; public build-info exact source, built_at2026-10-22T21:54:25.981Z. URL https://choiseonkyeong.github.io/Game/island/?v=42 .
