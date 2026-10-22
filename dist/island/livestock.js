@@ -1,4 +1,4 @@
-import{LIVESTOCK,productReady,animalStage,ANIMAL_STAGES}from'./core.js?v=41';
+import{LIVESTOCK,productReady,animalStage,ANIMAL_STAGES}from'./core.js?v=42';
 import{paintCute}from'./cute.js?v=9';
 // Livestock stay on their tile, sway and turn now and then; a bubble shows a ready product.
 const images=new Map();

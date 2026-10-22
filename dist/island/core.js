@@ -1,12 +1,13 @@
-import{SEED_CATALOG,seedStage,seedStages,seedCounts}from'./seed-shop.js?v=28';
+import{BALANCE}from'./balance.js?v=42';
+import{SEED_CATALOG,seedStage,seedStages,seedCounts}from'./seed-shop.js?v=42';
 export const KEY='suming-cozy-island-v1';
 export const FURNITURE={seedplot:{name:'씨앗 자리',max:24},bench:{name:'쿠션 벤치',max:3},pot:{name:'토분 화분',max:10},tree:{name:'사과나무',max:4},bowl:{name:'모모 물그릇',max:2},pond:{name:'수련 연못',max:2},table:{name:'티 테이블',max:3},cushion:{name:'폭신 방석',max:4},lamp:{name:'정원등',max:5},path:{name:'디딤돌',max:20},fence:{name:'나무 울타리',max:10},field:{name:'텃밭',max:2}};
 // Economy (shells): crops and livestock earn, the shop sells extra furniture and animals.
-export const CROPS={carrot:{name:'당근',ms:45000,shells:6},potato:{name:'감자',ms:80000,shells:10},strawberry:{name:'딸기',ms:150000,shells:18}};
-export const LIVESTOCK={hen:{name:'암탉',sprite:'hen',product:'달걀',ms:40000,shells:4,price:30},duck:{name:'오리',sprite:'duck',product:'오리알',ms:60000,shells:5,price:45},sheep:{name:'양',sprite:'sheep',product:'똥',ms:120000,shells:12,price:100},cow:{name:'젖소',sprite:'cow',product:'똥',ms:150000,shells:15,price:140},llama:{name:'라마',sprite:'llama',product:'똥',ms:180000,shells:20,price:180}};
-export const ITEM_PRICES={seedplot:25,bench:20,pot:8,tree:35,bowl:10,pond:40,table:20,cushion:12,lamp:15,path:3,fence:5,field:25};
-export const FEED={feed:{name:'사료',price:2},milk:{name:'우유',price:3}};
-export const ANIMAL_STAGES={hen:5,duck:5,sheep:6,cow:7,llama:7};
+export const CROPS={carrot:{name:'당근',...BALANCE.crops.carrot},potato:{name:'감자',...BALANCE.crops.potato},strawberry:{name:'딸기',...BALANCE.crops.strawberry}};
+export const LIVESTOCK={hen:{name:'암탉',sprite:'hen',...BALANCE.animals.hen},duck:{name:'오리',sprite:'duck',...BALANCE.animals.duck},sheep:{name:'양',sprite:'sheep',...BALANCE.animals.sheep},cow:{name:'젖소',sprite:'cow',...BALANCE.animals.cow},llama:{name:'라마',sprite:'llama',...BALANCE.animals.llama}};
+export const ITEM_PRICES=BALANCE.furniture;
+export const FEED=BALANCE.feed;
+export const ANIMAL_STAGES=Object.fromEntries(Object.entries(BALANCE.animals).map(([k,v])=>[k,v.stages]));
 export const animalStage=a=>Math.max(1,Math.min(ANIMAL_STAGES[a.kind]||5,Number(a.stage)||1));
 export const mature=a=>animalStage(a)===ANIMAL_STAGES[a.kind];
 export const MAX_ANIMALS=8,MAX_EXTRA=30;
@@ -32,7 +33,7 @@ export function apply(s,e,now=Date.now()){const n=structuredClone(s),p=n.items.f
  else if(e.type==='feed'){const a=n.animals.find(x=>x.id===e.id);if(!a||Math.abs(s.avatar[0]-a.c)+Math.abs(s.avatar[1]-a.r)!==1)return fail('먼저 동물 가까이 가 주세요.');if(!FEED[e.food]||!n.feedStock[e.food])return fail('상점에서 먹이를 구매해 주세요.');if(a.fed&&now-a.at<LIVESTOCK[a.kind].ms)return fail('아직 배가 불러요.');if(productReady(a,now))return fail('준비된 선물을 먼저 수확해 주세요.');n.feedStock[e.food]--;if(a.fed&&!mature(a))a.stage=animalStage(a)+1;a.fed=true;a.at=now;}
  else if(e.type==='buy-seed'){if(!SEED_CATALOG[e.seedKind])return fail('없는 씨앗이에요.');if((n.seedStock[e.seedKind]||0)>=999)return fail('씨앗 주머니가 가득 찼어요.');n.seedStock[e.seedKind]=(n.seedStock[e.seedKind]||0)+1;}
  else if(e.type==='plant-seed'){if(!SEED_CATALOG[e.seedKind]||!n.seedStock[e.seedKind])return fail('먼저 씨앗을 구매해 주세요.');const placed=apply(n,{type:'place',kind:'seedplot',c:e.c,r:e.r},now);if(!placed.ok)return fail(placed.why);const plant=placed.state.items.at(-1);plant.seedKind=e.seedKind;plant.seedAt=now;plant.seedBoost=0;plant.seedWatered=0;placed.state.seedStock[e.seedKind]--;if(!placed.state.seedStock[e.seedKind])delete placed.state.seedStock[e.seedKind];return placed;}
- else if(e.type==='tend-seed'||e.type==='harvest-seed'){if(!p?.seedKind||Math.abs(s.avatar[0]-p.c)+Math.abs(s.avatar[1]-p.r)!==1)return fail('먼저 작물 가까이 가 주세요.');const v=SEED_CATALOG[p.seedKind];if(e.type==='tend-seed'){if(seedStage(p,now)===seedStages(p.seedKind))return fail('이제 수확할 수 있어요.');if(p.seedWatered&&now-p.seedWatered<10000)return fail('물이 스며들고 있어요. 잠시 기다려 주세요.');p.seedWatered=now;p.seedBoost=(p.seedBoost||0)+15000;}else{if(seedStage(p,now)<seedStages(p.seedKind))return fail('마지막 단계에서 수확할 수 있어요.');if(v.type==='tree'){p.seedAt=now-v.ms/2;p.seedBoost=0;p.seedWatered=0;}else n.items=n.items.filter(x=>x.id!==p.id);n.tasks.reaped=true;if(p.seedKind==='apple'&&!n.loop.firstApple){n.loop.firstApple=true;n.loop.level=Math.max(2,n.loop.level);}return{ok:true,state:n,earned:v.reward};}}
+ else if(e.type==='tend-seed'||e.type==='harvest-seed'){if(!p?.seedKind||Math.abs(s.avatar[0]-p.c)+Math.abs(s.avatar[1]-p.r)!==1)return fail('먼저 작물 가까이 가 주세요.');const v=SEED_CATALOG[p.seedKind];if(e.type==='tend-seed'){if(seedStage(p,now)===seedStages(p.seedKind))return fail('이제 수확할 수 있어요.');if(p.seedWatered&&now-p.seedWatered<10000)return fail('물이 스며들고 있어요. 잠시 기다려 주세요.');p.seedWatered=now;p.seedBoost=(p.seedBoost||0)+15000;}else{if(seedStage(p,now)<seedStages(p.seedKind))return fail('마지막 단계에서 수확할 수 있어요.');if(v.type==='tree'){p.seedAt=now-v.ms/2;p.seedBoost=0;p.seedWatered=0;}else n.items=n.items.filter(x=>x.id!==p.id);n.tasks.reaped=true;if(p.seedKind==='apple'&&!n.loop.firstApple){n.loop.firstApple=true;n.loop.level=Math.max(BALANCE.progression.firstHarvestLevel,n.loop.level);}return{ok:true,state:n,earned:v.reward};}}
  else if(e.type==='wear'){if(!CLOSET[e.slot]?.includes(e.value))return fail('아직 없는 코디예요.');n.outfit[e.slot]=e.value;n.tasks.dressed=true;}
  else if(e.type==='look-save'){n.looks=[structuredClone(n.outfit),...n.looks.filter(x=>JSON.stringify(x)!==JSON.stringify(n.outfit))].slice(0,4);}
  else if(e.type==='look-load'){const look=n.looks[e.index];if(!look)return fail('저장한 코디가 없어요.');n.outfit=structuredClone(look);}
@@ -41,7 +42,7 @@ export function apply(s,e,now=Date.now()){const n=structuredClone(s),p=n.items.f
  else if(e.type==='rotate'){if(!p)return fail('물건을 골라 주세요.');p.rot=1-p.rot;}
  else if(e.type==='store'){if(!p)return fail('물건을 골라 주세요.');if(p.seed||p.crop||p.seedKind)return fail('심은 화분과 텃밭은 옮겨 주세요. 작물을 지우지 않아요.');n.items=n.items.filter(x=>x.id!==p.id);}
  else if(e.type==='buy'){if(!FURNITURE[e.kind])return fail('없는 물건이에요.');if((n.extra[e.kind]||0)>=MAX_EXTRA)return fail('더 이상 살 수 없어요.');n.extra[e.kind]=(n.extra[e.kind]||0)+1;}
- else if(e.type==='adopt'){if(n.loop.level<4)return fail('가축은 섬 레벨 4부터 입양할 수 있어요.');if(!LIVESTOCK[e.kind])return fail('없는 동물이에요.');if(n.animals.length>=MAX_ANIMALS)return fail('이 섬의 목장이 가득 찼어요.');if(!passable(n,e.c,e.r)||n.avatar[0]===e.c&&n.avatar[1]===e.r)return fail('동물이 지낼 빈 잔디가 없어요. 섬을 넓혀 주세요.');n.animals.push({id:n.next++,kind:e.kind,c:e.c,r:e.r,at:now,stage:1,fed:false});n.tasks.ranched=true;}
+ else if(e.type==='adopt'){if(n.loop.level<BALANCE.progression.livestockUnlockLevel)return fail('가축은 섬 레벨 '+BALANCE.progression.livestockUnlockLevel+'부터 입양할 수 있어요.');if(!LIVESTOCK[e.kind])return fail('없는 동물이에요.');if(n.animals.length>=MAX_ANIMALS)return fail('이 섬의 목장이 가득 찼어요.');if(!passable(n,e.c,e.r)||n.avatar[0]===e.c&&n.avatar[1]===e.r)return fail('동물이 지낼 빈 잔디가 없어요. 섬을 넓혀 주세요.');n.animals.push({id:n.next++,kind:e.kind,c:e.c,r:e.r,at:now,stage:1,fed:false});n.tasks.ranched=true;}
  else if(e.type==='collect'){const a=n.animals.find(x=>x.id===e.id);if(!a||Math.abs(s.avatar[0]-a.c)+Math.abs(s.avatar[1]-a.r)!==1)return fail('먼저 동물 가까이 가 주세요.');if(!productReady(a,now))return fail(LIVESTOCK[a.kind].product+'이(가) 아직 준비 중이에요.');a.at=now;a.fed=false;n.tasks.ranched=true;return{ok:true,state:n,earned:LIVESTOCK[a.kind].shells};}
  else if(['plant','water','fill','harvest','sit','sow','reap'].includes(e.type)){
  if(!p||Math.abs(s.avatar[0]-p.c)+Math.abs(s.avatar[1]-p.r)!==1)return fail('먼저 물건 가까이 가 주세요.');

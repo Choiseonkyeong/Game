@@ -1,4 +1,4 @@
-import{WALK_SPEED,walkingSpeed}from'./movement.js?v=41';
+import{WALK_SPEED,walkingSpeed}from'./movement.js?v=42';
 import{walkingView}from'./locomotion.js?v=30';
 import{humanMarkup,paintHumans}from'./human-sprites.js?v=38';
 import{patchSvg}from'./dom-render.js?v=5';

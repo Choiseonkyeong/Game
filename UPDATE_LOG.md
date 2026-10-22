@@ -2,6 +2,24 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T06:46:18+09:00 — Codex · 사용자 승인 후 업로드 및 배포 재개
+
+- User explicitly approved uploading modified code/configuration to Choiseonkyeong/Game PR2 and continuing completion. Tests127 passed. Deployment pending; previous successful release preserved.
+
+## 2026-10-23T06:41:42+09:00 — Codex · 밸런스 도구 GitHub 업로드 차단
+
+- Local source: codex/balance-data-42@8f9dfb4. Tests127 passed. 완성 파일과 커밋 보존.
+- GitHub create_tree 업로드가 automatic approval review에서 거부됨: 외부 저장소 Choiseonkyeong/Game 및 수정 소스/설정 payload 전송에 대한 새 사용자 승인 부재. 원격 PR2/브랜치/배포는 이번 변경으로 갱신하지 않음.
+- Remaining: 이 변경 코드/설정을 Choiseonkyeong/Game PR2에 업로드할 명시 승인. 배포 미실시.
+
+## 2026-10-23T06:40:51+09:00 — Codex · 임시 밸런스 데이터 및 편집 도구
+
+- Source: local codex/balance-data-42; remote handoff codex/island-lifecycle-41 (PR2), parent e2ff1b3f75b2f4a44670d1630574b3fda8f6b700; synchronized master 2c1a7f64bcb8fe955f1920e914709d346ada6a0a.
+- Changes: balance.json(schemaVersion1/provisional true)로 가격·동물 단계/소화/생산 시간/보상·씨앗·가구·의상·섬 확장 설정 통합. 기존 임시값 유지. Node CLI show/set/validate/export, 공용 스키마 검증·원자적 저장·JSON 내보내기, 게임 카탈로그 연결. UI/CSS/원화 변경 없음. docs/pogeun-balance.md 사용법.
+- Checks: 127 automated tests passed; CLI 유효값 저장/오류 시 원본 보존/전체 내보내기 및 런타임 카탈로그 일치 검증, diff/syntax checks. 실제 브라우저·모바일 미검수.
+- Deployment: not deployed; 이전 성공 배포 보존. 설정은 개발 소스에만 저장, 사용자 진행 데이터 변경 없음.
+
+
 ## 2026-10-23T00:41:43+09:00 — Codex · 포근섬 성장·사육 루프 연결
 
 - Source: codex/island-lifecycle-41; synchronized master 2c1a7f64bcb8fe955f1920e914709d346ada6a0a. 기존 옷장 원화·CSS·레이아웃 유지. 시작 사과 씨앗 1회 지급/첫 수확 Lv2, Lv4 입양, 종류별 5–7단계 먹이 성장·생산·조개 수확, 먹이/의상 구매·기존 저장 마이그레이션.
