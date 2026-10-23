@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T11:05:32.362+09:00 — Codex · 승인된 Lv2 단일 섬 비주얼 수정 업로드
+
+- User explicitly approved upload/deployment of this Lv2 visual patch to Choiseonkyeong/Game. Base master7e8833308e37ed360728a337ab893abf7de69f5b; local source f8e8e75. Lv2 uses exact Lv1 reference image, original house size/hitbox and camera; only small porch pot and flowers added as SVG. Old bridge/sub-island/windmill/solar-panel artwork no longer rendered in Lv2.
+- Logical cells and saved coordinates retained via presentation grid. Core/economy/seed/shop/wardrobe/CSS/art files unchanged.133 tests passed; syntax/diff/preflight passed. Other levels unchanged.
+- Previous upload blocked pending this specific approval; now authorized. Deployment pending, last confirmed successful release preserved.
+
 ## 2026-10-23T07:13:00.396+09:00 — Codex · 오른쪽 기본 새싹 수정 배포 완료
 
 - Source master@0676a3beebc610245f4b773ef471f1d8f5aece53. Pages39863124737 all steps success. Public build-info matches exact source; built_at2026-10-22T22:11:57.664Z. URL https://choiseonkyeong.github.io/Game/island/?v=44 .
