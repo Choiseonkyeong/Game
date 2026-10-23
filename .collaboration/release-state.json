@@ -38,22 +38,22 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-right-starter-44",
-      "source_commit": "0676a3beebc610245f4b773ef471f1d8f5aece53",
+      "version": "island-lv2-reference-45",
+      "source_commit": "4ccc271ee7024d2a50e6fbaea75adee82c4dfe7f",
       "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=44",
-      "run_id": 39863124737,
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=45",
+      "run_id": 39887711385,
       "deployment": "succeeded",
-      "built_at": "2026-10-22T22:11:57.664Z",
-      "checked_at": "2026-10-23T07:13:00.396+09:00",
-      "automated_tests_passed": 130,
-      "public_build_info_verified": true,
+      "built_at": "2026-10-23T02:06:11.942Z",
+      "checked_at": "2026-10-23T11:12:03.113+09:00",
+      "automated_tests_passed": 133,
+      "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "checks": "Pages all steps success; public build-info exact source. New/right starter, old left starter migration with growth/ID/watering retained, save/restore/idempotence, completed-progress and occupied-slot preservation tested. Original artwork and CSS unchanged.",
-      "limitations": "Fresh/legacy Lv1 screen not visually checked on the user's iPhone. Starter placement/render logic checked in tests; prior QA browser has Lv2 progress, which is deliberately preserved."
+      "checks": "Public build-info exact source; Pages all steps success. Actual Chrome new player watered starter through stages1–5 and harvested+150 shells/Lv2. Lv1 and Lv2 ground outerHTML identical reference-island.jpg 960x1280 at(0,-240), house hitbox identical(300,200,230,225), viewBox identical(-102.47863247863245,0,1164.957264957265,800); Lv2 adds level-two-details only. Screenshot confirms one round floating island, no bridge/sub-island/windmill/panel, same house/texture/palette. Reload preserves Lv2/150 shells and new artwork. Core/economy/seed/shop/wardrobe/CSS/art files unchanged.",
+      "limitations": "Actual iPhone touch and external collaborator access unverified. Existing logical coordinates/collision cells preserved and projected onto approved lawn; other levels unchanged."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
+    "access_check": "Public build-info exact source; Pages all steps success. Actual Chrome new player watered starter through stages1–5 and harvested+150 shells/Lv2. Lv1 and Lv2 ground outerHTML identical reference-island.jpg 960x1280 at(0,-240), house hitbox identical(300,200,230,225), viewBox identical(-102.47863247863245,0,1164.957264957265,800); Lv2 adds level-two-details only. Screenshot confirms one round floating island, no bridge/sub-island/windmill/panel, same house/texture/palette. Reload preserves Lv2/150 shells and new artwork. Core/economy/seed/shop/wardrobe/CSS/art files unchanged.",
     "remaining_action": "Actual phone touch and external collaborator access unverified; no deployment setting remaining.",
     "previous_successful_before_art": {
       "version": "island-0.1",
@@ -399,6 +399,21 @@
       "external_collaborator_access_verified": false,
       "checks": "Pages all steps success; public cache-busted build-info exact source. Chrome original wardrobe/shop180/insufficient funds, Lv4 adoption lock, starter apple stages1→5/watering/harvest+150 and Lv2 house+terrain; feed150→148 and milk148→145 with stock1 each; reload Lv2/balance145 preserved; island.js?v=43 loaded. Enlarged image screen bounds (50.48,42.06)-(1312.52,893.94) inside1363x936. No game-origin console errors observed.",
       "limitations": "Full livestock lifecycle checked in unit tests, not end-to-end browser. Actual iPhone/mobile touch and external collaborator access remain unverified. Provisional balance values; growth uses existing stage artwork; CLI editing tool in tools/pogeun-balance.mjs."
+    },
+    "previous_successful_before_level_two_reference": {
+      "version": "island-right-starter-44",
+      "source_commit": "0676a3beebc610245f4b773ef471f1d8f5aece53",
+      "source_branch": "master",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=44",
+      "run_id": 39863124737,
+      "deployment": "succeeded",
+      "built_at": "2026-10-22T22:11:57.664Z",
+      "checked_at": "2026-10-23T07:13:00.396+09:00",
+      "automated_tests_passed": 130,
+      "public_build_info_verified": true,
+      "actual_mobile_touch_verified": false,
+      "checks": "Pages all steps success; public build-info exact source. New/right starter, old left starter migration with growth/ID/watering retained, save/restore/idempotence, completed-progress and occupied-slot preservation tested. Original artwork and CSS unchanged.",
+      "limitations": "Fresh/legacy Lv1 screen not visually checked on the user's iPhone. Starter placement/render logic checked in tests; prior QA browser has Lv2 progress, which is deliberately preserved."
     }
   },
   "restoration_record": {
@@ -834,5 +849,20 @@
     "actual_mobile_touch_verified": false,
     "checks": "Pages all steps success; public build-info exact source. New/right starter, old left starter migration with growth/ID/watering retained, save/restore/idempotence, completed-progress and occupied-slot preservation tested. Original artwork and CSS unchanged.",
     "limitations": "Fresh/legacy Lv1 screen not visually checked on the user's iPhone. Starter placement/render logic checked in tests; prior QA browser has Lv2 progress, which is deliberately preserved."
+  },
+  "island_level_two_reference_release": {
+    "version": "island-lv2-reference-45",
+    "source_commit": "4ccc271ee7024d2a50e6fbaea75adee82c4dfe7f",
+    "source_branch": "master",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=45",
+    "run_id": 39887711385,
+    "deployment": "succeeded",
+    "built_at": "2026-10-23T02:06:11.942Z",
+    "checked_at": "2026-10-23T11:12:03.113+09:00",
+    "automated_tests_passed": 133,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "checks": "Public build-info exact source; Pages all steps success. Actual Chrome new player watered starter through stages1–5 and harvested+150 shells/Lv2. Lv1 and Lv2 ground outerHTML identical reference-island.jpg 960x1280 at(0,-240), house hitbox identical(300,200,230,225), viewBox identical(-102.47863247863245,0,1164.957264957265,800); Lv2 adds level-two-details only. Screenshot confirms one round floating island, no bridge/sub-island/windmill/panel, same house/texture/palette. Reload preserves Lv2/150 shells and new artwork. Core/economy/seed/shop/wardrobe/CSS/art files unchanged.",
+    "limitations": "Actual iPhone touch and external collaborator access unverified. Existing logical coordinates/collision cells preserved and projected onto approved lawn; other levels unchanged."
   }
 }

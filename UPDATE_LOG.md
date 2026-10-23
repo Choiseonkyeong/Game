@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T11:12:03.113+09:00 — Codex · Lv2 단일 둥근 섬/원래 집 크기 배포 검증 완료
+
+- Source master@4ccc271ee7024d2a50e6fbaea75adee82c4dfe7f. Pages39887711385 all steps success; public build-info exact source, built_at2026-10-23T02:06:11.942Z. URL https://choiseonkyeong.github.io/Game/island/?v=45 .
+- Public Chrome: 신규 시작→오른쪽 사과 물주기1~5단계→수확150조개/Lv2. Lv1/Lv2 배경 이미지와 위치/크기960x1280 동일, 집 히트박스300,200,230,225 동일, viewBox 동일. 실제 화면 단일 둥근 섬·기존 집 스케일·원화 색감/선/질감 유지, 다리/서브섬/풍차/태양광 없음. Lv2 작은 화분·꽃 SVG 장식만 추가.
+- Checks:133 tests passed; reload preserves Lv2/150shells. Core/economy/seeds/shop/wardrobe/CSS/art files unchanged; logical cells and saved coordinates preserved through presentation-only projection. Screenshots inspected. 실제 iPhone/외부 공동작업자 접속 미검수.
+- Remaining: none for authorized source/deployment work.
+
 ## 2026-10-23T11:05:32.362+09:00 — Codex · 승인된 Lv2 단일 섬 비주얼 수정 업로드
 
 - User explicitly approved upload/deployment of this Lv2 visual patch to Choiseonkyeong/Game. Base master7e8833308e37ed360728a337ab893abf7de69f5b; local source f8e8e75. Lv2 uses exact Lv1 reference image, original house size/hitbox and camera; only small porch pot and flowers added as SVG. Old bridge/sub-island/windmill/solar-panel artwork no longer rendered in Lv2.
