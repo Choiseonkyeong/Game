@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-23T15:43:07+09:00 — Claude · 레벨업 시 캐릭터가 작아지는 문제 수정
+
+- 기준 master `fd8224065bea13c4855c09a613c9f15d0664ebc1`, 작업 브랜치 `claude/optimistic-franklin-aoguar`(최신 master에서 다시 시작). preflight start `ready`.
+- 원인: progression.js가 다음 레벨 섬 크기를 하늘 여백까지 포함한 Lv1 그림 전체(960×1280) 기준 12%씩 키워, Lv3~6 섬 그림이 3~5배로 부풀고 카메라가 전체를 맞추느라 캐릭터·동물·가구가 화면에서 1/3~1/5로 작아짐(Lv6 사람 15×22px).
+- 수정: sky-terrain.json Lv1에 실제 섬 영역 `island:[232,198,459,443]` 추가, 성장 계산을 보이는 섬 크기(footprint) 기준으로 변경(Lv1→6 섬 459→1322 너비). 카메라는 모든 레벨에서 Lv1과 같은 배율, 섬이 화면보다 크면 캐릭터를 부드럽게 따라가며 섬 범위 안으로 제한. 축소 버튼으로 섬 전체 보기. Lv1/Lv2 화면 배율·위치 동일.
+- 검사: npm test 133개 통과(성장 테스트를 보이는 섬 기준·과도 확대 방지로 갱신). 로컬 Chromium 1470×660·844×390에서 Lv1~6 캐릭터 화면 크기 동일(71×103px @1470), Lv6 걷기 시 카메라 추적·축소 시 섬 전체 표시, 오류 없음. 실제 휴대폰 미검수.
+- 남은 사항: Lv3 이상 기존 저장 배치는 새 칸 좌표로 가까운 빈칸에 재배치될 수 있음. 원화 자체의 집/섬 비율 차이(Lv3+ 집이 상대적으로 큼)는 그림 교체가 필요. master 병합·배포 전.
+
 ## 2026-10-23T11:12:03.113+09:00 — Codex · Lv2 단일 둥근 섬/원래 집 크기 배포 검증 완료
 
 - Source master@4ccc271ee7024d2a50e6fbaea75adee82c4dfe7f. Pages39887711385 all steps success; public build-info exact source, built_at2026-10-23T02:06:11.942Z. URL https://choiseonkyeong.github.io/Game/island/?v=45 .

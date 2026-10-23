@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 import{fresh,restore,initializeLoop,apply,FEED,LIVESTOCK,ANIMAL_STAGES,productReady,setTerrain,approach,passable}from'../dist/island/core.js';
-import{terrainStage}from'../dist/island/progression.js';
+import{terrainStage,footprint}from'../dist/island/progression.js';
 import{purchaseClothing}from'../dist/island/shells.js';
 test('starter migration is idempotent, preserves possessions and first ripe apple reaches level two once',()=>{
  let s=initializeLoop(fresh(),1,1000);assert.equal(s.items.filter(p=>p.seedKind==='apple').length,1);assert.deepEqual(initializeLoop(s,1,1000),s);assert.deepEqual(restore(JSON.stringify(s)),s);
@@ -22,5 +22,5 @@ test('all animals require level four, purchased food, digestion and 5–7 growth
 test('clothing purchases spend once, reject insufficient funds and preserve owned items',()=>{assert(!purchaseClothing(179,[],'trench-set').ok);const r=purchaseClothing(200,[],'trench-set');assert.equal(r.balance,20);assert.deepEqual(r.owned,['trench-set']);assert.equal(purchaseClothing(20,r.owned,'trench-set').balance,20);assert(!purchaseClothing(200,[],'missing').ok);});
 test('all growth terrains fit larger art, have connected collision tiles and keep starter reachable',()=>{
  const data=JSON.parse(fs.readFileSync(new URL('../dist/island/art/world/sky-terrain.json',import.meta.url)));let width=0,height=0;
- try{for(let level=1;level<=6;level++){const st=terrainStage(data,level);assert(st.width>width&&st.height>height);width=st.width;height=st.height;const cells=new Set(st.cells.map(c=>c.join(','))),seen=new Set(),q=[st.cells[0]];while(q.length){const[c,r]=q.pop(),key=c+','+r;if(seen.has(key))continue;seen.add(key);for(const n of [[c+1,r],[c-1,r],[c,r+1],[c,r-1]])if(cells.has(n.join(','))&&!seen.has(n.join(',')))q.push(n);}assert.equal(seen.size,cells.size);setTerrain(st.cells);const s=initializeLoop(restore(JSON.stringify(fresh())),level,1000),p=s.items.find(p=>p.seedKind==='apple');assert(p);assert(passable(s,...s.avatar));assert(approach(s,s.avatar,p).length);}}finally{setTerrain(null);}
+ try{for(let level=1;level<=6;level++){const st=terrainStage(data,level),f=footprint(st);assert(f.width>width&&f.height>height);if(width)assert(f.width/width<1.8&&f.height/height<1.8,'visible island grows gently, never inflated');width=f.width;height=f.height;const cells=new Set(st.cells.map(c=>c.join(','))),seen=new Set(),q=[st.cells[0]];while(q.length){const[c,r]=q.pop(),key=c+','+r;if(seen.has(key))continue;seen.add(key);for(const n of [[c+1,r],[c-1,r],[c,r+1],[c,r-1]])if(cells.has(n.join(','))&&!seen.has(n.join(',')))q.push(n);}assert.equal(seen.size,cells.size);setTerrain(st.cells);const s=initializeLoop(restore(JSON.stringify(fresh())),level,1000),p=s.items.find(p=>p.seedKind==='apple');assert(p);assert(passable(s,...s.avatar));assert(approach(s,s.avatar,p).length);}}finally{setTerrain(null);}
 });
