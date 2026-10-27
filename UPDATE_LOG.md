@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T09:12:37.414+09:00 — Codex · v46 공개 브라우저 검증 (시각 문제 발견)
+
+- Source tested:3633d401363eabceeecd16f9c1eee09e32221198, documentation master c8c39eb081d4c2131b237ce3a35a23a2059582ec. Code/deployment unchanged during this verification.
+- Actual Chrome UI: starter stage4→watering confirmation→stage5 ripe fruit→harvest+150shells/Lv2; Lv2 exact reference-island.jpg x0,y-240,960x1280 and level-two-details confirmed. Paid shop expansion150shells→0/Lv3, reload preserves Lv3/0. Insufficient balance300 next expansion unavailable. Stage1 observed previous session; intermediate2/3 verified by automated test only, not live screenshots.
+- Focused growth/seeds/Lv2/wardrobe tests7 pass. Previous full suite134 pass. Unity editor and actual mobile touch unavailable; not asserted verified.
+- FAIL (visual): Lv3 reuses sky-stage-3.webp (2378.714×2085.046) with a large two-storey house, greenhouse, waterwheel/right sub-island, changed palette/pixel appearance; scale relative to avatar and Lv1 continuity is poor. Lv2 request itself passes, but overall expansion graphics need a later scoped correction. Existing paid expansion behavior retained; no unsolicited art change performed during verification.
+- Interaction limitation: direct pointer click on tree can open wardrobe when avatar overlaps; keyboard Enter on tree targets correct item. Record for later touch-target review.
+- Result: core growth/reward/paid expansion/save verified; graphics NOT fully passed. User-facing phone/Unity validation still outstanding.
+
 ## 2026-10-27T00:09:02.352Z — Codex · 사용자 승인 후 성장/확장46 업로드·배포 완료
 
 - User approved uploading/deploying the prepared patch to Choiseonkyeong/Game. Source master@3633d401363eabceeecd16f9c1eee09e32221198 (local reviewed be96cea16659f8d0e8625519b721f7590d689ffb); base fd8224065bea13c4855c09a613c9f15d0664ebc1. Lease-protected master update; no forced writes.
