@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T00:09:02.352Z — Codex · 사용자 승인 후 성장/확장46 업로드·배포 완료
+
+- User approved uploading/deploying the prepared patch to Choiseonkyeong/Game. Source master@3633d401363eabceeecd16f9c1eee09e32221198 (local reviewed be96cea16659f8d0e8625519b721f7590d689ffb); base fd8224065bea13c4855c09a613c9f15d0664ebc1. Lease-protected master update; no forced writes.
+- Pages run40424297054 succeeded; public build-info exact source, built_at2026-10-27T00:07:17.739Z. Public starter-tree-art module served. URL https://choiseonkyeong.github.io/Game/island/?v=46 .
+- 134 tests passed. Chrome new profile/round island/stage1 and shop Lv1→2 price60/detail-only note verified. Full five-stage live gameplay and actual phone touch not completed. Unity code supplied as separate integration; no Unity compiler available.
+- Existing game data/other art preserved; previous upload rejection resolved by explicit user approval. No remaining publication setting; verification limits remain as above.
+
 ## 2026-10-27T09:05:02+09:00 — Codex · 업로드 자동 검토 차단
 
 - GitHub create_tree 요청이 자동 승인 검토에서 거절됨. 이유: 이번 사용자 요청은 구현을 승인하지만 수정 소스/문서의 외부 GitHub 업로드 승인이 명확하지 않음. 우회·재시도 없음. 원격 master fd8224065bea13c4855c09a613c9f15d0664ebc1 및 기존 배포 유지.
