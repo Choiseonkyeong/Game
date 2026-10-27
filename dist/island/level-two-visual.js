@@ -31,7 +31,7 @@ export function levelTwoScene(logicalStage, terrain, level) {
   const fromY = (from.top + from.bottom) / 2;
   const toX = (to.left + to.right) / 2;
   const toY = (to.top + to.bottom) / 2;
-  const expansion = Math.pow(1.08, Math.max(0, level - 2));
+  const expansion = Math.pow(1.08, Math.min(4, Math.max(0, level - 2))) * Math.pow(1.05, Math.max(0, level - 6));
   const growX = x => 480 + (x - 480) * expansion;
   const growY = y => 430 + (y - 430) * expansion;
   const renderGrid = {

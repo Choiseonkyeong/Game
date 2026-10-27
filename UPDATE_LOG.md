@@ -2,6 +2,15 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T10:06:30+09:00 — Codex · 스타일 고정 / 가로 HUD / 10레벨 콘텐츠 / 데일리 옷장48 구현
+
+- Base masterdcf06dc25a59d614a416d87a543f8f8ef294eb16; branch codex/style-hud-content48. User supplied comprehensive style/layout/content/fashion/motion requirements. docs/pogeun-style-lock.md added and linked from AGENTS.md; warm low-saturation 2D/pixel style, original single-island/character identity preserved. Existing shells retained.
+- HUD: profile/nickname/island level/care-XP bar upper-left; shells/hearts/settings/codex upper-right; rounded ivory translucent bottom actions. Same source assets/landscape fitting-room frame. Settings motion reduction, codex/locked seaside explain actual level.
+- Progression cap10, previous1–6 prices and all saves retained; additional7–10 costs1300/2000/3000/4500 provisional. Lv4 fence/ranch zone and pet-animal/hearts; Lv8 attached pastel shore/boat/fishing modal with cast/wait/catch/cancel, persisted boat/codex/fish count and shell reward. Care XP stored separately; it does not silently change paid island levels.
+- Fashion: pastel knit/V-neck/cardigan/crop, ribbon/pleated skirt, knit set/ribbon dress use current illustrated body with masked garment color/detail changes; saves/load looks and independent genders preserved. Basic new daily pieces free; existing trench purchase unchanged. Poses crossfade140ms (walk cycle unchanged), arrival bounce respects motion reduction.
+- Checks:140 automated tests passed; new tests cover cap10/layout preservation, fishing unlock/wait/reward-once/cooldown/boat/save, XP/fashion persistence, pet proximity/cooldown/hearts. Syntax/diff passed. Live visual/mobile and full fishing UI QA pending; not claimed complete. No Unity changes.
+- Publication blocked by automatic approval review: previous explicit upload approval covered patch47, not the newly requested HUD/content/fashion48 source/tests/docs/configuration payload. No retry or alternate upload attempted. Previous confirmed47 deployment retained; explicit approval for this new payload needed.
+
 ## 2026-10-27T09:40:11.320+09:00 — Codex · 사용자 승인 후 단일 섬·겹친 나무 터치47 배포 완료
 
 - User explicitly approved uploading/deploying this modified code and tests. Source master@e1079dee571b3a0e80456834a7538bb12ee8e08e; reviewed local0d26326; base024cf420bd92d477ca3e3fdb17d7a3b2846d4e33. Lease-protected update, no force.

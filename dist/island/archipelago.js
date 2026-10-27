@@ -1,7 +1,7 @@
-import{BALANCE}from'./balance.js?v=42';
+import{BALANCE}from'./balance.js?v=48';
 // Several sky islands: each keeps its own layout (core.js state) and size level; shells are shared.
 export const ARCHIPELAGO_KEY='pogeun-archipelago-v1';
-export const MAX_LEVEL=6,MAX_ISLANDS=4;
+export const MAX_LEVEL=10,MAX_ISLANDS=4;
 export const EXPAND_COST=BALANCE.progression.expandCosts;// cost to reach level index+1
 export const ISLAND_COST=BALANCE.progression.islandCosts;// cost of the n-th island
 export const fresh=()=>({v:1,active:1,next:2,islands:[{id:1,name:'포근섬',level:1,saved:null}]});

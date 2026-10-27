@@ -1,4 +1,4 @@
-import{BALANCE}from'./balance.js?v=42';
+import{BALANCE}from'./balance.js?v=48';
 export const SHELL_KEY='pogeun-shells-v1';
 export function readShells(raw){const n=Number(raw);return Number.isSafeInteger(n)&&n>=0?n:0;}
 export function sale(balance,kind,stock){const price={apple:5}[kind];if(!price||!Number.isSafeInteger(balance)||balance<0||balance+price>Number.MAX_SAFE_INTEGER||!Number.isSafeInteger(stock)||stock<1)return{ok:false,balance,stock};return{ok:true,balance:balance+price,stock:stock-1,earned:price};}

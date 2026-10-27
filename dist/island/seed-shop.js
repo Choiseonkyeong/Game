@@ -1,4 +1,4 @@
-import{BALANCE}from'./balance.js?v=42';
+import{BALANCE}from'./balance.js?v=48';
 // Seed catalogue, stage progression and artwork are shared by the shop and planted items.
 export const SEED_DESCRIPTION='정성껏 돌보면, 마지막 단계에서 열매를 수확할 수 있어요!';
 export const SEED_CATALOG={

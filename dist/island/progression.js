@@ -1,4 +1,4 @@
-import{BALANCE}from'./balance.js?v=42';
+import{BALANCE}from'./balance.js?v=48';
 // Expand existing art and its collision tiles together; keep the approved level-one scene.
 const cache=new WeakMap();
 export function terrainStage(data,level){

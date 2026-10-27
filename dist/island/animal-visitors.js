@@ -1,5 +1,5 @@
 import{smoothRoute,lineClear}from'./movement.js?v=44';
-import{terrainCells}from'./core.js?v=44';
+import{terrainCells}from'./core.js?v=48';
 import{paintCute}from'./cute.js?v=9';
 // Cute pets and farm friends occasionally visit a walkable tile, rest, then wander off.
 export function createAnimalVisitors({project,findRoute,getState,redraw,announce,world,reduced=false,random=Math.random,cells=terrainCells}){
