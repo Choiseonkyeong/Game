@@ -14,7 +14,18 @@ test('existing level-two coordinates fit the original lawn without changing save
  for(const v of Object.values(g))assert(Number.isFinite(v)&&v>0);
 });
 test('other levels and artwork remain unchanged by the presentation adapter',()=>{
- for(const level of [1,3,4,5,6]){const logical=terrainStage(data,level);assert.equal(levelTwoScene(logical,data,level),logical);assert.equal(levelTwoDetails(logical),'');}
+ for(const level of [1]){const logical=terrainStage(data,level);assert.equal(levelTwoScene(logical,data,level),logical);assert.equal(levelTwoDetails(logical),'');}
  assert.equal(levelTwoScene(null,data,2),null);
  const entry=fs.readFileSync(new URL('../dist/island/island.js',import.meta.url),'utf8');assert(entry.includes('setGrid(s.renderGrid||terrainData.grid)'));assert(entry.includes('${levelTwoDetails(st)}'));assert(entry.includes('!stage()?.compactReference'));
+});
+
+test('levels3–6 preserve one round island and grow modestly with unchanged logical cells',()=>{
+ const base=data.stages[0];let previous=base.width;
+ for(const level of [3,4,5,6]){const logical=terrainStage(data,level),before=JSON.stringify(logical),scene=levelTwoScene(logical,data,level);
+ assert.equal(scene.file,base.file);assert.equal(scene.cells,logical.cells);assert.equal(JSON.stringify(logical),before);
+ assert(scene.width>previous&&scene.width/previous<1.17);assert(scene.house[2]/base.house[2]<1.37);
+ assert(Math.abs(scene.width/base.width-scene.house[2]/base.house[2])<1e-10);assert(scene.compactReference);previous=scene.width;
+ const xs=base.cells.map(([c,r])=>data.grid.ox+(c-r)*data.grid.hx),ys=base.cells.map(([c,r])=>data.grid.oy+(c+r)*data.grid.hy);
+ for(const[c,r]of scene.cells){const g=scene.renderGrid,x=g.ox+(c-r)*g.hx,y=g.oy+(c+r)*g.hy;assert(x>=480+(Math.min(...xs)-480)*scene.expansion-1e-6&&x<=480+(Math.max(...xs)-480)*scene.expansion+1e-6);assert(y>=430+(Math.min(...ys)-430)*scene.expansion-1e-6&&y<=430+(Math.max(...ys)-430)*scene.expansion+1e-6);}
+ }
 });

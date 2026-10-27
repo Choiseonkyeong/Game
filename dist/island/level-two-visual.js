@@ -16,7 +16,7 @@ function projectedBounds(cells, grid) {
 
 export function levelTwoScene(logicalStage, terrain, level) {
   const base = terrain?.stages?.[0];
-  if (level !== 2 || !logicalStage || !base || !terrain.grid) return logicalStage;
+  if (level < 2 || !logicalStage || !base || !terrain.grid) return logicalStage;
   if (cache.has(logicalStage)) return cache.get(logicalStage);
 
   // Fit the existing logical coordinates into the original round island's lawn.
@@ -31,15 +31,24 @@ export function levelTwoScene(logicalStage, terrain, level) {
   const fromY = (from.top + from.bottom) / 2;
   const toX = (to.left + to.right) / 2;
   const toY = (to.top + to.bottom) / 2;
+  const expansion = Math.pow(1.08, Math.max(0, level - 2));
+  const growX = x => 480 + (x - 480) * expansion;
+  const growY = y => 430 + (y - 430) * expansion;
   const renderGrid = {
-    hx: terrain.grid.hx * scale,
-    hy: terrain.grid.hy * scale,
-    ox: toX + (terrain.grid.ox - fromX) * scale,
-    oy: toY + (terrain.grid.oy - fromY) * scale
+    hx: terrain.grid.hx * scale * expansion,
+    hy: terrain.grid.hy * scale * expansion,
+    ox: growX(toX + (terrain.grid.ox - fromX) * scale),
+    oy: growY(toY + (terrain.grid.oy - fromY) * scale)
   };
   const scene = {
     ...base,
-    level: 2,
+    level,
+    expansion,
+    x: growX(base.x),
+    y: growY(base.y),
+    width: base.width * expansion,
+    height: base.height * expansion,
+    house: [growX(base.house[0]), growY(base.house[1]), base.house[2] * expansion, base.house[3] * expansion],
     cells: logicalStage.cells,
     renderGrid,
     compactReference: true
@@ -51,7 +60,7 @@ export function levelTwoScene(logicalStage, terrain, level) {
 export function levelTwoDetails(scene) {
   if (!scene?.compactReference) return '';
   const flower = (x, y, color) => `<g transform="translate(${x} ${y})"><path d="M0 0v-5" stroke="#789553" stroke-width="1.2" stroke-linecap="round"/><path d="M0-2q-4-3-4 0q2 2 4 0" fill="#9bbb72"/><g fill="${color}" stroke="#bd9f86" stroke-width=".45"><circle cx="0" cy="-8" r="2.1"/><circle cx="-2.5" cy="-5.5" r="2.1"/><circle cx="2.5" cy="-5.5" r="2.1"/><circle cx="0" cy="-3.5" r="2.1"/></g><circle cy="-5.7" r="1.4" fill="#efce83"/></g>`;
-  return `<g id="level-two-details" pointer-events="none" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
+  return `<g id="level-two-details" transform="translate(480 430) scale(${scene.expansion || 1}) translate(-480 -430)" pointer-events="none" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
     <g transform="translate(536 425)">
       <ellipse cy="1" rx="9" ry="3" fill="#6d754a" opacity=".12"/>
       <path d="M-6-7h12l-1.8 9h-8.4z" fill="#c49a7b" stroke="#967958" stroke-width="1.1"/>
