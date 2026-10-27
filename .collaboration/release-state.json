@@ -38,23 +38,23 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-lv2-reference-45",
-      "source_commit": "4ccc271ee7024d2a50e6fbaea75adee82c4dfe7f",
+      "version": "island-growth-expansion-46",
+      "source_commit": "3633d401363eabceeecd16f9c1eee09e32221198",
       "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=45",
-      "run_id": 39887711385,
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=46",
+      "run_id": 40424297054,
       "deployment": "succeeded",
-      "built_at": "2026-10-23T02:06:11.942Z",
-      "checked_at": "2026-10-23T11:12:03.113+09:00",
-      "automated_tests_passed": 133,
+      "built_at": "2026-10-27T00:07:17.739Z",
+      "checked_at": "2026-10-27T00:09:02.352Z",
+      "automated_tests_passed": 134,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "checks": "Public build-info exact source; Pages all steps success. Actual Chrome new player watered starter through stages1–5 and harvested+150 shells/Lv2. Lv1 and Lv2 ground outerHTML identical reference-island.jpg 960x1280 at(0,-240), house hitbox identical(300,200,230,225), viewBox identical(-102.47863247863245,0,1164.957264957265,800); Lv2 adds level-two-details only. Screenshot confirms one round floating island, no bridge/sub-island/windmill/panel, same house/texture/palette. Reload preserves Lv2/150 shells and new artwork. Core/economy/seed/shop/wardrobe/CSS/art files unchanged.",
-      "limitations": "Actual iPhone touch and external collaborator access unverified. Existing logical coordinates/collision cells preserved and projected onto approved lawn; other levels unchanged."
+      "checks": "Pages run successful; public build-info exact source; new starter-tree-art module publicly served. Chrome new profile and round island/starter stage1 visible; shell shop shows unlocked Lv1→2 purchase price60 and Lv2 detail-only note. Stage1–5 watering/save/harvest/debit/insufficient balance covered by automated tests.",
+      "limitations": "Full live growth/harvest/paid expansion playthrough not completed in browser. Unity editor/compiler and actual phone touch unverified; Unity controller supplied separately, web app remains JavaScript."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Public build-info exact source; Pages all steps success. Actual Chrome new player watered starter through stages1–5 and harvested+150 shells/Lv2. Lv1 and Lv2 ground outerHTML identical reference-island.jpg 960x1280 at(0,-240), house hitbox identical(300,200,230,225), viewBox identical(-102.47863247863245,0,1164.957264957265,800); Lv2 adds level-two-details only. Screenshot confirms one round floating island, no bridge/sub-island/windmill/panel, same house/texture/palette. Reload preserves Lv2/150 shells and new artwork. Core/economy/seed/shop/wardrobe/CSS/art files unchanged.",
-    "remaining_action": "Actual phone touch and external collaborator access unverified; no deployment setting remaining.",
+    "access_check": "Pages run successful; public build-info exact source; new starter-tree-art module publicly served. Chrome new profile and round island/starter stage1 visible; shell shop shows unlocked Lv1→2 purchase price60 and Lv2 detail-only note. Stage1–5 watering/save/harvest/debit/insufficient balance covered by automated tests.",
+    "remaining_action": "Full live growth/harvest/paid expansion playthrough not completed in browser. Unity editor/compiler and actual phone touch unverified; Unity controller supplied separately, web app remains JavaScript.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -864,5 +864,20 @@
     "actual_mobile_touch_verified": false,
     "checks": "Public build-info exact source; Pages all steps success. Actual Chrome new player watered starter through stages1–5 and harvested+150 shells/Lv2. Lv1 and Lv2 ground outerHTML identical reference-island.jpg 960x1280 at(0,-240), house hitbox identical(300,200,230,225), viewBox identical(-102.47863247863245,0,1164.957264957265,800); Lv2 adds level-two-details only. Screenshot confirms one round floating island, no bridge/sub-island/windmill/panel, same house/texture/palette. Reload preserves Lv2/150 shells and new artwork. Core/economy/seed/shop/wardrobe/CSS/art files unchanged.",
     "limitations": "Actual iPhone touch and external collaborator access unverified. Existing logical coordinates/collision cells preserved and projected onto approved lawn; other levels unchanged."
+  },
+  "island_growth_expansion_release": {
+    "version": "island-growth-expansion-46",
+    "source_commit": "3633d401363eabceeecd16f9c1eee09e32221198",
+    "source_branch": "master",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=46",
+    "run_id": 40424297054,
+    "deployment": "succeeded",
+    "built_at": "2026-10-27T00:07:17.739Z",
+    "checked_at": "2026-10-27T00:09:02.352Z",
+    "automated_tests_passed": 134,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "checks": "Pages run successful; public build-info exact source; new starter-tree-art module publicly served. Chrome new profile and round island/starter stage1 visible; shell shop shows unlocked Lv1→2 purchase price60 and Lv2 detail-only note. Stage1–5 watering/save/harvest/debit/insufficient balance covered by automated tests.",
+    "limitations": "Full live growth/harvest/paid expansion playthrough not completed in browser. Unity editor/compiler and actual phone touch unverified; Unity controller supplied separately, web app remains JavaScript."
   }
 }
