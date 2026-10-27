@@ -38,23 +38,23 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-round-growth-touch-47",
-      "source_commit": "e1079dee571b3a0e80456834a7538bb12ee8e08e",
+      "version": "island-hud-content-fashion-48",
+      "source_commit": "ab290b414c9e05d8664ef1a9eab69683657b5124",
       "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=47",
-      "run_id": 40427656367,
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=48",
+      "run_id": 40430955659,
       "deployment": "succeeded",
-      "built_at": "2026-10-27T00:38:26.517Z",
-      "checked_at": "2026-10-27T00:40:04.250Z",
-      "automated_tests_passed": 136,
+      "built_at": "2026-10-27T01:10:24.219Z",
+      "checked_at": "2026-10-27T01:17:00.032Z",
+      "automated_tests_passed": 140,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "checks": "Pages success and public build-info exact source. Chrome existing Lv3/150shells loads island.js?v=47 and original reference-island.jpg at1036.8x1382.4 (1.08x), one round island and modest original house, no sub-island/greenhouse/waterwheel. Pointer plant selection returns harvest context, wardrobe closed. Tests cover Lv3–6 growth bounds/saved logical cells and overlapping avatar/item targets.",
-      "limitations": "Actual iPhone touch and Unity compilation unverified. All upper levels covered by automated rendering checks; live Chrome inspected Lv3. Existing logical placement preserved."
+      "checks": "Pages successful and public build-info exact source. Chrome HUD nickname/Lv3/150shells and original island retained; Lv8 seaside lock opens correctly; knit equip/save/load and reload preserve outfit; settings/codex open. Fishing wait/one-reward/cooldown/save, cap10 and animal petting covered by automated tests.",
+      "limitations": "Daily-fashion large previews use128px fallback, visibly lower detail than approved512px face. Corrected preview/icon payload exists at63de62ac787c71addd8b69666b29d86a29c75ca0 but master update rejected by auto-review pending explicit approval. Full live Lv8 fishing/boat and actual iPhone touch/Unity compile unverified."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Pages success and public build-info exact source. Chrome existing Lv3/150shells loads island.js?v=47 and original reference-island.jpg at1036.8x1382.4 (1.08x), one round island and modest original house, no sub-island/greenhouse/waterwheel. Pointer plant selection returns harvest context, wardrobe closed. Tests cover Lv3–6 growth bounds/saved logical cells and overlapping avatar/item targets.",
-    "remaining_action": "Actual iPhone touch and Unity compilation unverified. All upper levels covered by automated rendering checks; live Chrome inspected Lv3. Existing logical placement preserved.",
+    "access_check": "Pages successful and public build-info exact source. Chrome HUD nickname/Lv3/150shells and original island retained; Lv8 seaside lock opens correctly; knit equip/save/load and reload preserve outfit; settings/codex open. Fishing wait/one-reward/cooldown/save, cap10 and animal petting covered by automated tests.",
+    "remaining_action": "Daily-fashion large previews use128px fallback, visibly lower detail than approved512px face. Corrected preview/icon payload exists at63de62ac787c71addd8b69666b29d86a29c75ca0 but master update rejected by auto-review pending explicit approval. Full live Lv8 fishing/boat and actual iPhone touch/Unity compile unverified.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -894,5 +894,40 @@
     "actual_mobile_touch_verified": false,
     "checks": "Pages success and public build-info exact source. Chrome existing Lv3/150shells loads island.js?v=47 and original reference-island.jpg at1036.8x1382.4 (1.08x), one round island and modest original house, no sub-island/greenhouse/waterwheel. Pointer plant selection returns harvest context, wardrobe closed. Tests cover Lv3–6 growth bounds/saved logical cells and overlapping avatar/item targets.",
     "limitations": "Actual iPhone touch and Unity compilation unverified. All upper levels covered by automated rendering checks; live Chrome inspected Lv3. Existing logical placement preserved."
+  },
+  "previous_successful_before_hud48": {
+    "version": "island-round-growth-touch-47",
+    "source_commit": "e1079dee571b3a0e80456834a7538bb12ee8e08e",
+    "source_branch": "master",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=47",
+    "run_id": 40427656367,
+    "deployment": "succeeded",
+    "built_at": "2026-10-27T00:38:26.517Z",
+    "checked_at": "2026-10-27T00:40:04.250Z",
+    "automated_tests_passed": 136,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "checks": "Pages success and public build-info exact source. Chrome existing Lv3/150shells loads island.js?v=47 and original reference-island.jpg at1036.8x1382.4 (1.08x), one round island and modest original house, no sub-island/greenhouse/waterwheel. Pointer plant selection returns harvest context, wardrobe closed. Tests cover Lv3–6 growth bounds/saved logical cells and overlapping avatar/item targets.",
+    "limitations": "Actual iPhone touch and Unity compilation unverified. All upper levels covered by automated rendering checks; live Chrome inspected Lv3. Existing logical placement preserved."
+  },
+  "island_hud_content_fashion_release": {
+    "version": "island-hud-content-fashion-48",
+    "source_commit": "ab290b414c9e05d8664ef1a9eab69683657b5124",
+    "source_branch": "master",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=48",
+    "run_id": 40430955659,
+    "deployment": "succeeded",
+    "built_at": "2026-10-27T01:10:24.219Z",
+    "checked_at": "2026-10-27T01:17:00.032Z",
+    "automated_tests_passed": 140,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "checks": "Pages successful and public build-info exact source. Chrome HUD nickname/Lv3/150shells and original island retained; Lv8 seaside lock opens correctly; knit equip/save/load and reload preserve outfit; settings/codex open. Fishing wait/one-reward/cooldown/save, cap10 and animal petting covered by automated tests.",
+    "limitations": "Daily-fashion large previews use128px fallback, visibly lower detail than approved512px face. Corrected preview/icon payload exists at63de62ac787c71addd8b69666b29d86a29c75ca0 but master update rejected by auto-review pending explicit approval. Full live Lv8 fishing/boat and actual iPhone touch/Unity compile unverified."
+  },
+  "pending_preview_correction": {
+    "source_commit": "63de62ac787c71addd8b69666b29d86a29c75ca0",
+    "status": "master_update_blocked_pending_user_approval",
+    "changes": "Preserve original high-resolution face/hair while layering garment changes, actual garment icons, muted seaside icon; 140 tests pass."
   }
 }
