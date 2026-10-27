@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T11:00:47+09:00 — Codex · 옷장 미리보기/착용 목록/새 의상 행동50 수정
+
+- Base master666900bf159c5805e83d750023a421f7b6db74f1; branch codex/wardrobe-motion50. User requested fixing and verifying the three review findings.
+- Painted-reference preview now requires dress=none; ribbon-dress/knit-set always render the actual chosen outfit in every view. One effective display model supplies set components/names/icons; equipped rows always overlay baked text/icons, including skirt/black shorts. Basic approved reference scene retained where exact match.
+- Daily-outfit actions articulate selected source arm/garment pixels, retain source face/hair/body, add matching fishing rod/hoe, animate jump/greeting/highfive/harvest/pickup instead of idle fallback. Existing default-pose artwork, walking/sitting/watering paths retained. Settings provides existing action menu for inspection, no new currency/content.
+-144 automated tests pass (4 regressions: dress-over-black-shorts preview; click-handler outfit/rows; explicit mirrored animated action plans; articulated body retains face pixels and selected shirt color). JS syntax/diff passed. Live visual/mobile QA pending publication; not claimed verified.
+- Publication blocked by automatic approval review: current request authorized fixing/verifying but not external disclosure of this new50 source/test payload. No alternate upload/retry attempted; last successful49 remains live. Explicit approval for this correction and deployment needed before live UI verification.
+
 ## 2026-10-27T10:36:03.055+09:00 — Codex · 사용자 승인 후 옷장 화질·아이콘49 배포 완료
 
 - User explicitly approved this additional wardrobe preview/icon correction. Source master@1e23687e4a9c1ff3171358ba46979f23af638157, base8720112b98abfaef2930fd241302dc464598e5e8 (retains48 release records); local reviewed d39421c. Prior blocked followup resolved with explicit approval; no forced update.

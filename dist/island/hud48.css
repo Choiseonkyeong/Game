@@ -4,3 +4,5 @@ header{min-width:205px;max-width:32vw;padding:11px 14px!important;gap:10px;color
 @media(prefers-reduced-motion:reduce){.arrival-bounce .human-image{animation:none!important}}
 
 .wui-bubble>svg{width:88%;height:75%;display:block}.wui-stage .wui-inventory{background:#fff0dc;border-radius:1cqw}
+
+.wui-stage .wui-equipped-icon>svg{width:100%;height:100%}.wui-stage .wui-equipped-name{width:11.5%;font-size:1.04cqw;line-height:1.2;overflow:hidden}.wui-stage .daily-top-label{font-size:.95cqw;border-radius:.5cqw}
