@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T09:40:11.320+09:00 — Codex · 사용자 승인 후 단일 섬·겹친 나무 터치47 배포 완료
+
+- User explicitly approved uploading/deploying this modified code and tests. Source master@e1079dee571b3a0e80456834a7538bb12ee8e08e; reviewed local0d26326; base024cf420bd92d477ca3e3fdb17d7a3b2846d4e33. Lease-protected update, no force.
+- Pages40427656367 succeeded; public build-info exact source/built_at2026-10-27T00:38:26.517Z. URL https://choiseonkyeong.github.io/Game/island/?v=47 .136 tests passed.
+- Chrome: existing Lv3/150shells preserved; reference-island.jpg1036.8x1382.4, original house modest1.08x; single round island, no bridge/sub-island/greenhouse/waterwheel. Pointer selects overlapping plant harvest context without wardrobe. Original data/cells/economy/wardrobe preserved.
+- Remaining: actual iPhone touch/Unity compile unverified. Lv4–6 automated projection/scale checks; actual live visual inspection Lv3 only. Previous upload rejection resolved by explicit user approval.
+
 ## 2026-10-27T09:34:24+09:00 — Codex · 단일 둥근섬 레벨확장 / 겹친 나무 터치 적용
 
 - User requested applying the verified issues. Base master024cf420bd92d477ca3e3fdb17d7a3b2846d4e33; branch codex/fix-level3-touch. Lv1/Lv2 unchanged. Lv3–6 reuse exact original reference art and add8% size per purchased level, preserving one round island, original palette/texture and proportional house size. Legacy logical cells and saved coordinates retained via render-grid projection. No bridge/sub-island art used.
