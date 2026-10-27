@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T09:32:13.763+09:00 — Codex · 사용자 승인 후 v46 재검증 기록 저장
+
+- User explicitly approved saving the verification record to Choiseonkyeong/Game after auto-review had blocked the documentation write. This update changes documentation only; game code and deployment unchanged.
+- Public build-info verified source3633d401363eabceeecd16f9c1eee09e32221198. Reviewed remote master a91352521b60bbf732aa4fd2f53ac33f4f194090 had documentation changes only; dist/test/integrations matched reviewed source. Full automated suite rerun:134pass/0fail.
+- Actual public Chrome restored Lv3/0shells and mature apple; second harvest completed, plant returned to stage3 and wallet showed150shells. Paid expansion and reload persistence were verified in preceding QA. Lv3 tree keyboard/pointer selection currently works; prior overlap-dependent wardrobe interception is not universally resolved.
+- Known visual failure persists: Lv3 uses sky-stage-3.webp with oversized house and right sub-island. No visual fix performed during verification. Actual iPhone touch and Unity compilation remain unverified; no Unity/dotnet runtime available.
+
 ## 2026-10-27T09:12:37.414+09:00 — Codex · v46 공개 브라우저 검증 (시각 문제 발견)
 
 - Source tested:3633d401363eabceeecd16f9c1eee09e32221198, documentation master c8c39eb081d4c2131b237ce3a35a23a2059582ec. Code/deployment unchanged during this verification.
