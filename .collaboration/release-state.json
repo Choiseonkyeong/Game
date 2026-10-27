@@ -38,23 +38,23 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-growth-expansion-46",
-      "source_commit": "3633d401363eabceeecd16f9c1eee09e32221198",
+      "version": "island-round-growth-touch-47",
+      "source_commit": "e1079dee571b3a0e80456834a7538bb12ee8e08e",
       "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=46",
-      "run_id": 40424297054,
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=47",
+      "run_id": 40427656367,
       "deployment": "succeeded",
-      "built_at": "2026-10-27T00:07:17.739Z",
-      "checked_at": "2026-10-27T00:09:02.352Z",
-      "automated_tests_passed": 134,
+      "built_at": "2026-10-27T00:38:26.517Z",
+      "checked_at": "2026-10-27T00:40:04.250Z",
+      "automated_tests_passed": 136,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "checks": "Pages run successful; public build-info exact source; new starter-tree-art module publicly served. Chrome new profile and round island/starter stage1 visible; shell shop shows unlocked Lv1→2 purchase price60 and Lv2 detail-only note. Stage1–5 watering/save/harvest/debit/insufficient balance covered by automated tests.",
-      "limitations": "Full live growth/harvest/paid expansion playthrough not completed in browser. Unity editor/compiler and actual phone touch unverified; Unity controller supplied separately, web app remains JavaScript."
+      "checks": "Pages success and public build-info exact source. Chrome existing Lv3/150shells loads island.js?v=47 and original reference-island.jpg at1036.8x1382.4 (1.08x), one round island and modest original house, no sub-island/greenhouse/waterwheel. Pointer plant selection returns harvest context, wardrobe closed. Tests cover Lv3–6 growth bounds/saved logical cells and overlapping avatar/item targets.",
+      "limitations": "Actual iPhone touch and Unity compilation unverified. All upper levels covered by automated rendering checks; live Chrome inspected Lv3. Existing logical placement preserved."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Pages run successful; public build-info exact source; new starter-tree-art module publicly served. Chrome new profile and round island/starter stage1 visible; shell shop shows unlocked Lv1→2 purchase price60 and Lv2 detail-only note. Stage1–5 watering/save/harvest/debit/insufficient balance covered by automated tests.",
-    "remaining_action": "Full live growth/harvest/paid expansion playthrough not completed in browser. Unity editor/compiler and actual phone touch unverified; Unity controller supplied separately, web app remains JavaScript.",
+    "access_check": "Pages success and public build-info exact source. Chrome existing Lv3/150shells loads island.js?v=47 and original reference-island.jpg at1036.8x1382.4 (1.08x), one round island and modest original house, no sub-island/greenhouse/waterwheel. Pointer plant selection returns harvest context, wardrobe closed. Tests cover Lv3–6 growth bounds/saved logical cells and overlapping avatar/item targets.",
+    "remaining_action": "Actual iPhone touch and Unity compilation unverified. All upper levels covered by automated rendering checks; live Chrome inspected Lv3. Existing logical placement preserved.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -879,5 +879,20 @@
     "actual_mobile_touch_verified": false,
     "checks": "Pages run successful; public build-info exact source; new starter-tree-art module publicly served. Chrome new profile and round island/starter stage1 visible; shell shop shows unlocked Lv1→2 purchase price60 and Lv2 detail-only note. Stage1–5 watering/save/harvest/debit/insufficient balance covered by automated tests.",
     "limitations": "Full live growth/harvest/paid expansion playthrough not completed in browser. Unity editor/compiler and actual phone touch unverified; Unity controller supplied separately, web app remains JavaScript."
+  },
+  "island_round_growth_touch_release": {
+    "version": "island-round-growth-touch-47",
+    "source_commit": "e1079dee571b3a0e80456834a7538bb12ee8e08e",
+    "source_branch": "master",
+    "url": "https://choiseonkyeong.github.io/Game/island/?v=47",
+    "run_id": 40427656367,
+    "deployment": "succeeded",
+    "built_at": "2026-10-27T00:38:26.517Z",
+    "checked_at": "2026-10-27T00:40:04.250Z",
+    "automated_tests_passed": 136,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "checks": "Pages success and public build-info exact source. Chrome existing Lv3/150shells loads island.js?v=47 and original reference-island.jpg at1036.8x1382.4 (1.08x), one round island and modest original house, no sub-island/greenhouse/waterwheel. Pointer plant selection returns harvest context, wardrobe closed. Tests cover Lv3–6 growth bounds/saved logical cells and overlapping avatar/item targets.",
+    "limitations": "Actual iPhone touch and Unity compilation unverified. All upper levels covered by automated rendering checks; live Chrome inspected Lv3. Existing logical placement preserved."
   }
 }
