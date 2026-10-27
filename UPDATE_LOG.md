@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T10:17:07.897+09:00 — Codex · 사용자 승인한 HUD/콘텐츠48 배포 및 실제 검수
+
+- User explicitly approved current code/tests/docs/settings upload/deployment. Source master@ab290b414c9e05d8664ef1a9eab69683657b5124, reviewed local6c7e2d9, base dcf06dc. Pages40430955659 success; public build-info exact source2026-10-27T01:10:24.219Z. URL https://choiseonkyeong.github.io/Game/island/?v=48 .140 tests pass.
+- Chrome existing nickname/Lv3/150shells/original round island preserved, lower action HUD and profile rendered, Lv8 lock, settings/codex, knit equip/save/load/reload persistence verified. Full live Lv8 boat/fishing and actual phone not verified; pure transaction tests pass.
+- QA issue: daily-fashion preview falls back to128px full body, visibly lower face/hair quality than original512px. Followup63de62ac787c71addd8b69666b29d86a29c75ca0 preserves original512px face/hair and overlays only garment pixel changes; matches actual item icons and muted seaside icon.140 tests pass. Tree/commit uploaded, but expected-HEAD master update rejected by automatic approval review because earlier approval was considered limited to48 payload. No bypass/retry; followup not deployed, main48 deployment retained. Explicit approval needed for this correction.
+
 ## 2026-10-27T10:06:30+09:00 — Codex · 스타일 고정 / 가로 HUD / 10레벨 콘텐츠 / 데일리 옷장48 구현
 
 - Base masterdcf06dc25a59d614a416d87a543f8f8ef294eb16; branch codex/style-hud-content48. User supplied comprehensive style/layout/content/fashion/motion requirements. docs/pogeun-style-lock.md added and linked from AGENTS.md; warm low-saturation 2D/pixel style, original single-island/character identity preserved. Existing shells retained.
