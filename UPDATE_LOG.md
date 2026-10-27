@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T10:36:03.055+09:00 — Codex · 사용자 승인 후 옷장 화질·아이콘49 배포 완료
+
+- User explicitly approved this additional wardrobe preview/icon correction. Source master@1e23687e4a9c1ff3171358ba46979f23af638157, base8720112b98abfaef2930fd241302dc464598e5e8 (retains48 release records); local reviewed d39421c. Prior blocked followup resolved with explicit approval; no forced update.
+- Pages40433300819 succeeded; public build-info exact source, built_at2026-10-27T01:34:02.282Z. URL https://choiseonkyeong.github.io/Game/island/?v=49 .140 automated tests passed.
+- Chrome: top49 module loaded; selected pastel-knit preview512px front/back/left/right; sharp original face/hair preserved, garment-only overlay;5real top icons and selected marker; original fitting-room artwork retained. Lv3/300shells/careXP10 persisted.
+- Remaining: actual iPhone touch and full live Lv8 fishing/boat verification from48 remain outstanding. No additional game systems modified in this correction.
+
 ## 2026-10-27T10:17:07.897+09:00 — Codex · 사용자 승인한 HUD/콘텐츠48 배포 및 실제 검수
 
 - User explicitly approved current code/tests/docs/settings upload/deployment. Source master@ab290b414c9e05d8664ef1a9eab69683657b5124, reviewed local6c7e2d9, base dcf06dc. Pages40430955659 success; public build-info exact source2026-10-27T01:10:24.219Z. URL https://choiseonkyeong.github.io/Game/island/?v=48 .140 tests pass.
