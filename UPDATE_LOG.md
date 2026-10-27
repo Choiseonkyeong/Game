@@ -2,6 +2,19 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-27T09:05:02+09:00 — Codex · 업로드 자동 검토 차단
+
+- GitHub create_tree 요청이 자동 승인 검토에서 거절됨. 이유: 이번 사용자 요청은 구현을 승인하지만 수정 소스/문서의 외부 GitHub 업로드 승인이 명확하지 않음. 우회·재시도 없음. 원격 master fd8224065bea13c4855c09a613c9f15d0664ebc1 및 기존 배포 유지.
+- 로컬 수정/134개 자동 검사 완료, 브라우저 설치 다운로드 실패로 실제 화면 검수 미실시. Unity 에디터 검수 미실시. 전체 수정 파일 패키지 제공 후 해당 업로드/배포의 명시 승인 요청.
+
+## 2026-10-27T09:03:53+09:00 — Codex · 오른쪽 새싹 5단계 표현 / 조개 확장 / Unity 회전 스크립트
+
+- 기준 master fd8224065bea13c4855c09a613c9f15d0664ebc1; branch codex/growth-expansion-46. 오른쪽 자동 사과 새싹의 1단계 원화 유지, 2~5단계 어린나무/잎/꽃/열매 렌더링 추가. 다른 씨앗 원화 및 성장시간/수확/상점/옷장/조개 데이터 로직 보존. 물방울 효과에 tend-seed 추가.
+- Lv2 기존 동일 원화·집 크기·단일 둥근섬 및 작은 화분/꽃 구현 그대로 유지. 섬·집 확장 버튼의 첫 수확 전 UI 제한 해제; 기존 비용(60/150/300/500/800) 사용. Lv2는 디테일, Lv3부터 기존 크기 확장. 첫 사과 수확 시 무료 Lv2 동작도 유지.
+- Unity integrations/unity/CharacterDragFacing.cs 및 한국어 적용 안내: EventSystem 터치/마우스, 방향각/좌우 회전 모드, 감도, 데드존, 각도 보간, 멀티터치 소유권. 4방향 그림은 4방향 표시이며 8/16/32방향 원화 추가 가능. 웹 앱의 Unity 전환 아님.
+- 검사:134개 자동 검사 통과(물주기1→5단계 고유표현, 저장복원, 수확 보상, 중복수확 거절, 확장 비용·잔액부족 보존 포함). JS 구문/공백 검사 통과. Unity 에디터/컴파일러 없음: 실제 컴파일·폰 터치 미검증. 로컬 Chromium 설치 불가로 브라우저 검수 대기.
+- 배포: 소스 저장/Pages 확인 대기. 직전 성공 배포 기록은 유지. 소스 SHA는 후속 기록에서 확정.
+
 ## 2026-10-23T11:12:03.113+09:00 — Codex · Lv2 단일 둥근 섬/원래 집 크기 배포 검증 완료
 
 - Source master@4ccc271ee7024d2a50e6fbaea75adee82c4dfe7f. Pages39887711385 all steps success; public build-info exact source, built_at2026-10-23T02:06:11.942Z. URL https://choiseonkyeong.github.io/Game/island/?v=45 .
