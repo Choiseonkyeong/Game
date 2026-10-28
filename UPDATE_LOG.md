@@ -1,3 +1,18 @@
+## 2026-10-29T02:27:59+09:00 — Codex · 홈52 실동작 검수 및 보정
+
+- Base remote master ed1bae6, branch codex/island-sapling-stage52, reviewed local6c1ef8c. 사용자 검수 요청. 상세 docs/pogeun-home52-review.md, 화면 docs/art/qa/home52-review.jpg.
+- 발견: 첫 수확으로 Lv2가 되며 기본 나무 좌표가 바뀌면 좌표 의존 판별이 끊어짐. starterId+apple 판별로 보정. 배경 새싹 고정 덮개와 실제 작물 분리, 잔디 덮개/배경 가장자리 보정.
+- Checks:148 tests pass/0 fail, syntax/diff pass. Chrome844×390·667×375·desktop: 물 주기저장/XP, 수확+150(321→471), Lv2→재접속 기본 나무1개와 성장 보존, 확대/축소·집 출입 viewBox 복귀. 검수 전 로컬 상태 복원.
+- Deployment: not deployed; v51 공개 배포 기록 유지. 실제 아이폰 터치·상위 레벨 전체/오프라인 런타임 미검수.
+
+## 2026-10-29T02:16:45+09:00 — Codex · 홈 확대 / 기본 사과나무52 코드 작성
+
+- Base master ed1bae6adbe3e1a32ce1e9ad4cffd9baffc5a81a; branch codex/island-sapling-stage52. 사용자 요청: HTML/CSS/JS 변경 코드 작성. docs/pogeun-home52-code.md에 적용 스니펫 포함.
+- 오른쪽 기본 사과나무 1단계를 파스텔 SVG 묘목으로 표시. 기존 starterId/성장 시간/클릭→물 주기·수확 연결 유지. 저장 데이터·코디·조개 보존.
+- 전체 너비/높이 홈, 하단 nav 공간, 실제 섬 경계 기준 카메라 확대, 넓은 배경 가장자리 마스크. 실내 전환·확대/축소·상위 레벨 확장 경계 유지. 모듈/오프라인 cache52 갱신.
+- Checks: 147 tests pass/0 fail; syntax/diff pass. Chrome desktop 및844×390 iframe, 사과나무 클릭→성장 단계/물 주기 확인. 실제 아이폰 터치 미검수.
+- Deployment: not deployed. 코드 작성 요청 범위로 로컬 저장. 성공 배포 기록은 v51 유지.
+
 ## 2026-10-28T20:21:37+09:00 — Codex · 사용자 승인한 흐름 수정51 배포 완료
 
 - Source: master@22b1394854e09e3f35899beba680d4a078c2b0e1; base d26708053557864d5659eff16782625c0b07d3fa. 검토한 로컬 f703e9d와 변경 파일 동일. 사용자 업로드/배포 승인 후 GitHub 연결 도구로 expected-HEAD 갱신, 강제 푸시 없음.

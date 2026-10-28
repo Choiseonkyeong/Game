@@ -16,7 +16,7 @@ test('existing level-two coordinates fit the original lawn without changing save
 test('other levels and artwork remain unchanged by the presentation adapter',()=>{
  for(const level of [1]){const logical=terrainStage(data,level);assert.equal(levelTwoScene(logical,data,level),logical);assert.equal(levelTwoDetails(logical),'');}
  assert.equal(levelTwoScene(null,data,2),null);
- const entry=fs.readFileSync(new URL('../dist/island/island.js',import.meta.url),'utf8');assert(entry.includes('setGrid(s.renderGrid||terrainData.grid)'));assert(entry.includes('${levelTwoDetails(st)}'));assert(entry.includes('!stage()?.compactReference'));
+ const entry=fs.readFileSync(new URL('../dist/island/island.js',import.meta.url),'utf8');assert(entry.includes('setGrid(s.renderGrid||terrainData.grid)'));assert(entry.includes('${levelTwoDetails(st)}'));assert(entry.includes('homeViewBox('));
 });
 
 test('levels3–6 preserve one round island and grow modestly with unchanged logical cells',()=>{

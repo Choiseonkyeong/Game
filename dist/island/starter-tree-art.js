@@ -1,10 +1,31 @@
 import {seedStage} from './seed-shop.js?v=42';
 
-// The approved background already contains stage one at this exact position.
-// Only draw the growing starter; all purchased seeds retain their existing art.
+// Identity survives terrain expansion, relocation and restoring an existing save.
+export const starterPlant=(state,plant)=>plant?.seedKind==='apple'&&plant.id===state.loop.starterId;
+
+// Remove the decorative baked sprout at the original artwork position, independently
+// of the live crop's current location. Never creates or resets a saved plant.
+export function starterSproutCover(scene,grid){
+ if(!scene?.reference||!grid)return '';
+ const f=scene.expansion||1,x=grid.ox+6*grid.hx,y=grid.oy+22*grid.hy,k=Math.max(.7,grid.hx/42);
+ return `<g id="starter-sprout-cover" transform="translate(480 430) scale(${f}) translate(-480 -430)"><g transform="translate(${x} ${y}) scale(${k})" pointer-events="none"><defs><radialGradient id="starter-lawn"><stop offset=".72" stop-color="#97c866"/><stop offset="1" stop-color="#97c866" stop-opacity="0"/></radialGradient></defs><ellipse cx="7" cy="-33" rx="43" ry="51" fill="url(#starter-lawn)"/></g></g>`;
+}
+
+// Draw the live crop at its saved logical cell; purchased crops keep their art.
 export function starterTreeArt(plant, now = Date.now()) {
   const stage = seedStage(plant, now);
-  if (stage === 1) return '';
+  if (stage === 1) return `<g class="starter-tree starter-sapling" data-growth-stage="1" stroke="#806b54" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <title>기본 사과나무 묘목 · 1단계</title>
+    <g transform="translate(7 -4) scale(1.15)">
+    <ellipse cy="1" rx="24" ry="7" fill="#749452" opacity=".23" stroke="none"/>
+    <ellipse cy="-1" rx="16" ry="5" fill="#d4b48b" stroke="#ad8d69"/>
+    <path d="M-3-2Q0-18-2-37L4-39Q7-20 4-2Z" fill="#ba9570"/>
+    <path d="M1-23Q-23-18-25-38Q-7-44 1-23Z" fill="#b8d898"/>
+    <path d="M3-30Q5-51 25-45Q26-27 3-30Z" fill="#c6dfab"/>
+    <path d="M0-24L-16-33M5-32L18-40" fill="none" stroke="#8fa66c" stroke-width="1.1"/>
+    <path d="M-7-3L-12-7M10-3L15-7" stroke="#b9d49b"/>
+    </g>
+  </g>`;
   const height = [0, 0, 48, 68, 83, 83][stage];
   const crown = stage === 2 ? 20 : stage === 3 ? 29 : 36;
   const foliage = (x, y, radius) => `<g transform="translate(${x} ${y})">
