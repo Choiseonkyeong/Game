@@ -1,6 +1,6 @@
 # 던전 브레이커
 
-Claude 아티팩트(https://claude.ai/artifact/22TWApbTDaFXAZ9SFJDwQD, 버전 26)의 전체 소스 사본입니다. `dist/` 게임(포근섬)과는 별개이며 GitHub Pages로 배포되지 않습니다.
+공유 URL: https://choiseonkyeong.github.io/Game/dungeon-breaker/ (GitHub Pages, `dist/` 배포에 포함). Claude 아티팩트 https://claude.ai/artifact/22TWApbTDaFXAZ9SFJDwQD 버전 27과 같은 소스이며, 다른 `dist/` 게임과는 별개입니다.
 
 - 실행: 이 폴더에서 `python3 -m http.server` 후 `http://localhost:8000/` (fetch 사용으로 file:// 불가)
 - 시작점: `index.html` (ES 모듈 `src/*.js`, 데이터 `data/*.json`)

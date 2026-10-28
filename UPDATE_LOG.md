@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-28T17:19:38+09:00 — Claude · 던전 브레이커 GitHub Pages 배포 요청 (소스 이동)
+
+- 사용자 요청으로 `experiments/dungeon-breaker/` → `dist/dungeon-breaker/` 이동(git mv, 내용 동일 · README 경로만 수정). 다른 dist 게임 파일 변경 없음. 기준 master d00b4e4, 직전 Pages 배포 5861235(run 40436421799)와 dist 차이는 이 폴더뿐.
+- Checks: npm test 144 pass/0 fail. 로컬 dist 서버 /dungeon-breaker/ 경로에서 타이틀→마을→들판 진행, 404·콘솔 오류 없음.
+- Deployment: master push로 Pages workflow 실행 예정. 목표 URL https://choiseonkyeong.github.io/Game/dungeon-breaker/ — 배포 결과는 다음 항목에 기록.
+
 ## 2026-10-28T17:17:08+09:00 — Claude · 던전 브레이커 master 병합
 
 - 사용자 요청으로 claude/beautiful-cerf-unl8y6(4633352, 887463e 및 이 기록 커밋)를 master에 fast-forward 병합. 기존 master 5861235 위에 추가만 함(강제 푸시 없음).
