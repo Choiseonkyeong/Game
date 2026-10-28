@@ -38,23 +38,23 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-wardrobe-preview-49",
-      "source_commit": "1e23687e4a9c1ff3171358ba46979f23af638157",
+      "version": "island-flow-51",
+      "source_commit": "22b1394854e09e3f35899beba680d4a078c2b0e1",
       "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=49",
-      "run_id": 40433300819,
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=51",
+      "run_id": 40679139486,
       "deployment": "succeeded",
-      "built_at": "2026-10-27T01:34:02.282Z",
-      "checked_at": "2026-10-27T01:35:51.215Z",
-      "automated_tests_passed": 140,
+      "built_at": "2026-10-28T11:20:23.003Z",
+      "checked_at": "2026-10-28T20:21:37+09:00",
+      "automated_tests_passed": 145,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "checks": "Pages successful, public build-info exact source. Chrome island.js?v49, daily knit preview512px at front/back/left/right, full original face/hair retained; five real top SVG icons and correct selection; existing Lv3/300shells/careXP10 retained. Approved fitting-room frame unchanged.",
-      "limitations": "Actual iPhone touch and full Lv8 fishing/boat browser playthrough remain unverified from48. This patch only addresses preview resolution, garment icons and muted seaside icon."
+      "checks": "Pages workflow succeeded; public build-info exact source. Chrome live island.js?v51: new profile -> help -> explore -> expansion focuses expansion-title; locked livestock labels show unavailable. Local reviewed game files equal pushed source.",
+      "limitations": "Actual iPhone touch, full Lv8 fishing/boat browser playthrough and offline runtime remain unverified. External collaborator access not confirmed."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Pages successful, public build-info exact source. Chrome island.js?v49, daily knit preview512px at front/back/left/right, full original face/hair retained; five real top SVG icons and correct selection; existing Lv3/300shells/careXP10 retained. Approved fitting-room frame unchanged.",
-    "remaining_action": "Actual iPhone touch and full Lv8 fishing/boat browser playthrough remain unverified from48. This patch only addresses preview resolution, garment icons and muted seaside icon.",
+    "access_check": "Pages workflow succeeded; public build-info exact source. Chrome live island.js?v51: new profile -> help -> explore -> expansion focuses expansion-title; locked livestock labels show unavailable. Local reviewed game files equal pushed source.",
+    "remaining_action": "Actual iPhone touch, full Lv8 fishing/boat browser playthrough and offline runtime remain unverified. External collaborator access not confirmed.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -414,6 +414,21 @@
       "actual_mobile_touch_verified": false,
       "checks": "Pages all steps success; public build-info exact source. New/right starter, old left starter migration with growth/ID/watering retained, save/restore/idempotence, completed-progress and occupied-slot preservation tested. Original artwork and CSS unchanged.",
       "limitations": "Fresh/legacy Lv1 screen not visually checked on the user's iPhone. Starter placement/render logic checked in tests; prior QA browser has Lv2 progress, which is deliberately preserved."
+    },
+    "previous_successful_before_flow51": {
+      "version": "island-wardrobe-preview-49",
+      "source_commit": "1e23687e4a9c1ff3171358ba46979f23af638157",
+      "source_branch": "master",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=49",
+      "run_id": 40433300819,
+      "deployment": "succeeded",
+      "built_at": "2026-10-27T01:34:02.282Z",
+      "checked_at": "2026-10-27T01:35:51.215Z",
+      "automated_tests_passed": 140,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "checks": "Pages successful, public build-info exact source. Chrome island.js?v49, daily knit preview512px at front/back/left/right, full original face/hair retained; five real top SVG icons and correct selection; existing Lv3/300shells/careXP10 retained. Approved fitting-room frame unchanged.",
+      "limitations": "Actual iPhone touch and full Lv8 fishing/boat browser playthrough remain unverified from48. This patch only addresses preview resolution, garment icons and muted seaside icon."
     }
   },
   "restoration_record": {

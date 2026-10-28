@@ -1,3 +1,10 @@
+## 2026-10-28T20:21:37+09:00 — Codex · 사용자 승인한 흐름 수정51 배포 완료
+
+- Source: master@22b1394854e09e3f35899beba680d4a078c2b0e1; base d26708053557864d5659eff16782625c0b07d3fa. 검토한 로컬 f703e9d와 변경 파일 동일. 사용자 업로드/배포 승인 후 GitHub 연결 도구로 expected-HEAD 갱신, 강제 푸시 없음.
+- Checks: 145 tests pass/0 fail. Pages run40679139486 success. public build-info source exact, built_at2026-10-28T11:20:23.003Z.
+- Live Chrome: island.js?v51; 가입→시작안내→둘러보기→확장 항목 자동 포커스, 잠금 입양5종 이용 불가 표시 확인. URL https://choiseonkyeong.github.io/Game/island/?v=51 . 기존 승인 아트/저장 형식/가격 유지.
+- Remaining: 실제 아이폰 터치, Lv8 낚시/배 전체 브라우저 플레이, 오프라인 런타임, 다른 작업자 접속 미확인. release-state 실제 성공 기록 갱신. 기록만 변경하므로 추가 배포 불필요.
+
 ## 2026-10-28T18:11:22+09:00 — Codex · 포근섬 흐름 검토 및 로컬 수정
 
 - Base master d26708053557864d5659eff16782625c0b07d3fa; branch codex/island-flow-review. 상세: docs/pogeun-flow-review.md.
