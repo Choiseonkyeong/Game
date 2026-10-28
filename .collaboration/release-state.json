@@ -960,5 +960,20 @@
     "actual_mobile_touch_verified": false,
     "checks": "Pages successful, public build-info exact source. Chrome island.js?v49, daily knit preview512px at front/back/left/right, full original face/hair retained; five real top SVG icons and correct selection; existing Lv3/300shells/careXP10 retained. Approved fitting-room frame unchanged.",
     "limitations": "Actual iPhone touch and full Lv8 fishing/boat browser playthrough remain unverified from48. This patch only addresses preview resolution, garment icons and muted seaside icon."
+  },
+  "dungeon_breaker_pages": {
+    "version": "dungeon-breaker-artifact-27",
+    "source_commit": "d1e5d10a32aa09fce1a0ccd7347ce0b1bc905260",
+    "source_branch": "master",
+    "entrypoint": "dist/dungeon-breaker/index.html -> src/*.js, data/*.json",
+    "url": "https://choiseonkyeong.github.io/Game/dungeon-breaker/",
+    "run_id": 40655985839,
+    "deployment": "succeeded",
+    "live_url_verified": false,
+    "automated_tests_passed": 144,
+    "actual_desktop_browser_verified": "local dist server only",
+    "actual_mobile_touch_verified": false,
+    "limitations": "Claude cloud session network policy blocked choiseonkyeong.github.io, so public URL and build-info were not fetched. Separate game from island; island record unchanged.",
+    "recorded_at": "2026-10-28T17:27:04+09:00"
   }
 }
