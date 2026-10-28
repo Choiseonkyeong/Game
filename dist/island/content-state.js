@@ -4,6 +4,12 @@ export const FISHES=[{id:'silver',name:'은빛 물고기',shells:15},{id:'pink',
 const integer=(n,max=1e9)=>Number.isSafeInteger(n)&&n>=0?Math.min(max,n):0;
 export function readContent(raw){let d;try{d=JSON.parse(raw);}catch{}return{v:1,xp:integer(d?.xp),caught:integer(d?.caught),fish:Object.fromEntries(FISHES.map(f=>[f.id,integer(d?.fish?.[f.id],999)])),castAt:integer(d?.castAt,1e15),lastCatch:integer(d?.lastCatch,1e15),boat:d?.boat===true};}
 export const contentStage=level=>level>=8?'바닷가':level>=4?'목장':'작은 정원';
+// One timing model for controls and transactions, including restored casts.
+export function fishingStatus(s,now=Date.now()){
+ if(s.castAt){const ready=now-s.castAt>=2500;return{phase:ready?'ready':'waiting',canCast:false,canCatch:ready,message:ready?'찌가 움직여요! 물고기 올리기를 눌러 주세요.':'찌를 살펴보는 중이에요. 잠깐 기다려 주세요.'};}
+ const cooling=!!s.lastCatch&&now-s.lastCatch<12000;
+ return{phase:cooling?'cooldown':'idle',canCast:!cooling,canCatch:false,message:cooling?'물고기가 다시 모이는 중이에요. 준비되면 낚싯대를 다시 던질 수 있어요.':'낚싯대를 던지고 찌를 기다려 보세요. 잡은 물고기는 도감에 기록되고 조개를 받아요.'};
+}
 export function contentAction(s,event,level,now=Date.now()){
  const n=structuredClone(s),fail=why=>({ok:false,state:s,why});
  if(event.type==='xp'){const amount=event.amount;if(!Number.isSafeInteger(amount)||amount<1||amount>100)return fail('경험 수치가 올바르지 않아요.');n.xp=Math.min(1e9,n.xp+amount);return{ok:true,state:n};}

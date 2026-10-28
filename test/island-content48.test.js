@@ -6,3 +6,19 @@ test('existing islands retain their level and can buy through level10 without lo
 test('fishing enforces unlock, wait, one reward per cast, cooldown and persistent boat/codex',()=>{let s=readContent(null);assert(!contentAction(s,{type:'cast'},7,100000).ok);s=contentAction(s,{type:'boat'},8,100000).state;assert(s.boat);s=contentAction(s,{type:'cast'},8,100000).state;assert(!contentAction(s,{type:'boat'},8,100100).ok);assert(!contentAction(s,{type:'catch'},8,102000).ok);const r=contentAction(s,{type:'catch'},8,102500);assert(r.ok);assert.equal(r.earned,FISHES[0].shells);assert.equal(r.state.fish.silver,1);assert.equal(r.state.caught,1);assert(!contentAction(r.state,{type:'catch'},8,102501).ok);assert(!contentAction(r.state,{type:'cast'},8,102501).ok);assert.deepEqual(readContent(JSON.stringify(r.state)),r.state);s=contentAction(r.state,{type:'cast'},8,115000).state;const cancel=contentAction(s,{type:'cancel'},8,115100);assert(cancel.ok);assert.equal(cancel.state.castAt,0);});
 test('care XP and daily looks persist without resetting gender or the original outfit',()=>{let s=readContent(null);s=contentAction(s,{type:'xp',amount:activityXp('harvest-seed')},1).state;assert.equal(s.xp,10);assert(!contentAction(s,{type:'xp',amount:-1},1).ok);const w=restoreWardrobe(JSON.stringify({revision:22,gender:'female',female:{top:'cardigan',bottom:'skirt',dress:'none'},male:{top:'white-tee',bottom:'shorts'},looks:[{gender:'female',outfit:{dress:'ribbon-dress'}}]}));assert.equal(w.female.top,'cardigan');assert.equal(w.male.top,'white-tee');assert.equal(w.looks[0].outfit.dress,'ribbon-dress');});
 test('petting an adopted animal requires proximity, preserves its cooldown and raises hearts',async()=>{const {fresh,apply,restore,setTerrain}=await import('../dist/island/core.js');setTerrain(null);let s=fresh();s.items=[];s.loop.level=4;s=apply(s,{type:'adopt',kind:'hen',c:3,r:6},1000).state;s.avatar=[3,7];const id=s.animals[0].id;const r=apply(s,{type:'pet-animal',id},10000);assert(r.ok);assert.equal(r.state.hearts,1);assert(!apply(r.state,{type:'pet-animal',id},10001).ok);assert.deepEqual(restore(JSON.stringify(r.state)),r.state);assert(!apply({...r.state,avatar:[7,7]},{type:'pet-animal',id},30000).ok);});
+
+test('fishing controls follow the exact wait and cooldown transaction boundaries after reload',async()=>{
+ const {fishingStatus}=await import('../dist/island/content-state.js');
+ const cast=contentAction(readContent(null),{type:'cast'},8,100000).state;
+ const restored=readContent(JSON.stringify(cast));
+ for(const now of [100000,102499,102500,103000]){
+  const status=fishingStatus(restored,now);
+  assert.equal(status.canCatch,contentAction(restored,{type:'catch'},8,now).ok);
+  assert.equal(status.canCast,false);
+ }
+ const caught=contentAction(restored,{type:'catch'},8,102500).state;
+ for(const now of [102500,114499,114500])assert.equal(fishingStatus(caught,now).canCast,contentAction(caught,{type:'cast'},8,now).ok);
+ assert.equal(fishingStatus(restored,102500).phase,'ready');
+ assert.equal(fishingStatus(caught,102500).phase,'cooldown');
+ assert.equal(fishingStatus(caught,114500).phase,'idle');
+});

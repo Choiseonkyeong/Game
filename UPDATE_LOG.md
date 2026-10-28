@@ -1,3 +1,10 @@
+## 2026-10-28T18:11:22+09:00 — Codex · 포근섬 흐름 검토 및 로컬 수정
+
+- Base master d26708053557864d5659eff16782625c0b07d3fa; branch codex/island-flow-review. 상세: docs/pogeun-flow-review.md.
+- 첫 시작 안내 연결, 확장 항목 바로가기, 잠금 완료 오표기 수정, 낚시 준비·재시도 버튼 자동 갱신/종료 자세 복귀, 섬 전환 시 씨앗 선택 해제. 아트·저장 형식·코디·재화 가격 보존.
+- Checks: npm test 145 pass/0 fail; JS syntax/diff pass. 로컬 Chrome 가입→안내→둘러보기, 확장 포커스, 바닷가 잠금→확장, 사과나무 성장/물 주기 선택 확인.
+- Deployment: not deployed; 사용자의 기존 변경분별 업로드 승인 원칙에 따라 승인 대기. 원격 업로드 없음. Lv8 전체 브라우저 플레이·실제 휴대폰·오프라인 미검수. release-state 성공 배포 기록 유지.
+
 # 시간별 업데이트 기록
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
