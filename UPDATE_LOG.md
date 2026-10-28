@@ -1,3 +1,10 @@
+## 2026-10-29T02:57:29+09:00 — Codex · 공개v52 재검수 / 가구 배치 보존53 수정
+
+- Base master44010c57fb0b6b386eb3726f71ea6d5597fdeeb5; branch codex/live52-second-review. 사용자 검수→완료 요청.
+- 공개 v52 벤치 배치1→새로고침0 재현. startup/loadIsland의 가구6종 일괄 제거를 없애 재접속·섬 왕복에서 배치 보존. 최초 원화1회 정리 시 seedKind도 보존. 소유량/재화/코디/저장 형식 유지. cache/module53 갱신.
+- Checks:151 tests pass/0 fail(실제 startup/loadIsland 회귀3개), syntax/diff pass. 로컬 벤치·화분 재접속1개씩, 니트 코디·룩1 재접속, 수확321→471/Lv2·새 섬400구매→71·복귀 후 가구/작물 유지 확인. docs/pogeun-live53-review.md.
+- Deployment: v53 배포 준비, 실제 성공 후 별도 기록. 실제 아이폰/오프라인/상위 레벨 전체 미검수. 과거 초기화된 위치는 자동 복구 불가(주머니에서 다시 배치 필요).
+
 ## 2026-10-29T02:31:56+09:00 — Codex · 승인한 홈52 업로드·배포 완료
 
 - Source: master@f2d4cdadc928cfe6508faaad377f01c7cfb7e624; base ed1bae6adbe3e1a32ce1e9ad4cffd9baffc5a81a; 검수 로컬571f685와 게임/테스트 동일. 사용자 진행 승인 후 expected-HEAD 갱신, 강제 푸시 없음.
