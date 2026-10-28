@@ -1,3 +1,10 @@
+## 2026-10-29T03:00:35+09:00 — Codex · 가구 배치 보존53 배포·공개 재접속 검수 완료
+
+- Source master@6c7488ed10485139eacd1abb99bd133d955ee006, base44010c57fb0b6b386eb3726f71ea6d5597fdeeb5. 사용자 검수 후 완료 요청에 따라 게시. 검수한 로컬e52cd55와 게임/테스트 일치, expected-HEAD 갱신/강제 푸시 없음.
+- Pages40740760497 success; public build-info source exact, built_at2026-10-28T17:58:50.918Z. URL https://choiseonkyeong.github.io/Game/island/?v=53 .
+- Checks:151 tests pass. 공개 Chrome island.js?v53, 벤치 배치→새로고침→벤치1개 유지 및 앉아서 쉬기 메뉴 확인, 조개0 유지. 로컬 가구/작물/코디 재접속·섬 왕복 검수 완료. 화면 docs/art/qa/live53-placement.jpg.
+- Remaining: 실제 아이폰/오프라인/Lv8~10 전체 미검수. 과거 초기화된 배치 좌표 자동복구 불가, 주머니에서 다시 배치하면 유지됨. release-state 실제 성공 기록 갱신. 기록 변경은 추가 배포 불필요.
+
 ## 2026-10-29T02:57:29+09:00 — Codex · 공개v52 재검수 / 가구 배치 보존53 수정
 
 - Base master44010c57fb0b6b386eb3726f71ea6d5597fdeeb5; branch codex/live52-second-review. 사용자 검수→완료 요청.

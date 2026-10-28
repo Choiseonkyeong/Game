@@ -20,4 +20,4 @@
 
 실제 아이폰 터치와 오프라인 런타임·Lv8~10 전체 플레이는 미검수. 이미 초기화되어 저장된 과거 배치 위치는 자동 복구할 수 없으며, 주머니의 물건을 다시 놓으면 이 수정부터 유지됨.
 
-배포 상태: 완료 요청에 따라 v53 배포 준비. 실제 성공 결과는 UPDATE_LOG 및 release-state에 기록.
+배포 완료: master@6c7488ed10485139eacd1abb99bd133d955ee006, Pages40740760497 성공. 공개 build-info 일치. https://choiseonkyeong.github.io/Game/island/?v=53 . 공개 Chrome에서 새 모듈v53과 벤치 배치→새로고침→벤치1개 유지/앉아서 쉬기 메뉴 확인. 증빙 art/qa/live53-placement.jpg.
