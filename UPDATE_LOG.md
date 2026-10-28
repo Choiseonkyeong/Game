@@ -2,6 +2,13 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-28T17:15:31+09:00 — Claude · 던전 브레이커 직업별 이동 성격(MOVE_PROFILES) 적용
+
+- Source: claude/beautiful-cerf-unl8y6. 변경 파일 `experiments/dungeon-breaker/`의 `src/entities.js`, `src/sprite.js`, `index.html`만. dist·release-state·다른 게임 변경 없음.
+- 내용: 직업별 가감속(전사 느림·도적 즉시·궁수 스프링 탄성·성직자/마법사 미끄러짐), 마법사·성직자 부양·로브 흔들림, 직업별 공격 예비동작/찌르기 거리와 판정 시점 동기화, 몬스터 출발·정지 개인 지연(0~0.14초), 흔들림 박자 분산, NPC 개인 속도·가감속, 탑승 중 기본 성격.
+- Checks: 로컬 Chromium(PC) 5개 직업 출발·정지 속도 측정(전사 약0.6초 가속·도적 즉시·궁수 최고속 252/240 넘침 후 복귀·마법사/성직자 0.5초 이상 미끄러짐), 전사/도적 타격 시점 약240/130ms, 콘솔 오류 없음. 모바일 실기기 미검수.
+- Deployment: Claude 아티팩트 https://claude.ai/artifact/22TWApbTDaFXAZ9SFJDwQD 갱신(GitHub Pages 대상 아님). master 병합 안 함.
+
 ## 2026-10-28T14:58:41+09:00 — Claude · 던전 브레이커 소스 저장소 보관
 
 - Source: 브랜치 claude/beautiful-cerf-unl8y6 (origin/master 5861235에서 fast-forward 후 작업). 새 폴더 `experiments/dungeon-breaker/`만 추가. dist·release-state·다른 게임 파일 변경 없음.

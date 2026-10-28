@@ -18,6 +18,18 @@ const RATIO_STATS = new Set(['critRate']);
 
 let nextId = 1;
 
+// 계열별 이동 성격. accel/decel: 초당 목표 속도를 따라가는 빠르기, spring: 탄성(0=없음), turn: 방향 전환 연출 시간,
+// react: 출발·정지 반응 지연 최대값(초), land: 착지 찌그러짐 시간, mass: 무게(연출 크기), glide: 걸음 없이 미끄러짐, float: 부양 높이
+// gait: 걸음 {freq 빠르기, hop 튀는 높이, lean 기울기, squash 찌그러짐}, windup: 공격 예비동작 비율, lunge: 찌르기 거리
+export const MOVE_PROFILES = {
+  warrior: { accel: 5, decel: 4, turn: 0.2, land: 0.26, mass: 1.3, gait: { freq: 0.8, hop: 0.7, lean: 0.7, squash: 1.8 }, windup: 0.4, lunge: 18 },
+  rogue: { accel: 24, decel: 20, turn: 0.05, land: 0.1, mass: 0.8, gait: { freq: 1.4, hop: 0.8, lean: 1.8, squash: 0.6 }, windup: 0.14, lunge: 34 },
+  archer: { accel: 10, decel: 9, spring: 0.35, turn: 0.1, land: 0.16, mass: 1, gait: { freq: 1.1, hop: 1.6, lean: 0.9, squash: 1.4 }, windup: 0.3, lunge: 6 },
+  cleric: { accel: 4, decel: 2.5, turn: 0.16, land: 0.2, mass: 1.05, glide: true, float: 2, windup: 0.3, lunge: 12 },
+  mage: { accel: 4.5, decel: 2.2, turn: 0.14, land: 0.2, mass: 0.9, glide: true, float: 7, windup: 0.3, lunge: 4 },
+  default: { accel: 10, decel: 8, turn: 0.12, react: 0.14, land: 0.18, mass: 1 },
+};
+
 class Emitter {
   #handlers = new Map();
   on(type, fn) {
@@ -50,6 +62,10 @@ export class Character extends Emitter {
     this.vx = 0; this.vz = 0; this.vy = 0;
     this.tvx = 0; this.tvz = 0;     // 이동 목표 속도 (가속 · 감속으로 따라감)
     this.landT = 0; this.turnT = 0; // 착지 찌그러짐 · 방향 전환 연출 남은 시간
+    this.profile = MOVE_PROFILES.default;
+    this.ax = this.az = 0; this.acc = 0;            // 탄성용 가속도 · 연출용 가속도(기울기)
+    this.react = 0; this.pend = null;               // 출발·정지 지연 중인 목표 속도
+    this.phase = Math.random() * Math.PI * 2;       // 무리의 흔들림 박자를 서로 어긋나게
     this.facing = 1;
     this.modifiers = new Map();     // id → { stat, mul?, add?, expires? }
     this.cooldowns = new Map();     // skillId → 남은 초
@@ -111,12 +127,14 @@ export class Character extends Emitter {
   /** dirX, dirZ: -1~1 입력 방향 */
   move(dirX, dirZ = 0) {
     if (!this.alive || (this.state !== State.IDLE && this.state !== State.MOVE)) return;
-    const len = Math.hypot(dirX, dirZ);
-    if (len < 0.01) { this.tvx = this.tvz = 0; this.setState(State.IDLE); return; }
-    const sp = this.stats.moveSpeed / Math.max(1, len);
-    this.tvx = dirX * sp; this.tvz = dirZ * sp * 0.6;
-    if (dirX && Math.sign(dirX) !== this.facing) { this.facing = Math.sign(dirX); this.turnT = 0.12; }
-    this.setState(State.MOVE);
+    const P = this.profile, len = Math.hypot(dirX, dirZ), sp = this.stats.moveSpeed / Math.max(1, len);
+    const tx = len < 0.01 ? 0 : dirX * sp, tz = len < 0.01 ? 0 : dirZ * sp * 0.6;
+    const moving = !!(this.tvx || this.tvz), want = !!(tx || tz);
+    if (this.pend) this.pend = { tx, tz };                                   // 지연 중: 최신 입력만 갱신
+    else if (P.react && moving !== want) { this.pend = { tx, tz }; this.react = Math.random() * P.react; }   // 출발·정지 순간만 개인 지연
+    else { this.tvx = tx; this.tvz = tz; }
+    if (dirX && Math.sign(dirX) !== this.facing) { this.facing = Math.sign(dirX); this.turnT = P.turn; }
+    this.setState(want ? State.MOVE : State.IDLE);
   }
 
   /** 발밑 바닥 높이: floorAt(u, 기준 높이)이 있으면 발판, 없으면 0 */
@@ -130,7 +148,7 @@ export class Character extends Emitter {
     if (!this.alive || (this.cooldowns.get('__basic') ?? 0) > 0) return false;
     if (!this.setState(State.ATTACK)) return false;
     if (target) this.facing = Math.sign(target.x - this.x) || this.facing;
-    this.vx *= 0.2; this.vz = this.tvx = this.tvz = 0;   // 달리다 공격하면 살짝 미끄러지며 멈춤
+    this.vx *= 0.2; this.vz = this.tvx = this.tvz = this.ax = this.az = 0; this.pend = null;   // 달리다 공격하면 살짝 미끄러지며 멈춤
     this.cooldowns.set('__basic', 1 / this.stats.attackSpeed);
     this.emit('attack', { unit: this, target });
     return true;
@@ -149,7 +167,7 @@ export class Character extends Emitter {
     if (!this.canUseSkill(id) || !this.setState(State.SKILL)) return false;
     this.mp -= sk.mpCost ?? 0;
     this.cooldowns.set(id, sk.cooldown);
-    this.vx = this.vz = this.tvx = this.tvz = 0;
+    this.vx = this.vz = this.tvx = this.tvz = this.ax = this.az = 0; this.pend = null;
     this.emit('skill', { unit: this, skill: sk, targets });
     return true;
   }
@@ -183,7 +201,7 @@ export class Character extends Emitter {
 
   die(killer = null) {
     if (!this.alive) return;
-    this.vx = this.vz = this.tvx = this.tvz = 0;
+    this.vx = this.vz = this.tvx = this.tvz = this.ax = this.az = 0; this.pend = null;
     this.setState(State.DIE, { force: true });
     this.emit('died', { unit: this, killer });
   }
@@ -203,11 +221,18 @@ export class Character extends Emitter {
     for (const [id, m] of this.modifiers) if (m.expires != null && (m.expires -= dt) <= 0) { this.modifiers.delete(id); expired = true; }
     if (expired) this.refreshStats();
     if (this.state !== State.DIE && ONE_SHOT.has(this.state) && this.stateTime >= this.stateDuration) this.setState(State.IDLE, { force: true });
-    if (this.state === State.HIT) this.vx *= 0.85;
-    else if (this.state === State.IDLE || this.state === State.MOVE) {   // 가속 · 감속
-      const k = Math.min(1, dt * (this.tvx || this.tvz ? 12 : 9));
-      this.vx += (this.tvx - this.vx) * k; this.vz += (this.tvz - this.vz) * k;
+    const pvx = this.vx, P = this.profile;
+    if (this.state === State.HIT) { this.vx *= 0.85; this.ax = this.az = 0; }
+    else if (this.state === State.IDLE || this.state === State.MOVE) {   // 직업별 가속 · 감속
+      if (this.pend && (this.react -= dt) <= 0) { this.tvx = this.pend.tx; this.tvz = this.pend.tz; this.pend = null; }
+      const w = (this.tvx || this.tvz ? P.accel : P.decel) / P.mass;
+      if (P.spring) {   // 감쇠 스프링: 목표 속도를 살짝 지나쳤다 돌아옴 (궁수 탄력)
+        const c = 2 * (1 - P.spring) * w;
+        this.ax += ((this.tvx - this.vx) * w * w - c * this.ax) * dt; this.az += ((this.tvz - this.vz) * w * w - c * this.az) * dt;
+        this.vx += this.ax * dt; this.vz += this.az * dt;
+      } else { const k = Math.min(1, dt * w); this.vx += (this.tvx - this.vx) * k; this.vz += (this.tvz - this.vz) * k; }
     }
+    this.acc += ((this.vx - pvx) / dt - this.acc) * Math.min(1, dt * 8);   // 연출용 (출발 시 숙임 · 로브 끌림)
     this.landT = Math.max(0, this.landT - dt); this.turnT = Math.max(0, this.turnT - dt);
     this.x += this.vx * dt; this.z += this.vz * dt;
     this.fy = this.floor();
@@ -217,7 +242,7 @@ export class Character extends Emitter {
       const f = this.vy <= 0 ? this.floor(prev) : 0;
       if (this.y <= f) {
         const impact = -this.vy; this.y = this.fy = f; this.vy = 0;
-        if (impact > 150) { this.landT = 0.18; this.emit('land', { unit: this, impact }); }
+        if (impact > 150) { this.landT = P.land; this.emit('land', { unit: this, impact }); }
       }
     }
     this.animator?.update?.(dt);

@@ -137,7 +137,7 @@ h1{margin:0;font:900 clamp(44px,12vw,84px)/1 var(--f-display);color:var(--fg);te
 </div>
 
 <script type="module">
-import { loadUnits, Hero, Boss, Monster, State } from './src/entities.js';
+import { loadUnits, Hero, Boss, Monster, State, MOVE_PROFILES } from './src/entities.js';
 import { createAnimator, renderUnits, SpriteSheet, registerSprites } from './src/sprite.js';
 import { loadSkillDB, attachSkills, applyStatus, applySelf, consumeCoat, filterDamage, tickStatus, isStunned, statusLabels, buffText } from './src/skills.js';
 import { RARITY, SETS, SLOTS, DROP, NEXT_SET_CHANCE, ICON, rollGear, makeGear, gearBonus, gearText, gearPower, gearPrice, iconStyle, iconRect, migrateRun, refreshGear, fmtRate, setForStage } from './src/gear.js';
@@ -456,7 +456,7 @@ function drawNpcs(t) {
     ctx.fillStyle = 'rgba(0,0,0,.4)'; ctx.beginPath(); ctx.ellipse(n.x, y, 24, 6, 0, 0, Math.PI * 2); ctx.fill();
     const anim = G.npcAnims?.[n.id];
     if (anim) {
-      const walking = n.wander && n.wait <= 0, face = n.wander ? n.dir : (G.hero.x < n.x ? -1 : 1);
+      const walking = n.wander && Math.abs(n.v ?? 0) > 4, face = n.wander ? n.dir : (G.hero.x < n.x ? -1 : 1);
       anim.play(walking ? 'move' : 'idle'); anim.update(1 / 60);
       anim.draw(ctx, n.x, y, { facing: face });
     }
@@ -492,6 +492,8 @@ const addItems = mats => { for (const [k, n] of Object.entries(mats)) RUN.items[
 const matsText = mats => Object.entries(mats).map(([k, n]) => `${MATS[k].name} ${n}`).join(', ');
 const mountedDef = () => (G?.mounted ? mountById(RUN.mount) : null);
 const mountFly = () => !!MOUNT_GRADES[mountedDef()?.g]?.fly;
+/** 영웅 이동 성격: 계열별 (탑승 중에는 기본값 — 탈것 위에서 부양 · 로브 연출 방지) */
+const heroProfile = () => (G?.mounted ? MOVE_PROFILES.default : MOVE_PROFILES[CLASS_OF[RUN.cls]] ?? MOVE_PROFILES.default);
 /** 장비 · 스탯 포인트 · 탈것 도감(가산) → 전직(배율) → 탑승 이동속도 순으로 영웅 스탯 재계산 */
 function applyBonuses() {
   const h = G?.hero; if (!h) return;
@@ -550,8 +552,9 @@ async function startSession() {
   applyBonuses(); hero.hp = hero.stats.hp; hero.mp = hero.stats.mp;
   hero.damageFilter = amt => filterDamage(hero, amt);   // 무적 · 마나 실드
   hero.floorAt = floorAt;
+  hero.profile = heroProfile();   // 영웅은 react 없음 (즉시 반응)
   G.npcAnims = {};
-  for (const n of [...VILLAGE_NPCS, ...CITY_NPCS]) G.npcAnims[n.id] ??= await createAnimator({ ref: `npc.${n.sprite ?? n.id}` });
+  for (const n of [...VILLAGE_NPCS, ...CITY_NPCS]) if (!G.npcAnims[n.id]) { G.npcAnims[n.id] = await createAnimator({ ref: `npc.${n.sprite ?? n.id}` }); G.npcAnims[n.id].clock = Math.random() * 10; }   // 숨쉬기 박자 어긋나게
   wire(hero);
   hero.on('died', () => end(false));
   hero.on('levelUp', e => {
@@ -598,8 +601,10 @@ function sceneLogic(dt) {
   const h = G.hero; G.exitCd = Math.max(0, G.exitCd - dt);
   if (G.scene === 'town') for (const n of npcs()) {
     if (!n.wander) continue;
-    if (n.wait > 0) { n.wait -= dt; continue; }
-    n.x += n.dir * 28 * dt;
+    n.spd ??= 20 + Math.random() * 14;                        // NPC마다 걸음 속도 다르게
+    if (n.wait > 0) n.wait -= dt;
+    n.v = (n.v ?? 0) + ((n.wait > 0 ? 0 : n.dir * n.spd) - (n.v ?? 0)) * Math.min(1, dt * 4);   // 서서히 출발 · 정지
+    n.x += n.v * dt;
     if (Math.abs(n.x - n.home) > 90 || n.x < 60 || n.x > 900) { n.dir *= -1; n.wait = 1 + Math.random() * 2.5; }
     else if (Math.random() < 0.004) n.wait = 1 + Math.random() * 2;
   }
@@ -948,7 +953,7 @@ function setMounted(on) {
   const m = mountById(RUN.mount);
   if (on && !m) { toast('탈것이 없습니다. 몬스터 처치나 탈것 조각 제작으로 얻을 수 있어요.', '#a99db3'); return; }
   if (!!on === G.mounted) return;
-  G.mounted = !!on; applyBonuses();
+  G.mounted = !!on; applyBonuses(); G.hero.profile = { ...heroProfile(), react: 0 };
   if (on) { const gd = MOUNT_GRADES[m.g]; toast(`${m.name} 탑승 · 이동속도 +${gd.speed * 100}%${gd.fly ? ' · 비행' : ''}`, gd.c); }
 }
 function useReturn() {
@@ -1005,7 +1010,7 @@ const clampX = x => Math.max(ARENA[0], Math.min(ARENA[1], x));
 
 // 공격 · 스킬 시작 시 판정 예약
 function schedule(u, sk) {
-  const dur = u.stateDuration, isHero = u === G.hero, first = isHero ? 0.4 : 0.62;
+  const dur = u.stateDuration, isHero = u === G.hero, first = isHero ? (u.profile.windup ?? 0.3) + 0.1 : 0.62;   // 직업별 예비동작 뒤에 판정
   const look = sk ? SKILL_FX[sk.id] ?? {} : BASIC_PROJ[u.def.id] ?? {};
   const effects = sk ? (sk.effects ?? []) : consumeCoat(u);   // 기본 공격: 독 바르기 효과
   if (sk?.type === 'dash') G.pending.push({ u, at: dur * 0.25, dash: true });

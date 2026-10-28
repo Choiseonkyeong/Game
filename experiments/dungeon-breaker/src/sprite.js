@@ -130,21 +130,26 @@ export class Animator {
    * 회전은 발 기준, 양수 = 앞으로 기울기 (좌우 반전 후 적용)
    */
   motion(u = null) {
-    const p = Math.min(1, this.elapsed / Math.max(0.01, this.duration(this.current))), t = this.clock;
+    const P = u?.profile ?? {}, mass = P.mass ?? 1, g = P.gait ?? { freq: 1, hop: 1, lean: 1, squash: 1 };
+    const p = Math.min(1, this.elapsed / Math.max(0.01, this.duration(this.current))), t = this.clock + (u?.phase ?? 0);
     const ease = q => 1 - (1 - q) ** 3, back = q => 1 + 2.7 * (q - 1) ** 3 + 1.7 * (q - 1) ** 2;
     let m;
     switch (this.current) {
-      case 'idle': m = { sy: 1 + Math.sin(t * 3.2) * 0.025, sx: 1 - Math.sin(t * 3.2) * 0.012 }; break;
+      case 'idle': m = { sy: 1 + Math.sin(t * 3.2 / mass) * 0.025 / mass, sx: 1 - Math.sin(t * 3.2 / mass) * 0.012 }; break;
       case 'move': {
-        const sp = u ? Math.min(1.6, Math.hypot(u.vx, u.vz) / 160) : 1, w = 10 + sp * 5, ph = t * w;
-        m = { dy: -Math.abs(Math.sin(ph)) * (3 + sp * 3), rot: 0.06 * sp + Math.sin(ph) * 0.05, sy: 1 - Math.abs(Math.cos(ph)) * 0.04, sx: 1 + Math.abs(Math.cos(ph)) * 0.03 };
+        const sp = u ? Math.min(1.6, Math.hypot(u.vx, u.vz) / 160) : 1, ph = t * (10 + sp * 5) * g.freq, c = Math.abs(Math.cos(ph));
+        m = P.glide ? { rot: 0.05 * sp, sx: 1 + 0.015 * sp }   // 성직자 · 마법사: 걸음 없이 미끄러짐
+          : { dy: -Math.abs(Math.sin(ph)) * (3 + sp * 3) * g.hop, rot: (0.06 * sp + Math.sin(ph) * 0.05) * g.lean,
+              sy: 1 - c * 0.04 * g.squash, sx: 1 + c * 0.03 * g.squash };   // 전사: 디딜 때 크게 눌림 / 궁수: 높게 튐
         break;
       }
-      case 'attack':   // 예비 동작 → 찌르기(오버슈트) → 복귀
-        m = p < 0.3 ? { dx: -8 * ease(p / 0.3), rot: -0.14 * ease(p / 0.3), sy: 0.94, sx: 1.04 }
-          : p < 0.6 ? { dx: -8 + 30 * back((p - 0.3) / 0.3), rot: -0.14 + 0.3 * ease((p - 0.3) / 0.3), sx: 1.1, sy: 0.93 }
-            : { dx: 22 * (1 - ease((p - 0.6) / 0.4)), rot: 0.16 * (1 - ease((p - 0.6) / 0.4)) };
+      case 'attack': {   // 예비 동작 → 찌르기(오버슈트) → 복귀. 전사: 길게 젖혔다 묵직하게 / 도적: 예비동작 거의 없이 길게 찌름
+        const a = P.windup ?? 0.3, b = a + 0.3, L = P.lunge ?? 22, W = 8 * mass;
+        m = p < a ? { dx: -W * ease(p / a), rot: -0.14 * mass * ease(p / a), sy: 1 - 0.06 * mass, sx: 1.04 }
+          : p < b ? { dx: -W + (L + W) * back((p - a) / 0.3), rot: -0.14 * mass + (0.14 * mass + 0.16) * ease((p - a) / 0.3), sx: 1.1, sy: 0.93 }
+            : { dx: L * (1 - ease((p - b) / (1 - b))), rot: 0.16 * (1 - ease((p - b) / (1 - b))) };
         break;
+      }
       case 'skill':    // 웅크림 → 도약하며 크게 휘두름
         m = p < 0.28 ? { dx: -10 * ease(p / 0.28), dy: 4 * ease(p / 0.28), sy: 0.86, sx: 1.1, rot: -0.18 * ease(p / 0.28) }
           : { dx: -10 + 34 * ease(Math.min(1, (p - 0.28) / 0.3)), dy: -14 * Math.sin(Math.min(1, (p - 0.28) / 0.5) * Math.PI), sx: 1.06, sy: 1.04, rot: -0.18 + 0.38 * ease(Math.min(1, (p - 0.28) / 0.3)) - 0.2 * Math.max(0, (p - 0.6) / 0.4) };
@@ -160,8 +165,14 @@ export class Animator {
         m.sx = (m.sx ?? 1) * (1 - 0.08 * up); m.sy = (m.sy ?? 1) * (1 + 0.1 * up); m.rot = (m.rot ?? 0) + (up > 0 ? -0.06 : 0.08) * Math.abs(up);
         if (this.current !== 'attack' && this.current !== 'skill') m.dy = 0;
       }
-      if (u.landT > 0) { const k = u.landT / 0.18; m.sx = (m.sx ?? 1) * (1 + 0.18 * k); m.sy = (m.sy ?? 1) * (1 - 0.2 * k); }
-      if (u.turnT > 0) m.sx = (m.sx ?? 1) * (1 - 0.35 * (u.turnT / 0.12));
+      const lean = Math.max(-0.12, Math.min(0.12, (u.acc ?? 0) * (u.facing ?? 1) / 2000));
+      m.rot = (m.rot ?? 0) + (P.glide ? -lean * 0.8 : lean * 0.6);   // 달리기: 출발 때 숙임 / 로브: 반대로 끌림
+      if (P.glide) {   // 공중 부양 + 로브 좌우 흔들림 (그림만 뜨고 그림자는 바닥에 남음)
+        m.dy = (m.dy ?? 0) - (P.float ?? 0) - Math.sin(t * 2.2) * 2;
+        m.rot += Math.sin(t * 1.7) * 0.025;
+      }
+      if (u.landT > 0) { const k = u.landT / (P.land ?? 0.18); m.sx = (m.sx ?? 1) * (1 + 0.18 * k * mass); m.sy = (m.sy ?? 1) * (1 - 0.2 * k * mass); }
+      if (u.turnT > 0) m.sx = (m.sx ?? 1) * (1 - 0.35 * (u.turnT / (P.turn || 0.12)));
     }
     return m;
   }
