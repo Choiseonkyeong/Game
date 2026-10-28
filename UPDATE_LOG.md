@@ -1,3 +1,10 @@
+## 2026-10-29T02:31:56+09:00 — Codex · 승인한 홈52 업로드·배포 완료
+
+- Source: master@f2d4cdadc928cfe6508faaad377f01c7cfb7e624; base ed1bae6adbe3e1a32ce1e9ad4cffd9baffc5a81a; 검수 로컬571f685와 게임/테스트 동일. 사용자 진행 승인 후 expected-HEAD 갱신, 강제 푸시 없음.
+- Deployment: Pages40736310536 success; public build-info source exact, built_at2026-10-28T17:30:32.086Z. URL https://choiseonkyeong.github.io/Game/island/?v=52 .
+- Checks:148 automated tests. 배포 Chrome island.js?v52, 기본 사과나무1개·성장1/5·물 주기 메뉴·확대 홈 viewBox 확인. 기존 저장 형식/조개/코디 유지. 화면 docs/art/qa/home52-live.jpg.
+- Remaining: 실제 아이폰 터치, Lv8~10 전체 플레이와 오프라인 런타임·다른 작업자 접속 미확인. release-state 실제 성공 기록 갱신. 기록만 변경하므로 추가 배포 불필요.
+
 ## 2026-10-29T02:27:59+09:00 — Codex · 홈52 실동작 검수 및 보정
 
 - Base remote master ed1bae6, branch codex/island-sapling-stage52, reviewed local6c1ef8c. 사용자 검수 요청. 상세 docs/pogeun-home52-review.md, 화면 docs/art/qa/home52-review.jpg.

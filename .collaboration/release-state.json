@@ -38,23 +38,25 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-flow-51",
-      "source_commit": "22b1394854e09e3f35899beba680d4a078c2b0e1",
+      "version": "island-home-52",
+      "source_commit": "f2d4cdadc928cfe6508faaad377f01c7cfb7e624",
       "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=51",
-      "run_id": 40679139486,
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=52",
+      "run_id": 40736310536,
       "deployment": "succeeded",
-      "built_at": "2026-10-28T11:20:23.003Z",
-      "checked_at": "2026-10-28T20:21:37+09:00",
-      "automated_tests_passed": 145,
+      "built_at": "2026-10-28T17:30:32.086Z",
+      "checked_at": "2026-10-29T02:31:56+09:00",
+      "automated_tests_passed": 148,
       "actual_desktop_browser_verified": true,
+      "responsive_844x390_desktop_iframe_verified": true,
+      "responsive_667x375_desktop_iframe_verified": true,
       "actual_mobile_touch_verified": false,
-      "checks": "Pages workflow succeeded; public build-info exact source. Chrome live island.js?v51: new profile -> help -> explore -> expansion focuses expansion-title; locked livestock labels show unavailable. Local reviewed game files equal pushed source.",
-      "limitations": "Actual iPhone touch, full Lv8 fishing/boat browser playthrough and offline runtime remain unverified. External collaborator access not confirmed."
+      "checks": "Pages workflow succeeded; public build-info exact source. Live Chrome island.js?v52; default apple crop one; growth1/5 + water action; larger home viewBox. Prepublication local QA: watering, harvest150 shells, Lv2 relocation/reload same starterId; room enter/exit and zoom restore. Approved local571f685 game/test files equal published source.",
+      "limitations": "Actual iPhone touch, full Lv8–10 playthrough and offline runtime not verified; external collaborator access not confirmed."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Pages workflow succeeded; public build-info exact source. Chrome live island.js?v51: new profile -> help -> explore -> expansion focuses expansion-title; locked livestock labels show unavailable. Local reviewed game files equal pushed source.",
-    "remaining_action": "Actual iPhone touch, full Lv8 fishing/boat browser playthrough and offline runtime remain unverified. External collaborator access not confirmed.",
+    "access_check": "Pages workflow succeeded; public build-info exact source. Live Chrome island.js?v52; default apple crop one; growth1/5 + water action; larger home viewBox. Prepublication local QA: watering, harvest150 shells, Lv2 relocation/reload same starterId; room enter/exit and zoom restore. Approved local571f685 game/test files equal published source.",
+    "remaining_action": "Actual iPhone touch, full Lv8–10 playthrough and offline runtime not verified; external collaborator access not confirmed.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -429,6 +431,21 @@
       "actual_mobile_touch_verified": false,
       "checks": "Pages successful, public build-info exact source. Chrome island.js?v49, daily knit preview512px at front/back/left/right, full original face/hair retained; five real top SVG icons and correct selection; existing Lv3/300shells/careXP10 retained. Approved fitting-room frame unchanged.",
       "limitations": "Actual iPhone touch and full Lv8 fishing/boat browser playthrough remain unverified from48. This patch only addresses preview resolution, garment icons and muted seaside icon."
+    },
+    "previous_successful_before_home52": {
+      "version": "island-flow-51",
+      "source_commit": "22b1394854e09e3f35899beba680d4a078c2b0e1",
+      "source_branch": "master",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=51",
+      "run_id": 40679139486,
+      "deployment": "succeeded",
+      "built_at": "2026-10-28T11:20:23.003Z",
+      "checked_at": "2026-10-28T20:21:37+09:00",
+      "automated_tests_passed": 145,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "checks": "Pages workflow succeeded; public build-info exact source. Chrome live island.js?v51: new profile -> help -> explore -> expansion focuses expansion-title; locked livestock labels show unavailable. Local reviewed game files equal pushed source.",
+      "limitations": "Actual iPhone touch, full Lv8 fishing/boat browser playthrough and offline runtime remain unverified. External collaborator access not confirmed."
     }
   },
   "restoration_record": {

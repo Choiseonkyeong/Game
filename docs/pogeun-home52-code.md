@@ -1,7 +1,7 @@
 # 포근섬 홈 확대 / 기본 사과나무 변경 코드
 
 기준: master ed1bae6adbe3e1a32ce1e9ad4cffd9baffc5a81a (v51 게임 내용)
-로컬 작업: codex/island-sapling-stage52. 공개 배포하지 않음.
+로컬 작업: codex/island-sapling-stage52. 사용자 승인 후 v52 배포 완료: https://choiseonkyeong.github.io/Game/island/?v=52 (source f2d4cdadc928cfe6508faaad377f01c7cfb7e624).
 
 아래 코드가 현재 작업본에 반영되어 있습니다. 기존 Game 저장소의 dist/island를 기준으로 적용하며, 전체 게임 코드를 대체하지 않습니다.
 

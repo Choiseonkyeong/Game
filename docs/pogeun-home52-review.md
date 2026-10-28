@@ -3,7 +3,7 @@
 검수 일시: 2026-10-29T02:27:59+09:00
 원본 master: ed1bae6adbe3e1a32ce1e9ad4cffd9baffc5a81a
 검수 대상: codex/island-sapling-stage52, 직전 코드 6c1ef8cd99c4a66b97b505410df6e38167472303 + 이번 검수 보정
-공개 배포: 하지 않음. 성공 배포 기록 v51 유지.
+공개 배포: 사용자 승인 후 master@f2d4cdadc928cfe6508faaad377f01c7cfb7e624, Pages40736310536 성공. https://choiseonkyeong.github.io/Game/island/?v=52 . 공개 build-info 일치 및 live Chrome 새 모듈·기본 나무1개·성장 메뉴 확인.
 
 | 항목 | 결과 |
 | --- | --- |
