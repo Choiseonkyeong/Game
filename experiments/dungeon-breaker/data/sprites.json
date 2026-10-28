@@ -1,0 +1,2094 @@
+{
+ "$comment": "유닛별 스프라이트 정의. 고해상도 시트로 바꾸려면 해당 키의 sheet · frameWidth · frameHeight · scale · pixelArt · states만 수정하세요. SPRITES.md 참고. illust/*.webp: 한 장짜리 일러스트(pixelArt:false) — 움직임은 sprite.js Animator.motion()이 절차적으로 처리.",
+ "sprites": {
+  "bladesinger.female": {
+   "sheet": "sprites/main_spritesheet_v2.png",
+   "frameWidth": 149,
+   "frameHeight": 100,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.0,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 0,
+     "frames": 2,
+     "fps": 3,
+     "loop": true
+    },
+    "move": {
+     "row": 0,
+     "col": 2,
+     "frames": 2,
+     "fps": 7,
+     "loop": true
+    },
+    "attack": {
+     "row": 0,
+     "col": 4,
+     "frames": 1,
+     "fps": 2.5
+    },
+    "skill": {
+     "row": 0,
+     "col": 5,
+     "frames": 1,
+     "fps": 1.4
+    },
+    "hit": {
+     "row": 0,
+     "col": 6,
+     "frames": 1,
+     "fps": 3.3
+    },
+    "die": {
+     "row": 0,
+     "col": 7,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": false
+  },
+  "bladesinger.male": {
+   "sheet": "sprites/main_spritesheet.png",
+   "frameWidth": 130,
+   "frameHeight": 104,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.0,
+   "states": {
+    "idle": {
+     "row": 1,
+     "col": 0,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "col": 1,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    },
+    "attack": {
+     "row": 1,
+     "col": 2,
+     "frames": 1,
+     "fps": 2.5
+    },
+    "skill": {
+     "row": 1,
+     "col": 3,
+     "frames": 1,
+     "fps": 1.4
+    },
+    "hit": {
+     "row": 1,
+     "col": 4,
+     "frames": 1,
+     "fps": 3.3
+    },
+    "die": {
+     "row": 1,
+     "col": 5,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": false
+  },
+  "bladesinger.pixel": {
+   "sheet": "sprites/pixel_heroes.png",
+   "frameWidth": 64,
+   "frameHeight": 62,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.86,
+     "loop": true
+    },
+    "move": {
+     "row": 0,
+     "col": 2,
+     "frames": 2,
+     "fps": 6.67,
+     "loop": true
+    },
+    "attack": {
+     "row": 0,
+     "col": 4,
+     "frames": 2,
+     "fps": 5.0
+    },
+    "skill": {
+     "row": 0,
+     "col": 6,
+     "frames": 1,
+     "fps": 1.43
+    },
+    "hit": {
+     "row": 0,
+     "col": 7,
+     "frames": 2,
+     "fps": 6.67
+    },
+    "die": {
+     "row": 0,
+     "col": 9,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "spirit_ranger.male": {
+   "sheet": "sprites/ranger_m.png",
+   "frameWidth": 96,
+   "frameHeight": 96,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.8,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 5,
+     "fps": 14,
+     "events": {
+      "3": "shoot"
+     }
+    },
+    "skill": {
+     "row": 3,
+     "frames": 6,
+     "fps": 12,
+     "events": {
+      "4": "shoot"
+     }
+    },
+    "hit": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 5,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "spirit_ranger.female": {
+   "sheet": "sprites/main_spritesheet.png",
+   "frameWidth": 130,
+   "frameHeight": 104,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.0,
+   "states": {
+    "idle": {
+     "row": 2,
+     "col": 0,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    },
+    "move": {
+     "row": 2,
+     "col": 1,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "col": 2,
+     "frames": 1,
+     "fps": 2.5
+    },
+    "skill": {
+     "row": 2,
+     "col": 3,
+     "frames": 1,
+     "fps": 1.4
+    },
+    "hit": {
+     "row": 2,
+     "col": 4,
+     "frames": 1,
+     "fps": 3.3
+    },
+    "die": {
+     "row": 2,
+     "col": 5,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": false
+  },
+  "spirit_ranger.pixel": {
+   "sheet": "sprites/pixel_heroes.png",
+   "frameWidth": 64,
+   "frameHeight": 62,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 1,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.86,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "col": 2,
+     "frames": 2,
+     "fps": 6.67,
+     "loop": true
+    },
+    "attack": {
+     "row": 1,
+     "col": 4,
+     "frames": 2,
+     "fps": 5.0
+    },
+    "skill": {
+     "row": 1,
+     "col": 6,
+     "frames": 1,
+     "fps": 1.43
+    },
+    "hit": {
+     "row": 1,
+     "col": 7,
+     "frames": 2,
+     "fps": 6.67
+    },
+    "die": {
+     "row": 1,
+     "col": 9,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "time_mage.female": {
+   "sheet": "sprites/mage_f.png",
+   "frameWidth": 96,
+   "frameHeight": 96,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.8,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 5,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 10,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 5,
+     "fps": 12,
+     "events": {
+      "3": "cast"
+     }
+    },
+    "skill": {
+     "row": 3,
+     "frames": 7,
+     "fps": 12,
+     "events": {
+      "5": "cast"
+     }
+    },
+    "hit": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 5,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "time_mage.male": {
+   "sheet": "sprites/mage_m.png",
+   "frameWidth": 96,
+   "frameHeight": 96,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.8,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 5,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 10,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 5,
+     "fps": 12,
+     "events": {
+      "3": "cast"
+     }
+    },
+    "skill": {
+     "row": 3,
+     "frames": 7,
+     "fps": 12,
+     "events": {
+      "5": "cast"
+     }
+    },
+    "hit": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 5,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "time_mage.pixel": {
+   "sheet": "sprites/pixel_heroes.png",
+   "frameWidth": 64,
+   "frameHeight": 62,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 2,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.86,
+     "loop": true
+    },
+    "move": {
+     "row": 2,
+     "col": 2,
+     "frames": 2,
+     "fps": 6.67,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "col": 4,
+     "frames": 1,
+     "fps": 2.5
+    },
+    "skill": {
+     "row": 2,
+     "col": 5,
+     "frames": 1,
+     "fps": 1.43
+    },
+    "hit": {
+     "row": 2,
+     "col": 6,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 2,
+     "col": 7,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "iron_cleric.male": {
+   "sheet": "sprites/main_spritesheet.png",
+   "frameWidth": 130,
+   "frameHeight": 104,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.0,
+   "states": {
+    "idle": {
+     "row": 3,
+     "col": 0,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    },
+    "move": {
+     "row": 3,
+     "col": 1,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    },
+    "attack": {
+     "row": 3,
+     "col": 2,
+     "frames": 1,
+     "fps": 2.2
+    },
+    "skill": {
+     "row": 3,
+     "col": 3,
+     "frames": 1,
+     "fps": 1.4
+    },
+    "hit": {
+     "row": 3,
+     "col": 4,
+     "frames": 1,
+     "fps": 3.3
+    },
+    "die": {
+     "row": 3,
+     "col": 5,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": false
+  },
+  "iron_cleric.female": {
+   "sheet": "sprites/cleric_f.png",
+   "frameWidth": 112,
+   "frameHeight": 112,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.75,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 5,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 10,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 5,
+     "fps": 11,
+     "events": {
+      "3": "hit"
+     }
+    },
+    "skill": {
+     "row": 3,
+     "frames": 6,
+     "fps": 11,
+     "events": {
+      "4": "hit"
+     }
+    },
+    "hit": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 5,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "iron_cleric.pixel": {
+   "sheet": "sprites/pixel_heroes.png",
+   "frameWidth": 64,
+   "frameHeight": 62,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 3,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.86,
+     "loop": true
+    },
+    "move": {
+     "row": 3,
+     "col": 2,
+     "frames": 2,
+     "fps": 6.67,
+     "loop": true
+    },
+    "attack": {
+     "row": 3,
+     "col": 4,
+     "frames": 2,
+     "fps": 5.0
+    },
+    "skill": {
+     "row": 3,
+     "col": 6,
+     "frames": 1,
+     "fps": 1.43
+    },
+    "hit": {
+     "row": 3,
+     "col": 7,
+     "frames": 2,
+     "fps": 6.67
+    },
+    "die": {
+     "row": 3,
+     "col": 9,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "goblin_raider": {
+   "sheet": "sprites/goblin.png",
+   "frameWidth": 80,
+   "frameHeight": 80,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.7,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 5,
+     "fps": 10,
+     "events": {
+      "3": "hit"
+     }
+    },
+    "hit": {
+     "row": 3,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 4,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "kobold_spearman": {
+   "sheet": "sprites/kobold.png",
+   "frameWidth": 80,
+   "frameHeight": 80,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.65,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 5,
+     "fps": 10,
+     "events": {
+      "3": "hit"
+     }
+    },
+    "hit": {
+     "row": 3,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 4,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "crypt_ghoul": {
+   "sheet": "sprites/ghoul.png",
+   "frameWidth": 96,
+   "frameHeight": 80,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.7,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 10,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 5,
+     "fps": 12,
+     "events": {
+      "2": "hit"
+     }
+    },
+    "hit": {
+     "row": 3,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 4,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "fire_imp": {
+   "sheet": "sprites/imp.png",
+   "frameWidth": 72,
+   "frameHeight": 72,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.65,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 10,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 4,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "events": {
+      "2": "shoot"
+     }
+    },
+    "hit": {
+     "row": 3,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 4,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "gnoll_brute": {
+   "sheet": "sprites/gnoll.png",
+   "frameWidth": 112,
+   "frameHeight": 112,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.75,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 10,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 6,
+     "fps": 12,
+     "events": {
+      "3": "hit"
+     }
+    },
+    "hit": {
+     "row": 3,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 4,
+     "frames": 4,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "minotaur": {
+   "sheet": "sprites/minotaur.png",
+   "frameWidth": 144,
+   "frameHeight": 144,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.92
+   },
+   "scale": 0.8,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 5,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 9,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 6,
+     "fps": 9,
+     "events": {
+      "4": "hit"
+     }
+    },
+    "hit": {
+     "row": 3,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 4,
+     "frames": 5,
+     "fps": 7
+    }
+   },
+   "pixelArt": false
+  },
+  "fire_elemental": {
+   "sheet": "sprites/fire_elemental.png",
+   "frameWidth": 128,
+   "frameHeight": 128,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.95
+   },
+   "scale": 0.75,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 6,
+     "fps": 8,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 8,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 6,
+     "fps": 10,
+     "events": {
+      "4": "shoot"
+     }
+    },
+    "hit": {
+     "row": 3,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 4,
+     "frames": 6,
+     "fps": 10
+    }
+   },
+   "pixelArt": false
+  },
+  "ice_elemental": {
+   "sheet": "sprites/main_spritesheet_v2.png",
+   "frameWidth": 149,
+   "frameHeight": 100,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.0,
+   "states": {
+    "idle": {
+     "row": 2,
+     "col": 0,
+     "frames": 2,
+     "fps": 3,
+     "loop": true
+    },
+    "move": {
+     "row": 2,
+     "col": 2,
+     "frames": 2,
+     "fps": 7,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "col": 4,
+     "frames": 2,
+     "fps": 2.8
+    },
+    "skill": {
+     "row": 2,
+     "col": 6,
+     "frames": 1,
+     "fps": 1.4
+    },
+    "hit": {
+     "row": 2,
+     "col": 7,
+     "frames": 1,
+     "fps": 3.3
+    },
+    "die": {
+     "row": 2,
+     "col": 8,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": false
+  },
+  "obsidian_overlord": {
+   "sheet": "sprites/main_spritesheet_v2.png",
+   "frameWidth": 149,
+   "frameHeight": 100,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.0,
+   "states": {
+    "idle": {
+     "row": 1,
+     "col": 0,
+     "frames": 2,
+     "fps": 3,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "col": 2,
+     "frames": 2,
+     "fps": 7,
+     "loop": true
+    },
+    "attack": {
+     "row": 1,
+     "col": 4,
+     "frames": 2,
+     "fps": 2.4
+    },
+    "skill": {
+     "row": 1,
+     "col": 6,
+     "frames": 1,
+     "fps": 1.4
+    },
+    "hit": {
+     "row": 1,
+     "col": 7,
+     "frames": 1,
+     "fps": 3.3
+    },
+    "die": {
+     "row": 1,
+     "col": 8,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": false
+  },
+  "bone_dragon": {
+   "sheet": "sprites/bone_dragon.png",
+   "frameWidth": 256,
+   "frameHeight": 192,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.95
+   },
+   "scale": 0.8,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 6,
+     "fps": 7,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 8,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 6,
+     "fps": 9,
+     "events": {
+      "3": "hit"
+     }
+    },
+    "skill": {
+     "row": 3,
+     "frames": 8,
+     "fps": 10,
+     "events": {
+      "4": "cast"
+     }
+    },
+    "hit": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 5,
+     "frames": 8,
+     "fps": 7
+    }
+   },
+   "pixelArt": false
+  },
+  "hydra": {
+   "sheet": "sprites/hydra.png",
+   "frameWidth": 256,
+   "frameHeight": 224,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.95
+   },
+   "scale": 0.75,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 6,
+     "fps": 6,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 6,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 6,
+     "fps": 9,
+     "events": {
+      "4": "hit"
+     }
+    },
+    "skill": {
+     "row": 3,
+     "frames": 8,
+     "fps": 10,
+     "events": {
+      "5": "shoot"
+     }
+    },
+    "hit": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 5,
+     "frames": 8,
+     "fps": 7
+    }
+   },
+   "pixelArt": false
+  },
+  "vampire_queen": {
+   "sheet": "sprites/vampire_queen.png",
+   "frameWidth": 128,
+   "frameHeight": 128,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.93
+   },
+   "scale": 0.75,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 6,
+     "fps": 6,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 10,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 6,
+     "fps": 11,
+     "events": {
+      "4": "shoot"
+     }
+    },
+    "skill": {
+     "row": 3,
+     "frames": 7,
+     "fps": 10,
+     "events": {
+      "5": "cast"
+     }
+    },
+    "hit": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 5,
+     "frames": 6,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "beholder": {
+   "sheet": "sprites/beholder.png",
+   "frameWidth": 160,
+   "frameHeight": 160,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.95
+   },
+   "scale": 0.75,
+   "states": {
+    "idle": {
+     "row": 0,
+     "frames": 6,
+     "fps": 6,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "frames": 6,
+     "fps": 6,
+     "loop": true
+    },
+    "attack": {
+     "row": 2,
+     "frames": 5,
+     "fps": 9,
+     "events": {
+      "3": "shoot"
+     }
+    },
+    "skill": {
+     "row": 3,
+     "frames": 7,
+     "fps": 10,
+     "events": {
+      "4": "cast"
+     }
+    },
+    "hit": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10
+    },
+    "die": {
+     "row": 5,
+     "frames": 7,
+     "fps": 8
+    }
+   },
+   "pixelArt": false
+  },
+  "demon_lord": {
+   "sheet": "sprites/pixel_heroes.png",
+   "frameWidth": 64,
+   "frameHeight": 62,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 4,
+     "col": 0,
+     "frames": 4,
+     "fps": 5.0,
+     "loop": true
+    },
+    "move": {
+     "row": 4,
+     "col": 4,
+     "frames": 4,
+     "fps": 7.27,
+     "loop": true
+    },
+    "attack": {
+     "row": 4,
+     "col": 8,
+     "frames": 4,
+     "fps": 4.82
+    },
+    "skill": {
+     "row": 4,
+     "col": 12,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 4,
+     "col": 13,
+     "frames": 2,
+     "fps": 6.67
+    },
+    "die": {
+     "row": 4,
+     "col": 15,
+     "frames": 2,
+     "fps": 1.0
+    }
+   },
+   "pixelArt": true
+  },
+  "goblin": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.5,
+     "loop": true
+    },
+    "move": {
+     "row": 0,
+     "col": 2,
+     "frames": 2,
+     "fps": 5.0,
+     "loop": true
+    },
+    "attack": {
+     "row": 0,
+     "col": 4,
+     "frames": 1,
+     "fps": 1.67
+    },
+    "skill": {
+     "row": 0,
+     "col": 5,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 0,
+     "col": 6,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 0,
+     "col": 7,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "kobold": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 1,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.5,
+     "loop": true
+    },
+    "move": {
+     "row": 1,
+     "col": 2,
+     "frames": 2,
+     "fps": 5.0,
+     "loop": true
+    },
+    "attack": {
+     "row": 1,
+     "col": 4,
+     "frames": 1,
+     "fps": 1.67
+    },
+    "skill": {
+     "row": 1,
+     "col": 5,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 1,
+     "col": 6,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 1,
+     "col": 7,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "slime": {
+   "sheet": "illust/slime.webp",
+   "frameWidth": 256,
+   "frameHeight": 256,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.895
+   },
+   "scale": 0.32,
+   "pixelArt": false,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 0,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    },
+    "move": {
+     "row": 0,
+     "col": 0,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    },
+    "attack": {
+     "row": 0,
+     "col": 0,
+     "frames": 1,
+     "fps": 1.43
+    },
+    "skill": {
+     "row": 0,
+     "col": 0,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 0,
+     "col": 0,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 0,
+     "col": 0,
+     "frames": 1,
+     "fps": 0.5
+    }
+   }
+  },
+  "zombie": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 3,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.5,
+     "loop": true
+    },
+    "move": {
+     "row": 3,
+     "col": 2,
+     "frames": 2,
+     "fps": 5.0,
+     "loop": true
+    },
+    "attack": {
+     "row": 3,
+     "col": 4,
+     "frames": 2,
+     "fps": 2.5
+    },
+    "skill": {
+     "row": 3,
+     "col": 6,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 3,
+     "col": 7,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 3,
+     "col": 8,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "mummy": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 4,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.5,
+     "loop": true
+    },
+    "move": {
+     "row": 4,
+     "col": 2,
+     "frames": 2,
+     "fps": 5.0,
+     "loop": true
+    },
+    "attack": {
+     "row": 4,
+     "col": 4,
+     "frames": 1,
+     "fps": 1.25
+    },
+    "skill": {
+     "row": 4,
+     "col": 5,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 4,
+     "col": 6,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 4,
+     "col": 7,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "skeleton_archer": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 5,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.5,
+     "loop": true
+    },
+    "move": {
+     "row": 5,
+     "col": 2,
+     "frames": 2,
+     "fps": 5.0,
+     "loop": true
+    },
+    "attack": {
+     "row": 5,
+     "col": 4,
+     "frames": 2,
+     "fps": 2.5
+    },
+    "skill": {
+     "row": 5,
+     "col": 6,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 5,
+     "col": 7,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 5,
+     "col": 8,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "orc": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 6,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.5,
+     "loop": true
+    },
+    "move": {
+     "row": 6,
+     "col": 2,
+     "frames": 2,
+     "fps": 5.0,
+     "loop": true
+    },
+    "attack": {
+     "row": 6,
+     "col": 4,
+     "frames": 1,
+     "fps": 1.25
+    },
+    "skill": {
+     "row": 6,
+     "col": 5,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 6,
+     "col": 6,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 6,
+     "col": 7,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "imp": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 7,
+     "col": 0,
+     "frames": 1,
+     "fps": 1.25,
+     "loop": true
+    },
+    "move": {
+     "row": 7,
+     "col": 1,
+     "frames": 1,
+     "fps": 2.5,
+     "loop": true
+    },
+    "attack": {
+     "row": 7,
+     "col": 2,
+     "frames": 1,
+     "fps": 1.25
+    },
+    "skill": {
+     "row": 7,
+     "col": 3,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 7,
+     "col": 4,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 7,
+     "col": 5,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "kobold_shaman": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 8,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.5,
+     "loop": true
+    },
+    "move": {
+     "row": 8,
+     "col": 2,
+     "frames": 2,
+     "fps": 5.0,
+     "loop": true
+    },
+    "attack": {
+     "row": 8,
+     "col": 4,
+     "frames": 1,
+     "fps": 1.25
+    },
+    "skill": {
+     "row": 8,
+     "col": 5,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 8,
+     "col": 6,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 8,
+     "col": 7,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "animated_armor": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 9,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.5,
+     "loop": true
+    },
+    "move": {
+     "row": 9,
+     "col": 2,
+     "frames": 2,
+     "fps": 5.0,
+     "loop": true
+    },
+    "attack": {
+     "row": 9,
+     "col": 4,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "skill": {
+     "row": 9,
+     "col": 5,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 9,
+     "col": 6,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 9,
+     "col": 7,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "wraith": {
+   "sheet": "sprites/pixel_monsters.png",
+   "frameWidth": 62,
+   "frameHeight": 74,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 10,
+     "col": 0,
+     "frames": 1,
+     "fps": 1.25,
+     "loop": true
+    },
+    "move": {
+     "row": 10,
+     "col": 1,
+     "frames": 1,
+     "fps": 2.5,
+     "loop": true
+    },
+    "attack": {
+     "row": 10,
+     "col": 2,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "skill": {
+     "row": 10,
+     "col": 3,
+     "frames": 1,
+     "fps": 1.11
+    },
+    "hit": {
+     "row": 10,
+     "col": 4,
+     "frames": 1,
+     "fps": 3.33
+    },
+    "die": {
+     "row": 10,
+     "col": 5,
+     "frames": 1,
+     "fps": 0.5
+    }
+   },
+   "pixelArt": true
+  },
+  "npc.guard": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 0,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.merchant": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 1,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.hunter": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 2,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.priest": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 3,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.v1": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 4,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.v2": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 5,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.v3": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 6,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.v4": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 7,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.v5": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 8,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "npc.v6": {
+   "sheet": "sprites/npc.png",
+   "frameWidth": 48,
+   "frameHeight": 56,
+   "anchor": {
+    "x": 0.5,
+    "y": 1
+   },
+   "scale": 1.5,
+   "pixelArt": true,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 9,
+     "frames": 1,
+     "fps": 1,
+     "loop": true
+    }
+   }
+  },
+  "warrior.pixel": {
+   "sheet": "sprites/warrior_pixel.png",
+   "frameWidth": 64,
+   "frameHeight": 62,
+   "anchor": {
+    "x": 0.5,
+    "y": 0.97
+   },
+   "scale": 1.5,
+   "states": {
+    "idle": {
+     "row": 0,
+     "col": 0,
+     "frames": 2,
+     "fps": 2.86,
+     "loop": true
+    },
+    "move": {
+     "row": 0,
+     "col": 2,
+     "frames": 2,
+     "fps": 6.67,
+     "loop": true
+    },
+    "attack": {
+     "row": 0,
+     "col": 4,
+     "frames": 2,
+     "fps": 5.0
+    },
+    "skill": {
+     "row": 0,
+     "col": 6,
+     "frames": 1,
+     "fps": 1.43
+    },
+    "hit": {
+     "row": 0,
+     "col": 7,
+     "frames": 2,
+     "fps": 6.67
+    },
+    "die": {
+     "row": 0,
+     "col": 9,
+     "frames": 1,
+     "fps": 0.5
+    },
+    "front": {
+     "row": 0,
+     "col": 10,
+     "frames": 2,
+     "fps": 2.86,
+     "loop": true
+    }
+   },
+   "pixelArt": true
+  }
+ }
+}

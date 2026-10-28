@@ -2,6 +2,14 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-28T14:58:41+09:00 — Claude · 던전 브레이커 소스 저장소 보관
+
+- Source: 브랜치 claude/beautiful-cerf-unl8y6 (origin/master 5861235에서 fast-forward 후 작업). 새 폴더 `experiments/dungeon-breaker/`만 추가. dist·release-state·다른 게임 파일 변경 없음.
+- 내용: Claude 아티팩트 https://claude.ai/artifact/22TWApbTDaFXAZ9SFJDwQD 버전 26 전체 소스(26개 파일) 사본 + README. 버전 26 변경: 이동 가속·감속, 점프/착지 찌그러짐·먼지, 공격 예비동작·찌르기, 피격 튕김, 사망 넘어짐, 데미지 숫자 팝.
+- Checks: 로컬 Chromium(PC) 전사·메이지 마을/들판/공격/점프·발판 착지 동작 및 콘솔 오류 없음 확인. 모바일 실기기·claude.ai 게시본 직접 플레이 미검수.
+- Deployment: GitHub Pages 배포 대상 아님(아티팩트 URL로만 게시). master 병합 안 함.
+- Remaining: master 병합 여부는 사용자 결정.
+
 ## 2026-10-27T11:00:47+09:00 — Codex · 옷장 미리보기/착용 목록/새 의상 행동50 수정
 
 - Base master666900bf159c5805e83d750023a421f7b6db74f1; branch codex/wardrobe-motion50. User requested fixing and verifying the three review findings.

@@ -1,0 +1,57 @@
+{
+ "version": 1,
+ "$doc": "계열별 고유 스킬 DB (Q·W·E·R). kind: melee | aoe | projectile | buff | blink | backstep | zone. effects = 맞은 적에게, self = 시전자에게. 상태 처리는 src/skills.js",
+ "classes": {
+  "warrior": { "name": "전사", "skills": [
+   { "id": "war_slash", "key": "Q", "name": "베기", "desc": "전방 근접 범위 물리 피해", "kind": "melee", "cooldown": 3, "mpCost": 5, "damageMul": 1.6,
+     "hitbox": { "x": -10, "w": 150, "depth": 36 }, "fx": { "hit": "darkburst" }, "sound": 1500, "icon": "darkburst" },
+   { "id": "shield_push", "key": "W", "name": "방패 밀치기", "desc": "전방 적을 밀쳐내고 짧게 기절", "kind": "melee", "cooldown": 6, "mpCost": 8, "damageMul": 1.0,
+     "hitbox": { "x": 0, "w": 110, "depth": 36 }, "effects": [{ "kind": "knockback", "value": 12 }, { "kind": "stun", "duration": 1.2 }], "fx": { "hit": "iceburst" }, "sound": 700, "icon": "iceburst" },
+   { "id": "whirlwind", "key": "E", "name": "휠윈드", "desc": "주변 360도 5연속 회전 공격", "kind": "aoe", "cooldown": 9, "mpCost": 10, "damageMul": 0.7, "hits": 5,
+     "hitbox": { "x": -120, "w": 240, "depth": 50 }, "fx": { "hit": "darkburst", "many": true }, "sound": 2200, "icon": "firewave2" },
+   { "id": "berserker_rage", "key": "R", "name": "광전사의 분노", "desc": "8초간 공격력 ×1.5 · 공격속도 ×1.6 · 슈퍼아머", "kind": "buff", "cooldown": 30, "mpCost": 15, "ultimate": true,
+     "self": [{ "kind": "statBuff", "stat": "atk", "mul": 1.5, "duration": 8 }, { "kind": "statBuff", "stat": "attackSpeed", "mul": 1.6, "duration": 8 }, { "kind": "superArmor", "duration": 8 }],
+     "fx": { "self": "flame" }, "sound": 400, "icon": "flame" }
+  ] },
+  "rogue": { "name": "도적", "skills": [
+   { "id": "ambush", "key": "Q", "name": "암습", "desc": "단검 2연타 빠른 기습", "kind": "melee", "cooldown": 2.5, "mpCost": 5, "damageMul": 1.0, "hits": 2,
+     "hitbox": { "x": -5, "w": 105, "depth": 30 }, "sound": 3200, "icon": "firebolt" },
+   { "id": "poison_coat", "key": "W", "name": "독 바르기", "desc": "다음 3회 공격에 4초 지속 독 피해", "kind": "buff", "cooldown": 12, "mpCost": 8,
+     "self": [{ "kind": "poisonCoat", "count": 3, "dps": 0.35, "duration": 4 }], "fx": { "self": "darkburst" }, "sound": 900, "icon": "fireground" },
+   { "id": "shadow_step", "key": "E", "name": "그림자 이동", "desc": "가까운 적 뒤로 순간이동 후 일격", "kind": "blink", "cooldown": 7, "mpCost": 10, "damageMul": 1.4, "range": 480,
+     "hitbox": { "x": -10, "w": 100, "depth": 34 }, "fx": { "hit": "darkburst", "ghost": true }, "sound": 2600, "icon": "darkburst" },
+   { "id": "phantom_frenzy", "key": "R", "name": "환영 난무", "desc": "잔상과 함께 전방 8연타", "kind": "melee", "cooldown": 24, "mpCost": 15, "damageMul": 0.65, "hits": 8, "ultimate": true,
+     "hitbox": { "x": -10, "w": 210, "depth": 50 }, "fx": { "hit": "lightning", "many": true, "ghost": true }, "sound": 3600, "icon": "lightning" }
+  ] },
+  "archer": { "name": "궁수", "skills": [
+   { "id": "power_shot", "key": "Q", "name": "파워 샷", "desc": "적을 관통하는 강력한 화살", "kind": "projectile", "cooldown": 4, "mpCost": 5, "damageMul": 2.2,
+     "proj": { "sprite": "icebolt", "speed": 1300, "pierce": true }, "sound": 2800, "icon": "icebolt" },
+   { "id": "multi_shot", "key": "W", "name": "다중 사격", "desc": "부채꼴로 화살 5발", "kind": "projectile", "cooldown": 7, "mpCost": 8, "damageMul": 0.8,
+     "proj": { "sprite": "firebolt", "speed": 950, "count": 5, "spread": 90 }, "sound": 2400, "icon": "firebolt" },
+   { "id": "retreat_shot", "key": "E", "name": "후퇴 사격", "desc": "뒤로 도약하며 둔화 화살 (3초 이동속도 50%)", "kind": "backstep", "cooldown": 8, "mpCost": 10, "damageMul": 1.2,
+     "proj": { "sprite": "icebolt", "speed": 1100 }, "effects": [{ "kind": "slow", "mul": 0.5, "duration": 3 }], "sound": 2000, "icon": "iceburst" },
+   { "id": "arrow_shower", "key": "R", "name": "애로우 샤워", "desc": "전방 지역에 3초간 화살 폭우", "kind": "zone", "cooldown": 24, "mpCost": 15, "damageMul": 0.45, "ultimate": true,
+     "zone": { "offset": 280, "radius": 170, "depth": 70, "duration": 3, "tick": 0.3, "fx": "icebolt" }, "sound": 2600, "icon": "firewave2" }
+  ] },
+  "mage": { "name": "마법사", "skills": [
+   { "id": "fireball", "key": "Q", "name": "파이어볼", "desc": "맞으면 주변까지 폭발", "kind": "projectile", "cooldown": 3, "mpCost": 6, "damageMul": 1.8,
+     "proj": { "sprite": "fireball", "speed": 750, "explode": { "radius": 120, "fx": "explosion" } }, "sound": 1200, "icon": "fireball" },
+   { "id": "frost_bolt", "key": "W", "name": "프로스트 볼트", "desc": "적 1명 1.5초 빙결 + 3초 둔화", "kind": "projectile", "cooldown": 6, "mpCost": 8, "damageMul": 1.3,
+     "proj": { "sprite": "icebolt", "speed": 900 }, "effects": [{ "kind": "freeze", "duration": 1.5 }, { "kind": "slow", "mul": 0.5, "duration": 3 }], "sound": 3400, "icon": "iceburst" },
+   { "id": "mana_shield", "key": "E", "name": "마나 실드", "desc": "10초간 받는 피해 70%를 MP로 흡수", "kind": "buff", "cooldown": 15, "mpCost": 10,
+     "self": [{ "kind": "manaShield", "ratio": 0.7, "mpPerDamage": 0.5, "duration": 10 }], "fx": { "self": "holycircle" }, "sound": 800, "icon": "holycircle" },
+   { "id": "meteor", "key": "R", "name": "메테오", "desc": "0.9초 뒤 거대 운석 낙하 · 대규모 광역 피해", "kind": "zone", "cooldown": 26, "mpCost": 15, "damageMul": 6, "ultimate": true,
+     "zone": { "offset": 300, "radius": 230, "depth": 90, "delay": 0.9, "fx": "bigfireball", "boom": "explosion" }, "effects": [{ "kind": "knockback", "value": 10 }], "sound": 300, "icon": "bigfireball" }
+  ] },
+  "cleric": { "name": "성직자", "skills": [
+   { "id": "holy_strike", "key": "Q", "name": "신성한 타격", "desc": "근접 신성 피해 · 맞힐 때마다 HP 4% 회복", "kind": "melee", "cooldown": 3, "mpCost": 5, "damageMul": 1.5, "healOnHit": 0.04,
+     "hitbox": { "x": 0, "w": 130, "depth": 36 }, "fx": { "hit": "lightning" }, "sound": 1800, "icon": "lightning" },
+   { "id": "healing_light", "key": "W", "name": "힐링 라이트", "desc": "자신의 HP 35% 즉시 회복 (파티 기능이 생기면 주변 아군 포함)", "kind": "buff", "cooldown": 10, "mpCost": 10,
+     "self": [{ "kind": "heal", "ratio": 0.35 }], "fx": { "self": "holycircle" }, "sound": 2600, "icon": "holycircle" },
+   { "id": "purifying_light", "key": "E", "name": "정화의 빛", "desc": "주변 적 밀쳐내기 + 3초 둔화", "kind": "aoe", "cooldown": 9, "mpCost": 8, "damageMul": 0.8,
+     "hitbox": { "x": -140, "w": 280, "depth": 60 }, "effects": [{ "kind": "knockback", "value": 11 }, { "kind": "slow", "mul": 0.5, "duration": 3 }], "fx": { "hit": "iceburst", "many": true }, "sound": 2200, "icon": "iceburst" },
+   { "id": "angel_blessing", "key": "R", "name": "천사의 축복", "desc": "5초 무적 + 6초간 초당 HP 5% 회복", "kind": "buff", "cooldown": 32, "mpCost": 15, "ultimate": true,
+     "self": [{ "kind": "invuln", "duration": 5 }, { "kind": "regen", "ratio": 0.05, "duration": 6 }], "fx": { "self": "holycircle" }, "sound": 3000, "icon": "explosion" }
+  ] }
+ }
+}
