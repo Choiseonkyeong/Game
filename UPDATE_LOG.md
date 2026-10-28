@@ -2,6 +2,12 @@
 
 공용 저장소 `Choiseonkyeong/Game` · 기준 시간 **한국 시간(KST, Asia/Seoul, UTC+09:00)**. 최신 항목부터 기록합니다. 이전 이력은 삭제하지 않습니다. 이 파일은 작업 이력이며 현재 배포 상태는 [.collaboration/release-state.json](.collaboration/release-state.json)과 공급자 상태를 함께 확인합니다.
 
+## 2026-10-28T17:17:08+09:00 — Claude · 던전 브레이커 master 병합
+
+- 사용자 요청으로 claude/beautiful-cerf-unl8y6(4633352, 887463e 및 이 기록 커밋)를 master에 fast-forward 병합. 기존 master 5861235 위에 추가만 함(강제 푸시 없음).
+- 변경 범위: `experiments/dungeon-breaker/` 신규 폴더와 UPDATE_LOG만. dist·test·package.json·workflow 변경 없음 → GitHub Pages 배포 트리거 대상 아님, release-state 변경 없음.
+- 던전 브레이커 게시 위치: Claude 아티팩트 https://claude.ai/artifact/22TWApbTDaFXAZ9SFJDwQD (버전 27).
+
 ## 2026-10-28T17:15:31+09:00 — Claude · 던전 브레이커 직업별 이동 성격(MOVE_PROFILES) 적용
 
 - Source: claude/beautiful-cerf-unl8y6. 변경 파일 `experiments/dungeon-breaker/`의 `src/entities.js`, `src/sprite.js`, `index.html`만. dist·release-state·다른 게임 변경 없음.
