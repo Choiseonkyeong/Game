@@ -1,0 +1,47 @@
+[
+  {
+    "path": "dist/island/human-sprites.js",
+    "unchanged": true,
+    "blob": "0cfca3078aa57dbde867639b75766762bf42447b"
+  },
+  {
+    "path": "dist/island/wardrobe.js",
+    "unchanged": true,
+    "blob": "6910acf0ac271f76a085368390acb2efcb437e03"
+  },
+  {
+    "path": "dist/island/wardrobe-screen.js",
+    "unchanged": true,
+    "blob": "4d90840eef40f393da8f3ddcf2e9071e7b9223b0"
+  },
+  {
+    "path": "dist/island/room.js",
+    "unchanged": true,
+    "blob": "e48b7ae420fbf0ebc6579f675a623513a30d11b3"
+  },
+  {
+    "path": "dist/island/keyboard-walk.js",
+    "unchanged": true,
+    "blob": "5df56a98889dd9957c3f818684e17a1943326b5d"
+  },
+  {
+    "path": "dist/island/movement.js",
+    "unchanged": true,
+    "blob": "d6aa92a5c7a06969bee15483884e59e635f7e360"
+  },
+  {
+    "path": "dist/island/animal-visitors.js",
+    "unchanged": true,
+    "blob": "71548aff93f45a65d2502c4882c134e270ec8dc4"
+  },
+  {
+    "path": "dist/island/core.js",
+    "unchanged": true,
+    "blob": "9a0b37c810d644d055c2adfab92dd2f80a3c47b4"
+  },
+  {
+    "path": "dist/island/content-state.js",
+    "unchanged": true,
+    "blob": "871ec69be653864fa41796de47a503afca1e0f11"
+  }
+]

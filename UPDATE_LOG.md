@@ -1,3 +1,11 @@
+## 2026-10-30T03:50:29+09:00 — Codex · 최신 첨부 씨앗상점 원본 적용59 / 로컬 검수
+
+- Base master@e87c34282b3f2c1e936f2e61f591e191e92b7f3c; branch codex/seed-reference59. 사용자 첨부 화면이 기준임을 확인. 원본 JPG 그대로 asset저장(SHA25607a979674dd46b7652ee0c1c1cc6d682df98f57be0baabe3e5de9ed7e5d68a3f), 재생성/픽셀편집없음.
+- Change: 원본 목재간판/차양/꽃/하늘섬/카드4+3, 실제 잔액/가격/보유수라벨·7클릭영역,80가격이있는예전안내image노출제거/같은catalogue안내, cache59.
+- Checks:167 pass/0fail; 변동영역밖842802픽셀원본일치(channelerror0), 실제7종구매1000→250/각보유1저장재접속,844×390/667×375/1920×1080선택, 오프라인새로고침. JS오류0. docs/pogeun-seed-reference59.md.
+- Other requirements: R1/R3/R6/R8의 실제누락(키보드전환/모션설정·의상형태/앞뒤색·침대/가구·행동얼굴)은 목록유지. 관련9모듈blob변경없음, audit58기능증거와분리. 전체완료아님.
+- Deployment: pending, 기존57성공유지. 실제SHA/Pages결과/URL검수는 성공후 기록. 실제폰터치/다른작업자접속미확인.
+
 ## 2026-10-30T03:11:43+09:00 — Codex · 세부 요청 재검수58 / 완료 판정 정정
 
 - Source: remote master@c4159db6ce2c1925b276dcfbe9165ccfb474ad70; public game@8c91d63bda71129225975e1a260e3ffb61db6b5f, dist 동일. Branch codex/island-detail-audit58. 최신원격·공통규칙·요구추적/스타일 대조, 사용자 꼼꼼한 검수 요청.

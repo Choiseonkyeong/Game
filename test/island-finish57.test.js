@@ -26,7 +26,7 @@ test('card shop shows every real catalogue price and quantity, including future 
  const html=seedMarketMarkup({shells:987,stock:{sweetpotato:2},catalog});
  assert.equal((html.match(/data-seed-select=/g)||[]).length,7);
  for(const[id,v]of Object.entries(catalog))assert(html.includes(`data-seed-price="${id}">조개 ${v.price}`));
- assert.match(html,/밭작물 4단계 · 보유 2개/);assert.match(html,/조개 987개/);assert(!html.includes('seed-image-hit'));assert.match(html,/seed-glass-title/);
+ assert.match(html,/보유 2개 · 밭작물 4단계/);assert.match(html,/조개 987개/);assert(!html.includes('seed-image-hit'));assert.match(html,/seed-approved-board/);
 });
 
 test('bed target uses the approved plate geometry and the resting avatar arrives beside the bed',()=>{

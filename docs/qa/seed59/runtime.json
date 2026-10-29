@@ -1,0 +1,47 @@
+{
+  "reference_geometry": {
+    "x": 0,
+    "y": 78.5,
+    "width": 1280,
+    "height": 722
+  },
+  "cards": 7,
+  "purchases": [
+    [
+      "apple",
+      120
+    ],
+    [
+      "lemon",
+      120
+    ],
+    [
+      "persimmon",
+      120
+    ],
+    [
+      "banana",
+      120
+    ],
+    [
+      "corn",
+      90
+    ],
+    [
+      "sweetpotato",
+      90
+    ],
+    [
+      "potato",
+      90
+    ]
+  ],
+  "reload_wallet": 250,
+  "reload_stock_each": 1,
+  "guide_sweetpotato_price": 90,
+  "phone_viewports": [
+    "844x390",
+    "667x375"
+  ],
+  "pageerrors": []
+}

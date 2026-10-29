@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "all_requested_changes_complete": false,
-  "reviewed_at": "2026-10-30T03:11:43+09:00",
+  "reviewed_at": "2026-10-30T03:50:29+09:00",
   "requirements": [
     {
       "id": "R1",
@@ -153,11 +153,11 @@
       "request": "씨앗상점 카드형 구성·유리 제목 판넬·떠있는 섬 배경",
       "status": "partial",
       "implementation": [
-        "dist/island/island.js",
         "dist/island/seed-market.js",
-        "dist/island/finish57.css"
+        "dist/island/seed-reference59.css",
+        "dist/island/art/seed-shop-approved-59.jpg"
       ],
-      "acceptance": "승인 원화/판넬/배경 반영,7종 구매영역·문구·가격일치",
+      "acceptance": "최신 첨부 원본의 목재 제목판·꽃 장식·4+3 카드·하늘섬 배경 보존,7종 클릭·가격·보유수·잔액 데이터일치. 이전 유리제목 문구는 원래 요청으로 보존하되 최신 첨부화면을 우선.",
       "evidence": {
         "source": "b77e75e59daedfe74813aea87774f838d948229e",
         "run": 40831952402,
@@ -184,7 +184,26 @@
             "A58-07"
           ],
           "report": "docs/pogeun-detail-audit58.md"
+        },
+        "implementation59": {
+          "checked_at": "2026-10-30T03:50:29+09:00",
+          "source_base": "e87c34282b3f2c1e936f2e61f591e191e92b7f3c",
+          "task_branch": "codex/seed-reference59",
+          "status": "local_verified_deployment_pending",
+          "reference": "dist/island/art/seed-shop-approved-59.jpg",
+          "reference_sha256": "07a979674dd46b7652ee0c1c1cc6d682df98f57be0baabe3e5de9ed7e5d68a3f",
+          "automated": "167 pass/0fail. Exact reference hash,4+3 nonoverlapping regions, live wallet/stock/catalogue labels; help catalogue135/101 future-value regression.",
+          "visual": "1280x879 attached reference matches842802 artwork pixels outside live labels/wallet, channel error0. 844x390/667x375/1920x1080 seven cards visible/selectable.",
+          "storage": "All7 actual purchases1000->250, stock1each after reload; guide sweetpotato90; actual SW offline reload/shop passed.",
+          "remaining": "공개 배포·검수 대기; 실제 폰 터치 미검수",
+          "report": "docs/pogeun-seed-reference59.md"
         }
+      },
+      "latest_user_reference": {
+        "request": "씨앗 상점 이렇게 적용하는거지? 놓쳤다면 다른 부분도 누락되는 거 없는지 꼼꼼해 확인해",
+        "received_at": "2026-10-30T03:50:29+09:00",
+        "asset": "dist/island/art/seed-shop-approved-59.jpg",
+        "interpretation": "첨부한 최신 원본의 목재 간판/꽃/카드4+3/파스텔하늘섬을 기준으로 적용. 과거 추상적인 유리제목 요구를 임의CSS카드로 대체하지 않고 최신 이미지 그대로 사용."
       }
     },
     {
@@ -346,7 +365,7 @@
       "request": "고구마를 그림·구매창·차감 모두90조개로 통일",
       "status": "partial",
       "implementation": [
-        "dist/island/seed-price-labels.js",
+        "dist/island/seed-market.js",
         "dist/island/island.js"
       ],
       "acceptance": "공개 상점 숫자90·구매창90·실제차감90·기존이미지보존",
@@ -377,7 +396,20 @@
           ],
           "report": "docs/pogeun-detail-audit58.md"
         },
-        "remaining": "카드/구매90 정상; 성장 안내 그림 고구마80 잔존. 이미지까지 모두90 조건 미충족."
+        "remaining": "카드/구매90 정상; 성장 안내 그림 고구마80 잔존. 이미지까지 모두90 조건 미충족.",
+        "implementation59": {
+          "checked_at": "2026-10-30T03:50:29+09:00",
+          "source_base": "e87c34282b3f2c1e936f2e61f591e191e92b7f3c",
+          "task_branch": "codex/seed-reference59",
+          "status": "local_verified_deployment_pending",
+          "reference": "dist/island/art/seed-shop-approved-59.jpg",
+          "reference_sha256": "07a979674dd46b7652ee0c1c1cc6d682df98f57be0baabe3e5de9ed7e5d68a3f",
+          "automated": "167 pass/0fail. Exact reference hash,4+3 nonoverlapping regions, live wallet/stock/catalogue labels; help catalogue135/101 future-value regression.",
+          "visual": "1280x879 attached reference matches842802 artwork pixels outside live labels/wallet, channel error0. 844x390/667x375/1920x1080 seven cards visible/selectable.",
+          "storage": "All7 actual purchases1000->250, stock1each after reload; guide sweetpotato90; actual SW offline reload/shop passed.",
+          "remaining": "공개 배포·검수 대기; 실제 폰 터치 미검수",
+          "report": "docs/pogeun-seed-reference59.md"
+        }
       }
     }
   ]

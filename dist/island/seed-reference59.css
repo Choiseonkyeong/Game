@@ -1,0 +1,13 @@
+/* The attached artwork is the reference. Native labels cover only its changing data. */
+#dialog.seed-image-open:has(.seed-approved-board){inset:0;margin:0;width:100vw;max-width:none;height:100dvh;max-height:none;padding:0;border:0;border-radius:0;overflow:hidden;background:linear-gradient(#f6e6ef 0 50%,#e6f3ed 50% 100%)}
+#dialog.seed-image-open:has(.seed-approved-board) #paper{display:grid;place-items:center;width:100%;height:100%;max-height:none;padding:0;overflow:hidden}
+.seed-approved-board{position:relative;flex:none;width:min(100vw,calc(100dvh * 1280 / 722));aspect-ratio:1280/722;container-type:inline-size;color:#765b43;line-height:1}
+.seed-approved-art{display:block;width:100%;height:100%;object-fit:cover;object-position:center;user-select:none;pointer-events:none}
+.seed-approved-hit,.seed-approved-guide{position:absolute;border:0;padding:0;border-radius:1.6cqw;background:transparent;cursor:pointer;z-index:2}
+.seed-approved-hit:hover{background:#fff7db0c}.seed-approved-hit:focus-visible,.seed-approved-guide:focus-visible{outline:.24cqw solid #fff8cf;outline-offset:-.4cqw;box-shadow:inset 0 0 0 .55cqw #9a7750}
+.seed-approved-label{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.27cqw;background:linear-gradient(#fffaf2,#fcf3e5);border-radius:1.2cqw;pointer-events:none;z-index:3;font-family:'Pogeun Jua',sans-serif;text-align:center;overflow:hidden}
+.seed-approved-label strong{display:block;max-width:100%;font-size:1.33cqw;line-height:1.05;font-weight:400;white-space:nowrap}
+.seed-approved-amounts{display:flex;align-items:baseline;justify-content:center;gap:.6cqw;white-space:nowrap;line-height:1}
+.seed-approved-amounts>[data-seed-price]{font-size:1.02cqw}.seed-approved-amounts>small{font-size:.76cqw;letter-spacing:-.02cqw}
+.seed-approved-wallet{position:absolute;display:grid;place-items:center;pointer-events:none;z-index:3;border-radius:2cqw;background:linear-gradient(#fff2d9,#ffefd6);font-size:1.1cqw;font-family:'Pogeun Jua',sans-serif;white-space:nowrap}
+.seed-growth-help{color:#765b43}.seed-growth-help h3{color:#856349}.seed-growth-help p{line-height:1.65}.seed-guide-prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;background:#fbf0e1;border-radius:16px;padding:10px}.seed-guide-prices p{font-size:12px!important;margin:0!important}
