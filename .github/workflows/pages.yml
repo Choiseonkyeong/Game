@@ -30,6 +30,8 @@ jobs:
         uses: actions/checkout@v6
       - name: Validate game
         run: npm test
+      - name: Report requested-change coverage
+        run: node tools/check-pogeun-requirements.mjs
       - name: Record deployed source
         run: |
           node --input-type=module -e 'import fs from "node:fs"; fs.writeFileSync("dist/build-info.json", JSON.stringify({commit:process.env.GITHUB_SHA,repository:process.env.GITHUB_REPOSITORY,built_at:new Date().toISOString()},null,2));'

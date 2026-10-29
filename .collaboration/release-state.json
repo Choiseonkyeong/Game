@@ -1055,5 +1055,34 @@
     "external_collaborator_access_verified": false,
     "checks": "GitHub Pages40831952402 success, all156 tests pass/0 fail. Public build-info exact b77e75e59daedfe74813aea87774f838d948229e, built_at2026-10-29T06:53:36.479Z. Chrome island.js?v55; keyboard outdoor489.57120480000043,470 saved/reloaded exactly; room enter/keyboard/exit and original art scale1.2 checked; knit equip/save/reload and look1 preserved; starter harvest0->150shells/Lv2, paid expansion150->0/Lv3; same character image143.1484x206.4000px before and after Lv3(scale1.08), crop3/5 retained after reload; visiting chihuahua observed; no game-origin console errors.",
     "limitations": "Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch."
+  },
+  "requirements_audit_20261029": {
+    "checked_at": "2026-10-29T16:07:56+09:00",
+    "source_master": "18d3bc23e440448a9679c8be764da9002724fdc3",
+    "live_game_source": "b77e75e59daedfe74813aea87774f838d948229e",
+    "all_requested_changes_complete": false,
+    "audit_path": "docs/pogeun-request-audit56.md",
+    "confirmed_missing": [
+      "Requested ribbon blouse, overalls, beret and dedicated cottagecore dress",
+      "Approved seed-shop card style, glass title panel and floating-island background",
+      "Interior furniture/character proportions and hit areas"
+    ],
+    "confirmed_mismatches": [
+      "Sweet-potato artwork80 versus purchase90",
+      "Visitor timing20s/60–90s differs from earlier assistant's90s/3–5min implementation statement",
+      "Knit-selected wardrobe still labelled basic outfit"
+    ],
+    "unverified": [
+      "Actual iPhone/touch feel",
+      "All purchased crop visual growth stages",
+      "Live Lv4 complete livestock lifecycle",
+      "Lv4–10 avatar-size across poses/devices"
+    ],
+    "game_change_in_audit": false
+  },
+  "pending_price56": {
+    "status": "checks_passed_not_deployed",
+    "changes": "Correct stale baked sweet-potato80 label using the same live catalogue as90 purchase; preserve original artwork. Add requested-change coverage and strict full-completion gate.",
+    "original_eight_requests_complete": false
   }
 }

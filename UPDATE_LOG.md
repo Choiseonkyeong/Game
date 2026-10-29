@@ -1,3 +1,18 @@
+## 2026-10-29T16:14:53+09:00 — Codex · 고구마90 표기 통일·재발 방지 준비
+
+- Base master@18d3bc23e440448a9679c8be764da9002724fdc3; branch codex/pogeun-audit56. 사용자 고구마90 지시와 누락/불일치 원인 분석·재발방지 지시에 따른 변경.
+- Actual purchase90 기존 유지, 원화의80 숫자만 live catalogue 기반SVG label로 보정. 원화 이미지/나머지 UI/가격/저장형식 보존. 다른 원화가격이 미래 변경되어도 같은 catalogue로 해당 숫자만 보정.
+- Checks: local island78 pass; 실제 seedMarket/seedPurchase 동일90 및 미래가격변경 회귀3개. 전체완료 게이트는 현재 미완료8항목 때문에 의도대로 실패. 정상 부분수정 배포는 가능, 전체완료 보고 금지.
+- AGENTS/CLAUDE 공통 완료근거 규칙, 요구사항 추적표, CI coverage단계 추가. audit문서에 실제 누락/불일치와 156tests의 검증범위 한계를 기록.
+- Deployment pending; 공개 숫자90/구매90/실제차감90·재접속을 확인 후 별도 기록. 기존 성공55 기록 유지.
+
+## 2026-10-29T16:07:56+09:00 — Codex · 포근섬 최초8항목 재감사 / 부분완료로 정정
+
+- Source master@18d3bc23e440448a9679c8be764da9002724fdc3, live b77e75e59daedfe74813aea87774f838d948229e. 사용자 수정 누락 지적 후 원요청/소스/공개v55 UI 대조. docs/pogeun-request-audit56.md에 항목별 실제 상태와 남은 검증 기록.
+- Confirmed: 요청 의상 일부/상점 새 디자인·유리 제목·떠있는 섬 배경/실내 가구·클릭영역 재구성 누락. 고구마 그림80·구매90 불일치. 방문20초/60~90초는 이전 안내90초/3~5분과 다름. 니트 착용도 기본코디 명칭 표시.
+- CI156 성공과 v55 배포 성공은 사실이나 전체8항목 완료 증명이 아님. 요구사항 전체완료=false로 기록. Lv4 코드 존재와 전체 실동작 미검증을 구분.
+- Deployment: 재검토 시점 게임 변경/새 배포 없음; 후속 고구마90은 별도 조치로 추적. 기존 그래픽/게임 소스/진행 보존.
+
 ## 2026-10-29T15:59:51+09:00 — Codex · 승인한 포근섬55 배포·공개 검수 완료
 
 - Source master@b77e75e59daedfe74813aea87774f838d948229e; task branch codex/pogeun-review55; base aefd8ffb0497a633d212879343aa210a7ccf03e5. 최신 master 재확인 후 expected-HEAD/force:false 갱신. 이미지/CSS/폰트/기존 가격·저장 형식 보존.
