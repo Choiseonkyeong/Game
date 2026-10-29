@@ -1,3 +1,11 @@
+## 2026-10-30T02:51:33+09:00 — Codex · 미완성 요청57 구현·로컬 검수
+
+- Base master@f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a; branch codex/finish-island57. 사용자 미완성 이어서 진행 요청. 최신 원격/공동규칙/요구추적/승인스타일 확인, 기존 원화·저장·타게임 보존.
+- Changes: 이동 중복렌더 차단, 리본블라우스/멜빵/코티지원피스·베레모 UI/저장, 씨앗7종카드·유리제목·동일catalogue가격, 방문90초/3~5분, 실제침대클릭영역/캐릭터비율, cache57.
+- Checks:164 tests pass/0fail; Chrome 신규3종+모자4방향/88동작렌더/룩저장; 씨앗7종구매·심기·성장·섬왕복·수확; Lv4암탉돌봄·달걀+4/재접속; Lv1~10크기일치;844×390; 실제SW오프라인재접속. 시계이동QA와 실제경과 구분. docs/pogeun-finish57-review.md.
+- Deployment: pending. 기존 성공56 유지; 실제 소스SHA·Pages결과·URL은 후속 기록.
+- Remaining: 승인상점원화2장 미확보, 실제폰터치/전체의상·동작·가구구성/나머지4종실화면. 전체요구완료 아님.
+
 ## 2026-10-30T02:30:45+09:00 — Codex · 이번 검수 요약만 추가
 
 - Source: master@777e03515aa8c87602082840684434914920c980; task branch codex/review-summary-20261030.

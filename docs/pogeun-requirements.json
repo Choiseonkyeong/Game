@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "all_requested_changes_complete": false,
-  "reviewed_at": "2026-10-29T16:22:09+09:00",
+  "reviewed_at": "2026-10-30T02:51:33+09:00",
   "requirements": [
     {
       "id": "R1",
@@ -18,7 +18,16 @@
         "automated": "보행/키보드 충돌 검사 통과",
         "visual": "Chrome 키보드 동작 확인",
         "storage": "좌표 재접속 일치",
-        "remaining": "실제 폰 터치/체감 보행과 프레임 중복 렌더링 확인"
+        "remaining": "실제 폰 터치/체감 보행과 프레임 중복 렌더링 확인",
+        "implementation57": {
+          "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+          "task_branch": "codex/finish-island57",
+          "checked_at": "2026-10-30T02:51:33+09:00",
+          "automated": "프레임당 키보드 렌더1회 회귀 통과; 기존 경로/충돌 검사 유지",
+          "remaining": "실제 폰 터치/체감 보행 미검수",
+          "deployment": "pending",
+          "details": "docs/pogeun-finish57-review.md"
+        }
       }
     },
     {
@@ -36,13 +45,22 @@
         "automated": "7종 단계·보존 단위 검사",
         "visual": "기본 사과 수확 및 Lv3 재접속",
         "storage": "기본 사과 보존",
-        "remaining": "구매7종 전체 실화면/섬왕복"
+        "remaining": "구매7종 전체 실화면/섬왕복",
+        "implementation57": {
+          "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+          "task_branch": "codex/finish-island57",
+          "checked_at": "2026-10-30T02:51:33+09:00",
+          "automated": "7종 모든 단계 단위검사; Chrome 실제 구매/심기/각 단계 DOM/섬왕복/수확/재접속",
+          "remaining": "공개57 배포 검수 대기",
+          "deployment": "pending",
+          "details": "docs/pogeun-finish57-review.md"
+        }
       }
     },
     {
       "id": "R3",
       "request": "옷장 오류 및 니트·리본 블라우스·멜빵바지·코티지코어 원피스·베레모",
-      "status": "missing",
+      "status": "partial",
       "implementation": [
         "dist/island/wardrobe.js",
         "dist/island/wardrobe-screen.js"
@@ -54,22 +72,42 @@
         "automated": "기존 니트/원피스 검사만 존재",
         "visual": "니트 착용 저장 확인",
         "storage": "니트/룩1 보존",
-        "remaining": "블라우스/멜빵바지/베레모/전용 코티지코어 원피스 및 착용명칭"
+        "remaining": "블라우스/멜빵바지/베레모/전용 코티지코어 원피스 및 착용명칭",
+        "implementation57": {
+          "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+          "task_branch": "codex/finish-island57",
+          "checked_at": "2026-10-30T02:51:33+09:00",
+          "automated": "실제 옷장 선택/해제/룩저장/복원 회귀; Chrome 신규3종+베레모 4방향; 멜빵/원피스88동작 렌더",
+          "remaining": "공개57 배포 검수 대기; 신규 의상은 기존 원화 위 코드 레이어",
+          "deployment": "pending",
+          "details": "docs/pogeun-finish57-review.md"
+        }
       }
     },
     {
       "id": "R4",
       "request": "씨앗상점 카드형 구성·유리 제목 판넬·떠있는 섬 배경",
-      "status": "missing",
+      "status": "partial",
       "implementation": [
-        "dist/island/island.js"
+        "dist/island/island.js",
+        "dist/island/seed-market.js",
+        "dist/island/finish57.css"
       ],
       "acceptance": "승인 원화/판넬/배경 반영,7종 구매영역·문구·가격일치",
       "evidence": {
         "source": "b77e75e59daedfe74813aea87774f838d948229e",
         "run": 40831952402,
         "visual": "공개v55는 기존 seed-shop-original.jpeg",
-        "remaining": "승인원화 미연결. 가격만 별도 R4-price로 보정"
+        "remaining": "승인원화 미연결. 가격만 별도 R4-price로 보정",
+        "implementation57": {
+          "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+          "task_branch": "codex/finish-island57",
+          "checked_at": "2026-10-30T02:51:33+09:00",
+          "automated": "7종 카드·가격/보유수 동일catalogue 회귀; 844×390 마지막 카드 접근 확인",
+          "remaining": "승인 원화2장 저장소에 없음: 유리 메뉴.png/파스텔 하늘 속 씨앗 가게.png. 기존 승인 씨앗 패킷/섬 배경으로 카드·유리제목 구현; 요청 최종 원화 적용으로 간주하지 않음",
+          "deployment": "pending",
+          "details": "docs/pogeun-finish57-review.md"
+        }
       }
     },
     {
@@ -85,13 +123,22 @@
         "run": 40831952402,
         "automated": "중복예약 방지",
         "visual": "방문 동물 확인",
-        "remaining": "현재20초/60~90초; 이전 안내90초/3~5분과 불일치"
+        "remaining": "현재20초/60~90초; 이전 안내90초/3~5분과 불일치",
+        "implementation57": {
+          "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+          "task_branch": "codex/finish-island57",
+          "checked_at": "2026-10-30T02:51:33+09:00",
+          "automated": "첫90초/퇴장후180~300초 회귀, 중복비동기로딩/방문퇴장 검사",
+          "remaining": "공개57 배포 검수 대기; 실제 장시간 관찰과 자동시계검사 구분",
+          "deployment": "pending",
+          "details": "docs/pogeun-finish57-review.md"
+        }
       }
     },
     {
       "id": "R6",
       "request": "집 내부 가구·캐릭터 1:1 감성비율",
-      "status": "missing",
+      "status": "partial",
       "implementation": [
         "dist/island/room.js"
       ],
@@ -100,7 +147,16 @@
         "source": "b77e75e59daedfe74813aea87774f838d948229e",
         "run": 40831952402,
         "visual": "캐릭터1.2배와 기존 실내만 확인",
-        "remaining": "가구크기/침대 클릭영역 재구성"
+        "remaining": "가구크기/침대 클릭영역 재구성",
+        "implementation57": {
+          "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+          "task_branch": "codex/finish-island57",
+          "checked_at": "2026-10-30T02:51:33+09:00",
+          "automated": "침대 원화실측45,145,165,255와 클릭영역 정합; 캐릭터1.8배; Chrome 실제 침대 클릭 후235,448 도착",
+          "remaining": "침대/캐릭터 비율 보완; 원화 속 모든 가구를 별도 재구성한 것은 아님. 실제 기기 감성비율 확인 남음",
+          "deployment": "pending",
+          "details": "docs/pogeun-finish57-review.md"
+        }
       }
     },
     {
@@ -117,7 +173,16 @@
         "run": 40831952402,
         "automated": "해금/성장 단위검사",
         "visual": "Lv3 잠금만 확인",
-        "remaining": "실제Lv4 전체 돌봄 루프"
+        "remaining": "실제Lv4 전체 돌봄 루프",
+        "implementation57": {
+          "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+          "task_branch": "codex/finish-island57",
+          "checked_at": "2026-10-30T02:51:33+09:00",
+          "automated": "기존5종 생애 단위검사; Chrome Lv4 암탉 입양→먹이5회→성장5단계→달걀+4→재접속",
+          "remaining": "공개57 배포 검수 대기; 시간은 QA Date.now 이동, 다른4종 브라우저 전생애 미검수",
+          "deployment": "pending",
+          "details": "docs/pogeun-finish57-review.md"
+        }
       }
     },
     {
@@ -133,7 +198,16 @@
         "run": 40831952402,
         "visual": "Lv2→3 크기143.1484×206.4px 일치",
         "storage": "Lv3재접속",
-        "remaining": "Lv4~10/전동작/기기"
+        "remaining": "Lv4~10/전동작/기기",
+        "implementation57": {
+          "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+          "task_branch": "codex/finish-island57",
+          "checked_at": "2026-10-30T02:51:33+09:00",
+          "automated": "Chrome Lv1~10 동일120.511×173.76px; 신규의상88동작 렌더;844×390 화면",
+          "remaining": "실제 폰/모든 기본 의상·전동작의 시각 검수 남음",
+          "deployment": "pending",
+          "details": "docs/pogeun-finish57-review.md"
+        }
       }
     },
     {

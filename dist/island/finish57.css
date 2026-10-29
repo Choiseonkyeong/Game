@@ -1,0 +1,20 @@
+/* Keep the approved fitting room and seed packets; only the requested controls change. */
+.wui-stage .wui-hat-name{top:72.5%;left:78.2%;width:10.6%;height:7%;font-size:1.12cqw}.wui-stage .wui-hat-icon{top:69.7%}
+#dialog.seed-image-open:has(.seed-market){inset:0;margin:auto;height:fit-content;width:min(1120px,96vw);max-height:94dvh;background:#f8eee5;border:1px solid #c5b7b2;border-radius:25px;overflow:auto}
+#dialog.seed-image-open:has(.seed-market) #paper{display:block;height:auto;padding:0;overflow:visible}
+.seed-market{width:100%;position:relative;padding:24px 24px 16px;isolation:isolate;overflow:hidden;border-radius:24px;background:linear-gradient(145deg,#e6d9efdd,#f9e2dfdd 50%,#d8eef0dd);color:#725d51}
+.seed-market::before{content:'';position:absolute;z-index:-1;inset:0;background:url('art/world/reference-island.jpg') center 47%/cover;opacity:.18;pointer-events:none}
+.seed-glass-title{display:block;max-width:none;min-width:0;position:static!important;text-align:center!important;background:#fffaf3cf;border:1px solid #fffdf4;border-radius:20px;box-shadow:0 4px 16px #8e72941c;backdrop-filter:blur(12px);padding:14px 20px;margin:0 24px 16px}
+.seed-glass-title small{letter-spacing:.16em;font-size:11px;color:#9c8792}
+.seed-glass-title h2{margin:3px 0!important;font-size:clamp(22px,3vw,32px)!important}
+.seed-glass-title p{margin:5px 0!important;font-size:13px!important}
+.seed-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-width:940px;margin:auto}
+.seed-card{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:168px;padding:12px 8px!important;background:#fffaf1eb!important;border:1px solid #dac8b7!important;border-radius:20px!important;box-shadow:0 4px 0 #cbb8aa44;color:#725d51!important;font-family:inherit;cursor:pointer}
+.seed-card:hover,.seed-card:focus-visible{outline:3px solid #b9c6a2;outline-offset:2px;transform:translateY(-2px)}
+.seed-packet{width:86px;height:72px;display:block;background-image:url('art/seed-shop-original.jpeg');background-repeat:no-repeat;border-radius:12px}
+.seed-card strong{font-size:17px}.seed-card-price{padding:3px 14px;background:#f4e2c8;border-radius:16px;font-size:16px}.seed-card small{font-size:11px;color:#8b7768}
+.seed-growth-guide{margin:16px auto 0;background:#fffaf1da;border-radius:14px;padding:10px 16px;max-width:940px;font-size:13px}.seed-growth-guide summary{cursor:pointer}.seed-growth-guide p{font-size:13px!important;margin:8px 0!important}.seed-growth-guide img{display:block;max-width:100%;max-height:300px;object-fit:contain;margin:auto}
+.seed-card-toolbar{display:flex;justify-content:space-between;align-items:center;margin:12px auto 0;max-width:940px;font-size:16px}.seed-card-toolbar button{padding:8px 14px;border-radius:12px;background:#fffaf1;border:1px solid #dac8b7;color:#725d51}
+@media(max-height:500px){.seed-market{padding:12px 18px}.seed-glass-title{margin:0 24px 10px;padding:8px}.seed-glass-title p{font-size:11px!important}.seed-card-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.seed-card{min-height:130px;padding:6px!important;gap:2px}.seed-packet{width:65px;height:54px}.seed-card strong{font-size:14px}.seed-card-price{font-size:13px}.seed-card small{font-size:10px}}
+@media(max-width:600px) and (min-height:501px){.seed-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.seed-card:hover,.seed-card:focus-visible{transform:none}}

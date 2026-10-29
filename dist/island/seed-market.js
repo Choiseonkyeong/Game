@@ -1,0 +1,8 @@
+import{SEED_CATALOG,SEED_DESCRIPTION,seedStages}from'./seed-shop.js?v=42';
+// Reuse seed packets from the existing approved illustration, excluding its baked prices.
+const PACKETS={apple:[73,235,99,80],lemon:[209,235,104,80],persimmon:[352,235,98,80],banana:[76,416,100,86],corn:[73,529,100,87],sweetpotato:[211,532,102,86],potato:[351,531,99,86]};
+export function seedMarketMarkup({shells=0,stock={},catalog=SEED_CATALOG}={}){
+ const cards=Object.entries(catalog).map(([id,seed])=>{const[x,y,w,h]=PACKETS[id],packet=`background-size:${1536/w*100}% ${864/h*100}%;background-position:${x/(1536-w)*100}% ${y/(864-h)*100}%`;
+ return `<button class="seed-card" data-seed-select="${id}" aria-label="${seed.name} 씨앗 선택 · 조개 ${seed.price}"><span class="seed-packet" aria-hidden="true" style="${packet}"></span><strong>${seed.name}</strong><span class="seed-card-price" data-seed-price="${id}">조개 ${seed.price}</span><small>${seed.type==='tree'?'과일나무':'밭작물'} ${seedStages(id)}단계 · 보유 ${stock[id]||0}개</small></button>`;}).join('');
+ return `<section class="seed-market" aria-labelledby="seed-market-title"><header class="seed-glass-title"><small>POGEUN SEED SHOP</small><h2 id="seed-market-title">하늘 위 씨앗 상점</h2><p>${SEED_DESCRIPTION}</p></header><div class="seed-card-grid">${cards}</div><details class="seed-growth-guide"><summary>씨앗에서 수확까지 · 성장 안내</summary><p>씨앗 구매 → 빈 잔디에 심기 → 물 주기 → 성장 → 수확</p><p>과일나무는 5단계, 밭작물은 4단계로 자라요. 심은 씨앗과 성장 단계는 자동 저장돼요.</p><img src="art/seed-guide.webp" alt="과일나무와 밭작물 성장 단계 안내" loading="lazy"></details><footer class="seed-card-toolbar"><span>조개 ${shells}개</span><button data-act="shop-fullscreen">전체화면 ⛶</button></footer></section>`;
+}

@@ -1,0 +1,151 @@
+{
+  "wardrobe": {
+    "selected": [
+      "ribbon-blouse",
+      "overalls",
+      "cottage-dress"
+    ],
+    "views": 4,
+    "action_renders": 88,
+    "persisted": {
+      "top": "ribbon-blouse",
+      "bottom": "shorts",
+      "shoes": "sneakers",
+      "bag": "none",
+      "hat": "beret",
+      "accessory": "none",
+      "dress": "cottage-dress"
+    },
+    "saved_looks": 3
+  },
+  "seeds": {
+    "purchases": [
+      [
+        "apple",
+        120
+      ],
+      [
+        "lemon",
+        120
+      ],
+      [
+        "persimmon",
+        120
+      ],
+      [
+        "banana",
+        120
+      ],
+      [
+        "corn",
+        90
+      ],
+      [
+        "sweetpotato",
+        90
+      ],
+      [
+        "potato",
+        90
+      ]
+    ],
+    "harvests": [
+      [
+        "apple",
+        150
+      ],
+      [
+        "lemon",
+        150
+      ],
+      [
+        "persimmon",
+        150
+      ],
+      [
+        "banana",
+        150
+      ],
+      [
+        "corn",
+        110
+      ],
+      [
+        "sweetpotato",
+        110
+      ],
+      [
+        "potato",
+        110
+      ]
+    ],
+    "stages_rendered": "1–5(tree)/1–4(field)",
+    "island_roundtrip_preserved": true,
+    "reload_preserved": true
+  },
+  "livestock": {
+    "level": 4,
+    "kind": "hen",
+    "stages": 5,
+    "actual_feed_grow_collect": true,
+    "harvest_shells": 4,
+    "reload_preserved": true,
+    "time": "simulated Date.now, regular UI interactions"
+  },
+  "room": {
+    "bed_bounds": [
+      "45",
+      "145",
+      "165",
+      "255"
+    ],
+    "person": "translate(235 448)"
+  },
+  "levels": {
+    "1_to_10_sizes": [
+      {
+        "width": 120.51092529296875,
+        "height": 173.75997924804688
+      },
+      {
+        "width": 120.510986328125,
+        "height": 173.75997924804688
+      },
+      {
+        "width": 120.510986328125,
+        "height": 173.75999450683594
+      },
+      {
+        "width": 120.510986328125,
+        "height": 173.760009765625
+      },
+      {
+        "width": 120.510986328125,
+        "height": 173.760009765625
+      },
+      {
+        "width": 120.510986328125,
+        "height": 173.75999450683594
+      },
+      {
+        "width": 120.510986328125,
+        "height": 173.760009765625
+      },
+      {
+        "width": 120.51095581054688,
+        "height": 173.75997924804688
+      },
+      {
+        "width": 120.51095581054688,
+        "height": 173.760009765625
+      },
+      {
+        "width": 120.51095581054688,
+        "height": 173.76004028320312
+      }
+    ],
+    "stable_size": true
+  },
+  "phone_viewport": "844×390 emulation; last card reachable by scrolling; physical touch unverified",
+  "pageerrors": []
+}

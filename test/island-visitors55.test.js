@@ -6,6 +6,6 @@ test('slow sprite loads never start overlapping visits and idle time respects th
  globalThis.fetch=async()=>({ok:true,json:async()=>({animals:[{id:'dog',name:'강아지',sheet:'dog.webp'}]})});
  globalThis.Image=class{decode(){loads++;return new Promise(r=>release=r);}};globalThis.document={hidden:false};
  try{const s=fresh(),start=performance.now(),v=createAnimalVisitors({project:(c,r)=>[c*42,r*20],findRoute:route,getState:()=>s,redraw(){},announce(){},world:{querySelector:()=>null},random:()=>0});
- await v.ready;v.tick(start+10000);assert.equal(loads,0);v.tick(start+21000);assert.equal(loads,1);v.tick(start+60000);assert.equal(loads,1);release();await new Promise(r=>setImmediate(r));assert.equal(v.active.id,'dog');
+ await v.ready;v.tick(start+10000);assert.equal(loads,0);v.tick(start+91000);assert.equal(loads,1);v.tick(start+150000);assert.equal(loads,1);release();await new Promise(r=>setImmediate(r));assert.equal(v.active.id,'dog');
  }finally{globalThis.fetch=oldFetch;globalThis.Image=oldImage;globalThis.document=oldDoc;}
 });
