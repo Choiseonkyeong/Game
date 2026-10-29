@@ -1,0 +1,245 @@
+{
+  "purchases": [
+    [
+      "apple",
+      120
+    ],
+    [
+      "lemon",
+      120
+    ],
+    [
+      "persimmon",
+      120
+    ],
+    [
+      "banana",
+      120
+    ],
+    [
+      "corn",
+      90
+    ],
+    [
+      "sweetpotato",
+      90
+    ],
+    [
+      "potato",
+      90
+    ]
+  ],
+  "continuous_growth_without_reload": [
+    {
+      "elapsed": 0,
+      "plants": [
+        {
+          "id": 2,
+          "kind": "apple",
+          "stage": 1
+        },
+        {
+          "id": 3,
+          "kind": "lemon",
+          "stage": 1
+        },
+        {
+          "id": 4,
+          "kind": "persimmon",
+          "stage": 1
+        },
+        {
+          "id": 5,
+          "kind": "banana",
+          "stage": 1
+        },
+        {
+          "id": 6,
+          "kind": "corn",
+          "stage": 1
+        },
+        {
+          "id": 7,
+          "kind": "sweetpotato",
+          "stage": 1
+        },
+        {
+          "id": 8,
+          "kind": "potato",
+          "stage": 1
+        }
+      ]
+    },
+    {
+      "elapsed": 60000,
+      "plants": [
+        {
+          "id": 2,
+          "kind": "apple",
+          "stage": 2
+        },
+        {
+          "id": 3,
+          "kind": "lemon",
+          "stage": 2
+        },
+        {
+          "id": 4,
+          "kind": "persimmon",
+          "stage": 2
+        },
+        {
+          "id": 5,
+          "kind": "banana",
+          "stage": 2
+        },
+        {
+          "id": 6,
+          "kind": "corn",
+          "stage": 2
+        },
+        {
+          "id": 7,
+          "kind": "sweetpotato",
+          "stage": 2
+        },
+        {
+          "id": 8,
+          "kind": "potato",
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "elapsed": 120000,
+      "plants": [
+        {
+          "id": 2,
+          "kind": "apple",
+          "stage": 3
+        },
+        {
+          "id": 3,
+          "kind": "lemon",
+          "stage": 3
+        },
+        {
+          "id": 4,
+          "kind": "persimmon",
+          "stage": 3
+        },
+        {
+          "id": 5,
+          "kind": "banana",
+          "stage": 3
+        },
+        {
+          "id": 6,
+          "kind": "corn",
+          "stage": 3
+        },
+        {
+          "id": 7,
+          "kind": "sweetpotato",
+          "stage": 3
+        },
+        {
+          "id": 8,
+          "kind": "potato",
+          "stage": 3
+        }
+      ]
+    },
+    {
+      "elapsed": 180000,
+      "plants": [
+        {
+          "id": 2,
+          "kind": "apple",
+          "stage": 4
+        },
+        {
+          "id": 3,
+          "kind": "lemon",
+          "stage": 4
+        },
+        {
+          "id": 4,
+          "kind": "persimmon",
+          "stage": 4
+        },
+        {
+          "id": 5,
+          "kind": "banana",
+          "stage": 4
+        },
+        {
+          "id": 6,
+          "kind": "corn",
+          "stage": 4
+        },
+        {
+          "id": 7,
+          "kind": "sweetpotato",
+          "stage": 4
+        },
+        {
+          "id": 8,
+          "kind": "potato",
+          "stage": 4
+        }
+      ]
+    },
+    {
+      "elapsed": 240000,
+      "plants": [
+        {
+          "id": 2,
+          "kind": "apple",
+          "stage": 5
+        },
+        {
+          "id": 3,
+          "kind": "lemon",
+          "stage": 5
+        },
+        {
+          "id": 4,
+          "kind": "persimmon",
+          "stage": 5
+        },
+        {
+          "id": 5,
+          "kind": "banana",
+          "stage": 5
+        },
+        {
+          "id": 6,
+          "kind": "corn",
+          "stage": 4
+        },
+        {
+          "id": 7,
+          "kind": "sweetpotato",
+          "stage": 4
+        },
+        {
+          "id": 8,
+          "kind": "potato",
+          "stage": 4
+        }
+      ]
+    }
+  ],
+  "reload_and_island_roundtrip": true,
+  "harvest_rewards": [
+    150,
+    150,
+    150,
+    150,
+    110,
+    110,
+    110
+  ],
+  "time": "Date.now advanced; normal 1800ms rendering timer and public UI used; no seedAt rewrites"
+}

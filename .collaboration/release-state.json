@@ -55,7 +55,7 @@
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
     "access_check": "CI164 passed/0failed; Chrome local7 seeds purchase/plant/stages/roundtrip/harvest, Lv4 hen feed-grow-collect/reload, clothes4views/88actionrenders, Lv1–10 identical120.511x173.76px, offline runtime. Public Chrome57: new clothes/beret save-reload; seven cards; sweetpotato shown90/purchase90/wallet150->60/stock1 after reload; no pageerrors. Public build-info exact source.",
-    "remaining_action": "R1/R4/R6/R8 partial: actual phone/touch/all-outfit motion visual QA; approved seed-shop final artwork2 missing; full furniture reconstruction not implemented. Other4 livestock browser lifecycles unverified (unit tests pass).",
+    "remaining_action": "Audit58: R3/R4-price reopened; R1/R3/R4/R6/R8/R4-price partial. Seed guide80 vs charge90; clothing silhouettes/rear shorts color; base-action identity; bed chair outside bed; keyboard stop/arrival; motion toggle sync; approved seed-shop art missing. Physical phone unverified. Game remains deployed57.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -1137,5 +1137,29 @@
     "all_requested_changes_complete": false,
     "checks": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified. Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained. Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1. Public build-info exact source.",
     "limitations": "Price correction and prevention workflow complete; original eight requests remain partial/missing as tracked in docs/pogeun-requirements.json. Actual iPhone/touch and offline runtime unverified."
+  },
+  "latest_requirements_audit": {
+    "version": "detail-audit58",
+    "checked_at": "2026-10-30T03:20:28+09:00",
+    "reviewed_remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+    "deployed_game_source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+    "report": "docs/pogeun-detail-audit58.md",
+    "evidence_directory": "docs/qa/audit58/",
+    "findings": 8,
+    "requirements_functionally_verified": [
+      "R2",
+      "R5",
+      "R7"
+    ],
+    "completion_reopened": [
+      "R3",
+      "R4-price"
+    ],
+    "all_requested_changes_complete": false,
+    "automated_tests_passed": 164,
+    "actual_mobile_touch_verified": false,
+    "game_changed": false,
+    "deployment_changed": false,
+    "note": "Functional smoke checks do not prove clothing shape, face consistency, bed placement or all image-embedded prices. See current audit58 correction before relying on older57 completion rows."
   }
 }

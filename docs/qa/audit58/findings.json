@@ -1,0 +1,114 @@
+{
+  "checked_at": "2026-10-30T03:11:43+09:00",
+  "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+  "deployed_source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+  "findings": [
+    {
+      "id": "A58-01",
+      "priority": "높음",
+      "requirement": "R4-price",
+      "title": "성장 안내 그림에 고구마80 가격 잔존",
+      "observed": "상점 카드·구매창·실제 차감은90이나 펼친 성장 안내 art/seed-guide.webp 안 고구마 가격은80. R4-price 전체90 조건 실패.",
+      "evidence": [
+        "docs/qa/audit58/01-seed-guide-price.jpg",
+        "dist/island/seed-market.js:7"
+      ],
+      "acceptance": "화면에 노출되는 모든 가격 숫자와 실제 차감을 동일 catalogue로 통일; 안내 이미지 전체도 검수"
+    },
+    {
+      "id": "A58-02",
+      "priority": "높음",
+      "requirement": "R3",
+      "title": "의상 이름·저장은 추가됐지만 요청 형태 디테일은 부족",
+      "observed": "니트는 기존 반팔 실루엣에 색/질감만, 블라우스는 기존 반팔에 리본만 추가. 코티지 원피스는 기존 상의+직선형 치마 조합에 검정 허리띠가 남음. 멜빵도 기존 반바지 허리 위 작은 가슴판/긴바지 색칠이며 검정 허리선 잔존. 전용 승인 디자인과 일치한다는 근거 없음.",
+      "evidence": [
+        "docs/qa/audit58/02-clothes-four-views.jpg",
+        "dist/island/human-sprites.js:35",
+        "dist/island/human-sprites.js:79",
+        "dist/island/human-sprites.js:83"
+      ],
+      "acceptance": "이름/아이콘/저장뿐 아니라 옷 종류별 소매·품·허리·치마/바지 실루엣을 실제4방향/행동 화면으로 검수; 얼굴과 몸 비율 보존"
+    },
+    {
+      "id": "A58-03",
+      "priority": "높음",
+      "requirement": "R8",
+      "title": "기본 코디 행동에서 원화·얼굴선 일관성 깨짐",
+      "observed": "idle/walk은 female-unified-34 원화이나 기본 흰티 인사/수확/앉기/점프는 예전 actions/female.webp 전체 그림으로 교체. 선택한 통일 원화의 얼굴/헤어선/비율을 그대로 보존하는 경로가 아님. 새 의상은 다른 articulated 경로라 코디마다 행동 표현도 다름.",
+      "evidence": [
+        "docs/qa/audit58/03-action-identity.jpg",
+        "dist/island/human-sprites.js:91",
+        "dist/island/actions.js:6"
+      ],
+      "acceptance": "기본/새 코디 모두 승인 통일원화의 얼굴/헤어/몸 비율을 보존하는 행동 경로로 맞춤. 동작에 따른 높이 변화 자체는 크기 오류의 증거로 사용하지 않음"
+    },
+    {
+      "id": "A58-04",
+      "priority": "중간",
+      "requirement": "R6",
+      "title": "침대 상호작용이 실제 침대와 연결되지 않음",
+      "observed": "침대 클릭영역45,145,165,255는 정합하나 휴식 목표235,448은 침대 바깥. 기본 코디는 행동 원화에 포함된 별도 작은 의자를 침대 옆에 갑자기 표시하며 앉음. 방은 기존 침대/러그 그림 유지, 캐릭터만1.8배. 가구 전체 비율/배치 조정은 없음.",
+      "evidence": [
+        "docs/qa/audit58/04-bed-rest.jpg",
+        "dist/island/room.js:6",
+        "dist/island/room.js:10",
+        "dist/island/room.js:14"
+      ],
+      "acceptance": "가구별 기준 크기·상호작용 앵커를 캐릭터에 맞추고, 침대 휴식 문구와 실제 동작/위치를 일치시킴"
+    },
+    {
+      "id": "A58-05",
+      "priority": "중간",
+      "requirement": "R1",
+      "title": "키보드 정지 감속·도착 바운스 누락",
+      "observed": "방향키 해제 직후 좌표 고정, actorSpeed=0. 이후0/40/100/200ms 표본에서 좌표 동일·arrival-bounce=false. 클릭 이동에는 감속/도착 바운스가 있으나 키보드 경로에는 없음.",
+      "evidence": [
+        "docs/qa/audit58/observations.json",
+        "dist/island/island.js:175",
+        "dist/island/island.js:176"
+      ],
+      "acceptance": "사용자 입력을 해치지 않는 범위에서 키보드 시작/방향전환/정지 전환을 부드럽게 통일. 모션 감소 설정과 함께 검수"
+    },
+    {
+      "id": "A58-06",
+      "priority": "중간",
+      "requirement": "R1",
+      "title": "움직임 줄이기 설정의 즉시 적용 데이터 불일치",
+      "observed": "설정 버튼은 켜짐·localStorage는1인데 클릭 직후 #game data-reduced=false 유지. updateHud 전까지 pose-blend가 읽는 값과 다름. 방문 객체도 생성 시 reduced 값을 고정해 토글과 동기화하지 않음. 전체 설정이 작동하지 않는다고 확대 해석하지 않음.",
+      "evidence": [
+        "docs/qa/audit58/observations.json",
+        "dist/island/island.js:152",
+        "dist/island/island.js:171",
+        "dist/island/pose-blend.js:5",
+        "dist/island/animal-visitors.js:6"
+      ],
+      "acceptance": "토글 시 UI·저장값·공통 모션 상태·기존 방문 인스턴스에 같은 값 즉시 반영; 새로고침 전후 일치"
+    },
+    {
+      "id": "A58-07",
+      "priority": "높음",
+      "requirement": "R4",
+      "title": "승인 상점 최종 디자인 미연결",
+      "observed": "카드형 구성과 유리 스타일 제목은 있지만 현재 배경은 기존 home reference-island.jpg를 낮은 투명도로 재사용. 기록된 승인 원화2장은 현재 저장소에 없고 연결되지 않음. 기존 대체 화면을 승인 최종본 완료로 볼 수 없음.",
+      "evidence": [
+        "dist/island/finish57.css:6",
+        "docs/pogeun-request-audit56.md:24",
+        "docs/pogeun-finish57-review.md:24"
+      ],
+      "acceptance": "승인 원화 원본을 확보해 카드/제목/떠 있는 섬 배경을 원본과 대조; 확보 전 pending 명시"
+    },
+    {
+      "id": "A58-08",
+      "priority": "중간",
+      "requirement": "R3",
+      "title": "기본 연청 반바지의 앞뒤 색 불일치",
+      "observed": "front/side shorts는 연청으로 보정하지만 rear(row1)은 shorts 색 보정에서 제외되어 원화의 검정 반바지 부분이 남음. 같은 기본 코디의4방향 색이 일치하지 않음.",
+      "evidence": [
+        "docs/qa/audit58/02-clothes-four-views.jpg",
+        "dist/island/human-sprites.js:40",
+        "dist/island/human-sprites.js:134"
+      ],
+      "acceptance": "머리카락/피부를 건드리지 않고 뒤에서 노출되는 같은 의상 천 부분도 같은 색/재질로 유지"
+    }
+  ]
+}

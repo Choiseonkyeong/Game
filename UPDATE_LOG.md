@@ -1,3 +1,11 @@
+## 2026-10-30T03:11:43+09:00 — Codex · 세부 요청 재검수58 / 완료 판정 정정
+
+- Source: remote master@c4159db6ce2c1925b276dcfbe9165ccfb474ad70; public game@8c91d63bda71129225975e1a260e3ffb61db6b5f, dist 동일. Branch codex/island-detail-audit58. 최신원격·공통규칙·요구추적/스타일 대조, 사용자 꼼꼼한 검수 요청.
+- Findings: 성장안내고구마80/카드90, 니트·블라우스·원피스실루엣부족/멜빵검정허리잔존, 기본행동예전원화로얼굴선교체, 뒤반바지검정, 침대옆별도의자, 키보드즉시정지/바운스없음, 모션설정즉시data-reduced불일치, 승인상점원화미연결. docs/pogeun-detail-audit58.md와 docs/qa/audit58/ 증거.
+- Checks:164 pass/0fail; 공개7종 실제구매/심기→새로고침없는성장도형갱신→섬왕복/재접속→수확; 공개5종가축전성장/생산/수확/재접속; 실제90.445초방문1마리/105.489초퇴장. 성장만QA시계이동, 방문은실시간. 공개브라우저pageerrors0.
+- Requirements: R3/R4-price complete→partial 정정, 과거완료증거보존. 전체3/9만기능검증통과(R2/R5/R7); 전체완료아님. 디자인세부/행동정체성/실제폰미검수 분리.
+- Deployment: 기존57 그대로. 이번엔 게임수정·새배포없음, 문서/증거/상태정정만. 실제폰/다른작업자 접속미확인.
+
 ## 2026-10-30T02:56:34+09:00 — Codex · 미완성 요청57 배포·공개 검수 완료 (전체는 부분 완료)
 
 - Source master@8c91d63bda71129225975e1a260e3ffb61db6b5f; branch codex/finish-island57; synchronized base f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a. expected-HEAD/force:false, 동일검수tree8e624328162a7bd05c39b6281600f6931e6fe244. 다른 작업/승인 이미지 파일 보존.

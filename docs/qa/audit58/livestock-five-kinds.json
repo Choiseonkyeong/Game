@@ -1,0 +1,77 @@
+[
+  {
+    "kind": "hen",
+    "stages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "product": "달걀",
+    "shells": 4,
+    "restored": true,
+    "time": "simulated Date.now; real public UI adoption/feed/collection"
+  },
+  {
+    "kind": "duck",
+    "stages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "product": "오리알",
+    "shells": 5,
+    "restored": true,
+    "time": "simulated Date.now; real public UI adoption/feed/collection"
+  },
+  {
+    "kind": "sheep",
+    "stages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "product": "똥",
+    "shells": 12,
+    "restored": true,
+    "time": "simulated Date.now; real public UI adoption/feed/collection"
+  },
+  {
+    "kind": "cow",
+    "stages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "product": "똥",
+    "shells": 15,
+    "restored": true,
+    "time": "simulated Date.now; real public UI adoption/feed/collection"
+  },
+  {
+    "kind": "llama",
+    "stages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "product": "똥",
+    "shells": 20,
+    "restored": true,
+    "time": "simulated Date.now; real public UI adoption/feed/collection"
+  }
+]

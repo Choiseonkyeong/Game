@@ -1,0 +1,453 @@
+{
+  "deployed": {
+    "commit": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+    "repository": "Choiseonkyeong/Game",
+    "built_at": "2026-10-29T17:52:55.535Z"
+  },
+  "seed_guide": {
+    "card_price": "조개 90",
+    "guide_source": "art/seed-guide.webp",
+    "embedded_sweetpotato_price": 80
+  },
+  "wardrobe_views": [
+    {
+      "name": "기본 흰티",
+      "outfit": {
+        "top": "white-tee",
+        "bottom": "shorts",
+        "shoes": "sneakers",
+        "bag": "none",
+        "hat": "none",
+        "accessory": "none",
+        "dress": "none"
+      }
+    },
+    {
+      "name": "파스텔 니트",
+      "outfit": {
+        "top": "oversized-knit",
+        "bottom": "shorts",
+        "shoes": "sneakers",
+        "bag": "none",
+        "hat": "none",
+        "accessory": "none",
+        "dress": "none"
+      }
+    },
+    {
+      "name": "리본 블라우스",
+      "outfit": {
+        "top": "ribbon-blouse",
+        "bottom": "shorts",
+        "shoes": "sneakers",
+        "bag": "none",
+        "hat": "none",
+        "accessory": "none",
+        "dress": "none"
+      }
+    },
+    {
+      "name": "데님 멜빵",
+      "outfit": {
+        "top": "white-tee",
+        "bottom": "shorts",
+        "shoes": "sneakers",
+        "bag": "none",
+        "hat": "none",
+        "accessory": "none",
+        "dress": "overalls"
+      }
+    },
+    {
+      "name": "코티지코어 원피스",
+      "outfit": {
+        "top": "white-tee",
+        "bottom": "shorts",
+        "shoes": "sneakers",
+        "bag": "none",
+        "hat": "none",
+        "accessory": "none",
+        "dress": "cottage-dress"
+      }
+    },
+    {
+      "name": "베레모",
+      "outfit": {
+        "top": "white-tee",
+        "bottom": "shorts",
+        "shoes": "sneakers",
+        "bag": "none",
+        "hat": "beret",
+        "accessory": "none",
+        "dress": "none"
+      }
+    }
+  ],
+  "action_geometry": [
+    {
+      "label": "기본 흰티",
+      "poses": [
+        {
+          "pose": "idle",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.02083333333334,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            6,
+            8,
+            123,
+            182
+          ]
+        },
+        {
+          "pose": "walk",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 112.375,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            6,
+            8,
+            123,
+            181
+          ]
+        },
+        {
+          "pose": "greeting",
+          "width": 172,
+          "height": 206.6667,
+          "bitmap": [
+            256,
+            320
+          ],
+          "visibleHeight": 114.31251843749999,
+          "visibleWidth": 79.953125,
+          "bounds": [
+            78,
+            121,
+            196,
+            297
+          ]
+        },
+        {
+          "pose": "harvest",
+          "width": 172,
+          "height": 206.6667,
+          "bitmap": [
+            256,
+            320
+          ],
+          "visibleHeight": 112.37501812499998,
+          "visibleWidth": 83.3125,
+          "bounds": [
+            74,
+            124,
+            197,
+            297
+          ]
+        },
+        {
+          "pose": "sit",
+          "width": 172,
+          "height": 206.6667,
+          "bitmap": [
+            256,
+            320
+          ],
+          "visibleHeight": 108.5000175,
+          "visibleWidth": 82.640625,
+          "bounds": [
+            88,
+            130,
+            210,
+            297
+          ]
+        },
+        {
+          "pose": "jump",
+          "width": 172,
+          "height": 206.6667,
+          "bitmap": [
+            256,
+            320
+          ],
+          "visibleHeight": 92.3541815625,
+          "visibleWidth": 83.984375,
+          "bounds": [
+            68,
+            130,
+            192,
+            272
+          ]
+        }
+      ]
+    },
+    {
+      "label": "니트",
+      "poses": [
+        {
+          "pose": "idle",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.02083333333334,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            6,
+            8,
+            123,
+            182
+          ]
+        },
+        {
+          "pose": "walk",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 112.375,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            6,
+            8,
+            123,
+            181
+          ]
+        },
+        {
+          "pose": "greeting",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.66666666666666,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            5,
+            8,
+            122,
+            183
+          ]
+        },
+        {
+          "pose": "harvest",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.66666666666666,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            4,
+            8,
+            121,
+            183
+          ]
+        },
+        {
+          "pose": "sit",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 104.625,
+          "visibleWidth": 72.5625,
+          "bounds": [
+            5,
+            8,
+            112,
+            169
+          ]
+        },
+        {
+          "pose": "jump",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.02083333333334,
+          "visibleWidth": 72.5625,
+          "bounds": [
+            5,
+            3,
+            112,
+            177
+          ]
+        }
+      ]
+    },
+    {
+      "label": "코티지 원피스",
+      "poses": [
+        {
+          "pose": "idle",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.02083333333334,
+          "visibleWidth": 72.5625,
+          "bounds": [
+            5,
+            8,
+            112,
+            182
+          ]
+        },
+        {
+          "pose": "walk",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 112.375,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            6,
+            8,
+            123,
+            181
+          ]
+        },
+        {
+          "pose": "greeting",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.66666666666666,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            5,
+            8,
+            122,
+            183
+          ]
+        },
+        {
+          "pose": "harvest",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.66666666666666,
+          "visibleWidth": 79.28125,
+          "bounds": [
+            4,
+            8,
+            121,
+            183
+          ]
+        },
+        {
+          "pose": "sit",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 104.625,
+          "visibleWidth": 72.5625,
+          "bounds": [
+            5,
+            8,
+            112,
+            169
+          ]
+        },
+        {
+          "pose": "jump",
+          "width": 86,
+          "height": 124,
+          "bitmap": [
+            128,
+            192
+          ],
+          "visibleHeight": 113.02083333333334,
+          "visibleWidth": 72.5625,
+          "bounds": [
+            5,
+            3,
+            112,
+            177
+          ]
+        }
+      ]
+    }
+  ],
+  "motion_setting": {
+    "before_dataset": "false",
+    "after_dataset": "false",
+    "button": "켜짐",
+    "persisted": "1"
+  },
+  "keyboard_stop": {
+    "before_keyup": "translate(498.12860280000007 470)",
+    "after_keyup": [
+      {
+        "elapsed_increment": 0,
+        "position": "translate(498.12860280000007 470)",
+        "arrival_bounce": false
+      },
+      {
+        "elapsed_increment": 40,
+        "position": "translate(498.12860280000007 470)",
+        "arrival_bounce": false
+      },
+      {
+        "elapsed_increment": 100,
+        "position": "translate(498.12860280000007 470)",
+        "arrival_bounce": false
+      },
+      {
+        "elapsed_increment": 200,
+        "position": "translate(498.12860280000007 470)",
+        "arrival_bounce": false
+      }
+    ]
+  },
+  "room": {
+    "bed": [
+      "45",
+      "145",
+      "165",
+      "255"
+    ],
+    "rest_position": "translate(235 448)",
+    "floor_path": "M200 430H835V716H200Z",
+    "floor_targets": 1,
+    "sofa_targets": 0
+  },
+  "pageerrors": []
+}

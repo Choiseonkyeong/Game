@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "all_requested_changes_complete": false,
-  "reviewed_at": "2026-10-30T02:56:34+09:00",
+  "reviewed_at": "2026-10-30T03:11:43+09:00",
   "requirements": [
     {
       "id": "R1",
@@ -18,7 +18,7 @@
         "automated": "보행/키보드 충돌 검사 통과",
         "visual": "Chrome 키보드 동작 확인",
         "storage": "좌표 재접속 일치",
-        "remaining": "실제 폰 터치/체감 보행 미검수",
+        "remaining": "키보드 정지 감속·도착 바운스 누락; 움직임 줄이기 설정의 즉시 적용 데이터 불일치",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -30,6 +30,17 @@
           "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
           "url": "https://choiseonkyeong.github.io/Game/island/",
           "run": 40925483500
+        },
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [
+            "A58-05",
+            "A58-06"
+          ],
+          "report": "docs/pogeun-detail-audit58.md"
         }
       }
     },
@@ -61,16 +72,26 @@
           "url": "https://choiseonkyeong.github.io/Game/island/",
           "run": 40925483500
         },
-        "url": "https://choiseonkyeong.github.io/Game/island/"
+        "url": "https://choiseonkyeong.github.io/Game/island/",
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [],
+          "report": "docs/pogeun-detail-audit58.md",
+          "verified": "공개 UI7종 구매/심기, 새로고침 없이 실제1800ms성장렌더5구간/도형변경, 재접속/섬왕복/수확 모두통과. Date.now만 이동, seedAt수정없음."
+        }
       }
     },
     {
       "id": "R3",
       "request": "옷장 오류 및 니트·리본 블라우스·멜빵바지·코티지코어 원피스·베레모",
-      "status": "complete",
+      "status": "partial",
       "implementation": [
         "dist/island/wardrobe.js",
-        "dist/island/wardrobe-screen.js"
+        "dist/island/wardrobe-screen.js",
+        "dist/island/human-sprites.js"
       ],
       "acceptance": "요청5종 실제 착용/회전/행동/저장, 기존 정체성 보존",
       "evidence": {
@@ -79,7 +100,7 @@
         "automated": "실제 옷장 선택/해제/룩저장/복원 회귀; Chrome 신규3종+베레모 4방향; 멜빵/원피스88동작 렌더; CI164 pass/0fail",
         "visual": "Chrome4方向/88action renders; public57 blouse/overalls/cottage-dress/beret selected and saved/reloaded; original face preserved",
         "storage": "룩3개와신규의상/베레모재접속; public57 원피스/베레모보존",
-        "remaining": "실제 휴대폰/모든 의상 시각 품질은 R8; 신규의상은 원화위 코드레이어",
+        "remaining": "의상 이름·저장은 추가됐지만 요청 형태 디테일은 부족; 기본 연청 반바지의 앞뒤 색 불일치",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -92,7 +113,39 @@
           "url": "https://choiseonkyeong.github.io/Game/island/",
           "run": 40925483500
         },
-        "url": "https://choiseonkyeong.github.io/Game/island/"
+        "url": "https://choiseonkyeong.github.io/Game/island/",
+        "previous_completion57": {
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "run": 40925483500,
+          "automated": "실제 옷장 선택/해제/룩저장/복원 회귀; Chrome 신규3종+베레모 4방향; 멜빵/원피스88동작 렌더; CI164 pass/0fail",
+          "visual": "Chrome4方向/88action renders; public57 blouse/overalls/cottage-dress/beret selected and saved/reloaded; original face preserved",
+          "storage": "룩3개와신규의상/베레모재접속; public57 원피스/베레모보존",
+          "remaining": "실제 휴대폰/모든 의상 시각 품질은 R8; 신규의상은 원화위 코드레이어",
+          "implementation57": {
+            "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
+            "task_branch": "codex/finish-island57",
+            "checked_at": "2026-10-30T02:56:34+09:00",
+            "automated": "실제 옷장 선택/해제/룩저장/복원 회귀; Chrome 신규3종+베레모 4방향; 멜빵/원피스88동작 렌더",
+            "remaining": "실제 휴대폰/모든 의상 시각 품질은 R8; 신규의상은 원화위 코드레이어",
+            "deployment": "succeeded",
+            "details": "docs/pogeun-finish57-review.md",
+            "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+            "url": "https://choiseonkyeong.github.io/Game/island/",
+            "run": 40925483500
+          },
+          "url": "https://choiseonkyeong.github.io/Game/island/"
+        },
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [
+            "A58-02",
+            "A58-08"
+          ],
+          "report": "docs/pogeun-detail-audit58.md"
+        }
       }
     },
     {
@@ -109,7 +162,7 @@
         "source": "b77e75e59daedfe74813aea87774f838d948229e",
         "run": 40831952402,
         "visual": "공개v55는 기존 seed-shop-original.jpeg",
-        "remaining": "승인 원화2장 저장소에 없음: 유리 메뉴.png/파스텔 하늘 속 씨앗 가게.png. 기존 승인 씨앗 패킷/섬 배경으로 카드·유리제목 구현; 요청 최종 원화 적용으로 간주하지 않음",
+        "remaining": "승인 상점 최종 디자인 미연결",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -121,6 +174,16 @@
           "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
           "url": "https://choiseonkyeong.github.io/Game/island/",
           "run": 40925483500
+        },
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [
+            "A58-07"
+          ],
+          "report": "docs/pogeun-detail-audit58.md"
         }
       }
     },
@@ -151,7 +214,16 @@
           "run": 40925483500
         },
         "url": "https://choiseonkyeong.github.io/Game/island/",
-        "storage": "not-applicable: visitors are transient; saved island unchanged"
+        "storage": "not-applicable: visitors are transient; saved island unchanged",
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [],
+          "report": "docs/pogeun-detail-audit58.md",
+          "verified": "실시간90.445초 한 마리 등장,105.489초 퇴장,중복0. 다음3~5분간격은 기존자동검사 범위."
+        }
       }
     },
     {
@@ -166,7 +238,7 @@
         "source": "b77e75e59daedfe74813aea87774f838d948229e",
         "run": 40831952402,
         "visual": "캐릭터1.2배와 기존 실내만 확인",
-        "remaining": "침대/캐릭터 비율 보완; 원화 속 모든 가구를 별도 재구성한 것은 아님. 실제 기기 감성비율 확인 남음",
+        "remaining": "침대 상호작용이 실제 침대와 연결되지 않음",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -178,6 +250,16 @@
           "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
           "url": "https://choiseonkyeong.github.io/Game/island/",
           "run": 40925483500
+        },
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [
+            "A58-04"
+          ],
+          "report": "docs/pogeun-detail-audit58.md"
         }
       }
     },
@@ -195,7 +277,7 @@
         "run": 40925483500,
         "automated": "기존5종 생애 단위검사; Chrome Lv4 암탉 입양→먹이5회→성장5단계→달걀+4→재접속; CI164 pass/0fail",
         "visual": "Chrome Lv4 hen adopt/feed five stages/egg+4/reload; other4 species lifecycle unit checks pass",
-        "remaining": "다른4종 실제브라우저 전생애 미검수(단위검사통과)",
+        "remaining": "실제 휴대폰 미검수; 성장시간은 QA시계 이동",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -209,7 +291,16 @@
           "run": 40925483500
         },
         "url": "https://choiseonkyeong.github.io/Game/island/",
-        "storage": "Lv4 암탉성장5/수확 후fed=false 재접속 보존"
+        "storage": "Lv4 암탉성장5/수확 후fed=false 재접속 보존",
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [],
+          "report": "docs/pogeun-detail-audit58.md",
+          "verified": "공개 UI5종 모두 입양/먹이/전성장/생산/수확/재접속:암탉4,오리5,양12,젖소15,라마20조개."
+        }
       }
     },
     {
@@ -225,7 +316,7 @@
         "run": 40831952402,
         "visual": "Lv2→3 크기143.1484×206.4px 일치",
         "storage": "Lv3재접속",
-        "remaining": "실제 폰/모든 기본 의상·전동작의 시각 검수 남음",
+        "remaining": "기본 코디 행동에서 원화·얼굴선 일관성 깨짐",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -237,13 +328,23 @@
           "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
           "url": "https://choiseonkyeong.github.io/Game/island/",
           "run": 40925483500
+        },
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [
+            "A58-03"
+          ],
+          "report": "docs/pogeun-detail-audit58.md"
         }
       }
     },
     {
       "id": "R4-price",
       "request": "고구마를 그림·구매창·차감 모두90조개로 통일",
-      "status": "complete",
+      "status": "partial",
       "implementation": [
         "dist/island/seed-price-labels.js",
         "dist/island/island.js"
@@ -256,7 +357,27 @@
         "visual": "Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained.",
         "storage": "Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1.",
         "run": 40834629733,
-        "checked_at": "2026-10-29T16:22:09+09:00"
+        "checked_at": "2026-10-29T16:22:09+09:00",
+        "previous_completion57": {
+          "source": "0da0125026e4024639c6914a9c85f1b7a60b1e27",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "automated": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified.",
+          "visual": "Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained.",
+          "storage": "Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1.",
+          "run": 40834629733,
+          "checked_at": "2026-10-29T16:22:09+09:00"
+        },
+        "audit58": {
+          "checked_at": "2026-10-30T03:11:43+09:00",
+          "source": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+          "remote_master": "c4159db6ce2c1925b276dcfbe9165ccfb474ad70",
+          "url": "https://choiseonkyeong.github.io/Game/island/",
+          "findings": [
+            "A58-01"
+          ],
+          "report": "docs/pogeun-detail-audit58.md"
+        },
+        "remaining": "카드/구매90 정상; 성장 안내 그림 고구마80 잔존. 이미지까지 모두90 조건 미충족."
       }
     }
   ]
