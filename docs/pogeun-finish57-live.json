@@ -1,0 +1,24 @@
+{
+  "build": {
+    "commit": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+    "repository": "Choiseonkyeong/Game",
+    "built_at": "2026-10-29T17:52:55.535Z"
+  },
+  "url": "https://choiseonkyeong.github.io/Game/island/",
+  "wardrobe_persisted": {
+    "top": "ribbon-blouse",
+    "bottom": "shorts",
+    "shoes": "sneakers",
+    "bag": "none",
+    "hat": "beret",
+    "accessory": "none",
+    "dress": "cottage-dress"
+  },
+  "cards": 7,
+  "sweetpotato": {
+    "price": 90,
+    "wallet_after": 60,
+    "stock_after_reload": 1
+  },
+  "pageerrors": []
+}

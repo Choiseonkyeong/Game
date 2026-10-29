@@ -1,3 +1,11 @@
+## 2026-10-30T02:56:34+09:00 — Codex · 미완성 요청57 배포·공개 검수 완료 (전체는 부분 완료)
+
+- Source master@8c91d63bda71129225975e1a260e3ffb61db6b5f; branch codex/finish-island57; synchronized base f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a. expected-HEAD/force:false, 동일검수tree8e624328162a7bd05c39b6281600f6931e6fe244. 다른 작업/승인 이미지 파일 보존.
+- Pages40925483500 completed/success; public build-info exact, built_at2026-10-29T17:52:55.535Z; URL https://choiseonkyeong.github.io/Game/island/.
+- Checks: CI164 passed/0failed; 로컬7종구매·심기·성장·섬왕복·수확/Lv4암탉전체루프/4방향88동작/모자·룩저장/Lv1~10크기일치/오프라인/844×390. 공개Chrome57 의상·베레모저장재접속/7카드/고구마90→차감150→60·씨앗1재접속/pageerrors0.
+- Requirements: R2/R3/R5/R7 기능검증 완료, 가격행 유지, 전체5/9. R1/R4/R6/R8 partial: 승인상점최종원화2장없음/실제폰터치·전의상시각/실내가구전체재구성. 다른4종목장실화면·실제장시간방문관찰 미반복. 전체완료로 보고하지 않음.
+- release-state/요구추적표에 실제SHA/배포·접속근거 기록. 이 후속 기록은 게임변경/추가배포 불필요. 다른 작업자접속 미확인.
+
 ## 2026-10-30T02:51:33+09:00 — Codex · 미완성 요청57 구현·로컬 검수
 
 - Base master@f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a; branch codex/finish-island57. 사용자 미완성 이어서 진행 요청. 최신 원격/공동규칙/요구추적/승인스타일 확인, 기존 원화·저장·타게임 보존.
