@@ -4,17 +4,16 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "island-0.1",
-    "github_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
-    "entrypoint": "dist/island/index.html -> island.js?v=1 -> core.js/avatar.js?v=1",
+    "version": "island-review-55",
+    "github_commit": "b77e75e59daedfe74813aea87774f838d948229e",
+    "entrypoint": "dist/island/index.html -> island.js?v55 -> keyboard-walk.js/movement.js/room.js/animal-visitors.js?v55",
     "checks": {
-      "automated_tests_passed": 78,
+      "automated_tests_passed": 156,
       "actual_desktop_browser_verified": true,
-      "responsive_390x844_desktop_iframe_verified": true,
       "actual_mobile_touch_verified": false
     },
     "limitations": [
-      "Playable prototype; no online friends, multiple animals, accounts, payments or validated business. Avatar uses modular SVG 2.5D, not commercial 3D rig. Real phone touch not verified."
+      "Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch."
     ]
   },
   "last_successful_deployment": {
@@ -38,23 +37,25 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-layout-53",
-      "source_commit": "6c7488ed10485139eacd1abb99bd133d955ee006",
+      "version": "island-review-55",
+      "source_commit": "b77e75e59daedfe74813aea87774f838d948229e",
       "source_branch": "master",
-      "url": "https://choiseonkyeong.github.io/Game/island/?v=53",
-      "run_id": 40740760497,
+      "task_branch": "codex/pogeun-review55",
+      "url": "https://choiseonkyeong.github.io/Game/island/",
+      "run_id": 40831952402,
       "deployment": "succeeded",
-      "built_at": "2026-10-28T17:58:50.918Z",
-      "checked_at": "2026-10-29T03:00:35+09:00",
-      "automated_tests_passed": 151,
+      "built_at": "2026-10-29T06:53:36.479Z",
+      "checked_at": "2026-10-29T15:59:51+09:00",
+      "automated_tests_passed": 156,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "checks": "Public v52 bench placement reset reproduced. Local53 bench/pot survive reload, harvest/Lv2 and island round trip; knit outfit/saved look survive reload. Pages40740760497 succeeded, public build-info exact source. Public Chrome island.js?v53, bench placed then reload still one and sit action available; shell balance unchanged. Game/test files equal reviewed local e52cd55.",
-      "limitations": "Actual iPhone touch, offline runtime and full Lv8–10 playthrough unverified. Previously reset placement coordinates cannot be recovered automatically; place items from pouch again. External collaborator access not confirmed."
+      "external_collaborator_access_verified": false,
+      "checks": "GitHub Pages40831952402 success, all156 tests pass/0 fail. Public build-info exact b77e75e59daedfe74813aea87774f838d948229e, built_at2026-10-29T06:53:36.479Z. Chrome island.js?v55; keyboard outdoor489.57120480000043,470 saved/reloaded exactly; room enter/keyboard/exit and original art scale1.2 checked; knit equip/save/reload and look1 preserved; starter harvest0->150shells/Lv2, paid expansion150->0/Lv3; same character image143.1484x206.4000px before and after Lv3(scale1.08), crop3/5 retained after reload; visiting chihuahua observed; no game-origin console errors.",
+      "limitations": "Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "Public v52 bench placement reset reproduced. Local53 bench/pot survive reload, harvest/Lv2 and island round trip; knit outfit/saved look survive reload. Pages40740760497 succeeded, public build-info exact source. Public Chrome island.js?v53, bench placed then reload still one and sit action available; shell balance unchanged. Game/test files equal reviewed local e52cd55.",
-    "remaining_action": "Actual iPhone touch, offline runtime and full Lv8–10 playthrough unverified. Previously reset placement coordinates cannot be recovered automatically; place items from pouch again. External collaborator access not confirmed.",
+    "access_check": "GitHub Pages40831952402 success, all156 tests pass/0 fail. Public build-info exact b77e75e59daedfe74813aea87774f838d948229e, built_at2026-10-29T06:53:36.479Z. Chrome island.js?v55; keyboard outdoor489.57120480000043,470 saved/reloaded exactly; room enter/keyboard/exit and original art scale1.2 checked; knit equip/save/reload and look1 preserved; starter harvest0->150shells/Lv2, paid expansion150->0/Lv3; same character image143.1484x206.4000px before and after Lv3(scale1.08), crop3/5 retained after reload; visiting chihuahua observed; no game-origin console errors.",
+    "remaining_action": "Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -461,6 +462,21 @@
       "actual_mobile_touch_verified": false,
       "checks": "Pages workflow succeeded; public build-info exact source. Live Chrome island.js?v52; default apple crop one; growth1/5 + water action; larger home viewBox. Prepublication local QA: watering, harvest150 shells, Lv2 relocation/reload same starterId; room enter/exit and zoom restore. Approved local571f685 game/test files equal published source.",
       "limitations": "Actual iPhone touch, full Lv8–10 playthrough and offline runtime not verified; external collaborator access not confirmed."
+    },
+    "previous_successful_before55": {
+      "version": "island-layout-53",
+      "source_commit": "6c7488ed10485139eacd1abb99bd133d955ee006",
+      "source_branch": "master",
+      "url": "https://choiseonkyeong.github.io/Game/island/?v=53",
+      "run_id": 40740760497,
+      "deployment": "succeeded",
+      "built_at": "2026-10-28T17:58:50.918Z",
+      "checked_at": "2026-10-29T03:00:35+09:00",
+      "automated_tests_passed": 151,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "checks": "Public v52 bench placement reset reproduced. Local53 bench/pot survive reload, harvest/Lv2 and island round trip; knit outfit/saved look survive reload. Pages40740760497 succeeded, public build-info exact source. Public Chrome island.js?v53, bench placed then reload still one and sit action available; shell balance unchanged. Game/test files equal reviewed local e52cd55.",
+      "limitations": "Actual iPhone touch, offline runtime and full Lv8–10 playthrough unverified. Previously reset placement coordinates cannot be recovered automatically; place items from pouch again. External collaborator access not confirmed."
     }
   },
   "restoration_record": {
@@ -1022,5 +1038,22 @@
     "actual_mobile_touch_verified": false,
     "limitations": "Claude cloud session network policy blocked choiseonkyeong.github.io, so public URL and build-info were not fetched. Separate game from island; island record unchanged.",
     "recorded_at": "2026-10-28T17:27:04+09:00"
+  },
+  "island_review55_release": {
+    "version": "island-review-55",
+    "source_commit": "b77e75e59daedfe74813aea87774f838d948229e",
+    "source_branch": "master",
+    "task_branch": "codex/pogeun-review55",
+    "url": "https://choiseonkyeong.github.io/Game/island/",
+    "run_id": 40831952402,
+    "deployment": "succeeded",
+    "built_at": "2026-10-29T06:53:36.479Z",
+    "checked_at": "2026-10-29T15:59:51+09:00",
+    "automated_tests_passed": 156,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "checks": "GitHub Pages40831952402 success, all156 tests pass/0 fail. Public build-info exact b77e75e59daedfe74813aea87774f838d948229e, built_at2026-10-29T06:53:36.479Z. Chrome island.js?v55; keyboard outdoor489.57120480000043,470 saved/reloaded exactly; room enter/keyboard/exit and original art scale1.2 checked; knit equip/save/reload and look1 preserved; starter harvest0->150shells/Lv2, paid expansion150->0/Lv3; same character image143.1484x206.4000px before and after Lv3(scale1.08), crop3/5 retained after reload; visiting chihuahua observed; no game-origin console errors.",
+    "limitations": "Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch."
   }
 }

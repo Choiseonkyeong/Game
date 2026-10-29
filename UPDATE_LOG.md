@@ -1,3 +1,11 @@
+## 2026-10-29T15:59:51+09:00 — Codex · 승인한 포근섬55 배포·공개 검수 완료
+
+- Source master@b77e75e59daedfe74813aea87774f838d948229e; task branch codex/pogeun-review55; base aefd8ffb0497a633d212879343aa210a7ccf03e5. 최신 master 재확인 후 expected-HEAD/force:false 갱신. 이미지/CSS/폰트/기존 가격·저장 형식 보존.
+- Deployment: Pages40831952402 completed/success; public build-info source exact, built_at 2026-10-29T06:53:36.479Z. URL https://choiseonkyeong.github.io/Game/island/.
+- Checks: 전체 CI156 pass/0 fail, 로컬 island75 pass. GitHub Pages40831952402 success, all156 tests pass/0 fail. Public build-info exact b77e75e59daedfe74813aea87774f838d948229e, built_at2026-10-29T06:53:36.479Z. Chrome island.js?v55; keyboard outdoor489.57120480000043,470 saved/reloaded exactly; room enter/keyboard/exit and original art scale1.2 checked; knit equip/save/reload and look1 preserved; starter harvest0->150shells/Lv2, paid expansion150->0/Lv3; same character image143.1484x206.4000px before and after Lv3(scale1.08), crop3/5 retained after reload; visiting chihuahua observed; no game-origin console errors.
+- Remaining: Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch.
+- 이 커밋은 검수 기록만 변경. 실제 게임 소스는 위 배포 SHA이며 추가 배포 불필요.
+
 ## 2026-10-29T15:51:08.972359+09:00 — Codex · 승인한 포근섬55 검수·배포 준비
 
 - Base master@aefd8ffb0497a633d212879343aa210a7ccf03e5; branch codex/pogeun-review55. 사용자 이번 소스/테스트 업로드·배포 명시 승인 확인. 이전 자동 승인 거절 뒤 우회 없이 승인 후 재개.
