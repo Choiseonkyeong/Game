@@ -32,3 +32,11 @@ Task: 사용자가 '수정이 안된 사항이 많네. 재검토해'라고 지�
 ## 이번 원인 조치56
 
 사용자가 고구마90 통일 및 원인 분석·재발 방지를 지시했다. 가격 그림의 숫자 부분만 실제 SEED_CATALOG로 렌더링하여 구매창/결제와 같은 값을 사용한다. 기본 원화는 보존한다. 출시 요청 추적표와 완료근거 검사, 공통 작업 규칙을 추가한다. 가격 수정의 공개 확인 전 상태는 pending이며, 나머지 누락 항목은 계속 미완료다.
+
+## 고구마90 조치·배포 검수 완료
+
+- Source master@0da0125026e4024639c6914a9c85f1b7a60b1e27, task branch codex/pogeun-audit56; Pages40834629733 success; public build-info exact source, built_at2026-10-29T07:19:04.909Z; checked 2026-10-29T16:22:09+09:00.
+- Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified. Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained. Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1. Public build-info exact source.
+- 원인: 원래8개 요청 추적 부재, 확보 못한 최종본을 부분 대체하고 누락 미추적, 그림속 가격/구매 가격의 이중 관리, 기능 단위검사를 전체요구 완료로 오인.
+- 예방: AGENTS/CLAUDE 필수 완료근거, docs/pogeun-requirements.json, CI coverage report와 --require-complete 게이트. 미완료가 있으면 strict 모드 실패. 가격은 live catalogue 기준으로 그림 숫자/선택/구매를 연결.
+- 원래8개 전체완료 아님. 가격 행만 complete, 나머지는 기존 partial/missing 유지. 추가 게임 원화/의상/실내 변경 없음.

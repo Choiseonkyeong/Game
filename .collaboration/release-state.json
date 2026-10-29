@@ -37,25 +37,25 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-review-55",
-      "source_commit": "b77e75e59daedfe74813aea87774f838d948229e",
+      "version": "island-price-56",
+      "source_commit": "0da0125026e4024639c6914a9c85f1b7a60b1e27",
       "source_branch": "master",
-      "task_branch": "codex/pogeun-review55",
+      "task_branch": "codex/pogeun-audit56",
       "url": "https://choiseonkyeong.github.io/Game/island/",
-      "run_id": 40831952402,
+      "run_id": 40834629733,
       "deployment": "succeeded",
-      "built_at": "2026-10-29T06:53:36.479Z",
-      "checked_at": "2026-10-29T15:59:51+09:00",
-      "automated_tests_passed": 156,
+      "built_at": "2026-10-29T07:19:04.909Z",
+      "checked_at": "2026-10-29T16:22:09+09:00",
+      "automated_tests_passed": 159,
       "actual_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false,
-      "external_collaborator_access_verified": false,
-      "checks": "GitHub Pages40831952402 success, all156 tests pass/0 fail. Public build-info exact b77e75e59daedfe74813aea87774f838d948229e, built_at2026-10-29T06:53:36.479Z. Chrome island.js?v55; keyboard outdoor489.57120480000043,470 saved/reloaded exactly; room enter/keyboard/exit and original art scale1.2 checked; knit equip/save/reload and look1 preserved; starter harvest0->150shells/Lv2, paid expansion150->0/Lv3; same character image143.1484x206.4000px before and after Lv3(scale1.08), crop3/5 retained after reload; visiting chihuahua observed; no game-origin console errors.",
-      "limitations": "Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch."
+      "all_requested_changes_complete": false,
+      "checks": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified. Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained. Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1. Public build-info exact source.",
+      "limitations": "Price correction and prevention workflow complete; original eight requests remain partial/missing as tracked in docs/pogeun-requirements.json. Actual iPhone/touch and offline runtime unverified."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "GitHub Pages40831952402 success, all156 tests pass/0 fail. Public build-info exact b77e75e59daedfe74813aea87774f838d948229e, built_at2026-10-29T06:53:36.479Z. Chrome island.js?v55; keyboard outdoor489.57120480000043,470 saved/reloaded exactly; room enter/keyboard/exit and original art scale1.2 checked; knit equip/save/reload and look1 preserved; starter harvest0->150shells/Lv2, paid expansion150->0/Lv3; same character image143.1484x206.4000px before and after Lv3(scale1.08), crop3/5 retained after reload; visiting chihuahua observed; no game-origin console errors.",
-    "remaining_action": "Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch.",
+    "access_check": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified. Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained. Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1. Public build-info exact source.",
+    "remaining_action": "Price correction and prevention workflow complete; original eight requests remain partial/missing as tracked in docs/pogeun-requirements.json. Actual iPhone/touch and offline runtime unverified.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -477,6 +477,23 @@
       "actual_mobile_touch_verified": false,
       "checks": "Public v52 bench placement reset reproduced. Local53 bench/pot survive reload, harvest/Lv2 and island round trip; knit outfit/saved look survive reload. Pages40740760497 succeeded, public build-info exact source. Public Chrome island.js?v53, bench placed then reload still one and sit action available; shell balance unchanged. Game/test files equal reviewed local e52cd55.",
       "limitations": "Actual iPhone touch, offline runtime and full Lv8–10 playthrough unverified. Previously reset placement coordinates cannot be recovered automatically; place items from pouch again. External collaborator access not confirmed."
+    },
+    "previous_successful_before56": {
+      "version": "island-review-55",
+      "source_commit": "b77e75e59daedfe74813aea87774f838d948229e",
+      "source_branch": "master",
+      "task_branch": "codex/pogeun-review55",
+      "url": "https://choiseonkyeong.github.io/Game/island/",
+      "run_id": 40831952402,
+      "deployment": "succeeded",
+      "built_at": "2026-10-29T06:53:36.479Z",
+      "checked_at": "2026-10-29T15:59:51+09:00",
+      "automated_tests_passed": 156,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "external_collaborator_access_verified": false,
+      "checks": "GitHub Pages40831952402 success, all156 tests pass/0 fail. Public build-info exact b77e75e59daedfe74813aea87774f838d948229e, built_at2026-10-29T06:53:36.479Z. Chrome island.js?v55; keyboard outdoor489.57120480000043,470 saved/reloaded exactly; room enter/keyboard/exit and original art scale1.2 checked; knit equip/save/reload and look1 preserved; starter harvest0->150shells/Lv2, paid expansion150->0/Lv3; same character image143.1484x206.4000px before and after Lv3(scale1.08), crop3/5 retained after reload; visiting chihuahua observed; no game-origin console errors.",
+      "limitations": "Actual iPhone/touch, offline runtime, full Lv4 livestock lifecycle and Lv8–10 live playthrough unverified; external collaborator access not confirmed. Existing seed-shop and wardrobe art preserved; no new clothing art or seed-shop redesign in this patch."
     }
   },
   "restoration_record": {
@@ -1078,11 +1095,30 @@
       "Live Lv4 complete livestock lifecycle",
       "Lv4–10 avatar-size across poses/devices"
     ],
-    "game_change_in_audit": false
+    "game_change_in_audit": false,
+    "sweetpotato_price_current_status": "resolved_in56"
   },
   "pending_price56": {
-    "status": "checks_passed_not_deployed",
-    "changes": "Correct stale baked sweet-potato80 label using the same live catalogue as90 purchase; preserve original artwork. Add requested-change coverage and strict full-completion gate.",
-    "original_eight_requests_complete": false
+    "status": "resolved_and_deployed",
+    "source_commit": "0da0125026e4024639c6914a9c85f1b7a60b1e27",
+    "run_id": 40834629733,
+    "checks": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified. Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained. Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1. Public build-info exact source."
+  },
+  "island_price56_release": {
+    "version": "island-price-56",
+    "source_commit": "0da0125026e4024639c6914a9c85f1b7a60b1e27",
+    "source_branch": "master",
+    "task_branch": "codex/pogeun-audit56",
+    "url": "https://choiseonkyeong.github.io/Game/island/",
+    "run_id": 40834629733,
+    "deployment": "succeeded",
+    "built_at": "2026-10-29T07:19:04.909Z",
+    "checked_at": "2026-10-29T16:22:09+09:00",
+    "automated_tests_passed": 159,
+    "actual_desktop_browser_verified": true,
+    "actual_mobile_touch_verified": false,
+    "all_requested_changes_complete": false,
+    "checks": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified. Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained. Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1. Public build-info exact source.",
+    "limitations": "Price correction and prevention workflow complete; original eight requests remain partial/missing as tracked in docs/pogeun-requirements.json. Actual iPhone/touch and offline runtime unverified."
   }
 }

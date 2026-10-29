@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "all_requested_changes_complete": false,
-  "reviewed_at": "2026-10-29T16:07:56+09:00",
+  "reviewed_at": "2026-10-29T16:22:09+09:00",
   "requirements": [
     {
       "id": "R1",
@@ -139,15 +139,20 @@
     {
       "id": "R4-price",
       "request": "고구마를 그림·구매창·차감 모두90조개로 통일",
-      "status": "pending",
+      "status": "complete",
       "implementation": [
         "dist/island/seed-price-labels.js",
         "dist/island/island.js"
       ],
       "acceptance": "공개 상점 숫자90·구매창90·실제차감90·기존이미지보존",
       "evidence": {
-        "automated": "동일catalog/미래가격변경/실제shop+purchase 렌더회귀3개",
-        "remaining": "공개화면/구매차감 검수 후 complete"
+        "source": "0da0125026e4024639c6914a9c85f1b7a60b1e27",
+        "url": "https://choiseonkyeong.github.io/Game/island/",
+        "automated": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified.",
+        "visual": "Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained.",
+        "storage": "Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1.",
+        "run": 40834629733,
+        "checked_at": "2026-10-29T16:22:09+09:00"
       }
     }
   ]
