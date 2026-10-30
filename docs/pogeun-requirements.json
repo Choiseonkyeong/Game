@@ -519,13 +519,14 @@
       ],
       "acceptance": "오른쪽 무료 새싹→5단계→수확150조개/Lv2→확장150차감/Lv3; 단계 안내 및 재접속 유지",
       "evidence": {
-        "source": "pending: codex/pogeun-comfort61; base3f838c72821d29b7812a9475079812e96c415e99",
+        "source": "26fba4378748a335fa1a632fd0364a5e1d0cb822",
         "automated": "npm test 46 files passed; targeted17 behavioral tests passed",
         "visual": "Actual local Chromium844x390 with approved assets: settings2columns/no overflow; wardrobe buttons/drag; starter water→stage5→harvest150→paid expansion150→Lv3/reload, pageerrors0; browse302px and expand250px no vertical overflow. Physical phone unverified.",
         "storage": "Actual browser fresh starter→harvest150/Lv2→purchase150→Lv3/0shells→reload retained; growth timers accelerated only in QA via Date.now offset",
         "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
-        "remaining": "구현 및 로컬 브라우저 검사 통과; 배포 확인 대기. 실제 휴대폰 터치 검수 미실시",
-        "report": "docs/pogeun-comfort61-review.md"
+        "remaining": "구현/로컬검수 완료. 자동 승인 검토가 소스 외부 업로드 권한 부족으로 git push 거절; 업로드/배포 명시 승인 대기. 실제 폰 미검수.",
+        "report": "docs/pogeun-comfort61-review.md",
+        "deployment": "blocked_approval_required: git push rejected by automatic approval review"
       }
     },
     {
@@ -538,13 +539,14 @@
       ],
       "acceptance": "일반 팝업2~3열 카드/상점4탭/통일된 닫기/따뜻한 색상/꾸미기 목록이 잔디를 덜 가림",
       "evidence": {
-        "source": "pending: codex/pogeun-comfort61; base3f838c72821d29b7812a9475079812e96c415e99",
+        "source": "26fba4378748a335fa1a632fd0364a5e1d0cb822",
         "automated": "npm test 46 files passed; targeted17 behavioral tests passed",
         "visual": "Actual local Chromium844x390 with approved assets: settings2columns/no overflow; wardrobe buttons/drag; starter water→stage5→harvest150→paid expansion150→Lv3/reload, pageerrors0; browse302px and expand250px no vertical overflow. Physical phone unverified.",
         "storage": "Starter growth/harvest/expansion and wardrobe save/restore automated tests passed",
         "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
-        "remaining": "구현 및 로컬 브라우저 검사 통과; 배포 확인 대기. 실제 휴대폰 터치 검수 미실시",
-        "report": "docs/pogeun-comfort61-review.md"
+        "remaining": "구현/로컬검수 완료. 자동 승인 검토가 소스 외부 업로드 권한 부족으로 git push 거절; 업로드/배포 명시 승인 대기. 실제 폰 미검수.",
+        "report": "docs/pogeun-comfort61-review.md",
+        "deployment": "blocked_approval_required: git push rejected by automatic approval review"
       }
     },
     {
@@ -557,13 +559,14 @@
       ],
       "acceptance": "선택 코디를 유지하며 모든 중간 각도에서 앞/옆/뒤를 자연스럽게 확인",
       "evidence": {
-        "source": "pending: codex/pogeun-comfort61; base3f838c72821d29b7812a9475079812e96c415e99",
+        "source": "26fba4378748a335fa1a632fd0364a5e1d0cb822",
         "automated": "npm test 46 files passed; targeted17 behavioral tests passed",
         "visual": "Actual local Chromium844x390 with approved assets: settings2columns/no overflow; wardrobe buttons/drag; starter water→stage5→harvest150→paid expansion150→Lv3/reload, pageerrors0; browse302px and expand250px no vertical overflow. Physical phone unverified.",
         "storage": "Starter growth/harvest/expansion and wardrobe save/restore automated tests passed",
         "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
         "remaining": "드래그/슬라이더/좌우버튼은 구현. 승인 원화4방향만 사용하므로 임의 중간각도 연속360도는 미구현. 추가 방향별 의상 원화 또는 원래 디자인을 보존한 회전용 모델 필요",
-        "report": "docs/pogeun-comfort61-review.md"
+        "report": "docs/pogeun-comfort61-review.md",
+        "deployment": "blocked_approval_required: git push rejected by automatic approval review"
       }
     }
   ]

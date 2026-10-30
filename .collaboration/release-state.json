@@ -1230,5 +1230,18 @@
     "all_requested_changes_complete": false,
     "checks": "GitHub Actions41031750752 completed/success; CI170 pass/0fail. Public build-info exact220ea255. HTTP byte match index/island/human-sprites/room/animal-visitors/outfit-actions/pose-blend/sw (8 files). Local Chrome220 action renders/20 head comparisons; movement/settings/bed/storage/price150->60/offline;844x390 emulated touch7cards.",
     "limitations": "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published."
+  },
+  "pending_island61_attempt": {
+    "recorded_at": "2026-10-31T07:16:13+09:00",
+    "status": "blocked_approval_required",
+    "task_branch": "codex/pogeun-comfort61",
+    "local_source_commit": "26fba4378748a335fa1a632fd0364a5e1d0cb822",
+    "synchronized_master": "3f838c72821d29b7812a9475079812e96c415e99",
+    "deployment": "not_started",
+    "url_unchanged": "https://choiseonkyeong.github.io/Game/island/",
+    "checks": "npm test46files pass/0fail; targeted17 behavioral tests pass; local Chromium844x390 starter→stage5→harvest150/Lv2→paid expansion150/Lv3→reload retained; settings2columns, browse302/302 and expansion250/250; tray246–318/context189–237/nav326–383; wardrobe left/right/drag; pageerrors0",
+    "limitations": "R12 partial: only four illustrated directions; arbitrary intermediate angle360 unimplemented. Physical phone unverified. Screenshots kept local.",
+    "rejection": "Automatic approval review rejected git push of modified source/history to GitHub destination: edit authorization did not specifically authorize source export. No workaround attempted.",
+    "remaining": "Explicit user authorization to upload code/tests/text records (no screenshots) to Choiseonkyeong/Game and deploy to existing GitHub Pages URL; then verify Actions/build-info/public access."
   }
 }

@@ -14,3 +14,10 @@
 - Chromium844×390/touch emulation, 원화 포함 checkout. 새 프로필/우측새싹 돌보기→5단계→수확150조개/Lv2→확장탭 자동선택→150차감/Lv3→reload시 Lv3/조개0 유지. 성장 대기만 QA에서 Date.now offset으로 가속, 실제 게임 타이머 변경 없음. pageerrors0.
 - 확장탭 clientHeight/scrollHeight250/250; 상점 첫 탭302/302. 환경설정282/282와2열. 마켓목록을 탭으로 분리하여 장시간 단일목록 스크롤 제거.
 - 꾸미기 목록의 기존 !important 위치규칙을 확인하고 새 규칙에 반영. 최종 좌표/이미지는 로컬 파일로만 유지. 실제 휴대폰은 미검수.
+
+## 업로드 차단 인계 2026-10-31T07:16:13+09:00
+
+- Source `codex/pogeun-comfort61@26fba4378748a335fa1a632fd0364a5e1d0cb822`; synchronized master `3f838c72821d29b7812a9475079812e96c415e99`. Source committed locally; remote push/deployment not performed.
+- Final tray y246–318/context189–237/nav326–383 at844×390: no overlap. Screenshot inspected locally; original house/lawn/character visible.
+- Automatic approval review rejected `git push origin HEAD:refs/heads/codex/pogeun-comfort61`: app-edit authorization does not specifically authorize exporting source/history to the GitHub destination. No alternate upload channel attempted.
+- Remaining: explicit user approval to upload code/tests/text records (no screenshots) to Choiseonkyeong/Game and deploy existing GitHub Pages URL. Then re-fetch master, integrate concurrent work, push and verify Actions/build-info/access. Continuous arbitrary-angle360 remains incomplete independently of approval.
