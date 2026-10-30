@@ -10,7 +10,7 @@ import{fresh,route}from'../dist/island/core.js';
 
 test('new clothes and beret survive real wardrobe selection, saved looks and restore; remove/reset clear the hat',()=>{
  let html,buttons=[],o=baseOutfit('female'),saved=[];
- const api={paper:{querySelectorAll:()=>buttons},dialog:{classList:{add(){}}},currentOutfit:()=>o,humanChoice:()=> 'female',shells:()=>0,say(){},changed(){},done(){},humanSnapshot:()=> 'data:image/png;base64,preview',savedLooks:()=>saved,saveLook(){saved.unshift({gender:'female',outfit:{...o}});},loadLook(i){o={...saved[i].outfit};},wearItem(slot,id){o[slot]=id;if(slot==='top'||slot==='bottom')o.dress='none';},modal(s){html=s;buttons=[...s.matchAll(/data-wui="([^"]+)"/g)].map(m=>({dataset:{wui:m[1]}}));}};
+ const api={paper:{querySelector:()=>({}),querySelectorAll:()=>buttons},dialog:{classList:{add(){}}},currentOutfit:()=>o,humanChoice:()=> 'female',shells:()=>0,say(){},changed(){},done(){},humanSnapshot:()=> 'data:image/png;base64,preview',savedLooks:()=>saved,saveLook(){saved.unshift({gender:'female',outfit:{...o}});},loadLook(i){o={...saved[i].outfit};},wearItem(slot,id){o[slot]=id;if(slot==='top'||slot==='bottom')o.dress='none';},modal(s){html=s;buttons=[...s.matchAll(/data-wui="([^"]+)"/g)].map(m=>({dataset:{wui:m[1]}}));}};
  const screen=createWardrobeScreen(api),click=key=>{const b=buttons.find(b=>b.dataset.wui===key);assert(b,key);b.onclick({stopPropagation(){}});};screen.open();
  for(const[category,id,slot,name]of[['top','ribbon-blouse','top','리본 블라우스'],['dress','overalls','dress','데님 멜빵바지'],['dress','cottage-dress','dress','코티지코어 원피스']]){
   click('category:'+category);click('item:'+id);click('category:accessory');click('item:beret');click('save');

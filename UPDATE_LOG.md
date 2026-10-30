@@ -1,3 +1,11 @@
+## 2026-10-31T07:14:41+09:00 — Codex · 포근섬61 튜토리얼/팝업/옷장 조작 보완
+
+- Source: codex/pogeun-comfort61, synchronized master3f838c72821d29b7812a9475079812e96c415e99; source commit pending.
+- 우측 기본 사과나무 성장→수확→유료확장 단계별 튜토리얼. 상점4탭과 일반 팝업 카드배치/닫기/한국어문구/따뜻한 배경/꾸미기 위치 조정. 기존 승인 원화와 저장/경제 보존.
+- 옷장 좌우·드래그·범위 회전 조작 추가. 원래4방향만 표현하므로 임의 중간각도 연속360도는 미완성(R12 partial). 신규 요청 원문 R10~12 요구표에 추가.
+- Checks: npm test46파일 pass/0fail; 관련17동작 pass. 로컬Chrome844×390 환경설정2열/overflow0,옷장조작/오류0. 브라우저 새싹→5단계→수확150/Lv2→확장150차감/Lv3→reload유지 및 pageerrors0 확인. 확장탭250/250px,상점첫탭302/302px 스크롤불필요.
+- Deployment pending; 기존 공개 island60 변경없음. 화면이미지는 로컬유지; 실제폰 및 전의상각도 미검수. 보고서 docs/pogeun-comfort61-review.md.
+
 ## 2026-10-30T18:16:35+09:00 — Codex · 사용자 승인 포근섬60 배포 성공 / 공개 파일 검증
 
 - Source master@220ea255cab0b5294cd739d08af68215611e72f4; task codex/island-finish60; synchronized base06a3d730f3a63860137fc56e55b3e5767d190553. local reviewed dist tree edd5f8431e58a7430b1660dbd2feb86a3a6c1a93와 GitHub dist 동일. expected-HEAD/force:false 게시; 소스/테스트/텍스트기록만 업로드, 검수이미지는 로컬유지.

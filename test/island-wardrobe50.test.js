@@ -11,11 +11,11 @@ test('a dress over the old black-shorts combination never uses the painted base 
 });
 test('real wardrobe click handlers keep dress preview, selected state and equipped rows in sync',()=>{
  let html='',buttons=[],outfit={top:'white-tee',bottom:'black-shorts',dress:'none'},snapshots=[];
- const api={paper:{querySelectorAll:()=>buttons},dialog:{classList:{add(){}}},currentOutfit:()=>outfit,humanChoice:()=> 'female',shells:()=>300,say(){},changed(){},saveLook(){},done(){},humanSnapshot:options=>{snapshots.push(options);return'data:image/png;base64,preview';},wearItem:(slot,id)=>{outfit[slot]=id;if(slot==='top'||slot==='bottom')outfit.dress='none';},modal:s=>{html=s;buttons=[...s.matchAll(/data-wui="([^"]+)"/g)].map(m=>({dataset:{wui:m[1]}}));}};
+ const api={paper:{querySelector:()=>({}),querySelectorAll:()=>buttons},dialog:{classList:{add(){}}},currentOutfit:()=>outfit,humanChoice:()=> 'female',shells:()=>300,say(){},changed(){},saveLook(){},done(){},humanSnapshot:options=>{snapshots.push(options);return'data:image/png;base64,preview';},wearItem:(slot,id)=>{outfit[slot]=id;if(slot==='top'||slot==='bottom')outfit.dress='none';},modal:s=>{html=s;buttons=[...s.matchAll(/data-wui="([^"]+)"/g)].map(m=>({dataset:{wui:m[1]}}));}};
  const screen=createWardrobeScreen(api),click=act=>{const b=buttons.find(x=>x.dataset.wui===act);assert(b,act);b.onclick({stopPropagation(){}});};
  screen.open();assert(!html.includes('class="wui-person"'));
  click('category:dress');click('item:ribbon-dress');assert(html.includes('class="wui-person"'));assert.equal(snapshots.at(-1).outfitOverride.dress,'ribbon-dress');assert.match(html,/wui-top-name">리본 데일리 원피스/);assert.match(html,/wui-bottom-name">원피스 세트 하의/);
- click('rotate');assert.equal(snapshots.at(-1).heading,1);
+ click('rotate');assert.equal(snapshots.at(-1).heading,3);
  click('category:bottom');click('item:skirt');assert.equal(outfit.dress,'none');assert.match(html,/wui-bottom-name">리본 스커트/);assert.match(html,/wui-top-name">기본 흰 반팔/);
  click('category:top');click('item:cardigan');assert.match(html,/wui-top-name">민트 가디건/);assert.match(html,/wui-bottom-name">리본 스커트/);
  click('category:dress');click('item:knit-set');assert.match(html,/wui-top-name">파스텔 루즈 니트/);assert.match(html,/wui-bottom-name">플리츠 스커트/);

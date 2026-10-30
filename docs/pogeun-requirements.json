@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "all_requested_changes_complete": false,
-  "reviewed_at": "2026-10-30T18:16:35+09:00",
+  "reviewed_at": "2026-10-31T07:14:41+09:00",
   "requirements": [
     {
       "id": "R1",
@@ -507,6 +507,63 @@
           "public_verification": "Public build-info exact source;8 changed runtime files byte matched. Public browser not verified: CA trust failure/environment unavailable."
         },
         "deployment": "Pages41031750752 success; public build-info220ea255 exact; changed runtime files byte matched"
+      }
+    },
+    {
+      "id": "R10",
+      "request": "섬 우측에 새싹(1단계)을 기본 사과나무로 제공하고 열매를 수확해서 조개를 얻어서 섬을 확장하는 것까지 튜토리얼 만들어줘",
+      "status": "partial",
+      "implementation": [
+        "dist/island/island.js",
+        "dist/island/tutorial61.js"
+      ],
+      "acceptance": "오른쪽 무료 새싹→5단계→수확150조개/Lv2→확장150차감/Lv3; 단계 안내 및 재접속 유지",
+      "evidence": {
+        "source": "pending: codex/pogeun-comfort61; base3f838c72821d29b7812a9475079812e96c415e99",
+        "automated": "npm test 46 files passed; targeted17 behavioral tests passed",
+        "visual": "Actual local Chromium844x390 with approved assets: settings2columns/no overflow; wardrobe buttons/drag; starter water→stage5→harvest150→paid expansion150→Lv3/reload, pageerrors0; browse302px and expand250px no vertical overflow. Physical phone unverified.",
+        "storage": "Actual browser fresh starter→harvest150/Lv2→purchase150→Lv3/0shells→reload retained; growth timers accelerated only in QA via Date.now offset",
+        "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
+        "remaining": "구현 및 로컬 브라우저 검사 통과; 배포 확인 대기. 실제 휴대폰 터치 검수 미실시",
+        "report": "docs/pogeun-comfort61-review.md"
+      }
+    },
+    {
+      "id": "R11",
+      "request": "팝업창(서브창)이 가로로 한 줄씩 되어있으니까 스크롤을 계속 내려야 해서 가독성이 떨어져. 첨부 사진의 어색하거나 포근섬과 맞지 않는 부분도 수정",
+      "status": "partial",
+      "implementation": [
+        "dist/island/comfort61.css",
+        "dist/island/island.js"
+      ],
+      "acceptance": "일반 팝업2~3열 카드/상점4탭/통일된 닫기/따뜻한 색상/꾸미기 목록이 잔디를 덜 가림",
+      "evidence": {
+        "source": "pending: codex/pogeun-comfort61; base3f838c72821d29b7812a9475079812e96c415e99",
+        "automated": "npm test 46 files passed; targeted17 behavioral tests passed",
+        "visual": "Actual local Chromium844x390 with approved assets: settings2columns/no overflow; wardrobe buttons/drag; starter water→stage5→harvest150→paid expansion150→Lv3/reload, pageerrors0; browse302px and expand250px no vertical overflow. Physical phone unverified.",
+        "storage": "Starter growth/harvest/expansion and wardrobe save/restore automated tests passed",
+        "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
+        "remaining": "구현 및 로컬 브라우저 검사 통과; 배포 확인 대기. 실제 휴대폰 터치 검수 미실시",
+        "report": "docs/pogeun-comfort61-review.md"
+      }
+    },
+    {
+      "id": "R12",
+      "request": "내옷장에서 캐릭터가 360도 회전이 가능하게 해서 옷을 입히고 스타일링했을때 어떤 구도로도 옷을 확인할 수 있게 해줘",
+      "status": "partial",
+      "implementation": [
+        "dist/island/wardrobe-screen.js",
+        "dist/island/rotation61.js"
+      ],
+      "acceptance": "선택 코디를 유지하며 모든 중간 각도에서 앞/옆/뒤를 자연스럽게 확인",
+      "evidence": {
+        "source": "pending: codex/pogeun-comfort61; base3f838c72821d29b7812a9475079812e96c415e99",
+        "automated": "npm test 46 files passed; targeted17 behavioral tests passed",
+        "visual": "Actual local Chromium844x390 with approved assets: settings2columns/no overflow; wardrobe buttons/drag; starter water→stage5→harvest150→paid expansion150→Lv3/reload, pageerrors0; browse302px and expand250px no vertical overflow. Physical phone unverified.",
+        "storage": "Starter growth/harvest/expansion and wardrobe save/restore automated tests passed",
+        "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
+        "remaining": "드래그/슬라이더/좌우버튼은 구현. 승인 원화4방향만 사용하므로 임의 중간각도 연속360도는 미구현. 추가 방향별 의상 원화 또는 원래 디자인을 보존한 회전용 모델 필요",
+        "report": "docs/pogeun-comfort61-review.md"
       }
     }
   ]
