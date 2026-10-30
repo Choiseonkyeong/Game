@@ -31,3 +31,10 @@
 ## 사용자 승인 후 재개 (2026-10-30T18:11:46+09:00)
 
 “승인할께 배포해.” 명시 승인 확인. 소스/테스트/텍스트기록만 기존 저장소/Pages에 게시하며 검수이미지는 로컬 유지. 배포/공개 검수 결과는 후속 기록.
+
+## 배포 성공 (2026-10-30T18:16:35+09:00)
+
+- Source master@220ea255cab0b5294cd739d08af68215611e72f4; synchronized base06a3d730. 동일 dist tree edd5f8431e58a7430b1660dbd2feb86a3a6c1a93.
+- [Pages41031750752](https://github.com/Choiseonkyeong/Game/actions/runs/41031750752) success,CI170/0; build-info exact source,2026-10-30T09:12:55.499Z. [포근섬](https://choiseonkyeong.github.io/Game/island/).
+- 공개HTTP8파일 바이트동일 확인. 공개브라우저 재검수는 프록시CA신뢰오류,실행환경 unavailable로 미완료. 로컬Chrome검수와 구분하며 실제휴대폰 검수도 미실시.
+- 코드/테스트/텍스트기록만 게시. 검수이미지는 로컬 유지. 전체요구는partial. 장문 추가요청 원문은 현재 수신 대화·요구기록에서 확인되지 않음.

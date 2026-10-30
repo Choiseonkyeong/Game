@@ -1,3 +1,12 @@
+## 2026-10-30T18:16:35+09:00 — Codex · 사용자 승인 포근섬60 배포 성공 / 공개 파일 검증
+
+- Source master@220ea255cab0b5294cd739d08af68215611e72f4; task codex/island-finish60; synchronized base06a3d730f3a63860137fc56e55b3e5767d190553. local reviewed dist tree edd5f8431e58a7430b1660dbd2feb86a3a6c1a93와 GitHub dist 동일. expected-HEAD/force:false 게시; 소스/테스트/텍스트기록만 업로드, 검수이미지는 로컬유지.
+- Pages41031750752 completed/success; CI170 passed/0failed. public build-info exact220ea255cab0b5294cd739d08af68215611e72f4; built_at2026-10-30T09:12:55.499Z. URL https://choiseonkyeong.github.io/Game/island/.
+- 공개 HTTP8파일 index/island/human-sprites/room/animal-visitors/outfit-actions/pose-blend/sw 바이트일치. 로컬Chrome220동작렌더/머리20쌍,이동감속·설정즉시동기화·침대위휴식·코디/좌표저장·고구마150→60·오프라인·844×390터치에뮬레이션 통과,오류0.
+- 공개브라우저 재검수는 프록시CA인증서 신뢰 오류로 실패. 신뢰설정 준비 중 실행환경연결도 unavailable이 되어 중단. 공개브라우저 성공/실제폰 검수라고 보고하지 않음. 배포·HTTP검증은 그 전에 완료됨. 저장소 후속기록은 GitHub연결도구로 완료.
+- 장문 추가요청: 현재 수신 대화/기존요구표에 원문 없음. 메시지 유실 여부/전송전 내용은 확인할 수 없음. 기존8요청+고구마가격1건 외 추정반영 없음.
+- Remaining: 실제폰·모든의상/성별행동 시각검수,전체가구별도재구성. 전체요구4/9 complete,전체완료아님. 후속기록은 docs/상태파일만 변경하여 추가배포불필요.
+
 ## 2026-10-30T18:11:46+09:00 — Codex · 포근섬60 사용자 승인 후 게시 재개
 
 - 사용자 명시 승인: “승인할께 배포해.” 코드·테스트·텍스트검수기록을 Choiseonkyeong/Game에 업로드하고 기존 GitHub Pages 주소에 게시. 검수 이미지는 로컬보관 유지.

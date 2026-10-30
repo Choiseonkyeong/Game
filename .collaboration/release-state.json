@@ -4,16 +4,17 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "island-finish-57",
-    "github_commit": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
-    "entrypoint": "dist/island/index.html -> island.js?v57; wardrobe/seed-market/room/visitors57",
+    "version": "island-finish-60",
+    "github_commit": "220ea255cab0b5294cd739d08af68215611e72f4",
+    "entrypoint": "dist/island/index.html -> island.js?v=60; human/room/visitors/outfit-actions/pose-blend60",
     "checks": {
-      "automated_tests_passed": 164,
-      "actual_desktop_browser_verified": true,
+      "automated_tests_passed": 170,
+      "actual_desktop_browser_verified": false,
+      "local_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false
     },
     "limitations": [
-      "R1/R4/R6/R8 partial: actual phone/touch/all-outfit motion visual QA; approved seed-shop final artwork2 missing; full furniture reconstruction not implemented. Other4 livestock browser lifecycles unverified (unit tests pass)."
+      "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published."
     ]
   },
   "last_successful_deployment": {
@@ -37,25 +38,29 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-finish-57",
-      "source_commit": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+      "version": "island-finish-60",
+      "source_commit": "220ea255cab0b5294cd739d08af68215611e72f4",
       "source_branch": "master",
-      "task_branch": "codex/finish-island57",
+      "task_branch": "codex/island-finish60",
+      "reviewed_dist_tree": "edd5f8431e58a7430b1660dbd2feb86a3a6c1a93",
       "url": "https://choiseonkyeong.github.io/Game/island/",
-      "run_id": 40925483500,
+      "run_id": 41031750752,
       "deployment": "succeeded",
-      "built_at": "2026-10-29T17:52:55.535Z",
-      "checked_at": "2026-10-30T02:56:34+09:00",
-      "automated_tests_passed": 164,
-      "actual_desktop_browser_verified": true,
+      "built_at": "2026-10-30T09:12:55.499Z",
+      "checked_at": "2026-10-30T18:16:35+09:00",
+      "automated_tests_passed": 170,
+      "automated_tests_failed": 0,
+      "actual_desktop_browser_verified": false,
+      "local_desktop_browser_verified": true,
+      "emulated_touch_verified": "local Chromium844x390",
       "actual_mobile_touch_verified": false,
       "all_requested_changes_complete": false,
-      "checks": "CI164 passed/0failed; Chrome local7 seeds purchase/plant/stages/roundtrip/harvest, Lv4 hen feed-grow-collect/reload, clothes4views/88actionrenders, Lv1–10 identical120.511x173.76px, offline runtime. Public Chrome57: new clothes/beret save-reload; seven cards; sweetpotato shown90/purchase90/wallet150->60/stock1 after reload; no pageerrors. Public build-info exact source.",
-      "limitations": "R1/R4/R6/R8 partial: actual phone/touch/all-outfit motion visual QA; approved seed-shop final artwork2 missing; full furniture reconstruction not implemented. Other4 livestock browser lifecycles unverified (unit tests pass)."
+      "checks": "GitHub Actions41031750752 completed/success; CI170 pass/0fail. Public build-info exact220ea255. HTTP byte match index/island/human-sprites/room/animal-visitors/outfit-actions/pose-blend/sw (8 files). Local Chrome220 action renders/20 head comparisons; movement/settings/bed/storage/price150->60/offline;844x390 emulated touch7cards.",
+      "limitations": "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "CI164 passed/0failed; Chrome local7 seeds purchase/plant/stages/roundtrip/harvest, Lv4 hen feed-grow-collect/reload, clothes4views/88actionrenders, Lv1–10 identical120.511x173.76px, offline runtime. Public Chrome57: new clothes/beret save-reload; seven cards; sweetpotato shown90/purchase90/wallet150->60/stock1 after reload; no pageerrors. Public build-info exact source.",
-    "remaining_action": "Audit58: R3/R4-price reopened; R1/R3/R4/R6/R8/R4-price partial. Seed guide80 vs charge90; clothing silhouettes/rear shorts color; base-action identity; bed chair outside bed; keyboard stop/arrival; motion toggle sync; approved seed-shop art missing. Physical phone unverified. Game remains deployed57.",
+    "access_check": "GitHub Actions41031750752 completed/success; CI170 pass/0fail. Public build-info exact220ea255. HTTP byte match index/island/human-sprites/room/animal-visitors/outfit-actions/pose-blend/sw (8 files). Local Chrome220 action renders/20 head comparisons; movement/settings/bed/storage/price150->60/offline;844x390 emulated touch7cards.",
+    "remaining_action": "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -511,6 +516,23 @@
       "all_requested_changes_complete": false,
       "checks": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified. Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained. Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1. Public build-info exact source.",
       "limitations": "Price correction and prevention workflow complete; original eight requests remain partial/missing as tracked in docs/pogeun-requirements.json. Actual iPhone/touch and offline runtime unverified."
+    },
+    "previous_successful_before60": {
+      "version": "island-finish-57",
+      "source_commit": "8c91d63bda71129225975e1a260e3ffb61db6b5f",
+      "source_branch": "master",
+      "task_branch": "codex/finish-island57",
+      "url": "https://choiseonkyeong.github.io/Game/island/",
+      "run_id": 40925483500,
+      "deployment": "succeeded",
+      "built_at": "2026-10-29T17:52:55.535Z",
+      "checked_at": "2026-10-30T02:56:34+09:00",
+      "automated_tests_passed": 164,
+      "actual_desktop_browser_verified": true,
+      "actual_mobile_touch_verified": false,
+      "all_requested_changes_complete": false,
+      "checks": "CI164 passed/0failed; Chrome local7 seeds purchase/plant/stages/roundtrip/harvest, Lv4 hen feed-grow-collect/reload, clothes4views/88actionrenders, Lv1–10 identical120.511x173.76px, offline runtime. Public Chrome57: new clothes/beret save-reload; seven cards; sweetpotato shown90/purchase90/wallet150->60/stock1 after reload; no pageerrors. Public build-info exact source.",
+      "limitations": "R1/R4/R6/R8 partial: actual phone/touch/all-outfit motion visual QA; approved seed-shop final artwork2 missing; full furniture reconstruction not implemented. Other4 livestock browser lifecycles unverified (unit tests pass)."
     }
   },
   "restoration_record": {
@@ -1164,7 +1186,7 @@
   },
   "pending_island60_attempt": {
     "recorded_at": "2026-10-30T17:47:16+09:00",
-    "status": "user_authorized_publication_pending",
+    "status": "resolved_deployed_after_user_authorization",
     "task_branch": "codex/island-finish60",
     "local_source_commit": "0d833bd0757adcd93dd07d8a0fa306137dc963eb",
     "reviewed_dist_tree": "edd5f8431e58a7430b1660dbd2feb86a3a6c1a93",
@@ -1178,12 +1200,35 @@
       "emulated_touch": "844x390 passed",
       "actual_phone_verified": false
     },
-    "deployment": "not_started",
+    "deployment": "succeeded",
     "intended_url": "https://choiseonkyeong.github.io/Game/island/",
-    "github_source_commit": null,
+    "github_source_commit": "220ea255cab0b5294cd739d08af68215611e72f4",
     "reason": "QA image upload rejected; images retained locally. Text-only source/tests/QA metadata/review tree also rejected: explicit user authorization for exact external upload and deployment required. No retries through other channels.",
-    "remaining": "User authorization for source/tests/text QA records upload to Choiseonkyeong/Game and existing Pages deployment; actual phone/full outfit visual QA; full furniture reconstruction not implemented.",
+    "remaining": "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published.",
     "authorized_at": "2026-10-30T18:11:46+09:00",
-    "authorization": "사용자: 승인할께 배포해. Source/tests/text QA records only; screenshots remain local."
+    "authorization": "사용자: 승인할께 배포해. Source/tests/text QA records only; screenshots remain local.",
+    "run_id": 41031750752,
+    "resolved_at": "2026-10-30T18:16:35+09:00"
+  },
+  "island60_release": {
+    "version": "island-finish-60",
+    "source_commit": "220ea255cab0b5294cd739d08af68215611e72f4",
+    "source_branch": "master",
+    "task_branch": "codex/island-finish60",
+    "reviewed_dist_tree": "edd5f8431e58a7430b1660dbd2feb86a3a6c1a93",
+    "url": "https://choiseonkyeong.github.io/Game/island/",
+    "run_id": 41031750752,
+    "deployment": "succeeded",
+    "built_at": "2026-10-30T09:12:55.499Z",
+    "checked_at": "2026-10-30T18:16:35+09:00",
+    "automated_tests_passed": 170,
+    "automated_tests_failed": 0,
+    "actual_desktop_browser_verified": false,
+    "local_desktop_browser_verified": true,
+    "emulated_touch_verified": "local Chromium844x390",
+    "actual_mobile_touch_verified": false,
+    "all_requested_changes_complete": false,
+    "checks": "GitHub Actions41031750752 completed/success; CI170 pass/0fail. Public build-info exact220ea255. HTTP byte match index/island/human-sprites/room/animal-visitors/outfit-actions/pose-blend/sw (8 files). Local Chrome220 action renders/20 head comparisons; movement/settings/bed/storage/price150->60/offline;844x390 emulated touch7cards.",
+    "limitations": "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published."
   }
 }
