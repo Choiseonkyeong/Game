@@ -1,0 +1,44 @@
+{
+  "release": [
+    "translate(488.40210119999995 470)",
+    "translate(491.4021011999999 470)",
+    "translate(493.8021011999998 470)"
+  ],
+  "keyboardSaved": "[493.8021011999998,470]",
+  "reduced": {
+    "data": "true",
+    "stored": "1"
+  },
+  "bed": "translate(132 358)",
+  "renders": {
+    "count": 220,
+    "headComparisons": 20,
+    "outfit": {
+      "top": "white-tee",
+      "bottom": "shorts",
+      "shoes": "sneakers",
+      "bag": "none",
+      "hat": "beret",
+      "accessory": "none",
+      "dress": "cottage-dress"
+    }
+  },
+  "saved": {
+    "top": "white-tee",
+    "bottom": "shorts",
+    "shoes": "sneakers",
+    "bag": "none",
+    "hat": "beret",
+    "accessory": "none",
+    "dress": "cottage-dress"
+  },
+  "seedCards": 7,
+  "sweetpotatoWallet": "60",
+  "offline": true,
+  "emulatedTouch": {
+    "viewport": "844x390",
+    "cards": 7,
+    "realPhone": false
+  },
+  "errors": []
+}

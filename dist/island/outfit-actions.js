@@ -20,13 +20,20 @@ function parts(source,original,row,key){
  for(let y=105;y<148;y++)for(let x=26;x<103;x++){
   const i=(y*128+x)*4,r=original[i],g=original[i+1],b=original[i+2],max=Math.max(r,g,b),min=Math.min(r,g,b);
   if(original[i+3]<80)continue;
-  const side=x<63?0:x>65?1:-1;if(side<0)continue;
-  const skin=r>g*1.045&&g>b*1.025&&max>145&&(y<138||(side===0?x<54:x>74));
-  const sleeve=y<123&&max>165&&(max-min)/max<.2&&(side===0?x<50:x>78);
+  const side=row===2?(x>=52&&x<=70?0:-1):row===3?(x>=58&&x<=77?1:-1):x>=38&&x<=56?0:x>=73&&x<=91?1:-1;if(side<0||row===1&&y<136)continue;
+  const skin=r>g*1.10&&g>b*1.06&&max>190&&g>135&&b>100&&(y<138||(side===0?x<54:x>74));
+  const sleeve=y<123&&x>39&&x<89&&max>165&&(max-min)/max<.2&&(side===0?x<50:x>78);
   if(skin||sleeve)masks[side][y*128+x]=1;
  }
  // Include the warm hand/garment contour without carrying dark hair along with it.
- for(const mask of masks){const first=mask.slice();for(let y=106;y<147;y++)for(let x=27;x<102;x++)if(first[y*128+x])for(const[dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]]){const k=(y+dy)*128+x+dx,j=k*4;if(original[j+3]>80&&Math.max(original[j],original[j+1],original[j+2])>100)mask[k]=1;}}
+ for(const mask of masks){const first=mask.slice();for(let y=106;y<147;y++)for(let x=27;x<102;x++)if(first[y*128+x])for(const[dx,dy]of [[-1,0],[1,0],[0,-1],[0,1]]){const k=(y+dy)*128+x+dx,j=k*4;if(original[j+3]>80&&Math.max(original[j],original[j+1],original[j+2])>100&&x+dx>38&&x+dx<92)mask[k]=1;}}
+ // Fill interior gaps and include the one-pixel garment contour. Colour thresholds alone
+ // leave loose pixels behind when the arm rotates away from its original position.
+ for(const mask of masks)for(let y=106;y<148;y++){
+  const xs=[];for(let x=27;x<102;x++)if(mask[y*128+x])xs.push(x);
+  if(!xs.length)continue;const left=Math.min(...xs),right=Math.max(...xs);
+  for(let x=left;x<=right;x++){const i=(y*128+x)*4;if(original[i+3]>80)mask[y*128+x]=1;}
+ }
  const canvas=(which)=>{const c=document.createElement('canvas');c.width=128;c.height=192;const data=new Uint8ClampedArray(src.data);for(let i=0;i<data.length;i+=4){const k=i/4;if(which===-1?masks[0][k]||masks[1][k]:!masks[which][k])data[i+3]=0;}c.getContext('2d').putImageData(new ImageData(data,128,192),0,0);return c;};
  const result={body:canvas(-1),arms:[canvas(0),canvas(1)],pivots:row===2?[[54,113],[79,113]]:row===3?[[48,113],[74,113]]:[[48,113],[80,113]]};
  if(cache.size>80)cache.delete(cache.keys().next().value);cache.set(key,result);return result;

@@ -24,6 +24,7 @@ export function createAnimalVisitors({project,findRoute,getState,redraw,announce
  if(!a.segment){const dest=a.path[a.step+1];if(!dest){if(a.leaving){active=null;next=t+VISIT_TIMING.minGap+random()*(VISIT_TIMING.maxGap-VISIT_TIMING.minGap);}else{a.walk=false;a.waitUntil=t+12000;}redraw();return;}if(!lineClear(getState(),a.cell,dest)){active=null;next=t+VISIT_TIMING.minGap;redraw();return;}const from=project(...a.cell),to=project(...dest),dx=to[0]-from[0],dy=to[1]-from[1];a.row=Math.abs(dx)>=Math.abs(dy)?dx<0?2:3:dy<0?1:0;a.walk=!reduced;a.segment={from,to,start:t,elapsed:0,duration:Math.max(300,Math.hypot(dx,dy)/40*1000)};}
  const s=a.segment;s.elapsed=t-s.start;const p=Math.min(1,s.elapsed/s.duration),x=s.from[0]+(s.to[0]-s.from[0])*p,y=s.from[1]+(s.to[1]-s.from[1])*p;world.querySelector('#animal-visitor')?.setAttribute('transform',`translate(${x.toFixed(2)} ${y.toFixed(2)})`);if(p===1){a.cell=[...a.path[++a.step]];a.segment=null;}}
  function greet(){if(!active)return;active.greetingUntil=performance.now()+2000;announce(active.name+' 친구에게 반갑게 인사했어요.');}
- return{ready,render,tick,greet,get active(){return active;}};
+ function setReduced(value){reduced=!!value;if(active)active.walk=!!active.segment&&!reduced;paint(performance.now());}
+ return{ready,render,tick,greet,setReduced,get active(){return active;}};
 }
 

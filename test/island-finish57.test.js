@@ -29,11 +29,11 @@ test('card shop shows every real catalogue price and quantity, including future 
  assert.match(html,/보유 2개 · 밭작물 4단계/);assert.match(html,/조개 987개/);assert(!html.includes('seed-image-hit'));assert.match(html,/seed-approved-board/);
 });
 
-test('bed target uses the approved plate geometry and the resting avatar arrives beside the bed',()=>{
+test('bed target uses the approved plate geometry and the resting avatar arrives on the mattress',()=>{
  let html='',transform='';const oldDocument=globalThis.document;globalThis.document={createElementNS:()=>({childNodes:[],set innerHTML(v){html=v;}})};const world={get innerHTML(){return html;},set innerHTML(v){html=v;},querySelector:()=>({setAttribute(k,v){if(k==='transform')transform=v;}}),querySelectorAll:()=>[]};
  world.childNodes=[];const room=createRoom({world,announce(){},onChange(){}});room.enter();room.render();globalThis.document=oldDocument;
  const[x,y,w,h]=ROOM_LAYOUT.bed;assert.match(html,new RegExp(`data-bed="1" x="${x}" y="${y}" width="${w}" height="${h}"`));assert.match(html,/scale\(1.8\)/);
- room.pick({closest:selector=>selector==='[data-bed]'},100,200);for(let t=1;t<14000;t+=16)room.tick(t);assert.equal(transform,'translate(235 448)');assert(235>x+w);
+ room.pick({closest:selector=>selector==='[data-bed]'},100,200);for(let t=1;t<14000;t+=16)room.tick(t);assert.equal(transform,`translate(${ROOM_LAYOUT.bedRest.join(' ')})`);const [rx,ry]=ROOM_LAYOUT.bedRest;assert(rx>x&&rx<x+w);assert(ry>y&&ry<y+h);
 });
 
 test('visits wait 90 seconds, depart, then wait at least three minutes',async()=>{
@@ -48,6 +48,6 @@ test('visits wait 90 seconds, depart, then wait at least three minutes',async()=
 
 test('keyboard animation paints the avatar once per animation frame, using the movement clock and heading',()=>{
  const source=fs.readFileSync(new URL('../dist/island/island.js',import.meta.url),'utf8'),paint=[];
- const ctx={tickTime:0,weather:{tick(){}},reduced:false,room:{inside:false},visitors:{tick(){}},busy:false,pointer:null,$:id=>id==='dialog'?{open:false}:{setAttribute(){}},lastFrame:0,document:{hidden:false},steps:[],to:null,walkKeys:new Set(['w']),mode:'walk',pose:'walk',face:1,back:true,walkHeading:1,walkClock:2,paintHumans:(_,opts)=>paint.push(opts),keyboardTick:()=>{paint.push({keyboard:true});return true;},petWait:Infinity,paintLivestock(){},state:{animals:[]},paintMomo(){},petTo:null,petSleeping:false,sortDepth(){},requestAnimationFrame(){}};
+ const ctx={tickTime:0,weather:{tick(){}},reduced:false,room:{inside:false},visitors:{tick(){}},busy:false,pointer:null,$:id=>id==='dialog'?{open:false}:{setAttribute(){}},lastFrame:0,document:{hidden:false},steps:[],to:null,keyboardMoving:true,walkKeys:new Set(['w']),mode:'walk',pose:'walk',face:1,back:true,walkHeading:1,walkClock:2,paintHumans:(_,opts)=>paint.push(opts),keyboardTick:()=>{paint.push({keyboard:true});return true;},petWait:Infinity,paintLivestock(){},state:{animals:[]},paintMomo(){},petTo:null,petSleeping:false,sortDepth(){},requestAnimationFrame(){}};
  vm.runInNewContext(source.slice(source.indexOf('function tick(t)'),source.indexOf('let stages=')),ctx);ctx.tick(16);assert.deepEqual(paint,[{keyboard:true}]);
 });

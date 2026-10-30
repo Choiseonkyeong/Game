@@ -1161,5 +1161,29 @@
     "game_changed": false,
     "deployment_changed": false,
     "note": "Functional smoke checks do not prove clothing shape, face consistency, bed placement or all image-embedded prices. See current audit58 correction before relying on older57 completion rows."
+  },
+  "pending_island60_attempt": {
+    "recorded_at": "2026-10-30T17:47:16+09:00",
+    "status": "user_authorized_publication_pending",
+    "task_branch": "codex/island-finish60",
+    "local_source_commit": "0d833bd0757adcd93dd07d8a0fa306137dc963eb",
+    "reviewed_dist_tree": "edd5f8431e58a7430b1660dbd2feb86a3a6c1a93",
+    "synchronized_master": "06a3d730f3a63860137fc56e55b3e5767d190553",
+    "checks": {
+      "automated_passed": 170,
+      "automated_failed": 0,
+      "browser_action_renders": 220,
+      "head_pixel_comparisons": 20,
+      "pageerrors": 0,
+      "emulated_touch": "844x390 passed",
+      "actual_phone_verified": false
+    },
+    "deployment": "not_started",
+    "intended_url": "https://choiseonkyeong.github.io/Game/island/",
+    "github_source_commit": null,
+    "reason": "QA image upload rejected; images retained locally. Text-only source/tests/QA metadata/review tree also rejected: explicit user authorization for exact external upload and deployment required. No retries through other channels.",
+    "remaining": "User authorization for source/tests/text QA records upload to Choiseonkyeong/Game and existing Pages deployment; actual phone/full outfit visual QA; full furniture reconstruction not implemented.",
+    "authorized_at": "2026-10-30T18:11:46+09:00",
+    "authorization": "사용자: 승인할께 배포해. Source/tests/text QA records only; screenshots remain local."
   }
 }

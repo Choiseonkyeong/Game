@@ -1,3 +1,26 @@
+## 2026-10-30T18:11:46+09:00 — Codex · 포근섬60 사용자 승인 후 게시 재개
+
+- 사용자 명시 승인: “승인할께 배포해.” 코드·테스트·텍스트검수기록을 Choiseonkyeong/Game에 업로드하고 기존 GitHub Pages 주소에 게시. 검수 이미지는 로컬보관 유지.
+- 시작: local codex/island-finish60@0f01f0f65fd871ae11b7f5080ddb5a70e0552c8a, remote master06a3d730f3a63860137fc56e55b3e5767d190553 최신동일/clean/preflight ready. 이전170검사·Chrome검수된 dist tree edd5f8431e58a7430b1660dbd2feb86a3a6c1a93 유지.
+- 별도 장문 요청 확인: 현재 수신 대화·저장소 요구표에 해당 추가원문 없음. 기존8요청+가격1건만 확인; 미수신 내용을 추정 구현하지 않음.
+- 배포 pending. 실제 공개SHA/Actions/접속검수는 성공후 기록.
+
+## 2026-10-30T17:47:16+09:00 — Codex · 포근섬60 게시 차단 / 명시적 승인 필요
+
+- 로컬 소스 codex/island-finish60@0d833bd0757adcd93dd07d8a0fa306137dc963eb; dist tree edd5f8431e58a7430b1660dbd2feb86a3a6c1a93. 원격 master06a3d730 재확인, 변경없음.
+- 최종 검사170 pass/0fail; Chrome220렌더/머리20쌍/설정·이동·침대·가격·저장·오프라인/844×390터치에뮬레이션; 오류0. 로컬 수정 및 검수 완료, 전체요구는partial.
+- 자동 승인: QA 스크린샷 GitHub 업로드가 명시적 외부전송 허가 부족으로 거절됨. 이미지는 로컬보관. 스크린샷을 제외한 소스/테스트/QA수치/검수문서 tree 생성도 정확한 payload 업로드·배포의 명시적 사용자승인 부족으로 거절됨. 다른 경로로 재시도하지 않음.
+- 배포: not_started. GitHub commit/ref 생성·갱신 없음, 현재 공개59 유지. 마지막 성공기록 보존하고 별도 pending_island60_attempt 추가.
+- 남은 조치: 사용자의 코드·테스트·텍스트검수기록 GitHub 업로드 및 기존 Pages URL 배포 승인. 실제폰/모든의상동작·전체가구재구성 미완료도 유지.
+
+## 2026-10-30T17:43:48+09:00 — Codex · 포근섬60 이동/의상/행동/침대 후속 보정 · 로컬 검수
+
+- Base master@06a3d730f3a63860137fc56e55b3e5767d190553; task codex/island-finish60. 최신 master/보호스킬/원요구/스타일/활성 import 확인. 승인 원화·저장·타 게임 보존.
+- 변경: 키보드 감속/반전/정지바운스/좌표저장; 모션즉시동기화·방문인스턴스/실내; 동일원화 행동/86×124 표시; 의상소매·뒤연청·멜빵/원피스허리; 매트리스위132,358 휴식; cache60.
+- 검사:170 pass/0fail; Chrome220렌더/머리20쌍동일; 실제DOM키보드/설정/침대/저장/오프라인; 고구마상점·안내90/구매150→60;844×390터치에뮬레이션7카드. pageerrors0. docs/pogeun-finish60-review.md.
+- 배포: pending. 기존59 Pages40935231265 success/public build-info06a3d730 확인. 새60 실제SHA/공개검수는 성공후 기록.
+- 남음: 실제휴대폰·모든의상/성별동작미검수, 전체가구별도재구성미구현. 전체완료아님; R4-price는59수정 및 이번검수근거로complete정리.
+
 ## 2026-10-30T03:50:29+09:00 — Codex · 최신 첨부 씨앗상점 원본 적용59 / 로컬 검수
 
 - Base master@e87c34282b3f2c1e936f2e61f591e191e92b7f3c; branch codex/seed-reference59. 사용자 첨부 화면이 기준임을 확인. 원본 JPG 그대로 asset저장(SHA25607a979674dd46b7652ee0c1c1cc6d682df98f57be0baabe3e5de9ed7e5d68a3f), 재생성/픽셀편집없음.

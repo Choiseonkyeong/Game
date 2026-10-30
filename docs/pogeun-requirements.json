@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "all_requested_changes_complete": false,
-  "reviewed_at": "2026-10-30T03:50:29+09:00",
+  "reviewed_at": "2026-10-30T17:43:48+09:00",
   "requirements": [
     {
       "id": "R1",
@@ -18,7 +18,7 @@
         "automated": "보행/키보드 충돌 검사 통과",
         "visual": "Chrome 키보드 동작 확인",
         "storage": "좌표 재접속 일치",
-        "remaining": "키보드 정지 감속·도착 바운스 누락; 움직임 줄이기 설정의 즉시 적용 데이터 불일치",
+        "remaining": "키보드 감속/전환/도착 바운스와 모션 즉시 동기화 수정·로컬 Chrome 확인. 실제 휴대폰 보행 체감 미검수.",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -41,6 +41,17 @@
             "A58-06"
           ],
           "report": "docs/pogeun-detail-audit58.md"
+        },
+        "implementation60": {
+          "checked_at": "2026-10-30T17:43:48+09:00",
+          "base": "06a3d730f3a63860137fc56e55b3e5767d190553",
+          "branch": "codex/island-finish60",
+          "status": "local_verified_deployment_pending",
+          "report": "docs/pogeun-finish60-review.md",
+          "automated": "170 pass/0fail; keyboard30/60/120fps release/turn/cancel; live visitor reduced toggle",
+          "visual": "Chrome desktop; docs/qa/finish60;220 action renders,20 head pixel comparisons;844x390 emulated touch",
+          "storage": "keyboard final position, cottage dress/beret reload, sweetpotato150→60; offline reload",
+          "remaining": "키보드 감속/전환/도착 바운스와 모션 즉시 동기화 수정·로컬 Chrome 확인. 실제 휴대폰 보행 체감 미검수."
         }
       }
     },
@@ -100,7 +111,7 @@
         "automated": "실제 옷장 선택/해제/룩저장/복원 회귀; Chrome 신규3종+베레모 4방향; 멜빵/원피스88동작 렌더; CI164 pass/0fail",
         "visual": "Chrome4方向/88action renders; public57 blouse/overalls/cottage-dress/beret selected and saved/reloaded; original face preserved",
         "storage": "룩3개와신규의상/베레모재접속; public57 원피스/베레모보존",
-        "remaining": "의상 이름·저장은 추가됐지만 요청 형태 디테일은 부족; 기본 연청 반바지의 앞뒤 색 불일치",
+        "remaining": "소매/니트/블라우스·연속 원피스 허리·멜빵 허리 보완, 뒤 연청색 보정. 요청5종 네 방향 렌더/저장 확인. 전체 의상·실제폰의 시각 품질 미검수.",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -145,6 +156,17 @@
             "A58-08"
           ],
           "report": "docs/pogeun-detail-audit58.md"
+        },
+        "implementation60": {
+          "checked_at": "2026-10-30T17:43:48+09:00",
+          "base": "06a3d730f3a63860137fc56e55b3e5767d190553",
+          "branch": "codex/island-finish60",
+          "status": "local_verified_deployment_pending",
+          "report": "docs/pogeun-finish60-review.md",
+          "automated": "170 pass/0fail; keyboard30/60/120fps release/turn/cancel; live visitor reduced toggle",
+          "visual": "Chrome desktop; docs/qa/finish60;220 action renders,20 head pixel comparisons;844x390 emulated touch",
+          "storage": "keyboard final position, cottage dress/beret reload, sweetpotato150→60; offline reload",
+          "remaining": "소매/니트/블라우스·연속 원피스 허리·멜빵 허리 보완, 뒤 연청색 보정. 요청5종 네 방향 렌더/저장 확인. 전체 의상·실제폰의 시각 품질 미검수."
         }
       }
     },
@@ -162,7 +184,7 @@
         "source": "b77e75e59daedfe74813aea87774f838d948229e",
         "run": 40831952402,
         "visual": "공개v55는 기존 seed-shop-original.jpeg",
-        "remaining": "승인 상점 최종 디자인 미연결",
+        "remaining": "승인 씨앗상점59는 master06a3d730 및 Pages40935231265에 이미 배포됨. 이번 로컬7카드/844×390 터치에뮬레이션 재확인. 실제폰 미검수.",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -197,6 +219,17 @@
           "storage": "All7 actual purchases1000->250, stock1each after reload; guide sweetpotato90; actual SW offline reload/shop passed.",
           "remaining": "공개 배포·검수 대기; 실제 폰 터치 미검수",
           "report": "docs/pogeun-seed-reference59.md"
+        },
+        "implementation60": {
+          "checked_at": "2026-10-30T17:43:48+09:00",
+          "base": "06a3d730f3a63860137fc56e55b3e5767d190553",
+          "branch": "codex/island-finish60",
+          "status": "local_verified_deployment_pending",
+          "report": "docs/pogeun-finish60-review.md",
+          "automated": "170 pass/0fail; keyboard30/60/120fps release/turn/cancel; live visitor reduced toggle",
+          "visual": "Chrome desktop; docs/qa/finish60;220 action renders,20 head pixel comparisons;844x390 emulated touch",
+          "storage": "keyboard final position, cottage dress/beret reload, sweetpotato150→60; offline reload",
+          "remaining": "승인 씨앗상점59는 master06a3d730 및 Pages40935231265에 이미 배포됨. 이번 로컬7카드/844×390 터치에뮬레이션 재확인. 실제폰 미검수."
         }
       },
       "latest_user_reference": {
@@ -257,7 +290,7 @@
         "source": "b77e75e59daedfe74813aea87774f838d948229e",
         "run": 40831952402,
         "visual": "캐릭터1.2배와 기존 실내만 확인",
-        "remaining": "침대 상호작용이 실제 침대와 연결되지 않음",
+        "remaining": "매트리스 위132,358에서 같은 캐릭터로 휴식하도록 연결. 기존 침대/러그 원화 및 배치 유지; 가구 전체를 별도 오브젝트로 재구성하지 않음. 실제폰 비율 미검수.",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -279,6 +312,17 @@
             "A58-04"
           ],
           "report": "docs/pogeun-detail-audit58.md"
+        },
+        "implementation60": {
+          "checked_at": "2026-10-30T17:43:48+09:00",
+          "base": "06a3d730f3a63860137fc56e55b3e5767d190553",
+          "branch": "codex/island-finish60",
+          "status": "local_verified_deployment_pending",
+          "report": "docs/pogeun-finish60-review.md",
+          "automated": "170 pass/0fail; keyboard30/60/120fps release/turn/cancel; live visitor reduced toggle",
+          "visual": "Chrome desktop; docs/qa/finish60;220 action renders,20 head pixel comparisons;844x390 emulated touch",
+          "storage": "keyboard final position, cottage dress/beret reload, sweetpotato150→60; offline reload",
+          "remaining": "매트리스 위132,358에서 같은 캐릭터로 휴식하도록 연결. 기존 침대/러그 원화 및 배치 유지; 가구 전체를 별도 오브젝트로 재구성하지 않음. 실제폰 비율 미검수."
         }
       }
     },
@@ -335,7 +379,7 @@
         "run": 40831952402,
         "visual": "Lv2→3 크기143.1484×206.4px 일치",
         "storage": "Lv3재접속",
-        "remaining": "기본 코디 행동에서 원화·얼굴선 일관성 깨짐",
+        "remaining": "기본 코디의 예전 행동 전체원화 교체 경로 제거.5코디×4방향×11동작220렌더 및 머리영역20쌍 동일 검사. 모든 의상/성별 전동작의 실제폰 시각 검수 미실시.",
         "implementation57": {
           "base": "f5fd7eb851c30d0f05e151c4fedd7d2d3ac5c38a",
           "task_branch": "codex/finish-island57",
@@ -357,24 +401,35 @@
             "A58-03"
           ],
           "report": "docs/pogeun-detail-audit58.md"
+        },
+        "implementation60": {
+          "checked_at": "2026-10-30T17:43:48+09:00",
+          "base": "06a3d730f3a63860137fc56e55b3e5767d190553",
+          "branch": "codex/island-finish60",
+          "status": "local_verified_deployment_pending",
+          "report": "docs/pogeun-finish60-review.md",
+          "automated": "170 pass/0fail; keyboard30/60/120fps release/turn/cancel; live visitor reduced toggle",
+          "visual": "Chrome desktop; docs/qa/finish60;220 action renders,20 head pixel comparisons;844x390 emulated touch",
+          "storage": "keyboard final position, cottage dress/beret reload, sweetpotato150→60; offline reload",
+          "remaining": "기본 코디의 예전 행동 전체원화 교체 경로 제거.5코디×4방향×11동작220렌더 및 머리영역20쌍 동일 검사. 모든 의상/성별 전동작의 실제폰 시각 검수 미실시."
         }
       }
     },
     {
       "id": "R4-price",
       "request": "고구마를 그림·구매창·차감 모두90조개로 통일",
-      "status": "partial",
+      "status": "complete",
       "implementation": [
         "dist/island/seed-market.js",
         "dist/island/island.js"
       ],
       "acceptance": "공개 상점 숫자90·구매창90·실제차감90·기존이미지보존",
       "evidence": {
-        "source": "0da0125026e4024639c6914a9c85f1b7a60b1e27",
+        "source": "06a3d730f3a63860137fc56e55b3e5767d190553",
         "url": "https://choiseonkyeong.github.io/Game/island/",
-        "automated": "Full CI159 passed/0 failed; local78 passed. Actual seedMarket/seedPurchase same-catalogue90, future135/100 label updates verified.",
-        "visual": "Public Chrome island.js?v56: sweetpotato displayed90 and purchase-dialog90; original illustration intact outside the number; seven seed hit regions retained.",
-        "storage": "Live purchase150->60 shells, seed0->1; reload retains60 shells and sweetpotato stock1.",
+        "automated": "59 catalogue price regression;60 actual UI card/guide/purchase90, wallet150→60",
+        "visual": "Approved59 card and guide both90;60 screenshot/real browser flow",
+        "storage": "60 wallet60 survives offline reload; original59 all7purchases stored",
         "run": 40834629733,
         "checked_at": "2026-10-29T16:22:09+09:00",
         "previous_completion57": {
@@ -396,7 +451,7 @@
           ],
           "report": "docs/pogeun-detail-audit58.md"
         },
-        "remaining": "카드/구매90 정상; 성장 안내 그림 고구마80 잔존. 이미지까지 모두90 조건 미충족.",
+        "remaining": "상점/성장안내/구매 모두90; 로컬 실제150→60 및 저장 확인. 공개59의 동일 가격모듈/배포 확인, 이번60 공개 재검수 예정.",
         "implementation59": {
           "checked_at": "2026-10-30T03:50:29+09:00",
           "source_base": "e87c34282b3f2c1e936f2e61f591e191e92b7f3c",
@@ -409,7 +464,19 @@
           "storage": "All7 actual purchases1000->250, stock1each after reload; guide sweetpotato90; actual SW offline reload/shop passed.",
           "remaining": "공개 배포·검수 대기; 실제 폰 터치 미검수",
           "report": "docs/pogeun-seed-reference59.md"
-        }
+        },
+        "implementation60": {
+          "checked_at": "2026-10-30T17:43:48+09:00",
+          "base": "06a3d730f3a63860137fc56e55b3e5767d190553",
+          "branch": "codex/island-finish60",
+          "status": "local_verified_deployment_pending",
+          "report": "docs/pogeun-finish60-review.md",
+          "automated": "170 pass/0fail; keyboard30/60/120fps release/turn/cancel; live visitor reduced toggle",
+          "visual": "Chrome desktop; docs/qa/finish60;220 action renders,20 head pixel comparisons;844x390 emulated touch",
+          "storage": "keyboard final position, cottage dress/beret reload, sweetpotato150→60; offline reload",
+          "remaining": "상점/성장안내/구매 모두90; 로컬 실제150→60 및 저장 확인. 공개59의 동일 가격모듈/배포 확인, 이번60 공개 재검수 예정."
+        },
+        "deployment": "Pages40935231265 success; public build-info06a3d730 verified2026-10-30"
       }
     }
   ]

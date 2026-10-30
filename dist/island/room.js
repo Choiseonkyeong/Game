@@ -1,18 +1,24 @@
 import{WALK_SPEED,walkingSpeed}from'./movement.js?v=55';
 import{walkingView}from'./locomotion.js?v=30';
-import{humanMarkup,paintHumans}from'./human-sprites.js?v=57';
+import{humanMarkup,paintHumans}from'./human-sprites.js?v=60';
 import{patchSvg}from'./dom-render.js?v=5';
-// Geometry measured from the approved 960×800 cottage plate.
-export const ROOM_LAYOUT={bed:[45,145,165,255],avatarScale:1.8};
+// Anchors measured on the approved 960×800 plate; the resting body fits the mattress.
+export const ROOM_LAYOUT={bed:[45,145,165,255],bedApproach:[225,420],bedRest:[132,358],avatarScale:1.8};
 export function roomTarget(x,y){return[Math.max(220,Math.min(810,x)),Math.max(448,Math.min(690,y))];}
-export function createRoom({world,announce,onChange}){
- let inside=false,pos=[570,610],goal=null,last=0,face=1,back=false,sleeping=false,heading=0,walkClock=0,speed=0,keyWalking=false;
+export function createRoom({world,announce,onChange,getReduced=()=>false}){
+ let inside=false,pos=[570,610],goal=null,last=0,face=1,back=false,sleeping=false,resting=false,heading=0,walkClock=0,speed=0,keyWalking=false,velocity=[0,0],restFrom=null,restAt=0;
  function markup(){return `<rect x="-3000" y="-3000" width="6000" height="6000" fill="#e9dcc1"/><image href="art/world/cottage-room.webp" width="960" height="800" preserveAspectRatio="none"/><path data-room-floor="1" d="M200 430H835V716H200Z" fill="transparent" role="button" tabindex="0" aria-label="방 안 걸어가기"/><rect data-bed="1" x="${ROOM_LAYOUT.bed[0]}" y="${ROOM_LAYOUT.bed[1]}" width="${ROOM_LAYOUT.bed[2]}" height="${ROOM_LAYOUT.bed[3]}" fill="transparent" role="button" tabindex="0" aria-label="침대에서 쉬기"/><g id="room-person" transform="translate(${pos[0]} ${pos[1]})"><g transform="scale(${ROOM_LAYOUT.avatarScale})">${humanMarkup()}</g></g><g data-exit="1" role="button" tabindex="0" aria-label="섬으로 나가기"><rect x="403" y="717" width="154" height="48" rx="16" fill="#fff9e8" stroke="#a68b70" stroke-width="2"/><text x="480" y="748" text-anchor="middle" font-size="20" fill="#715d4e">섬으로 나가기</text></g>`;}
- function render(){patchSvg(world,markup());paintHumans(world,{preview:true});}
- function enter(){inside=true;sleeping=false;pos=[570,610];goal=null;last=0;speed=0;onChange();announce('우리 집에 들어왔어요. 바닥을 눌러 걷거나 침대에서 쉬어 보세요.');}
- function leave(){inside=false;goal=null;speed=0;onChange();announce('다시 포근섬으로 나왔어요.');}
- function pick(target,x,y){if(target.closest('[data-exit]'))return leave();if(target.closest('[data-bed]')){goal=[235,448];face=-1;sleeping=true;announce('폭신한 침대 곁에서 잠깐 쉬어요.');return;}if(target.closest('[data-room-floor]')){goal=roomTarget(x,y);sleeping=false;}}
- function tick(t,keys=[0,0]){const dt=last?Math.min(.04,(t-last)/1000):0;last=t;if(!inside)return;let moving=false;const keyboard=keys[0]||keys[1];if(keyWalking&&!keyboard){goal=null;speed=0;}keyWalking=!!keyboard;if(keyboard){goal=roomTarget(pos[0]+keys[0]*80,pos[1]+keys[1]*80);sleeping=false;}if(goal){const dx=goal[0]-pos[0],dy=goal[1]-pos[1],d=Math.hypot(dx,dy),before=speed;speed=walkingSpeed(speed,d,dt);const step=d<.15?d:(before+speed)*.5*dt;heading=walkingView(dx,dy,heading);walkClock+=Math.min(step,d)/WALK_SPEED;face=dx<0?-1:1;back=dy<0&&Math.abs(dy)>Math.abs(dx);if(d<=step){pos=[...goal];goal=null;speed=0;}else{pos[0]+=dx/d*step;pos[1]+=dy/d*step;moving=true;}}world.querySelector('#room-person')?.setAttribute('transform',`translate(${pos[0]} ${pos[1]})`);paintHumans(world,{pose:moving?'walk':sleeping?'sit':'idle',face,back,heading,time:walkClock,gaitAmount:speed/WALK_SPEED});}
- return{render,enter,leave,pick,tick,get inside(){return inside;}};
+ function render(){patchSvg(world,markup());paintHumans(world,{pose:resting?'sit':'idle',face,back,heading,preview:!resting});}
+ function enter(){inside=true;sleeping=resting=false;restFrom=null;pos=[570,610];goal=null;last=0;speed=0;velocity=[0,0];keyWalking=false;onChange();announce('우리 집에 들어왔어요. 바닥을 눌러 걷거나 침대에서 쉬어 보세요.');}
+ function leave(){inside=false;goal=null;speed=0;velocity=[0,0];keyWalking=false;onChange();announce('다시 포근섬으로 나왔어요.');}
+ function wake(){if(resting||restFrom)pos=[...ROOM_LAYOUT.bedApproach];resting=false;restFrom=null;sleeping=false;}
+ function pick(target,x,y){if(target.closest('[data-exit]'))return leave();velocity=[0,0];keyWalking=false;if(target.closest('[data-bed]')){if(resting)return;goal=[...ROOM_LAYOUT.bedApproach];face=-1;sleeping=true;announce('침대로 다가가 폭신한 이불 위에서 쉬어요.');return;}if(target.closest('[data-room-floor]')){wake();goal=roomTarget(x,y);}}
+ function bounce(){if(getReduced())return;const el=world.querySelector('#room-person');el?.classList?.add('arrival-bounce');setTimeout(()=>el?.classList?.remove('arrival-bounce'),340);}
+ function tick(t,keys=[0,0]){const dt=last?Math.min(.04,(t-last)/1000):0;last=t;if(!inside)return;let moving=false;const keyboard=!!(keys[0]||keys[1]),reduced=getReduced();
+ if(keyboard||keyWalking){if(keyboard){wake();goal=null;}keyWalking=true;const target=keys.map(v=>v*WALK_SPEED),delta=target.map((v,i)=>v-velocity[i]),n=Math.hypot(...delta),amount=reduced?1:Math.min(1,(keyboard?360:480)*dt/(n||1)),before=Math.hypot(...velocity);velocity=velocity.map((v,i)=>v+delta[i]*amount);speed=Math.hypot(...velocity);const step=(before+speed)*.5*dt,next=roomTarget(pos[0]+(speed?velocity[0]/speed*step:0),pos[1]+(speed?velocity[1]/speed*step:0)),dx=next[0]-pos[0],dy=next[1]-pos[1],distance=Math.hypot(dx,dy);pos=next;moving=distance>.001;if(moving){heading=walkingView(dx,dy,heading);face=dx<0?-1:1;back=heading===1;walkClock+=distance/WALK_SPEED;}if(!keyboard&&(speed<.01||!moving)){keyWalking=false;speed=0;velocity=[0,0];bounce();}}
+ else if(goal){const dx=goal[0]-pos[0],dy=goal[1]-pos[1],d=Math.hypot(dx,dy),before=speed;speed=walkingSpeed(speed,d,dt);const step=d<.15?d:(before+speed)*.5*dt;heading=walkingView(dx,dy,heading);walkClock+=Math.min(step,d)/WALK_SPEED;face=dx<0?-1:1;back=dy<0&&Math.abs(dy)>Math.abs(dx);if(d<=step){pos=[...goal];goal=null;speed=0;if(sleeping){restFrom=[...pos];restAt=t;face=-1;}else bounce();}else{pos[0]+=dx/d*step;pos[1]+=dy/d*step;moving=true;}}
+ if(restFrom){const p=reduced?1:Math.min(1,(t-restAt)/450),k=.5-.5*Math.cos(p*Math.PI);pos=restFrom.map((v,i)=>v+(ROOM_LAYOUT.bedRest[i]-v)*k);resting=true;if(p===1)restFrom=null;}
+ const el=world.querySelector('#room-person');el?.setAttribute('transform',`translate(${pos[0]} ${pos[1]})`);el?.setAttribute('data-resting',String(resting));paintHumans(world,{pose:moving?'walk':resting?'sit':'idle',face,back,heading,time:moving?walkClock:reduced?0:t/1000,gaitAmount:reduced?0:speed/WALK_SPEED});}
+ function stopKeyboard(){if(keyWalking){goal=null;speed=0;velocity=[0,0];keyWalking=false;}}
+ return{render,enter,leave,pick,tick,stopKeyboard,get inside(){return inside;}};
 }
-
