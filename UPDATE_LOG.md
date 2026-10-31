@@ -1,3 +1,10 @@
+## 2026-10-31T22:24:54+09:00 — Codex · 포근섬2 별도 프로젝트 GitHub 보관
+
+- 사용자 요청: 의상 PNG 적용 및 제작 중 앱을 포근섬2로 명시해 GitHub 업로드. 신규 저장소 생성은 GitHub integration 권한 오류로 불가.
+- projects/pogeun-island-2/에 현재 Sites 소스 226df08d2f06f85be37993f1b583f533a8f10872 보관. 기존 dist/와 기존 배포 설정 유지.
+- 검사: 해당 프로젝트 node --test tests/*.test.cjs 7/7 통과. 실제 브라우저·모바일 미검수. Sites 배포 별도 진행.
+- 남은 사항: 몸체/헤어 분리 및 실기기 시각검수 미포함. 기존 포근섬 요구표의 미완료 항목은 그대로 유지.
+
 ## 2026-10-31T16:55:33+09:00 — Codex · 포근섬62 5개 요청 배포 및 공개검증
 
 - Source master@81f98a212f14a934d25f169dcc5e3b6f0417435f; task codex/pogeun-rebuild62; synchronized base1f375b674ad3fa53548f247273901d5c1cc9d31d. Reviewed dist tree4c4b0433d2af7f1001cdf585bbdcfb0764e4792b. 강제푸시없음/다른작업변경없음/원화수정없음. 코드·테스트·텍스트기록만게시,이미지로컬유지.

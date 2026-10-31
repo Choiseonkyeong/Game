@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+const sandbox={structuredClone};vm.runInNewContext(fs.readFileSync(__dirname+'/../dist/economy.js','utf8')+';globalThis.api=LifeEconomy',sandbox);
+let time=100000,rng=.8;const memory={};const storage={getItem:k=>memory[k],setItem:(k,v)=>memory[k]=v};const create=()=>sandbox.api.create({storage,now:()=>time,random:()=>rng});
+let e=create();assert.equal(e.plant(0,'carrot').ok,true);assert.equal(e.data.shells,2440);assert.equal(e.plant(0,'cotton').ok,false);assert.equal(e.harvest(0).ok,false);assert.equal(e.plant(20,'carrot').ok,false);
+time+=15000;assert.equal(e.plot(0).stage,'ready');assert.equal(e.harvest(0).ok,true);assert.equal(e.data.shells,2495);assert.equal(e.data.inventory.carrot,1);assert.equal(e.harvest(0).ok,false);assert.equal(e.data.shells,2495);
+e.plant(1,'cotton');time+=30000;e=create();assert.equal(e.plot(1).stage,'ready');e.harvest(1);assert.equal(e.data.inventory.cotton,1);assert.equal(e.data.carrotsHarvested,1);
+e.catchBug('butterfly');e.catchBug('dragonfly');assert.equal(e.data.inventory.butterfly,1);assert.equal(e.catchBug('unknown'),false);
+e.startFishing();assert.equal(e.startFishing(),false);assert.equal(e.reel().ok,false);let before=e.data.shells;e.startFishing();time+=340*Math.PI/2;assert.equal(e.reel().ok,true);assert.equal(e.data.shells,before+80);assert.equal(e.reel().ok,false);assert.equal(e.data.shells,before+80);
+rng=0;e.startFishing();time+=340*Math.PI/2;assert.equal(e.reel().ok,true);assert.equal(e.data.inventory.chest,1);e.startFishing();time+=8000;assert.equal(e.reel().ok,false);e.startFishing();e.cancelFishing();assert.equal(e.reel().ok,false);
+const restored=create();assert.equal(restored.data.inventory.chest,1);const copy=e.data;copy.shells=0;assert.notEqual(e.data.shells,0);
+const bad=sandbox.api.create({storage:{getItem:()=>JSON.stringify({version:1,shells:-10,inventory:{cotton:'NaN'},plots:[{crop:'bad',plantedAt:0}]}),setItem(){throw Error('blocked')}},now:()=>time});assert.equal(bad.data.shells,2450);assert.equal(bad.data.inventory.cotton,0);assert.equal(bad.plot(0).stage,'empty');bad.plant(0,'carrot');assert.equal(bad.storageOK,false);
+console.log('PASS: planting costs, growth boundary, offline restore, harvest once, materials, insects, fishing timing/timeout/cancel/rewards, persistence, invalid data');

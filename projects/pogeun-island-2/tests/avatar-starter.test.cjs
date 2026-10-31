@@ -1,0 +1,8 @@
+const assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+const source=fs.readFileSync(__dirname+'/../avatar-starter/avatar.js','utf8').split("const status=document.querySelector('#status');")[0]+'\nglobalThis.Renderer=PogeunAvatar;globalThis.config=AVATAR;';
+const pending=[];const makeRoot=()=>({children:[],style:{setProperty(){}},replaceChildren(){this.children=[]},append(n){this.children.push(n)}});const roots=[makeRoot(),makeRoot()];
+const s={document:{createElement:()=>({dataset:{},style:{setProperty(k,v){this[k]=v}}})},Image:class{naturalWidth=1230;naturalHeight=1278;set src(v){this.value=v;pending.push(this)}get src(){return this.value}}};vm.createContext(s);vm.runInContext(source,s);const r=new s.Renderer(s.config,roots);
+pending.shift().onload();assert.equal(roots[0].children[0].dataset.slot,'body');r.load('top','old.png');r.load('top','new.png');const old=pending.shift(),fresh=pending.shift();fresh.onload();old.onload();assert.equal(r.images.get('top').src,'new.png');assert.equal(roots[1].children.at(-1).src,'new.png');
+r.load('hat','hat.png');r.remove('hat');pending.shift().onload();assert.equal(r.images.has('hat'),false);r.load('top','missing.png');pending.shift().onerror();assert.equal(r.images.get('top').src,'new.png');r.remove('body');assert.equal(r.images.has('body'),true);
+const calls=[];r.draw({save(){},translate(){},drawImage(...args){calls.push(args)},restore(){}},100,200,123);assert.equal(calls.length,2);assert.equal(calls[0][3],123);assert.equal(calls[0][4],127.8);
+r.reset();assert.equal(r.images.has('top'),false);console.log('PASS: initial character, synchronized views, latest-load-wins, remove cancels pending, failure preserves outfit, Canvas sizing, reset');

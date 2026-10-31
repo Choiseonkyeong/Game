@@ -1,0 +1,8 @@
+{
+  "source": "./body-source.jpg",
+  "target": "./body.png",
+  "status": "awaiting_transparent_png",
+  "source_size": {"width": 1264, "height": 843},
+  "reason": "The attachment is an RGB JPEG containing a checkerboard; it has no alpha channel.",
+  "integration": "sprite-config.js already registers body-basic at ./images/body.png. A valid transparent PNG will activate layered rendering automatically."
+}
