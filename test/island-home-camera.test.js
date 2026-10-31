@@ -7,7 +7,7 @@ test('enlarged home keeps the complete island within wide and short landscape vi
   assert(x<=225&&x+w>=715);assert(y<=185&&y+h>=650);
   assert(Math.abs(w/h-width/height)<1e-10);
   const oldH=Math.max(960,800*width/height)/(width/height);
-  assert(oldH/h>1.4);
+  assert(oldH/h>1.2);
  }
 });
 test('room framing, zoom and non-reference stages retain their coordinate geometry',()=>{

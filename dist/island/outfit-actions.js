@@ -1,14 +1,17 @@
 // Articulated action poses use the selected clothed source pixels, never a base-outfit drawing.
-const supported=new Set(['harvest','fishing','pickup','hoeing','jump','greeting','highfive']);
+const supported=new Set(['harvest','fishing','pickup','hoeing','jump','greeting','highfive','smile','wink','surprise','shy','stretch','dance']);
 export const outfitAction=pose=>supported.has(pose);
 export function outfitActionPlan(pose,time=0,face=1,row=0){
  if(!outfitAction(pose))return null;
  const left=row===2||row!==3&&face<0,sign=left?1:-1,phase=Math.sin(time*Math.PI),plan={left,leftAngle:0,rightAngle:0,tilt:0,y:0,tool:null};
- const degrees={harvest:115+5*phase,fishing:68+3*phase,pickup:30+4*phase,hoeing:35+15*phase,jump:12,greeting:135+9*phase,highfive:155+4*phase}[pose];
+ const degrees={harvest:115+5*phase,fishing:68+3*phase,pickup:30+4*phase,hoeing:35+15*phase,jump:12,greeting:135+9*phase,highfive:155+4*phase,smile:0,wink:0,surprise:12,shy:40,stretch:150+4*phase,dance:65+25*phase}[pose];
  plan[left?'leftAngle':'rightAngle']=sign*degrees*Math.PI/180;
  if(pose==='greeting'||pose==='highfive')plan.tilt=sign*.035;
  if(pose==='harvest')plan.tilt=sign*.045;
  if(pose==='pickup'||pose==='hoeing'){plan.tilt=sign*-.10;plan.y=2;}
+ if(pose==='shy'){plan.tilt=sign*.06;plan.y=1;}
+ if(pose==='stretch'){plan.leftAngle=2.45;plan.rightAngle=-2.45;}
+ if(pose==='dance'){plan.tilt=.06*phase;plan.y=-Math.abs(phase)*2;plan.leftAngle=.5+.3*phase;plan.rightAngle=-.5+.3*phase;}
  if(pose==='jump'){plan.y=-3-2*Math.abs(phase);plan.leftAngle=.25;plan.rightAngle=-.25;}
  if(pose==='fishing'||pose==='hoeing')plan.tool=pose;
  return plan;
@@ -40,6 +43,7 @@ function parts(source,original,row,key){
 }
 export function drawOutfitAction(ctx,source,original,{pose,time=0,face=1,row=0,key}){
  const plan=outfitActionPlan(pose,time,face,row);if(!plan)return false;
+ if(['smile','wink','surprise','shy','stretch','dance'].includes(pose)){ctx.save();ctx.translate(64,147+plan.y);ctx.rotate(plan.tilt);if(pose==='stretch')ctx.scale(1.025,1.025);ctx.translate(-64,-147);ctx.drawImage(source,0,0);ctx.restore();return true;}
  const p=parts(source,original,row,key);ctx.save();ctx.translate(64,147+plan.y);ctx.rotate(plan.tilt);ctx.translate(-64,-147);ctx.drawImage(p.body,0,0);
  for(let side=0;side<2;side++){const[x,y]=p.pivots[side];ctx.save();ctx.translate(x,y);ctx.rotate(side===0?plan.leftAngle:plan.rightAngle);ctx.translate(-x,-y);ctx.drawImage(p.arms[side],0,0);ctx.restore();}
  if(plan.tool){const side=plan.left?0:1,[x,y]=p.pivots[side],angle=plan.left?plan.leftAngle:plan.rightAngle,handX=x-Math.sin(angle)*27,handY=y+Math.cos(angle)*27,sign=plan.left?-1:1;

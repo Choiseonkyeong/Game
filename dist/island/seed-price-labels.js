@@ -1,4 +1,4 @@
-import{SEED_CATALOG}from'./seed-shop.js?v=42';
+import{SEED_CATALOG}from'./seed-shop.js?v=62';
 // Numbers baked into the preserved illustration. Any differing live price gets
 // a small data-driven label over the number only; original artwork stays intact.
 const BAKED={apple:[120,138,368],lemon:[120,278,368],persimmon:[120,420,368],banana:[120,270,476],corn:[90,138,670],sweetpotato:[80,278,670],potato:[90,420,670]};

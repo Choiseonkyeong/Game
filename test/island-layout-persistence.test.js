@@ -10,10 +10,10 @@ test('actual startup preserves every user furniture kind and crop on an already 
  assert.deepEqual(state,before);
 });
 test('actual island loader preserves saved layouts while initializing its game loop',()=>{
- const state=fixture(),context={state:null,archipelago:{},applyTerrain(){},initializeLoop:s=>s,restore:JSON.parse,activeIsland:()=>({level:2}),save(){},resetActor(){},render(){}};
+ const state=fixture(),context={state:null,sharedBag:{water:4},sharedSeeds:{corn:2},sharedFeed:{feed:3,milk:0},structuredClone,archipelago:{},applyTerrain(){},initializeLoop:s=>s,restore:JSON.parse,activeIsland:()=>({level:2}),save(){},resetActor(){},render(){}};
  const code=source.split('\n').find(line=>line.startsWith('function loadIsland('));
  vm.runInNewContext(code,context);context.loadIsland(JSON.stringify(state));
- assert.deepEqual(JSON.parse(JSON.stringify(context.state)),state);
+ assert.deepEqual(JSON.parse(JSON.stringify(context.state)),{...state,inventory:{water:4},seedStock:{corn:2},feedStock:{feed:3,milk:0}});
 });
 test('one-time old layout cleanup keeps planted low-ID crops and any deliberately decorated layout',()=>{
  const code=source.slice(source.indexOf('let referenceStart=false;'),source.indexOf('let reduced='));

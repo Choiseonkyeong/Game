@@ -1,4 +1,4 @@
-import{passable}from'./core.js?v=48';
+import{passable}from'./core.js?v=62';
 // Tile size is configurable: sky islands use half-size tiles (art/world/sky-terrain.json).
 export const GRID={hx:42,hy:20,ox:480,oy:210};
 export function setGrid(g){for(const k of ['hx','hy','ox','oy'])if(Number.isFinite(g?.[k])&&g[k]>0)GRID[k]=g[k];}

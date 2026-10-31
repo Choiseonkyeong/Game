@@ -12,7 +12,7 @@ export const SEED_CATALOG={
 };
 export const seedStages=k=>SEED_CATALOG[k]?.type==='tree'?5:4;
 export function seedStage(p,now=Date.now()){const v=SEED_CATALOG[p.seedKind];if(!v)return 1;return Math.min(seedStages(p.seedKind),1+Math.floor(Math.max(0,now-p.seedAt+(p.seedBoost||0))/v.ms*(seedStages(p.seedKind)-1)));}
-export function seedCounts(raw){return Object.fromEntries(Object.keys(SEED_CATALOG).filter(k=>Number.isSafeInteger(raw?.[k])&&raw[k]>0).map(k=>[k,Math.min(999,raw[k])]));}
+export function seedCounts(raw){return Object.fromEntries(Object.keys(SEED_CATALOG).filter(k=>Number.isSafeInteger(raw?.[k])&&raw[k]>0).map(k=>[k,Math.min(999999,raw[k])]));}
 export function seedArt(p,now=Date.now()){
  const v=SEED_CATALOG[p.seedKind];if(!v)return '';const stage=seedStage(p,now),ripe=stage===seedStages(p.seedKind),soil='<ellipse cy="1" rx="39" ry="15" fill="#bd8d5a" stroke="#87603f" stroke-width="2"/><ellipse cy="-2" rx="31" ry="9" fill="#d2a874"/>';
  const leaf=(x,y,scale=1)=>`<g transform="translate(${x} ${y}) scale(${scale})"><path d="M0 0Q-28-27-33-9Q-24 8 0 0Q12-30 31-22Q36-4 0 0" fill="#91bd54" stroke="#517c38" stroke-width="2.5"/><path d="M0 0l-23-10M0 0l22-16" stroke="#c9df7a" stroke-width="2"/></g>`;

@@ -1,6 +1,6 @@
 import{WALK_SPEED,walkingSpeed}from'./movement.js?v=55';
 import{walkingView}from'./locomotion.js?v=30';
-import{humanMarkup,paintHumans}from'./human-sprites.js?v=60';
+import{humanMarkup,paintHumans}from'./human-sprites.js?v=62';
 import{patchSvg}from'./dom-render.js?v=5';
 // Anchors measured on the approved 960×800 plate; the resting body fits the mattress.
 export const ROOM_LAYOUT={bed:[45,145,165,255],bedApproach:[225,420],bedRest:[132,358],avatarScale:1.8};

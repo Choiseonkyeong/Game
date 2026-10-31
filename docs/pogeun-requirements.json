@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "all_requested_changes_complete": false,
-  "reviewed_at": "2026-10-31T16:02:46+09:00",
+  "reviewed_at": "2026-10-31T16:51:33+09:00",
   "requirements": [
     {
       "id": "R1",
@@ -63,7 +63,7 @@
     {
       "id": "R2",
       "request": "새싹 소실 방지 및 성장 단계 유지",
-      "status": "complete",
+      "status": "partial",
       "implementation": [
         "dist/island/core.js",
         "dist/island/seed-shop.js"
@@ -97,7 +97,8 @@
           "findings": [],
           "report": "docs/pogeun-detail-audit58.md",
           "verified": "공개 UI7종 구매/심기, 새로고침 없이 실제1800ms성장렌더5구간/도형변경, 재접속/섬왕복/수확 모두통과. Date.now만 이동, seedAt수정없음."
-        }
+        },
+        "followup62": "사용자 기존Lv4에서 기본새싹 부재 재신고. 누락된starterId/실물 복구를R17에서 재검증; 배포 전까지완료아님."
       }
     },
     {
@@ -572,7 +573,116 @@
         "report": "docs/pogeun-comfort61-review.md",
         "deployment": "succeeded",
         "run": 41178881466,
-        "public_verification": "build-info exact source;7runtimefiles HTTP200 and byte-identical"
+        "public_verification": "build-info exact source;7runtimefiles HTTP200 and byte-identical",
+        "accepted_alternative62": "이번 사용자4번은 연속360 그래픽이 어려우면 다양한표정/자세/동작 대체를 명시 허용. R16에 대체 구현/검수기록, 기존 연속360요구 자체는미구현으로 유지."
+      }
+    },
+    {
+      "id": "R13",
+      "request": "섬 확장 레벨4의 실제 크기 변화와 조개 구매 시 비눗방울 레벨업 효과",
+      "original_request": "docs/pogeun-request62.md",
+      "status": "partial",
+      "implementation": [
+        "dist/island/level-two-visual.js",
+        "dist/island/home-camera.js",
+        "dist/island/expansion62.js",
+        "dist/island/island.js"
+      ],
+      "acceptance": "구매 성공시에만 정확한 조개 차감, 실제 섬과 보행영역 확대/화면 크기 증가, 비눗방울 효과, 재접속 유지",
+      "evidence": {
+        "source": "pending: codex/pogeun-rebuild62; synchronized master1f375b674ad3fa53548f247273901d5c1cc9d31d",
+        "automated": "npm test47files pass/0fail; new inventory/repair/projected-growth tests. CI pending",
+        "visual": "카메라가 확대를 상쇄하던 원인 수정. Lv1~10 투영크기 증가 자동검사 및 실제Lv4→5 구매/효과/재접속 확인. 동작감소 설정 준수.",
+        "storage": "Local Chromium: harvest→bag→sale150→paid expansion150→Lv3/reload. Shared items/seeds/feed switch/back and offline reload; no duplicate/negative stock.",
+        "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
+        "remaining": "최종 저장/배포/공개소스 검증 대기. 실제 휴대폰 터치·구형브라우저 전체기종 미검수.",
+        "report": "docs/pogeun-rebuild62-review.md"
+      }
+    },
+    {
+      "id": "R14",
+      "request": "사과0개 문구 제거; 수확물·물·비료 등 획득 아이템의 인벤토리와 포근섬 그래픽",
+      "original_request": "docs/pogeun-request62.md",
+      "status": "partial",
+      "implementation": [
+        "dist/island/inventory62.js",
+        "dist/island/core.js",
+        "dist/island/island.js",
+        "dist/island/responsive62.css"
+      ],
+      "acceptance": "수확은 아이템 보관, 판매 시에만 조개 지급. 물/비료 사용·취득, 씨앗/먹이 공용 재고, 옛 사과 무손실 이전, 재접속/섬이동 보존",
+      "evidence": {
+        "source": "pending: codex/pogeun-rebuild62; synchronized master1f375b674ad3fa53548f247273901d5c1cc9d31d",
+        "automated": "npm test47files pass/0fail; new inventory/repair/projected-growth tests. CI pending",
+        "visual": "아이보리·목재 테두리·세이지 카드의 전용 보관함3탭. 물 채우기/비료 구매·작물 사용/수확물 판매·공용 재고/옛 사과 이전 자동 및 브라우저 검사.",
+        "storage": "Local Chromium: harvest→bag→sale150→paid expansion150→Lv3/reload. Shared items/seeds/feed switch/back and offline reload; no duplicate/negative stock.",
+        "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
+        "remaining": "최종 저장/배포/공개소스 검증 대기. 실제 휴대폰 터치·구형브라우저 전체기종 미검수.",
+        "report": "docs/pogeun-rebuild62-review.md"
+      }
+    },
+    {
+      "id": "R15",
+      "request": "모든 휴대폰의 씨앗상점/옷장/메인화면을 양옆 공백 없이 full 화면 맞춤",
+      "original_request": "docs/pogeun-request62.md",
+      "status": "partial",
+      "implementation": [
+        "dist/island/responsive62.css",
+        "dist/island/seed-market.js",
+        "dist/island/wardrobe-screen.js"
+      ],
+      "acceptance": "가로는 원화/누르기 영역이 같은 전체뷰포트 프레임, 세로는 카드와 옷장 UI 재배치. 캐릭터 비율 유지·안전영역 고려",
+      "evidence": {
+        "source": "pending: codex/pogeun-rebuild62; synchronized master1f375b674ad3fa53548f247273901d5c1cc9d31d",
+        "automated": "npm test47files pass/0fail; new inventory/repair/projected-growth tests. CI pending",
+        "visual": "844×390,667×375,932×430,1280×480,1024×768,390×844,360×800 Chromium 검사. 씨앗/옷장 x0 y0 width/height viewport일치; 원화 자체 상하 여백도 크롭. 실제폰 미검수.",
+        "storage": "Local Chromium: harvest→bag→sale150→paid expansion150→Lv3/reload. Shared items/seeds/feed switch/back and offline reload; no duplicate/negative stock.",
+        "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
+        "remaining": "최종 저장/배포/공개소스 검증 대기. 실제 휴대폰 터치·구형브라우저 전체기종 미검수.",
+        "report": "docs/pogeun-rebuild62-review.md"
+      }
+    },
+    {
+      "id": "R16",
+      "request": "의상 그래픽을 몸에 맞춤; 360도 그래픽이 어려우면 다양한 표정·자세·동작으로 대체",
+      "original_request": "docs/pogeun-request62.md",
+      "status": "partial",
+      "implementation": [
+        "dist/island/human-sprites.js",
+        "dist/island/outfit-actions.js",
+        "dist/island/expressions62.js",
+        "dist/island/wardrobe-screen.js"
+      ],
+      "acceptance": "원래 얼굴/헤어 유지, 목선·소매·허리 정렬과 이전 옷 잔상 제거. 사용자 허용 대안인 다양한 표정/동작과4방향 조작",
+      "evidence": {
+        "source": "pending: codex/pogeun-rebuild62; synchronized master1f375b674ad3fa53548f247273901d5c1cc9d31d",
+        "automated": "npm test47files pass/0fail; new inventory/repair/projected-growth tests. CI pending",
+        "visual": "원본 몸 좌표에 목선/소매/허리 맞춤, 미리보기 동일 착용몸 사용. 방긋/윙크/깜짝/수줍음/몸풀기/춤6종 추가, 기존8행동 포함14종. 남녀/4방향48렌더 시각검수. 연속360 구현 주장 안함.",
+        "storage": "Local Chromium: harvest→bag→sale150→paid expansion150→Lv3/reload. Shared items/seeds/feed switch/back and offline reload; no duplicate/negative stock.",
+        "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
+        "remaining": "최종 저장/배포/공개소스 검증 대기. 실제 휴대폰 터치·구형브라우저 전체기종 미검수.",
+        "report": "docs/pogeun-rebuild62-review.md"
+      }
+    },
+    {
+      "id": "R17",
+      "request": "메인화면 기본 새싹1단계 재확인 및 기존 저장 데이터에서 누락된 작물 복구",
+      "original_request": "docs/pogeun-request62.md",
+      "status": "partial",
+      "implementation": [
+        "dist/island/core.js",
+        "dist/island/starter-tree-art.js",
+        "dist/island/island.js"
+      ],
+      "acceptance": "새 계정 및 기존모든레벨에 기본 새싹 한개, 기존 작물/성장/ID 보존, 재접속중복 없음, 메인에서 식별·접근 가능",
+      "evidence": {
+        "source": "pending: codex/pogeun-rebuild62; synchronized master1f375b674ad3fa53548f247273901d5c1cc9d31d",
+        "automated": "npm test47files pass/0fail; new inventory/repair/projected-growth tests. CI pending",
+        "visual": "기존loop.started에 starterId/실물나무가 없으면 아무것도 만들지 않던 분기 복구. Lv1~10 자동검사, 실제Lv4 옛 저장에서 corn22 유지+새싹1개 복구/표시/재접속. 기본새싹1/5 표지 추가.",
+        "storage": "Local Chromium: harvest→bag→sale150→paid expansion150→Lv3/reload. Shared items/seeds/feed switch/back and offline reload; no duplicate/negative stock.",
+        "url": "not deployed; existing https://choiseonkyeong.github.io/Game/island/ unchanged",
+        "remaining": "최종 저장/배포/공개소스 검증 대기. 실제 휴대폰 터치·구형브라우저 전체기종 미검수.",
+        "report": "docs/pogeun-rebuild62-review.md"
       }
     }
   ]

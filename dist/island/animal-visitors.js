@@ -1,5 +1,5 @@
 import{smoothRoute,lineClear}from'./movement.js?v=55';
-import{terrainCells}from'./core.js?v=48';
+import{terrainCells}from'./core.js?v=62';
 import{paintCute}from'./cute.js?v=9';
 export const VISIT_TIMING={first:90000,minGap:180000,maxGap:300000,retry:30000};
 // Cute pets and farm friends occasionally visit a walkable tile, rest, then wander off.

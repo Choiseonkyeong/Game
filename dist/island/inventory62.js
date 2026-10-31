@@ -1,0 +1,32 @@
+import{FISHES}from'./content-state.js?v=51';
+import{BALANCE}from'./balance.js?v=48';
+import{SEED_CATALOG,seedStage,seedStages}from'./seed-shop.js?v=62';
+const names={apple:'사과',lemon:'레몬',persimmon:'감',banana:'바나나',corn:'옥수수',sweetpotato:'고구마',potato:'감자'};
+const crops={carrot:'당근',potato:'감자',strawberry:'딸기'};
+export const BAG_ITEMS={
+ ...Object.fromEntries(FISHES.map(f=>['fish-'+f.id,{name:f.name,kind:'fish',group:'harvest',price:f.shells}])),
+ ...Object.fromEntries(Object.entries(SEED_CATALOG).map(([k,v])=>['seed-'+k,{name:names[k]+' 한 꾸러미',kind:k,group:'harvest',price:v.reward}])),
+ ...Object.fromEntries(Object.entries(BALANCE.crops).map(([k,v])=>['crop-'+k,{name:'텃밭 '+crops[k],kind:k,group:'harvest',price:v.shells}])),
+ ...Object.fromEntries(Object.entries(BALANCE.animals).map(([k,v])=>['product-'+k,{name:k==='hen'?'달걀':k==='duck'?'오리알':({sheep:'양',cow:'젖소',llama:'라마'}[k]+' 퇴비'),kind:k==='hen'||k==='duck'?'egg':'fertilizer',group:k==='hen'||k==='duck'?'harvest':'supplies',price:v.shells}])),
+ apple:{name:'사과',kind:'apple',group:'harvest',price:5},
+ water:{name:'맑은 물',kind:'water',group:'supplies',boost:30000},
+ fertilizer:{name:'포근 비료',kind:'fertilizer',group:'supplies',boost:45000}
+};
+export const freshBag=()=>({water:5,fertilizer:2});
+export function cleanBag(raw){return Object.fromEntries(Object.entries(raw||{}).filter(([id,n])=>BAG_ITEMS[id]&&Number.isSafeInteger(n)&&n>0&&n<=999999));}
+export function putInBag(state,id,count=1){if(!BAG_ITEMS[id]||!Number.isSafeInteger(count)||count<1)return false;state.inventory=cleanBag(state.inventory);const next=(state.inventory[id]||0)+count;if(next>999999)return false;state.inventory[id]=next;return true;}
+export function sellFromBag(state,id,count=1){const item=BAG_ITEMS[id],qty=state.inventory?.[id]||0;if(!item?.price||!Number.isSafeInteger(count)||count<1||count>qty)return{ok:false,state,why:'판매할 수 있는 아이템을 확인해 주세요.'};const next=structuredClone(state);next.inventory[id]-=count;if(!next.inventory[id])delete next.inventory[id];return{ok:true,state:next,earned:item.price*count};}
+export function useBagSupply(state,id,plantId){const item=BAG_ITEMS[id],plant=state.items.find(p=>p.id===plantId),amount=item?.boost||(id.startsWith('product-')&&item?.kind==='fertilizer'?45000:0);if(!amount||!state.inventory?.[id])return{ok:false,state,why:'사용할 물이나 비료가 없어요.'};if(!plant?.seedKind||seedStage(plant)>=seedStages(plant.seedKind))return{ok:false,state,why:'아직 자라는 작물을 골라 주세요.'};const next=structuredClone(state);next.items.find(p=>p.id===plantId).seedBoost=Math.min(SEED_CATALOG[plant.seedKind].ms,(plant.seedBoost||0)+amount);next.inventory[id]--;if(!next.inventory[id])delete next.inventory[id];return{ok:true,state:next};}
+const colors={apple:'#e58e85',lemon:'#ead18a',persimmon:'#e8b07e',banana:'#ecd48b',corn:'#e5ce91',sweetpotato:'#bd95ac',potato:'#cfb28b',carrot:'#e2a177',strawberry:'#d88f9a'};
+export function bagIcon(kind){const line='fill="none" stroke="#8e725a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';let art;
+ if(kind==='water')art='<path d="M22 17v-5h20v5l5 9v23q-15 9-30 0V26z" fill="#c7e3e0" stroke="#8e725a" stroke-width="2"/><path d="M18 35q8-6 15 0t14 0v14q-15 9-29 0z" fill="#9ecbc9"/><path d="M24 11h16" '+line+'/>';
+ else if(kind==='fertilizer')art='<path d="M20 14q12 5 24 0l-3 10 9 27q-18 11-36 0l9-27z" fill="#e7d4b4" stroke="#8e725a" stroke-width="2"/><path d="M23 23h18M32 46V32m0 7q-12-13-11-3q3 8 11 3m0-2q11-12 10-3q-2 7-10 3" '+line+'/>';
+ else if(kind==='egg')art='<path d="M32 12c-10 0-19 22-19 30a19 15 0 0038 0c0-8-9-30-19-30" fill="#f4e8ce" stroke="#8e725a" stroke-width="2"/>';
+ else if(kind==='fish')art='<path d="M44 32l12-10v20z" fill="#aacbc4" stroke="#8e725a" stroke-width="2"/><ellipse cx="28" cy="32" rx="20" ry="13" fill="#b8d5ce" stroke="#8e725a" stroke-width="2"/><circle cx="18" cy="29" r="2" fill="#795f52"/>';
+ else if(kind==='seed')art='<path d="M15 15h34v39H15z" fill="#eedbbb" stroke="#8e725a" stroke-width="2"/><path d="M14 14h36v8H14z" fill="#b7c69f" stroke="#8e725a" stroke-width="2"/><path d="M32 46V31m0 8q-13-15-12-4q3 8 12 4m0-3q12-13 11-3q-3 7-11 3" '+line+'/>';
+ else art=`<path d="M30 22q-15-9-18 9q-4 17 15 23q5 2 10-1q20-5 16-22q-4-18-20-9" fill="${colors[kind]||'#c8d2a6'}" stroke="#8e725a" stroke-width="2"/><path d="M32 24v-9q3-8 10-6q-1 10-10 9" fill="#a6bd89" stroke="#8e725a" stroke-width="2"/><path d="M20 30q-4 4-2 10" stroke="#fff8ec" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+ return`<svg viewBox="0 0 64 64" aria-hidden="true">${art}</svg>`;
+}
+export function inventoryMarkup(state,{tab='harvest',shells=0,selected=null}={}){const tabs=[['harvest','수확물'],['supplies','물 · 비료'],['seeds','씨앗 · 먹이']];const plants=state.items.filter(p=>p.seedKind&&seedStage(p)<seedStages(p.seedKind));const stock=tab==='seeds'?[...Object.entries(state.seedStock||{}).map(([id,n])=>({id:'stock-'+id,n,name:SEED_CATALOG[id].name+' 씨앗',kind:'seed'})),...Object.entries(state.feedStock||{}).filter(([,n])=>n>0).map(([id,n])=>({id:'feed-'+id,n,name:id==='milk'?'우유':'사료',kind:'fertilizer'}))]:Object.entries(state.inventory||{}).filter(([id,n])=>n>0&&BAG_ITEMS[id]?.group===tab).map(([id,n])=>({id,n,...BAG_ITEMS[id]}));
+ return`<section class="bag-screen"><header class="bag-title"><div><small>소중한 수확과 돌봄 도구</small><h2>포근 보관함</h2></div><span>조개 ${shells}개</span></header><div class="bag-tabs" role="tablist" aria-label="인벤토리 분류">${tabs.map(([id,name])=>`<button role="tab" aria-selected="${tab===id}" data-bag-tab="${id}">${name}</button>`).join('')}</div>${tab==='supplies'?`<div class="bag-tools"><label>돌볼 작물 <select id="bag-plant">${plants.map(p=>`<option value="${p.id}" ${p.id===selected?'selected':''}>${SEED_CATALOG[p.seedKind].name} · ${seedStage(p)}/${seedStages(p.seedKind)}단계</option>`).join('')}</select></label><button data-bag-refill>우물에서 물 5개 채우기</button><button data-bag-buy>비료 구매 · 조개 10</button></div>`:''}<div class="bag-grid">${stock.map(v=>`<article class="bag-card" data-bag-id="${v.id}">${bagIcon(v.kind)}<strong>${v.name}</strong><span>보유 ${v.n}개</span>${v.price?`<small>1개 판매 · 조개 ${v.price}</small><button data-bag-sell="${v.id}">1개 판매</button><button class="bag-all" data-bag-sell-all="${v.id}">모두 판매 · 조개 ${v.price*v.n}</button>`:tab==='supplies'?`<button data-bag-use="${v.id}" ${plants.length?'':'disabled'}>작물에 사용</button>`:''}</article>`).join('')||'<p class="bag-empty">아직 보관한 아이템이 없어요.<br>작물을 수확하면 이곳에 차곡차곡 모여요.</p>'}</div><p class="bag-note">수확한 작물은 보관함에서 판매해 조개로 바꿔요. 아이템과 수량은 자동 저장돼요.</p></section>`;
+}

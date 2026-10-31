@@ -1,3 +1,10 @@
+## 2026-10-31T16:51:33+09:00 — Codex · 포근섬62 5개 추가요청 구현·로컬 검수 / 배포준비
+
+- Task codex/pogeun-rebuild62; synchronized master1f375b674ad3fa53548f247273901d5c1cc9d31d. 원문 docs/pogeun-request62.md, 요구R13~17추가. 소스커밋pending; 기존원화파일수정없음.
+- 섬확대카메라상쇄해결/조개구매비눗방울,수확물·물비료·씨앗먹이공유인벤토리/판매·사용·저장,가로세로전체프레임,의상경계/6표정몸동작,기존Lv4누락새싹복구. 임의중간각도360은 사용자허용표정/동작대안으로 구현;연속360완료라고주장안함.
+- Checks: npm test47파일 pass/0fail; 7viewport실제Chrome 씨앗/옷장전체화면/버튼. 새싹→수확보관→판매150→확장150차감/Lv3→reload; 기존Lv4 corn22보존+새싹복구+유료Lv5/비눗방울/reload. 인벤판매/보충/구매/섬이동공유/오프라인/터치회전,오류0. 남녀의상·표정48렌더로컬검수. docs/pogeun-rebuild62-review.md.
+- Deployment pending. 사진·검수이미지로컬보관,코드/테스트/텍스트기록만기존승인배포범위. 실제폰/모든구형브라우저미검수. 최종공개검증전까지수정완료표현보류.
+
 ## 2026-10-31T16:02:46+09:00 — Codex · 포근섬61 승인본 배포 성공 / 공개소스 검증
 
 - Source master@24c817dc24cd763e09cdcf6ee520ce65007a9aa7; task codex/pogeun-comfort61; synchronized base3f838c72821d29b7812a9475079812e96c415e99; reviewed dist tree fb8cba0ac6a9138bf87e0cd1497d607e7d670032. 사용자 “승인”에 따라 코드·테스트·텍스트기록 게시,스크린샷 로컬유지.

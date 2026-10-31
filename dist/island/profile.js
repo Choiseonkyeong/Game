@@ -1,4 +1,4 @@
-import{terrainCells,passable}from'./core.js?v=48';
+import{terrainCells,passable}from'./core.js?v=62';
 import{project}from'./movement.js?v=44';
 export const PROFILE_KEY='pogeun-profile-v1';
 export function readProfile(raw){try{const p=JSON.parse(raw);return typeof p?.name==='string'&&p.name.trim()&&p.name.trim().length<=20&&['female','male'].includes(p.gender)?{name:p.name.trim(),gender:p.gender}:null;}catch{return null;}}

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import{keyboardDirection,keyboardStep}from'../dist/island/keyboard-walk.js';
-import{fresh,setTerrain,passable}from'../dist/island/core.js?v=48';
+import{fresh,setTerrain,passable}from'../dist/island/core.js?v=62';
 import{project,unproject,setGrid}from'../dist/island/movement.js?v=55';
 test('diagonal keys keep the same speed, opposite keys stop, and WASD matches arrows',()=>{
  assert.deepEqual(keyboardDirection(new Set(['a'])),[-1,0]);

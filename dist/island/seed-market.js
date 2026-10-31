@@ -1,4 +1,5 @@
-import{SEED_CATALOG,SEED_DESCRIPTION,seedStages}from'./seed-shop.js?v=42';
+import{bagIcon}from'./inventory62.js?v=62';
+import{SEED_CATALOG,SEED_DESCRIPTION,seedStages}from'./seed-shop.js?v=62';
 
 // Exact user-provided reference, 1280×879. Only its surrounding UI bands are clipped.
 export const SEED_SHOP_ART='art/seed-shop-approved-59.jpg';
@@ -16,7 +17,7 @@ const position=([x,y,w,h])=>`left:${x/1280*100}%;top:${(y-79)/722*100}%;width:${
 export function seedMarketMarkup({shells=0,stock={},catalog=SEED_CATALOG}={}){
  const cards=Object.entries(catalog).map(([id,seed])=>{
   const region=SEED_SHOP_REGIONS[id],count=stock[id]||0;
-  return `<button class="seed-approved-hit" data-seed-select="${id}" aria-label="${seed.name} 씨앗 선택 · 조개 ${seed.price} · 보유 ${count}개 · ${seed.type==='tree'?'과일나무':'밭작물'} ${seedStages(id)}단계" style="${position(region.card)}"></button><span class="seed-approved-label" style="${position(region.label)}"><strong>${seed.name}</strong><span class="seed-approved-amounts"><span data-seed-price="${id}">조개 ${seed.price}</span><small data-seed-stock="${id}">보유 ${count}개</small></span></span>`;
+  return `<button class="seed-approved-hit" data-seed-select="${id}" aria-label="${seed.name} 씨앗 선택 · 조개 ${seed.price} · 보유 ${count}개 · ${seed.type==='tree'?'과일나무':'밭작물'} ${seedStages(id)}단계" style="${position(region.card)}"><span class="seed-mobile-content">${bagIcon(id)}<strong>${seed.name}</strong><small>조개 ${seed.price} · 보유 ${count}개</small></span></button><span class="seed-approved-label" style="${position(region.label)}"><strong>${seed.name}</strong><span class="seed-approved-amounts"><span data-seed-price="${id}">조개 ${seed.price}</span><small data-seed-stock="${id}">보유 ${count}개</small></span></span>`;
  }).join('');
  return `<section class="seed-approved-board" aria-label="씨앗 상점 · 과일나무 5단계 · 밭작물 4단계"><img class="seed-approved-art" src="${SEED_SHOP_ART}" width="1280" height="879" alt="승인한 씨앗상점 원화. 목재 간판, 꽃 장식, 떠 있는 하늘섬, 위4개·아래3개의 씨앗 카드" draggable="false">${cards}<span class="seed-approved-wallet" aria-label="내 조개 잔액" style="${position([1069,142,143,32])}">조개 ${shells}개</span><button class="seed-approved-guide" data-act="seed-guide" style="${position([294,755,691,34])}" aria-label="씨앗 성장 안내 열기"><span class="sr">${SEED_DESCRIPTION}</span></button></section>`;
 }

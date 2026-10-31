@@ -1,4 +1,4 @@
-import {seedStage} from './seed-shop.js?v=42';
+import {seedStage} from './seed-shop.js?v=62';
 
 // Identity survives terrain expansion, relocation and restoring an existing save.
 export const starterPlant=(state,plant)=>plant?.seedKind==='apple'&&plant.id===state.loop.starterId;
