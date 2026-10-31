@@ -1233,7 +1233,7 @@
   },
   "pending_island61_attempt": {
     "recorded_at": "2026-10-31T07:16:13+09:00",
-    "status": "blocked_approval_required",
+    "status": "authorized_publication_pending",
     "task_branch": "codex/pogeun-comfort61",
     "local_source_commit": "26fba4378748a335fa1a632fd0364a5e1d0cb822",
     "synchronized_master": "3f838c72821d29b7812a9475079812e96c415e99",
@@ -1242,6 +1242,8 @@
     "checks": "npm test46files pass/0fail; targeted17 behavioral tests pass; local Chromium844x390 starter→stage5→harvest150/Lv2→paid expansion150/Lv3→reload retained; settings2columns, browse302/302 and expansion250/250; tray246–318/context189–237/nav326–383; wardrobe left/right/drag; pageerrors0",
     "limitations": "R12 partial: only four illustrated directions; arbitrary intermediate angle360 unimplemented. Physical phone unverified. Screenshots kept local.",
     "rejection": "Automatic approval review rejected git push of modified source/history to GitHub destination: edit authorization did not specifically authorize source export. No workaround attempted.",
-    "remaining": "Explicit user authorization to upload code/tests/text records (no screenshots) to Choiseonkyeong/Game and deploy to existing GitHub Pages URL; then verify Actions/build-info/public access."
+    "remaining": "Approved; publish reviewed source then verify Actions/build-info and public access.",
+    "authorized_at": "2026-10-31T16:00:39+09:00",
+    "authorization": "사용자: 승인. 직전 요청의 Choiseonkyeong/Game 소스·테스트·텍스트 기록 업로드 및 기존 GitHub Pages 배포 승인; 스크린샷 제외."
   }
 }
