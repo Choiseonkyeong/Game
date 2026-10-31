@@ -1,3 +1,10 @@
+## 2026-10-31T16:02:46+09:00 — Codex · 포근섬61 승인본 배포 성공 / 공개소스 검증
+
+- Source master@24c817dc24cd763e09cdcf6ee520ce65007a9aa7; task codex/pogeun-comfort61; synchronized base3f838c72821d29b7812a9475079812e96c415e99; reviewed dist tree fb8cba0ac6a9138bf87e0cd1497d607e7d670032. 사용자 “승인”에 따라 코드·테스트·텍스트기록 게시,스크린샷 로컬유지.
+- GitHub Pages41178881466 completed/success; CI172 pass/0fail. build-info exact24c817dc24cd763e09cdcf6ee520ce65007a9aa7; built_at2026-10-31T07:01:08.990Z. URL https://choiseonkyeong.github.io/Game/island/
+- 공개HTTP200 및 index/island/wardrobe-screen/comfort61/rotation61/tutorial61/sw7파일 바이트일치. 기존로컬Chrome844×390 새싹→5단계→수확150/Lv2→확장150차감/Lv3→reload,팝업스크롤/겹침/옷장좌우·드래그/오류0 검증본과 동일.
+- R10튜토리얼/R11팝업개선 complete. R12 임의중간각도 연속360 미완성(현4방향); 실제폰·공개브라우저·타인계정접속 미검수. 과거미완료요구 유지,전체완료아님.
+
 ## 2026-10-31T16:00:39+09:00 — Codex · 포근섬61 사용자 승인 후 업로드·배포 재개
 
 - 사용자 명시 승인: “승인”. 직전 질문에 명시한 Choiseonkyeong/Game 코드·테스트·텍스트기록 업로드와 기존Pages배포 범위. 스크린샷은 로컬유지.

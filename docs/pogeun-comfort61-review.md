@@ -21,3 +21,11 @@
 - Final tray y246–318/context189–237/nav326–383 at844×390: no overlap. Screenshot inspected locally; original house/lawn/character visible.
 - Automatic approval review rejected `git push origin HEAD:refs/heads/codex/pogeun-comfort61`: app-edit authorization does not specifically authorize exporting source/history to the GitHub destination. No alternate upload channel attempted.
 - Remaining: explicit user approval to upload code/tests/text records (no screenshots) to Choiseonkyeong/Game and deploy existing GitHub Pages URL. Then re-fetch master, integrate concurrent work, push and verify Actions/build-info/access. Continuous arbitrary-angle360 remains incomplete independently of approval.
+
+## 배포 성공 2026-10-31T16:02:46+09:00
+
+- Source `master@24c817dc24cd763e09cdcf6ee520ce65007a9aa7`; task `codex/pogeun-comfort61`; synchronized master3f838c72821d29b7812a9475079812e96c415e99. 사용자 “승인” 후 검수된 동일 dist tree fb8cba0ac6a9138bf87e0cd1497d607e7d670032 게시.
+- GitHub Pages run41178881466 completed/success; CI172 pass/0fail. build-info commit정확일치, built_at 2026-10-31T07:01:08.990Z.
+- URL https://choiseonkyeong.github.io/Game/island/ ; 공개HTTP200 및 변경runtime7파일(index/island/wardrobe-screen/comfort61/rotation61/tutorial61/sw) 바이트일치. 공개브라우저/실제폰/다른사람계정접속은 별도 미검수.
+- R10튜토리얼/R11팝업 개선 complete; R12는 4방향조작만으로 partial유지. 과거 미완료요구도 유지. 모든요구완료로 보고하지 않음.
+- 스크린샷 로컬유지; 코드·테스트·텍스트기록만 승인범위대로 업로드.

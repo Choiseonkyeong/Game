@@ -4,17 +4,17 @@
   "repository": "Choiseonkyeong/Game",
   "authoritative_branch": "master",
   "last_reviewed_game": {
-    "version": "island-finish-60",
-    "github_commit": "220ea255cab0b5294cd739d08af68215611e72f4",
-    "entrypoint": "dist/island/index.html -> island.js?v=60; human/room/visitors/outfit-actions/pose-blend60",
+    "version": "island-comfort-61",
+    "github_commit": "24c817dc24cd763e09cdcf6ee520ce65007a9aa7",
+    "entrypoint": "dist/island/index.html -> island.js?v=61; wardrobe-screen61/tutorial61/rotation61/comfort61",
     "checks": {
-      "automated_tests_passed": 170,
+      "automated_tests_passed": 172,
       "actual_desktop_browser_verified": false,
       "local_desktop_browser_verified": true,
       "actual_mobile_touch_verified": false
     },
     "limitations": [
-      "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published."
+      "R12 partial: four illustrated directions only; arbitrary intermediate angle continuous360 unimplemented. Physical phone and all gender/outfit angles unverified; external collaborator access not independently confirmed. Public verification HTTP only; QA screenshots kept local."
     ]
   },
   "last_successful_deployment": {
@@ -38,29 +38,29 @@
     "status": "deployed",
     "live_url_verified": true,
     "last_successful": {
-      "version": "island-finish-60",
-      "source_commit": "220ea255cab0b5294cd739d08af68215611e72f4",
+      "version": "island-comfort-61",
+      "source_commit": "24c817dc24cd763e09cdcf6ee520ce65007a9aa7",
       "source_branch": "master",
-      "task_branch": "codex/island-finish60",
-      "reviewed_dist_tree": "edd5f8431e58a7430b1660dbd2feb86a3a6c1a93",
+      "task_branch": "codex/pogeun-comfort61",
+      "reviewed_dist_tree": "fb8cba0ac6a9138bf87e0cd1497d607e7d670032",
       "url": "https://choiseonkyeong.github.io/Game/island/",
-      "run_id": 41031750752,
+      "run_id": 41178881466,
       "deployment": "succeeded",
-      "built_at": "2026-10-30T09:12:55.499Z",
-      "checked_at": "2026-10-30T18:16:35+09:00",
-      "automated_tests_passed": 170,
+      "built_at": "2026-10-31T07:01:08.990Z",
+      "checked_at": "2026-10-31T16:02:46+09:00",
+      "automated_tests_passed": 172,
       "automated_tests_failed": 0,
       "actual_desktop_browser_verified": false,
       "local_desktop_browser_verified": true,
       "emulated_touch_verified": "local Chromium844x390",
       "actual_mobile_touch_verified": false,
       "all_requested_changes_complete": false,
-      "checks": "GitHub Actions41031750752 completed/success; CI170 pass/0fail. Public build-info exact220ea255. HTTP byte match index/island/human-sprites/room/animal-visitors/outfit-actions/pose-blend/sw (8 files). Local Chrome220 action renders/20 head comparisons; movement/settings/bed/storage/price150->60/offline;844x390 emulated touch7cards.",
-      "limitations": "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published."
+      "checks": "GitHub Pages41178881466 completed/success; CI172 pass/0fail. Public build-info exact source; seven changed runtime files HTTP200 and byte identical to reviewed checkout. Local Chromium starter→stage5→harvest150/Lv2→paid expansion150/Lv3→reload retained; settings2columns, browse302/302 and expansion250/250; tray/context/nav no overlap; wardrobe left/right/drag; pageerrors0.",
+      "limitations": "R12 partial: four illustrated directions only; arbitrary intermediate angle continuous360 unimplemented. Physical phone and all gender/outfit angles unverified; external collaborator access not independently confirmed. Public verification HTTP only; QA screenshots kept local."
     },
     "history_note": "Run #1 (966f4a4) failed before Pages was enabled; runs #2-#9 succeeded after the owner enabled Settings > Pages > GitHub Actions.",
-    "access_check": "GitHub Actions41031750752 completed/success; CI170 pass/0fail. Public build-info exact220ea255. HTTP byte match index/island/human-sprites/room/animal-visitors/outfit-actions/pose-blend/sw (8 files). Local Chrome220 action renders/20 head comparisons; movement/settings/bed/storage/price150->60/offline;844x390 emulated touch7cards.",
-    "remaining_action": "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published.",
+    "access_check": "GitHub Pages41178881466 completed/success; CI172 pass/0fail. Public build-info exact source; seven changed runtime files HTTP200 and byte identical to reviewed checkout. Local Chromium starter→stage5→harvest150/Lv2→paid expansion150/Lv3→reload retained; settings2columns, browse302/302 and expansion250/250; tray/context/nav no overlap; wardrobe left/right/drag; pageerrors0.",
+    "remaining_action": "R12 partial: four illustrated directions only; arbitrary intermediate angle continuous360 unimplemented. Physical phone and all gender/outfit angles unverified; external collaborator access not independently confirmed. Public verification HTTP only; QA screenshots kept local.",
     "previous_successful_before_art": {
       "version": "island-0.1",
       "source_commit": "58628cf149b35cd575b98657fc8097ce6a7da22f",
@@ -533,6 +533,27 @@
       "all_requested_changes_complete": false,
       "checks": "CI164 passed/0failed; Chrome local7 seeds purchase/plant/stages/roundtrip/harvest, Lv4 hen feed-grow-collect/reload, clothes4views/88actionrenders, Lv1–10 identical120.511x173.76px, offline runtime. Public Chrome57: new clothes/beret save-reload; seven cards; sweetpotato shown90/purchase90/wallet150->60/stock1 after reload; no pageerrors. Public build-info exact source.",
       "limitations": "R1/R4/R6/R8 partial: actual phone/touch/all-outfit motion visual QA; approved seed-shop final artwork2 missing; full furniture reconstruction not implemented. Other4 livestock browser lifecycles unverified (unit tests pass)."
+    },
+    "previous_successful_before_comfort61": {
+      "version": "island-finish-60",
+      "source_commit": "220ea255cab0b5294cd739d08af68215611e72f4",
+      "source_branch": "master",
+      "task_branch": "codex/island-finish60",
+      "reviewed_dist_tree": "edd5f8431e58a7430b1660dbd2feb86a3a6c1a93",
+      "url": "https://choiseonkyeong.github.io/Game/island/",
+      "run_id": 41031750752,
+      "deployment": "succeeded",
+      "built_at": "2026-10-30T09:12:55.499Z",
+      "checked_at": "2026-10-30T18:16:35+09:00",
+      "automated_tests_passed": 170,
+      "automated_tests_failed": 0,
+      "actual_desktop_browser_verified": false,
+      "local_desktop_browser_verified": true,
+      "emulated_touch_verified": "local Chromium844x390",
+      "actual_mobile_touch_verified": false,
+      "all_requested_changes_complete": false,
+      "checks": "GitHub Actions41031750752 completed/success; CI170 pass/0fail. Public build-info exact220ea255. HTTP byte match index/island/human-sprites/room/animal-visitors/outfit-actions/pose-blend/sw (8 files). Local Chrome220 action renders/20 head comparisons; movement/settings/bed/storage/price150->60/offline;844x390 emulated touch7cards.",
+      "limitations": "Public Chromium recheck stopped by proxy CA trust error; execution environment became unavailable while preparing certificate trust. No public-browser success claimed. Physical phone/full outfits and genders visual QA unverified; all furniture not reconstructed. QA screenshots remain local; text records published."
     }
   },
   "restoration_record": {
@@ -1233,17 +1254,41 @@
   },
   "pending_island61_attempt": {
     "recorded_at": "2026-10-31T07:16:13+09:00",
-    "status": "authorized_publication_pending",
+    "status": "resolved_deployed_after_user_authorization",
     "task_branch": "codex/pogeun-comfort61",
     "local_source_commit": "26fba4378748a335fa1a632fd0364a5e1d0cb822",
     "synchronized_master": "3f838c72821d29b7812a9475079812e96c415e99",
-    "deployment": "not_started",
+    "deployment": "succeeded",
     "url_unchanged": "https://choiseonkyeong.github.io/Game/island/",
     "checks": "npm test46files pass/0fail; targeted17 behavioral tests pass; local Chromium844x390 starter→stage5→harvest150/Lv2→paid expansion150/Lv3→reload retained; settings2columns, browse302/302 and expansion250/250; tray246–318/context189–237/nav326–383; wardrobe left/right/drag; pageerrors0",
     "limitations": "R12 partial: only four illustrated directions; arbitrary intermediate angle360 unimplemented. Physical phone unverified. Screenshots kept local.",
     "rejection": "Automatic approval review rejected git push of modified source/history to GitHub destination: edit authorization did not specifically authorize source export. No workaround attempted.",
-    "remaining": "Approved; publish reviewed source then verify Actions/build-info and public access.",
+    "remaining": "R12 partial: four illustrated directions only; arbitrary intermediate angle continuous360 unimplemented. Physical phone and all gender/outfit angles unverified; external collaborator access not independently confirmed. Public verification HTTP only; QA screenshots kept local.",
     "authorized_at": "2026-10-31T16:00:39+09:00",
-    "authorization": "사용자: 승인. 직전 요청의 Choiseonkyeong/Game 소스·테스트·텍스트 기록 업로드 및 기존 GitHub Pages 배포 승인; 스크린샷 제외."
+    "authorization": "사용자: 승인. 직전 요청의 Choiseonkyeong/Game 소스·테스트·텍스트 기록 업로드 및 기존 GitHub Pages 배포 승인; 스크린샷 제외.",
+    "github_source_commit": "24c817dc24cd763e09cdcf6ee520ce65007a9aa7",
+    "run_id": 41178881466,
+    "resolved_at": "2026-10-31T16:02:46+09:00"
+  },
+  "island61_release": {
+    "version": "island-comfort-61",
+    "source_commit": "24c817dc24cd763e09cdcf6ee520ce65007a9aa7",
+    "source_branch": "master",
+    "task_branch": "codex/pogeun-comfort61",
+    "reviewed_dist_tree": "fb8cba0ac6a9138bf87e0cd1497d607e7d670032",
+    "url": "https://choiseonkyeong.github.io/Game/island/",
+    "run_id": 41178881466,
+    "deployment": "succeeded",
+    "built_at": "2026-10-31T07:01:08.990Z",
+    "checked_at": "2026-10-31T16:02:46+09:00",
+    "automated_tests_passed": 172,
+    "automated_tests_failed": 0,
+    "actual_desktop_browser_verified": false,
+    "local_desktop_browser_verified": true,
+    "emulated_touch_verified": "local Chromium844x390",
+    "actual_mobile_touch_verified": false,
+    "all_requested_changes_complete": false,
+    "checks": "GitHub Pages41178881466 completed/success; CI172 pass/0fail. Public build-info exact source; seven changed runtime files HTTP200 and byte identical to reviewed checkout. Local Chromium starter→stage5→harvest150/Lv2→paid expansion150/Lv3→reload retained; settings2columns, browse302/302 and expansion250/250; tray/context/nav no overlap; wardrobe left/right/drag; pageerrors0.",
+    "limitations": "R12 partial: four illustrated directions only; arbitrary intermediate angle continuous360 unimplemented. Physical phone and all gender/outfit angles unverified; external collaborator access not independently confirmed. Public verification HTTP only; QA screenshots kept local."
   }
 }
