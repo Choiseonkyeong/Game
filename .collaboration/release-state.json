@@ -1334,5 +1334,18 @@
     "current_five_requests_verified": true,
     "checks": "Pages41182329103 success; CI176 pass/0fail. Public build-info exact81f98a2;18runtime files HTTP200 and byte-identical. Public Chromium844x390 HTTP200/new starter/inventory water/fullscreen seed board/pageerrors0. Local7viewport fullscreen/48gender-outfit-pose renders/starter repair all10levels/Lv4→5 paid expansion bubbles/reload/new-player harvest→bag→sell150→paid expansion→Lv3/reload/shared seeds-feed-items switch/back/offline reload/pageerrors0.",
     "limitations": "Continuous arbitrary-angle360 not implemented; user-authorized expression/pose/action alternative R16 delivered. Physical phone/vendor/old-browser exhaustive verification and another collaborator account access not independently checked. Earlier unrelated partial requirements retained. QA images remain local."
+  },
+  "pogeun2_separate_project": {
+    "recorded_at": "2026-10-31T22:26:12+09:00",
+    "github_branch": "codex/pogeun-island-2",
+    "github_source_commit": "8664759",
+    "project_path": "projects/pogeun-island-2",
+    "sites_source_commit": "226df08d2f06f85be37993f1b583f533a8f10872",
+    "sites_version": 3,
+    "deployment": "succeeded",
+    "url": "https://pogeun-island-cozy-1031.tgd6zpmz8n.chatgpt.site",
+    "checks": "7 test files passed; no browser/physical phone verification",
+    "access": "existing owner-only custom audience preserved",
+    "remaining": "body/hair separation and visual/mobile QA not included"
   }
 }
