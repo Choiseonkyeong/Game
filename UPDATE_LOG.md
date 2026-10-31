@@ -1,3 +1,11 @@
+## 2026-10-31T16:55:33+09:00 — Codex · 포근섬62 5개 요청 배포 및 공개검증
+
+- Source master@81f98a212f14a934d25f169dcc5e3b6f0417435f; task codex/pogeun-rebuild62; synchronized base1f375b674ad3fa53548f247273901d5c1cc9d31d. Reviewed dist tree4c4b0433d2af7f1001cdf585bbdcfb0764e4792b. 강제푸시없음/다른작업변경없음/원화수정없음. 코드·테스트·텍스트기록만게시,이미지로컬유지.
+- Pages41182329103 success; CI176 pass/0fail. public build-info exact81f98a212f14a934d25f169dcc5e3b6f0417435f, built_at2026-10-31T07:53:00.933Z. URL https://choiseonkyeong.github.io/Game/island/
+- 공개HTTP18파일바이트일치. 실제공개Chrome844×390 프로필/새싹/보관함물/씨앗상점full프레임/카드/오류0. 로컬7화면full/남녀의상표정48렌더,수확보관→판매150→확장150차감/Lv3→reload,옛Lv4 corn22보존+새싹복구+유료Lv5/비눗방울,재고공유·오프라인·터치회전 검수.
+- 새5요청R13~17 완료조건충족. 연속360은 사용자허용6표정·몸동작 대안으로구현(기존8행동포함14종);연속360완료라하지않음. R2복구재검증완료. 과거다른미완료요구유지,전체앱요구완료아님.
+- 실제물리휴대폰·모든구형브라우저·외부작업자계정은별도미검수. 보고서 docs/pogeun-rebuild62-review.md/원문 docs/pogeun-request62.md/요구표에근거보존.
+
 ## 2026-10-31T16:51:33+09:00 — Codex · 포근섬62 5개 추가요청 구현·로컬 검수 / 배포준비
 
 - Task codex/pogeun-rebuild62; synchronized master1f375b674ad3fa53548f247273901d5c1cc9d31d. 원문 docs/pogeun-request62.md, 요구R13~17추가. 소스커밋pending; 기존원화파일수정없음.

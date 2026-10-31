@@ -23,3 +23,30 @@
 ## 배포
 
 Pending. 검수된 소스 저장 후 최신master/preflight와 diff를확인하고 기존승인된 Choiseonkyeong/Game 및 기존Pages에 게시. 성공후 정확한SHA/Actions/build-info/공개파일일치를추가기록.
+
+## 실제 배포 검증 2026-10-31T16:55:33+09:00
+
+- Source `master@81f98a212f14a934d25f169dcc5e3b6f0417435f`; task `codex/pogeun-rebuild62`; synchronized master1f375b674ad3fa53548f247273901d5c1cc9d31d. Reviewed dist tree4c4b0433d2af7f1001cdf585bbdcfb0764e4792b. 코드·테스트·텍스트기록만 기존사용자배포승인 및 이번요청범위에서 게시. 원화/검수이미지업로드없음.
+- GitHub Pages41182329103 success; CI176 pass/0fail. Public build-info exactsource, built_at 2026-10-31T07:53:00.933Z. URL https://choiseonkyeong.github.io/Game/island/
+- 공개HTTP18파일 검수본바이트일치. 실제공개Chromium844×390 HTTP200,프로필작성→기본새싹→보관함물→상점전체뷰포트와카드동작 확인, pageerrors0. 로컬7화면/저장·이동·오프라인/48렌더검수와구분함.
+- 사용자새요청R13~17 다섯항목완료조건 충족. R16은사용자가허용한표정/동작대체이며 임의중간각도연속360구현으로보고하지않음. 기존미완료요구/실제폰·모든브라우저검수한계보존.
+
+공개파일 sha256 증거:
+- `index.html`: `16f827e91535a69a7438c445197f4284e2ad23f1711eb07e0b7ee806268c28f5`
+- `island.js`: `a32725a44daf011aaa613dd7c4519550e786a85b1917787af166ec4c688fe313`
+- `wardrobe-screen.js`: `3cfb1471269cf98a032eb73ea7c1172e9f6e579a4f33b130076369925294e036`
+- `comfort61.css`: `c22623199e7d775a0dd903acc6bc89dfb53665ec322c5d4259ffe48705fcaeae`
+- `rotation61.js`: `96cc2a9ef6dde53ba1c5ecc573594e744c5e4ebf0304f32a60ba01e8a83cded4`
+- `tutorial61.js`: `35b4e22c41e3e0feb7fdb8139920751c8ce2bbb1c2bb180fb3250b2271ca3b48`
+- `core.js`: `0b375b7c470132bfe5629505ffe41ea8740f97d1254f9d0d1978d11767819415`
+- `home-camera.js`: `b20d59dec2284df762104aaca5a89c86f8a37230f9087e1fd148ccc4ad42ecea`
+- `level-two-visual.js`: `58b8eaa360009aa017f6d2dd054b63e87bae1ba980fa21f5cd06fb62eb7b9346`
+- `human-sprites.js`: `5c8f4aa0dba776417dfe13f9ec1d3f4d52d13dd1d2c9479a37493d4569a4e926`
+- `outfit-actions.js`: `abeb59ab2d295f7dbc7194a21448d07990183cabd02bce24746ca0e402e6891f`
+- `seed-market.js`: `1b8e951e2daf348c5425ff2df1ad308a2cf58118c2a34ad2a98b21429eee5b40`
+- `seed-shop.js`: `64d80c705f8ac217c50702e4595c4fc456478d8290f74e4d8e3c4ed0f2b27d97`
+- `inventory62.js`: `e67ab966214e13064a5c243693c71b1665630ef349c1882cf193b7e49835e5ba`
+- `responsive62.css`: `1d67472b0d3105c71d4348549773ed7037867880da35098645a2a2744bd1c0a7`
+- `expressions62.js`: `4b2d9b211232198ce38169885117e1035598f0f94858c9d403ed438060aaf0a9`
+- `expansion62.js`: `9d00433a8deff0235c04ed5cf3d7ed616be07a98f49ca3760350c49f4be00980`
+- `sw.js`: `a19da90b43012e3f3db1533d17773ba34f2835fc87f64c1ecc7c7df33d6a1a8e`
