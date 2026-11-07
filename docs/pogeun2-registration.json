@@ -1,0 +1,44 @@
+{
+  "authorization": "캐릭터 이미지는 변경하지말고 등록해줘",
+  "base_master": "19411fd6f574014ea196095e34462fa19bfa3806",
+  "task_branch": "codex/pogeun2-register",
+  "character_and_hud_unchanged": true,
+  "unchanged_git_objects": {
+    "dist/island/art/humans": "b2c31c23a9424c638a41fbb8189ad760b2c9c045",
+    "dist/island/art/char": "93e2250fc5b2d40b6b2b26b7f86cfc13550504a8",
+    "dist/island/human-sprites.js": "68ace0f4078029d7286ba70851e8974c9370b0c7",
+    "dist/island/avatar.js": "c2546064962c7830b3040c28df42cca0824a9d03",
+    "dist/island/rig.js": "525d87a532c51c54b560963c5648c404d821b12c",
+    "dist/island/outfit-actions.js": "c799358ef7857ef45762d0e8b651c6e945933fe4",
+    "dist/island/pose-blend.js": "f5592c53731bd4a1c8709004f235d25046b40b30",
+    "dist/island/wardrobe.js": "6910acf0ac271f76a085368390acb2efcb437e03",
+    "dist/island/island.css": "c1fb1bc7ba25c634944c39038012a2d812de719b",
+    "dist/island/responsive62.css": "e252a842b45012a2f8cf8d8015334f41046c31a7"
+  },
+  "tests": {
+    "file_suites_passed": 48,
+    "failed": 0
+  },
+  "browser": {
+    "results": [
+      "1440x900: three independent beds and layered world rendered",
+      "Clicked bed → crop choice → avatar approached → carrot planted",
+      "Reload retained bed identity, position and planted crop",
+      "Simulated maturity clock: harvest entered inventory",
+      "Harvest inventory and cleared bed survived reload",
+      "Real pointer walk and keyboard walk completed without page errors",
+      "Cottage enter/exit preserved",
+      "Existing seed watering and growth retained",
+      "Existing saves do not receive extra or relocated beds on reload",
+      "1920x1080: world and unchanged HUD rendered",
+      "844x390: world and unchanged HUD rendered",
+      "667x375: world and unchanged HUD rendered",
+      "844x390 touch emulation: bed tap selected correct farming interaction"
+    ],
+    "errors": [],
+    "physicalPhoneVerified": false,
+    "clock": "Maturity advanced with browser fixed Date.now; movement and interaction used actual browser input"
+  },
+  "deployment": "pending",
+  "screenshots": "local only; not uploaded"
+}

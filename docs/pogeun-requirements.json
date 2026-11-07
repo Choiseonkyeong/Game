@@ -705,6 +705,29 @@
         "deployment": "succeeded",
         "public_verification": "Public build-info exact source;18runtimefiles byte-identical; public Chromium actual new starter/inventory/fullscreen seed board/pageerrors0"
       }
+    },
+    {
+      "id": "R18-approved-main-world",
+      "request": "포근섬2 최종 승인 이미지 기준: 단일 둥근 공중섬/황토 하단/크림집과 초록기와/좌사과나무·우꽃나무/밝은 파스텔/분리 오브젝트/2~4개 독립 확장 밭. 기존 캐릭터·UI·조작·저장·경제 보존. 승인 전 GitHub 배포 금지.",
+      "status": "partial",
+      "implementation": [
+        "dist/island/approved-world.js",
+        "dist/island/island.js",
+        "dist/island/core.js",
+        "dist/island/home-camera.js",
+        "dist/island/art/approved2/"
+      ],
+      "acceptance": "승인 이미지와 실제 PC/모바일 가로 화면 비교; 이동·충돌·농사·저장 회귀; 사용자 검수 후 배포 결정",
+      "evidence": {
+        "source_base": "19411fd6f574014ea196095e34462fa19bfa3806",
+        "reference": "docs/qa/pogeun2/approved-reference.jpg",
+        "automated": "48 test files passed / 0 failed; test/island-approved2.test.js includes farm lifecycle, collision, six-bed persistence, ten-level grid preservation",
+        "visual": "Actual local Chromium 1440x900/1920x1080/844x390/667x375, touch emulation; pageerrors 0. docs/qa/pogeun2/browser-results.json",
+        "deployment": "authorized; pending",
+        "remaining": "승인 원본을 참고한 재생성 에셋으로 픽셀 동일 추출본 아님. 최종 형태·배치·비율의 사용자 검수 및 실물 휴대폰 미확인.",
+        "storage": "Sow/reload/reap/reload, inventory, watering, old-layout repeat reload retained; offline reload/assets HTTP200 verified",
+        "registration_authorization": "2026-11-07 사용자: 캐릭터 이미지는 변경하지말고 등록해줘"
+      }
     }
   ]
 }

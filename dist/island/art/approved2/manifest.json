@@ -1,0 +1,16 @@
+{
+  "reference_sha256": "3534f3d92b75473f725dbb6be0bf6bcbf4d43efccf885eb8a7575ac668774d28",
+  "reference_use": "style reference only; never rendered as full scene",
+  "assets": {
+    "house.png": "1e3e63236c104be4b0f2cdeb024a714e5946fc31bffaabd69ebab220ecc6f05b",
+    "apple-tree.png": "b64ed3f15df70c2f7cf71e8937cb305e88de2c9b193edf522c08750300efb9ee",
+    "flowers.png": "ed6a7ed6b599fa6fc97ad2e17413102fc6cb15d6efe833dc0866f54e1af77ff6",
+    "stump.png": "bfda84349aa42aaaed4a67a92967616a00094c02b4b89a77b6cc85b6d1abddbe",
+    "bed.png": "79c3d7a49c8f3b9fdef825cdbf362e72bc3137fac61c3759a6b3c94d2e8b4aa4",
+    "terrain.png": "a092b9831453a0eac51cb52b744d19ce04fcdc032079aac72b5c46c4c8d0fcc9",
+    "blossom-tree.png": "bd8a45c50f598cf90c1740d6c1726ea2c5b0957d33f017d54dc060593e70e08d",
+    "cloud.png": "5d831fa989c56534dfc8cd816b86c84d58ebce3df3e1b049718f57d73242f6f3"
+  },
+  "generation": "Separate transparent assets generated from approved reference; original generated pixels copied without processing",
+  "character": "Existing human-sprites and all character art unchanged"
+}

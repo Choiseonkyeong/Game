@@ -4,7 +4,7 @@ import{SEED_CATALOG,seedStage,seedStages,seedCounts}from'./seed-shop.js?v=62';
 export const STARTER_CELL=[14,8];
 export const referenceStarter=(s,p)=>p.id===s.loop.starterId&&p.c===STARTER_CELL[0]&&p.r===STARTER_CELL[1];
 export const KEY='suming-cozy-island-v1';
-export const FURNITURE={seedplot:{name:'씨앗 자리',max:24},bench:{name:'쿠션 벤치',max:3},pot:{name:'토분 화분',max:10},tree:{name:'사과나무',max:4},bowl:{name:'모모 물그릇',max:2},pond:{name:'수련 연못',max:2},table:{name:'티 테이블',max:3},cushion:{name:'폭신 방석',max:4},lamp:{name:'정원등',max:5},path:{name:'디딤돌',max:20},fence:{name:'나무 울타리',max:10},field:{name:'텃밭',max:2}};
+export const FURNITURE={seedplot:{name:'씨앗 자리',max:24},bench:{name:'쿠션 벤치',max:3},pot:{name:'토분 화분',max:10},tree:{name:'사과나무',max:4},bowl:{name:'모모 물그릇',max:2},pond:{name:'수련 연못',max:2},table:{name:'티 테이블',max:3},cushion:{name:'폭신 방석',max:4},lamp:{name:'정원등',max:5},path:{name:'디딤돌',max:20},fence:{name:'나무 울타리',max:10},field:{name:'텃밭',max:24}};
 // Harvest receipts go to inventory; only sales credit shells. The legacy earned field quotes sale value when harvested is present.
 export const CROPS={carrot:{name:'당근',...BALANCE.crops.carrot},potato:{name:'감자',...BALANCE.crops.potato},strawberry:{name:'딸기',...BALANCE.crops.strawberry}};
 export const LIVESTOCK={hen:{name:'암탉',sprite:'hen',...BALANCE.animals.hen},duck:{name:'오리',sprite:'duck',...BALANCE.animals.duck},sheep:{name:'양',sprite:'sheep',...BALANCE.animals.sheep},cow:{name:'젖소',sprite:'cow',...BALANCE.animals.cow},llama:{name:'라마',sprite:'llama',...BALANCE.animals.llama}};

@@ -1,3 +1,10 @@
+## 2026-11-07T11:50:36+09:00 — Codex · 포근섬2 등록 승인 / 배포 준비
+
+- 사용자 승인: “캐릭터 이미지는 변경하지말고 등록해줘”. 포근섬2 월드 수정본 코드/런타임 에셋/테스트/텍스트기록을 Choiseonkyeong/Game 및 기존 GitHub Pages 경로에 등록. 캐릭터 원본 보존. 검수 스크린샷/첨부 원본은 로컬 보관.
+- Base remote master19411fd6f574014ea196095e34462fa19bfa3806; task codex/pogeun2-register; 검수 원본 local a5e361f5355fc0ab6ea4803fe3c5ae31d18a5923에서 필요한 패치만 반영. 시작 preflight ready/clean.
+- 캐릭터 이미지 art/humans·art/char 및 human-sprites/avatar/rig/outfit-actions/pose-blend/wardrobe, 기존 HUD/CSS의 원격 대비 변경 없음. 원본 기존 버전/저장/경제 보존. 재검사48파일 pass/0fail.
+- Deployment pending. 최종 Actions/공개 build-info/그래픽 바이트/브라우저는 배포 후 검증. 실제폰·최종미세일치 미검수, 과거 미완료요구 유지.
+
 ## 2026-10-31T16:55:33+09:00 — Codex · 포근섬62 5개 요청 배포 및 공개검증
 
 - Source master@81f98a212f14a934d25f169dcc5e3b6f0417435f; task codex/pogeun-rebuild62; synchronized base1f375b674ad3fa53548f247273901d5c1cc9d31d. Reviewed dist tree4c4b0433d2af7f1001cdf585bbdcfb0764e4792b. 강제푸시없음/다른작업변경없음/원화수정없음. 코드·테스트·텍스트기록만게시,이미지로컬유지.
