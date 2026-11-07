@@ -1,3 +1,10 @@
+## 2026-11-07T11:59:05+09:00 — Codex · 포근섬2 등록·배포 및 공개검증 성공
+
+- 사용자 “캐릭터 이미지는 변경하지말고 등록해줘” 승인. Source master@346943066634d7113a7e7da40f8675235c496b12; task codex/pogeun2-register; synchronized19411fd6; dist tree abb9a4366dc37947ed2fabf72f6edf02206ea676. 원본캐릭터art/humans·art/char/렌더코드/HUD 변경0.
+- Pages42331337710 all steps success. Build-info exact source, built_at 2026-11-07T02:52:39.177Z. URL https://choiseonkyeong.github.io/Game/island/
+- 공개19파일 HTTP200/바이트동일(월드8PNG/캐릭터4이미지+renderer포함). 공개실제Chrome844×390 새프로필→기존캐릭터·신규월드→밭터치·심기버튼/pageerror0. 로컬48파일 pass/0fail·4화면·이동/농사/재접속·기존씨앗물주기 통과.
+- Screenshots/첨부원본 local only. .collaboration 성공기록/요구표/등록근거 갱신. 물리휴대폰·타인계정·원본과주관적미세일치 미확인. 과거별도미완료요구 유지/전체앱요구완료아님.
+
 ## 2026-11-07T11:50:36+09:00 — Codex · 포근섬2 등록 승인 / 배포 준비
 
 - 사용자 승인: “캐릭터 이미지는 변경하지말고 등록해줘”. 포근섬2 월드 수정본 코드/런타임 에셋/테스트/텍스트기록을 Choiseonkyeong/Game 및 기존 GitHub Pages 경로에 등록. 캐릭터 원본 보존. 검수 스크린샷/첨부 원본은 로컬 보관.

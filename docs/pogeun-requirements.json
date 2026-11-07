@@ -723,10 +723,14 @@
         "reference": "docs/qa/pogeun2/approved-reference.jpg",
         "automated": "48 test files passed / 0 failed; test/island-approved2.test.js includes farm lifecycle, collision, six-bed persistence, ten-level grid preservation",
         "visual": "Actual local Chromium 1440x900/1920x1080/844x390/667x375, touch emulation; pageerrors 0. docs/qa/pogeun2/browser-results.json",
-        "deployment": "authorized; pending",
-        "remaining": "승인 원본을 참고한 재생성 에셋으로 픽셀 동일 추출본 아님. 최종 형태·배치·비율의 사용자 검수 및 실물 휴대폰 미확인.",
+        "deployment": "succeeded",
+        "remaining": "요청한 등록/배포 완료. 실물 휴대폰/주관적 원본 픽셀 일치 판정 미검수; 과거 다른 부분요구 유지.",
         "storage": "Sow/reload/reap/reload, inventory, watering, old-layout repeat reload retained; offline reload/assets HTTP200 verified",
-        "registration_authorization": "2026-11-07 사용자: 캐릭터 이미지는 변경하지말고 등록해줘"
+        "registration_authorization": "2026-11-07 사용자: 캐릭터 이미지는 변경하지말고 등록해줘",
+        "deployed_source": "346943066634d7113a7e7da40f8675235c496b12",
+        "run_id": 42331337710,
+        "url": "https://choiseonkyeong.github.io/Game/island/",
+        "public_verification": "19 files byte-identical; original character assets unchanged; Chromium844x390 HTTP200,3beds/tap/sow/pageerrors0"
       }
     }
   ]

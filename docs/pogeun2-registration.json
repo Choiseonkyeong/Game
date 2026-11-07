@@ -39,6 +39,160 @@
     "physicalPhoneVerified": false,
     "clock": "Maturity advanced with browser fixed Date.now; movement and interaction used actual browser input"
   },
-  "deployment": "pending",
-  "screenshots": "local only; not uploaded"
+  "deployment": {
+    "version": "pogeun2-approved-art-63",
+    "source_commit": "346943066634d7113a7e7da40f8675235c496b12",
+    "source_branch": "master",
+    "task_branch": "codex/pogeun2-register",
+    "synchronized_master": "19411fd6f574014ea196095e34462fa19bfa3806",
+    "reviewed_dist_tree": "abb9a4366dc37947ed2fabf72f6edf02206ea676",
+    "url": "https://choiseonkyeong.github.io/Game/island/",
+    "run_id": 42331337710,
+    "deployment": "succeeded",
+    "built_at": "2026-11-07T02:52:39.177Z",
+    "checked_at": "2026-11-07T02:59:05+00:00",
+    "automated_test_files_passed": 48,
+    "automated_tests_failed": 0,
+    "character_assets_unchanged": true,
+    "actual_desktop_browser_verified": true,
+    "emulated_touch_verified": "public Chromium 844x390: original character / 3 beds / farming selection / pageerrors0; local4viewports and lifecycle passed",
+    "actual_mobile_touch_verified": false,
+    "external_collaborator_access_verified": false,
+    "all_requested_changes_complete": false,
+    "checks": "Pages42331337710 all steps success; CI validation passed; public build-info exact3469430;19runtime files HTTP200/byte-identical including8new world images and unchanged character sprites/source; public Chromium844x390 first profile→world→bed tap→sow button, pageerrors0. Local48 test files passed; pointer/keyboard/house/sow/reload/maturity-clock/reap/inventory/reload/watering and4viewport checks passed.",
+    "limitations": "Physical phone, every vendor browser and subjective pixel-exact reference matching unverified. Existing unrelated partial requirements retained. Screenshots and original reference remain local."
+  },
+  "screenshots": "local only; not uploaded",
+  "source_commit": "346943066634d7113a7e7da40f8675235c496b12",
+  "public_http_checks": {
+    "build": {
+      "commit": "346943066634d7113a7e7da40f8675235c496b12",
+      "repository": "Choiseonkyeong/Game",
+      "built_at": "2026-11-07T02:52:39.177Z"
+    },
+    "checks": [
+      {
+        "path": "island/index.html",
+        "http": 200,
+        "sha256": "0a995278128fe86ec78f472f05346aa2809ae390c0a24132ef2da3a0485df2c8",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/island.js",
+        "http": 200,
+        "sha256": "394914e23e699d7b4262bc6f10e82b98f432385cf41df566e03322f69dce4486",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/core.js",
+        "http": 200,
+        "sha256": "1e4ba962cf799df1c9bf3a81772ba3e59ff7654dac86d1372f4d8e77c3de2fb8",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/approved-world.js",
+        "http": 200,
+        "sha256": "b05705236db9ed287c3c7b8d0cd310f1b472206e85f7f17c666d0465ace44bad",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/home-camera.js",
+        "http": 200,
+        "sha256": "35f052a15f098e38188da3d41678921fdcda7b3519b34c0dc03785f1609aa916",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/sw.js",
+        "http": 200,
+        "sha256": "ecf6404d442914128f923e71673b420431b1e10b119166816a4eb9cd62e52768",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/approved2/terrain.png",
+        "http": 200,
+        "sha256": "a092b9831453a0eac51cb52b744d19ce04fcdc032079aac72b5c46c4c8d0fcc9",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/approved2/house.png",
+        "http": 200,
+        "sha256": "1e3e63236c104be4b0f2cdeb024a714e5946fc31bffaabd69ebab220ecc6f05b",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/approved2/apple-tree.png",
+        "http": 200,
+        "sha256": "b64ed3f15df70c2f7cf71e8937cb305e88de2c9b193edf522c08750300efb9ee",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/approved2/blossom-tree.png",
+        "http": 200,
+        "sha256": "bd8a45c50f598cf90c1740d6c1726ea2c5b0957d33f017d54dc060593e70e08d",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/approved2/flowers.png",
+        "http": 200,
+        "sha256": "ed6a7ed6b599fa6fc97ad2e17413102fc6cb15d6efe833dc0866f54e1af77ff6",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/approved2/stump.png",
+        "http": 200,
+        "sha256": "bfda84349aa42aaaed4a67a92967616a00094c02b4b89a77b6cc85b6d1abddbe",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/approved2/bed.png",
+        "http": 200,
+        "sha256": "79c3d7a49c8f3b9fdef825cdbf362e72bc3137fac61c3759a6b3c94d2e8b4aa4",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/approved2/cloud.png",
+        "http": 200,
+        "sha256": "5d831fa989c56534dfc8cd816b86c84d58ebce3df3e1b049718f57d73242f6f3",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/humans/female-unified-34.png",
+        "http": 200,
+        "sha256": "b4fe02561134f23231a8c35066b98fa7620fdc9d341727f96310657514af234e",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/humans/female-back-24.webp",
+        "http": 200,
+        "sha256": "7eb2a2d73559f7e9fee8746b3e294e90d7c3848c7f7b11e9f239f41f3bef0cfc",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/humans/female-cozy.webp",
+        "http": 200,
+        "sha256": "c64cd1648156372d79c046d188d664c38c985ed5f107c02d82561486f6bb131b",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/art/humans/male-soft-25.webp",
+        "http": 200,
+        "sha256": "44a8f74d3e69d7323cd0f8c2a29e4930e420d0d64d052f291e4110e743f06962",
+        "matches_reviewed_source": true
+      },
+      {
+        "path": "island/human-sprites.js",
+        "http": 200,
+        "sha256": "5c8f4aa0dba776417dfe13f9ec1d3f4d52d13dd1d2c9479a37493d4569a4e926",
+        "matches_reviewed_source": true
+      }
+    ],
+    "all_match": true
+  },
+  "public_browser_checks": {
+    "http": 200,
+    "approvedWorld": 1,
+    "beds": 3,
+    "farmingButton": 1,
+    "errors": []
+  }
 }

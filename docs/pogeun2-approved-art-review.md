@@ -1,3 +1,10 @@
+## 2026-11-07T11:59:05+09:00 · 등록/배포 성공
+
+- Source: `codex/pogeun2-register@346943066634d7113a7e7da40f8675235c496b12`; synchronized master `19411fd6f574014ea196095e34462fa19bfa3806`.
+- GitHub Pages run `42331337710`: success. URL https://choiseonkyeong.github.io/Game/island/ . 공개 build-info 커밋 일치; 런타임19파일 바이트 일치. 캐릭터 원본/관련코드/HUD 변경 없음.
+- 로컬48테스트파일 pass/0fail; 공개 Chromium844×390 기존캐릭터/독립밭3개/터치→씨앗심기버튼/pageerror0. 물리휴대폰/다른사용자접속 미확인.
+- 런타임8그래픽/코드/테스트/텍스트기록만 게시. 스크린샷/첨부원본은 로컬 유지. 세부 근거 `docs/pogeun2-registration.json`. 과거 미완료요구는 별도 유지.
+
 ## 2026-11-07 등록 승인
 
 사용자 “캐릭터 이미지는 변경하지말고 등록해줘”에 따라 기존 Pages에 게시 준비. 캐릭터 이미지/관련 코드와 HUD 변경 없음. 런타임 그래픽/코드/테스트/텍스트 기록만 등록하며 아래 로컬 검수 화면/첨부 원본은 게시 대상에서 제외했습니다. 배포 성공 여부는 후속 검증 기록을 따릅니다.
